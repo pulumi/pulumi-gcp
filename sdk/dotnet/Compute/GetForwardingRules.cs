@@ -16,11 +16,21 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_forwarding_rules" "my-forwarding-rules" {
-        ///   project = "my-cloud-project"
-        ///   region  = "us-central1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rules = Gcp.Compute.GetForwardingRules.Invoke(new()
+        ///     {
+        ///         Project = "my-cloud-project",
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetForwardingRulesResult> InvokeAsync(GetForwardingRulesArgs? args = null, InvokeOptions? options = null)
@@ -31,11 +41,21 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_forwarding_rules" "my-forwarding-rules" {
-        ///   project = "my-cloud-project"
-        ///   region  = "us-central1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rules = Gcp.Compute.GetForwardingRules.Invoke(new()
+        ///     {
+        ///         Project = "my-cloud-project",
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs? args = null, InvokeOptions? options = null)

@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.testCases)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
- * ## Example Usage
- *
- * ### Dialogflowcx Test Case Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -197,9 +195,6 @@ export class CxTestCase extends pulumi.CustomResource {
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -289,9 +284,6 @@ export interface CxTestCaseState {
     creationTime?: pulumi.Input<string>;
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -336,9 +328,6 @@ export interface CxTestCaseState {
 export interface CxTestCaseArgs {
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

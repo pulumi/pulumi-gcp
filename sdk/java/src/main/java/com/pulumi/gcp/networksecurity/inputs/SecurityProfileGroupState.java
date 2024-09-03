@@ -121,16 +121,12 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
     /**
      * The name of the security profile group resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the security profile group resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -376,8 +372,6 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
         /**
          * @param name The name of the security profile group resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -388,8 +382,6 @@ public final class SecurityProfileGroupState extends com.pulumi.resources.Resour
 
         /**
          * @param name The name of the security profile group resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiFeatureOnlineStoreFeatureviewSyncConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        /// Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
         /// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         /// </summary>
         [Input("cron")]

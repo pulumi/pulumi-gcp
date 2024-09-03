@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.InstanceIAMBinding
     /// 
     /// ```csharp
@@ -158,6 +159,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.InstanceIAMMember
     /// 
     /// ```csharp
@@ -209,8 +211,6 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// 
     /// ## This resource supports User Project Overrides.
-    /// 
-    /// - 
     /// 
     /// # IAM policy for Compute Engine Instance
     /// Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
@@ -306,6 +306,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.InstanceIAMBinding
     /// 
     /// ```csharp
@@ -361,6 +362,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.InstanceIAMMember
     /// 
     /// ```csharp
@@ -447,7 +449,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/instanceIAMPolicy:InstanceIAMPolicy")]
     public partial class InstanceIAMPolicy : global::Pulumi.CustomResource

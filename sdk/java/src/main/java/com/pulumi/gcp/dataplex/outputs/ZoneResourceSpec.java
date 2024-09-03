@@ -13,16 +13,12 @@ public final class ZoneResourceSpec {
     /**
      * @return Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
      * 
-     * ***
-     * 
      */
     private String locationType;
 
     private ZoneResourceSpec() {}
     /**
      * @return Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-     * 
-     * ***
      * 
      */
     public String locationType() {

@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureGroups.features)
  * * How-to Guides
- *     * [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
+ *   * [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
  * 
- * ## Example Usage
- * 
- * ### Vertex Ai Feature Group Feature
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -280,16 +278,12 @@ public class AiFeatureGroupFeature extends com.pulumi.resources.CustomResource {
     /**
      * The region for the resource. It should be the same as the feature group&#39;s region.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the feature group&#39;s region.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

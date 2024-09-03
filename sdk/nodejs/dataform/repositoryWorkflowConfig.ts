@@ -7,94 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Dataform Repository Workflow Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
- * const secret = new gcp.secretmanager.Secret("secret", {
- *     secretId: "my_secret",
- *     replication: {
- *         auto: {},
- *     },
- * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
- *     secret: secret.id,
- *     secretData: "secret-data",
- * });
- * const repository = new gcp.dataform.Repository("repository", {
- *     name: "dataform_repository",
- *     region: "us-central1",
- *     gitRemoteSettings: {
- *         url: gitRepository.url,
- *         defaultBranch: "main",
- *         authenticationTokenSecretVersion: secretVersion.id,
- *     },
- *     workspaceCompilationOverrides: {
- *         defaultDatabase: "database",
- *         schemaSuffix: "_suffix",
- *         tablePrefix: "prefix_",
- *     },
- * });
- * const releaseConfig = new gcp.dataform.RepositoryReleaseConfig("release_config", {
- *     project: repository.project,
- *     region: repository.region,
- *     repository: repository.name,
- *     name: "my_release",
- *     gitCommitish: "main",
- *     cronSchedule: "0 7 * * *",
- *     timeZone: "America/New_York",
- *     codeCompilationConfig: {
- *         defaultDatabase: "gcp-example-project",
- *         defaultSchema: "example-dataset",
- *         defaultLocation: "us-central1",
- *         assertionSchema: "example-assertion-dataset",
- *         databaseSuffix: "",
- *         schemaSuffix: "",
- *         tablePrefix: "",
- *         vars: {
- *             var1: "value",
- *         },
- *     },
- * });
- * const dataformSa = new gcp.serviceaccount.Account("dataform_sa", {
- *     accountId: "dataform-sa",
- *     displayName: "Dataform Service Account",
- * });
- * const workflow = new gcp.dataform.RepositoryWorkflowConfig("workflow", {
- *     project: repository.project,
- *     region: repository.region,
- *     repository: repository.name,
- *     name: "my_workflow",
- *     releaseConfig: releaseConfig.id,
- *     invocationConfig: {
- *         includedTargets: [
- *             {
- *                 database: "gcp-example-project",
- *                 schema: "example-dataset",
- *                 name: "target_1",
- *             },
- *             {
- *                 database: "gcp-example-project",
- *                 schema: "example-dataset",
- *                 name: "target_2",
- *             },
- *         ],
- *         includedTags: ["tag_1"],
- *         transitiveDependenciesIncluded: true,
- *         transitiveDependentsIncluded: true,
- *         fullyRefreshIncrementalTablesEnabled: false,
- *         serviceAccount: dataformSa.email,
- *     },
- *     cronSchedule: "0 7 * * *",
- *     timeZone: "America/New_York",
- * });
- * ```
- *
  * ## Import
  *
  * RepositoryWorkflowConfig can be imported using any of these accepted formats:
@@ -182,9 +94,6 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     *
-     *
-     * - - -
      */
     public readonly releaseConfig!: pulumi.Output<string>;
     /**
@@ -192,7 +101,7 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
      */
     public readonly repository!: pulumi.Output<string | undefined>;
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
      */
     public readonly timeZone!: pulumi.Output<string | undefined>;
 
@@ -271,9 +180,6 @@ export interface RepositoryWorkflowConfigState {
     region?: pulumi.Input<string>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     *
-     *
-     * - - -
      */
     releaseConfig?: pulumi.Input<string>;
     /**
@@ -281,7 +187,7 @@ export interface RepositoryWorkflowConfigState {
      */
     repository?: pulumi.Input<string>;
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
      */
     timeZone?: pulumi.Input<string>;
 }
@@ -314,9 +220,6 @@ export interface RepositoryWorkflowConfigArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     *
-     *
-     * - - -
      */
     releaseConfig: pulumi.Input<string>;
     /**
@@ -324,7 +227,7 @@ export interface RepositoryWorkflowConfigArgs {
      */
     repository?: pulumi.Input<string>;
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
      */
     timeZone?: pulumi.Input<string>;
 }

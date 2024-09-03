@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores.featureViews)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    ///   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vertex Ai Featureonlinestore Featureview
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -114,7 +112,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// ### Vertex Ai Featureonlinestore Featureview Feature Registry
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -243,6 +241,9 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Vertex Ai Featureonlinestore Featureview Cross Project
     /// 
     /// ```csharp
@@ -448,7 +449,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// ### Vertex Ai Featureonlinestore Featureview With Vector Search
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -682,9 +683,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the featureonlinestore region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -810,9 +808,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the featureonlinestore region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -928,9 +923,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the featureonlinestore region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

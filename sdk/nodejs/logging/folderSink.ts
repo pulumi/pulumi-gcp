@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Manages a folder-level logging sink. For more information see:
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.sinks)
  * * How-to Guides
- *     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+ *   * [Exporting Logs](https://cloud.google.com/logging/docs/export)
  *
  * ## Example Usage
  *

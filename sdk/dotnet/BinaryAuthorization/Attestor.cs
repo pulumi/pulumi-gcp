@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+    ///   * [Official Documentation](https://cloud.google.com/binary-authorization/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Binary Authorization Attestor Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -75,6 +73,9 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Binary Authorization Attestor Kms
     /// 
     /// ```csharp

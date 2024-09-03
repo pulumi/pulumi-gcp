@@ -81,8 +81,6 @@ type ServiceIdentity struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service to generate identity for.
-	//
-	// ***
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -127,8 +125,6 @@ type serviceIdentityState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service to generate identity for.
-	//
-	// ***
 	Service *string `pulumi:"service"`
 }
 
@@ -141,8 +137,6 @@ type ServiceIdentityState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service to generate identity for.
-	//
-	// ***
 	Service pulumi.StringPtrInput
 }
 
@@ -155,8 +149,6 @@ type serviceIdentityArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service to generate identity for.
-	//
-	// ***
 	Service string `pulumi:"service"`
 }
 
@@ -166,8 +158,6 @@ type ServiceIdentityArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service to generate identity for.
-	//
-	// ***
 	Service pulumi.StringInput
 }
 
@@ -275,8 +265,6 @@ func (o ServiceIdentityOutput) Project() pulumi.StringOutput {
 }
 
 // The service to generate identity for.
-//
-// ***
 func (o ServiceIdentityOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIdentity) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

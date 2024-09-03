@@ -19,7 +19,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
     /**
      * Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     @Import(name="branch", required=true)
@@ -27,7 +27,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Output<String> branch() {
@@ -94,7 +94,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
         /**
          * @param branch Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
         /**
          * @param branch Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 

@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+ *   * [Official Documentation](https://cloud.google.com/tpu/docs/)
  *
- * ## Example Usage
- *
- * ### Tpu Node Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +30,9 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Tpu Node Full
  *
  * ```typescript
@@ -198,9 +199,6 @@ export class Node extends pulumi.CustomResource {
     public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
     /**
      * The version of Tensorflow running in the Node.
-     *
-     *
-     * - - -
      */
     public readonly tensorflowVersion!: pulumi.Output<string>;
     /**
@@ -349,9 +347,6 @@ export interface NodeState {
     serviceAccount?: pulumi.Input<string>;
     /**
      * The version of Tensorflow running in the Node.
-     *
-     *
-     * - - -
      */
     tensorflowVersion?: pulumi.Input<string>;
     /**
@@ -419,9 +414,6 @@ export interface NodeArgs {
     schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     /**
      * The version of Tensorflow running in the Node.
-     *
-     *
-     * - - -
      */
     tensorflowVersion: pulumi.Input<string>;
     /**

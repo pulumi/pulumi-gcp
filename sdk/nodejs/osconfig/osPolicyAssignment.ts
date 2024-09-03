@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about OSPolicyAssignment, see:
  *
- * *   [API documentation](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments)
- * *   How-to Guides
- *     *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
+ * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments)
+ * * How-to Guides
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
  *
  * ## Example Usage
  *

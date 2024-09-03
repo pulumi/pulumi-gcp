@@ -33,16 +33,12 @@ public final class AppConnectionApplicationEndpointArgs extends com.pulumi.resou
     /**
      * Port of the remote application endpoint.
      * 
-     * ***
-     * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
      * @return Port of the remote application endpoint.
-     * 
-     * ***
      * 
      */
     public Output<Integer> port() {
@@ -98,8 +94,6 @@ public final class AppConnectionApplicationEndpointArgs extends com.pulumi.resou
         /**
          * @param port Port of the remote application endpoint.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -110,8 +104,6 @@ public final class AppConnectionApplicationEndpointArgs extends com.pulumi.resou
 
         /**
          * @param port Port of the remote application endpoint.
-         * 
-         * ***
          * 
          * @return builder
          * 

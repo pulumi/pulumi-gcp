@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Workbench.Inputs
         /// <summary>
         /// (Output)
         /// Output only. The list of scopes to be made available for this
-        /// service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+        /// service account. Set by the CLH to &lt;https://www.googleapis.com/auth/cloud-platform&gt;
         /// </summary>
         public InputList<string> Scopes
         {

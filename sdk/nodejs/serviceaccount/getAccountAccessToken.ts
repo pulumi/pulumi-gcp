@@ -82,7 +82,7 @@ export interface GetAccountAccessTokenArgs {
      */
     scopes: string[];
     /**
-     * The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+     * The service account *to* impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
      */
     targetServiceAccount: string;
 }
@@ -175,7 +175,7 @@ export interface GetAccountAccessTokenOutputArgs {
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+     * The service account *to* impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
      */
     targetServiceAccount: pulumi.Input<string>;
 }

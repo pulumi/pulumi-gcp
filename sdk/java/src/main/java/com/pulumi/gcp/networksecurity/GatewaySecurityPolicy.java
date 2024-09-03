@@ -21,9 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
  * 
- * ## Example Usage
- * 
- * ### Network Security Gateway Security Policy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -59,7 +57,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Security Gateway Security Policy Tls Inspection Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -284,8 +282,6 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -293,8 +289,6 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

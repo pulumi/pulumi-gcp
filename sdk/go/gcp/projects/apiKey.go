@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Android_key
+// ### androidKey
 // A basic example of a android api keys key
 // ```go
 // package main
@@ -69,7 +69,8 @@ import (
 //	}
 //
 // ```
-// ### Basic_key
+//
+// ### basicKey
 // A basic example of a api keys key
 // ```go
 // package main
@@ -120,7 +121,8 @@ import (
 //	}
 //
 // ```
-// ### Ios_key
+//
+// ### iosKey
 // A basic example of a ios api keys key
 // ```go
 // package main
@@ -171,7 +173,8 @@ import (
 //	}
 //
 // ```
-// ### Minimal_key
+//
+// ### minimalKey
 // A minimal example of a api keys key
 // ```go
 // package main
@@ -207,7 +210,8 @@ import (
 //	}
 //
 // ```
-// ### Server_key
+//
+// ### serverKey
 // A basic example of a server api keys key
 // ```go
 // package main

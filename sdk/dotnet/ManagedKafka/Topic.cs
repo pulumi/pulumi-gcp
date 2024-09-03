@@ -10,60 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ManagedKafka
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Managedkafka Topic Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var cluster = new Gcp.ManagedKafka.Cluster("cluster", new()
-    ///     {
-    ///         ClusterId = "my-cluster",
-    ///         Location = "us-central1",
-    ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
-    ///         {
-    ///             VcpuCount = "3",
-    ///             MemoryBytes = "3221225472",
-    ///         },
-    ///         GcpConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigArgs
-    ///         {
-    ///             AccessConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigArgs
-    ///             {
-    ///                 NetworkConfigs = new[]
-    ///                 {
-    ///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
-    ///                     {
-    ///                         Subnet = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/subnetworks/default",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var example = new Gcp.ManagedKafka.Topic("example", new()
-    ///     {
-    ///         TopicId = "my-topic",
-    ///         Cluster = cluster.ClusterId,
-    ///         Location = "us-central1",
-    ///         PartitionCount = 2,
-    ///         ReplicationFactor = 3,
-    ///         Configs = 
-    ///         {
-    ///             { "cleanup.policy", "compact" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Topic can be imported using any of these accepted formats:
@@ -104,7 +50,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<ImmutableDictionary<string, string>?> Configs { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -136,9 +82,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("topicId")]
         public Output<string> TopicId { get; private set; } = null!;
@@ -208,7 +151,7 @@ namespace Pulumi.Gcp.ManagedKafka
         }
 
         /// <summary>
-        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -234,9 +177,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topicId", required: true)]
         public Input<string> TopicId { get; set; } = null!;
@@ -268,7 +208,7 @@ namespace Pulumi.Gcp.ManagedKafka
         }
 
         /// <summary>
-        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -300,9 +240,6 @@ namespace Pulumi.Gcp.ManagedKafka
 
         /// <summary>
         /// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topicId")]
         public Input<string>? TopicId { get; set; }

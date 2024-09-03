@@ -20,7 +20,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
     private @Nullable String column;
     /**
      * @return The SQL Server data type. Full data types list can be found here:
-     * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+     * &lt;https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16&gt;
      * 
      */
     private @Nullable String dataType;
@@ -71,7 +71,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
     }
     /**
      * @return The SQL Server data type. Full data types list can be found here:
-     * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+     * &lt;https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16&gt;
      * 
      */
     public Optional<String> dataType() {

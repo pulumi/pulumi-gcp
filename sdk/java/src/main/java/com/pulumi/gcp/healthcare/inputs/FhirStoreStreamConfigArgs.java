@@ -45,7 +45,7 @@ public final class FhirStoreStreamConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * Supply a FHIR resource type (such as &#34;Patient&#34; or &#34;Observation&#34;). See
-     * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+     * &lt;https://www.hl7.org/fhir/valueset-resource-types.html&gt; for a list of all FHIR resource types. The server treats
      * an empty list as an intent to stream all the supported resource types in this FHIR store.
      * 
      */
@@ -54,7 +54,7 @@ public final class FhirStoreStreamConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Supply a FHIR resource type (such as &#34;Patient&#34; or &#34;Observation&#34;). See
-     * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+     * &lt;https://www.hl7.org/fhir/valueset-resource-types.html&gt; for a list of all FHIR resource types. The server treats
      * an empty list as an intent to stream all the supported resource types in this FHIR store.
      * 
      */
@@ -120,7 +120,7 @@ public final class FhirStoreStreamConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceTypes Supply a FHIR resource type (such as &#34;Patient&#34; or &#34;Observation&#34;). See
-         * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+         * &lt;https://www.hl7.org/fhir/valueset-resource-types.html&gt; for a list of all FHIR resource types. The server treats
          * an empty list as an intent to stream all the supported resource types in this FHIR store.
          * 
          * @return builder
@@ -133,7 +133,7 @@ public final class FhirStoreStreamConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceTypes Supply a FHIR resource type (such as &#34;Patient&#34; or &#34;Observation&#34;). See
-         * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+         * &lt;https://www.hl7.org/fhir/valueset-resource-types.html&gt; for a list of all FHIR resource types. The server treats
          * an empty list as an intent to stream all the supported resource types in this FHIR store.
          * 
          * @return builder
@@ -145,7 +145,7 @@ public final class FhirStoreStreamConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param resourceTypes Supply a FHIR resource type (such as &#34;Patient&#34; or &#34;Observation&#34;). See
-         * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+         * &lt;https://www.hl7.org/fhir/valueset-resource-types.html&gt; for a list of all FHIR resource types. The server treats
          * an empty list as an intent to stream all the supported resource types in this FHIR store.
          * 
          * @return builder

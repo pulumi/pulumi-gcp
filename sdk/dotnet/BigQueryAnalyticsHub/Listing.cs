@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+    ///   * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Analyticshub Listing Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -61,7 +59,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
-    /// ### Bigquery Analyticshub Listing Restricted
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

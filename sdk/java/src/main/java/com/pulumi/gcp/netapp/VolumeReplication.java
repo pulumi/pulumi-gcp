@@ -20,95 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Netapp Volume Replication Create
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
- * import com.pulumi.gcp.netapp.StoragePool;
- * import com.pulumi.gcp.netapp.StoragePoolArgs;
- * import com.pulumi.gcp.netapp.Volume;
- * import com.pulumi.gcp.netapp.VolumeArgs;
- * import com.pulumi.gcp.netapp.VolumeReplication;
- * import com.pulumi.gcp.netapp.VolumeReplicationArgs;
- * import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
- *             .name("test-network")
- *             .build());
- * 
- *         var sourcePool = new StoragePool("sourcePool", StoragePoolArgs.builder()
- *             .name("source-pool")
- *             .location("us-central1")
- *             .serviceLevel("PREMIUM")
- *             .capacityGib(2048)
- *             .network(default_.id())
- *             .build());
- * 
- *         var destinationPool = new StoragePool("destinationPool", StoragePoolArgs.builder()
- *             .name("destination-pool")
- *             .location("us-west2")
- *             .serviceLevel("PREMIUM")
- *             .capacityGib(2048)
- *             .network(default_.id())
- *             .build());
- * 
- *         var sourceVolume = new Volume("sourceVolume", VolumeArgs.builder()
- *             .location(sourcePool.location())
- *             .name("source-volume")
- *             .capacityGib(100)
- *             .shareName("source-volume")
- *             .storagePool(sourcePool.name())
- *             .protocols("NFSV3")
- *             .deletionPolicy("FORCE")
- *             .build());
- * 
- *         var testReplication = new VolumeReplication("testReplication", VolumeReplicationArgs.builder()
- *             .location(sourceVolume.location())
- *             .volumeName(sourceVolume.name())
- *             .name("test-replication")
- *             .replicationSchedule("EVERY_10_MINUTES")
- *             .description("This is a replication resource")
- *             .destinationVolumeParameters(VolumeReplicationDestinationVolumeParametersArgs.builder()
- *                 .storagePool(destinationPool.id())
- *                 .volumeId("destination-volume")
- *                 .shareName("source-volume")
- *                 .description("This is a replicated volume")
- *                 .build())
- *             .deleteDestinationVolume(true)
- *             .waitForMirror(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sourceVolume)
- *                 .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * VolumeReplication can be imported using any of these accepted formats:
@@ -309,16 +220,12 @@ public class VolumeReplication extends com.pulumi.resources.CustomResource {
     /**
      * The name of the replication. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the replication. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

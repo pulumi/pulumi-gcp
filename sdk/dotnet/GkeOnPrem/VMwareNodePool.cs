@@ -101,6 +101,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// 
     /// ## Import
     /// 
     /// VmwareNodePool can be imported using any of these accepted formats:

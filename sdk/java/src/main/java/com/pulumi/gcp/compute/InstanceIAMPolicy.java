@@ -128,6 +128,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.InstanceIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -211,6 +212,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.InstanceIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -296,8 +298,6 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## This resource supports User Project Overrides.
- * 
- * - 
  * 
  * # IAM policy for Compute Engine Instance
  * Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
@@ -414,6 +414,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.InstanceIAMBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -497,6 +498,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.InstanceIAMMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -617,7 +619,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:compute/instanceIAMPolicy:InstanceIAMPolicy")

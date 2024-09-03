@@ -31,7 +31,7 @@ public final class RestorePlanRestoreConfig {
      * being restored already exist in the target cluster.
      * This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
      * if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy&gt;
      * for more information on each policy option.
      * Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
      * 
@@ -55,7 +55,7 @@ public final class RestorePlanRestoreConfig {
      * being restored already exist in the target cluster.
      * This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode&gt;
      * for more information on each mode.
      * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
      * 
@@ -103,7 +103,7 @@ public final class RestorePlanRestoreConfig {
      * This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
      * If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy&gt;
      * for more information on each policy option.
      * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
      * 
@@ -132,7 +132,7 @@ public final class RestorePlanRestoreConfig {
      * being restored already exist in the target cluster.
      * This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
      * if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy&gt;
      * for more information on each policy option.
      * Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
      * 
@@ -162,7 +162,7 @@ public final class RestorePlanRestoreConfig {
      * being restored already exist in the target cluster.
      * This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode&gt;
      * for more information on each mode.
      * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
      * 
@@ -222,7 +222,7 @@ public final class RestorePlanRestoreConfig {
      * This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
      * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
      * If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy&gt;
      * for more information on each policy option.
      * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
      * 

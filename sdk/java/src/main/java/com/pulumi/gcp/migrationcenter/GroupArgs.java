@@ -50,16 +50,12 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
      * 
-     * ***
-     * 
      */
     @Import(name="groupId", required=true)
     private Output<String> groupId;
 
     /**
      * @return Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-     * 
-     * ***
      * 
      */
     public Output<String> groupId() {
@@ -191,8 +187,6 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param groupId Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -203,8 +197,6 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param groupId Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-         * 
-         * ***
          * 
          * @return builder
          * 

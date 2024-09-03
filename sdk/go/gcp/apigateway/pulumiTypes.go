@@ -156,7 +156,7 @@ func (o ApiConfigGatewayConfigPtrOutput) BackendConfig() ApiConfigGatewayConfigB
 
 type ApiConfigGatewayConfigBackendConfig struct {
 	// Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-	// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+	// (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
 	GoogleServiceAccount string `pulumi:"googleServiceAccount"`
 }
 
@@ -173,7 +173,7 @@ type ApiConfigGatewayConfigBackendConfigInput interface {
 
 type ApiConfigGatewayConfigBackendConfigArgs struct {
 	// Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-	// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+	// (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
 	GoogleServiceAccount pulumi.StringInput `pulumi:"googleServiceAccount"`
 }
 
@@ -255,7 +255,7 @@ func (o ApiConfigGatewayConfigBackendConfigOutput) ToApiConfigGatewayConfigBacke
 }
 
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+// (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
 func (o ApiConfigGatewayConfigBackendConfigOutput) GoogleServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiConfigGatewayConfigBackendConfig) string { return v.GoogleServiceAccount }).(pulumi.StringOutput)
 }
@@ -285,7 +285,7 @@ func (o ApiConfigGatewayConfigBackendConfigPtrOutput) Elem() ApiConfigGatewayCon
 }
 
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+// (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
 func (o ApiConfigGatewayConfigBackendConfigPtrOutput) GoogleServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiConfigGatewayConfigBackendConfig) *string {
 		if v == nil {

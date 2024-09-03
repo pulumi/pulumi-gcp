@@ -33,12 +33,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
- *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+ *   * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  * 
- * ## Example Usage
- * 
- * ### Netapp Volume Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -365,16 +363,12 @@ public class Volume extends com.pulumi.resources.CustomResource {
     /**
      * The name of the volume. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the volume. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

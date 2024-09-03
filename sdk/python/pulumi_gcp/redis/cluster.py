@@ -586,11 +586,9 @@ class Cluster(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+          * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
 
-        ## Example Usage
-
-        ### Redis Cluster Ha
+        ## 
 
         ```python
         import pulumi
@@ -632,7 +630,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
-        ### Redis Cluster Ha Single Zone
+        ## 
 
         ```python
         import pulumi
@@ -736,11 +734,9 @@ class Cluster(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+          * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
 
-        ## Example Usage
-
-        ### Redis Cluster Ha
+        ## 
 
         ```python
         import pulumi
@@ -782,7 +778,7 @@ class Cluster(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
-        ### Redis Cluster Ha Single Zone
+        ## 
 
         ```python
         import pulumi

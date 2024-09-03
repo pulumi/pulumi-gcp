@@ -109,16 +109,12 @@ public final class TrustConfigState extends com.pulumi.resources.ResourceArgs {
     /**
      * The trust config location.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The trust config location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -378,8 +374,6 @@ public final class TrustConfigState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The trust config location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -390,8 +384,6 @@ public final class TrustConfigState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The trust config location.
-         * 
-         * ***
          * 
          * @return builder
          * 

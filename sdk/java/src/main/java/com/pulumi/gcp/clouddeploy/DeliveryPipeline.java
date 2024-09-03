@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Canary_delivery_pipeline
+ * ### canary_delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -87,7 +87,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Canary_service_networking_delivery_pipeline
+ * 
+ * ### canary_service_networking_delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -150,7 +151,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Canaryrun_delivery_pipeline
+ * 
+ * ### canaryrun_delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -213,7 +215,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Delivery_pipeline
+ * 
+ * ### delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -276,7 +279,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Verify_delivery_pipeline
+ * 
+ * ### verify_delivery_pipeline
  * tests creating and updating a delivery pipeline with deployment verification strategy
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

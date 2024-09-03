@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
     /// * How-to Guides
-    ///     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+    ///   * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
     /// 
     /// ## Example Usage
     /// 
@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Address Groups Organization Basic
     /// 
     /// ```csharp
@@ -70,6 +71,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Address Groups Advanced
     /// 
     /// ```csharp
@@ -96,6 +98,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Address Groups Cloud Armor
     /// 
     /// ```csharp
@@ -186,9 +189,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the gateway security policy.
         /// The default value is `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -328,9 +328,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the gateway security policy.
         /// The default value is `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -442,9 +439,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The location of the gateway security policy.
         /// The default value is `global`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

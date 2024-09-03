@@ -17,14 +17,14 @@ public final class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvid
     public static final AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs Empty = new AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs();
 
     /**
-     * A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+     * A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
      * 
      */
     @Import(name="allowedIssuers")
     private @Nullable Output<List<String>> allowedIssuers;
 
     /**
-     * @return A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+     * @return A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
      * 
      */
     public Optional<Output<List<String>>> allowedIssuers() {
@@ -72,7 +72,7 @@ public final class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvid
         }
 
         /**
-         * @param allowedIssuers A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+         * @param allowedIssuers A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvid
         }
 
         /**
-         * @param allowedIssuers A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+         * @param allowedIssuers A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvid
         }
 
         /**
-         * @param allowedIssuers A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+         * @param allowedIssuers A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
          * 
          * @return builder
          * 

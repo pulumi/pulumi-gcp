@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// Retrieves the current IAM policy data for datapolicy
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
 
         /// <summary>
         /// Retrieves the current IAM policy data for datapolicy
-        /// 
         /// 
         /// ## example
         /// 

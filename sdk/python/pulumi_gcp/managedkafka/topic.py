@@ -29,12 +29,9 @@ class TopicArgs:
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] cluster: The cluster name.
-        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         :param pulumi.Input[int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configs: Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
         :param pulumi.Input[int] partition_count: The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -67,7 +64,7 @@ class TopicArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -92,9 +89,6 @@ class TopicArgs:
     def topic_id(self) -> pulumi.Input[str]:
         """
         The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-
-
-        - - -
         """
         return pulumi.get(self, "topic_id")
 
@@ -155,16 +149,13 @@ class _TopicState:
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[str] cluster: The cluster name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configs: Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
-        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         :param pulumi.Input[str] name: The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
         :param pulumi.Input[int] partition_count: The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -211,7 +202,7 @@ class _TopicState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -273,9 +264,6 @@ class _TopicState:
     def topic_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-
-
-        - - -
         """
         return pulumi.get(self, "topic_id")
 
@@ -298,40 +286,6 @@ class Topic(pulumi.CustomResource):
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Managedkafka Topic Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        cluster = gcp.managedkafka.Cluster("cluster",
-            cluster_id="my-cluster",
-            location="us-central1",
-            capacity_config={
-                "vcpu_count": "3",
-                "memory_bytes": "3221225472",
-            },
-            gcp_config={
-                "access_config": {
-                    "network_configs": [{
-                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    }],
-                },
-            })
-        example = gcp.managedkafka.Topic("example",
-            topic_id="my-topic",
-            cluster=cluster.cluster_id,
-            location="us-central1",
-            partition_count=2,
-            replication_factor=3,
-            configs={
-                "cleanup.policy": "compact",
-            })
-        ```
-
         ## Import
 
         Topic can be imported using any of these accepted formats:
@@ -360,15 +314,12 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The cluster name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configs: Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
-        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         :param pulumi.Input[int] partition_count: The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -377,40 +328,6 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Managedkafka Topic Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        cluster = gcp.managedkafka.Cluster("cluster",
-            cluster_id="my-cluster",
-            location="us-central1",
-            capacity_config={
-                "vcpu_count": "3",
-                "memory_bytes": "3221225472",
-            },
-            gcp_config={
-                "access_config": {
-                    "network_configs": [{
-                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
-                    }],
-                },
-            })
-        example = gcp.managedkafka.Topic("example",
-            topic_id="my-topic",
-            cluster=cluster.cluster_id,
-            location="us-central1",
-            partition_count=2,
-            replication_factor=3,
-            configs={
-                "cleanup.policy": "compact",
-            })
-        ```
-
         ## Import
 
         Topic can be imported using any of these accepted formats:
@@ -509,16 +426,13 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The cluster name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] configs: Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
-        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        :param pulumi.Input[str] location: ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         :param pulumi.Input[str] name: The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
         :param pulumi.Input[int] partition_count: The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] replication_factor: The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
         :param pulumi.Input[str] topic_id: The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -554,7 +468,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -596,9 +510,6 @@ class Topic(pulumi.CustomResource):
     def topic_id(self) -> pulumi.Output[str]:
         """
         The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-
-
-        - - -
         """
         return pulumi.get(self, "topic_id")
 

@@ -183,8 +183,7 @@ export class GCPolicy extends pulumi.CustomResource {
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-     * -----
+     * you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
      */
     public readonly ignoreWarnings!: pulumi.Output<boolean | undefined>;
     /**
@@ -284,8 +283,7 @@ export interface GCPolicyState {
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-     * -----
+     * you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
      */
     ignoreWarnings?: pulumi.Input<boolean>;
     /**
@@ -336,8 +334,7 @@ export interface GCPolicyArgs {
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-     * -----
+     * you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
      */
     ignoreWarnings?: pulumi.Input<boolean>;
     /**

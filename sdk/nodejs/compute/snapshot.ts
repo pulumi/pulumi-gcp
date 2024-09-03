@@ -24,11 +24,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  *
- * ## Example Usage
- *
- * ### Snapshot Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +53,7 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
- * ### Snapshot Chainname
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -223,9 +221,6 @@ export class Snapshot extends pulumi.CustomResource {
     public /*out*/ readonly snapshotId!: pulumi.Output<number>;
     /**
      * A reference to the disk used to create this snapshot.
-     *
-     *
-     * - - -
      */
     public readonly sourceDisk!: pulumi.Output<string>;
     /**
@@ -405,9 +400,6 @@ export interface SnapshotState {
     snapshotId?: pulumi.Input<number>;
     /**
      * A reference to the disk used to create this snapshot.
-     *
-     *
-     * - - -
      */
     sourceDisk?: pulumi.Input<string>;
     /**
@@ -487,9 +479,6 @@ export interface SnapshotArgs {
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey>;
     /**
      * A reference to the disk used to create this snapshot.
-     *
-     *
-     * - - -
      */
     sourceDisk: pulumi.Input<string>;
     /**

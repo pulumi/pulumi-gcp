@@ -18,7 +18,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest&gt;
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest&gt;
      * Structure is documented below.
      * 
      */
@@ -37,7 +37,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest&gt;
      * Structure is documented below.
      * 
      */
@@ -46,7 +46,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest&gt;
      * Structure is documented below.
      * 
      */
@@ -81,7 +81,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param dataflowFlexTemplateRequest Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -94,7 +94,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param dataflowFlexTemplateRequest Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -106,7 +106,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param dataflowLaunchTemplateRequest Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -119,7 +119,7 @@ public final class PipelineWorkloadArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param dataflowLaunchTemplateRequest Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest&gt;
          * Structure is documented below.
          * 
          * @return builder

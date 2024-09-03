@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class EnterpriseKeyWafSettings {
     /**
-     * @return Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+     * @return Supported WAF features. For more information, see &lt;https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features&gt;. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
      * 
      */
     private String wafFeature;
@@ -23,7 +23,7 @@ public final class EnterpriseKeyWafSettings {
 
     private EnterpriseKeyWafSettings() {}
     /**
-     * @return Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+     * @return Supported WAF features. For more information, see &lt;https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features&gt;. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
      * 
      */
     public String wafFeature() {

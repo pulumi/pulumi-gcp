@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/BiReservation)
  * * How-to Guides
- *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+ *   * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
- * ## Example Usage
- *
- * ### Bigquery Reservation Bi Reservation Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,9 +81,6 @@ export class BiReservation extends pulumi.CustomResource {
 
     /**
      * LOCATION_DESCRIPTION
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -154,9 +149,6 @@ export class BiReservation extends pulumi.CustomResource {
 export interface BiReservationState {
     /**
      * LOCATION_DESCRIPTION
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -190,9 +182,6 @@ export interface BiReservationState {
 export interface BiReservationArgs {
     /**
      * LOCATION_DESCRIPTION
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -123,7 +123,7 @@ class BackendServiceArgs:
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -159,9 +159,6 @@ class BackendServiceArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -498,7 +495,7 @@ class BackendServiceArgs:
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         reported weights. If set, the Backend Service must
         configure a non legacy HTTP-based Health Check, and
@@ -556,9 +553,6 @@ class BackendServiceArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -803,7 +797,7 @@ class _BackendServiceState:
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -839,9 +833,6 @@ class _BackendServiceState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -1224,7 +1215,7 @@ class _BackendServiceState:
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         reported weights. If set, the Backend Service must
         configure a non legacy HTTP-based Health Check, and
@@ -1282,9 +1273,6 @@ class _BackendServiceState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1474,14 +1462,12 @@ class BackendService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         > **Warning:** All arguments including the following potentially sensitive
         values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 
-        ## Example Usage
-
-        ### Backend Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -1496,7 +1482,7 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             health_checks=default_http_health_check.id)
         ```
-        ### Backend Service External Iap
+        ## 
 
         ```python
         import pulumi
@@ -1511,7 +1497,7 @@ class BackendService(pulumi.CustomResource):
                 "oauth2_client_secret": "xyz",
             })
         ```
-        ### Backend Service Cache Simple
+        ## 
 
         ```python
         import pulumi
@@ -1530,7 +1516,7 @@ class BackendService(pulumi.CustomResource):
                 "signed_url_cache_max_age_sec": 7200,
             })
         ```
-        ### Backend Service Cache Include Http Headers
+        ## 
 
         ```python
         import pulumi
@@ -1549,7 +1535,7 @@ class BackendService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Backend Service Cache Include Named Cookies
+        ## 
 
         ```python
         import pulumi
@@ -1574,7 +1560,7 @@ class BackendService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Backend Service Cache
+        ## 
 
         ```python
         import pulumi
@@ -1598,7 +1584,7 @@ class BackendService(pulumi.CustomResource):
                 "signed_url_cache_max_age_sec": 7200,
             })
         ```
-        ### Backend Service Cache Bypass Cache On Request Headers
+        ## 
 
         ```python
         import pulumi
@@ -1630,7 +1616,7 @@ class BackendService(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Backend Service Traffic Director Round Robin
+        ## 
 
         ```python
         import pulumi
@@ -1647,7 +1633,7 @@ class BackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-        ### Backend Service Traffic Director Ring Hash
+        ## 
 
         ```python
         import pulumi
@@ -1680,7 +1666,7 @@ class BackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
-        ### Backend Service Network Endpoint
+        ## 
 
         ```python
         import pulumi
@@ -1705,7 +1691,7 @@ class BackendService(pulumi.CustomResource):
                 "group": external_proxy.id,
             }])
         ```
-        ### Backend Service External Managed
+        ## 
 
         ```python
         import pulumi
@@ -1820,7 +1806,7 @@ class BackendService(pulumi.CustomResource):
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -1856,9 +1842,6 @@ class BackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -1904,14 +1887,12 @@ class BackendService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         > **Warning:** All arguments including the following potentially sensitive
         values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 
-        ## Example Usage
-
-        ### Backend Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -1926,7 +1907,7 @@ class BackendService(pulumi.CustomResource):
             name="backend-service",
             health_checks=default_http_health_check.id)
         ```
-        ### Backend Service External Iap
+        ## 
 
         ```python
         import pulumi
@@ -1941,7 +1922,7 @@ class BackendService(pulumi.CustomResource):
                 "oauth2_client_secret": "xyz",
             })
         ```
-        ### Backend Service Cache Simple
+        ## 
 
         ```python
         import pulumi
@@ -1960,7 +1941,7 @@ class BackendService(pulumi.CustomResource):
                 "signed_url_cache_max_age_sec": 7200,
             })
         ```
-        ### Backend Service Cache Include Http Headers
+        ## 
 
         ```python
         import pulumi
@@ -1979,7 +1960,7 @@ class BackendService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Backend Service Cache Include Named Cookies
+        ## 
 
         ```python
         import pulumi
@@ -2004,7 +1985,7 @@ class BackendService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Backend Service Cache
+        ## 
 
         ```python
         import pulumi
@@ -2028,7 +2009,7 @@ class BackendService(pulumi.CustomResource):
                 "signed_url_cache_max_age_sec": 7200,
             })
         ```
-        ### Backend Service Cache Bypass Cache On Request Headers
+        ## 
 
         ```python
         import pulumi
@@ -2060,7 +2041,7 @@ class BackendService(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Backend Service Traffic Director Round Robin
+        ## 
 
         ```python
         import pulumi
@@ -2077,7 +2058,7 @@ class BackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-        ### Backend Service Traffic Director Ring Hash
+        ## 
 
         ```python
         import pulumi
@@ -2110,7 +2091,7 @@ class BackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
-        ### Backend Service Network Endpoint
+        ## 
 
         ```python
         import pulumi
@@ -2135,7 +2116,7 @@ class BackendService(pulumi.CustomResource):
                 "group": external_proxy.id,
             }])
         ```
-        ### Backend Service External Managed
+        ## 
 
         ```python
         import pulumi
@@ -2385,7 +2366,7 @@ class BackendService(pulumi.CustomResource):
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -2421,9 +2402,6 @@ class BackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] port_name: Name of backend port. The same name should appear in the instance
                groups referenced by this service. Required when the load balancing
                scheme is EXTERNAL.
@@ -2703,7 +2681,7 @@ class BackendService(pulumi.CustomResource):
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         reported weights. If set, the Backend Service must
         configure a non legacy HTTP-based Health Check, and
@@ -2753,9 +2731,6 @@ class BackendService(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

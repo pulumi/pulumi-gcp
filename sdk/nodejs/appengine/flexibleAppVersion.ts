@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
  * the App Engine flexible environment automatically scales your app up and down while also balancing the load.
  * Learn about the differences between the standard environment and the flexible environment
- * at https://cloud.google.com/appengine/docs/the-appengine-environments.
+ * at <https://cloud.google.com/appengine/docs/the-appengine-environments>.
  *
  * > **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]@gae-api-prod.google.com.iam.gserviceaccount.com`
  * It should have the App Engine Flexible Environment Service Agent role, which will be applied when the `appengineflex.googleapis.com` service is enabled.
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
+ *   * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
  *
  * ## Example Usage
  *

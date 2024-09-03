@@ -832,8 +832,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the cluster, unique within the project and
      * location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -841,8 +839,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the cluster, unique within the project and
      * location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -1001,7 +997,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-     * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+     * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
      * gcp.container.NodePool resource instead of this property.
      * 
      */
@@ -1013,7 +1009,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-     * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+     * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
      * gcp.container.NodePool resource instead of this property.
      * 
      */
@@ -2485,8 +2481,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param name The name of the cluster, unique within the project and
          * location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -2498,8 +2492,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the cluster, unique within the project and
          * location.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -2722,7 +2714,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * See gcp.container.NodePool for schema.
          * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
          * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-         * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+         * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
          * gcp.container.NodePool resource instead of this property.
          * 
          * @return builder
@@ -2738,7 +2730,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * See gcp.container.NodePool for schema.
          * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
          * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-         * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+         * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
          * gcp.container.NodePool resource instead of this property.
          * 
          * @return builder
@@ -2753,7 +2745,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * See gcp.container.NodePool for schema.
          * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
          * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-         * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+         * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
          * gcp.container.NodePool resource instead of this property.
          * 
          * @return builder

@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetSubnetArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the resource. 
+        /// Name of the resource.
         /// UserDefined subnets are named in the format of "service-n", where n ranges from 1 to 5.
         /// Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
         /// </summary>
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetSubnetInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the resource. 
+        /// Name of the resource.
         /// UserDefined subnets are named in the format of "service-n", where n ranges from 1 to 5.
         /// Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
         /// </summary>

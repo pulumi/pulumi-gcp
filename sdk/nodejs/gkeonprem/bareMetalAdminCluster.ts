@@ -78,6 +78,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkeonprem Bare Metal Admin Cluster Full
  *
  * ```typescript
@@ -317,9 +318,6 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
     public /*out*/ readonly localName!: pulumi.Output<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -564,9 +562,6 @@ export interface BareMetalAdminClusterState {
     localName?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -686,9 +681,6 @@ export interface BareMetalAdminClusterArgs {
     loadBalancer?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancer>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

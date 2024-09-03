@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
  * * How-to Guides
- *     * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
- *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+ *   * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+ *   * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
  *
  * ## Example Usage
  *
@@ -132,9 +132,6 @@ export class AuthConfig extends pulumi.CustomResource {
     public /*out*/ readonly lastModifierEmail!: pulumi.Output<string>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -297,9 +294,6 @@ export interface AuthConfigState {
     lastModifierEmail?: pulumi.Input<string>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -370,9 +364,6 @@ export interface AuthConfigArgs {
     expiryNotificationDurations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

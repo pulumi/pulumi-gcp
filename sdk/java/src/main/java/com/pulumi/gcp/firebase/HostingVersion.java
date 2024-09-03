@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Version Path
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Version Cloud Run
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -205,6 +207,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Version Cloud Functions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -350,16 +353,12 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
     /**
      * Required. The ID of the site in which to create this Version.
      * 
-     * ***
-     * 
      */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
      * @return Required. The ID of the site in which to create this Version.
-     * 
-     * ***
      * 
      */
     public Output<String> siteId() {

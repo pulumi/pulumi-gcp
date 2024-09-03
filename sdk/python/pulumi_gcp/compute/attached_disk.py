@@ -28,9 +28,6 @@ class AttachedDiskArgs:
         """
         The set of arguments for constructing a AttachedDisk resource.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
-               
-               
-               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -72,9 +69,6 @@ class AttachedDiskArgs:
     def disk(self) -> pulumi.Input[str]:
         """
         `name` or `self_link` of the disk that will be attached.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -183,9 +177,6 @@ class _AttachedDiskState:
                to this disk, in the form persistent-disks-x, where x is a number
                assigned by Google Compute Engine.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
-               
-               
-               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -240,9 +231,6 @@ class _AttachedDiskState:
     def disk(self) -> Optional[pulumi.Input[str]]:
         """
         `name` or `self_link` of the disk that will be attached.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -333,7 +321,7 @@ class AttachedDisk(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
         * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+          * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
@@ -390,9 +378,6 @@ class AttachedDisk(pulumi.CustomResource):
                to this disk, in the form persistent-disks-x, where x is a number
                assigned by Google Compute Engine.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
-               
-               
-               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -426,7 +411,7 @@ class AttachedDisk(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
         * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+          * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
@@ -544,9 +529,6 @@ class AttachedDisk(pulumi.CustomResource):
                to this disk, in the form persistent-disks-x, where x is a number
                assigned by Google Compute Engine.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
-               
-               
-               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -596,9 +578,6 @@ class AttachedDisk(pulumi.CustomResource):
     def disk(self) -> pulumi.Output[str]:
         """
         `name` or `self_link` of the disk that will be attached.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 

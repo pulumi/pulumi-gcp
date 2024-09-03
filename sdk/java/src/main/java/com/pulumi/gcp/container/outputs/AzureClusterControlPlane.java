@@ -66,7 +66,7 @@ public final class AzureClusterControlPlane {
      */
     private String version;
     /**
-     * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+     * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
      * 
      */
     private @Nullable String vmSize;
@@ -136,7 +136,7 @@ public final class AzureClusterControlPlane {
         return this.version;
     }
     /**
-     * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+     * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
      * 
      */
     public Optional<String> vmSize() {

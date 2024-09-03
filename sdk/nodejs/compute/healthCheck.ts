@@ -27,11 +27,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
  *
- * ## Example Usage
- *
- * ### Health Check Tcp
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Tcp Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +66,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Ssl
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Ssl Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -105,7 +103,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Http
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,7 +118,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Http Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -143,7 +141,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Https
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -158,7 +156,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Https Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -181,7 +179,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Http2
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -196,7 +194,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Http2 Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -219,7 +217,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Grpc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -234,7 +232,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check Grpc Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -251,7 +249,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Health Check With Logging
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -374,9 +372,6 @@ export class HealthCheck extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -542,9 +537,6 @@ export interface HealthCheckState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -650,9 +642,6 @@ export interface HealthCheckArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

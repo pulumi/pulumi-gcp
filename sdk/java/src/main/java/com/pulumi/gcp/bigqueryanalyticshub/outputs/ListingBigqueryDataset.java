@@ -13,16 +13,12 @@ public final class ListingBigqueryDataset {
     /**
      * @return Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
      * 
-     * ***
-     * 
      */
     private String dataset;
 
     private ListingBigqueryDataset() {}
     /**
      * @return Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-     * 
-     * ***
      * 
      */
     public String dataset() {

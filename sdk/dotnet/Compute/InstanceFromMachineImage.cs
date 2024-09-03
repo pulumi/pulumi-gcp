@@ -276,8 +276,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of a machine
         /// image to create the instance based on.
-        /// 
-        /// - - -
         /// </summary>
         [Output("sourceMachineImage")]
         public Output<string> SourceMachineImage { get; private set; } = null!;
@@ -552,8 +550,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of a machine
         /// image to create the instance based on.
-        /// 
-        /// - - -
         /// </summary>
         [Input("sourceMachineImage", required: true)]
         public Input<string> SourceMachineImage { get; set; } = null!;
@@ -887,8 +883,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of a machine
         /// image to create the instance based on.
-        /// 
-        /// - - -
         /// </summary>
         [Input("sourceMachineImage")]
         public Input<string>? SourceMachineImage { get; set; }

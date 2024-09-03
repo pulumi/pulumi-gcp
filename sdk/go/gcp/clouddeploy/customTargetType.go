@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
 //
-// ## Example Usage
-//
-// ### Clouddeploy Custom Target Type Basic
+// ##
 //
 // ```go
 // package main
@@ -62,7 +60,7 @@ import (
 //	}
 //
 // ```
-// ### Clouddeploy Custom Target Type Git Skaffold Modules
+// ##
 //
 // ```go
 // package main
@@ -105,7 +103,7 @@ import (
 //	}
 //
 // ```
-// ### Clouddeploy Custom Target Type Gcs Skaffold Modules
+// ##
 //
 // ```go
 // package main
@@ -147,7 +145,7 @@ import (
 //	}
 //
 // ```
-// ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+// ##
 //
 // ```go
 // package main
@@ -217,7 +215,7 @@ import (
 type CustomTargetType struct {
 	pulumi.CustomResourceState
 
-	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
@@ -240,8 +238,6 @@ type CustomTargetType struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the source.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the `CustomTargetType`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -295,7 +291,7 @@ func GetCustomTargetType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomTargetType resources.
 type customTargetTypeState struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
@@ -318,8 +314,6 @@ type customTargetTypeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the source.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Name of the `CustomTargetType`.
 	Name *string `pulumi:"name"`
@@ -336,7 +330,7 @@ type customTargetTypeState struct {
 }
 
 type CustomTargetTypeState struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
@@ -359,8 +353,6 @@ type CustomTargetTypeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the source.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Name of the `CustomTargetType`.
 	Name pulumi.StringPtrInput
@@ -381,7 +373,7 @@ func (CustomTargetTypeState) ElementType() reflect.Type {
 }
 
 type customTargetTypeArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
@@ -395,8 +387,6 @@ type customTargetTypeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the source.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the `CustomTargetType`.
 	Name *string `pulumi:"name"`
@@ -407,7 +397,7 @@ type customTargetTypeArgs struct {
 
 // The set of arguments for constructing a CustomTargetType resource.
 type CustomTargetTypeArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
@@ -421,8 +411,6 @@ type CustomTargetTypeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the source.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Name of the `CustomTargetType`.
 	Name pulumi.StringPtrInput
@@ -518,7 +506,7 @@ func (o CustomTargetTypeOutput) ToCustomTargetTypeOutputWithContext(ctx context.
 	return o
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o CustomTargetTypeOutput) Annotations() pulumi.StringMapOutput {
@@ -568,8 +556,6 @@ func (o CustomTargetTypeOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of the source.
-//
-// ***
 func (o CustomTargetTypeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomTargetType) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

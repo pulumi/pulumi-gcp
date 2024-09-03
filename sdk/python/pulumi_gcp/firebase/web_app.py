@@ -26,9 +26,6 @@ class WebAppArgs:
         """
         The set of arguments for constructing a WebApp resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-               
-               
-               - - -
         :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
@@ -48,9 +45,6 @@ class WebAppArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The user-assigned display name of the App.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -114,9 +108,6 @@ class _WebAppState:
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -190,9 +181,6 @@ class _WebAppState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The user-assigned display name of the App.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -244,7 +232,7 @@ class WebApp(pulumi.CustomResource):
 
         * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
         * How-to Guides
-            * [Official Documentation](https://firebase.google.com/)
+          * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
 
@@ -312,9 +300,6 @@ class WebApp(pulumi.CustomResource):
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -331,7 +316,7 @@ class WebApp(pulumi.CustomResource):
 
         * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
         * How-to Guides
-            * [Official Documentation](https://firebase.google.com/)
+          * [Official Documentation](https://firebase.google.com/)
 
         ## Example Usage
 
@@ -461,9 +446,6 @@ class WebApp(pulumi.CustomResource):
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -519,9 +501,6 @@ class WebApp(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The user-assigned display name of the App.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

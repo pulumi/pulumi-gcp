@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+ *   * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
  *
- * ## Example Usage
- *
- * ### App Engine Domain Mapping Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,9 +83,6 @@ export class DomainMapping extends pulumi.CustomResource {
 
     /**
      * Relative name of the domain serving the application. Example: example.com.
-     *
-     *
-     * - - -
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
@@ -160,9 +155,6 @@ export class DomainMapping extends pulumi.CustomResource {
 export interface DomainMappingState {
     /**
      * Relative name of the domain serving the application. Example: example.com.
-     *
-     *
-     * - - -
      */
     domainName?: pulumi.Input<string>;
     /**
@@ -200,9 +192,6 @@ export interface DomainMappingState {
 export interface DomainMappingArgs {
     /**
      * Relative name of the domain serving the application. Example: example.com.
-     *
-     *
-     * - - -
      */
     domainName: pulumi.Input<string>;
     /**

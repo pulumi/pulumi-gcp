@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.lakes.tasks)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+ *   * [Official Documentation](https://cloud.google.com/dataplex/docs)
  * 
  * ## Example Usage
  * 
@@ -103,6 +103,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataplex Task Spark
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -200,6 +201,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataplex Task Notebook
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

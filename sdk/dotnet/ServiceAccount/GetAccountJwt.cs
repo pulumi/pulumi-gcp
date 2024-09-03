@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+        /// Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+        /// Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

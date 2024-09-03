@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1/projects.locations.quotaPreferences)
  * * How-to Guides
- *     * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
+ *   * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
  *
  * ## Example Usage
  *
@@ -100,7 +100,7 @@ export class SQuotaPreference extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+     * The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See <https://google.aip.dev/134#etags> for more details on etags.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface SQuotaPreferenceState {
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+     * The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See <https://google.aip.dev/134#etags> for more details on etags.
      */
     etag?: pulumi.Input<string>;
     /**

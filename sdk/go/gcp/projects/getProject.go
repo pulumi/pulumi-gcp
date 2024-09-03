@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Searching For Projects About To Be Deleted In An Org
+// ### searching for projects about to be deleted in an org
 //
 // ```go
 // package main

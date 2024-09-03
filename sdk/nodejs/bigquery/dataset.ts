@@ -9,34 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ### Bigquery Dataset Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
- * const dataset = new gcp.bigquery.Dataset("dataset", {
- *     datasetId: "example_dataset",
- *     friendlyName: "test",
- *     description: "This is a test description",
- *     location: "EU",
- *     defaultTableExpirationMs: 3600000,
- *     labels: {
- *         env: "default",
- *     },
- *     accesses: [
- *         {
- *             role: "OWNER",
- *             userByEmail: bqowner.email,
- *         },
- *         {
- *             role: "READER",
- *             domain: "hashicorp.com",
- *         },
- *     ],
- * });
- * ```
  * ### Bigquery Dataset Cmek
  *
  * ```typescript
@@ -62,7 +34,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Dataset Authorized Dataset
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -119,6 +91,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Bigquery Dataset Authorized Routine
  *
  * ```typescript
@@ -169,6 +142,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Bigquery Dataset External Reference Aws
  *
  * ```typescript
@@ -253,9 +227,6 @@ export class Dataset extends pulumi.CustomResource {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     *
-     *
-     * - - -
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -488,9 +459,6 @@ export interface DatasetState {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     *
-     *
-     * - - -
      */
     datasetId?: pulumi.Input<string>;
     /**
@@ -647,9 +615,6 @@ export interface DatasetArgs {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     *
-     *
-     * - - -
      */
     datasetId: pulumi.Input<string>;
     /**

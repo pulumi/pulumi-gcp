@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic_zone
+// ### basicZone
 // A basic example of a dataplex zone
 // ```go
 // package main

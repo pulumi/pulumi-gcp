@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// * [API documentation](https://cloud.google.com/document-warehouse/docs/reference/rest/v1/projects.locations.documentSchemas)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
+    ///   * [Official Documentation](https://cloud.google.com/document-warehouse/docs/manage-document-schemas)
     /// 
     /// ## Example Usage
     /// 

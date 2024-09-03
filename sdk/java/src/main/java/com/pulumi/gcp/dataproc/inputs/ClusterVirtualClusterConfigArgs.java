@@ -37,7 +37,6 @@ public final class ClusterVirtualClusterConfigArgs extends com.pulumi.resources.
     /**
      * The configuration for running the Dataproc cluster on Kubernetes.
      * Structure defined below.
-     * ***
      * 
      */
     @Import(name="kubernetesClusterConfig")
@@ -46,7 +45,6 @@ public final class ClusterVirtualClusterConfigArgs extends com.pulumi.resources.
     /**
      * @return The configuration for running the Dataproc cluster on Kubernetes.
      * Structure defined below.
-     * ***
      * 
      */
     public Optional<Output<ClusterVirtualClusterConfigKubernetesClusterConfigArgs>> kubernetesClusterConfig() {
@@ -132,7 +130,6 @@ public final class ClusterVirtualClusterConfigArgs extends com.pulumi.resources.
         /**
          * @param kubernetesClusterConfig The configuration for running the Dataproc cluster on Kubernetes.
          * Structure defined below.
-         * ***
          * 
          * @return builder
          * 
@@ -145,7 +142,6 @@ public final class ClusterVirtualClusterConfigArgs extends com.pulumi.resources.
         /**
          * @param kubernetesClusterConfig The configuration for running the Dataproc cluster on Kubernetes.
          * Structure defined below.
-         * ***
          * 
          * @return builder
          * 

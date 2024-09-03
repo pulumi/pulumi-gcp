@@ -19,11 +19,9 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+    ///   * [Official Documentation](https://cloud.google.com/monitoring/groups/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Monitoring Group Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,7 +39,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Monitoring Group Subgroup
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -92,9 +90,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The filter used to determine which monitored resources
         /// belong to this group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
@@ -185,9 +180,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The filter used to determine which monitored resources
         /// belong to this group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
@@ -233,9 +225,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The filter used to determine which monitored resources
         /// belong to this group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

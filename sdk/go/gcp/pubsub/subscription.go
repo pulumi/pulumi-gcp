@@ -24,9 +24,7 @@ import (
 // > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
 // by using the `projects.ServiceIdentity` resource.
 //
-// ## Example Usage
-//
-// ### Pubsub Subscription Push
+// ##
 //
 // ```go
 // package main
@@ -68,7 +66,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Pull
+// ##
 //
 // ```go
 // package main
@@ -113,7 +111,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Dead Letter
+// ##
 //
 // ```go
 // package main
@@ -155,7 +153,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Push Bq
+// ##
 //
 // ```go
 // package main
@@ -248,7 +246,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Push Bq Table Schema
+// ##
 //
 // ```go
 // package main
@@ -342,7 +340,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Push Bq Service Account
+// ##
 //
 // ```go
 // package main
@@ -449,7 +447,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Push Cloudstorage
+// ##
 //
 // ```go
 // package main
@@ -516,7 +514,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Push Cloudstorage Avro
+// ##
 //
 // ```go
 // package main
@@ -586,7 +584,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Subscription Push Cloudstorage Service Account
+// ##
 //
 // ```go
 // package main
@@ -723,7 +721,7 @@ type Subscription struct {
 	// is disabled.
 	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
@@ -794,8 +792,6 @@ type Subscription struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -868,7 +864,7 @@ type subscriptionState struct {
 	// is disabled.
 	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
@@ -939,8 +935,6 @@ type subscriptionState struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic *string `pulumi:"topic"`
 }
 
@@ -976,7 +970,7 @@ type SubscriptionState struct {
 	// is disabled.
 	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
@@ -1047,8 +1041,6 @@ type SubscriptionState struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic pulumi.StringPtrInput
 }
 
@@ -1088,7 +1080,7 @@ type subscriptionArgs struct {
 	// is disabled.
 	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
@@ -1154,8 +1146,6 @@ type subscriptionArgs struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -1192,7 +1182,7 @@ type SubscriptionArgs struct {
 	// is disabled.
 	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
@@ -1258,8 +1248,6 @@ type SubscriptionArgs struct {
 	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 	// (as in the id property of a google_pubsub_topic), or just a topic name if
 	// the topic is in the same project as the subscription.
-	//
-	// ***
 	Topic pulumi.StringInput
 }
 
@@ -1390,7 +1378,7 @@ func (o SubscriptionOutput) CloudStorageConfig() SubscriptionCloudStorageConfigP
 // is disabled.
 // The Cloud Pub/Sub service account associated with this subscription's
 // parent project (i.e.,
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 // permission to Acknowledge() messages on this subscription.
 // Structure is documented below.
 func (o SubscriptionOutput) DeadLetterPolicy() SubscriptionDeadLetterPolicyPtrOutput {
@@ -1503,8 +1491,6 @@ func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 // A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
 // (as in the id property of a google_pubsub_topic), or just a topic name if
 // the topic is in the same project as the subscription.
-//
-// ***
 func (o SubscriptionOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

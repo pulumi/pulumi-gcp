@@ -32,7 +32,7 @@ public final class ServiceTemplateContainerLivenessProbe {
      */
     private @Nullable ServiceTemplateContainerLivenessProbeHttpGet httpGet;
     /**
-     * @return Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     private @Nullable Integer initialDelaySeconds;
@@ -48,7 +48,7 @@ public final class ServiceTemplateContainerLivenessProbe {
      */
     private @Nullable ServiceTemplateContainerLivenessProbeTcpSocket tcpSocket;
     /**
-     * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     private @Nullable Integer timeoutSeconds;
@@ -78,7 +78,7 @@ public final class ServiceTemplateContainerLivenessProbe {
         return Optional.ofNullable(this.httpGet);
     }
     /**
-     * @return Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     public Optional<Integer> initialDelaySeconds() {
@@ -100,7 +100,7 @@ public final class ServiceTemplateContainerLivenessProbe {
         return Optional.ofNullable(this.tcpSocket);
     }
     /**
-     * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     public Optional<Integer> timeoutSeconds() {

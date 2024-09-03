@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Container.Inputs
     {
         /// <summary>
         /// The maximum number of pods to schedule on a single node.
-        /// 
-        /// - - -
         /// </summary>
         [Input("maxPodsPerNode", required: true)]
         public Input<int> MaxPodsPerNode { get; set; } = null!;

@@ -35,9 +35,6 @@ class MetricDescriptorArgs:
         The set of arguments for constructing a MetricDescriptor resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         :param pulumi.Input[str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
@@ -67,7 +64,7 @@ class MetricDescriptorArgs:
                12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
-               (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+               (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -102,9 +99,6 @@ class MetricDescriptorArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -222,7 +216,7 @@ class MetricDescriptorArgs:
         12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
         The supported units are a subset of The Unified Code for Units of Measure standard.
         More info can be found in the API documentation
-        (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         """
         return pulumi.get(self, "unit")
 
@@ -250,9 +244,6 @@ class _MetricDescriptorState:
         Input properties used for looking up and filtering MetricDescriptor resources.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -282,7 +273,7 @@ class _MetricDescriptorState:
                12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
-               (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+               (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         """
@@ -328,9 +319,6 @@ class _MetricDescriptorState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -459,7 +447,7 @@ class _MetricDescriptorState:
         12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
         The supported units are a subset of The Unified Code for Units of Measure standard.
         More info can be found in the API documentation
-        (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         """
         return pulumi.get(self, "unit")
 
@@ -504,11 +492,9 @@ class MetricDescriptor(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
+          * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 
-        ## Example Usage
-
-        ### Monitoring Metric Descriptor Basic
+        ## 
 
         ```python
         import pulumi
@@ -532,7 +518,7 @@ class MetricDescriptor(pulumi.CustomResource):
                 "ingest_delay": "30s",
             })
         ```
-        ### Monitoring Metric Descriptor Alert
+        ## 
 
         ```python
         import pulumi
@@ -574,9 +560,6 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -604,7 +587,7 @@ class MetricDescriptor(pulumi.CustomResource):
                12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
-               (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+               (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         """
@@ -621,11 +604,9 @@ class MetricDescriptor(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
+          * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 
-        ## Example Usage
-
-        ### Monitoring Metric Descriptor Basic
+        ## 
 
         ```python
         import pulumi
@@ -649,7 +630,7 @@ class MetricDescriptor(pulumi.CustomResource):
                 "ingest_delay": "30s",
             })
         ```
-        ### Monitoring Metric Descriptor Alert
+        ## 
 
         ```python
         import pulumi
@@ -774,9 +755,6 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorLabelArgs', 'MetricDescriptorLabelArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -806,7 +784,7 @@ class MetricDescriptor(pulumi.CustomResource):
                12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
-               (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+               (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         """
@@ -841,9 +819,6 @@ class MetricDescriptor(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -936,7 +911,7 @@ class MetricDescriptor(pulumi.CustomResource):
         12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
         The supported units are a subset of The Unified Code for Units of Measure standard.
         More info can be found in the API documentation
-        (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
         """
         return pulumi.get(self, "unit")
 

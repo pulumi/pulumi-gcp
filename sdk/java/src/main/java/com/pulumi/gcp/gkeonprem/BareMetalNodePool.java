@@ -153,6 +153,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkeonprem Bare Metal Node Pool Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

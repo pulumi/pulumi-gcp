@@ -16,13 +16,11 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
     /// * How-to Guides
-    ///     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
-    ///     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
-    ///     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+    ///   * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+    ///   * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+    ///   * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Filestore Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// ### Filestore Instance Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -116,7 +114,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// ### Filestore Instance Protocol
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -152,6 +150,9 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Filestore Instance Enterprise
     /// 
     /// ```csharp

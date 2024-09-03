@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+ *   * [Official Documentation](https://cloud.google.com/tpu/docs/)
  * 
- * ## Example Usage
- * 
- * ### Tpu Node Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -72,6 +70,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Tpu Node Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -392,16 +393,12 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * The version of Tensorflow running in the Node.
      * 
-     * ***
-     * 
      */
     @Export(name="tensorflowVersion", refs={String.class}, tree="[0]")
     private Output<String> tensorflowVersion;
 
     /**
      * @return The version of Tensorflow running in the Node.
-     * 
-     * ***
      * 
      */
     public Output<String> tensorflowVersion() {

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.MigrationCenter.Inputs
     public sealed class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        /// Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }

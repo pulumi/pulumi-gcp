@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
  * * How-to Guides
- *     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ *   * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
  * 
  * ## Import
  * 
@@ -63,16 +63,12 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
     /**
      * Cert content
      * 
-     * ***
-     * 
      */
     @Export(name="cert", refs={String.class}, tree="[0]")
     private Output<String> cert;
 
     /**
      * @return Cert content
-     * 
-     * ***
      * 
      */
     public Output<String> cert() {

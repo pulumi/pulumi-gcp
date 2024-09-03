@@ -29,9 +29,10 @@ import javax.annotation.Nullable;
  * 
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+ * 
  * ## Example Usage
  * 
- * ### Basic_azure_cluster
+ * ### basic_azure_cluster
  * A basic example of a containerazure azure cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -115,7 +116,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Beta_basic_enum_azure_cluster
+ * 
+ * ### beta_basic_enum_azure_cluster
  * A basic example of a containerazure azure cluster with lowercase enums (beta)
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

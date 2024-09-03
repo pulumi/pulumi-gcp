@@ -61,9 +61,6 @@ class HealthCheckArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If
@@ -234,9 +231,6 @@ class HealthCheckArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -381,9 +375,6 @@ class _HealthCheckState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -574,9 +565,6 @@ class _HealthCheckState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -740,11 +728,9 @@ class HealthCheck(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
-        ## Example Usage
-
-        ### Health Check Tcp
+        ## 
 
         ```python
         import pulumi
@@ -758,7 +744,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 80,
             })
         ```
-        ### Health Check Tcp Full
+        ## 
 
         ```python
         import pulumi
@@ -779,7 +765,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Ssl
+        ## 
 
         ```python
         import pulumi
@@ -793,7 +779,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Ssl Full
+        ## 
 
         ```python
         import pulumi
@@ -814,7 +800,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Http
+        ## 
 
         ```python
         import pulumi
@@ -828,7 +814,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 80,
             })
         ```
-        ### Health Check Http Full
+        ## 
 
         ```python
         import pulumi
@@ -850,7 +836,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Https
+        ## 
 
         ```python
         import pulumi
@@ -864,7 +850,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Https Full
+        ## 
 
         ```python
         import pulumi
@@ -886,7 +872,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Http2
+        ## 
 
         ```python
         import pulumi
@@ -900,7 +886,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Http2 Full
+        ## 
 
         ```python
         import pulumi
@@ -922,7 +908,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Grpc
+        ## 
 
         ```python
         import pulumi
@@ -936,7 +922,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Grpc Full
+        ## 
 
         ```python
         import pulumi
@@ -952,7 +938,7 @@ class HealthCheck(pulumi.CustomResource):
                 "grpc_service_name": "testservice",
             })
         ```
-        ### Health Check With Logging
+        ## 
 
         ```python
         import pulumi
@@ -1019,9 +1005,6 @@ class HealthCheck(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If
@@ -1073,11 +1056,9 @@ class HealthCheck(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
-        ## Example Usage
-
-        ### Health Check Tcp
+        ## 
 
         ```python
         import pulumi
@@ -1091,7 +1072,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 80,
             })
         ```
-        ### Health Check Tcp Full
+        ## 
 
         ```python
         import pulumi
@@ -1112,7 +1093,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Ssl
+        ## 
 
         ```python
         import pulumi
@@ -1126,7 +1107,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Ssl Full
+        ## 
 
         ```python
         import pulumi
@@ -1147,7 +1128,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Http
+        ## 
 
         ```python
         import pulumi
@@ -1161,7 +1142,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 80,
             })
         ```
-        ### Health Check Http Full
+        ## 
 
         ```python
         import pulumi
@@ -1183,7 +1164,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Https
+        ## 
 
         ```python
         import pulumi
@@ -1197,7 +1178,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Https Full
+        ## 
 
         ```python
         import pulumi
@@ -1219,7 +1200,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Http2
+        ## 
 
         ```python
         import pulumi
@@ -1233,7 +1214,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Http2 Full
+        ## 
 
         ```python
         import pulumi
@@ -1255,7 +1236,7 @@ class HealthCheck(pulumi.CustomResource):
                 "response": "I AM HEALTHY",
             })
         ```
-        ### Health Check Grpc
+        ## 
 
         ```python
         import pulumi
@@ -1269,7 +1250,7 @@ class HealthCheck(pulumi.CustomResource):
                 "port": 443,
             })
         ```
-        ### Health Check Grpc Full
+        ## 
 
         ```python
         import pulumi
@@ -1285,7 +1266,7 @@ class HealthCheck(pulumi.CustomResource):
                 "grpc_service_name": "testservice",
             })
         ```
-        ### Health Check With Logging
+        ## 
 
         ```python
         import pulumi
@@ -1443,9 +1424,6 @@ class HealthCheck(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1587,9 +1565,6 @@ class HealthCheck(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

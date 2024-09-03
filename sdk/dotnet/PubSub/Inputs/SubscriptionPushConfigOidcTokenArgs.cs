@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.PubSub.Inputs
         /// identifies the recipients that the JWT is intended for. The audience
         /// value is a single case-sensitive string. Having multiple values (array)
         /// for the audience field is not supported. More info about the OIDC JWT
-        /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+        /// token audience here: &lt;https://tools.ietf.org/html/rfc7519#section-4.1.3&gt;
         /// Note: if not specified, the Push endpoint URL will be used.
         /// </summary>
         [Input("audience")]

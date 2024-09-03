@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupPolicies)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
  *
- * ## Example Usage
- *
- * ### Netapp Backup Policy Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -131,9 +129,6 @@ export class BackupPolicy extends pulumi.CustomResource {
     public readonly monthlyBackupLimit!: pulumi.Output<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -264,9 +259,6 @@ export interface BackupPolicyState {
     monthlyBackupLimit?: pulumi.Input<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -323,9 +315,6 @@ export interface BackupPolicyArgs {
     monthlyBackupLimit: pulumi.Input<number>;
     /**
      * The name of the backup policy. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

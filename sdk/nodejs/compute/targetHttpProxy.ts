@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
- * ## Example Usage
- *
- * ### Target Http Proxy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +54,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
- * ### Target Http Proxy Http Keep Alive Timeout
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,7 +96,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultURLMap.id,
  * });
  * ```
- * ### Target Http Proxy Https Redirect
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -217,9 +215,6 @@ export class TargetHttpProxy extends pulumi.CustomResource {
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     public readonly urlMap!: pulumi.Output<string>;
 
@@ -317,9 +312,6 @@ export interface TargetHttpProxyState {
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     urlMap?: pulumi.Input<string>;
 }
@@ -364,9 +356,6 @@ export interface TargetHttpProxyArgs {
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     urlMap: pulumi.Input<string>;
 }

@@ -653,7 +653,7 @@ if not MYPY:
         """
         Optional. The email of the trigger's service account. The service account
         must have permission to invoke Cloud Run services. If empty, defaults to the
-        Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+        Compute Engine default service account: {project_<number}-compute@developer.gserviceaccount.com>.
         """
         trigger: NotRequired[pulumi.Input[str]]
         """
@@ -691,7 +691,7 @@ class FunctionEventTriggerArgs:
                Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
         :param pulumi.Input[str] service_account_email: Optional. The email of the trigger's service account. The service account
                must have permission to invoke Cloud Run services. If empty, defaults to the
-               Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+               Compute Engine default service account: {project_<number}-compute@developer.gserviceaccount.com>.
         :param pulumi.Input[str] trigger: (Output)
                Output only. The resource name of the Eventarc trigger.
         :param pulumi.Input[str] trigger_region: The region that the trigger will be in. The trigger will only receive
@@ -772,7 +772,7 @@ class FunctionEventTriggerArgs:
         """
         Optional. The email of the trigger's service account. The service account
         must have permission to invoke Cloud Run services. If empty, defaults to the
-        Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+        Compute Engine default service account: {project_<number}-compute@developer.gserviceaccount.com>.
         """
         return pulumi.get(self, "service_account_email")
 

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.SecurityPosture
     /// To get more information about PostureDeployment, see:
     /// 
     /// * How-to Guides
-    ///     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+    ///   * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
     /// 
     /// ## Import
     /// 
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Output<string> DesiredPostureRevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -99,9 +99,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// ID of the posture deployment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("postureDeploymentId")]
         public Output<string> PostureDeploymentId { get; private set; } = null!;
@@ -213,9 +210,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// ID of the posture deployment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("postureDeploymentId", required: true)]
         public Input<string> PostureDeploymentId { get; set; } = null!;
@@ -279,7 +273,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Input<string>? DesiredPostureRevisionId { get; set; }
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -313,9 +307,6 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// ID of the posture deployment.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("postureDeploymentId")]
         public Input<string>? PostureDeploymentId { get; set; }

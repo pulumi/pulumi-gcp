@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+ *   * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
  *
- * ## Example Usage
- *
- * ### Redis Cluster Ha
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -64,7 +62,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
- * ### Redis Cluster Ha Single Zone
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

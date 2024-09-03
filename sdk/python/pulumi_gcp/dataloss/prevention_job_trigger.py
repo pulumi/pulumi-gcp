@@ -352,7 +352,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+          * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
 
         ## Example Usage
 
@@ -392,6 +392,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Bigquery Row Limit
 
         ```python
@@ -432,6 +433,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Bigquery Row Limit Percentage
 
         ```python
@@ -472,6 +474,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Job Notification Emails
 
         ```python
@@ -501,6 +504,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Deidentify
 
         ```python
@@ -582,6 +586,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Hybrid
 
         ```python
@@ -621,6 +626,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Inspect
 
         ```python
@@ -709,6 +715,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Publish To Stackdriver
 
         ```python
@@ -738,6 +745,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger With Id
 
         ```python
@@ -775,6 +783,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Multiple Actions
 
         ```python
@@ -818,6 +827,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
 
         ```python
@@ -857,6 +867,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Timespan Config Big Query
 
         ```python
@@ -947,7 +958,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+          * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
 
         ## Example Usage
 
@@ -987,6 +998,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Bigquery Row Limit
 
         ```python
@@ -1027,6 +1039,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Bigquery Row Limit Percentage
 
         ```python
@@ -1067,6 +1080,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Job Notification Emails
 
         ```python
@@ -1096,6 +1110,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Deidentify
 
         ```python
@@ -1177,6 +1192,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Hybrid
 
         ```python
@@ -1216,6 +1232,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Inspect
 
         ```python
@@ -1304,6 +1321,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Publish To Stackdriver
 
         ```python
@@ -1333,6 +1351,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger With Id
 
         ```python
@@ -1370,6 +1389,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Multiple Actions
 
         ```python
@@ -1413,6 +1433,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
 
         ```python
@@ -1452,6 +1473,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Job Trigger Timespan Config Big Query
 
         ```python

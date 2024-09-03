@@ -49,8 +49,6 @@ class ClusterCapacityConfig(dict):
                  vcpu_count: str):
         """
         :param str memory_bytes: The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-               
-               - - -
         :param str vcpu_count: The number of vCPUs to provision for the cluster. The minimum is 3.
         """
         pulumi.set(__self__, "memory_bytes", memory_bytes)
@@ -61,8 +59,6 @@ class ClusterCapacityConfig(dict):
     def memory_bytes(self) -> str:
         """
         The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-
-        - - -
         """
         return pulumi.get(self, "memory_bytes")
 

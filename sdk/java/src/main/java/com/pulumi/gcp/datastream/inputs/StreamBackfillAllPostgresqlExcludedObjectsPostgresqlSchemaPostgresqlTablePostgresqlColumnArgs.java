@@ -34,7 +34,7 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
 
     /**
      * The PostgreSQL data type. Full data types list can be found here:
-     * https://www.postgresql.org/docs/current/datatype.html
+     * &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
      * 
      */
     @Import(name="dataType")
@@ -42,7 +42,7 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
 
     /**
      * @return The PostgreSQL data type. Full data types list can be found here:
-     * https://www.postgresql.org/docs/current/datatype.html
+     * &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
      * 
      */
     public Optional<Output<String>> dataType() {
@@ -199,7 +199,7 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
 
         /**
          * @param dataType The PostgreSQL data type. Full data types list can be found here:
-         * https://www.postgresql.org/docs/current/datatype.html
+         * &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
 
         /**
          * @param dataType The PostgreSQL data type. Full data types list can be found here:
-         * https://www.postgresql.org/docs/current/datatype.html
+         * &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
          * 
          * @return builder
          * 

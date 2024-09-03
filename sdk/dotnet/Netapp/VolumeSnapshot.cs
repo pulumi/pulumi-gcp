@@ -21,11 +21,9 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes.snapshots)
     /// * How-to Guides
-    ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
+    ///   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Volume Snapshot Create
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -134,9 +132,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -247,9 +242,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,9 +312,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -10,118 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Network Security Authorization Policy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.AuthorizationPolicy("default", new()
-    ///     {
-    ///         Name = "my-authorization-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         Action = "ALLOW",
-    ///         Rules = new[]
-    ///         {
-    ///             new Gcp.NetworkSecurity.Inputs.AuthorizationPolicyRuleArgs
-    ///             {
-    ///                 Sources = new[]
-    ///                 {
-    ///                     new Gcp.NetworkSecurity.Inputs.AuthorizationPolicyRuleSourceArgs
-    ///                     {
-    ///                         Principals = new[]
-    ///                         {
-    ///                             "namespace/*",
-    ///                         },
-    ///                         IpBlocks = new[]
-    ///                         {
-    ///                             "1.2.3.0/24",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Authorization Policy Destinations
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.AuthorizationPolicy("default", new()
-    ///     {
-    ///         Name = "my-authorization-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         Action = "ALLOW",
-    ///         Rules = new[]
-    ///         {
-    ///             new Gcp.NetworkSecurity.Inputs.AuthorizationPolicyRuleArgs
-    ///             {
-    ///                 Sources = new[]
-    ///                 {
-    ///                     new Gcp.NetworkSecurity.Inputs.AuthorizationPolicyRuleSourceArgs
-    ///                     {
-    ///                         Principals = new[]
-    ///                         {
-    ///                             "namespace/*",
-    ///                         },
-    ///                         IpBlocks = new[]
-    ///                         {
-    ///                             "1.2.3.0/24",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Destinations = new[]
-    ///                 {
-    ///                     new Gcp.NetworkSecurity.Inputs.AuthorizationPolicyRuleDestinationArgs
-    ///                     {
-    ///                         Hosts = new[]
-    ///                         {
-    ///                             "mydomain.*",
-    ///                         },
-    ///                         Ports = new[]
-    ///                         {
-    ///                             8080,
-    ///                         },
-    ///                         Methods = new[]
-    ///                         {
-    ///                             "GET",
-    ///                         },
-    ///                         HttpHeaderMatch = new Gcp.NetworkSecurity.Inputs.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs
-    ///                         {
-    ///                             HeaderName = ":method",
-    ///                             RegexMatch = "GET",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// AuthorizationPolicy can be imported using any of these accepted formats:
@@ -191,9 +79,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the AuthorizationPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -313,9 +198,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the AuthorizationPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -407,9 +289,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the AuthorizationPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

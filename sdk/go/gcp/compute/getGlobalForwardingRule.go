@@ -14,6 +14,30 @@ import (
 // Get a global forwarding rule within GCE from its name.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupGlobalForwardingRule(ctx, &compute.LookupGlobalForwardingRuleArgs{
+//				Name: "forwarding-rule-global",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGlobalForwardingRule(ctx *pulumi.Context, args *LookupGlobalForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupGlobalForwardingRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalForwardingRuleResult
@@ -27,8 +51,6 @@ func LookupGlobalForwardingRule(ctx *pulumi.Context, args *LookupGlobalForwardin
 // A collection of arguments for invoking getGlobalForwardingRule.
 type LookupGlobalForwardingRuleArgs struct {
 	// The name of the global forwarding rule.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -81,8 +103,6 @@ func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForw
 // A collection of arguments for invoking getGlobalForwardingRule.
 type LookupGlobalForwardingRuleOutputArgs struct {
 	// The name of the global forwarding rule.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

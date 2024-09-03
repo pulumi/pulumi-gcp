@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.MigrationCenter.Outputs
     public sealed class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType
     {
         /// <summary>
-        /// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        /// Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
         /// </summary>
         public readonly string? NodeName;
 

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
 //
-// ## Example Usage
-//
-// ### Bigquery Biglake Catalog
+// ##
 //
 // ```go
 // package main
@@ -92,8 +90,6 @@ type Catalog struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the Catalog. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -154,8 +150,6 @@ type catalogState struct {
 	Location *string `pulumi:"location"`
 	// The name of the Catalog. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -184,8 +178,6 @@ type CatalogState struct {
 	Location pulumi.StringPtrInput
 	// The name of the Catalog. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -205,8 +197,6 @@ type catalogArgs struct {
 	Location string `pulumi:"location"`
 	// The name of the Catalog. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -219,8 +209,6 @@ type CatalogArgs struct {
 	Location pulumi.StringInput
 	// The name of the Catalog. Format:
 	// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -343,8 +331,6 @@ func (o CatalogOutput) Location() pulumi.StringOutput {
 
 // The name of the Catalog. Format:
 // projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-//
-// ***
 func (o CatalogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

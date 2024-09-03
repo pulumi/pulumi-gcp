@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkeonprem Bare Metal Admin Cluster Full
     /// 
     /// ```csharp
@@ -406,9 +407,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -618,9 +616,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -821,9 +816,6 @@ namespace Pulumi.Gcp.GkeOnPrem
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

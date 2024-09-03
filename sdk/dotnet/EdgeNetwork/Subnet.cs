@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.subnets)
     /// * How-to Guides
-    ///     * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
+    ///   * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
     /// 
     /// ## Example Usage
     /// 
@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// });
     /// ```
+    /// 
     /// ### Edgenetwork Subnet With Vlan Id
     /// 
     /// ```csharp
@@ -204,9 +205,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this subnet.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -341,9 +339,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this subnet.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<string> SubnetId { get; set; } = null!;
@@ -453,9 +448,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this subnet.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }

@@ -164,8 +164,6 @@ func (o ClusterAuthorizationPtrOutput) AdminUsers() ClusterAuthorizationAdminUse
 
 type ClusterAuthorizationAdminUsers struct {
 	// An active Google username.
-	//
-	// ***
 	Username string `pulumi:"username"`
 }
 
@@ -182,8 +180,6 @@ type ClusterAuthorizationAdminUsersInput interface {
 
 type ClusterAuthorizationAdminUsersArgs struct {
 	// An active Google username.
-	//
-	// ***
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -265,8 +261,6 @@ func (o ClusterAuthorizationAdminUsersOutput) ToClusterAuthorizationAdminUsersPt
 }
 
 // An active Google username.
-//
-// ***
 func (o ClusterAuthorizationAdminUsersOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAuthorizationAdminUsers) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -296,8 +290,6 @@ func (o ClusterAuthorizationAdminUsersPtrOutput) Elem() ClusterAuthorizationAdmi
 }
 
 // An active Google username.
-//
-// ***
 func (o ClusterAuthorizationAdminUsersPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAuthorizationAdminUsers) *string {
 		if v == nil {
@@ -2174,7 +2166,7 @@ func (o ClusterMaintenancePolicyWindowPtrOutput) RecurringWindow() ClusterMainte
 }
 
 type ClusterMaintenancePolicyWindowRecurringWindow struct {
-	// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+	// An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
 	// this window recurs. They go on for the span of time between the start and
 	// end time.
 	Recurrence *string `pulumi:"recurrence"`
@@ -2195,7 +2187,7 @@ type ClusterMaintenancePolicyWindowRecurringWindowInput interface {
 }
 
 type ClusterMaintenancePolicyWindowRecurringWindowArgs struct {
-	// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+	// An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
 	// this window recurs. They go on for the span of time between the start and
 	// end time.
 	Recurrence pulumi.StringPtrInput `pulumi:"recurrence"`
@@ -2281,7 +2273,7 @@ func (o ClusterMaintenancePolicyWindowRecurringWindowOutput) ToClusterMaintenanc
 	}).(ClusterMaintenancePolicyWindowRecurringWindowPtrOutput)
 }
 
-// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+// An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
 // this window recurs. They go on for the span of time between the start and
 // end time.
 func (o ClusterMaintenancePolicyWindowRecurringWindowOutput) Recurrence() pulumi.StringPtrOutput {
@@ -2320,7 +2312,7 @@ func (o ClusterMaintenancePolicyWindowRecurringWindowPtrOutput) Elem() ClusterMa
 	}).(ClusterMaintenancePolicyWindowRecurringWindowOutput)
 }
 
-// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+// An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
 // this window recurs. They go on for the span of time between the start and
 // end time.
 func (o ClusterMaintenancePolicyWindowRecurringWindowPtrOutput) Recurrence() pulumi.StringPtrOutput {

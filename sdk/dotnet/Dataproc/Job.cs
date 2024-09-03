@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// !&gt; **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
     /// 
-    /// ## Example Usage
+    /// ## Example usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

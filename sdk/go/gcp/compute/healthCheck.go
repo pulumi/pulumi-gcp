@@ -33,9 +33,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 //
-// ## Example Usage
-//
-// ### Health Check Tcp
+// ##
 //
 // ```go
 // package main
@@ -65,7 +63,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Tcp Full
+// ##
 //
 // ```go
 // package main
@@ -102,7 +100,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Ssl
+// ##
 //
 // ```go
 // package main
@@ -132,7 +130,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Ssl Full
+// ##
 //
 // ```go
 // package main
@@ -169,7 +167,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Http
+// ##
 //
 // ```go
 // package main
@@ -199,7 +197,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Http Full
+// ##
 //
 // ```go
 // package main
@@ -237,7 +235,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Https
+// ##
 //
 // ```go
 // package main
@@ -267,7 +265,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Https Full
+// ##
 //
 // ```go
 // package main
@@ -305,7 +303,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Http2
+// ##
 //
 // ```go
 // package main
@@ -335,7 +333,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Http2 Full
+// ##
 //
 // ```go
 // package main
@@ -373,7 +371,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Grpc
+// ##
 //
 // ```go
 // package main
@@ -403,7 +401,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check Grpc Full
+// ##
 //
 // ```go
 // package main
@@ -435,7 +433,7 @@ import (
 //	}
 //
 // ```
-// ### Health Check With Logging
+// ##
 //
 // ```go
 // package main
@@ -528,8 +526,6 @@ type HealthCheck struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -629,8 +625,6 @@ type healthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -701,8 +695,6 @@ type HealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -775,8 +767,6 @@ type healthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -842,8 +832,6 @@ type HealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1023,8 +1011,6 @@ func (o HealthCheckOutput) LogConfig() HealthCheckLogConfigOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
-//
-// ***
 func (o HealthCheckOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

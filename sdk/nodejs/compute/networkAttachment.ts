@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
  *
  * ## Example Usage
  *
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     producerRejectLists: [rejectedProducerProject.projectId],
  * });
  * ```
- * ### Network Attachment Instance Usage
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -207,9 +207,6 @@ export class NetworkAttachment extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -337,9 +334,6 @@ export interface NetworkAttachmentState {
     project?: pulumi.Input<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -388,9 +382,6 @@ export interface NetworkAttachmentArgs {
     project?: pulumi.Input<string>;
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**

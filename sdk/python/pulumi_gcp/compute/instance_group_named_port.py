@@ -27,9 +27,6 @@ class InstanceGroupNamedPortInitArgs:
         """
         The set of arguments for constructing a InstanceGroupNamedPort resource.
         :param pulumi.Input[str] group: The name of the instance group.
-               
-               
-               - - -
         :param pulumi.Input[int] port: The port number, which can be a value between 1 and 65535.
         :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters
                long, and comply with RFC1035.
@@ -51,9 +48,6 @@ class InstanceGroupNamedPortInitArgs:
     def group(self) -> pulumi.Input[str]:
         """
         The name of the instance group.
-
-
-        - - -
         """
         return pulumi.get(self, "group")
 
@@ -123,9 +117,6 @@ class _InstanceGroupNamedPortState:
         """
         Input properties used for looking up and filtering InstanceGroupNamedPort resources.
         :param pulumi.Input[str] group: The name of the instance group.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters
                long, and comply with RFC1035.
         :param pulumi.Input[int] port: The port number, which can be a value between 1 and 65535.
@@ -149,9 +140,6 @@ class _InstanceGroupNamedPortState:
     def group(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the instance group.
-
-
-        - - -
         """
         return pulumi.get(self, "group")
 
@@ -231,11 +219,9 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
+          * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
-        ## Example Usage
-
-        ### Instance Group Named Port Gke
+        ## 
 
         ```python
         import pulumi
@@ -305,9 +291,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the instance group.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters
                long, and comply with RFC1035.
         :param pulumi.Input[int] port: The port number, which can be a value between 1 and 65535.
@@ -331,11 +314,9 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
+          * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
-        ## Example Usage
-
-        ### Instance Group Named Port Gke
+        ## 
 
         ```python
         import pulumi
@@ -463,9 +444,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the instance group.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters
                long, and comply with RFC1035.
         :param pulumi.Input[int] port: The port number, which can be a value between 1 and 65535.
@@ -489,9 +467,6 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
     def group(self) -> pulumi.Output[str]:
         """
         The name of the instance group.
-
-
-        - - -
         """
         return pulumi.get(self, "group")
 

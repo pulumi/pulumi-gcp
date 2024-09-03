@@ -47,14 +47,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     }
 
     /**
-     * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+     * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (&lt;https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html&gt;) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
     @Import(name="numLocalSsds")
     private @Nullable Output<Integer> numLocalSsds;
 
     /**
-     * @return Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+     * @return Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (&lt;https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html&gt;) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
     public Optional<Output<Integer>> numLocalSsds() {
@@ -130,7 +130,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (&lt;https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html&gt;) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (&lt;https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html&gt;) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          * 
          * @return builder
          * 

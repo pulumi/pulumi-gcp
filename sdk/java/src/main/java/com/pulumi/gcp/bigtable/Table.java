@@ -121,16 +121,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
      * 
-     * ***
-     * 
      */
     @Export(name="automatedBackupPolicy", refs={TableAutomatedBackupPolicy.class}, tree="[0]")
     private Output</* @Nullable */ TableAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
      * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-     * 
-     * ***
      * 
      */
     public Output<Optional<TableAutomatedBackupPolicy>> automatedBackupPolicy() {

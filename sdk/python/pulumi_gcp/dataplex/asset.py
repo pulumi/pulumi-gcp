@@ -522,7 +522,7 @@ class Asset(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_asset
+        ### basic_asset
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -618,7 +618,7 @@ class Asset(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_asset
+        ### basic_asset
         ```python
         import pulumi
         import pulumi_gcp as gcp

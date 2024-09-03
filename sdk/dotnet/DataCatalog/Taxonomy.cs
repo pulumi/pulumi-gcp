@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+    ///   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Data Catalog Taxonomy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -80,9 +78,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -181,9 +176,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -237,9 +229,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

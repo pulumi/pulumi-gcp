@@ -962,8 +962,6 @@ func (o FolderCustomModuleCustomConfigPredicatePtrOutput) Title() pulumi.StringP
 
 type FolderCustomModuleCustomConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -980,8 +978,6 @@ type FolderCustomModuleCustomConfigResourceSelectorInput interface {
 
 type FolderCustomModuleCustomConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -1063,8 +1059,6 @@ func (o FolderCustomModuleCustomConfigResourceSelectorOutput) ToFolderCustomModu
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o FolderCustomModuleCustomConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FolderCustomModuleCustomConfigResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -1094,8 +1088,6 @@ func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() FolderCu
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FolderCustomModuleCustomConfigResourceSelector) []string {
 		if v == nil {
@@ -1125,8 +1117,6 @@ type FolderNotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -1161,8 +1151,6 @@ type FolderNotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -1262,8 +1250,6 @@ func (o FolderNotificationConfigStreamingConfigOutput) ToFolderNotificationConfi
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o FolderNotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderNotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -1311,8 +1297,6 @@ func (o FolderNotificationConfigStreamingConfigPtrOutput) Elem() FolderNotificat
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o FolderNotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderNotificationConfigStreamingConfig) *string {
 		if v == nil {
@@ -4998,8 +4982,6 @@ type NotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -5034,8 +5016,6 @@ type NotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -5135,8 +5115,6 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o NotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -5184,8 +5162,6 @@ func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStr
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationConfigStreamingConfig) *string {
 		if v == nil {
@@ -6152,8 +6128,6 @@ func (o OrganizationCustomModuleCustomConfigPredicatePtrOutput) Title() pulumi.S
 
 type OrganizationCustomModuleCustomConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -6170,8 +6144,6 @@ type OrganizationCustomModuleCustomConfigResourceSelectorInput interface {
 
 type OrganizationCustomModuleCustomConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -6253,8 +6225,6 @@ func (o OrganizationCustomModuleCustomConfigResourceSelectorOutput) ToOrganizati
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o OrganizationCustomModuleCustomConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OrganizationCustomModuleCustomConfigResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -6284,8 +6254,6 @@ func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() Or
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationCustomModuleCustomConfigResourceSelector) []string {
 		if v == nil {
@@ -7244,8 +7212,6 @@ func (o ProjectCustomModuleCustomConfigPredicatePtrOutput) Title() pulumi.String
 
 type ProjectCustomModuleCustomConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -7262,8 +7228,6 @@ type ProjectCustomModuleCustomConfigResourceSelectorInput interface {
 
 type ProjectCustomModuleCustomConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -7345,8 +7309,6 @@ func (o ProjectCustomModuleCustomConfigResourceSelectorOutput) ToProjectCustomMo
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o ProjectCustomModuleCustomConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ProjectCustomModuleCustomConfigResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -7376,8 +7338,6 @@ func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() Project
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectCustomModuleCustomConfigResourceSelector) []string {
 		if v == nil {
@@ -7407,8 +7367,6 @@ type ProjectNotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -7443,8 +7401,6 @@ type ProjectNotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -7544,8 +7500,6 @@ func (o ProjectNotificationConfigStreamingConfigOutput) ToProjectNotificationCon
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o ProjectNotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectNotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -7593,8 +7547,6 @@ func (o ProjectNotificationConfigStreamingConfigPtrOutput) Elem() ProjectNotific
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o ProjectNotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectNotificationConfigStreamingConfig) *string {
 		if v == nil {
@@ -7958,8 +7910,6 @@ type V2FolderNotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -7994,8 +7944,6 @@ type V2FolderNotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -8095,8 +8043,6 @@ func (o V2FolderNotificationConfigStreamingConfigOutput) ToV2FolderNotificationC
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o V2FolderNotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v V2FolderNotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -8144,8 +8090,6 @@ func (o V2FolderNotificationConfigStreamingConfigPtrOutput) Elem() V2FolderNotif
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o V2FolderNotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2FolderNotificationConfigStreamingConfig) *string {
 		if v == nil {
@@ -8175,8 +8119,6 @@ type V2OrganizationNotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -8211,8 +8153,6 @@ type V2OrganizationNotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -8312,8 +8252,6 @@ func (o V2OrganizationNotificationConfigStreamingConfigOutput) ToV2OrganizationN
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o V2OrganizationNotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v V2OrganizationNotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -8361,8 +8299,6 @@ func (o V2OrganizationNotificationConfigStreamingConfigPtrOutput) Elem() V2Organ
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o V2OrganizationNotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2OrganizationNotificationConfigStreamingConfig) *string {
 		if v == nil {
@@ -8718,8 +8654,6 @@ type V2ProjectNotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -8754,8 +8688,6 @@ type V2ProjectNotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -8855,8 +8787,6 @@ func (o V2ProjectNotificationConfigStreamingConfigOutput) ToV2ProjectNotificatio
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o V2ProjectNotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v V2ProjectNotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -8904,8 +8834,6 @@ func (o V2ProjectNotificationConfigStreamingConfigPtrOutput) Elem() V2ProjectNot
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o V2ProjectNotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2ProjectNotificationConfigStreamingConfig) *string {
 		if v == nil {

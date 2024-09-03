@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores.featureViews)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  * 
- * ## Example Usage
- * 
- * ### Vertex Ai Featureonlinestore Featureview
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,7 +139,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Featureonlinestore Featureview Feature Registry
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -273,6 +271,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Vertex Ai Featureonlinestore Featureview Cross Project
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -463,7 +464,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Featureonlinestore Featureview With Vector Search
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -790,16 +791,12 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The region for the resource. It should be the same as the featureonlinestore region.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

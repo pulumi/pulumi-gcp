@@ -173,8 +173,6 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The GCS path to the Dataflow job Flex
      * Template.
      * 
-     * ***
-     * 
      */
     @Export(name="containerSpecGcsPath", refs={String.class}, tree="[0]")
     private Output<String> containerSpecGcsPath;
@@ -182,8 +180,6 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
      * @return The GCS path to the Dataflow job Flex
      * Template.
-     * 
-     * ***
      * 
      */
     public Output<String> containerSpecGcsPath() {

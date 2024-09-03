@@ -31,9 +31,6 @@ class BackupScheduleArgs:
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleDailyRecurrenceArgs'] daily_recurrence: For a schedule that runs daily.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -58,9 +55,6 @@ class BackupScheduleArgs:
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         You can set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 
@@ -139,9 +133,6 @@ class _BackupScheduleState:
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleWeeklyRecurrenceArgs'] weekly_recurrence: For a schedule that runs weekly on a specific day.
                Structure is documented below.
         """
@@ -215,9 +206,6 @@ class _BackupScheduleState:
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         You can set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 
@@ -259,7 +247,7 @@ class BackupSchedule(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/backups)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/backups)
 
         > **Warning:** This resource creates a Firestore Backup Schedule on a project that already has
         a Firestore database.
@@ -287,6 +275,7 @@ class BackupSchedule(pulumi.CustomResource):
             retention="8467200s",
             daily_recurrence={})
         ```
+
         ### Firestore Backup Schedule Weekly
 
         ```python
@@ -342,9 +331,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']] weekly_recurrence: For a schedule that runs weekly on a specific day.
                Structure is documented below.
         """
@@ -363,7 +349,7 @@ class BackupSchedule(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/backups)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/backups)
 
         > **Warning:** This resource creates a Firestore Backup Schedule on a project that already has
         a Firestore database.
@@ -391,6 +377,7 @@ class BackupSchedule(pulumi.CustomResource):
             retention="8467200s",
             daily_recurrence={})
         ```
+
         ### Firestore Backup Schedule Weekly
 
         ```python
@@ -506,9 +493,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                You can set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input[Union['BackupScheduleWeeklyRecurrenceArgs', 'BackupScheduleWeeklyRecurrenceArgsDict']] weekly_recurrence: For a schedule that runs weekly on a specific day.
                Structure is documented below.
         """
@@ -565,9 +549,6 @@ class BackupSchedule(pulumi.CustomResource):
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         You can set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 

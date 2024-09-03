@@ -7,60 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Network Security Authorization Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.AuthorizationPolicy("default", {
- *     name: "my-authorization-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     action: "ALLOW",
- *     rules: [{
- *         sources: [{
- *             principals: ["namespace/*"],
- *             ipBlocks: ["1.2.3.0/24"],
- *         }],
- *     }],
- * });
- * ```
- * ### Network Security Authorization Policy Destinations
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.AuthorizationPolicy("default", {
- *     name: "my-authorization-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     action: "ALLOW",
- *     rules: [{
- *         sources: [{
- *             principals: ["namespace/*"],
- *             ipBlocks: ["1.2.3.0/24"],
- *         }],
- *         destinations: [{
- *             hosts: ["mydomain.*"],
- *             ports: [8080],
- *             methods: ["GET"],
- *             httpHeaderMatch: {
- *                 headerName: ":method",
- *                 regexMatch: "GET",
- *             },
- *         }],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * AuthorizationPolicy can be imported using any of these accepted formats:
@@ -143,9 +89,6 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Name of the AuthorizationPolicy resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -251,9 +194,6 @@ export interface AuthorizationPolicyState {
     location?: pulumi.Input<string>;
     /**
      * Name of the AuthorizationPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -304,9 +244,6 @@ export interface AuthorizationPolicyArgs {
     location?: pulumi.Input<string>;
     /**
      * Name of the AuthorizationPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

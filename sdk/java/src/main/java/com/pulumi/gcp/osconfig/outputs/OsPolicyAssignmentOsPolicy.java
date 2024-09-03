@@ -32,11 +32,11 @@ public final class OsPolicyAssignmentOsPolicy {
     /**
      * @return The id of the OS policy with the following restrictions:
      * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the assignment.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the assignment.
      * 
      */
     private String id;
@@ -80,11 +80,11 @@ public final class OsPolicyAssignmentOsPolicy {
     /**
      * @return The id of the OS policy with the following restrictions:
      * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the assignment.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the assignment.
      * 
      */
     public String id() {

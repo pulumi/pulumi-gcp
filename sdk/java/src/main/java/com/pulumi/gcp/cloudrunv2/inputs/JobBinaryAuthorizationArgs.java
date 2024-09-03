@@ -17,14 +17,14 @@ public final class JobBinaryAuthorizationArgs extends com.pulumi.resources.Resou
     public static final JobBinaryAuthorizationArgs Empty = new JobBinaryAuthorizationArgs();
 
     /**
-     * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+     * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see &lt;https://cloud.google.com/binary-authorization/docs/using-breakglass&gt;
      * 
      */
     @Import(name="breakglassJustification")
     private @Nullable Output<String> breakglassJustification;
 
     /**
-     * @return If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+     * @return If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see &lt;https://cloud.google.com/binary-authorization/docs/using-breakglass&gt;
      * 
      */
     public Optional<Output<String>> breakglassJustification() {
@@ -88,7 +88,7 @@ public final class JobBinaryAuthorizationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param breakglassJustification If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         * @param breakglassJustification If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see &lt;https://cloud.google.com/binary-authorization/docs/using-breakglass&gt;
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class JobBinaryAuthorizationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param breakglassJustification If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         * @param breakglassJustification If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see &lt;https://cloud.google.com/binary-authorization/docs/using-breakglass&gt;
          * 
          * @return builder
          * 

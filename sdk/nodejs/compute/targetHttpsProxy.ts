@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
- * ## Example Usage
- *
- * ### Target Https Proxy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +66,7 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
- * ### Target Https Proxy Http Keep Alive Timeout
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -122,7 +120,7 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
- * ### Target Https Proxy Mtls
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -206,7 +204,7 @@ import * as utilities from "../utilities";
  *     serverTlsPolicy: defaultServerTlsPolicy.id,
  * });
  * ```
- * ### Target Https Proxy Certificate Manager Certificate
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -412,9 +410,6 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     public readonly urlMap!: pulumi.Output<string>;
 
@@ -582,9 +577,6 @@ export interface TargetHttpsProxyState {
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     urlMap?: pulumi.Input<string>;
 }
@@ -685,9 +677,6 @@ export interface TargetHttpsProxyArgs {
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     urlMap: pulumi.Input<string>;
 }

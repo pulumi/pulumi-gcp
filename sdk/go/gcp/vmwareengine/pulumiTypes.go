@@ -139,8 +139,6 @@ func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTy
 
 type ExternalAccessRuleDestinationIpRange struct {
 	// The name of an `ExternalAddress` resource.
-	//
-	// ***
 	ExternalAddress *string `pulumi:"externalAddress"`
 	// An IP address range in the CIDR format.
 	IpAddressRange *string `pulumi:"ipAddressRange"`
@@ -159,8 +157,6 @@ type ExternalAccessRuleDestinationIpRangeInput interface {
 
 type ExternalAccessRuleDestinationIpRangeArgs struct {
 	// The name of an `ExternalAddress` resource.
-	//
-	// ***
 	ExternalAddress pulumi.StringPtrInput `pulumi:"externalAddress"`
 	// An IP address range in the CIDR format.
 	IpAddressRange pulumi.StringPtrInput `pulumi:"ipAddressRange"`
@@ -218,8 +214,6 @@ func (o ExternalAccessRuleDestinationIpRangeOutput) ToExternalAccessRuleDestinat
 }
 
 // The name of an `ExternalAddress` resource.
-//
-// ***
 func (o ExternalAccessRuleDestinationIpRangeOutput) ExternalAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalAccessRuleDestinationIpRange) *string { return v.ExternalAddress }).(pulumi.StringPtrOutput)
 }
@@ -923,7 +917,7 @@ type PrivateCloudManagementCluster struct {
 	// * Begins with an alphabetical character
 	// * Ends with a non-hyphen character
 	// * Not formatted as a UUID
-	// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	// * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
 	ClusterId string `pulumi:"clusterId"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -951,7 +945,7 @@ type PrivateCloudManagementClusterArgs struct {
 	// * Begins with an alphabetical character
 	// * Ends with a non-hyphen character
 	// * Not formatted as a UUID
-	// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	// * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -1044,7 +1038,7 @@ func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterPtrO
 // * Begins with an alphabetical character
 // * Ends with a non-hyphen character
 // * Not formatted as a UUID
-// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+// * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
 func (o PrivateCloudManagementClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateCloudManagementCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -1095,7 +1089,7 @@ func (o PrivateCloudManagementClusterPtrOutput) Elem() PrivateCloudManagementClu
 // * Begins with an alphabetical character
 // * Ends with a non-hyphen character
 // * Not formatted as a UUID
-// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+// * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
 func (o PrivateCloudManagementClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloudManagementCluster) *string {
 		if v == nil {
@@ -1256,8 +1250,6 @@ type PrivateCloudManagementClusterStretchedClusterConfig struct {
 	// Zone that will remain operational when connection between the two zones is lost.
 	PreferredLocation *string `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
-	//
-	// ***
 	SecondaryLocation *string `pulumi:"secondaryLocation"`
 }
 
@@ -1276,8 +1268,6 @@ type PrivateCloudManagementClusterStretchedClusterConfigArgs struct {
 	// Zone that will remain operational when connection between the two zones is lost.
 	PreferredLocation pulumi.StringPtrInput `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
-	//
-	// ***
 	SecondaryLocation pulumi.StringPtrInput `pulumi:"secondaryLocation"`
 }
 
@@ -1364,8 +1354,6 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) PreferredLoca
 }
 
 // Additional zone for a higher level of availability and load balancing.
-//
-// ***
 func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) SecondaryLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterStretchedClusterConfig) *string { return v.SecondaryLocation }).(pulumi.StringPtrOutput)
 }
@@ -1405,8 +1393,6 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) PreferredL
 }
 
 // Additional zone for a higher level of availability and load balancing.
-//
-// ***
 func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) SecondaryLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) *string {
 		if v == nil {

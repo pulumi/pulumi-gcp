@@ -15,11 +15,9 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// To get more information about Repository, see:
     /// 
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
+    ///   * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Secure Source Manager Repository Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
-    /// ### Secure Source Manager Repository Initial Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -160,9 +158,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The ID for the Repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
@@ -266,9 +261,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The ID for the Repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
@@ -327,9 +319,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The ID for the Repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }

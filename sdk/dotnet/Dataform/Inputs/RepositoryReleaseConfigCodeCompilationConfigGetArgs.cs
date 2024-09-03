@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Dataform.Inputs
 
         /// <summary>
         /// Optional. The default BigQuery location to use. Defaults to "US".
-        /// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        /// See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
         /// </summary>
         [Input("defaultLocation")]
         public Input<string>? DefaultLocation { get; set; }

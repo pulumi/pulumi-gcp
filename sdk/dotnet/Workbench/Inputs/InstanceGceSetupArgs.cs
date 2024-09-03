@@ -56,13 +56,13 @@ namespace Pulumi.Gcp.Workbench.Inputs
 
         /// <summary>
         /// Optional. Flag to enable ip forwarding or not, default false/off.
-        /// https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
         /// </summary>
         [Input("enableIpForwarding")]
         public Input<bool>? EnableIpForwarding { get; set; }
 
         /// <summary>
-        /// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        /// Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

@@ -288,10 +288,18 @@ def get_authority(certificate_authority_id: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.certificateauthority.get_authority(location="us-west1",
+        pool="pool-name",
+        certificate_authority_id="ca-id")
+    pulumi.export("csr", default.pem_csr)
+    ```
+
 
     :param str certificate_authority_id: ID of the certificate authority.
-           
-           - - -
     :param str location: The location the certificate authority exists in.
     :param str pool: The name of the pool the certificate authority belongs to.
     :param str project: The ID of the project in which the resource belongs. If it
@@ -345,10 +353,18 @@ def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.certificateauthority.get_authority(location="us-west1",
+        pool="pool-name",
+        certificate_authority_id="ca-id")
+    pulumi.export("csr", default.pem_csr)
+    ```
+
 
     :param str certificate_authority_id: ID of the certificate authority.
-           
-           - - -
     :param str location: The location the certificate authority exists in.
     :param str pool: The name of the pool the certificate authority belongs to.
     :param str project: The ID of the project in which the resource belongs. If it

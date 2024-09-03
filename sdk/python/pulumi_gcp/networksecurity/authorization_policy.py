@@ -39,9 +39,6 @@ class AuthorizationPolicyArgs:
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
@@ -119,9 +116,6 @@ class AuthorizationPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the AuthorizationPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -184,9 +178,6 @@ class _AuthorizationPolicyState:
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -300,9 +291,6 @@ class _AuthorizationPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the AuthorizationPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -377,58 +365,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Security Authorization Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            name="my-authorization-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[{
-                "sources": [{
-                    "principals": ["namespace/*"],
-                    "ip_blocks": ["1.2.3.0/24"],
-                }],
-            }])
-        ```
-        ### Network Security Authorization Policy Destinations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            name="my-authorization-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[{
-                "sources": [{
-                    "principals": ["namespace/*"],
-                    "ip_blocks": ["1.2.3.0/24"],
-                }],
-                "destinations": [{
-                    "hosts": ["mydomain.*"],
-                    "ports": [8080],
-                    "methods": ["GET"],
-                    "http_header_match": {
-                        "header_name": ":method",
-                        "regex_match": "GET",
-                    },
-                }],
-            }])
-        ```
-
         ## Import
 
         AuthorizationPolicy can be imported using any of these accepted formats:
@@ -464,9 +400,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPolicyRuleArgs', 'AuthorizationPolicyRuleArgsDict']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
@@ -480,58 +413,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  args: AuthorizationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Security Authorization Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            name="my-authorization-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[{
-                "sources": [{
-                    "principals": ["namespace/*"],
-                    "ip_blocks": ["1.2.3.0/24"],
-                }],
-            }])
-        ```
-        ### Network Security Authorization Policy Destinations
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.AuthorizationPolicy("default",
-            name="my-authorization-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            action="ALLOW",
-            rules=[{
-                "sources": [{
-                    "principals": ["namespace/*"],
-                    "ip_blocks": ["1.2.3.0/24"],
-                }],
-                "destinations": [{
-                    "hosts": ["mydomain.*"],
-                    "ports": [8080],
-                    "methods": ["GET"],
-                    "http_header_match": {
-                        "header_name": ":method",
-                        "regex_match": "GET",
-                    },
-                }],
-            }])
-        ```
-
         ## Import
 
         AuthorizationPolicy can be imported using any of these accepted formats:
@@ -641,9 +522,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -727,9 +605,6 @@ class AuthorizationPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the AuthorizationPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

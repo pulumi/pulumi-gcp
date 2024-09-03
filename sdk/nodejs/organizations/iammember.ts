@@ -21,16 +21,16 @@ import * as utilities from "../utilities";
  * ## gcp.organizations.IAMPolicy
  *
  * !> **Warning:** New organizations have several default policies which will,
- *    without extreme caution, be **overwritten** by use of this resource.
- *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
- *    resources. This resource makes it easy to remove your own access to
- *    an organization, which will require a call to Google Support to have
- *    fixed, and can take multiple days to resolve.
+ * without extreme caution, be **overwritten** by use of this resource.
+ * The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ * resources. This resource makes it easy to remove your own access to
+ * an organization, which will require a call to Google Support to have
+ * fixed, and can take multiple days to resolve.
  *
- *    In general, this resource should only be used with organizations
- *    fully managed by this provider.I f you do use this resource,
- *    the best way to be sure that you are not making dangerous changes is to start
- *    by **importing** your existing policy, and examining the diff very closely.
+ * In general, this resource should only be used with organizations
+ * fully managed by this provider.I f you do use this resource,
+ * the best way to be sure that you are not making dangerous changes is to start
+ * by **importing** your existing policy, and examining the diff very closely.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -307,9 +307,9 @@ export class IAMMember extends pulumi.CustomResource {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly member!: pulumi.Output<string>;
@@ -380,9 +380,9 @@ export interface IAMMemberState {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     member?: pulumi.Input<string>;
@@ -410,9 +410,9 @@ export interface IAMMemberArgs {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     member: pulumi.Input<string>;

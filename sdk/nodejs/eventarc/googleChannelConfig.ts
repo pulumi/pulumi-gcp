@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Basic
+ * ### basic
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -102,10 +102,6 @@ export class GoogleChannelConfig extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -165,10 +161,6 @@ export interface GoogleChannelConfigState {
     location?: pulumi.Input<string>;
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -195,10 +187,6 @@ export interface GoogleChannelConfigArgs {
     location: pulumi.Input<string>;
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

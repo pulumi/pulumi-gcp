@@ -18,9 +18,7 @@ import javax.annotation.Nullable;
  * Represents a SQL database inside the Cloud SQL instance, hosted in
  * Google&#39;s cloud.
  * 
- * ## Example Usage
- * 
- * ### Sql Database Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -48,7 +46,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .region("us-central1")
@@ -69,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Sql Database Deletion Policy
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -97,7 +94,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .region("us-central1")
@@ -227,8 +223,6 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
@@ -236,8 +230,6 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the Cloud SQL instance. This does not include the project
      * ID.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

@@ -771,15 +771,13 @@ class Authority(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+          * [Official Documentation](https://cloud.google.com/certificate-authority-service)
 
         > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
         (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
-        ## Example Usage
-
-        ### Privateca Certificate Authority Basic
+        ## 
 
         ```python
         import pulumi
@@ -831,7 +829,7 @@ class Authority(pulumi.CustomResource):
                 "algorithm": "RSA_PKCS1_4096_SHA256",
             })
         ```
-        ### Privateca Certificate Authority Subordinate
+        ## 
 
         ```python
         import pulumi
@@ -922,6 +920,9 @@ class Authority(pulumi.CustomResource):
             },
             type="SUBORDINATE")
         ```
+
+        ## Example Usage
+
         ### Privateca Certificate Authority Byo Key
 
         ```python
@@ -984,7 +985,7 @@ class Authority(pulumi.CustomResource):
                     privateca_sa_keyuser_viewer,
                 ]))
         ```
-        ### Privateca Certificate Authority Custom Ski
+        ## 
 
         ```python
         import pulumi
@@ -1112,15 +1113,13 @@ class Authority(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+          * [Official Documentation](https://cloud.google.com/certificate-authority-service)
 
         > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
         (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
         It is recommended to not set this field (or set it to true) until you're ready to destroy.
 
-        ## Example Usage
-
-        ### Privateca Certificate Authority Basic
+        ## 
 
         ```python
         import pulumi
@@ -1172,7 +1171,7 @@ class Authority(pulumi.CustomResource):
                 "algorithm": "RSA_PKCS1_4096_SHA256",
             })
         ```
-        ### Privateca Certificate Authority Subordinate
+        ## 
 
         ```python
         import pulumi
@@ -1263,6 +1262,9 @@ class Authority(pulumi.CustomResource):
             },
             type="SUBORDINATE")
         ```
+
+        ## Example Usage
+
         ### Privateca Certificate Authority Byo Key
 
         ```python
@@ -1325,7 +1327,7 @@ class Authority(pulumi.CustomResource):
                     privateca_sa_keyuser_viewer,
                 ]))
         ```
-        ### Privateca Certificate Authority Custom Ski
+        ## 
 
         ```python
         import pulumi

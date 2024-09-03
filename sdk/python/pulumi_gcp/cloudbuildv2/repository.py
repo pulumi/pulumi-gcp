@@ -28,9 +28,6 @@ class RepositoryArgs:
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -56,9 +53,6 @@ class RepositoryArgs:
     def parent_connection(self) -> pulumi.Input[str]:
         """
         The connection for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -153,9 +147,6 @@ class _RepositoryState:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
@@ -258,9 +249,6 @@ class _RepositoryState:
     def parent_connection(self) -> Optional[pulumi.Input[str]]:
         """
         The connection for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -325,7 +313,7 @@ class Repository(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/build/docs)
+          * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
 
@@ -383,6 +371,7 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.name,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
+
         ### Cloudbuildv2 Repository Github Doc
 
         ```python
@@ -453,9 +442,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
@@ -473,7 +459,7 @@ class Repository(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/build/docs)
+          * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
 
@@ -531,6 +517,7 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.name,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
+
         ### Cloudbuildv2 Repository Github Doc
 
         ```python
@@ -672,9 +659,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
@@ -748,9 +732,6 @@ class Repository(pulumi.CustomResource):
     def parent_connection(self) -> pulumi.Output[str]:
         """
         The connection for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "parent_connection")
 

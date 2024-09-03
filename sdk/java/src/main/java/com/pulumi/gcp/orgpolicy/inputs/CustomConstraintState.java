@@ -111,16 +111,12 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
      * @return The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -330,8 +326,6 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
         /**
          * @param parent The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -342,8 +336,6 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param parent The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

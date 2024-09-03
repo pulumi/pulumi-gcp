@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Creating A New Key
+ * ### creating a new Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Creating And Regularly Rotating A Key
+ * ### creating and regularly rotating a key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Save Key In Kubernetes Secret - DEPRECATED
+ * ### save key in Kubernetes secret - DEPRECATED
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

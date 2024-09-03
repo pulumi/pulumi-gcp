@@ -10,68 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Network Services Service Lb Policies Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkServices.ServiceLbPolicies("default", new()
-    ///     {
-    ///         Name = "my-lb-policy",
-    ///         Location = "global",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Services Service Lb Policies Advanced
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkServices.ServiceLbPolicies("default", new()
-    ///     {
-    ///         Name = "my-lb-policy",
-    ///         Location = "global",
-    ///         Description = "my description",
-    ///         LoadBalancingAlgorithm = "SPRAY_TO_REGION",
-    ///         AutoCapacityDrain = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesAutoCapacityDrainArgs
-    ///         {
-    ///             Enable = true,
-    ///         },
-    ///         FailoverConfig = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesFailoverConfigArgs
-    ///         {
-    ///             FailoverHealthThreshold = 70,
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
-    ///     {
-    ///         Name = "my-lb-backend",
-    ///         Description = "my description",
-    ///         LoadBalancingScheme = "INTERNAL_SELF_MANAGED",
-    ///         Protocol = "HTTP",
-    ///         ServiceLbPolicy = @default.Id.Apply(id =&gt; $"//networkservices.googleapis.com/{id}"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ServiceLbPolicies can be imported using any of these accepted formats:
@@ -148,9 +86,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The location of the service lb policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -275,9 +210,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The location of the service lb policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -368,9 +300,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// The location of the service lb policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

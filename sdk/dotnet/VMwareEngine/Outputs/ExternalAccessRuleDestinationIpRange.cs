@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     {
         /// <summary>
         /// The name of an `ExternalAddress` resource.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? ExternalAddress;
         /// <summary>

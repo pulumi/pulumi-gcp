@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
+    ///   * [Official Documentation](https://cloud.google.com/source-repositories/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Sourcerepo Repository Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -37,7 +35,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// });
     /// ```
-    /// ### Sourcerepo Repository Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,9 +97,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -182,9 +177,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -221,9 +213,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

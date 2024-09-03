@@ -69,6 +69,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Network Peering Standard
 //
 // ```go
@@ -155,8 +156,6 @@ type NetworkPeering struct {
 	// True if custom routes are imported from the peered network; false otherwise.
 	ImportCustomRoutesWithPublicIp pulumi.BoolPtrOutput `pulumi:"importCustomRoutesWithPublicIp"`
 	// The ID of the Network Peering.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The relative resource name of the network to peer with a standard VMware Engine network.
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
@@ -242,8 +241,6 @@ type networkPeeringState struct {
 	// True if custom routes are imported from the peered network; false otherwise.
 	ImportCustomRoutesWithPublicIp *bool `pulumi:"importCustomRoutesWithPublicIp"`
 	// The ID of the Network Peering.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The relative resource name of the network to peer with a standard VMware Engine network.
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
@@ -291,8 +288,6 @@ type NetworkPeeringState struct {
 	// True if custom routes are imported from the peered network; false otherwise.
 	ImportCustomRoutesWithPublicIp pulumi.BoolPtrInput
 	// The ID of the Network Peering.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The relative resource name of the network to peer with a standard VMware Engine network.
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
@@ -340,8 +335,6 @@ type networkPeeringArgs struct {
 	// True if custom routes are imported from the peered network; false otherwise.
 	ImportCustomRoutesWithPublicIp *bool `pulumi:"importCustomRoutesWithPublicIp"`
 	// The ID of the Network Peering.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The relative resource name of the network to peer with a standard VMware Engine network.
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
@@ -371,8 +364,6 @@ type NetworkPeeringArgs struct {
 	// True if custom routes are imported from the peered network; false otherwise.
 	ImportCustomRoutesWithPublicIp pulumi.BoolPtrInput
 	// The ID of the Network Peering.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The relative resource name of the network to peer with a standard VMware Engine network.
 	// The provided network can be a consumer VPC network or another standard VMware Engine network.
@@ -509,8 +500,6 @@ func (o NetworkPeeringOutput) ImportCustomRoutesWithPublicIp() pulumi.BoolPtrOut
 }
 
 // The ID of the Network Peering.
-//
-// ***
 func (o NetworkPeeringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPeering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

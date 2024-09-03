@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// * [API documentation](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dataproc/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dataproc/docs)
     /// 
     /// !&gt; **Warning:** Due to limitations of the API, all arguments except
     /// `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Dataproc
     /// });
     /// ```
     /// 
-    /// ### Using A GPU Accelerator
+    /// ### Using a GPU accelerator
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -202,8 +202,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// zone.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -313,8 +311,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// zone.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -393,8 +389,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// zone.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

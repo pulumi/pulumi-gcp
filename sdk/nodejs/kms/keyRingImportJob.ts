@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.importJobs)
  * * How-to Guides
- *     * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
+ *   * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
  *
  * ## Example Usage
  *
@@ -78,9 +78,6 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     *
-     *
-     * - - -
      */
     public readonly importJobId!: pulumi.Output<string>;
     /**
@@ -182,9 +179,6 @@ export interface KeyRingImportJobState {
     expireTime?: pulumi.Input<string>;
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     *
-     *
-     * - - -
      */
     importJobId?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface KeyRingImportJobState {
 export interface KeyRingImportJobArgs {
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-     *
-     *
-     * - - -
      */
     importJobId: pulumi.Input<string>;
     /**

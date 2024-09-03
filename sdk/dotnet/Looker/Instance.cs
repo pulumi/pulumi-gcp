@@ -16,12 +16,10 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// * [API documentation](https://cloud.google.com/looker/docs/reference/rest/v1/projects.locations.instances)
     /// * How-to Guides
-    ///     * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
-    ///     * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
+    ///   * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
+    ///   * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Looker Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +43,7 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
-    /// ### Looker Instance Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -110,6 +108,9 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Looker Instance Enterprise Full
     /// 
     /// ```csharp
@@ -221,7 +222,7 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
-    /// ### Looker Instance Custom Domain
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -370,9 +371,6 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -545,9 +543,6 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -712,9 +707,6 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

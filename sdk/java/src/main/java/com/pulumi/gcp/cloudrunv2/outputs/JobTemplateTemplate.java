@@ -23,7 +23,7 @@ public final class JobTemplateTemplate {
      */
     private @Nullable List<JobTemplateTemplateContainer> containers;
     /**
-     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
      * 
      */
     private @Nullable String encryptionKey;
@@ -56,7 +56,7 @@ public final class JobTemplateTemplate {
      */
     private @Nullable List<JobTemplateTemplateVolume> volumes;
     /**
-     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * @return VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
      * Structure is documented below.
      * 
      */
@@ -72,7 +72,7 @@ public final class JobTemplateTemplate {
         return this.containers == null ? List.of() : this.containers;
     }
     /**
-     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
      * 
      */
     public Optional<String> encryptionKey() {
@@ -117,7 +117,7 @@ public final class JobTemplateTemplate {
         return this.volumes == null ? List.of() : this.volumes;
     }
     /**
-     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * @return VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
      * Structure is documented below.
      * 
      */

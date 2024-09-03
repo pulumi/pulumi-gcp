@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
  * * How-to Guides
- *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+ *   * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
  *
- * ## Example Usage
- *
- * ### Scan Config Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +89,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly authentication!: pulumi.Output<outputs.compute.SecurityScanConfigAuthentication | undefined>;
     /**
      * The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * <https://cloud.google.com/security-scanner/docs/excluded-urls>
      */
     public readonly blacklistPatterns!: pulumi.Output<string[] | undefined>;
     /**
@@ -126,9 +124,6 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly schedule!: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
     /**
      * The starting URLs from which the scanner finds site pages.
-     *
-     *
-     * - - -
      */
     public readonly startingUrls!: pulumi.Output<string[]>;
     /**
@@ -204,7 +199,7 @@ export interface SecurityScanConfigState {
     authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
     /**
      * The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * <https://cloud.google.com/security-scanner/docs/excluded-urls>
      */
     blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -239,9 +234,6 @@ export interface SecurityScanConfigState {
     schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     /**
      * The starting URLs from which the scanner finds site pages.
-     *
-     *
-     * - - -
      */
     startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -269,7 +261,7 @@ export interface SecurityScanConfigArgs {
     authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
     /**
      * The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * <https://cloud.google.com/security-scanner/docs/excluded-urls>
      */
     blacklistPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -299,9 +291,6 @@ export interface SecurityScanConfigArgs {
     schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     /**
      * The starting URLs from which the scanner finds site pages.
-     *
-     *
-     * - - -
      */
     startingUrls: pulumi.Input<pulumi.Input<string>[]>;
     /**

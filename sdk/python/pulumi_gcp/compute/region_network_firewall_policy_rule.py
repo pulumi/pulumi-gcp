@@ -611,7 +611,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Regional
+        ### regional
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -738,7 +738,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Regional
+        ### regional
         ```python
         import pulumi
         import pulumi_gcp as gcp

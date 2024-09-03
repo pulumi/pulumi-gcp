@@ -12,134 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Dataform Repository Workflow Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
-//				Name: pulumi.String("my/repository"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("my_secret"),
-//				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			repository, err := dataform.NewRepository(ctx, "repository", &dataform.RepositoryArgs{
-//				Name:   pulumi.String("dataform_repository"),
-//				Region: pulumi.String("us-central1"),
-//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
-//					Url:                              gitRepository.Url,
-//					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
-//				},
-//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
-//					DefaultDatabase: pulumi.String("database"),
-//					SchemaSuffix:    pulumi.String("_suffix"),
-//					TablePrefix:     pulumi.String("prefix_"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			releaseConfig, err := dataform.NewRepositoryReleaseConfig(ctx, "release_config", &dataform.RepositoryReleaseConfigArgs{
-//				Project:      repository.Project,
-//				Region:       repository.Region,
-//				Repository:   repository.Name,
-//				Name:         pulumi.String("my_release"),
-//				GitCommitish: pulumi.String("main"),
-//				CronSchedule: pulumi.String("0 7 * * *"),
-//				TimeZone:     pulumi.String("America/New_York"),
-//				CodeCompilationConfig: &dataform.RepositoryReleaseConfigCodeCompilationConfigArgs{
-//					DefaultDatabase: pulumi.String("gcp-example-project"),
-//					DefaultSchema:   pulumi.String("example-dataset"),
-//					DefaultLocation: pulumi.String("us-central1"),
-//					AssertionSchema: pulumi.String("example-assertion-dataset"),
-//					DatabaseSuffix:  pulumi.String(""),
-//					SchemaSuffix:    pulumi.String(""),
-//					TablePrefix:     pulumi.String(""),
-//					Vars: pulumi.StringMap{
-//						"var1": pulumi.String("value"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			dataformSa, err := serviceaccount.NewAccount(ctx, "dataform_sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("dataform-sa"),
-//				DisplayName: pulumi.String("Dataform Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataform.NewRepositoryWorkflowConfig(ctx, "workflow", &dataform.RepositoryWorkflowConfigArgs{
-//				Project:       repository.Project,
-//				Region:        repository.Region,
-//				Repository:    repository.Name,
-//				Name:          pulumi.String("my_workflow"),
-//				ReleaseConfig: releaseConfig.ID(),
-//				InvocationConfig: &dataform.RepositoryWorkflowConfigInvocationConfigArgs{
-//					IncludedTargets: dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArray{
-//						&dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{
-//							Database: pulumi.String("gcp-example-project"),
-//							Schema:   pulumi.String("example-dataset"),
-//							Name:     pulumi.String("target_1"),
-//						},
-//						&dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{
-//							Database: pulumi.String("gcp-example-project"),
-//							Schema:   pulumi.String("example-dataset"),
-//							Name:     pulumi.String("target_2"),
-//						},
-//					},
-//					IncludedTags: pulumi.StringArray{
-//						pulumi.String("tag_1"),
-//					},
-//					TransitiveDependenciesIncluded:       pulumi.Bool(true),
-//					TransitiveDependentsIncluded:         pulumi.Bool(true),
-//					FullyRefreshIncrementalTablesEnabled: pulumi.Bool(false),
-//					ServiceAccount:                       dataformSa.Email,
-//				},
-//				CronSchedule: pulumi.String("0 7 * * *"),
-//				TimeZone:     pulumi.String("America/New_York"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RepositoryWorkflowConfig can be imported using any of these accepted formats:
@@ -188,12 +60,10 @@ type RepositoryWorkflowConfig struct {
 	// A reference to the region
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig pulumi.StringOutput `pulumi:"releaseConfig"`
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrOutput `pulumi:"repository"`
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
 }
 
@@ -246,12 +116,10 @@ type repositoryWorkflowConfigState struct {
 	// A reference to the region
 	Region *string `pulumi:"region"`
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig *string `pulumi:"releaseConfig"`
 	// A reference to the Dataform repository
 	Repository *string `pulumi:"repository"`
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -272,12 +140,10 @@ type RepositoryWorkflowConfigState struct {
 	// A reference to the region
 	Region pulumi.StringPtrInput
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig pulumi.StringPtrInput
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrInput
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -299,12 +165,10 @@ type repositoryWorkflowConfigArgs struct {
 	// A reference to the region
 	Region *string `pulumi:"region"`
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig string `pulumi:"releaseConfig"`
 	// A reference to the Dataform repository
 	Repository *string `pulumi:"repository"`
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -323,12 +187,10 @@ type RepositoryWorkflowConfigArgs struct {
 	// A reference to the region
 	Region pulumi.StringPtrInput
 	// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-	//
-	// ***
 	ReleaseConfig pulumi.StringInput
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrInput
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -457,8 +319,6 @@ func (o RepositoryWorkflowConfigOutput) Region() pulumi.StringPtrOutput {
 }
 
 // The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-//
-// ***
 func (o RepositoryWorkflowConfigOutput) ReleaseConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryWorkflowConfig) pulumi.StringOutput { return v.ReleaseConfig }).(pulumi.StringOutput)
 }
@@ -468,7 +328,7 @@ func (o RepositoryWorkflowConfigOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryWorkflowConfig) pulumi.StringPtrOutput { return v.Repository }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 func (o RepositoryWorkflowConfigOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryWorkflowConfig) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }

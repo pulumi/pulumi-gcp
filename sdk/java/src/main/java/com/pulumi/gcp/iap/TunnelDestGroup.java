@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.iap_tunnel.locations.destGroups)
  * * How-to Guides
- *     * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
+ *   * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
  * 
- * ## Example Usage
- * 
- * ### Iap Destgroup
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,16 +139,12 @@ public class TunnelDestGroup extends com.pulumi.resources.CustomResource {
     /**
      * Unique tunnel destination group name.
      * 
-     * ***
-     * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
      * @return Unique tunnel destination group name.
-     * 
-     * ***
      * 
      */
     public Output<String> groupName() {

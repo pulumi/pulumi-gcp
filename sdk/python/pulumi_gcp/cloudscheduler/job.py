@@ -54,9 +54,6 @@ class JobArgs:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -165,9 +162,6 @@ class JobArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the job.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -305,9 +299,6 @@ class _JobState:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -419,9 +410,6 @@ class _JobState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the job.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -560,11 +548,9 @@ class Job(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/scheduler/)
+          * [Official Documentation](https://cloud.google.com/scheduler/)
 
-        ## Example Usage
-
-        ### Scheduler Job Pubsub
+        ## 
 
         ```python
         import pulumi
@@ -581,7 +567,7 @@ class Job(pulumi.CustomResource):
                 "data": std.base64encode(input="test").result,
             })
         ```
-        ### Scheduler Job Http
+        ## 
 
         ```python
         import pulumi
@@ -606,7 +592,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Scheduler Job Paused
+        ## 
 
         ```python
         import pulumi
@@ -632,7 +618,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Scheduler Job App Engine
+        ## 
 
         ```python
         import pulumi
@@ -660,6 +646,9 @@ class Job(pulumi.CustomResource):
                 "relative_uri": "/ping",
             })
         ```
+
+        ## Example Usage
+
         ### Scheduler Job Oauth
 
         ```python
@@ -681,7 +670,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Scheduler Job Oidc
+        ## 
 
         ```python
         import pulumi
@@ -754,9 +743,6 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -787,11 +773,9 @@ class Job(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/scheduler/)
+          * [Official Documentation](https://cloud.google.com/scheduler/)
 
-        ## Example Usage
-
-        ### Scheduler Job Pubsub
+        ## 
 
         ```python
         import pulumi
@@ -808,7 +792,7 @@ class Job(pulumi.CustomResource):
                 "data": std.base64encode(input="test").result,
             })
         ```
-        ### Scheduler Job Http
+        ## 
 
         ```python
         import pulumi
@@ -833,7 +817,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Scheduler Job Paused
+        ## 
 
         ```python
         import pulumi
@@ -859,7 +843,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Scheduler Job App Engine
+        ## 
 
         ```python
         import pulumi
@@ -887,6 +871,9 @@ class Job(pulumi.CustomResource):
                 "relative_uri": "/ping",
             })
         ```
+
+        ## Example Usage
+
         ### Scheduler Job Oauth
 
         ```python
@@ -908,7 +895,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Scheduler Job Oidc
+        ## 
 
         ```python
         import pulumi
@@ -1058,9 +1045,6 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1148,9 +1132,6 @@ class Job(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the job.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait120s],
  * });
  * ```
+ *
  * ### Service Project Attachment Full
  *
  * ```typescript
@@ -124,9 +125,6 @@ export class ServiceProjectAttachment extends pulumi.CustomResource {
     public readonly serviceProject!: pulumi.Output<string | undefined>;
     /**
      * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-     *
-     *
-     * - - -
      */
     public readonly serviceProjectAttachmentId!: pulumi.Output<string>;
     /**
@@ -201,9 +199,6 @@ export interface ServiceProjectAttachmentState {
     serviceProject?: pulumi.Input<string>;
     /**
      * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-     *
-     *
-     * - - -
      */
     serviceProjectAttachmentId?: pulumi.Input<string>;
     /**
@@ -233,9 +228,6 @@ export interface ServiceProjectAttachmentArgs {
     serviceProject?: pulumi.Input<string>;
     /**
      * Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-     *
-     *
-     * - - -
      */
     serviceProjectAttachmentId: pulumi.Input<string>;
 }

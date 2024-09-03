@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
  * * How-to Guides
- *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+ *   * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
  *
  * ## Example Usage
  *
@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     rotationPeriod: "7776000s",
  * });
  * ```
+ *
  * ### Kms Crypto Key Asymmetric Sign
  *
  * ```typescript
@@ -130,7 +131,7 @@ export class CryptoKey extends pulumi.CustomResource {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -139,9 +140,6 @@ export class CryptoKey extends pulumi.CustomResource {
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-     *
-     *
-     * - - -
      */
     public readonly keyRing!: pulumi.Output<string>;
     /**
@@ -274,7 +272,7 @@ export interface CryptoKeyState {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -283,9 +281,6 @@ export interface CryptoKeyState {
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-     *
-     *
-     * - - -
      */
     keyRing?: pulumi.Input<string>;
     /**
@@ -361,7 +356,7 @@ export interface CryptoKeyArgs {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -370,9 +365,6 @@ export interface CryptoKeyArgs {
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-     *
-     *
-     * - - -
      */
     keyRing: pulumi.Input<string>;
     /**

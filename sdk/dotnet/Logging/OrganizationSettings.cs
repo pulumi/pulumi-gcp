@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getSettings)
     /// * How-to Guides
-    ///     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
+    ///   * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
     /// 
     /// ## Example Usage
     /// 
@@ -112,9 +112,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The organization for which to retrieve or configure settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -185,9 +182,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The organization for which to retrieve or configure settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -238,9 +232,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The organization for which to retrieve or configure settings.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

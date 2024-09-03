@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type SQuotaPreferenceQuotaConfig struct {
-	// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+	// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
 	// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Annotations map[string]string `pulumi:"annotations"`
 	// (Output)
@@ -24,8 +24,6 @@ type SQuotaPreferenceQuotaConfig struct {
 	PreferredValue string `pulumi:"preferredValue"`
 	// (Output)
 	// The origin of the quota preference request.
-	//
-	// ***
 	RequestOrigin *string `pulumi:"requestOrigin"`
 	// (Output)
 	// Optional details about the state of this quota preference.
@@ -47,7 +45,7 @@ type SQuotaPreferenceQuotaConfigInput interface {
 }
 
 type SQuotaPreferenceQuotaConfigArgs struct {
-	// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+	// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
 	// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// (Output)
@@ -57,8 +55,6 @@ type SQuotaPreferenceQuotaConfigArgs struct {
 	PreferredValue pulumi.StringInput `pulumi:"preferredValue"`
 	// (Output)
 	// The origin of the quota preference request.
-	//
-	// ***
 	RequestOrigin pulumi.StringPtrInput `pulumi:"requestOrigin"`
 	// (Output)
 	// Optional details about the state of this quota preference.
@@ -145,7 +141,7 @@ func (o SQuotaPreferenceQuotaConfigOutput) ToSQuotaPreferenceQuotaConfigPtrOutpu
 	}).(SQuotaPreferenceQuotaConfigPtrOutput)
 }
 
-// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
 // An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 func (o SQuotaPreferenceQuotaConfigOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
@@ -164,8 +160,6 @@ func (o SQuotaPreferenceQuotaConfigOutput) PreferredValue() pulumi.StringOutput 
 
 // (Output)
 // The origin of the quota preference request.
-//
-// ***
 func (o SQuotaPreferenceQuotaConfigOutput) RequestOrigin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQuotaPreferenceQuotaConfig) *string { return v.RequestOrigin }).(pulumi.StringPtrOutput)
 }
@@ -206,7 +200,7 @@ func (o SQuotaPreferenceQuotaConfigPtrOutput) Elem() SQuotaPreferenceQuotaConfig
 	}).(SQuotaPreferenceQuotaConfigOutput)
 }
 
-// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
 // An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 func (o SQuotaPreferenceQuotaConfigPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) map[string]string {
@@ -240,8 +234,6 @@ func (o SQuotaPreferenceQuotaConfigPtrOutput) PreferredValue() pulumi.StringPtrO
 
 // (Output)
 // The origin of the quota preference request.
-//
-// ***
 func (o SQuotaPreferenceQuotaConfigPtrOutput) RequestOrigin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SQuotaPreferenceQuotaConfig) *string {
 		if v == nil {

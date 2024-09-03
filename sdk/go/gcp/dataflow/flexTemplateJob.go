@@ -134,8 +134,6 @@ type FlexTemplateJob struct {
 	AutoscalingAlgorithm pulumi.StringOutput `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
 	// Template.
-	//
-	// ***
 	ContainerSpecGcsPath pulumi.StringOutput    `pulumi:"containerSpecGcsPath"`
 	EffectiveLabels      pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
@@ -243,8 +241,6 @@ type flexTemplateJobState struct {
 	AutoscalingAlgorithm *string `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
 	// Template.
-	//
-	// ***
 	ContainerSpecGcsPath *string           `pulumi:"containerSpecGcsPath"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
@@ -315,8 +311,6 @@ type FlexTemplateJobState struct {
 	AutoscalingAlgorithm pulumi.StringPtrInput
 	// The GCS path to the Dataflow job Flex
 	// Template.
-	//
-	// ***
 	ContainerSpecGcsPath pulumi.StringPtrInput
 	EffectiveLabels      pulumi.StringMapInput
 	// Immutable. Indicates if the job should use the streaming engine feature.
@@ -391,8 +385,6 @@ type flexTemplateJobArgs struct {
 	AutoscalingAlgorithm *string `pulumi:"autoscalingAlgorithm"`
 	// The GCS path to the Dataflow job Flex
 	// Template.
-	//
-	// ***
 	ContainerSpecGcsPath string `pulumi:"containerSpecGcsPath"`
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
@@ -455,8 +447,6 @@ type FlexTemplateJobArgs struct {
 	AutoscalingAlgorithm pulumi.StringPtrInput
 	// The GCS path to the Dataflow job Flex
 	// Template.
-	//
-	// ***
 	ContainerSpecGcsPath pulumi.StringInput
 	// Immutable. Indicates if the job should use the streaming engine feature.
 	EnableStreamingEngine pulumi.BoolPtrInput
@@ -610,8 +600,6 @@ func (o FlexTemplateJobOutput) AutoscalingAlgorithm() pulumi.StringOutput {
 
 // The GCS path to the Dataflow job Flex
 // Template.
-//
-// ***
 func (o FlexTemplateJobOutput) ContainerSpecGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlexTemplateJob) pulumi.StringOutput { return v.ContainerSpecGcsPath }).(pulumi.StringOutput)
 }

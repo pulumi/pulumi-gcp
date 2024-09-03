@@ -36,9 +36,6 @@ class DataStoreArgs:
         :param pulumi.Input[str] content_config: The content config of the data store.
                Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         :param pulumi.Input[str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
@@ -96,9 +93,6 @@ class DataStoreArgs:
     def data_store_id(self) -> pulumi.Input[str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -242,9 +236,6 @@ class _DataStoreState:
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[str] create_time: Timestamp when the DataStore was created.
         :param pulumi.Input[str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
@@ -341,9 +332,6 @@ class _DataStoreState:
     def data_store_id(self) -> Optional[pulumi.Input[str]]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 
@@ -500,11 +488,9 @@ class DataStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores)
         * How-to Guides
-            * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
+          * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
 
-        ## Example Usage
-
-        ### Discoveryengine Datastore Basic
+        ## 
 
         ```python
         import pulumi
@@ -520,7 +506,7 @@ class DataStore(pulumi.CustomResource):
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
-        ### Discoveryengine Datastore Document Processing Config
+        ## 
 
         ```python
         import pulumi
@@ -579,9 +565,6 @@ class DataStore(pulumi.CustomResource):
                data store is not configured as site search (GENERIC vertical and
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
@@ -617,11 +600,9 @@ class DataStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores)
         * How-to Guides
-            * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
+          * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
 
-        ## Example Usage
-
-        ### Discoveryengine Datastore Basic
+        ## 
 
         ```python
         import pulumi
@@ -637,7 +618,7 @@ class DataStore(pulumi.CustomResource):
             create_advanced_site_search=False,
             skip_default_schema_creation=False)
         ```
-        ### Discoveryengine Datastore Document Processing Config
+        ## 
 
         ```python
         import pulumi
@@ -782,9 +763,6 @@ class DataStore(pulumi.CustomResource):
                PUBLIC_WEBSITE contentConfig), this flag will be ignored.
         :param pulumi.Input[str] create_time: Timestamp when the DataStore was created.
         :param pulumi.Input[str] data_store_id: The unique id of the data store.
-               
-               
-               - - -
         :param pulumi.Input[str] default_schema_id: The id of the default Schema associated with this data store.
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
@@ -861,9 +839,6 @@ class DataStore(pulumi.CustomResource):
     def data_store_id(self) -> pulumi.Output[str]:
         """
         The unique id of the data store.
-
-
-        - - -
         """
         return pulumi.get(self, "data_store_id")
 

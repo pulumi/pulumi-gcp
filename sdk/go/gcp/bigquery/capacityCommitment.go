@@ -98,9 +98,7 @@ type CapacityCommitment struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-	//
-	// ***
+	// Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -167,9 +165,7 @@ type capacityCommitmentState struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
 	Name *string `pulumi:"name"`
-	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-	//
-	// ***
+	// Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
 	Plan *string `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -201,9 +197,7 @@ type CapacityCommitmentState struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
 	Name pulumi.StringPtrInput
-	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-	//
-	// ***
+	// Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
 	Plan pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -233,9 +227,7 @@ type capacityCommitmentArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
-	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-	//
-	// ***
+	// Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
 	Plan string `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -260,9 +252,7 @@ type CapacityCommitmentArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
-	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-	//
-	// ***
+	// Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
 	Plan pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -399,9 +389,7 @@ func (o CapacityCommitmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-//
-// ***
+// Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
 func (o CapacityCommitmentOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

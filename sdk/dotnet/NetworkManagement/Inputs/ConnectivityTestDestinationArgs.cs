@@ -48,8 +48,6 @@ namespace Pulumi.Gcp.NetworkManagement.Inputs
         /// that you provide is from the service project. In this case, the
         /// network that the IP address resides in is defined in the host
         /// project.
-        /// 
-        /// - - -
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

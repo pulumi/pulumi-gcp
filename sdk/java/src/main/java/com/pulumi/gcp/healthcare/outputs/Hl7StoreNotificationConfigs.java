@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class Hl7StoreNotificationConfigs {
     /**
      * @return Restricts notifications sent for messages matching a filter. If this is empty, all messages
-     * are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+     * are matched. Syntax: &lt;https://cloud.google.com/appengine/docs/standard/python/search/query_strings&gt;
      * Fields/functions available for filtering are:
      * * messageType, from the MSH-9.1 field. For example, NOT messageType = &#34;ADT&#34;.
      * * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset&#39;s timeZone, from the MSH-7 segment. For example, send_date &lt; &#34;2017-01-02&#34;.
@@ -30,7 +30,7 @@ public final class Hl7StoreNotificationConfigs {
      * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
      * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
      * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-     * project. service-PROJECT_NUMBER{@literal @}gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+     * project. &lt;service-PROJECT_NUMBER{@literal @}gcp-sa-healthcare.iam.gserviceaccount.com&gt; must have publisher permissions on the given
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
      * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
      * 
@@ -40,7 +40,7 @@ public final class Hl7StoreNotificationConfigs {
     private Hl7StoreNotificationConfigs() {}
     /**
      * @return Restricts notifications sent for messages matching a filter. If this is empty, all messages
-     * are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+     * are matched. Syntax: &lt;https://cloud.google.com/appengine/docs/standard/python/search/query_strings&gt;
      * Fields/functions available for filtering are:
      * * messageType, from the MSH-9.1 field. For example, NOT messageType = &#34;ADT&#34;.
      * * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset&#39;s timeZone, from the MSH-7 segment. For example, send_date &lt; &#34;2017-01-02&#34;.
@@ -58,7 +58,7 @@ public final class Hl7StoreNotificationConfigs {
      * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
      * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
      * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-     * project. service-PROJECT_NUMBER{@literal @}gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+     * project. &lt;service-PROJECT_NUMBER{@literal @}gcp-sa-healthcare.iam.gserviceaccount.com&gt; must have publisher permissions on the given
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
      * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
      * 

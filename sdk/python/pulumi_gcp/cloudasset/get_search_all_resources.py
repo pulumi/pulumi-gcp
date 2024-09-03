@@ -100,7 +100,7 @@ def get_search_all_resources(asset_types: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    ### Searching For All Projects In An Org
+    ### searching for all projects in an org
 
     ```python
     import pulumi
@@ -110,7 +110,7 @@ def get_search_all_resources(asset_types: Optional[Sequence[str]] = None,
         asset_types=["cloudresourcemanager.googleapis.com/Project"])
     ```
 
-    ### Searching For All Projects With CloudBuild API Enabled
+    ### searching for all projects with CloudBuild API enabled
 
     ```python
     import pulumi
@@ -121,7 +121,7 @@ def get_search_all_resources(asset_types: Optional[Sequence[str]] = None,
         query="displayName:cloudbuild.googleapis.com AND state:ENABLED")
     ```
 
-    ### Searching For All Service Accounts In A Project
+    ### searching for all Service Accounts in a project
 
     ```python
     import pulumi
@@ -163,7 +163,7 @@ def get_search_all_resources_output(asset_types: Optional[pulumi.Input[Optional[
 
     ## Example Usage
 
-    ### Searching For All Projects In An Org
+    ### searching for all projects in an org
 
     ```python
     import pulumi
@@ -173,7 +173,7 @@ def get_search_all_resources_output(asset_types: Optional[pulumi.Input[Optional[
         asset_types=["cloudresourcemanager.googleapis.com/Project"])
     ```
 
-    ### Searching For All Projects With CloudBuild API Enabled
+    ### searching for all projects with CloudBuild API enabled
 
     ```python
     import pulumi
@@ -184,7 +184,7 @@ def get_search_all_resources_output(asset_types: Optional[pulumi.Input[Optional[
         query="displayName:cloudbuild.googleapis.com AND state:ENABLED")
     ```
 
-    ### Searching For All Service Accounts In A Project
+    ### searching for all Service Accounts in a project
 
     ```python
     import pulumi

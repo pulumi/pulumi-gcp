@@ -36,9 +36,6 @@ class RegionNetworkEndpointGroupArgs:
         """
         The set of arguments for constructing a RegionNetworkEndpointGroup resource.
         :param pulumi.Input[str] region: A reference to the region where the regional NEGs reside.
-               
-               
-               - - -
         :param pulumi.Input['RegionNetworkEndpointGroupAppEngineArgs'] app_engine: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
@@ -103,9 +100,6 @@ class RegionNetworkEndpointGroupArgs:
     def region(self) -> pulumi.Input[str]:
         """
         A reference to the region where the regional NEGs reside.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -317,9 +311,6 @@ class _RegionNetworkEndpointGroupState:
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[str] region: A reference to the region where the regional NEGs reside.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
@@ -487,9 +478,6 @@ class _RegionNetworkEndpointGroupState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the region where the regional NEGs reside.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -563,12 +551,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
         * How-to Guides
-            * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-            * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+          * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+          * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
 
-        ## Example Usage
-
-        ### Region Network Endpoint Group Functions
+        ## 
 
         ```python
         import pulumi
@@ -600,7 +586,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "function": function_neg_function.name,
             })
         ```
-        ### Region Network Endpoint Group Cloudrun
+        ## 
 
         ```python
         import pulumi
@@ -629,7 +615,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "service": cloudrun_neg_service.name,
             })
         ```
-        ### Region Network Endpoint Group Appengine
+        ## 
 
         ```python
         import pulumi
@@ -698,7 +684,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "version": appengine_neg_flexible_app_version.version_id,
             })
         ```
-        ### Region Network Endpoint Group Appengine Empty
+        ## 
 
         ```python
         import pulumi
@@ -711,7 +697,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="us-central1",
             app_engine={})
         ```
-        ### Region Network Endpoint Group Psc
+        ## 
 
         ```python
         import pulumi
@@ -723,7 +709,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service="asia-northeast3-cloudkms.googleapis.com")
         ```
-        ### Region Network Endpoint Group Psc Service Attachment
+        ## 
 
         ```python
         import pulumi
@@ -776,7 +762,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
-        ### Region Network Endpoint Group Internet Ip Port
+        ## 
 
         ```python
         import pulumi
@@ -789,7 +775,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
         ```
-        ### Region Network Endpoint Group Internet Fqdn Port
+        ## 
 
         ```python
         import pulumi
@@ -802,7 +788,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
-        ### Region Network Endpoint Group Portmap
+        ## 
 
         ```python
         import pulumi
@@ -884,9 +870,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[str] region: A reference to the region where the regional NEGs reside.
-               
-               
-               - - -
         :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
@@ -907,12 +890,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
         * How-to Guides
-            * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-            * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+          * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+          * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
 
-        ## Example Usage
-
-        ### Region Network Endpoint Group Functions
+        ## 
 
         ```python
         import pulumi
@@ -944,7 +925,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "function": function_neg_function.name,
             })
         ```
-        ### Region Network Endpoint Group Cloudrun
+        ## 
 
         ```python
         import pulumi
@@ -973,7 +954,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "service": cloudrun_neg_service.name,
             })
         ```
-        ### Region Network Endpoint Group Appengine
+        ## 
 
         ```python
         import pulumi
@@ -1042,7 +1023,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                 "version": appengine_neg_flexible_app_version.version_id,
             })
         ```
-        ### Region Network Endpoint Group Appengine Empty
+        ## 
 
         ```python
         import pulumi
@@ -1055,7 +1036,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="us-central1",
             app_engine={})
         ```
-        ### Region Network Endpoint Group Psc
+        ## 
 
         ```python
         import pulumi
@@ -1067,7 +1048,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service="asia-northeast3-cloudkms.googleapis.com")
         ```
-        ### Region Network Endpoint Group Psc Service Attachment
+        ## 
 
         ```python
         import pulumi
@@ -1120,7 +1101,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
-        ### Region Network Endpoint Group Internet Ip Port
+        ## 
 
         ```python
         import pulumi
@@ -1133,7 +1114,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_IP_PORT")
         ```
-        ### Region Network Endpoint Group Internet Fqdn Port
+        ## 
 
         ```python
         import pulumi
@@ -1146,7 +1127,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network=default.id,
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
-        ### Region Network Endpoint Group Portmap
+        ## 
 
         ```python
         import pulumi
@@ -1307,9 +1288,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[str] region: A reference to the region where the regional NEGs reside.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
@@ -1433,9 +1411,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         A reference to the region where the regional NEGs reside.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

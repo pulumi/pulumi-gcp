@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Multi_target
+// ### multiTarget
 // tests creating and updating a multi-target
 // ```go
 // package main
@@ -69,7 +69,8 @@ import (
 //	}
 //
 // ```
-// ### Run_target
+//
+// ### runTarget
 // tests creating and updating a cloud run target
 // ```go
 // package main
@@ -119,7 +120,8 @@ import (
 //	}
 //
 // ```
-// ### Target
+//
+// ### target
 // Creates a basic Cloud Deploy target
 // ```go
 // package main
@@ -189,7 +191,7 @@ import (
 type Target struct {
 	pulumi.CustomResourceState
 
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -223,8 +225,6 @@ type Target struct {
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrOutput `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is `a-z?`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -280,7 +280,7 @@ func GetTarget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Target resources.
 type targetState struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -314,8 +314,6 @@ type targetState struct {
 	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is `a-z?`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -334,7 +332,7 @@ type targetState struct {
 }
 
 type TargetState struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -368,8 +366,6 @@ type TargetState struct {
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is `a-z?`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -392,7 +388,7 @@ func (TargetState) ElementType() reflect.Type {
 }
 
 type targetArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -419,8 +415,6 @@ type targetArgs struct {
 	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is `a-z?`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -432,7 +426,7 @@ type targetArgs struct {
 
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
-	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -459,8 +453,6 @@ type TargetArgs struct {
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is `a-z?`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -557,7 +549,7 @@ func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutpu
 	return o
 }
 
-// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 //
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -633,8 +625,6 @@ func (o TargetOutput) MultiTarget() TargetMultiTargetPtrOutput {
 }
 
 // Name of the `Target`. Format is `a-z?`.
-//
-// ***
 func (o TargetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

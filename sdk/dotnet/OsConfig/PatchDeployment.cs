@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Os Config Patch Deployment Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,7 +44,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// ### Os Config Patch Deployment Daily
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// ### Os Config Patch Deployment Daily Midnight
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -116,7 +114,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// ### Os Config Patch Deployment Instance
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -207,7 +205,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// ### Os Config Patch Deployment Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

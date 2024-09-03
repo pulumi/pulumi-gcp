@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/securityPolicies/addRule)
  * * How-to Guides
- *     * [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+ *   * [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
  *
- * ## Example Usage
- *
- * ### Security Policy Rule Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +40,9 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Security Policy Rule Default Rule
  *
  * ```typescript
@@ -84,7 +85,7 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
- * ### Security Policy Rule Multiple Rules
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -225,9 +226,6 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
     public readonly rateLimitOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     public readonly securityPolicy!: pulumi.Output<string>;
 
@@ -330,9 +328,6 @@ export interface SecurityPolicyRuleState {
     rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy?: pulumi.Input<string>;
 }
@@ -388,9 +383,6 @@ export interface SecurityPolicyRuleArgs {
     rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy: pulumi.Input<string>;
 }

@@ -26,7 +26,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final TargetArgs Empty = new TargetArgs();
 
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -36,7 +36,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * @return Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -190,16 +190,12 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the `Target`. Format is `a-z?`.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the `Target`. Format is `a-z?`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -289,7 +285,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * @param annotations Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -303,7 +299,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * @param annotations Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -523,8 +519,6 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of the `Target`. Format is `a-z?`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -535,8 +529,6 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the `Target`. Format is `a-z?`.
-         * 
-         * ***
          * 
          * @return builder
          * 

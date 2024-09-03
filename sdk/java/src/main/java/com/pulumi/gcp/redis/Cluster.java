@@ -30,11 +30,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+ *   * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
  * 
- * ## Example Usage
- * 
- * ### Redis Cluster Ha
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,7 +114,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Redis Cluster Ha Single Zone
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

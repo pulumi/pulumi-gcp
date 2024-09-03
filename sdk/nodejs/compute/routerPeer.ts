@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ *   * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
  *
@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     "interface": "interface-1",
  * });
  * ```
+ *
  * ### Router Peer Disabled
  *
  * ```typescript
@@ -52,6 +53,7 @@ import * as utilities from "../utilities";
  *     enable: false,
  * });
  * ```
+ *
  * ### Router Peer Bfd
  *
  * ```typescript
@@ -74,7 +76,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Router Peer Router Appliance
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -170,7 +172,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Router Peer Md5 Authentication Key
+ * ### Router Peer md5 authentication key
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -191,7 +193,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Router Peer Export And Import Policies
+ * ### Router peer export and import policies
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -525,9 +527,6 @@ export class RouterPeer extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
-     *
-     *
-     * - - -
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -781,9 +780,6 @@ export interface RouterPeerState {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
-     *
-     *
-     * - - -
      */
     router?: pulumi.Input<string>;
     /**
@@ -942,9 +938,6 @@ export interface RouterPeerArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
-     *
-     *
-     * - - -
      */
     router: pulumi.Input<string>;
     /**

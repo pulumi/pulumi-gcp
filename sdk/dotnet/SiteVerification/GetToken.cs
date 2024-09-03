@@ -12,27 +12,25 @@ namespace Pulumi.Gcp.SiteVerification
     public static class GetToken
     {
         /// <summary>
-        /// ## subcategory: "Site Verification"
-        /// 
+        /// subcategory: "Site Verification"
         /// description: |-
-        ///   A verification token is used to demonstrate ownership of a website or domain.
+        /// A verification token is used to demonstrate ownership of a website or domain.
         /// ---
         /// 
         /// # gcp.siteverification.getToken
         /// 
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
-        /// 
         /// To get more information about Token, see:
         /// 
         /// * [API documentation](https://developers.google.com/site-verification/v1)
         /// * How-to Guides
-        ///     * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
+        ///   * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
         /// 
         /// 
         /// ## Example Usage
         /// 
-        /// ### Site Verification Via Site META Tag
+        /// ### Site Verification via Site META Tag
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.SiteVerification
         /// });
         /// ```
         /// 
-        /// ### Site Verification Via DNS TXT Record
+        /// ### Site Verification via DNS TXT Record
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -76,27 +74,25 @@ namespace Pulumi.Gcp.SiteVerification
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTokenResult>("gcp:siteverification/getToken:getToken", args ?? new GetTokenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## subcategory: "Site Verification"
-        /// 
+        /// subcategory: "Site Verification"
         /// description: |-
-        ///   A verification token is used to demonstrate ownership of a website or domain.
+        /// A verification token is used to demonstrate ownership of a website or domain.
         /// ---
         /// 
         /// # gcp.siteverification.getToken
         /// 
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
-        /// 
         /// To get more information about Token, see:
         /// 
         /// * [API documentation](https://developers.google.com/site-verification/v1)
         /// * How-to Guides
-        ///     * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
+        ///   * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
         /// 
         /// 
         /// ## Example Usage
         /// 
-        /// ### Site Verification Via Site META Tag
+        /// ### Site Verification via Site META Tag
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -116,7 +112,7 @@ namespace Pulumi.Gcp.SiteVerification
         /// });
         /// ```
         /// 
-        /// ### Site Verification Via DNS TXT Record
+        /// ### Site Verification via DNS TXT Record
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -161,9 +157,6 @@ namespace Pulumi.Gcp.SiteVerification
         /// The verification method for the Site Verification system to use to verify
         /// this site or domain.
         /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("verificationMethod", required: true)]
         public string VerificationMethod { get; set; } = null!;
@@ -194,9 +187,6 @@ namespace Pulumi.Gcp.SiteVerification
         /// The verification method for the Site Verification system to use to verify
         /// this site or domain.
         /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("verificationMethod", required: true)]
         public Input<string> VerificationMethod { get; set; } = null!;

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
-    /// ### Regional
+    /// ### regional
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.GkeBackup.Inputs
         /// <summary>
         /// Kind of a Kubernetes resource, e.g.
         /// "CustomResourceDefinition", "StorageClass", etc.
-        /// 
-        /// - - -
         /// </summary>
         [Input("resourceKind")]
         public Input<string>? ResourceKind { get; set; }

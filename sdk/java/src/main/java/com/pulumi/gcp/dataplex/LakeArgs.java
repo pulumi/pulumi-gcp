@@ -102,16 +102,12 @@ public final class LakeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the lake.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the lake.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -277,8 +273,6 @@ public final class LakeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the lake.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -289,8 +283,6 @@ public final class LakeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the lake.
-         * 
-         * ***
          * 
          * @return builder
          * 

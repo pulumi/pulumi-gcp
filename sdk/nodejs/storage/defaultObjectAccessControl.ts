@@ -25,11 +25,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  *
- * ## Example Usage
- *
- * ### Storage Default Object Access Control Public
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -130,9 +128,6 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -232,9 +227,6 @@ export interface DefaultObjectAccessControlState {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     role?: pulumi.Input<string>;
 }
@@ -266,9 +258,6 @@ export interface DefaultObjectAccessControlArgs {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     role: pulumi.Input<string>;
 }

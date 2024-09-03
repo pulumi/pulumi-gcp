@@ -109,8 +109,6 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// ## This resource supports User Project Overrides.
     /// 
-    /// - 
-    /// 
     /// # IAM policy for Backup for GKE RestorePlan
     /// Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
     /// 
@@ -245,7 +243,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy")]
     public partial class RestorePlanIamPolicy : global::Pulumi.CustomResource

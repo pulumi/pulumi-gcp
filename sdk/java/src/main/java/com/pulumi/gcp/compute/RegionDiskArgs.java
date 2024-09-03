@@ -257,16 +257,12 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * URLs of the zones where the disk should be replicated to.
      * 
-     * ***
-     * 
      */
     @Import(name="replicaZones", required=true)
     private Output<List<String>> replicaZones;
 
     /**
      * @return URLs of the zones where the disk should be replicated to.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> replicaZones() {
@@ -328,8 +324,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -342,8 +338,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -754,8 +750,6 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -767,8 +761,6 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -778,8 +770,6 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -855,8 +845,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
          * For example, the following are valid values:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
          * * projects/{project}/zones/{zone}/disks/{disk}
          * * projects/{project}/regions/{region}/disks/{disk}
          * * zones/{zone}/disks/{disk}
@@ -873,8 +863,8 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
          * For example, the following are valid values:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
          * * projects/{project}/zones/{zone}/disks/{disk}
          * * projects/{project}/regions/{region}/disks/{disk}
          * * zones/{zone}/disks/{disk}

@@ -741,12 +741,12 @@ class EdgeCacheServiceRoutingHostRule(dict):
         :param Sequence[str] hosts: The list of host patterns to match.
                Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
                When multiple hosts are specified, hosts are matched in the following priority:
-               1. Exact domain names: ``www.foo.com``.
-               2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
-               3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
-               4. Special wildcard ``*`` matching any domain.
+               1. Exact domain names: `www.foo.com`.
+               2. Suffix domain wildcards: `*.foo.com` or `*-bar.foo.com`.
+               3. Prefix domain wildcards: `foo.*` or `foo-*`.
+               4. Special wildcard `*` matching any domain.
                Notes:
-               The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+               The wildcard will not match the empty string. e.g. `*-bar.foo.com` will match `baz-bar.foo.com` but not `-bar.foo.com`. The longest wildcards match first. Only a single host in the entire service can match on `*`. A domain must be unique across all configured hosts within a service.
                Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
                You may specify up to 10 hosts.
         :param str path_matcher: The name of the pathMatcher associated with this hostRule.
@@ -764,12 +764,12 @@ class EdgeCacheServiceRoutingHostRule(dict):
         The list of host patterns to match.
         Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
         When multiple hosts are specified, hosts are matched in the following priority:
-        1. Exact domain names: ``www.foo.com``.
-        2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
-        3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
-        4. Special wildcard ``*`` matching any domain.
+        1. Exact domain names: `www.foo.com`.
+        2. Suffix domain wildcards: `*.foo.com` or `*-bar.foo.com`.
+        3. Prefix domain wildcards: `foo.*` or `foo-*`.
+        4. Special wildcard `*` matching any domain.
         Notes:
-        The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+        The wildcard will not match the empty string. e.g. `*-bar.foo.com` will match `baz-bar.foo.com` but not `-bar.foo.com`. The longest wildcards match first. Only a single host in the entire service can match on `*`. A domain must be unique across all configured hosts within a service.
         Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
         You may specify up to 10 hosts.
         """
@@ -2502,8 +2502,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
                - `PERMANENT_REDIRECT`, which corresponds to 308. in this case, the request method will be retained.
                Possible values are: `MOVED_PERMANENTLY_DEFAULT`, `FOUND`, `SEE_OTHER`, `TEMPORARY_REDIRECT`, `PERMANENT_REDIRECT`.
         :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-               
-               - - -
         """
         if host_redirect is not None:
             pulumi.set(__self__, "host_redirect", host_redirect)
@@ -2574,8 +2572,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
     def strip_query(self) -> Optional[bool]:
         """
         If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-
-        - - -
         """
         return pulumi.get(self, "strip_query")
 
@@ -2697,8 +2693,6 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
         """
         :param str label_name: Required. Label name presented as key in xDS Node Metadata.
         :param str label_value: Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-               
-               - - -
         """
         pulumi.set(__self__, "label_name", label_name)
         pulumi.set(__self__, "label_value", label_value)
@@ -2716,8 +2710,6 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
     def label_value(self) -> str:
         """
         Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-
-        - - -
         """
         return pulumi.get(self, "label_value")
 
@@ -3060,8 +3052,6 @@ class GrpcRouteRuleActionRetryPolicy(dict):
                  retry_conditions: Optional[Sequence[str]] = None):
         """
         :param int num_retries: Specifies the allowed number of retries.
-               
-               - - -
         :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
                Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
         """
@@ -3075,8 +3065,6 @@ class GrpcRouteRuleActionRetryPolicy(dict):
     def num_retries(self) -> Optional[int]:
         """
         Specifies the allowed number of retries.
-
-        - - -
         """
         return pulumi.get(self, "num_retries")
 
@@ -3492,8 +3480,6 @@ class HttpRouteRuleActionCorsPolicy(dict):
         :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
         :param bool disabled: If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-               
-               - - -
         :param Sequence[str] expose_headers: Specifies the content for Access-Control-Expose-Headers header.
         :param str max_age: Specifies how long result of a preflight request can be cached in seconds.
         """
@@ -3559,8 +3545,6 @@ class HttpRouteRuleActionCorsPolicy(dict):
     def disabled(self) -> Optional[bool]:
         """
         If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-
-        - - -
         """
         return pulumi.get(self, "disabled")
 
@@ -4203,7 +4187,7 @@ class HttpRouteRuleMatch(dict):
         :param str prefix_match: The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
         :param Sequence['HttpRouteRuleMatchQueryParameterArgs'] query_parameters: Specifies a list of query parameters to match against.
                Structure is documented below.
-        :param str regex_match: The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        :param str regex_match: The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see <https://github.com/google/re2/wiki/Syntax>
         """
         if full_path_match is not None:
             pulumi.set(__self__, "full_path_match", full_path_match)
@@ -4264,7 +4248,7 @@ class HttpRouteRuleMatch(dict):
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> Optional[str]:
         """
-        The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see <https://github.com/google/re2/wiki/Syntax>
         """
         return pulumi.get(self, "regex_match")
 
@@ -4466,7 +4450,7 @@ class HttpRouteRuleMatchQueryParameter(dict):
         :param str exact_match: The value of the query parameter must exactly match the contents of exactMatch.
         :param bool present_match: Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
         :param str query_parameter: The name of the query parameter to match.
-        :param str regex_match: The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        :param str regex_match: The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see <https://github.com/google/re2/wiki/Syntax>
         """
         if exact_match is not None:
             pulumi.set(__self__, "exact_match", exact_match)
@@ -4505,7 +4489,7 @@ class HttpRouteRuleMatchQueryParameter(dict):
     @pulumi.getter(name="regexMatch")
     def regex_match(self) -> Optional[str]:
         """
-        The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see <https://github.com/google/re2/wiki/Syntax>
         """
         return pulumi.get(self, "regex_match")
 
@@ -4624,8 +4608,6 @@ class LbRouteExtensionExtensionChainExtension(dict):
                configuring a custom error response in the load balancer.
         :param Sequence[str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
                If omitted, all headers are sent. Each element is a string indicating the header name.
-               
-               - - -
         :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
@@ -4686,8 +4668,6 @@ class LbRouteExtensionExtensionChainExtension(dict):
         """
         List of the HTTP headers to forward to the extension (from the client or backend).
         If omitted, all headers are sent. Each element is a string indicating the header name.
-
-        - - -
         """
         return pulumi.get(self, "forward_headers")
 
@@ -4857,8 +4837,6 @@ class LbTrafficExtensionExtensionChainExtension(dict):
                This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
                resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
                `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-               
-               - - -
         :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
@@ -4932,8 +4910,6 @@ class LbTrafficExtensionExtensionChainExtension(dict):
         This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
         resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
         `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-
-        - - -
         """
         return pulumi.get(self, "supported_events")
 
@@ -5150,8 +5126,6 @@ class TcpRouteRuleActionDestination(dict):
                If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
                If weights are specified for any one service name, they need to be specified for all of them.
                If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-               
-               - - -
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -5174,8 +5148,6 @@ class TcpRouteRuleActionDestination(dict):
         If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
         If weights are specified for any one service name, they need to be specified for all of them.
         If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-
-        - - -
         """
         return pulumi.get(self, "weight")
 
@@ -5290,8 +5262,6 @@ class TlsRouteRuleActionDestination(dict):
         """
         :param str service_name: The URL of a BackendService to route traffic to.
         :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-               
-               - - -
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -5311,8 +5281,6 @@ class TlsRouteRuleActionDestination(dict):
     def weight(self) -> Optional[int]:
         """
         Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-
-        - - -
         """
         return pulumi.get(self, "weight")
 
@@ -5341,7 +5309,7 @@ class TlsRouteRuleMatch(dict):
                  sni_hosts: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] alpns: ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
-        :param Sequence[str] sni_hosts: SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+        :param Sequence[str] sni_hosts: SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. <http://www.example.com> will be first matched against <http://www.example.com>, then *.example.com, then *.com.
                Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
         """
         if alpns is not None:
@@ -5361,7 +5329,7 @@ class TlsRouteRuleMatch(dict):
     @pulumi.getter(name="sniHosts")
     def sni_hosts(self) -> Optional[Sequence[str]]:
         """
-        SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+        SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. <http://www.example.com> will be first matched against <http://www.example.com>, then *.example.com, then *.com.
         Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
         """
         return pulumi.get(self, "sni_hosts")

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.locations.discoveryConfigs)
  * * How-to Guides
- *     * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
+ *   * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
  *
  * ## Example Usage
  *
@@ -91,9 +91,6 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
     /**
      * Location to create the discovery config in.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -211,9 +208,6 @@ export interface PreventionDiscoveryConfigState {
     lastRunTime?: pulumi.Input<string>;
     /**
      * Location to create the discovery config in.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -266,9 +260,6 @@ export interface PreventionDiscoveryConfigArgs {
     inspectTemplates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Location to create the discovery config in.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

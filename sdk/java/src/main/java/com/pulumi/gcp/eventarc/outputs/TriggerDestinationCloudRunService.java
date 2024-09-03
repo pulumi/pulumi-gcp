@@ -23,7 +23,7 @@ public final class TriggerDestinationCloudRunService {
      */
     private @Nullable String region;
     /**
-     * @return Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+     * @return Required. The name of the Cloud Run service being addressed. See &lt;https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services&gt;. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     private String service;
@@ -44,7 +44,7 @@ public final class TriggerDestinationCloudRunService {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+     * @return Required. The name of the Cloud Run service being addressed. See &lt;https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services&gt;. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     public String service() {

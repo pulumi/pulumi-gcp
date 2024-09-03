@@ -352,7 +352,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      *   reported weights. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
@@ -403,7 +403,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      *   reported weights. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
@@ -463,8 +463,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -477,8 +475,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -1162,7 +1158,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
          *   Maglev is not as stable as ring hash but has faster table lookup
          *   build times and host selection times. For more information about
-         *   Maglev, refer to https://ai.google/research/pubs/pub44824
+         *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
          * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
          *   reported weights. If set, the Backend Service must
          *   configure a non legacy HTTP-based Health Check, and
@@ -1217,7 +1213,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
          *   Maglev is not as stable as ring hash but has faster table lookup
          *   build times and host selection times. For more information about
-         *   Maglev, refer to https://ai.google/research/pubs/pub44824
+         *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
          * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
          *   reported weights. If set, the Backend Service must
          *   configure a non legacy HTTP-based Health Check, and
@@ -1285,8 +1281,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1303,8 +1297,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 

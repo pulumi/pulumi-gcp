@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
     /// 
@@ -114,9 +114,6 @@ namespace Pulumi.Gcp.Diagflow
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
         /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -213,9 +210,6 @@ namespace Pulumi.Gcp.Diagflow
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
         /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -267,9 +261,6 @@ namespace Pulumi.Gcp.Diagflow
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
         /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

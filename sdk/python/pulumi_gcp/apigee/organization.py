@@ -38,9 +38,6 @@ class OrganizationArgs:
         """
         The set of arguments for constructing a Organization resource.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data.
         :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers using non-default data residency regions.
@@ -108,9 +105,6 @@ class OrganizationArgs:
     def project_id(self) -> pulumi.Input[str]:
         """
         The project ID associated with the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 
@@ -341,9 +335,6 @@ class _OrganizationState:
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input['OrganizationPropertiesArgs'] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -558,9 +549,6 @@ class _OrganizationState:
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The project ID associated with the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 
@@ -668,7 +656,7 @@ class Organization(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
         * How-to Guides
-            * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+          * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
 
@@ -696,6 +684,7 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
+
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
         ```python
@@ -709,6 +698,7 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
+
         ### Apigee Organization Cloud Full
 
         ```python
@@ -752,6 +742,7 @@ class Organization(pulumi.CustomResource):
                     apigee_sa_keyuser,
                 ]))
         ```
+
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
         ```python
@@ -821,9 +812,6 @@ class Organization(pulumi.CustomResource):
                of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -853,7 +841,7 @@ class Organization(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
         * How-to Guides
-            * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+          * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
 
@@ -881,6 +869,7 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
+
         ### Apigee Organization Cloud Basic Disable Vpc Peering
 
         ```python
@@ -894,6 +883,7 @@ class Organization(pulumi.CustomResource):
             project_id=current.project,
             disable_vpc_peering=True)
         ```
+
         ### Apigee Organization Cloud Full
 
         ```python
@@ -937,6 +927,7 @@ class Organization(pulumi.CustomResource):
                     apigee_sa_keyuser,
                 ]))
         ```
+
         ### Apigee Organization Cloud Full Disable Vpc Peering
 
         ```python
@@ -1101,9 +1092,6 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Output only. Name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -1257,9 +1245,6 @@ class Organization(pulumi.CustomResource):
     def project_id(self) -> pulumi.Output[str]:
         """
         The project ID associated with the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 

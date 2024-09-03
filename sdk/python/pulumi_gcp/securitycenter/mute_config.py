@@ -34,9 +34,6 @@ class MuteConfigArgs:
         :param pulumi.Input[str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[str] description: A description of the mute config.
         """
         pulumi.set(__self__, "filter", filter)
@@ -80,9 +77,6 @@ class MuteConfigArgs:
         Resource name of the new mute configs's parent. Its format is
         "organizations/[organization_id]", "folders/[folder_id]", or
         "projects/[project_id]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -135,9 +129,6 @@ class _MuteConfigState:
         :param pulumi.Input[str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: Output only. The most recent time at which the mute config was
                updated. This field is set by the server and will be ignored if
                provided on config creation or update.
@@ -248,9 +239,6 @@ class _MuteConfigState:
         Resource name of the new mute configs's parent. Its format is
         "organizations/[organization_id]", "folders/[folder_id]", or
         "projects/[project_id]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -332,9 +320,6 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.Input[str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         """
         ...
     @overload
@@ -465,9 +450,6 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.Input[str] parent: Resource name of the new mute configs's parent. Its format is
                "organizations/[organization_id]", "folders/[folder_id]", or
                "projects/[project_id]".
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: Output only. The most recent time at which the mute config was
                updated. This field is set by the server and will be ignored if
                provided on config creation or update.
@@ -551,9 +533,6 @@ class MuteConfig(pulumi.CustomResource):
         Resource name of the new mute configs's parent. Its format is
         "organizations/[organization_id]", "folders/[folder_id]", or
         "projects/[project_id]".
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

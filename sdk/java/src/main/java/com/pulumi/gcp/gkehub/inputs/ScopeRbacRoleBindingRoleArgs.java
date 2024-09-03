@@ -19,8 +19,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
      * PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
      * 
-     * ***
-     * 
      */
     @Import(name="predefinedRole")
     private @Nullable Output<String> predefinedRole;
@@ -28,8 +26,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
     /**
      * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> predefinedRole() {
@@ -64,8 +60,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
          * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -77,8 +71,6 @@ public final class ScopeRbacRoleBindingRoleArgs extends com.pulumi.resources.Res
         /**
          * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-         * 
-         * ***
          * 
          * @return builder
          * 

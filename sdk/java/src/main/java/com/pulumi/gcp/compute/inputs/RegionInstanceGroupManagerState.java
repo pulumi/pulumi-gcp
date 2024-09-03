@@ -266,16 +266,12 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Import(name="params")
     private @Nullable Output<RegionInstanceGroupManagerParamsArgs> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerParamsArgs>> params() {
@@ -302,16 +298,12 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return The region where the managed instance group resides. If not provided, the provider region is used.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -937,8 +929,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -949,8 +939,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -985,8 +973,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param region The region where the managed instance group resides. If not provided, the provider region is used.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -997,8 +983,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         /**
          * @param region The region where the managed instance group resides. If not provided, the provider region is used.
-         * 
-         * ***
          * 
          * @return builder
          * 

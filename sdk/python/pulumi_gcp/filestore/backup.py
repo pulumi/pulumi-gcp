@@ -29,9 +29,6 @@ class BackupArgs:
         """
         The set of arguments for constructing a Backup resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-               
-               
-               - - -
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -66,9 +63,6 @@ class BackupArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -191,9 +185,6 @@ class _BackupState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the backup. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -336,9 +327,6 @@ class _BackupState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -471,12 +459,10 @@ class Backup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.backups)
         * How-to Guides
-            * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
-            * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
+          * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
+          * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
 
-        ## Example Usage
-
-        ### Filestore Backup Basic
+        ## 
 
         ```python
         import pulumi
@@ -539,9 +525,6 @@ class Backup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the backup. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -567,12 +550,10 @@ class Backup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.backups)
         * How-to Guides
-            * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
-            * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
+          * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
+          * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
 
-        ## Example Usage
-
-        ### Filestore Backup Basic
+        ## 
 
         ```python
         import pulumi
@@ -726,9 +707,6 @@ class Backup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the backup. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -832,9 +810,6 @@ class Backup(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

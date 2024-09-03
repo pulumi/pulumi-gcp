@@ -45,18 +45,16 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services)
  * * How-to Guides
- *     * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
- *     * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
- *     * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
+ *   * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
+ *   * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
+ *   * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
  * 
  * &gt; **Note:** Destroying a `gcp.servicenetworking.VpcServiceControls`
  * resource will remove it from state, but will not change the
  * underlying VPC Service Controls configuration for the service
  * producer network.
  * 
- * ## Example Usage
- * 
- * ### Service Networking Vpc Service Controls Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -88,12 +86,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a VPC
  *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name("example-network")
  *             .build());
  * 
- *         // Create an IP address
  *         var defaultGlobalAddress = new GlobalAddress("defaultGlobalAddress", GlobalAddressArgs.builder()
  *             .name("psa-range")
  *             .purpose("VPC_PEERING")
@@ -102,14 +98,12 @@ import javax.annotation.Nullable;
  *             .network(default_.id())
  *             .build());
  * 
- *         // Create a private connection
  *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
  *             .network(default_.id())
  *             .service("servicenetworking.googleapis.com")
  *             .reservedPeeringRanges(defaultGlobalAddress.name())
  *             .build());
  * 
- *         // Enable VPC-SC on the producer network
  *         var defaultVpcServiceControls = new VpcServiceControls("defaultVpcServiceControls", VpcServiceControlsArgs.builder()
  *             .network(default_.name())
  *             .service("servicenetworking.googleapis.com")
@@ -200,8 +194,6 @@ public class VpcServiceControls extends com.pulumi.resources.CustomResource {
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
      * 
-     * ***
-     * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
@@ -210,8 +202,6 @@ public class VpcServiceControls extends com.pulumi.resources.CustomResource {
      * @return The service that is managing peering connectivity for a service
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {

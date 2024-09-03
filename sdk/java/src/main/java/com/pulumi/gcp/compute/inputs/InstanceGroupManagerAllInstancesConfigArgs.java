@@ -19,16 +19,12 @@ public final class InstanceGroupManagerAllInstancesConfigArgs extends com.pulumi
     /**
      * , The label key-value pairs that you want to patch onto the instance.
      * 
-     * ***
-     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return , The label key-value pairs that you want to patch onto the instance.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -78,8 +74,6 @@ public final class InstanceGroupManagerAllInstancesConfigArgs extends com.pulumi
         /**
          * @param labels , The label key-value pairs that you want to patch onto the instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class InstanceGroupManagerAllInstancesConfigArgs extends com.pulumi
 
         /**
          * @param labels , The label key-value pairs that you want to patch onto the instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

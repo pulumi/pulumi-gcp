@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
     public sealed class EntitlementPrivilegedAccess
     {
         /// <summary>
-        /// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        /// GcpIamAccess represents IAM based access control on a GCP resource. Refer to &lt;https://cloud.google.com/iam/docs&gt; to understand more about IAM.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.EntitlementPrivilegedAccessGcpIamAccess GcpIamAccess;

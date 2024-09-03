@@ -14,9 +14,10 @@ namespace Pulumi.Gcp.Container
     /// 
     /// For more information, see:
     /// * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_azure_client
+    /// ### basic_azure_client
     /// A basic example of a containerazure azure client
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,10 +104,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Azure Active Directory Tenant ID.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -189,10 +186,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Azure Active Directory Tenant ID.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
@@ -243,10 +236,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Azure Active Directory Tenant ID.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

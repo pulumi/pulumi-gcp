@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly string? State;
         /// <summary>
         /// (Output)
-        /// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        /// type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * "Ready": True when the Resource is ready.
         /// </summary>
         public readonly string? Type;
 

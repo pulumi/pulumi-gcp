@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.securityHealthAnalyticsCustomModules)
  * * How-to Guides
- *     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+ *   * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
  * 
  * ## Example Usage
  * 
@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Scc Management Organization Security Health Analytics Custom Module Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -288,16 +289,12 @@ public class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends c
     /**
      * Numerical ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
      * @return Numerical ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {

@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
- *  For more information see
+ * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
@@ -130,8 +130,6 @@ export class Notification extends pulumi.CustomResource {
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
-     *
-     * - - -
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -218,8 +216,6 @@ export interface NotificationState {
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
-     *
-     * - - -
      */
     topic?: pulumi.Input<string>;
 }
@@ -253,8 +249,6 @@ export interface NotificationArgs {
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
-     *
-     * - - -
      */
     topic: pulumi.Input<string>;
 }

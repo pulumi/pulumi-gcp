@@ -33,14 +33,14 @@ public final class AwsNodePoolConfigAutoscalingMetricsCollectionArgs extends com
     }
 
     /**
-     * The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
+     * The metrics to enable. For a list of valid metrics, see &lt;https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html&gt;. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
      * 
      */
     @Import(name="metrics")
     private @Nullable Output<List<String>> metrics;
 
     /**
-     * @return The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
+     * @return The metrics to enable. For a list of valid metrics, see &lt;https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html&gt;. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
      * 
      */
     public Optional<Output<List<String>>> metrics() {
@@ -94,7 +94,7 @@ public final class AwsNodePoolConfigAutoscalingMetricsCollectionArgs extends com
         }
 
         /**
-         * @param metrics The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
+         * @param metrics The metrics to enable. For a list of valid metrics, see &lt;https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html&gt;. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class AwsNodePoolConfigAutoscalingMetricsCollectionArgs extends com
         }
 
         /**
-         * @param metrics The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
+         * @param metrics The metrics to enable. For a list of valid metrics, see &lt;https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html&gt;. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AwsNodePoolConfigAutoscalingMetricsCollectionArgs extends com
         }
 
         /**
-         * @param metrics The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
+         * @param metrics The metrics to enable. For a list of valid metrics, see &lt;https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html&gt;. If you specify granularity and don&#39;t specify any metrics, all metrics are enabled.
          * 
          * @return builder
          * 

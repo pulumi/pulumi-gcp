@@ -33,12 +33,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
  * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  * 
- * ## Example Usage
- * 
- * ### Monitoring Slo Appengine
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -93,6 +91,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Monitoring Slo Request Based
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -149,7 +150,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Monitoring Slo Windows Based Good Bad Metric Filter
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,7 +204,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Monitoring Slo Windows Based Metric Mean
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -264,7 +265,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Monitoring Slo Windows Based Metric Sum
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -325,7 +326,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Monitoring Slo Windows Based Ratio Threshold
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -563,16 +564,12 @@ public class Slo extends com.pulumi.resources.CustomResource {
     /**
      * ID of the service to which this SLO belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
      * @return ID of the service to which this SLO belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {

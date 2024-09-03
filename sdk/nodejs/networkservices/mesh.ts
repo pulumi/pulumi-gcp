@@ -5,38 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Network Services Mesh Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.Mesh("default", {
- *     name: "my-mesh",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     interceptionPort: 443,
- * });
- * ```
- * ### Network Services Mesh No Port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.Mesh("default", {
- *     name: "my-mesh-noport",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- * });
- * ```
- *
  * ## Import
  *
  * Mesh can be imported using any of these accepted formats:
@@ -117,9 +85,6 @@ export class Mesh extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Short name of the Mesh resource to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -216,9 +181,6 @@ export interface MeshState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Short name of the Mesh resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -265,9 +227,6 @@ export interface MeshArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Short name of the Mesh resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

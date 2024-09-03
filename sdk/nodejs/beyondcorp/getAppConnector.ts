@@ -36,8 +36,6 @@ export function getAppConnector(args: GetAppConnectorArgs, opts?: pulumi.InvokeO
 export interface GetAppConnectorArgs {
     /**
      * The name of the App Connector.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -94,8 +92,6 @@ export function getAppConnectorOutput(args: GetAppConnectorOutputArgs, opts?: pu
 export interface GetAppConnectorOutputArgs {
     /**
      * The name of the App Connector.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines)
     /// * How-to Guides
-    ///     * [Create a Search Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-engine-es)
+    ///   * [Create a Search Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-engine-es)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Discoveryengine Searchengine Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

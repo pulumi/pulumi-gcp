@@ -20,7 +20,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpc {
     private @Nullable Integer port;
     /**
      * @return The name of the service to place in the gRPC HealthCheckRequest
-     * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+     * (see &lt;https://github.com/grpc/grpc/blob/master/doc/health-checking.md)&gt;.
      * If this is not specified, the default behavior is defined by gRPC.
      * 
      */
@@ -37,7 +37,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpc {
     }
     /**
      * @return The name of the service to place in the gRPC HealthCheckRequest
-     * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+     * (see &lt;https://github.com/grpc/grpc/blob/master/doc/health-checking.md)&gt;.
      * If this is not specified, the default behavior is defined by gRPC.
      * 
      */

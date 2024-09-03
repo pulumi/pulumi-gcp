@@ -143,7 +143,7 @@ if not MYPY:
     class JobBinaryAuthorizationArgsDict(TypedDict):
         breakglass_justification: NotRequired[pulumi.Input[str]]
         """
-        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
         """
         policy: NotRequired[pulumi.Input[str]]
         """
@@ -163,7 +163,7 @@ class JobBinaryAuthorizationArgs:
                  policy: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
         :param pulumi.Input[str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param pulumi.Input[bool] use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
@@ -178,7 +178,7 @@ class JobBinaryAuthorizationArgs:
     @pulumi.getter(name="breakglassJustification")
     def breakglass_justification(self) -> Optional[pulumi.Input[str]]:
         """
-        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
         """
         return pulumi.get(self, "breakglass_justification")
 
@@ -252,7 +252,7 @@ if not MYPY:
         type: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
         """
 elif False:
     JobConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -285,7 +285,7 @@ class JobConditionArgs:
         :param pulumi.Input[str] state: (Output)
                State of the condition.
         :param pulumi.Input[str] type: (Output)
-               type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+               type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -401,7 +401,7 @@ class JobConditionArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
 
@@ -605,8 +605,8 @@ if not MYPY:
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-        or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        https://cloud.google.com/run/docs/configuring/labels.
+        or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+        <https://cloud.google.com/run/docs/configuring/labels>.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         """
@@ -616,7 +616,7 @@ if not MYPY:
         """
         task_count: NotRequired[pulumi.Input[int]]
         """
-        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
         """
 elif False:
     JobTemplateArgsDict: TypeAlias = Mapping[str, Any]
@@ -637,12 +637,12 @@ class JobTemplateArgs:
                All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-               or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-               https://cloud.google.com/run/docs/configuring/labels.
+               or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+               <https://cloud.google.com/run/docs/configuring/labels>.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         :param pulumi.Input[int] parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
-        :param pulumi.Input[int] task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        :param pulumi.Input[int] task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
         """
         pulumi.set(__self__, "template", template)
         if annotations is not None:
@@ -687,8 +687,8 @@ class JobTemplateArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-        or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-        https://cloud.google.com/run/docs/configuring/labels.
+        or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+        <https://cloud.google.com/run/docs/configuring/labels>.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         """
@@ -714,7 +714,7 @@ class JobTemplateArgs:
     @pulumi.getter(name="taskCount")
     def task_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
         """
         return pulumi.get(self, "task_count")
 
@@ -732,7 +732,7 @@ if not MYPY:
         """
         encryption_key: NotRequired[pulumi.Input[str]]
         """
-        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
         """
         execution_environment: NotRequired[pulumi.Input[str]]
         """
@@ -759,7 +759,7 @@ if not MYPY:
         """
         vpc_access: NotRequired[pulumi.Input['JobTemplateTemplateVpcAccessArgsDict']]
         """
-        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
         Structure is documented below.
         """
 elif False:
@@ -779,7 +779,7 @@ class JobTemplateTemplateArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]] containers: Holds the single container that defines the unit of execution for this task.
                Structure is documented below.
-        :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
         :param pulumi.Input[str] execution_environment: The execution environment being used to host this Task.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[int] max_retries: Number of retries allowed per Task, before marking this Task failed.
@@ -788,7 +788,7 @@ class JobTemplateTemplateArgs:
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
-        :param pulumi.Input['JobTemplateTemplateVpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param pulumi.Input['JobTemplateTemplateVpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
                Structure is documented below.
         """
         if containers is not None:
@@ -825,7 +825,7 @@ class JobTemplateTemplateArgs:
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
         """
         return pulumi.get(self, "encryption_key")
 
@@ -900,7 +900,7 @@ class JobTemplateTemplateArgs:
     @pulumi.getter(name="vpcAccess")
     def vpc_access(self) -> Optional[pulumi.Input['JobTemplateTemplateVpcAccessArgs']]:
         """
-        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
         Structure is documented below.
         """
         return pulumi.get(self, "vpc_access")
@@ -914,15 +914,15 @@ if not MYPY:
     class JobTemplateTemplateContainerArgsDict(TypedDict):
         image: pulumi.Input[str]
         """
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
         """
         args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgsDict']]]]
         """
@@ -941,7 +941,7 @@ if not MYPY:
         """
         resources: NotRequired[pulumi.Input['JobTemplateTemplateContainerResourcesArgsDict']]
         """
-        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
         Structure is documented below.
         """
         volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgsDict']]]]
@@ -969,16 +969,16 @@ class JobTemplateTemplateContainerArgs:
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
-        :param pulumi.Input['JobTemplateTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param pulumi.Input['JobTemplateTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
@@ -1006,7 +1006,7 @@ class JobTemplateTemplateContainerArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
         """
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
         """
         return pulumi.get(self, "image")
 
@@ -1018,7 +1018,7 @@ class JobTemplateTemplateContainerArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         return pulumi.get(self, "args")
 
@@ -1030,7 +1030,7 @@ class JobTemplateTemplateContainerArgs:
     @pulumi.getter
     def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         return pulumi.get(self, "commands")
 
@@ -1081,7 +1081,7 @@ class JobTemplateTemplateContainerArgs:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input['JobTemplateTemplateContainerResourcesArgs']]:
         """
-        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
@@ -1331,7 +1331,7 @@ if not MYPY:
     class JobTemplateTemplateContainerResourcesArgsDict(TypedDict):
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
         """
 elif False:
     JobTemplateTemplateContainerResourcesArgsDict: TypeAlias = Mapping[str, Any]
@@ -1341,7 +1341,7 @@ class JobTemplateTemplateContainerResourcesArgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -1350,7 +1350,7 @@ class JobTemplateTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
         """
         return pulumi.get(self, "limits")
 
@@ -1363,7 +1363,7 @@ if not MYPY:
     class JobTemplateTemplateContainerVolumeMountArgsDict(TypedDict):
         mount_path: pulumi.Input[str]
         """
-        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
         """
         name: pulumi.Input[str]
         """
@@ -1378,7 +1378,7 @@ class JobTemplateTemplateContainerVolumeMountArgs:
                  mount_path: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
         :param pulumi.Input[str] name: This must match the Name of a Volume.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -1388,7 +1388,7 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> pulumi.Input[str]:
         """
-        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
         """
         return pulumi.get(self, "mount_path")
 
@@ -1417,7 +1417,7 @@ if not MYPY:
         """
         cloud_sql_instance: NotRequired[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgsDict']]
         """
-        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
         """
         empty_dir: NotRequired[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgsDict']]
@@ -1437,7 +1437,7 @@ if not MYPY:
         """
         secret: NotRequired[pulumi.Input['JobTemplateTemplateVolumeSecretArgsDict']]
         """
-        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
         Structure is documented below.
         """
 elif False:
@@ -1454,7 +1454,7 @@ class JobTemplateTemplateVolumeArgs:
                  secret: Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
@@ -1462,7 +1462,7 @@ class JobTemplateTemplateVolumeArgs:
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeNfsArgs'] nfs: NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
                Structure is documented below.
-        :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -1493,7 +1493,7 @@ class JobTemplateTemplateVolumeArgs:
     @pulumi.getter(name="cloudSqlInstance")
     def cloud_sql_instance(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]:
         """
-        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql_instance")
@@ -1545,7 +1545,7 @@ class JobTemplateTemplateVolumeArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']]:
         """
-        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
         Structure is documented below.
         """
         return pulumi.get(self, "secret")
@@ -1559,7 +1559,7 @@ if not MYPY:
     class JobTemplateTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
         instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
 elif False:
     JobTemplateTemplateVolumeCloudSqlInstanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -1569,7 +1569,7 @@ class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -1578,7 +1578,7 @@ class JobTemplateTemplateVolumeCloudSqlInstanceArgs:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         return pulumi.get(self, "instances")
 
@@ -1597,7 +1597,7 @@ if not MYPY:
         """
         size_limit: NotRequired[pulumi.Input[str]]
         """
-        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
         """
 elif False:
     JobTemplateTemplateVolumeEmptyDirArgsDict: TypeAlias = Mapping[str, Any]
@@ -1611,7 +1611,7 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
         :param pulumi.Input[str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
-        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -1636,7 +1636,7 @@ class JobTemplateTemplateVolumeEmptyDirArgs:
     @pulumi.getter(name="sizeLimit")
     def size_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
         """
         return pulumi.get(self, "size_limit")
 
@@ -2006,8 +2006,6 @@ if not MYPY:
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
 elif False:
     JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -2026,8 +2024,6 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
                subnetwork with the same name with the network will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags applied to this Cloud Run job.
-               
-               - - -
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -2069,8 +2065,6 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
         return pulumi.get(self, "tags")
 
@@ -2120,7 +2114,7 @@ if not MYPY:
         type: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
         """
 elif False:
     JobTerminalConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -2153,7 +2147,7 @@ class JobTerminalConditionArgs:
         :param pulumi.Input[str] state: (Output)
                State of the condition.
         :param pulumi.Input[str] type: (Output)
-               type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+               type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -2269,7 +2263,7 @@ class JobTerminalConditionArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
 
@@ -2282,7 +2276,7 @@ if not MYPY:
     class ServiceBinaryAuthorizationArgsDict(TypedDict):
         breakglass_justification: NotRequired[pulumi.Input[str]]
         """
-        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
         """
         policy: NotRequired[pulumi.Input[str]]
         """
@@ -2302,7 +2296,7 @@ class ServiceBinaryAuthorizationArgs:
                  policy: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
         :param pulumi.Input[str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param pulumi.Input[bool] use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
@@ -2317,7 +2311,7 @@ class ServiceBinaryAuthorizationArgs:
     @pulumi.getter(name="breakglassJustification")
     def breakglass_justification(self) -> Optional[pulumi.Input[str]]:
         """
-        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
         """
         return pulumi.get(self, "breakglass_justification")
 
@@ -2691,7 +2685,7 @@ if not MYPY:
         """
         encryption_key: NotRequired[pulumi.Input[str]]
         """
-        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
         """
         execution_environment: NotRequired[pulumi.Input[str]]
         """
@@ -2701,7 +2695,7 @@ if not MYPY:
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-        For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         """
@@ -2725,7 +2719,7 @@ if not MYPY:
         """
         session_affinity: NotRequired[pulumi.Input[bool]]
         """
-        Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
         """
         timeout: NotRequired[pulumi.Input[str]]
         """
@@ -2739,7 +2733,7 @@ if not MYPY:
         """
         vpc_access: NotRequired[pulumi.Input['ServiceTemplateVpcAccessArgsDict']]
         """
-        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
         Structure is documented below.
         """
 elif False:
@@ -2768,11 +2762,11 @@ class ServiceTemplateArgs:
                This field follows Kubernetes annotations' namespacing, limits, and rules.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]] containers: Holds the containers that define the unit of execution for this Service.
                Structure is documented below.
-        :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
         :param pulumi.Input[str] execution_environment: The sandbox environment to host this Revision.
                Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-               For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+               For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
@@ -2781,12 +2775,12 @@ class ServiceTemplateArgs:
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param pulumi.Input[bool] session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        :param pulumi.Input[bool] session_affinity: Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
         :param pulumi.Input[str] timeout: Max allowed time for an instance to respond to a request.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateVpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param pulumi.Input['ServiceTemplateVpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
                Structure is documented below.
         """
         if annotations is not None:
@@ -2848,7 +2842,7 @@ class ServiceTemplateArgs:
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
         """
         return pulumi.get(self, "encryption_key")
 
@@ -2874,7 +2868,7 @@ class ServiceTemplateArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-        For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
         Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         """
@@ -2938,7 +2932,7 @@ class ServiceTemplateArgs:
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
         """
         return pulumi.get(self, "session_affinity")
 
@@ -2976,7 +2970,7 @@ class ServiceTemplateArgs:
     @pulumi.getter(name="vpcAccess")
     def vpc_access(self) -> Optional[pulumi.Input['ServiceTemplateVpcAccessArgs']]:
         """
-        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
         Structure is documented below.
         """
         return pulumi.get(self, "vpc_access")
@@ -2990,15 +2984,15 @@ if not MYPY:
     class ServiceTemplateContainerArgsDict(TypedDict):
         image: pulumi.Input[str]
         """
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
         """
         args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -3011,7 +3005,7 @@ if not MYPY:
         """
         liveness_probe: NotRequired[pulumi.Input['ServiceTemplateContainerLivenessProbeArgsDict']]
         """
-        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         Structure is documented below.
         """
         name: NotRequired[pulumi.Input[str]]
@@ -3026,12 +3020,12 @@ if not MYPY:
         """
         resources: NotRequired[pulumi.Input['ServiceTemplateContainerResourcesArgsDict']]
         """
-        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
         Structure is documented below.
         """
         startup_probe: NotRequired[pulumi.Input['ServiceTemplateContainerStartupProbeArgsDict']]
         """
-        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         Structure is documented below.
         """
         volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgsDict']]]]
@@ -3062,21 +3056,21 @@ class ServiceTemplateContainerArgs:
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input['ServiceTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param pulumi.Input['ServiceTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateContainerStartupProbeArgs'] startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input['ServiceTemplateContainerStartupProbeArgs'] startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
@@ -3110,7 +3104,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
         """
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
         """
         return pulumi.get(self, "image")
 
@@ -3122,7 +3116,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         return pulumi.get(self, "args")
 
@@ -3134,7 +3128,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter
     def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
         """
         return pulumi.get(self, "commands")
 
@@ -3171,7 +3165,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeArgs']]:
         """
-        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         Structure is documented below.
         """
         return pulumi.get(self, "liveness_probe")
@@ -3210,7 +3204,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input['ServiceTemplateContainerResourcesArgs']]:
         """
-        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
@@ -3223,7 +3217,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> Optional[pulumi.Input['ServiceTemplateContainerStartupProbeArgs']]:
         """
-        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         Structure is documented below.
         """
         return pulumi.get(self, "startup_probe")
@@ -3436,7 +3430,7 @@ if not MYPY:
         """
         initial_delay_seconds: NotRequired[pulumi.Input[int]]
         """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         period_seconds: NotRequired[pulumi.Input[int]]
         """
@@ -3449,7 +3443,7 @@ if not MYPY:
         """
         timeout_seconds: NotRequired[pulumi.Input[int]]
         """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
 elif False:
     ServiceTemplateContainerLivenessProbeArgsDict: TypeAlias = Mapping[str, Any]
@@ -3470,11 +3464,11 @@ class ServiceTemplateContainerLivenessProbeArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgs'] http_get: HTTPGet specifies the http request to perform.
                Structure is documented below.
-        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs'] tcp_socket: TCPSocketAction describes an action based on opening a socket
                Structure is documented below.
-        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -3533,7 +3527,7 @@ class ServiceTemplateContainerLivenessProbeArgs:
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -3570,7 +3564,7 @@ class ServiceTemplateContainerLivenessProbeArgs:
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -3589,7 +3583,7 @@ if not MYPY:
         service: NotRequired[pulumi.Input[str]]
         """
         The name of the service to place in the gRPC HealthCheckRequest
-        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
         If this is not specified, the default behavior is defined by gRPC.
         """
 elif False:
@@ -3604,7 +3598,7 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
         :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         :param pulumi.Input[str] service: The name of the service to place in the gRPC HealthCheckRequest
-               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
                If this is not specified, the default behavior is defined by gRPC.
         """
         if port is not None:
@@ -3630,7 +3624,7 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
     def service(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the service to place in the gRPC HealthCheckRequest
-        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
         If this is not specified, the default behavior is defined by gRPC.
         """
         return pulumi.get(self, "service")
@@ -3864,7 +3858,7 @@ if not MYPY:
         """
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
         """
         startup_cpu_boost: NotRequired[pulumi.Input[bool]]
         """
@@ -3882,7 +3876,7 @@ class ServiceTemplateContainerResourcesArgs:
         """
         :param pulumi.Input[bool] cpu_idle: Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
                `resources` is set, this field must be explicitly set to true to preserve the default behavior.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
         :param pulumi.Input[bool] startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         if cpu_idle is not None:
@@ -3909,7 +3903,7 @@ class ServiceTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
         """
         return pulumi.get(self, "limits")
 
@@ -3948,7 +3942,7 @@ if not MYPY:
         """
         initial_delay_seconds: NotRequired[pulumi.Input[int]]
         """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         period_seconds: NotRequired[pulumi.Input[int]]
         """
@@ -3961,7 +3955,7 @@ if not MYPY:
         """
         timeout_seconds: NotRequired[pulumi.Input[int]]
         """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
 elif False:
     ServiceTemplateContainerStartupProbeArgsDict: TypeAlias = Mapping[str, Any]
@@ -3982,11 +3976,11 @@ class ServiceTemplateContainerStartupProbeArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetArgs'] http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
                Structure is documented below.
-        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
         :param pulumi.Input['ServiceTemplateContainerStartupProbeTcpSocketArgs'] tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
                Structure is documented below.
-        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -4045,7 +4039,7 @@ class ServiceTemplateContainerStartupProbeArgs:
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -4082,7 +4076,7 @@ class ServiceTemplateContainerStartupProbeArgs:
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -4101,7 +4095,7 @@ if not MYPY:
         service: NotRequired[pulumi.Input[str]]
         """
         The name of the service to place in the gRPC HealthCheckRequest
-        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
         If this is not specified, the default behavior is defined by gRPC.
         """
 elif False:
@@ -4116,7 +4110,7 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
         :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
                If not specified, defaults to the same value as container.ports[0].containerPort.
         :param pulumi.Input[str] service: The name of the service to place in the gRPC HealthCheckRequest
-               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
                If this is not specified, the default behavior is defined by gRPC.
         """
         if port is not None:
@@ -4142,7 +4136,7 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
     def service(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the service to place in the gRPC HealthCheckRequest
-        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
         If this is not specified, the default behavior is defined by gRPC.
         """
         return pulumi.get(self, "service")
@@ -4320,7 +4314,7 @@ if not MYPY:
     class ServiceTemplateContainerVolumeMountArgsDict(TypedDict):
         mount_path: pulumi.Input[str]
         """
-        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
         """
         name: pulumi.Input[str]
         """
@@ -4335,7 +4329,7 @@ class ServiceTemplateContainerVolumeMountArgs:
                  mount_path: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
         :param pulumi.Input[str] name: This must match the Name of a Volume.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -4345,7 +4339,7 @@ class ServiceTemplateContainerVolumeMountArgs:
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> pulumi.Input[str]:
         """
-        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
         """
         return pulumi.get(self, "mount_path")
 
@@ -4426,7 +4420,7 @@ if not MYPY:
         """
         cloud_sql_instance: NotRequired[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgsDict']]
         """
-        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
         """
         empty_dir: NotRequired[pulumi.Input['ServiceTemplateVolumeEmptyDirArgsDict']]
@@ -4446,7 +4440,7 @@ if not MYPY:
         """
         secret: NotRequired[pulumi.Input['ServiceTemplateVolumeSecretArgsDict']]
         """
-        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
         Structure is documented below.
         """
 elif False:
@@ -4463,7 +4457,7 @@ class ServiceTemplateVolumeArgs:
                  secret: Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
@@ -4471,7 +4465,7 @@ class ServiceTemplateVolumeArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeNfsArgs'] nfs: Represents an NFS mount.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        :param pulumi.Input['ServiceTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -4502,7 +4496,7 @@ class ServiceTemplateVolumeArgs:
     @pulumi.getter(name="cloudSqlInstance")
     def cloud_sql_instance(self) -> Optional[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs']]:
         """
-        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql_instance")
@@ -4554,7 +4548,7 @@ class ServiceTemplateVolumeArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']]:
         """
-        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
         Structure is documented below.
         """
         return pulumi.get(self, "secret")
@@ -4568,7 +4562,7 @@ if not MYPY:
     class ServiceTemplateVolumeCloudSqlInstanceArgsDict(TypedDict):
         instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
 elif False:
     ServiceTemplateVolumeCloudSqlInstanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -4578,7 +4572,7 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
     def __init__(__self__, *,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -4587,7 +4581,7 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         return pulumi.get(self, "instances")
 
@@ -4606,7 +4600,7 @@ if not MYPY:
         """
         size_limit: NotRequired[pulumi.Input[str]]
         """
-        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
         """
 elif False:
     ServiceTemplateVolumeEmptyDirArgsDict: TypeAlias = Mapping[str, Any]
@@ -4620,7 +4614,7 @@ class ServiceTemplateVolumeEmptyDirArgs:
         :param pulumi.Input[str] medium: The different types of medium supported for EmptyDir.
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
-        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -4645,7 +4639,7 @@ class ServiceTemplateVolumeEmptyDirArgs:
     @pulumi.getter(name="sizeLimit")
     def size_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
         """
         return pulumi.get(self, "size_limit")
 
@@ -4718,8 +4712,6 @@ if not MYPY:
         read_only: NotRequired[pulumi.Input[bool]]
         """
         If true, mount the NFS volume as read only
-
-        - - -
         """
 elif False:
     ServiceTemplateVolumeNfsArgsDict: TypeAlias = Mapping[str, Any]
@@ -4734,8 +4726,6 @@ class ServiceTemplateVolumeNfsArgs:
         :param pulumi.Input[str] path: Path that is exported by the NFS server.
         :param pulumi.Input[str] server: Hostname or IP address of the NFS server
         :param pulumi.Input[bool] read_only: If true, mount the NFS volume as read only
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "server", server)
@@ -4771,8 +4761,6 @@ class ServiceTemplateVolumeNfsArgs:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, mount the NFS volume as read only
-
-        - - -
         """
         return pulumi.get(self, "read_only")
 

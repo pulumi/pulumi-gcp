@@ -34,13 +34,11 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
  * * How-to Guides
- *     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+ *   * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
  * 
  * &gt; **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
  * 
- * ## Example Usage
- * 
- * ### Cloudbuild Trigger Filename
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -84,7 +82,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Build
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -211,7 +209,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Service Account
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -280,6 +278,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Cloudbuild Trigger Include Build Logs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -326,7 +327,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Pubsub Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -387,7 +388,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Webhook Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -481,7 +482,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Manual
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -532,6 +533,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudbuild Trigger Manual Github Enterprise
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -581,7 +583,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Manual Bitbucket Server
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -630,7 +632,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Repo
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -696,7 +698,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Bitbucket Server Push
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -743,7 +745,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Bitbucket Server Pull Request
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -791,6 +793,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudbuild Trigger Github Enterprise
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -837,7 +840,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Allow Failure
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -942,7 +945,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Allow Exit Codes
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1049,7 +1052,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Trigger Pubsub With Repo
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1325,7 +1328,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.github);
     }
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -1338,7 +1341,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> ignoredFiles;
 
     /**
-     * @return ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * @return ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -1371,7 +1374,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeBuildLogs);
     }
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we
@@ -1386,7 +1389,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> includedFiles;
 
     /**
-     * @return ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * @return ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we

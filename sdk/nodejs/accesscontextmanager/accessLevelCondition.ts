@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
  * * How-to Guides
- *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -119,9 +119,6 @@ export class AccessLevelCondition extends pulumi.CustomResource {
 
     /**
      * The name of the Access Level to add this condition to.
-     *
-     *
-     * - - -
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
@@ -226,9 +223,6 @@ export class AccessLevelCondition extends pulumi.CustomResource {
 export interface AccessLevelConditionState {
     /**
      * The name of the Access Level to add this condition to.
-     *
-     *
-     * - - -
      */
     accessLevel?: pulumi.Input<string>;
     /**
@@ -294,9 +288,6 @@ export interface AccessLevelConditionState {
 export interface AccessLevelConditionArgs {
     /**
      * The name of the Access Level to add this condition to.
-     *
-     *
-     * - - -
      */
     accessLevel: pulumi.Input<string>;
     /**

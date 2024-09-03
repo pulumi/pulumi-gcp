@@ -112,7 +112,7 @@ class RegionBackendServiceArgs:
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -148,9 +148,6 @@ class RegionBackendServiceArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
@@ -442,7 +439,7 @@ class RegionBackendServiceArgs:
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         reported weights. If set, the Backend Service must
         configure a non legacy HTTP-based Health Check, and
@@ -500,9 +497,6 @@ class RegionBackendServiceArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -748,7 +742,7 @@ class _RegionBackendServiceState:
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -784,9 +778,6 @@ class _RegionBackendServiceState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
@@ -1124,7 +1115,7 @@ class _RegionBackendServiceState:
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         reported weights. If set, the Backend Service must
         configure a non legacy HTTP-based Health Check, and
@@ -1182,9 +1173,6 @@ class _RegionBackendServiceState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1380,11 +1368,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
         * How-to Guides
-            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+          * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
-        ## Example Usage
-
-        ### Region Backend Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -1404,7 +1390,7 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
-        ### Region Backend Service External Iap
+        ## 
 
         ```python
         import pulumi
@@ -1420,7 +1406,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "oauth2_client_secret": "xyz",
             })
         ```
-        ### Region Backend Service Cache
+        ## 
 
         ```python
         import pulumi
@@ -1448,7 +1434,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
         ```
-        ### Region Backend Service Ilb Round Robin
+        ## 
 
         ```python
         import pulumi
@@ -1467,7 +1453,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-        ### Region Backend Service External
+        ## 
 
         ```python
         import pulumi
@@ -1486,7 +1472,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL")
         ```
-        ### Region Backend Service External Weighted
+        ## 
 
         ```python
         import pulumi
@@ -1506,7 +1492,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             locality_lb_policy="WEIGHTED_MAGLEV")
         ```
-        ### Region Backend Service Ilb Ring Hash
+        ## 
 
         ```python
         import pulumi
@@ -1541,7 +1527,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
-        ### Region Backend Service Balancing Mode
+        ## 
 
         ```python
         import pulumi
@@ -1602,7 +1588,7 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
-        ### Region Backend Service Connection Tracking
+        ## 
 
         ```python
         import pulumi
@@ -1725,7 +1711,7 @@ class RegionBackendService(pulumi.CustomResource):
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -1761,9 +1747,6 @@ class RegionBackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
@@ -1806,11 +1789,9 @@ class RegionBackendService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
         * How-to Guides
-            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+          * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
-        ## Example Usage
-
-        ### Region Backend Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -1830,7 +1811,7 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
-        ### Region Backend Service External Iap
+        ## 
 
         ```python
         import pulumi
@@ -1846,7 +1827,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "oauth2_client_secret": "xyz",
             })
         ```
-        ### Region Backend Service Cache
+        ## 
 
         ```python
         import pulumi
@@ -1874,7 +1855,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             protocol="HTTP")
         ```
-        ### Region Backend Service Ilb Round Robin
+        ## 
 
         ```python
         import pulumi
@@ -1893,7 +1874,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-        ### Region Backend Service External
+        ## 
 
         ```python
         import pulumi
@@ -1912,7 +1893,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="TCP",
             load_balancing_scheme="EXTERNAL")
         ```
-        ### Region Backend Service External Weighted
+        ## 
 
         ```python
         import pulumi
@@ -1932,7 +1913,7 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="EXTERNAL",
             locality_lb_policy="WEIGHTED_MAGLEV")
         ```
-        ### Region Backend Service Ilb Ring Hash
+        ## 
 
         ```python
         import pulumi
@@ -1967,7 +1948,7 @@ class RegionBackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
-        ### Region Backend Service Balancing Mode
+        ## 
 
         ```python
         import pulumi
@@ -2028,7 +2009,7 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
-        ### Region Backend Service Connection Tracking
+        ## 
 
         ```python
         import pulumi
@@ -2280,7 +2261,7 @@ class RegionBackendService(pulumi.CustomResource):
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
                reported weights. If set, the Backend Service must
                configure a non legacy HTTP-based Health Check, and
@@ -2316,9 +2297,6 @@ class RegionBackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
@@ -2567,7 +2545,7 @@ class RegionBackendService(pulumi.CustomResource):
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         reported weights. If set, the Backend Service must
         configure a non legacy HTTP-based Health Check, and
@@ -2617,9 +2595,6 @@ class RegionBackendService(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

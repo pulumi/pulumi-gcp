@@ -23,16 +23,12 @@ public final class AccessLevelConditionArgs extends com.pulumi.resources.Resourc
     /**
      * The name of the Access Level to add this condition to.
      * 
-     * ***
-     * 
      */
     @Import(name="accessLevel", required=true)
     private Output<String> accessLevel;
 
     /**
      * @return The name of the Access Level to add this condition to.
-     * 
-     * ***
      * 
      */
     public Output<String> accessLevel() {
@@ -232,8 +228,6 @@ public final class AccessLevelConditionArgs extends com.pulumi.resources.Resourc
         /**
          * @param accessLevel The name of the Access Level to add this condition to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -244,8 +238,6 @@ public final class AccessLevelConditionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param accessLevel The name of the Access Level to add this condition to.
-         * 
-         * ***
          * 
          * @return builder
          * 

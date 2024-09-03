@@ -20,8 +20,6 @@ public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
@@ -29,8 +27,6 @@ public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -81,8 +77,6 @@ public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
          * @param instanceId The Apigee instance associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -94,8 +88,6 @@ public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceId The Apigee instance associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

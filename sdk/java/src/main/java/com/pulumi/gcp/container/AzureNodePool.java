@@ -25,9 +25,10 @@ import javax.annotation.Nullable;
  * 
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+ * 
  * ## Example Usage
  * 
- * ### Basic_azure_node_pool
+ * ### basic_azure_node_pool
  * A basic example of a containerazure azure node pool
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

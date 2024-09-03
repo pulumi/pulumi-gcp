@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
  *
- * ## Example Usage
- *
- * ### Os Config Patch Deployment Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +32,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Os Config Patch Deployment Daily
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,7 +56,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Os Config Patch Deployment Daily Midnight
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,7 +80,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Os Config Patch Deployment Instance
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -141,7 +139,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Os Config Patch Deployment Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -21,9 +21,7 @@ import (
 //
 // > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 //
-// ## Example Usage
-//
-// ### Cloudbuild Trigger Filename
+// ##
 //
 // ```go
 // package main
@@ -57,7 +55,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Build
+// ##
 //
 // ```go
 // package main
@@ -198,7 +196,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Service Account
+// ##
 //
 // ```go
 // package main
@@ -266,6 +264,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Cloudbuild Trigger Include Build Logs
 //
 // ```go
@@ -301,7 +302,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Pubsub Config
+// ##
 //
 // ```go
 // package main
@@ -353,7 +354,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Webhook Config
+// ##
 //
 // ```go
 // package main
@@ -444,7 +445,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Manual
+// ##
 //
 // ```go
 // package main
@@ -483,6 +484,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Manual Github Enterprise
 //
 // ```go
@@ -521,7 +523,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Manual Bitbucket Server
+// ##
 //
 // ```go
 // package main
@@ -559,7 +561,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Repo
+// ##
 //
 // ```go
 // package main
@@ -613,7 +615,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Bitbucket Server Push
+// ##
 //
 // ```go
 // package main
@@ -649,7 +651,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Bitbucket Server Pull Request
+// ##
 //
 // ```go
 // package main
@@ -686,6 +688,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuild Trigger Github Enterprise
 //
 // ```go
@@ -721,7 +724,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Allow Failure
+// ##
 //
 // ```go
 // package main
@@ -831,7 +834,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Allow Exit Codes
+// ##
 //
 // ```go
 // package main
@@ -944,7 +947,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Trigger Pubsub With Repo
+// ##
 //
 // ```go
 // package main
@@ -1076,7 +1079,7 @@ type Trigger struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	Github TriggerGithubPtrOutput `pulumi:"github"`
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If ignoredFiles and changed files are both empty, then they are not
 	// used to determine whether or not to trigger a build.
@@ -1089,7 +1092,7 @@ type Trigger struct {
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
 	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs pulumi.StringPtrOutput `pulumi:"includeBuildLogs"`
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
 	// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1208,7 +1211,7 @@ type triggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	Github *TriggerGithub `pulumi:"github"`
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If ignoredFiles and changed files are both empty, then they are not
 	// used to determine whether or not to trigger a build.
@@ -1221,7 +1224,7 @@ type triggerState struct {
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
 	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs *string `pulumi:"includeBuildLogs"`
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
 	// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1311,7 +1314,7 @@ type TriggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	Github TriggerGithubPtrInput
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If ignoredFiles and changed files are both empty, then they are not
 	// used to determine whether or not to trigger a build.
@@ -1324,7 +1327,7 @@ type TriggerState struct {
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
 	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs pulumi.StringPtrInput
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
 	// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1416,7 +1419,7 @@ type triggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	Github *TriggerGithub `pulumi:"github"`
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If ignoredFiles and changed files are both empty, then they are not
 	// used to determine whether or not to trigger a build.
@@ -1429,7 +1432,7 @@ type triggerArgs struct {
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
 	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs *string `pulumi:"includeBuildLogs"`
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
 	// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1516,7 +1519,7 @@ type TriggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
 	// Structure is documented below.
 	Github TriggerGithubPtrInput
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If ignoredFiles and changed files are both empty, then they are not
 	// used to determine whether or not to trigger a build.
@@ -1529,7 +1532,7 @@ type TriggerArgs struct {
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
 	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs pulumi.StringPtrInput
-	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+	// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 	// extended with support for `**`.
 	// If any of the files altered in the commit pass the ignoredFiles filter
 	// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1733,7 +1736,7 @@ func (o TriggerOutput) Github() TriggerGithubPtrOutput {
 	return o.ApplyT(func(v *Trigger) TriggerGithubPtrOutput { return v.Github }).(TriggerGithubPtrOutput)
 }
 
-// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 // extended with support for `**`.
 // If ignoredFiles and changed files are both empty, then they are not
 // used to determine whether or not to trigger a build.
@@ -1752,7 +1755,7 @@ func (o TriggerOutput) IncludeBuildLogs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.IncludeBuildLogs }).(pulumi.StringPtrOutput)
 }
 
-// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+// ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
 // extended with support for `**`.
 // If any of the files altered in the commit pass the ignoredFiles filter
 // and includedFiles is empty, then as far as this filter is concerned, we

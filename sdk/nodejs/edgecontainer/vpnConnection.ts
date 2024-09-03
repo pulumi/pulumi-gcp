@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.vpnConnections)
  * * How-to Guides
- *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+ *   * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  *
  * ## Example Usage
  *
@@ -144,9 +144,6 @@ export class VpnConnection extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Google Cloud Platform location.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -278,9 +275,6 @@ export interface VpnConnectionState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Google Cloud Platform location.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -341,9 +335,6 @@ export interface VpnConnectionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Google Cloud Platform location.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

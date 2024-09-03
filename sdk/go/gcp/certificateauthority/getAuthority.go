@@ -14,6 +14,33 @@ import (
 // Get info about a Google CAS Certificate Authority.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := certificateauthority.LookupAuthority(ctx, &certificateauthority.LookupAuthorityArgs{
+//				Location:               pulumi.StringRef("us-west1"),
+//				Pool:                   pulumi.StringRef("pool-name"),
+//				CertificateAuthorityId: pulumi.StringRef("ca-id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("csr", _default.PemCsr)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAuthority(ctx *pulumi.Context, args *LookupAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupAuthorityResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorityResult
@@ -27,8 +54,6 @@ func LookupAuthority(ctx *pulumi.Context, args *LookupAuthorityArgs, opts ...pul
 // A collection of arguments for invoking getAuthority.
 type LookupAuthorityArgs struct {
 	// ID of the certificate authority.
-	//
-	// ***
 	CertificateAuthorityId *string `pulumi:"certificateAuthorityId"`
 	// The location the certificate authority exists in.
 	Location *string `pulumi:"location"`
@@ -87,8 +112,6 @@ func LookupAuthorityOutput(ctx *pulumi.Context, args LookupAuthorityOutputArgs, 
 // A collection of arguments for invoking getAuthority.
 type LookupAuthorityOutputArgs struct {
 	// ID of the certificate authority.
-	//
-	// ***
 	CertificateAuthorityId pulumi.StringPtrInput `pulumi:"certificateAuthorityId"`
 	// The location the certificate authority exists in.
 	Location pulumi.StringPtrInput `pulumi:"location"`

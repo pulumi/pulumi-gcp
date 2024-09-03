@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs)
  * * How-to Guides
- *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+ *   * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
  * 
  * ## Example Usage
  * 
@@ -327,16 +327,12 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
     /**
      * Transfer specification. Structure documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="transferSpec", refs={TransferJobTransferSpec.class}, tree="[0]")
     private Output<TransferJobTransferSpec> transferSpec;
 
     /**
      * @return Transfer specification. Structure documented below.
-     * 
-     * ***
      * 
      */
     public Output<TransferJobTransferSpec> transferSpec() {

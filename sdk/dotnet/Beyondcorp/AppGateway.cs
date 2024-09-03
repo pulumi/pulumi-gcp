@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appgateways)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+    ///   * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Beyondcorp App Gateway Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -42,7 +40,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
-    /// ### Beyondcorp App Gateway Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -140,9 +138,6 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// ID of the AppGateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -269,9 +264,6 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// ID of the AppGateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -365,9 +357,6 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// ID of the AppGateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

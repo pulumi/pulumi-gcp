@@ -99,6 +99,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.storage.BucketIAMBinding
     /// 
     /// ```csharp
@@ -150,6 +151,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.storage.BucketIAMMember
     /// 
     /// ```csharp
@@ -197,8 +199,6 @@ namespace Pulumi.Gcp.Storage
     /// ```
     /// 
     /// ## This resource supports User Project Overrides.
-    /// 
-    /// - 
     /// 
     /// # IAM policy for Cloud Storage Bucket
     /// Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
@@ -290,6 +290,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.storage.BucketIAMBinding
     /// 
     /// ```csharp
@@ -341,6 +342,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.storage.BucketIAMMember
     /// 
     /// ```csharp
@@ -419,7 +421,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:storage/bucketIAMPolicy:BucketIAMPolicy")]
     public partial class BucketIAMPolicy : global::Pulumi.CustomResource

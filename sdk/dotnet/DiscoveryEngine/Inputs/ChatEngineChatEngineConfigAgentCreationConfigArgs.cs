@@ -26,8 +26,6 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
 
         /// <summary>
         /// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

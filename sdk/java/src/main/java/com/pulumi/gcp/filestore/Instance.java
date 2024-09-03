@@ -25,13 +25,11 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
  * * How-to Guides
- *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
- *     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
- *     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+ *   * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+ *   * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+ *   * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
  * 
- * ## Example Usage
- * 
- * ### Filestore Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +75,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Filestore Instance Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -137,7 +135,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Filestore Instance Protocol
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -184,6 +182,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Filestore Instance Enterprise
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

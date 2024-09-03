@@ -36,8 +36,6 @@ class VariableArgs:
                Exactly one of `text` or `variable` must be specified. If `text` is specified,
                it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
                is specified, it must be base64 encoded and less than 4096 bytes in length.
-               
-               - - -
         """
         pulumi.set(__self__, "parent", parent)
         if name is not None:
@@ -96,8 +94,6 @@ class VariableArgs:
         Exactly one of `text` or `variable` must be specified. If `text` is specified,
         it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         is specified, it must be base64 encoded and less than 4096 bytes in length.
-
-        - - -
         """
         return pulumi.get(self, "text")
 
@@ -136,8 +132,6 @@ class _VariableState:
                Exactly one of `text` or `variable` must be specified. If `text` is specified,
                it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
                is specified, it must be base64 encoded and less than 4096 bytes in length.
-               
-               - - -
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds, representing when the variable was last updated.
                Example: "2016-10-09T12:33:37.578138407Z".
@@ -202,8 +196,6 @@ class _VariableState:
         Exactly one of `text` or `variable` must be specified. If `text` is specified,
         it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         is specified, it must be base64 encoded and less than 4096 bytes in length.
-
-        - - -
         """
         return pulumi.get(self, "text")
 
@@ -315,8 +307,6 @@ class Variable(pulumi.CustomResource):
                Exactly one of `text` or `variable` must be specified. If `text` is specified,
                it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
                is specified, it must be base64 encoded and less than 4096 bytes in length.
-               
-               - - -
         """
         ...
     @overload
@@ -453,8 +443,6 @@ class Variable(pulumi.CustomResource):
                Exactly one of `text` or `variable` must be specified. If `text` is specified,
                it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
                is specified, it must be base64 encoded and less than 4096 bytes in length.
-               
-               - - -
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds, representing when the variable was last updated.
                Example: "2016-10-09T12:33:37.578138407Z".
@@ -506,8 +494,6 @@ class Variable(pulumi.CustomResource):
         Exactly one of `text` or `variable` must be specified. If `text` is specified,
         it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         is specified, it must be base64 encoded and less than 4096 bytes in length.
-
-        - - -
         """
         return pulumi.get(self, "text")
 

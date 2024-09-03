@@ -360,7 +360,7 @@ class SubscriptionBigqueryConfig(dict):
                and any messages with extra fields are not written and remain in the subscription's backlog.
         :param str service_account_email: The service account to use to write to BigQuery. If not specified, the Pub/Sub
                [service agent](https://cloud.google.com/iam/docs/service-agents),
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
         :param bool use_table_schema: When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
                must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
         :param bool use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
@@ -404,7 +404,7 @@ class SubscriptionBigqueryConfig(dict):
         """
         The service account to use to write to BigQuery. If not specified, the Pub/Sub
         [service agent](https://cloud.google.com/iam/docs/service-agents),
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -491,7 +491,7 @@ class SubscriptionCloudStorageConfig(dict):
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param str service_account_email: The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
                [service agent](https://cloud.google.com/iam/docs/service-agents),
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
         :param str state: (Output)
                An output-only field that indicates whether or not the subscription can receive messages.
         """
@@ -579,7 +579,7 @@ class SubscriptionCloudStorageConfig(dict):
         """
         The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
         [service agent](https://cloud.google.com/iam/docs/service-agents),
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -658,7 +658,7 @@ class SubscriptionDeadLetterPolicy(dict):
                Format is `projects/{project}/topics/{topic}`.
                The Cloud Pub/Sub service account associated with the enclosing subscription's
                parent project (i.e.,
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
                permission to Publish() to this topic.
                The operation will fail if the topic does not exist.
                Users should ensure that there is a subscription attached to this topic
@@ -685,7 +685,7 @@ class SubscriptionDeadLetterPolicy(dict):
         Format is `projects/{project}/topics/{topic}`.
         The Cloud Pub/Sub service account associated with the enclosing subscription's
         parent project (i.e.,
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
         permission to Publish() to this topic.
         The operation will fail if the topic does not exist.
         Users should ensure that there is a subscription attached to this topic
@@ -980,7 +980,7 @@ class SubscriptionPushConfigOidcToken(dict):
                identifies the recipients that the JWT is intended for. The audience
                value is a single case-sensitive string. Having multiple values (array)
                for the audience field is not supported. More info about the OIDC JWT
-               token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+               token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
                Note: if not specified, the Push endpoint URL will be used.
         """
         pulumi.set(__self__, "service_account_email", service_account_email)
@@ -1006,7 +1006,7 @@ class SubscriptionPushConfigOidcToken(dict):
         identifies the recipients that the JWT is intended for. The audience
         value is a single case-sensitive string. Having multiple values (array)
         for the audience field is not supported. More info about the OIDC JWT
-        token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+        token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
         Note: if not specified, the Push endpoint URL will be used.
         """
         return pulumi.get(self, "audience")
@@ -1299,7 +1299,7 @@ class TopicSchemaSettings(dict):
         """
         :param str schema: The name of the schema that messages published should be
                validated against. Format is projects/{project}/schemas/{schema}.
-               The value of this field will be _deleted-schema_
+               The value of this field will be *deleted-schema*
                if the schema has been deleted.
         :param str encoding: The encoding of messages validated against schema.
                Default value is `ENCODING_UNSPECIFIED`.
@@ -1315,7 +1315,7 @@ class TopicSchemaSettings(dict):
         """
         The name of the schema that messages published should be
         validated against. Format is projects/{project}/schemas/{schema}.
-        The value of this field will be _deleted-schema_
+        The value of this field will be *deleted-schema*
         if the schema has been deleted.
         """
         return pulumi.get(self, "schema")

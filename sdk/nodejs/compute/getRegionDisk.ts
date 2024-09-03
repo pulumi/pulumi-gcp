@@ -27,8 +27,6 @@ export function getRegionDisk(args: GetRegionDiskArgs, opts?: pulumi.InvokeOptio
 export interface GetRegionDiskArgs {
     /**
      * The name of a specific disk.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -93,8 +91,6 @@ export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi
 export interface GetRegionDiskOutputArgs {
     /**
      * The name of a specific disk.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

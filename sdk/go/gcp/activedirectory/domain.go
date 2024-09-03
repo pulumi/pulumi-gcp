@@ -73,9 +73,7 @@ type Domain struct {
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
+	// of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -153,9 +151,7 @@ type domainState struct {
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
+	// of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
 	DomainName *string `pulumi:"domainName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -190,9 +186,7 @@ type DomainState struct {
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
+	// of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
 	DomainName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -231,9 +225,7 @@ type domainArgs struct {
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
+	// of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
 	DomainName string `pulumi:"domainName"`
 	// Resource labels that can contain user-provided metadata
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -259,9 +251,7 @@ type DomainArgs struct {
 	// If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-	// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
+	// of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
 	DomainName pulumi.StringInput
 	// Resource labels that can contain user-provided metadata
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -378,9 +368,7 @@ func (o DomainOutput) AuthorizedNetworks() pulumi.StringArrayOutput {
 }
 
 // The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-//
-// ***
+// of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
 func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }

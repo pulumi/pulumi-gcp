@@ -49,16 +49,12 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The ID of the external IP Address.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the external IP Address.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -67,7 +63,7 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -76,7 +72,7 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -156,8 +152,6 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name The ID of the external IP Address.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -169,8 +163,6 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name The ID of the external IP Address.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -180,7 +172,7 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param parent The resource name of the private cloud to create a new external address in.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
          * 
          * @return builder
@@ -193,7 +185,7 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param parent The resource name of the private cloud to create a new external address in.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
          * 
          * @return builder

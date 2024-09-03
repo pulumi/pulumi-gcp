@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.environments)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dialogflowcx Environment Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

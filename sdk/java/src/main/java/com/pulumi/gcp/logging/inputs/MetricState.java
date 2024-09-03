@@ -88,20 +88,16 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
      * is used to match log entries.
-     * 
-     * ***
      * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
     /**
-     * @return An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * @return An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
      * is used to match log entries.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> filter() {
@@ -197,7 +193,7 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      * 
@@ -210,7 +206,7 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      * 
@@ -345,10 +341,8 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filter An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+         * @param filter An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
          * is used to match log entries.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -359,10 +353,8 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filter An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+         * @param filter An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
          * is used to match log entries.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -484,7 +476,7 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
          * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
          * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
          * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-         * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+         * (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
          * log entry field. The value of the field is converted to a string before applying the regex. It is an
          * error to specify a regex that does not include exactly one capture group.
          * 
@@ -501,7 +493,7 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
          * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
          * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
          * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-         * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+         * (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
          * log entry field. The value of the field is converted to a string before applying the regex. It is an
          * error to specify a regex that does not include exactly one capture group.
          * 

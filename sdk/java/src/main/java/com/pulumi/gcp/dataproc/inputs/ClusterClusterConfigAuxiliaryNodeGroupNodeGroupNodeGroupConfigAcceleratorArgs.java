@@ -18,16 +18,12 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     /**
      * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
      * 
-     * ***
-     * 
      */
     @Import(name="acceleratorCount", required=true)
     private Output<Integer> acceleratorCount;
 
     /**
      * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-     * 
-     * ***
      * 
      */
     public Output<Integer> acceleratorCount() {
@@ -77,8 +73,6 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         /**
          * @param acceleratorCount The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -89,8 +83,6 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
 
         /**
          * @param acceleratorCount The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-         * 
-         * ***
          * 
          * @return builder
          * 

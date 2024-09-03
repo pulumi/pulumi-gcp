@@ -35,16 +35,12 @@ public final class FolderSettingsArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The folder for which to retrieve settings.
      * 
-     * ***
-     * 
      */
     @Import(name="folder", required=true)
     private Output<String> folder;
 
     /**
      * @return The folder for which to retrieve settings.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {
@@ -132,8 +128,6 @@ public final class FolderSettingsArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param folder The folder for which to retrieve settings.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -144,8 +138,6 @@ public final class FolderSettingsArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param folder The folder for which to retrieve settings.
-         * 
-         * ***
          * 
          * @return builder
          * 

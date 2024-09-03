@@ -80,7 +80,7 @@ def get_project(filter: Optional[str] = None,
 
     ## Example Usage
 
-    ### Searching For Projects About To Be Deleted In An Org
+    ### searching for projects about to be deleted in an org
 
     ```python
     import pulumi
@@ -114,7 +114,7 @@ def get_project_output(filter: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    ### Searching For Projects About To Be Deleted In An Org
+    ### searching for projects about to be deleted in an org
 
     ```python
     import pulumi

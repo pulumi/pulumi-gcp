@@ -18,16 +18,12 @@ public final class GetBackendBucketPlainArgs extends com.pulumi.resources.Invoke
     /**
      * Name of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return Name of the resource.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -78,8 +74,6 @@ public final class GetBackendBucketPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param name Name of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

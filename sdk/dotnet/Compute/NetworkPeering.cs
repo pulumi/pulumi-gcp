@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> ExportCustomRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
         /// </summary>
         [Output("exportSubnetRoutesWithPublicIp")]
         public Output<bool?> ExportSubnetRoutesWithPublicIp { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> ImportCustomRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
         /// </summary>
         [Output("importSubnetRoutesWithPublicIp")]
         public Output<bool?> ImportSubnetRoutesWithPublicIp { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ExportCustomRoutes { get; set; }
 
         /// <summary>
-        /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
         /// </summary>
         [Input("exportSubnetRoutesWithPublicIp")]
         public Input<bool>? ExportSubnetRoutesWithPublicIp { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ImportCustomRoutes { get; set; }
 
         /// <summary>
-        /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
         /// </summary>
         [Input("importSubnetRoutesWithPublicIp")]
         public Input<bool>? ImportSubnetRoutesWithPublicIp { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ExportCustomRoutes { get; set; }
 
         /// <summary>
-        /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
         /// </summary>
         [Input("exportSubnetRoutesWithPublicIp")]
         public Input<bool>? ExportSubnetRoutesWithPublicIp { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ImportCustomRoutes { get; set; }
 
         /// <summary>
-        /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
         /// </summary>
         [Input("importSubnetRoutesWithPublicIp")]
         public Input<bool>? ImportSubnetRoutesWithPublicIp { get; set; }

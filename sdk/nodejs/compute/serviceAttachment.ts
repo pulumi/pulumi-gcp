@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/serviceAttachments)
  * * How-to Guides
- *     * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+ *   * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
  *
- * ## Example Usage
- *
- * ### Service Attachment Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +85,7 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
- * ### Service Attachment Explicit Projects
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -165,7 +163,7 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
- * ### Service Attachment Explicit Networks
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -249,7 +247,7 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
- * ### Service Attachment Reconcile Connections
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -410,9 +408,6 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     *
-     *
-     * - - -
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
     /**
@@ -561,9 +556,6 @@ export interface ServiceAttachmentState {
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     *
-     *
-     * - - -
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
     /**
@@ -644,9 +636,6 @@ export interface ServiceAttachmentArgs {
      * If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     *
-     *
-     * - - -
      */
     enableProxyProtocol: pulumi.Input<boolean>;
     /**

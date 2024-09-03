@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheKeysets)
  * * How-to Guides
- *     * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
+ *   * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
  * 
- * ## Example Usage
- * 
- * ### Network Services Edge Cache Keyset Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -74,7 +72,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Services Edge Cache Keyset Dual Token
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -215,8 +213,6 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -225,8 +221,6 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @return Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

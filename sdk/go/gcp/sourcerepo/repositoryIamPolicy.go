@@ -130,8 +130,6 @@ import (
 //
 // ## This resource supports User Project Overrides.
 //
-// -
-//
 // # IAM policy for Cloud Source Repositories Repository
 // Three different resources help you manage your IAM policy for Cloud Source Repositories Repository. Each of these resources serves a different use case:
 //
@@ -281,7 +279,7 @@ import (
 //
 // -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 //
-//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type RepositoryIamPolicy struct {
 	pulumi.CustomResourceState
 

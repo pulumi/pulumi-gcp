@@ -132,7 +132,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
     /**
      * The database engine type and version.
-     * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+     * Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
      * 
      */
     @Import(name="databaseVersion")
@@ -140,7 +140,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
     /**
      * @return The database engine type and version.
-     * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+     * Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
      * 
      */
     public Optional<Output<String>> databaseVersion() {
@@ -247,7 +247,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
     /**
      * The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-     * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+     * For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
      * 
      */
     @Import(name="tier")
@@ -255,7 +255,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
     /**
      * @return The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-     * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+     * For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
      * 
      */
     public Optional<Output<String>> tier() {
@@ -487,7 +487,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
         /**
          * @param databaseVersion The database engine type and version.
-         * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+         * Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
         /**
          * @param databaseVersion The database engine type and version.
-         * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+         * Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
         /**
          * @param tier The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-         * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+         * For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
 
         /**
          * @param tier The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-         * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+         * For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
          * 
          * @return builder
          * 

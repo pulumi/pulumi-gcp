@@ -382,7 +382,7 @@ public final class ProjectsFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For Projects About To Be Deleted In An Org
+     * ### searching for projects about to be deleted in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -434,7 +434,7 @@ public final class ProjectsFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For Projects About To Be Deleted In An Org
+     * ### searching for projects about to be deleted in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -486,7 +486,7 @@ public final class ProjectsFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For Projects About To Be Deleted In An Org
+     * ### searching for projects about to be deleted in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -538,7 +538,7 @@ public final class ProjectsFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For Projects About To Be Deleted In An Org
+     * ### searching for projects about to be deleted in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -596,7 +596,7 @@ public final class ProjectsFunctions {
      * 
      * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
      * * How-to Guides
-     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     *   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
      * 
@@ -650,7 +650,7 @@ public final class ProjectsFunctions {
      * 
      * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
      * * How-to Guides
-     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     *   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
      * 
@@ -704,7 +704,7 @@ public final class ProjectsFunctions {
      * 
      * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
      * * How-to Guides
-     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     *   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
      * 
@@ -758,7 +758,7 @@ public final class ProjectsFunctions {
      * 
      * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
      * * How-to Guides
-     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     *   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
      * 
      * ## Example Usage
      * 

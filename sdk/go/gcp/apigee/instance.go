@@ -92,6 +92,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Instance Cidr Range
 //
 // ```go
@@ -163,6 +164,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Instance Ip Range
 //
 // ```go
@@ -234,6 +236,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Apigee Instance Full
 //
 // ```go
@@ -391,8 +394,6 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The size of the CIDR block range that will be reserved by the instance. For valid values,
 	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -469,8 +470,6 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId *string `pulumi:"orgId"`
 	// The size of the CIDR block range that will be reserved by the instance. For valid values,
 	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -512,8 +511,6 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringPtrInput
 	// The size of the CIDR block range that will be reserved by the instance. For valid values,
 	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -557,8 +554,6 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId string `pulumi:"orgId"`
 	// The size of the CIDR block range that will be reserved by the instance. For valid values,
 	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -593,8 +588,6 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee instance,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringInput
 	// The size of the CIDR block range that will be reserved by the instance. For valid values,
 	// see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
@@ -740,8 +733,6 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 
 // The Apigee Organization associated with the Apigee instance,
 // in the format `organizations/{{org_name}}`.
-//
-// ***
 func (o InstanceOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

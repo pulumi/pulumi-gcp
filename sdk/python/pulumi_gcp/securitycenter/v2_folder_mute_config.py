@@ -35,9 +35,6 @@ class V2FolderMuteConfigArgs:
         :param pulumi.Input[str] folder: The folder whose Cloud Security Command Center the Mute
                Config lives in.
         :param pulumi.Input[str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the mute config.
         :param pulumi.Input[str] description: A description of the mute config.
         :param pulumi.Input[str] location: location Id is provided by folder. If not provided, Use global as default.
@@ -85,9 +82,6 @@ class V2FolderMuteConfigArgs:
     def mute_config_id(self) -> pulumi.Input[str]:
         """
         Unique identifier provided by the client within the parent scope.
-
-
-        - - -
         """
         return pulumi.get(self, "mute_config_id")
 
@@ -162,9 +156,6 @@ class _V2FolderMuteConfigState:
                field is set by the server and will be ignored if provided on
                config creation or update.
         :param pulumi.Input[str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the mute config. Its format is
                organizations/{organization}/locations/global/muteConfigs/{configId},
                folders/{folder}/locations/global/muteConfigs/{configId},
@@ -280,9 +271,6 @@ class _V2FolderMuteConfigState:
     def mute_config_id(self) -> Optional[pulumi.Input[str]]:
         """
         Unique identifier provided by the client within the parent scope.
-
-
-        - - -
         """
         return pulumi.get(self, "mute_config_id")
 
@@ -404,9 +392,6 @@ class V2FolderMuteConfig(pulumi.CustomResource):
                Config lives in.
         :param pulumi.Input[str] location: location Id is provided by folder. If not provided, Use global as default.
         :param pulumi.Input[str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the mute config.
         """
         ...
@@ -553,9 +538,6 @@ class V2FolderMuteConfig(pulumi.CustomResource):
                field is set by the server and will be ignored if provided on
                config creation or update.
         :param pulumi.Input[str] mute_config_id: Unique identifier provided by the client within the parent scope.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the mute config. Its format is
                organizations/{organization}/locations/global/muteConfigs/{configId},
                folders/{folder}/locations/global/muteConfigs/{configId},
@@ -642,9 +624,6 @@ class V2FolderMuteConfig(pulumi.CustomResource):
     def mute_config_id(self) -> pulumi.Output[str]:
         """
         Unique identifier provided by the client within the parent scope.
-
-
-        - - -
         """
         return pulumi.get(self, "mute_config_id")
 

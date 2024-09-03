@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class ResponsePolicyRuleLocalDataLocalData
     {
         /// <summary>
-        /// For example, www.example.com.
+        /// For example, &lt;http://www.example.com&gt;.
         /// </summary>
         public readonly string Name;
         /// <summary>

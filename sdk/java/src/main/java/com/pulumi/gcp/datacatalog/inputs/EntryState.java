@@ -21,7 +21,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
      * Structure is documented below.
      * 
      */
@@ -30,7 +30,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
      * Structure is documented below.
      * 
      */
@@ -105,16 +105,12 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the entry to create.
      * 
-     * ***
-     * 
      */
     @Import(name="entryId")
     private @Nullable Output<String> entryId;
 
     /**
      * @return The id of the entry to create.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> entryId() {
@@ -200,7 +196,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
      * for what fields this schema can contain.
      * 
      */
@@ -210,7 +206,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
      * for what fields this schema can contain.
      * 
      */
@@ -318,7 +314,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-         * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -331,7 +327,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-         * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -343,7 +339,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-         * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -455,8 +451,6 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param entryId The id of the entry to create.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -467,8 +461,6 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param entryId The id of the entry to create.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -580,7 +572,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schema Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
          * attached to it. See
-         * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+         * &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
          * for what fields this schema can contain.
          * 
          * @return builder
@@ -594,7 +586,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schema Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
          * attached to it. See
-         * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+         * &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
          * for what fields this schema can contain.
          * 
          * @return builder

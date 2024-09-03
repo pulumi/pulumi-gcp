@@ -31,9 +31,6 @@ class QueueArgs:
         """
         The set of arguments for constructing a Queue resource.
         :param pulumi.Input[str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
@@ -72,9 +69,6 @@ class QueueArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the queue
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -183,9 +177,6 @@ class _QueueState:
                to App Engine tasks in this queue
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -236,9 +227,6 @@ class _QueueState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the queue
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -333,9 +321,7 @@ class Queue(pulumi.CustomResource):
         """
         A named resource to which messages are sent by publishers.
 
-        ## Example Usage
-
-        ### Queue Basic
+        ## 
 
         ```python
         import pulumi
@@ -345,7 +331,7 @@ class Queue(pulumi.CustomResource):
             name="cloud-tasks-queue-test",
             location="us-central1")
         ```
-        ### Cloud Tasks Queue Advanced
+        ## 
 
         ```python
         import pulumi
@@ -405,9 +391,6 @@ class Queue(pulumi.CustomResource):
                to App Engine tasks in this queue
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -433,9 +416,7 @@ class Queue(pulumi.CustomResource):
         """
         A named resource to which messages are sent by publishers.
 
-        ## Example Usage
-
-        ### Queue Basic
+        ## 
 
         ```python
         import pulumi
@@ -445,7 +426,7 @@ class Queue(pulumi.CustomResource):
             name="cloud-tasks-queue-test",
             location="us-central1")
         ```
-        ### Cloud Tasks Queue Advanced
+        ## 
 
         ```python
         import pulumi
@@ -567,9 +548,6 @@ class Queue(pulumi.CustomResource):
                to App Engine tasks in this queue
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
-               
-               
-               - - -
         :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -614,9 +592,6 @@ class Queue(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the queue
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

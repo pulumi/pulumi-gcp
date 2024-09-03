@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string> NodePool { get; set; } = null!;
 
         /// <summary>
-        /// The configuration for the GKE node pool. 
+        /// The configuration for the GKE node pool.
         /// If specified, Dataproc attempts to create a node pool with the specified shape.
         /// If one with the same name already exists, it is verified against all specified fields.
         /// If a field differs, the virtual cluster creation will fail.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// The roles associated with the GKE node pool. 
+        /// The roles associated with the GKE node pool.
         /// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
         /// </summary>
         public InputList<string> Roles

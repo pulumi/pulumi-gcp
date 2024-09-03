@@ -20,7 +20,7 @@ public final class CloudassetFunctions {
     /**
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -56,7 +56,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -93,7 +93,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -136,7 +136,7 @@ public final class CloudassetFunctions {
     /**
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -172,7 +172,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -209,7 +209,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -252,7 +252,7 @@ public final class CloudassetFunctions {
     /**
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -288,7 +288,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -325,7 +325,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -368,7 +368,7 @@ public final class CloudassetFunctions {
     /**
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -404,7 +404,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -441,7 +441,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -488,7 +488,7 @@ public final class CloudassetFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -524,7 +524,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -561,7 +561,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -608,7 +608,7 @@ public final class CloudassetFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -644,7 +644,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -681,7 +681,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -728,7 +728,7 @@ public final class CloudassetFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -764,7 +764,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -801,7 +801,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -848,7 +848,7 @@ public final class CloudassetFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Searching For All Projects In An Org
+     * ### searching for all projects in an org
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -884,7 +884,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Projects With CloudBuild API Enabled
+     * ### searching for all projects with CloudBuild API enabled
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -921,7 +921,7 @@ public final class CloudassetFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Searching For All Service Accounts In A Project
+     * ### searching for all Service Accounts in a project
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

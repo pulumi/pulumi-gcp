@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class EntitlementApprovalWorkflowManualApprovalsStepApprovers {
     /**
-     * @return Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+     * @return Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
      * 
      */
     private List<String> principals;
 
     private EntitlementApprovalWorkflowManualApprovalsStepApprovers() {}
     /**
-     * @return Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+     * @return Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
      * 
      */
     public List<String> principals() {

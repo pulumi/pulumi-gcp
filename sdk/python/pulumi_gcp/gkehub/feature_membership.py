@@ -342,7 +342,8 @@ class FeatureMembership(pulumi.CustomResource):
                 },
             })
         ```
-        ### Config Management With OCI
+
+        ### Config Management with OCI
 
         ```python
         import pulumi
@@ -426,7 +427,7 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
-        ### Config Management With Regional Membership
+        ### Config Management with Regional Membership
 
         ```python
         import pulumi
@@ -465,7 +466,7 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
-        ### Policy Controller With Minimal Configuration
+        ### Policy Controller with minimal configuration
 
         ```python
         import pulumi
@@ -496,7 +497,7 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
-        ### Policy Controller With Custom Configurations
+        ### Policy Controller with custom configurations
 
         ```python
         import pulumi
@@ -620,7 +621,8 @@ class FeatureMembership(pulumi.CustomResource):
                 },
             })
         ```
-        ### Config Management With OCI
+
+        ### Config Management with OCI
 
         ```python
         import pulumi
@@ -704,7 +706,7 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
-        ### Config Management With Regional Membership
+        ### Config Management with Regional Membership
 
         ```python
         import pulumi
@@ -743,7 +745,7 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
-        ### Policy Controller With Minimal Configuration
+        ### Policy Controller with minimal configuration
 
         ```python
         import pulumi
@@ -774,7 +776,7 @@ class FeatureMembership(pulumi.CustomResource):
             })
         ```
 
-        ### Policy Controller With Custom Configurations
+        ### Policy Controller with custom configurations
 
         ```python
         import pulumi

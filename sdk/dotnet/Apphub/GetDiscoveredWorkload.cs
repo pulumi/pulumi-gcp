@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Apphub
         /// <summary>
         /// Get information about a discovered workload from its uri.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// Get information about a discovered workload from its uri.
-        /// 
         /// 
         /// ## Example Usage
         /// 

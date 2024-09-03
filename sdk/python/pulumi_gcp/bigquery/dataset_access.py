@@ -37,9 +37,6 @@ class DatasetAccessInitArgs:
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
@@ -67,7 +64,7 @@ class DatasetAccessInitArgs:
                * `projectWriters`: Writers of the enclosing project.
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
-               fred@example.com
+               <fred@example.com>
         :param pulumi.Input['DatasetAccessViewArgs'] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
@@ -104,9 +101,6 @@ class DatasetAccessInitArgs:
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -233,7 +227,7 @@ class DatasetAccessInitArgs:
     def user_by_email(self) -> Optional[pulumi.Input[str]]:
         """
         An email address of a user to grant access to. For example:
-        fred@example.com
+        <fred@example.com>
         """
         return pulumi.get(self, "user_by_email")
 
@@ -283,9 +277,6 @@ class _DatasetAccessState:
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -311,7 +302,7 @@ class _DatasetAccessState:
                * `projectWriters`: Writers of the enclosing project.
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
-               fred@example.com
+               <fred@example.com>
         :param pulumi.Input['DatasetAccessViewArgs'] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
@@ -377,9 +368,6 @@ class _DatasetAccessState:
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -493,7 +481,7 @@ class _DatasetAccessState:
     def user_by_email(self) -> Optional[pulumi.Input[str]]:
         """
         An email address of a user to grant access to. For example:
-        fred@example.com
+        <fred@example.com>
         """
         return pulumi.get(self, "user_by_email")
 
@@ -552,6 +540,7 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
+
         ### Bigquery Dataset Access View
 
         ```python
@@ -576,6 +565,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "table_id": public_table.table_id,
             })
         ```
+
         ### Bigquery Dataset Access Authorized Dataset
 
         ```python
@@ -594,6 +584,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "target_types": ["VIEWS"],
             })
         ```
+
         ### Bigquery Dataset Access Authorized Routine
 
         ```python
@@ -648,9 +639,6 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -676,7 +664,7 @@ class DatasetAccess(pulumi.CustomResource):
                * `projectWriters`: Writers of the enclosing project.
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
-               fred@example.com
+               <fred@example.com>
         :param pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
@@ -706,6 +694,7 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
+
         ### Bigquery Dataset Access View
 
         ```python
@@ -730,6 +719,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "table_id": public_table.table_id,
             })
         ```
+
         ### Bigquery Dataset Access Authorized Dataset
 
         ```python
@@ -748,6 +738,7 @@ class DatasetAccess(pulumi.CustomResource):
                 "target_types": ["VIEWS"],
             })
         ```
+
         ### Bigquery Dataset Access Authorized Routine
 
         ```python
@@ -880,9 +871,6 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -908,7 +896,7 @@ class DatasetAccess(pulumi.CustomResource):
                * `projectWriters`: Writers of the enclosing project.
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param pulumi.Input[str] user_by_email: An email address of a user to grant access to. For example:
-               fred@example.com
+               <fred@example.com>
         :param pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']] view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
@@ -959,9 +947,6 @@ class DatasetAccess(pulumi.CustomResource):
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1043,7 +1028,7 @@ class DatasetAccess(pulumi.CustomResource):
     def user_by_email(self) -> pulumi.Output[Optional[str]]:
         """
         An email address of a user to grant access to. For example:
-        fred@example.com
+        <fred@example.com>
         """
         return pulumi.get(self, "user_by_email")
 

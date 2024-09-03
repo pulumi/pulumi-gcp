@@ -11,12 +11,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
  * * How-to Guides
- *     * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
- *     * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
+ *   * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+ *   * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
  *
- * ## Example Usage
- *
- * ### Filestore Snapshot Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +39,7 @@ import * as utilities from "../utilities";
  *     location: "us-east1",
  * });
  * ```
- * ### Filestore Snapshot Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -141,9 +139,6 @@ export class Snapshot extends pulumi.CustomResource {
     public /*out*/ readonly filesystemUsedBytes!: pulumi.Output<string>;
     /**
      * The resource name of the filestore instance.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -255,9 +250,6 @@ export interface SnapshotState {
     filesystemUsedBytes?: pulumi.Input<string>;
     /**
      * The resource name of the filestore instance.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -307,9 +299,6 @@ export interface SnapshotArgs {
     description?: pulumi.Input<string>;
     /**
      * The resource name of the filestore instance.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

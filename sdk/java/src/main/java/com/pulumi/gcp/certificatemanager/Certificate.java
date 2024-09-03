@@ -21,9 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Certificate represents a HTTP-reachable backend for a Certificate.
  * 
- * ## Example Usage
- * 
- * ### Certificate Manager Google Managed Certificate Dns
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -83,7 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Google Managed Certificate Issuance Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -171,7 +169,6 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         // creating certificate_issuance_config to use it in the managed certificate
  *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()
  *             .name("issuance-config")
  *             .description("sample description for the certificate issuanceConfigs")
@@ -202,7 +199,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Certificate Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -261,7 +258,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Self Managed Certificate Regional
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -306,7 +303,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -394,7 +391,6 @@ import javax.annotation.Nullable;
  *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
- *         // creating certificate_issuance_config to use it in the managed certificate
  *         var issuanceconfig = new CertificateIssuanceConfig("issuanceconfig", CertificateIssuanceConfigArgs.builder()
  *             .name("issuance-config")
  *             .description("sample description for the certificate issuanceConfigs")
@@ -425,7 +421,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Google Managed Certificate Dns All Regions
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -484,7 +480,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Google Managed Regional Certificate Dns Auth
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -647,8 +643,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -657,8 +651,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * @return A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -701,9 +693,9 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-     * See https://cloud.google.com/vpc/docs/edge-locations.
+     * See &lt;https://cloud.google.com/vpc/docs/edge-locations&gt;.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See &lt;https://cloud.google.com/compute/docs/regions-zones&gt;
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -714,9 +706,9 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-     * See https://cloud.google.com/vpc/docs/edge-locations.
+     * See &lt;https://cloud.google.com/vpc/docs/edge-locations&gt;.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See &lt;https://cloud.google.com/compute/docs/regions-zones&gt;
      * 
      */
     public Output<Optional<String>> scope() {

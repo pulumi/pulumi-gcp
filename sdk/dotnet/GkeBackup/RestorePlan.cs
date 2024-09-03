@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+    ///   * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
     /// 
     /// ## Example Usage
     /// 
@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Rollback Namespace
     /// 
     /// ```csharp
@@ -168,6 +169,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Protected Application
     /// 
     /// ```csharp
@@ -242,6 +244,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan All Cluster Resources
     /// 
     /// ```csharp
@@ -306,6 +309,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Rename Namespace
     /// 
     /// ```csharp
@@ -423,6 +427,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Second Transformation
     /// 
     /// ```csharp
@@ -534,6 +539,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Gitops Mode
     /// 
     /// ```csharp
@@ -599,6 +605,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Restore Order
     /// 
     /// ```csharp
@@ -696,6 +703,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Restoreplan Volume Res
     /// 
     /// ```csharp

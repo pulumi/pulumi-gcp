@@ -30,9 +30,6 @@ class SchemaArgs:
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[str] schema_id: The unique id of the schema.
-               
-               
-               - - -
         :param pulumi.Input[str] json_schema: The JSON representation of the schema.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -75,9 +72,6 @@ class SchemaArgs:
     def schema_id(self) -> pulumi.Input[str]:
         """
         The unique id of the schema.
-
-
-        - - -
         """
         return pulumi.get(self, "schema_id")
 
@@ -133,9 +127,6 @@ class _SchemaState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schema_id: The unique id of the schema.
-               
-               
-               - - -
         """
         if data_store_id is not None:
             pulumi.set(__self__, "data_store_id", data_store_id)
@@ -220,9 +211,6 @@ class _SchemaState:
     def schema_id(self) -> Optional[pulumi.Input[str]]:
         """
         The unique id of the schema.
-
-
-        - - -
         """
         return pulumi.get(self, "schema_id")
 
@@ -249,11 +237,9 @@ class Schema(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
         * How-to Guides
-            * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+          * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
 
-        ## Example Usage
-
-        ### Discoveryengine Schema Basic
+        ## 
 
         ```python
         import pulumi
@@ -308,9 +294,6 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schema_id: The unique id of the schema.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -325,11 +308,9 @@ class Schema(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
         * How-to Guides
-            * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+          * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
 
-        ## Example Usage
-
-        ### Discoveryengine Schema Basic
+        ## 
 
         ```python
         import pulumi
@@ -450,9 +431,6 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schema_id: The unique id of the schema.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -516,9 +494,6 @@ class Schema(pulumi.CustomResource):
     def schema_id(self) -> pulumi.Output[str]:
         """
         The unique id of the schema.
-
-
-        - - -
         """
         return pulumi.get(self, "schema_id")
 

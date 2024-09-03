@@ -129,16 +129,12 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Service identifier.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
 
     /**
      * @return The Service identifier.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {
@@ -330,8 +326,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceId The Service identifier.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -342,8 +336,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceId The Service identifier.
-         * 
-         * ***
          * 
          * @return builder
          * 

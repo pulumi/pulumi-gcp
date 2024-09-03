@@ -340,8 +340,6 @@ class ApplicationScope(dict):
                Possible values:
                REGIONAL
                Possible values are: `REGIONAL`.
-               
-               - - -
         """
         pulumi.set(__self__, "type", type)
 
@@ -353,8 +351,6 @@ class ApplicationScope(dict):
         Possible values:
         REGIONAL
         Possible values are: `REGIONAL`.
-
-        - - -
         """
         return pulumi.get(self, "type")
 

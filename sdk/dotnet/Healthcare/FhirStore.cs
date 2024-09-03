@@ -10,18 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare
 {
     /// <summary>
-    /// A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
+    /// A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (&lt;https://www.hl7.org/fhir/STU3/&gt;)
     /// standard for Healthcare information exchange
     /// 
     /// To get more information about FhirStore, see:
     /// 
     /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.fhirStores)
     /// * How-to Guides
-    ///     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
+    ///   * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Healthcare Fhir Store Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// ### Healthcare Fhir Store Streaming Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +141,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// ### Healthcare Fhir Store Notification Configs
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -222,9 +220,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -297,9 +292,9 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// User-supplied key-value pairs used to organize FHIR stores.
         /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
         /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
         /// No more than 64 labels can be associated with a given store.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -428,9 +423,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -500,9 +492,9 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// User-supplied key-value pairs used to organize FHIR stores.
         /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
         /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
         /// No more than 64 labels can be associated with a given store.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -590,9 +582,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
@@ -678,9 +667,9 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// User-supplied key-value pairs used to organize FHIR stores.
         /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+        /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
         /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
         /// No more than 64 labels can be associated with a given store.
         /// An object containing a list of "key": value pairs.
         /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

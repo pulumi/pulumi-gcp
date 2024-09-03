@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
  * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
  *
@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkehub Feature Multi Cluster Service Discovery
  *
  * ```typescript
@@ -61,6 +62,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkehub Feature Anthos Service Mesh
  *
  * ```typescript
@@ -72,6 +74,7 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
+ *
  * ### Enable Fleet Observability For Default Logs With Copy
  *
  * ```typescript
@@ -92,6 +95,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Observability For Scope Logs With Move
  *
  * ```typescript
@@ -112,6 +116,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Observability For Both Default And Scope Logs
  *
  * ```typescript
@@ -135,6 +140,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Default Member Config Service Mesh
  *
  * ```typescript
@@ -151,6 +157,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Default Member Config Configmanagement
  *
  * ```typescript
@@ -171,6 +178,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Default Member Config Policycontroller
  *
  * ```typescript
@@ -204,6 +212,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Default Member Config Policycontroller Full
  *
  * ```typescript
@@ -273,6 +282,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Enable Fleet Default Member Config Policycontroller Minimal
  *
  * ```typescript
@@ -300,6 +310,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkehub Feature Clusterupgrade
  *
  * ```typescript
@@ -397,9 +408,6 @@ export class Feature extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -519,9 +527,6 @@ export interface FeatureState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -578,9 +583,6 @@ export interface FeatureArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

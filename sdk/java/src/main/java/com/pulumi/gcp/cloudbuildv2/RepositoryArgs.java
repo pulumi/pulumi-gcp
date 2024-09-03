@@ -69,16 +69,12 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The connection for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="parentConnection", required=true)
     private Output<String> parentConnection;
 
     /**
      * @return The connection for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> parentConnection() {
@@ -216,8 +212,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parentConnection The connection for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -228,8 +222,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parentConnection The connection for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

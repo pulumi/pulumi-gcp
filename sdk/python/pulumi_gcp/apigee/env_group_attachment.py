@@ -25,9 +25,6 @@ class EnvGroupAttachmentArgs:
         The set of arguments for constructing a EnvGroupAttachment resource.
         :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] environment: The resource ID of the environment.
         """
         pulumi.set(__self__, "envgroup_id", envgroup_id)
@@ -39,9 +36,6 @@ class EnvGroupAttachmentArgs:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "envgroup_id")
 
@@ -72,9 +66,6 @@ class _EnvGroupAttachmentState:
         Input properties used for looking up and filtering EnvGroupAttachment resources.
         :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
@@ -91,9 +82,6 @@ class _EnvGroupAttachmentState:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "envgroup_id")
 
@@ -141,7 +129,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.envgroups.attachments/create)
         * How-to Guides
-            * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+          * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
 
@@ -167,9 +155,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] environment: The resource ID of the environment.
         """
         ...
@@ -185,7 +170,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.envgroups.attachments/create)
         * How-to Guides
-            * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+          * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
 
@@ -262,9 +247,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
@@ -283,9 +265,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "envgroup_id")
 

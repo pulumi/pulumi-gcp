@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### Adding An SSH Key
+    /// ### Adding an SSH Key
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -86,8 +86,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A series of key value pairs.
-        /// 
-        /// - - -
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
@@ -150,8 +148,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A series of key value pairs.
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -179,8 +175,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A series of key value pairs.
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Metadata
         {

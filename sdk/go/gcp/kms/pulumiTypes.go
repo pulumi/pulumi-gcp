@@ -1443,7 +1443,7 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 }
 
 type EkmConnectionServiceResolver struct {
-	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see <https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest>.
 	EndpointFilter *string `pulumi:"endpointFilter"`
 	// Required. The hostname of the EKM replica used at TLS and HTTP layers.
 	Hostname string `pulumi:"hostname"`
@@ -1466,7 +1466,7 @@ type EkmConnectionServiceResolverInput interface {
 }
 
 type EkmConnectionServiceResolverArgs struct {
-	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+	// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see <https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest>.
 	EndpointFilter pulumi.StringPtrInput `pulumi:"endpointFilter"`
 	// Required. The hostname of the EKM replica used at TLS and HTTP layers.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
@@ -1528,7 +1528,7 @@ func (o EkmConnectionServiceResolverOutput) ToEkmConnectionServiceResolverOutput
 	return o
 }
 
-// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see <https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest>.
 func (o EkmConnectionServiceResolverOutput) EndpointFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EkmConnectionServiceResolver) *string { return v.EndpointFilter }).(pulumi.StringPtrOutput)
 }
@@ -1599,8 +1599,6 @@ type EkmConnectionServiceResolverServerCertificate struct {
 	Subject *string `pulumi:"subject"`
 	// (Output)
 	// Output only. The subject Alternative DNS names. Only present if parsed is true.
-	//
-	// ***
 	SubjectAlternativeDnsNames []string `pulumi:"subjectAlternativeDnsNames"`
 }
 
@@ -1643,8 +1641,6 @@ type EkmConnectionServiceResolverServerCertificateArgs struct {
 	Subject pulumi.StringPtrInput `pulumi:"subject"`
 	// (Output)
 	// Output only. The subject Alternative DNS names. Only present if parsed is true.
-	//
-	// ***
 	SubjectAlternativeDnsNames pulumi.StringArrayInput `pulumi:"subjectAlternativeDnsNames"`
 }
 
@@ -1750,8 +1746,6 @@ func (o EkmConnectionServiceResolverServerCertificateOutput) Subject() pulumi.St
 
 // (Output)
 // Output only. The subject Alternative DNS names. Only present if parsed is true.
-//
-// ***
 func (o EkmConnectionServiceResolverServerCertificateOutput) SubjectAlternativeDnsNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EkmConnectionServiceResolverServerCertificate) []string { return v.SubjectAlternativeDnsNames }).(pulumi.StringArrayOutput)
 }

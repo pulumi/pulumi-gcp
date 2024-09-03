@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/networkconnectivity/rest/v1/projects.locations.networkConnectionPolicies)
  * * How-to Guides
- *     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
+ *   * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
  * 
- * ## Example Usage
- * 
- * ### Network Connectivity Policy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -209,8 +207,6 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
     /**
      * The location of the ServiceConnectionPolicy.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -218,21 +214,19 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
     /**
      * @return The location of the ServiceConnectionPolicy.
      * 
-     * ***
-     * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * @return The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
      * 
      */
     public Output<String> name() {

@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.Sql
     /// contains no data, requires no configuration or maintenance, and does not
     /// affect billing. You cannot update the source representation instance.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Sql Source Representation Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -42,7 +40,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
-    /// ### Sql Source Representation Instance Postgres
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -127,9 +125,6 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
@@ -257,9 +252,6 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -355,9 +347,6 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

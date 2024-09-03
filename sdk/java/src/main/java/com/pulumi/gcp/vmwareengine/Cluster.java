@@ -96,6 +96,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Vmware Engine Cluster Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -203,16 +204,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the Cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -238,7 +235,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name of the private cloud to create a new cluster in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -247,7 +244,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the private cloud to create a new cluster in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */

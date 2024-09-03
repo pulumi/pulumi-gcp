@@ -36,9 +36,6 @@ class RegionCommitmentArgs:
         :param pulumi.Input[str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-               
-               
-               - - -
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable automatic renewal for the commitment.
                The default value is false if not specified.
                If the field is set to true, the commitment will be automatically renewed for either
@@ -95,9 +92,6 @@ class RegionCommitmentArgs:
         The plan for this commitment, which determines duration and discount rate.
         The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-
-
-        - - -
         """
         return pulumi.get(self, "plan")
 
@@ -278,9 +272,6 @@ class _RegionCommitmentState:
         :param pulumi.Input[str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
@@ -448,9 +439,6 @@ class _RegionCommitmentState:
         The plan for this commitment, which determines duration and discount rate.
         The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-
-
-        - - -
         """
         return pulumi.get(self, "plan")
 
@@ -590,7 +578,7 @@ class RegionCommitment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCommitments)
         * How-to Guides
-            * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
+          * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 
         ## Example Usage
 
@@ -614,6 +602,7 @@ class RegionCommitment(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Compute Region Commitment Full
 
         ```python
@@ -691,9 +680,6 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
@@ -723,7 +709,7 @@ class RegionCommitment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCommitments)
         * How-to Guides
-            * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
+          * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
 
         ## Example Usage
 
@@ -747,6 +733,7 @@ class RegionCommitment(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Compute Region Commitment Full
 
         ```python
@@ -912,9 +899,6 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] plan: The plan for this commitment, which determines duration and discount rate.
                The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
                Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where this commitment may be used.
@@ -1038,9 +1022,6 @@ class RegionCommitment(pulumi.CustomResource):
         The plan for this commitment, which determines duration and discount rate.
         The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-
-
-        - - -
         """
         return pulumi.get(self, "plan")
 

@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+ *   * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
- * ## Example Usage
- *
- * ### Redis Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +26,7 @@ import * as utilities from "../utilities";
  *     memorySizeGb: 1,
  * });
  * ```
- * ### Redis Instance Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +70,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Redis Instance Full With Persistence Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -90,6 +88,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Redis Instance Private Service
  *
  * ```typescript
@@ -131,7 +132,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [privateServiceConnection],
  * });
  * ```
- * ### Redis Instance Mrr
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -166,6 +167,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Redis Instance Cmek
  *
  * ```typescript
@@ -357,9 +359,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintenanceVersion!: pulumi.Output<string>;
     /**
      * Redis memory size in GiB.
-     *
-     *
-     * - - -
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
     /**
@@ -419,9 +418,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly readReplicasMode!: pulumi.Output<string>;
     /**
-     * Redis configuration parameters, according to http://redis.io/topics/config.
+     * Redis configuration parameters, according to <http://redis.io/topics/config>.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
      */
     public readonly redisConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -669,9 +668,6 @@ export interface InstanceState {
     maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
-     *
-     *
-     * - - -
      */
     memorySizeGb?: pulumi.Input<number>;
     /**
@@ -731,9 +727,9 @@ export interface InstanceState {
      */
     readReplicasMode?: pulumi.Input<string>;
     /**
-     * Redis configuration parameters, according to http://redis.io/topics/config.
+     * Redis configuration parameters, according to <http://redis.io/topics/config>.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
      */
     redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -853,9 +849,6 @@ export interface InstanceArgs {
     maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
-     *
-     *
-     * - - -
      */
     memorySizeGb: pulumi.Input<number>;
     /**
@@ -883,9 +876,9 @@ export interface InstanceArgs {
      */
     readReplicasMode?: pulumi.Input<string>;
     /**
-     * Redis configuration parameters, according to http://redis.io/topics/config.
+     * Redis configuration parameters, according to <http://redis.io/topics/config>.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
      */
     redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Adding An SSH Key
+ * ### Adding an SSH Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -123,16 +123,12 @@ public class ProjectMetadata extends com.pulumi.resources.CustomResource {
     /**
      * A series of key value pairs.
      * 
-     * ***
-     * 
      */
     @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> metadata;
 
     /**
      * @return A series of key value pairs.
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> metadata() {

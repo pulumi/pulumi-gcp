@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
  * * How-to Guides
- *     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+ *   * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
  * 
- * ## Example Usage
- * 
- * ### Scan Config Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -119,7 +117,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
      * 
      */
     @Export(name="blacklistPatterns", refs={List.class,String.class}, tree="[0,1]")
@@ -127,7 +125,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
      * 
      */
     public Output<Optional<List<String>>> blacklistPatterns() {
@@ -232,16 +230,12 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     /**
      * The starting URLs from which the scanner finds site pages.
      * 
-     * ***
-     * 
      */
     @Export(name="startingUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> startingUrls;
 
     /**
      * @return The starting URLs from which the scanner finds site pages.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> startingUrls() {

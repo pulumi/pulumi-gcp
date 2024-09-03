@@ -26,9 +26,6 @@ class ClientArgs:
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
         pulumi.set(__self__, "brand", brand)
@@ -41,9 +38,6 @@ class ClientArgs:
         Identifier of the brand to which this client
         is attached to. The format is
         `projects/{project_number}/brands/{brand_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "brand")
 
@@ -76,9 +70,6 @@ class _ClientState:
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
@@ -100,9 +91,6 @@ class _ClientState:
         Identifier of the brand to which this client
         is attached to. The format is
         `projects/{project_number}/brands/{brand_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "brand")
 
@@ -167,7 +155,7 @@ class Client(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
         * How-to Guides
-            * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+          * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
 
         ## Example Usage
 
@@ -216,9 +204,6 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
         ...
@@ -238,7 +223,7 @@ class Client(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
         * How-to Guides
-            * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+          * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
 
         ## Example Usage
 
@@ -342,9 +327,6 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
@@ -367,9 +349,6 @@ class Client(pulumi.CustomResource):
         Identifier of the brand to which this client
         is attached to. The format is
         `projects/{project_number}/brands/{brand_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "brand")
 

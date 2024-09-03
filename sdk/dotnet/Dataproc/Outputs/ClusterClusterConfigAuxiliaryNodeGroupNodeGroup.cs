@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig? NodeGroupConfig;
         /// <summary>
-        /// Node group roles. 
+        /// Node group roles.
         /// One of `"DRIVER"`.
         /// </summary>
         public readonly ImmutableArray<string> Roles;

@@ -19,8 +19,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
     /// * How-to Guides
-    ///     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
-    ///     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+    ///   * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+    ///   * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
     /// 
     /// ## Example Usage
     /// 
@@ -111,9 +111,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The location (zone) of the firewall endpoint association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -145,7 +142,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -256,9 +253,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The location (zone) of the firewall endpoint association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -349,9 +343,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The location (zone) of the firewall endpoint association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -393,7 +384,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }

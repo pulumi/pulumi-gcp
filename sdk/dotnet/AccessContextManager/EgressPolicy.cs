@@ -33,9 +33,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("egressPolicyName")]
         public Output<string> EgressPolicyName { get; private set; } = null!;
@@ -94,9 +91,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("egressPolicyName", required: true)]
         public Input<string> EgressPolicyName { get; set; } = null!;
@@ -117,9 +111,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("egressPolicyName")]
         public Input<string>? EgressPolicyName { get; set; }

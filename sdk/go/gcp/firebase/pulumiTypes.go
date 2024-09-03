@@ -37,13 +37,11 @@ type ExtensionsInstanceConfig struct {
 	// with actual values. These strings include: ${param:FOO},
 	// ${function:myFunc.url},
 	// ${function:myFunc.name}, and ${function:myFunc.location}
-	//
-	// ***
 	PopulatedPostinstallContent *string `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
 	// functions. See a full list of system parameters at
-	// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+	// <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
 	SystemParams map[string]string `pulumi:"systemParams"`
 }
 
@@ -82,13 +80,11 @@ type ExtensionsInstanceConfigArgs struct {
 	// with actual values. These strings include: ${param:FOO},
 	// ${function:myFunc.url},
 	// ${function:myFunc.name}, and ${function:myFunc.location}
-	//
-	// ***
 	PopulatedPostinstallContent pulumi.StringPtrInput `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
 	// functions. See a full list of system parameters at
-	// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+	// <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
 	SystemParams pulumi.StringMapInput `pulumi:"systemParams"`
 }
 
@@ -213,8 +209,6 @@ func (o ExtensionsInstanceConfigOutput) Params() pulumi.StringMapOutput {
 // with actual values. These strings include: ${param:FOO},
 // ${function:myFunc.url},
 // ${function:myFunc.name}, and ${function:myFunc.location}
-//
-// ***
 func (o ExtensionsInstanceConfigOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.PopulatedPostinstallContent }).(pulumi.StringPtrOutput)
 }
@@ -222,7 +216,7 @@ func (o ExtensionsInstanceConfigOutput) PopulatedPostinstallContent() pulumi.Str
 // Params whose values are only available at deployment time.
 // Unlike other params, these will not be set as environment variables on
 // functions. See a full list of system parameters at
-// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+// <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
 func (o ExtensionsInstanceConfigOutput) SystemParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ExtensionsInstanceConfig) map[string]string { return v.SystemParams }).(pulumi.StringMapOutput)
 }
@@ -330,8 +324,6 @@ func (o ExtensionsInstanceConfigPtrOutput) Params() pulumi.StringMapOutput {
 // with actual values. These strings include: ${param:FOO},
 // ${function:myFunc.url},
 // ${function:myFunc.name}, and ${function:myFunc.location}
-//
-// ***
 func (o ExtensionsInstanceConfigPtrOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
 		if v == nil {
@@ -344,7 +336,7 @@ func (o ExtensionsInstanceConfigPtrOutput) PopulatedPostinstallContent() pulumi.
 // Params whose values are only available at deployment time.
 // Unlike other params, these will not be set as environment variables on
 // functions. See a full list of system parameters at
-// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+// <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
 func (o ExtensionsInstanceConfigPtrOutput) SystemParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExtensionsInstanceConfig) map[string]string {
 		if v == nil {

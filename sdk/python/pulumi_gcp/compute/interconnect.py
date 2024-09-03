@@ -40,9 +40,6 @@ class InterconnectArgs:
         The set of arguments for constructing a Interconnect resource.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
                crossconnect.
-               
-               
-               - - -
         :param pulumi.Input[str] interconnect_type: Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
@@ -121,9 +118,6 @@ class InterconnectArgs:
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
         crossconnect.
-
-
-        - - -
         """
         return pulumi.get(self, "customer_name")
 
@@ -378,9 +372,6 @@ class _InterconnectState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
                crossconnect.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]] expected_outages: A list of outages expected for this Interconnect.
@@ -580,9 +571,6 @@ class _InterconnectState:
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
         crossconnect.
-
-
-        - - -
         """
         return pulumi.get(self, "customer_name")
 
@@ -972,7 +960,7 @@ class Interconnect(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/interconnects)
         * How-to Guides
-            * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
+          * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
 
         ## Example Usage
 
@@ -1023,9 +1011,6 @@ class Interconnect(pulumi.CustomResource):
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
                crossconnect.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] interconnect_type: Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
                Can take one of the following values:
@@ -1083,7 +1068,7 @@ class Interconnect(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/interconnects)
         * How-to Guides
-            * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
+          * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
 
         ## Example Usage
 
@@ -1267,9 +1252,6 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
                crossconnect.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]] expected_outages: A list of outages expected for this Interconnect.
@@ -1428,9 +1410,6 @@ class Interconnect(pulumi.CustomResource):
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
         crossconnect.
-
-
-        - - -
         """
         return pulumi.get(self, "customer_name")
 

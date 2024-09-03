@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Using A Separately Managed Node Pool (Recommended)
+ * ### using a separately managed node pool (recommended)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+ * ### 2 node pools, 1 separately managed + the default node pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -199,16 +199,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
      * @return The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> cluster() {
@@ -257,16 +253,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The location (region or zone) of the cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location (region or zone) of the cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -99,12 +99,10 @@ class ExtensionsInstanceConfig(dict):
                with actual values. These strings include: ${param:FOO},
                ${function:myFunc.url},
                ${function:myFunc.name}, and ${function:myFunc.location}
-               
-               - - -
         :param Mapping[str, str] system_params: Params whose values are only available at deployment time.
                Unlike other params, these will not be set as environment variables on
                functions. See a full list of system parameters at
-               https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+               <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
         """
         pulumi.set(__self__, "extension_ref", extension_ref)
         pulumi.set(__self__, "params", params)
@@ -192,8 +190,6 @@ class ExtensionsInstanceConfig(dict):
         with actual values. These strings include: ${param:FOO},
         ${function:myFunc.url},
         ${function:myFunc.name}, and ${function:myFunc.location}
-
-        - - -
         """
         return pulumi.get(self, "populated_postinstall_content")
 
@@ -204,7 +200,7 @@ class ExtensionsInstanceConfig(dict):
         Params whose values are only available at deployment time.
         Unlike other params, these will not be set as environment variables on
         functions. See a full list of system parameters at
-        https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+        <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
         """
         return pulumi.get(self, "system_params")
 

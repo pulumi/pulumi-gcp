@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.recaptchaEnterpriseConfig)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/app-check)
+ *   * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
  *
@@ -102,9 +102,6 @@ export class AppCheckRecaptchaEnterpriseConfig extends pulumi.CustomResource {
     /**
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -172,9 +169,6 @@ export interface AppCheckRecaptchaEnterpriseConfigState {
     /**
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId?: pulumi.Input<string>;
     /**
@@ -206,9 +200,6 @@ export interface AppCheckRecaptchaEnterpriseConfigArgs {
     /**
      * The ID of an
      * [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

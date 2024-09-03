@@ -21,8 +21,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/spanner/)
 //
-// ## Example Usage
-//
 // ## Import
 //
 // InstanceConfig can be imported using any of these accepted formats:

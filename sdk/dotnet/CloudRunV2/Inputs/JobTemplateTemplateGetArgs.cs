@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         }
 
         /// <summary>
-        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         }
 
         /// <summary>
-        /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        /// VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
         /// Structure is documented below.
         /// </summary>
         [Input("vpcAccess")]

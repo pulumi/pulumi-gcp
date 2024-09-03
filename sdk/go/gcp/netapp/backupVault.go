@@ -94,8 +94,6 @@ type BackupVault struct {
 	// Location (region) of the backup vault.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the backup vault. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,8 +157,6 @@ type backupVaultState struct {
 	// Location (region) of the backup vault.
 	Location *string `pulumi:"location"`
 	// The resource name of the backup vault. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -187,8 +183,6 @@ type BackupVaultState struct {
 	// Location (region) of the backup vault.
 	Location pulumi.StringPtrInput
 	// The resource name of the backup vault. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -215,8 +209,6 @@ type backupVaultArgs struct {
 	// Location (region) of the backup vault.
 	Location string `pulumi:"location"`
 	// The resource name of the backup vault. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -235,8 +227,6 @@ type BackupVaultArgs struct {
 	// Location (region) of the backup vault.
 	Location pulumi.StringInput
 	// The resource name of the backup vault. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -359,8 +349,6 @@ func (o BackupVaultOutput) Location() pulumi.StringOutput {
 }
 
 // The resource name of the backup vault. Needs to be unique per location.
-//
-// ***
 func (o BackupVaultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// <summary>
         /// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
         /// [service agent](https://cloud.google.com/iam/docs/service-agents),
-        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// &lt;service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
         /// </summary>
         public readonly string? ServiceAccountEmail;
         /// <summary>

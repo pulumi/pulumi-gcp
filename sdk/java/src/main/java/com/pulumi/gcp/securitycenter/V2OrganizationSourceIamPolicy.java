@@ -147,10 +147,9 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## &gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
- * 
+ * &gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
- * ---
+ * ***
  * 
  * # IAM policy for Security Command Center (SCC)v2 API OrganizationSource
  * Three different resources help you manage your IAM policy for Security Command Center (SCC)v2 API OrganizationSource. Each of these resources serves a different use case:
@@ -320,7 +319,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:securitycenter/v2OrganizationSourceIamPolicy:V2OrganizationSourceIamPolicy")

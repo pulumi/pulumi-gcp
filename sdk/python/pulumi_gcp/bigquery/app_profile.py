@@ -34,9 +34,6 @@ class AppProfileArgs:
         """
         The set of arguments for constructing a AppProfile resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
@@ -79,9 +76,6 @@ class AppProfileArgs:
     def app_profile_id(self) -> pulumi.Input[str]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "app_profile_id")
 
@@ -222,9 +216,6 @@ class _AppProfileState:
         """
         Input properties used for looking up and filtering AppProfile resources.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
@@ -271,9 +262,6 @@ class _AppProfileState:
     def app_profile_id(self) -> Optional[pulumi.Input[str]]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "app_profile_id")
 
@@ -432,9 +420,7 @@ class AppProfile(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 
-        ## Example Usage
-
-        ### Bigtable App Profile Anycluster
+        ## 
 
         ```python
         import pulumi
@@ -469,7 +455,7 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
-        ### Bigtable App Profile Singlecluster
+        ## 
 
         ```python
         import pulumi
@@ -493,7 +479,7 @@ class AppProfile(pulumi.CustomResource):
             },
             ignore_warnings=True)
         ```
-        ### Bigtable App Profile Multicluster
+        ## 
 
         ```python
         import pulumi
@@ -532,7 +518,7 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
-        ### Bigtable App Profile Priority
+        ## 
 
         ```python
         import pulumi
@@ -587,9 +573,6 @@ class AppProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
@@ -620,9 +603,7 @@ class AppProfile(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 
-        ## Example Usage
-
-        ### Bigtable App Profile Anycluster
+        ## 
 
         ```python
         import pulumi
@@ -657,7 +638,7 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
-        ### Bigtable App Profile Singlecluster
+        ## 
 
         ```python
         import pulumi
@@ -681,7 +662,7 @@ class AppProfile(pulumi.CustomResource):
             },
             ignore_warnings=True)
         ```
-        ### Bigtable App Profile Multicluster
+        ## 
 
         ```python
         import pulumi
@@ -720,7 +701,7 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
-        ### Bigtable App Profile Priority
+        ## 
 
         ```python
         import pulumi
@@ -848,9 +829,6 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-               
-               
-               - - -
         :param pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
                Structure is documented below.
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
@@ -891,9 +869,6 @@ class AppProfile(pulumi.CustomResource):
     def app_profile_id(self) -> pulumi.Output[str]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-
-
-        - - -
         """
         return pulumi.get(self, "app_profile_id")
 

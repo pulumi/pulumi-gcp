@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * Get info about a Google CAS Certificate Authority.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.certificateauthority.getAuthority({
+ *     location: "us-west1",
+ *     pool: "pool-name",
+ *     certificateAuthorityId: "ca-id",
+ * });
+ * export const csr = _default.then(_default => _default.pemCsr);
+ * ```
  */
 export function getAuthority(args?: GetAuthorityArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorityResult> {
     args = args || {};
@@ -29,8 +41,6 @@ export function getAuthority(args?: GetAuthorityArgs, opts?: pulumi.InvokeOption
 export interface GetAuthorityArgs {
     /**
      * ID of the certificate authority.
-     *
-     * - - -
      */
     certificateAuthorityId?: string;
     /**
@@ -89,6 +99,18 @@ export interface GetAuthorityResult {
  * Get info about a Google CAS Certificate Authority.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.certificateauthority.getAuthority({
+ *     location: "us-west1",
+ *     pool: "pool-name",
+ *     certificateAuthorityId: "ca-id",
+ * });
+ * export const csr = _default.then(_default => _default.pemCsr);
+ * ```
  */
 export function getAuthorityOutput(args?: GetAuthorityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorityResult> {
     return pulumi.output(args).apply((a: any) => getAuthority(a, opts))
@@ -100,8 +122,6 @@ export function getAuthorityOutput(args?: GetAuthorityOutputArgs, opts?: pulumi.
 export interface GetAuthorityOutputArgs {
     /**
      * ID of the certificate authority.
-     *
-     * - - -
      */
     certificateAuthorityId?: pulumi.Input<string>;
     /**

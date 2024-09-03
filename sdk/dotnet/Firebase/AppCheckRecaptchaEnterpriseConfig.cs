@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.recaptchaEnterpriseConfig)
     /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/docs/app-check)
+    ///   * [Official Documentation](https://firebase.google.com/docs/app-check)
     /// 
     /// ## Example Usage
     /// 
@@ -105,9 +105,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The ID of an
         /// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -189,9 +186,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The ID of an
         /// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -229,9 +223,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The ID of an
         /// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }

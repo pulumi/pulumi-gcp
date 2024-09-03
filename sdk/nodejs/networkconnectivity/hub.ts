@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+ *   * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
  *
- * ## Example Usage
- *
- * ### Network Connectivity Hub Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +29,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Connectivity Hub With Export Psc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,9 +118,6 @@ export class Hub extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -228,9 +223,6 @@ export interface HubState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -282,9 +274,6 @@ export interface HubArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

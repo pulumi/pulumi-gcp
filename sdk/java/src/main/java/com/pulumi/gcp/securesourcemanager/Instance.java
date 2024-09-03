@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
+ *   * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
  * 
- * ## Example Usage
- * 
- * ### Secure Source Manager Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -65,7 +63,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secure Source Manager Instance Cmek
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -130,7 +128,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secure Source Manager Instance Private
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -229,7 +227,6 @@ import javax.annotation.Nullable;
  *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         // ca pool IAM permissions can take time to propagate
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
@@ -254,7 +251,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secure Source Manager Instance Private Psc Backend
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -371,7 +368,6 @@ import javax.annotation.Nullable;
  *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         // ca pool IAM permissions can take time to propagate
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
@@ -496,7 +492,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secure Source Manager Instance Private Psc Endpoint
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -608,7 +604,6 @@ import javax.annotation.Nullable;
  *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
- *         // ca pool IAM permissions can take time to propagate
  *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
  *             .createDuration("120s")
  *             .build(), CustomResourceOptions.builder()
@@ -781,16 +776,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The name for the Instance.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
      * @return The name for the Instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {

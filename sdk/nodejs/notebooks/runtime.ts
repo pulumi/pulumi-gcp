@@ -17,11 +17,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  *
- * ## Example Usage
- *
- * ### Notebook Runtime Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,7 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Runtime Basic Gpu
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,7 +78,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Runtime Basic Container
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -116,7 +114,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Runtime Kernels
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,7 +149,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Runtime Script
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -254,7 +252,7 @@ export class Runtime extends pulumi.CustomResource {
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -265,9 +263,6 @@ export class Runtime extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -377,7 +372,7 @@ export interface RuntimeState {
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -388,9 +383,6 @@ export interface RuntimeState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -441,7 +433,7 @@ export interface RuntimeArgs {
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -452,9 +444,6 @@ export interface RuntimeArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

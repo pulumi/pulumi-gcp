@@ -59,7 +59,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
     /**
      * Specifies the output schema type.
      * * ANALYTICS: Analytics schema defined by the FHIR community.
-     *   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+     *   See &lt;https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md&gt;.
      * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
      * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
      *   Default value is `ANALYTICS`.
@@ -72,7 +72,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
     /**
      * @return Specifies the output schema type.
      * * ANALYTICS: Analytics schema defined by the FHIR community.
-     *   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+     *   See &lt;https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md&gt;.
      * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
      * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
      *   Default value is `ANALYTICS`.
@@ -162,7 +162,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
         /**
          * @param schemaType Specifies the output schema type.
          * * ANALYTICS: Analytics schema defined by the FHIR community.
-         *   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+         *   See &lt;https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md&gt;.
          * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
          * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
          *   Default value is `ANALYTICS`.
@@ -179,7 +179,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
         /**
          * @param schemaType Specifies the output schema type.
          * * ANALYTICS: Analytics schema defined by the FHIR community.
-         *   See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+         *   See &lt;https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md&gt;.
          * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
          * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
          *   Default value is `ANALYTICS`.

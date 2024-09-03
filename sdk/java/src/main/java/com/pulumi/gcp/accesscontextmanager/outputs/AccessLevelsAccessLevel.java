@@ -22,7 +22,7 @@ public final class AccessLevelsAccessLevel {
     private @Nullable AccessLevelsAccessLevelBasic basic;
     /**
      * @return Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.
+     * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class AccessLevelsAccessLevel {
     }
     /**
      * @return Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.
+     * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
      * Structure is documented below.
      * 
      */

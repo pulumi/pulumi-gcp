@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
  * * How-to Guides
- *     * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
+ *   * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
  *
  * ## Import
  *
@@ -69,9 +69,6 @@ export class SharedflowDeployment extends pulumi.CustomResource {
     public readonly orgId!: pulumi.Output<string>;
     /**
      * Revision of the Sharedflow to be deployed.
-     *
-     *
-     * - - -
      */
     public readonly revision!: pulumi.Output<string>;
     /**
@@ -140,9 +137,6 @@ export interface SharedflowDeploymentState {
     orgId?: pulumi.Input<string>;
     /**
      * Revision of the Sharedflow to be deployed.
-     *
-     *
-     * - - -
      */
     revision?: pulumi.Input<string>;
     /**
@@ -169,9 +163,6 @@ export interface SharedflowDeploymentArgs {
     orgId: pulumi.Input<string>;
     /**
      * Revision of the Sharedflow to be deployed.
-     *
-     *
-     * - - -
      */
     revision: pulumi.Input<string>;
     /**

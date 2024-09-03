@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SQuotaPreferenceQuotaConfig {
     /**
-     * @return The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+     * @return The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
      * An object containing a list of &#34;key: value&#34; pairs. Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
@@ -34,8 +34,6 @@ public final class SQuotaPreferenceQuotaConfig {
      * @return (Output)
      * The origin of the quota preference request.
      * 
-     * ***
-     * 
      */
     private @Nullable String requestOrigin;
     /**
@@ -53,7 +51,7 @@ public final class SQuotaPreferenceQuotaConfig {
 
     private SQuotaPreferenceQuotaConfig() {}
     /**
-     * @return The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+     * @return The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
      * An object containing a list of &#34;key: value&#34; pairs. Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
@@ -78,8 +76,6 @@ public final class SQuotaPreferenceQuotaConfig {
     /**
      * @return (Output)
      * The origin of the quota preference request.
-     * 
-     * ***
      * 
      */
     public Optional<String> requestOrigin() {

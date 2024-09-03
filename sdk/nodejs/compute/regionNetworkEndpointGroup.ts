@@ -14,12 +14,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
  * * How-to Guides
- *     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
- *     * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+ *   * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+ *   * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
  *
- * ## Example Usage
- *
- * ### Region Network Endpoint Group Functions
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Region Network Endpoint Group Cloudrun
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,7 +84,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Region Network Endpoint Group Appengine
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -155,7 +153,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Region Network Endpoint Group Appengine Empty
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -169,7 +167,7 @@ import * as utilities from "../utilities";
  *     appEngine: {},
  * });
  * ```
- * ### Region Network Endpoint Group Psc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -182,7 +180,7 @@ import * as utilities from "../utilities";
  *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
  * });
  * ```
- * ### Region Network Endpoint Group Psc Service Attachment
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -242,7 +240,7 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.selfLink,
  * });
  * ```
- * ### Region Network Endpoint Group Internet Ip Port
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -256,7 +254,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_IP_PORT",
  * });
  * ```
- * ### Region Network Endpoint Group Internet Fqdn Port
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -270,7 +268,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
- * ### Region Network Endpoint Group Portmap
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -408,9 +406,6 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     public readonly pscTargetService!: pulumi.Output<string | undefined>;
     /**
      * A reference to the region where the regional NEGs reside.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -541,9 +536,6 @@ export interface RegionNetworkEndpointGroupState {
     pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the regional NEGs reside.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -625,9 +617,6 @@ export interface RegionNetworkEndpointGroupArgs {
     pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the regional NEGs reside.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
     /**

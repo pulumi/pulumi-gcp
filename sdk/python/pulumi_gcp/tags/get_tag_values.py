@@ -78,6 +78,13 @@ def get_tag_values(parent: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_values = gcp.tags.get_tag_values(parent="tagKeys/56789")
+    ```
+
 
     :param str parent: The resource name of the parent tagKey in format `tagKey/{name}`.
     """
@@ -99,6 +106,13 @@ def get_tag_values_output(parent: Optional[pulumi.Input[str]] = None,
     Get tag values from a `parent` key.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_values = gcp.tags.get_tag_values(parent="tagKeys/56789")
+    ```
 
 
     :param str parent: The resource name of the parent tagKey in format `tagKey/{name}`.

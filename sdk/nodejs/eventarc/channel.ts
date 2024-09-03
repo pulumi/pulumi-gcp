@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Basic
+ * ### basic
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -111,10 +111,6 @@ export class Channel extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Required. The resource name of the channel. Must be unique within the location on the project.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -210,10 +206,6 @@ export interface ChannelState {
     location?: pulumi.Input<string>;
     /**
      * Required. The resource name of the channel. Must be unique within the location on the project.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -256,10 +248,6 @@ export interface ChannelArgs {
     location: pulumi.Input<string>;
     /**
      * Required. The resource name of the channel. Must be unique within the location on the project.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

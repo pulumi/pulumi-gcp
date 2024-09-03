@@ -966,7 +966,7 @@ class RestorePlanRestoreConfig(dict):
                being restored already exist in the target cluster.
                This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
                if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+               See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
                for more information on each policy option.
                Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
         :param 'RestorePlanRestoreConfigClusterResourceRestoreScopeArgs' cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup.
@@ -978,7 +978,7 @@ class RestorePlanRestoreConfig(dict):
                being restored already exist in the target cluster.
                This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
                if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+               See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
                for more information on each mode.
                Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
         :param bool no_namespaces: Do not restore any namespaced resources if set to "True".
@@ -1002,7 +1002,7 @@ class RestorePlanRestoreConfig(dict):
                This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
                if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
                If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+               See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
                for more information on each policy option.
                Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
         :param Sequence['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs'] volume_data_restore_policy_bindings: A table that binds volumes by their scope to a restore policy. Bindings
@@ -1052,7 +1052,7 @@ class RestorePlanRestoreConfig(dict):
         being restored already exist in the target cluster.
         This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
         if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+        See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
         for more information on each policy option.
         Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
         """
@@ -1085,7 +1085,7 @@ class RestorePlanRestoreConfig(dict):
         being restored already exist in the target cluster.
         This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
         if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+        See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
         for more information on each mode.
         Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
         """
@@ -1151,7 +1151,7 @@ class RestorePlanRestoreConfig(dict):
         This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
         if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
         If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+        See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
         for more information on each policy option.
         Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
         """
@@ -1503,8 +1503,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring(dict):
                Use empty string for core group.
         :param str resource_kind: Kind of a Kubernetes resource, e.g.
                "CustomResourceDefinition", "StorageClass", etc.
-               
-               - - -
         """
         if resource_group is not None:
             pulumi.set(__self__, "resource_group", resource_group)
@@ -1527,8 +1525,6 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring(dict):
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
-
-        - - -
         """
         return pulumi.get(self, "resource_kind")
 
@@ -2001,7 +1997,7 @@ class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding(dict):
                  volume_type: str):
         """
         :param str policy: Specifies the mechanism to be used to restore this volume data.
-               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+               See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
                for more information on each policy option.
                Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
         :param str volume_type: The volume type, as determined by the PVC's
@@ -2016,7 +2012,7 @@ class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding(dict):
     def policy(self) -> str:
         """
         Specifies the mechanism to be used to restore this volume data.
-        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+        See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
         for more information on each policy option.
         Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
         """

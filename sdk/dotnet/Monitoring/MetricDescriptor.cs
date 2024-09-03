@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
+    ///   * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Monitoring Metric Descriptor Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -57,7 +55,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Monitoring Metric Descriptor Alert
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -122,9 +120,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -199,7 +194,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
         /// The supported units are a subset of The Unified Code for Units of Measure standard.
         /// More info can be found in the API documentation
-        /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        /// (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
         /// </summary>
         [Output("unit")]
         public Output<string?> Unit { get; private set; } = null!;
@@ -265,9 +260,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -336,7 +328,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
         /// The supported units are a subset of The Unified Code for Units of Measure standard.
         /// More info can be found in the API documentation
-        /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        /// (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }
@@ -364,9 +356,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -453,7 +442,7 @@ namespace Pulumi.Gcp.Monitoring
         /// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
         /// The supported units are a subset of The Unified Code for Units of Measure standard.
         /// More info can be found in the API documentation
-        /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+        /// (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
     /// * How-to Guides
-    ///     * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+    ///   * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
     /// 
     /// ## Import
     /// 
@@ -41,8 +41,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Path to the config zip bundle.
-        /// 
-        /// - - -
         /// </summary>
         [Output("configBundle")]
         public Output<string> ConfigBundle { get; private set; } = null!;
@@ -135,8 +133,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Path to the config zip bundle.
-        /// 
-        /// - - -
         /// </summary>
         [Input("configBundle", required: true)]
         public Input<string> ConfigBundle { get; set; } = null!;
@@ -166,8 +162,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Path to the config zip bundle.
-        /// 
-        /// - - -
         /// </summary>
         [Input("configBundle")]
         public Input<string>? ConfigBundle { get; set; }

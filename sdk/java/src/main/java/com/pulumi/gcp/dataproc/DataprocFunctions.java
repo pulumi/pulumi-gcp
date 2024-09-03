@@ -730,6 +730,40 @@ public final class DataprocFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
+     *             .serviceId("foo-bar")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetastoreServiceResult> getMetastoreService(GetMetastoreServiceArgs args) {
         return getMetastoreService(args, InvokeOptions.Empty);
@@ -738,6 +772,40 @@ public final class DataprocFunctions {
      * Get a Dataproc Metastore service from Google Cloud by its id and location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
+     *             .serviceId("foo-bar")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetastoreServiceResult> getMetastoreServicePlain(GetMetastoreServicePlainArgs args) {
@@ -748,6 +816,40 @@ public final class DataprocFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
+     *             .serviceId("foo-bar")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMetastoreServiceResult> getMetastoreService(GetMetastoreServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreService:getMetastoreService", TypeShape.of(GetMetastoreServiceResult.class), args, Utilities.withVersion(options));
@@ -756,6 +858,40 @@ public final class DataprocFunctions {
      * Get a Dataproc Metastore service from Google Cloud by its id and location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
+     *             .serviceId("foo-bar")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetastoreServiceResult> getMetastoreServicePlain(GetMetastoreServicePlainArgs args, InvokeOptions options) {

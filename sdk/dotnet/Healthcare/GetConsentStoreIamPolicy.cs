@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Retrieves the current IAM policy data for consentstore
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// Retrieves the current IAM policy data for consentstore
-        /// 
         /// 
         /// ## example
         /// 

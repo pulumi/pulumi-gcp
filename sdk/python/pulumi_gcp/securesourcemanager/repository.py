@@ -32,9 +32,6 @@ class RepositoryArgs:
         :param pulumi.Input[str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[str] location: The location for the Repository.
         :param pulumi.Input[str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input['RepositoryInitialConfigArgs'] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -80,9 +77,6 @@ class RepositoryArgs:
     def repository_id(self) -> pulumi.Input[str]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -155,9 +149,6 @@ class _RepositoryState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Unique identifier of the repository.
         :param pulumi.Input[str] update_time: Time the repository was updated in UTC.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]] uris: URIs for the repository.
@@ -277,9 +268,6 @@ class _RepositoryState:
     def repository_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -343,11 +331,9 @@ class Repository(pulumi.CustomResource):
         To get more information about Repository, see:
 
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
+          * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 
-        ## Example Usage
-
-        ### Secure Source Manager Repository Basic
+        ## 
 
         ```python
         import pulumi
@@ -361,7 +347,7 @@ class Repository(pulumi.CustomResource):
             repository_id="my-repository",
             instance=instance.name)
         ```
-        ### Secure Source Manager Repository Initial Config
+        ## 
 
         ```python
         import pulumi
@@ -423,9 +409,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -439,11 +422,9 @@ class Repository(pulumi.CustomResource):
         To get more information about Repository, see:
 
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
+          * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
 
-        ## Example Usage
-
-        ### Secure Source Manager Repository Basic
+        ## 
 
         ```python
         import pulumi
@@ -457,7 +438,7 @@ class Repository(pulumi.CustomResource):
             repository_id="my-repository",
             instance=instance.name)
         ```
-        ### Secure Source Manager Repository Initial Config
+        ## 
 
         ```python
         import pulumi
@@ -594,9 +575,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] repository_id: The ID for the Repository.
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Unique identifier of the repository.
         :param pulumi.Input[str] update_time: Time the repository was updated in UTC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]] uris: URIs for the repository.
@@ -682,9 +660,6 @@ class Repository(pulumi.CustomResource):
     def repository_id(self) -> pulumi.Output[str]:
         """
         The ID for the Repository.
-
-
-        - - -
         """
         return pulumi.get(self, "repository_id")
 

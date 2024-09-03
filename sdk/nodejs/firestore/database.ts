@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
  *
@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     type: "FIRESTORE_NATIVE",
  * });
  * ```
+ *
  * ### Firestore Database
  *
  * ```typescript
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ *
  * ### Firestore Cmek Database
  *
  * ```typescript
@@ -92,6 +94,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [firestoreCmekKeyuser],
  * });
  * ```
+ *
  * ### Firestore Default Database In Datastore Mode
  *
  * ```typescript
@@ -105,6 +108,7 @@ import * as utilities from "../utilities";
  *     type: "DATASTORE_MODE",
  * });
  * ```
+ *
  * ### Firestore Database In Datastore Mode
  *
  * ```typescript
@@ -123,6 +127,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * ```
+ *
  * ### Firestore Cmek Database In Datastore Mode
  *
  * ```typescript
@@ -251,14 +256,14 @@ export class Database extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Output only. The keyPrefix for this database.
-     * This keyPrefix is used, in combination with the project id ("~") to construct the application id
+     * This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v</del>foo).
      */
     public /*out*/ readonly keyPrefix!: pulumi.Output<string>;
     /**
      * The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * <https://cloud.google.com/firestore/docs/locations>.
      */
     public readonly locationId!: pulumi.Output<string>;
     /**
@@ -287,12 +292,9 @@ export class Database extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     *
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -413,14 +415,14 @@ export interface DatabaseState {
     etag?: pulumi.Input<string>;
     /**
      * Output only. The keyPrefix for this database.
-     * This keyPrefix is used, in combination with the project id ("~") to construct the application id
+     * This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v</del>foo).
      */
     keyPrefix?: pulumi.Input<string>;
     /**
      * The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * <https://cloud.google.com/firestore/docs/locations>.
      */
     locationId?: pulumi.Input<string>;
     /**
@@ -449,12 +451,9 @@ export interface DatabaseState {
     project?: pulumi.Input<string>;
     /**
      * The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     *
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -499,7 +498,7 @@ export interface DatabaseArgs {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * <https://cloud.google.com/firestore/docs/locations>.
      */
     locationId: pulumi.Input<string>;
     /**
@@ -528,12 +527,9 @@ export interface DatabaseArgs {
     project?: pulumi.Input<string>;
     /**
      * The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     *
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
 }

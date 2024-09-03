@@ -48,7 +48,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
     }
 
     /**
-     * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+     * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see &lt;https://cloud.google.com/certificate-authority-service/docs/using-cel&gt;
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
     private @Nullable Output<CertificateTemplateIdentityConstraintsCelExpressionArgs> celExpression;
 
     /**
-     * @return Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+     * @return Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see &lt;https://cloud.google.com/certificate-authority-service/docs/using-cel&gt;
      * Structure is documented below.
      * 
      */
@@ -133,7 +133,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
         }
 
         /**
-         * @param celExpression Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         * @param celExpression Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see &lt;https://cloud.google.com/certificate-authority-service/docs/using-cel&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -145,7 +145,7 @@ public final class CertificateTemplateIdentityConstraintsArgs extends com.pulumi
         }
 
         /**
-         * @param celExpression Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         * @param celExpression Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see &lt;https://cloud.google.com/certificate-authority-service/docs/using-cel&gt;
          * Structure is documented below.
          * 
          * @return builder

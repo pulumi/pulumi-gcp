@@ -23,8 +23,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfileGroups)
  * * How-to Guides
- *     * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
- *     * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
+ *   * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
+ *   * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
  * 
  * ## Example Usage
  * 
@@ -190,16 +190,12 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
     /**
      * The name of the security profile group resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the security profile group resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage
- *
- * ### Data Catalog Taxonomies Policy Tag Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     description: "A policy tag normally associated with low security items",
  * });
  * ```
- * ### Data Catalog Taxonomies Policy Tag Child Policies
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -134,9 +132,6 @@ export class PolicyTag extends pulumi.CustomResource {
     public readonly parentPolicyTag!: pulumi.Output<string | undefined>;
     /**
      * Taxonomy the policy tag is associated with
-     *
-     *
-     * - - -
      */
     public readonly taxonomy!: pulumi.Output<string>;
 
@@ -213,9 +208,6 @@ export interface PolicyTagState {
     parentPolicyTag?: pulumi.Input<string>;
     /**
      * Taxonomy the policy tag is associated with
-     *
-     *
-     * - - -
      */
     taxonomy?: pulumi.Input<string>;
 }
@@ -245,9 +237,6 @@ export interface PolicyTagArgs {
     parentPolicyTag?: pulumi.Input<string>;
     /**
      * Taxonomy the policy tag is associated with
-     *
-     *
-     * - - -
      */
     taxonomy: pulumi.Input<string>;
 }

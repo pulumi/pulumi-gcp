@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetTcpProxies)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Target Tcp Proxy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,9 +97,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backendService")]
         public Output<string> BackendService { get; private set; } = null!;
@@ -220,9 +215,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;
@@ -285,9 +277,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }

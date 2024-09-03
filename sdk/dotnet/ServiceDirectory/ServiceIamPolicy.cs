@@ -101,10 +101,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// });
     /// ```
     /// 
-    /// ## &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-    /// ---
+    /// ***
     /// 
     /// # IAM policy for Service Directory Service
     /// Three different resources help you manage your IAM policy for Service Directory Service. Each of these resources serves a different use case:
@@ -232,7 +231,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : global::Pulumi.CustomResource

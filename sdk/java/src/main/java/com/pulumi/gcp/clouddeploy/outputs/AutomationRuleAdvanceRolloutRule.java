@@ -21,8 +21,6 @@ public final class AutomationRuleAdvanceRolloutRule {
     /**
      * @return Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> sourcePhases;
     /**
@@ -41,8 +39,6 @@ public final class AutomationRuleAdvanceRolloutRule {
     }
     /**
      * @return Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-     * 
-     * ***
      * 
      */
     public List<String> sourcePhases() {

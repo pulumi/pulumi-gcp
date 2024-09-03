@@ -60,15 +60,13 @@ public final class ExtensionsInstanceConfig {
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
      * 
-     * ***
-     * 
      */
     private @Nullable String populatedPostinstallContent;
     /**
      * @return Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
      * functions. See a full list of system parameters at
-     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+     * &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
      * 
      */
     private @Nullable Map<String,String> systemParams;
@@ -134,8 +132,6 @@ public final class ExtensionsInstanceConfig {
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
      * 
-     * ***
-     * 
      */
     public Optional<String> populatedPostinstallContent() {
         return Optional.ofNullable(this.populatedPostinstallContent);
@@ -144,7 +140,7 @@ public final class ExtensionsInstanceConfig {
      * @return Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
      * functions. See a full list of system parameters at
-     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+     * &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
      * 
      */
     public Map<String,String> systemParams() {

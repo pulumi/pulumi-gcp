@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
-    ///     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+    ///   * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+    ///   * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
     /// 
     /// ## Example Usage
     /// 
@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Org Policy Policy Folder
     /// 
     /// ```csharp
@@ -91,6 +92,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Org Policy Policy Organization
     /// 
     /// ```csharp
@@ -113,6 +115,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Org Policy Policy Project
     /// 
     /// ```csharp
@@ -169,6 +172,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Org Policy Policy Dry Run Spec
     /// 
     /// ```csharp
@@ -264,9 +268,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -339,9 +340,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -382,9 +380,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

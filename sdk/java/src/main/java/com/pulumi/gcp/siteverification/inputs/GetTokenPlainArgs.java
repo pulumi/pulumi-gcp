@@ -52,8 +52,6 @@ public final class GetTokenPlainArgs extends com.pulumi.resources.InvokeArgs {
      * this site or domain.
      * Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
      * 
-     * ***
-     * 
      */
     @Import(name="verificationMethod", required=true)
     private String verificationMethod;
@@ -62,8 +60,6 @@ public final class GetTokenPlainArgs extends com.pulumi.resources.InvokeArgs {
      * @return The verification method for the Site Verification system to use to verify
      * this site or domain.
      * Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-     * 
-     * ***
      * 
      */
     public String verificationMethod() {
@@ -124,8 +120,6 @@ public final class GetTokenPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @param verificationMethod The verification method for the Site Verification system to use to verify
          * this site or domain.
          * Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-         * 
-         * ***
          * 
          * @return builder
          * 

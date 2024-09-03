@@ -67,6 +67,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Edgenetwork Subnet With Vlan Id
 //
 // ```go
@@ -178,8 +179,6 @@ type Subnet struct {
 	// Current stage of the resource to the device by config push.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A unique ID that identifies this subnet.
-	//
-	// ***
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -259,8 +258,6 @@ type subnetState struct {
 	// Current stage of the resource to the device by config push.
 	State *string `pulumi:"state"`
 	// A unique ID that identifies this subnet.
-	//
-	// ***
 	SubnetId *string `pulumi:"subnetId"`
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -299,8 +296,6 @@ type SubnetState struct {
 	// Current stage of the resource to the device by config push.
 	State pulumi.StringPtrInput
 	// A unique ID that identifies this subnet.
-	//
-	// ***
 	SubnetId pulumi.StringPtrInput
 	// The time when the subnet was last updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -334,8 +329,6 @@ type subnetArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A unique ID that identifies this subnet.
-	//
-	// ***
 	SubnetId string `pulumi:"subnetId"`
 	// VLAN ID for this subnetwork. If not specified, one is assigned automatically.
 	VlanId *int `pulumi:"vlanId"`
@@ -362,8 +355,6 @@ type SubnetArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A unique ID that identifies this subnet.
-	//
-	// ***
 	SubnetId pulumi.StringInput
 	// VLAN ID for this subnetwork. If not specified, one is assigned automatically.
 	VlanId pulumi.IntPtrInput
@@ -514,8 +505,6 @@ func (o SubnetOutput) State() pulumi.StringOutput {
 }
 
 // A unique ID that identifies this subnet.
-//
-// ***
 func (o SubnetOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }

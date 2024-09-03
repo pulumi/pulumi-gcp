@@ -29,11 +29,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Endpoint Group
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Network Endpoint Group Non Gcp
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -164,9 +162,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
         /// Uses "default" project network if unspecified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -174,7 +169,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-        /// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+        /// endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
         /// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
         /// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
         /// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
@@ -292,9 +287,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
         /// Uses "default" project network if unspecified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -302,7 +294,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-        /// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+        /// endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
         /// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
         /// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
         /// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
@@ -370,9 +362,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
         /// Uses "default" project network if unspecified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -380,7 +369,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-        /// endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+        /// endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
         /// Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
         /// that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
         /// INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or

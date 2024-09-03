@@ -17,9 +17,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
 //
-// ## Example Usage
-//
-// ### Network Security Gateway Security Policy Basic
+// ##
 //
 // ```go
 // package main
@@ -46,7 +44,7 @@ import (
 //	}
 //
 // ```
-// ### Network Security Gateway Security Policy Tls Inspection Basic
+// ##
 //
 // ```go
 // package main
@@ -206,8 +204,6 @@ type GatewaySecurityPolicy struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 	// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -263,8 +259,6 @@ type gatewaySecurityPolicyState struct {
 	Location *string `pulumi:"location"`
 	// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 	// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -291,8 +285,6 @@ type GatewaySecurityPolicyState struct {
 	Location pulumi.StringPtrInput
 	// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 	// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -319,8 +311,6 @@ type gatewaySecurityPolicyArgs struct {
 	Location *string `pulumi:"location"`
 	// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 	// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -338,8 +328,6 @@ type GatewaySecurityPolicyArgs struct {
 	Location pulumi.StringPtrInput
 	// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 	// gatewaySecurityPolicy should match the pattern:(^a-z?$).
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -455,8 +443,6 @@ func (o GatewaySecurityPolicyOutput) Location() pulumi.StringPtrOutput {
 
 // Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
 // gatewaySecurityPolicy should match the pattern:(^a-z?$).
-//
-// ***
 func (o GatewaySecurityPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewaySecurityPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

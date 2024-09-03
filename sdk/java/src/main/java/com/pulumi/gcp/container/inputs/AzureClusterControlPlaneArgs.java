@@ -160,14 +160,14 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+     * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
      * 
      */
     @Import(name="vmSize")
     private @Nullable Output<String> vmSize;
 
     /**
-     * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+     * @return Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
      * 
      */
     public Optional<Output<String>> vmSize() {
@@ -407,7 +407,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vmSize Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+         * @param vmSize Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vmSize Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+         * @param vmSize Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
          * 
          * @return builder
          * 

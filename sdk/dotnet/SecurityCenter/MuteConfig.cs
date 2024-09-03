@@ -107,9 +107,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// Resource name of the new mute configs's parent. Its format is
         /// "organizations/[organization_id]", "folders/[folder_id]", or
         /// "projects/[project_id]".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -194,9 +191,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// Resource name of the new mute configs's parent. Its format is
         /// "organizations/[organization_id]", "folders/[folder_id]", or
         /// "projects/[project_id]".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -259,9 +253,6 @@ namespace Pulumi.Gcp.SecurityCenter
         /// Resource name of the new mute configs's parent. Its format is
         /// "organizations/[organization_id]", "folders/[folder_id]", or
         /// "projects/[project_id]".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

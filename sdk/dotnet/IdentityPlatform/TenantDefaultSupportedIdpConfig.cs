@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
     /// the marketplace prior to using this resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Identity Platform Tenant Default Supported Idp Config Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -80,9 +78,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -182,9 +177,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
@@ -240,9 +232,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }

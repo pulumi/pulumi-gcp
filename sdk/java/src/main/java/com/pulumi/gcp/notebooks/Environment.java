@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  * 
- * ## Example Usage
- * 
- * ### Notebook Environment Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -155,16 +153,12 @@ public class Environment extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

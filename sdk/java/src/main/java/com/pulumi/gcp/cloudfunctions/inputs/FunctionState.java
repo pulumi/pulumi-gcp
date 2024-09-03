@@ -241,7 +241,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
      * 
      */
     @Import(name="kmsKeyName")
@@ -249,7 +249,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -257,7 +257,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -267,7 +267,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -371,8 +371,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
      * The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      * 
-     * ***
-     * 
      */
     @Import(name="runtime")
     private @Nullable Output<String> runtime;
@@ -380,8 +378,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> runtime() {
@@ -932,7 +928,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+         * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
          * 
          * @return builder
          * 
@@ -944,7 +940,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+         * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
          * 
          * @return builder
          * 
@@ -954,7 +950,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -968,7 +964,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -1110,8 +1106,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
          * @param runtime The runtime in which the function is going to run.
          * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1123,8 +1117,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runtime The runtime in which the function is going to run.
          * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-         * 
-         * ***
          * 
          * @return builder
          * 

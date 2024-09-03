@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Certificate represents a HTTP-reachable backend for a Certificate.
  *
- * ## Example Usage
- *
- * ### Certificate Manager Google Managed Certificate Dns
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Google Managed Certificate Issuance Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -93,7 +91,6 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * // creating certificate_issuance_config to use it in the managed certificate
  * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
  *     name: "issuance-config",
  *     description: "sample description for the certificate issuanceConfigs",
@@ -118,7 +115,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Certificate Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -150,7 +147,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Self Managed Certificate Regional
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -171,7 +168,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -218,7 +215,6 @@ import * as utilities from "../utilities";
  *     skipGracePeriod: true,
  *     ignoreActiveCertificatesOnDeletion: true,
  * });
- * // creating certificate_issuance_config to use it in the managed certificate
  * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
  *     name: "issuance-config",
  *     description: "sample description for the certificate issuanceConfigs",
@@ -243,7 +239,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Google Managed Certificate Dns All Regions
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -275,7 +271,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Google Managed Regional Certificate Dns Auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -379,9 +375,6 @@ export class Certificate extends pulumi.CustomResource {
      * A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -399,9 +392,9 @@ export class Certificate extends pulumi.CustomResource {
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-     * See https://cloud.google.com/vpc/docs/edge-locations.
+     * See <https://cloud.google.com/vpc/docs/edge-locations>.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See <https://cloud.google.com/compute/docs/regions-zones>
      */
     public readonly scope!: pulumi.Output<string | undefined>;
     /**
@@ -488,9 +481,6 @@ export interface CertificateState {
      * A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -508,9 +498,9 @@ export interface CertificateState {
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-     * See https://cloud.google.com/vpc/docs/edge-locations.
+     * See <https://cloud.google.com/vpc/docs/edge-locations>.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See <https://cloud.google.com/compute/docs/regions-zones>
      */
     scope?: pulumi.Input<string>;
     /**
@@ -551,9 +541,6 @@ export interface CertificateArgs {
      * A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -566,9 +553,9 @@ export interface CertificateArgs {
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-     * See https://cloud.google.com/vpc/docs/edge-locations.
+     * See <https://cloud.google.com/vpc/docs/edge-locations>.
      * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-     * See https://cloud.google.com/compute/docs/regions-zones
+     * See <https://cloud.google.com/compute/docs/regions-zones>
      */
     scope?: pulumi.Input<string>;
     /**

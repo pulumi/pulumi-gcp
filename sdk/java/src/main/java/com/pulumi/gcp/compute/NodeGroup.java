@@ -25,16 +25,14 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
  * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ *   * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  * 
  * &gt; **Warning:** Due to limitations of the API, this provider cannot update the
  * number of nodes in a node group and changes to node group size either
  * through provider config or through external changes will cause
  * the provider to delete and recreate the node group.
  * 
- * ## Example Usage
- * 
- * ### Node Group Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -80,7 +78,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Node Group Maintenance Interval
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -127,7 +125,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Node Group Autoscaling Policy
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -184,6 +182,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Node Group Share Settings
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -409,16 +410,12 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     /**
      * The URL of the node template to which this node group belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="nodeTemplate", refs={String.class}, tree="[0]")
     private Output<String> nodeTemplate;
 
     /**
      * @return The URL of the node template to which this node group belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> nodeTemplate() {

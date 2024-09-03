@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getSettings)
  * * How-to Guides
- *     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
+ *   * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
  *
  * ## Example Usage
  *
@@ -95,9 +95,6 @@ export class FolderSettings extends pulumi.CustomResource {
     public readonly disableDefaultSink!: pulumi.Output<boolean>;
     /**
      * The folder for which to retrieve settings.
-     *
-     *
-     * - - -
      */
     public readonly folder!: pulumi.Output<string>;
     /**
@@ -169,9 +166,6 @@ export interface FolderSettingsState {
     disableDefaultSink?: pulumi.Input<boolean>;
     /**
      * The folder for which to retrieve settings.
-     *
-     *
-     * - - -
      */
     folder?: pulumi.Input<string>;
     /**
@@ -206,9 +200,6 @@ export interface FolderSettingsArgs {
     disableDefaultSink?: pulumi.Input<boolean>;
     /**
      * The folder for which to retrieve settings.
-     *
-     *
-     * - - -
      */
     folder: pulumi.Input<string>;
     /**

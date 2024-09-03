@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// The Oracle data type. Full data types list can be found here:
-        /// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        /// &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
         /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }

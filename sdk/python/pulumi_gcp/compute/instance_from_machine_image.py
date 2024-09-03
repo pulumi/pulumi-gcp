@@ -54,8 +54,6 @@ class InstanceFromMachineImageArgs:
         The set of arguments for constructing a InstanceFromMachineImage resource.
         :param pulumi.Input[str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
-               
-               - - -
         :param pulumi.Input['InstanceFromMachineImageAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
         :param pulumi.Input['InstanceFromMachineImageConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
@@ -163,8 +161,6 @@ class InstanceFromMachineImageArgs:
         """
         Name or self link of a machine
         image to create the instance based on.
-
-        - - -
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -614,8 +610,6 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1164,8 +1158,6 @@ class _InstanceFromMachineImageState:
         """
         Name or self link of a machine
         image to create the instance based on.
-
-        - - -
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -1315,8 +1307,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
@@ -1562,8 +1552,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromMachineImageShieldedInstanceConfigArgs', 'InstanceFromMachineImageShieldedInstanceConfigArgsDict']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1928,8 +1916,6 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         """
         Name or self link of a machine
         image to create the instance based on.
-
-        - - -
         """
         return pulumi.get(self, "source_machine_image")
 

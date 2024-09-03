@@ -819,11 +819,9 @@ class Job(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/run/docs/)
+          * [Official Documentation](https://cloud.google.com/run/docs/)
 
-        ## Example Usage
-
-        ### Cloudrunv2 Job Basic
+        ## 
 
         ```python
         import pulumi
@@ -840,7 +838,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Limits
+        ## 
 
         ```python
         import pulumi
@@ -863,7 +861,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Sql
+        ## 
 
         ```python
         import pulumi
@@ -927,7 +925,7 @@ class Job(pulumi.CustomResource):
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
             opts = pulumi.ResourceOptions(depends_on=[secret]))
         ```
-        ### Cloudrunv2 Job Vpcaccess
+        ## 
 
         ```python
         import pulumi
@@ -965,7 +963,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Directvpc
+        ## 
 
         ```python
         import pulumi
@@ -994,7 +992,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Secret
+        ## 
 
         ```python
         import pulumi
@@ -1045,7 +1043,7 @@ class Job(pulumi.CustomResource):
                     secret_access,
                 ]))
         ```
-        ### Cloudrunv2 Job Emptydir
+        ## 
 
         ```python
         import pulumi
@@ -1074,7 +1072,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Run Job
+        ## 
 
         ```python
         import pulumi
@@ -1165,11 +1163,9 @@ class Job(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/run/docs/)
+          * [Official Documentation](https://cloud.google.com/run/docs/)
 
-        ## Example Usage
-
-        ### Cloudrunv2 Job Basic
+        ## 
 
         ```python
         import pulumi
@@ -1186,7 +1182,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Limits
+        ## 
 
         ```python
         import pulumi
@@ -1209,7 +1205,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Sql
+        ## 
 
         ```python
         import pulumi
@@ -1273,7 +1269,7 @@ class Job(pulumi.CustomResource):
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
             opts = pulumi.ResourceOptions(depends_on=[secret]))
         ```
-        ### Cloudrunv2 Job Vpcaccess
+        ## 
 
         ```python
         import pulumi
@@ -1311,7 +1307,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Directvpc
+        ## 
 
         ```python
         import pulumi
@@ -1340,7 +1336,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Secret
+        ## 
 
         ```python
         import pulumi
@@ -1391,7 +1387,7 @@ class Job(pulumi.CustomResource):
                     secret_access,
                 ]))
         ```
-        ### Cloudrunv2 Job Emptydir
+        ## 
 
         ```python
         import pulumi
@@ -1420,7 +1416,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudrunv2 Job Run Job
+        ## 
 
         ```python
         import pulumi

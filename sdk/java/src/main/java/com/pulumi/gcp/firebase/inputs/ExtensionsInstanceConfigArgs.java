@@ -137,8 +137,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
      * 
-     * ***
-     * 
      */
     @Import(name="populatedPostinstallContent")
     private @Nullable Output<String> populatedPostinstallContent;
@@ -151,8 +149,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> populatedPostinstallContent() {
         return Optional.ofNullable(this.populatedPostinstallContent);
@@ -162,7 +158,7 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
      * Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
      * functions. See a full list of system parameters at
-     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+     * &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
      * 
      */
     @Import(name="systemParams")
@@ -172,7 +168,7 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
      * @return Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
      * functions. See a full list of system parameters at
-     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+     * &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
      * 
      */
     public Optional<Output<Map<String,String>>> systemParams() {
@@ -383,8 +379,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
          * ${function:myFunc.url},
          * ${function:myFunc.name}, and ${function:myFunc.location}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -401,8 +395,6 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
          * ${function:myFunc.url},
          * ${function:myFunc.name}, and ${function:myFunc.location}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -414,7 +406,7 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
          * @param systemParams Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
          * functions. See a full list of system parameters at
-         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+         * &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
          * 
          * @return builder
          * 
@@ -428,7 +420,7 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
          * @param systemParams Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
          * functions. See a full list of system parameters at
-         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+         * &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
          * 
          * @return builder
          * 

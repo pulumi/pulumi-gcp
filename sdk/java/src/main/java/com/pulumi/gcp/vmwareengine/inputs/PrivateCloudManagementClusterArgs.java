@@ -25,7 +25,7 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
      * * Begins with an alphabetical character
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
-     * * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+     * * Complies with RFC 1034 (&lt;https://datatracker.ietf.org/doc/html/rfc1034&gt;) (section 3.5)
      * 
      */
     @Import(name="clusterId", required=true)
@@ -37,7 +37,7 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
      * * Begins with an alphabetical character
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
-     * * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+     * * Complies with RFC 1034 (&lt;https://datatracker.ietf.org/doc/html/rfc1034&gt;) (section 3.5)
      * 
      */
     public Output<String> clusterId() {
@@ -112,7 +112,7 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
          * * Begins with an alphabetical character
          * * Ends with a non-hyphen character
          * * Not formatted as a UUID
-         * * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         * * Complies with RFC 1034 (&lt;https://datatracker.ietf.org/doc/html/rfc1034&gt;) (section 3.5)
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
          * * Begins with an alphabetical character
          * * Ends with a non-hyphen character
          * * Not formatted as a UUID
-         * * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         * * Complies with RFC 1034 (&lt;https://datatracker.ietf.org/doc/html/rfc1034&gt;) (section 3.5)
          * 
          * @return builder
          * 

@@ -405,6 +405,46 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .projectId("foobar")
+     *             .build());
+     * 
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .clientId(apps.googleusercontent().com())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClientResult> getClient(GetClientArgs args) {
         return getClient(args, InvokeOptions.Empty);
@@ -413,6 +453,46 @@ public final class IapFunctions {
      * Get info about a Google Cloud IAP Client.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .projectId("foobar")
+     *             .build());
+     * 
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .clientId(apps.googleusercontent().com())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args) {
@@ -423,6 +503,46 @@ public final class IapFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .projectId("foobar")
+     *             .build());
+     * 
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .clientId(apps.googleusercontent().com())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClientResult> getClient(GetClientArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
@@ -431,6 +551,46 @@ public final class IapFunctions {
      * Get info about a Google Cloud IAP Client.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .projectId("foobar")
+     *             .build());
+     * 
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .clientId(apps.googleusercontent().com())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {

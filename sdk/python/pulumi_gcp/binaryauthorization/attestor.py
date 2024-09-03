@@ -174,11 +174,9 @@ class Attestor(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+          * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
-        ## Example Usage
-
-        ### Binary Authorization Attestor Basic
+        ## 
 
         ```python
         import pulumi
@@ -215,6 +213,9 @@ class Attestor(pulumi.CustomResource):
                 }],
             })
         ```
+
+        ## Example Usage
+
         ### Binary Authorization Attestor Kms
 
         ```python
@@ -297,11 +298,9 @@ class Attestor(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/binary-authorization/)
+          * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
-        ## Example Usage
-
-        ### Binary Authorization Attestor Basic
+        ## 
 
         ```python
         import pulumi
@@ -338,6 +337,9 @@ class Attestor(pulumi.CustomResource):
                 }],
             })
         ```
+
+        ## Example Usage
+
         ### Binary Authorization Attestor Kms
 
         ```python

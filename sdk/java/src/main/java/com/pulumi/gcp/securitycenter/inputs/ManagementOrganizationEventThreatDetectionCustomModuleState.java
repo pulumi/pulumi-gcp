@@ -114,16 +114,12 @@ public final class ManagementOrganizationEventThreatDetectionCustomModuleState e
     /**
      * Numerical ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
     /**
      * @return Numerical ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> organization() {
@@ -331,8 +327,6 @@ public final class ManagementOrganizationEventThreatDetectionCustomModuleState e
         /**
          * @param organization Numerical ID of the parent organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -343,8 +337,6 @@ public final class ManagementOrganizationEventThreatDetectionCustomModuleState e
 
         /**
          * @param organization Numerical ID of the parent organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

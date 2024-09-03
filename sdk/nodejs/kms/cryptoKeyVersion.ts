@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
  * * How-to Guides
- *     * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
+ *   * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
  *
  * ## Example Usage
  *
@@ -90,9 +90,6 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     public readonly cryptoKey!: pulumi.Output<string>;
     /**
@@ -175,9 +172,6 @@ export interface CryptoKeyVersionState {
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     cryptoKey?: pulumi.Input<string>;
     /**
@@ -211,9 +205,6 @@ export interface CryptoKeyVersionArgs {
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     cryptoKey: pulumi.Input<string>;
     /**

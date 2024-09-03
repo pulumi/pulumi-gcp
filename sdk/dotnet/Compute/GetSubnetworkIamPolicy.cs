@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Retrieves the current IAM policy data for subnetwork
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Retrieves the current IAM policy data for subnetwork
-        /// 
         /// 
         /// ## example
         /// 

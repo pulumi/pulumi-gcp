@@ -36,9 +36,6 @@ class TargetHttpsProxyArgs:
         The set of arguments for constructing a TargetHttpsProxy resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
                Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
                For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
@@ -125,9 +122,6 @@ class TargetHttpsProxyArgs:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -400,9 +394,6 @@ class _TargetHttpsProxyState:
                Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         if certificate_manager_certificates is not None:
             pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
@@ -664,9 +655,6 @@ class _TargetHttpsProxyState:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -702,11 +690,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Target Https Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -749,7 +735,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        ### Target Https Proxy Http Keep Alive Timeout
+        ## 
 
         ```python
         import pulumi
@@ -794,7 +780,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        ### Target Https Proxy Mtls
+        ## 
 
         ```python
         import pulumi
@@ -863,7 +849,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
-        ### Target Https Proxy Certificate Manager Certificate
+        ## 
 
         ```python
         import pulumi
@@ -986,9 +972,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -1004,11 +987,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Target Https Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -1051,7 +1032,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        ### Target Https Proxy Http Keep Alive Timeout
+        ## 
 
         ```python
         import pulumi
@@ -1096,7 +1077,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             url_map=default_url_map.id,
             ssl_certificates=[default_ssl_certificate.id])
         ```
-        ### Target Https Proxy Mtls
+        ## 
 
         ```python
         import pulumi
@@ -1165,7 +1146,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
-        ### Target Https Proxy Certificate Manager Certificate
+        ## 
 
         ```python
         import pulumi
@@ -1377,9 +1358,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Possible values are: `STRICT`, `PERMISSIVE`, `DISABLED`.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1570,9 +1548,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 

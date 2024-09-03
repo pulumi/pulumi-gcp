@@ -405,6 +405,7 @@ class Deployment(pulumi.CustomResource):
                 "value": "bar",
             }])
         ```
+
         ## Import
 
         Deployment can be imported using any of these accepted formats:
@@ -488,6 +489,7 @@ class Deployment(pulumi.CustomResource):
                 "value": "bar",
             }])
         ```
+
         ## Import
 
         Deployment can be imported using any of these accepted formats:

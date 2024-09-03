@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.envgroups.attachments/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Example Usage
  *
@@ -64,9 +64,6 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envgroupId!: pulumi.Output<string>;
     /**
@@ -118,9 +115,6 @@ export interface EnvGroupAttachmentState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     *
-     *
-     * - - -
      */
     envgroupId?: pulumi.Input<string>;
     /**
@@ -140,9 +134,6 @@ export interface EnvGroupAttachmentArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     *
-     *
-     * - - -
      */
     envgroupId: pulumi.Input<string>;
     /**

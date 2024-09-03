@@ -9,9 +9,20 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group's email.
  *
- * https://cloud.google.com/identity/docs/concepts/overview#groups
+ * <https://cloud.google.com/identity/docs/concepts/overview#groups>
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = gcp.cloudidentity.getGroupLookup({
+ *     groupKey: {
+ *         id: "my-group@example.com",
+ *     },
+ * });
+ * ```
  */
 export function getGroupLookup(args: GetGroupLookupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupLookupResult> {
 
@@ -50,9 +61,20 @@ export interface GetGroupLookupResult {
 /**
  * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group's email.
  *
- * https://cloud.google.com/identity/docs/concepts/overview#groups
+ * <https://cloud.google.com/identity/docs/concepts/overview#groups>
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = gcp.cloudidentity.getGroupLookup({
+ *     groupKey: {
+ *         id: "my-group@example.com",
+ *     },
+ * });
+ * ```
  */
 export function getGroupLookupOutput(args: GetGroupLookupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupLookupResult> {
     return pulumi.output(args).apply((a: any) => getGroupLookup(a, opts))

@@ -41,7 +41,7 @@ class ExternalAccessRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ports: A list of destination ports to which the external access rule applies.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which the external access rule applies.
         :param pulumi.Input[str] parent: The resource name of the network policy.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
@@ -120,7 +120,7 @@ class ExternalAccessRuleArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The resource name of the network policy.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         """
         return pulumi.get(self, "parent")
@@ -224,7 +224,7 @@ class _ExternalAccessRuleState:
         :param pulumi.Input[str] ip_protocol: The IP protocol to which the external access rule applies.
         :param pulumi.Input[str] name: The ID of the external access rule.
         :param pulumi.Input[str] parent: The resource name of the network policy.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
@@ -360,7 +360,7 @@ class _ExternalAccessRuleState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the network policy.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         """
         return pulumi.get(self, "parent")
@@ -502,6 +502,7 @@ class ExternalAccessRule(pulumi.CustomResource):
             }],
             destination_ports=["433"])
         ```
+
         ### Vmware Engine External Access Rule Full
 
         ```python
@@ -578,7 +579,7 @@ class ExternalAccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The IP protocol to which the external access rule applies.
         :param pulumi.Input[str] name: The ID of the external access rule.
         :param pulumi.Input[str] parent: The resource name of the network policy.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
@@ -632,6 +633,7 @@ class ExternalAccessRule(pulumi.CustomResource):
             }],
             destination_ports=["433"])
         ```
+
         ### Vmware Engine External Access Rule Full
 
         ```python
@@ -804,7 +806,7 @@ class ExternalAccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The IP protocol to which the external access rule applies.
         :param pulumi.Input[str] name: The ID of the external access rule.
         :param pulumi.Input[str] parent: The resource name of the network policy.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to
@@ -903,7 +905,7 @@ class ExternalAccessRule(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The resource name of the network policy.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         """
         return pulumi.get(self, "parent")

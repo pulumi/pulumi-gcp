@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
  * * How-to Guides
- *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
+ *   * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
  * 
  * ## Example Usage
  * 
@@ -96,9 +96,7 @@ import javax.annotation.Nullable;
 public class DomainTrust extends com.pulumi.resources.CustomResource {
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
+     * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
@@ -106,9 +104,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
+     * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
      * 
      */
     public Output<String> domain() {

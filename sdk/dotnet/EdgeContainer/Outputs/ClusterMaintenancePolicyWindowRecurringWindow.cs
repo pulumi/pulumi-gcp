@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
     public sealed class ClusterMaintenancePolicyWindowRecurringWindow
     {
         /// <summary>
-        /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        /// An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
         /// this window recurs. They go on for the span of time between the start and
         /// end time.
         /// </summary>

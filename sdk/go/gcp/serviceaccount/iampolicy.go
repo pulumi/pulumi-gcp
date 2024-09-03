@@ -246,7 +246,7 @@ import (
 //
 // ```
 //
-// ### Additional Examples
+// ### Example Usage
 //
 // ### Service Account IAM Policy
 //

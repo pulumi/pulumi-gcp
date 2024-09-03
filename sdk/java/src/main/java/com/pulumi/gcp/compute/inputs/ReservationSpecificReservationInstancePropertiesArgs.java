@@ -73,7 +73,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     /**
      * The minimum CPU platform for the reservation. For example,
      * `&#34;Intel Skylake&#34;`. See
-     * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+     * the CPU platform availability reference](&lt;https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones&gt;)
      * for information on available CPU platforms.
      * 
      */
@@ -83,7 +83,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     /**
      * @return The minimum CPU platform for the reservation. For example,
      * `&#34;Intel Skylake&#34;`. See
-     * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+     * the CPU platform availability reference](&lt;https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones&gt;)
      * for information on available CPU platforms.
      * 
      */
@@ -213,7 +213,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
         /**
          * @param minCpuPlatform The minimum CPU platform for the reservation. For example,
          * `&#34;Intel Skylake&#34;`. See
-         * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+         * the CPU platform availability reference](&lt;https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones&gt;)
          * for information on available CPU platforms.
          * 
          * @return builder
@@ -227,7 +227,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
         /**
          * @param minCpuPlatform The minimum CPU platform for the reservation. For example,
          * `&#34;Intel Skylake&#34;`. See
-         * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+         * the CPU platform availability reference](&lt;https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones&gt;)
          * for information on available CPU platforms.
          * 
          * @return builder

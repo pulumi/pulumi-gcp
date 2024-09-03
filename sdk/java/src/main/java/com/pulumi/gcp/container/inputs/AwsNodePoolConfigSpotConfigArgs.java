@@ -16,14 +16,14 @@ public final class AwsNodePoolConfigSpotConfigArgs extends com.pulumi.resources.
     public static final AwsNodePoolConfigSpotConfigArgs Empty = new AwsNodePoolConfigSpotConfigArgs();
 
     /**
-     * List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+     * List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (&lt;https://github.com/aws/amazon-ec2-instance-selector&gt;) to choose instance types with matching CPU and memory
      * 
      */
     @Import(name="instanceTypes", required=true)
     private Output<List<String>> instanceTypes;
 
     /**
-     * @return List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+     * @return List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (&lt;https://github.com/aws/amazon-ec2-instance-selector&gt;) to choose instance types with matching CPU and memory
      * 
      */
     public Output<List<String>> instanceTypes() {
@@ -55,7 +55,7 @@ public final class AwsNodePoolConfigSpotConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceTypes List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+         * @param instanceTypes List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (&lt;https://github.com/aws/amazon-ec2-instance-selector&gt;) to choose instance types with matching CPU and memory
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class AwsNodePoolConfigSpotConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceTypes List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+         * @param instanceTypes List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (&lt;https://github.com/aws/amazon-ec2-instance-selector&gt;) to choose instance types with matching CPU and memory
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class AwsNodePoolConfigSpotConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceTypes List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+         * @param instanceTypes List of AWS EC2 instance types for creating a spot node pool&#39;s nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (&lt;https://github.com/aws/amazon-ec2-instance-selector&gt;) to choose instance types with matching CPU and memory
          * 
          * @return builder
          * 

@@ -27,9 +27,6 @@ class TunnelDestGroupArgs:
         """
         The set of arguments for constructing a TunnelDestGroup resource.
         :param pulumi.Input[str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -51,9 +48,6 @@ class TunnelDestGroupArgs:
     def group_name(self) -> pulumi.Input[str]:
         """
         Unique tunnel destination group name.
-
-
-        - - -
         """
         return pulumi.get(self, "group_name")
 
@@ -125,9 +119,6 @@ class _TunnelDestGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Full resource name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -175,9 +166,6 @@ class _TunnelDestGroupState:
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
         Unique tunnel destination group name.
-
-
-        - - -
         """
         return pulumi.get(self, "group_name")
 
@@ -241,11 +229,9 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.iap_tunnel.locations.destGroups)
         * How-to Guides
-            * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
+          * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
 
-        ## Example Usage
-
-        ### Iap Destgroup
+        ## 
 
         ```python
         import pulumi
@@ -307,9 +293,6 @@ class TunnelDestGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the tunnel group. Must be the same as the network resources in the group.
@@ -327,11 +310,9 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.iap_tunnel.locations.destGroups)
         * How-to Guides
-            * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
+          * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
 
-        ## Example Usage
-
-        ### Iap Destgroup
+        ## 
 
         ```python
         import pulumi
@@ -451,9 +432,6 @@ class TunnelDestGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[str] group_name: Unique tunnel destination group name.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Full resource name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -492,9 +470,6 @@ class TunnelDestGroup(pulumi.CustomResource):
     def group_name(self) -> pulumi.Output[str]:
         """
         Unique tunnel destination group name.
-
-
-        - - -
         """
         return pulumi.get(self, "group_name")
 

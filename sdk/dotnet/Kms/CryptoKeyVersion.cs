@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
     /// * How-to Guides
-    ///     * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
+    ///   * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
     /// 
     /// ## Example Usage
     /// 
@@ -85,9 +85,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The name of the cryptoKey associated with the CryptoKeyVersions.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cryptoKey")]
         public Output<string> CryptoKey { get; private set; } = null!;
@@ -173,9 +170,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The name of the cryptoKey associated with the CryptoKeyVersions.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey", required: true)]
         public Input<string> CryptoKey { get; set; } = null!;
@@ -225,9 +219,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The name of the cryptoKey associated with the CryptoKeyVersions.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }

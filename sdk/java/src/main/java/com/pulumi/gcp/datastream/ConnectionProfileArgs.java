@@ -142,16 +142,12 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     /**
      * The name of the location this connection profile is located in.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The name of the location this connection profile is located in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -455,8 +451,6 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param location The name of the location this connection profile is located in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -467,8 +461,6 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The name of the location this connection profile is located in.
-         * 
-         * ***
          * 
          * @return builder
          * 

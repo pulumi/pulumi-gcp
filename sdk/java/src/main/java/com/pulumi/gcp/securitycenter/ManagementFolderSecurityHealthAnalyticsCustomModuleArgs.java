@@ -77,16 +77,12 @@ public final class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs exten
     /**
      * Numerical ID of the parent folder.
      * 
-     * ***
-     * 
      */
     @Import(name="folder", required=true)
     private Output<String> folder;
 
     /**
      * @return Numerical ID of the parent folder.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {
@@ -214,8 +210,6 @@ public final class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs exten
         /**
          * @param folder Numerical ID of the parent folder.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -226,8 +220,6 @@ public final class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs exten
 
         /**
          * @param folder Numerical ID of the parent folder.
-         * 
-         * ***
          * 
          * @return builder
          * 

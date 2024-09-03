@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
 
         /// <summary>
         /// Port of the remote application endpoint.
-        /// 
-        /// - - -
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;

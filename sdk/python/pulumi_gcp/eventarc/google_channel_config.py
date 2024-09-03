@@ -28,10 +28,6 @@ class GoogleChannelConfigArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "location", location)
@@ -71,10 +67,6 @@ class GoogleChannelConfigArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -108,10 +100,6 @@ class _GoogleChannelConfigState:
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
@@ -155,10 +143,6 @@ class _GoogleChannelConfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -206,7 +190,7 @@ class GoogleChannelConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic
+        ### basic
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -257,10 +241,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -274,7 +254,7 @@ class GoogleChannelConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic
+        ### basic
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -380,10 +360,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
@@ -419,10 +395,6 @@ class GoogleChannelConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

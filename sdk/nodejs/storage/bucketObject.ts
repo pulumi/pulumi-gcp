@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Creates a new object inside an existing bucket in Google cloud storage service (GCS).
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `gcp.storage.ObjectACL` resource.
- *  For more information see
+ * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
@@ -108,7 +108,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly crc32c!: pulumi.Output<string>;
     /**
-     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](<https://cloud.google.com/storage/docs/encryption/customer-supplied-keys>)
      * Structure is documented below.
      */
     public readonly customerEncryption!: pulumi.Output<outputs.storage.BucketObjectCustomerEncryption | undefined>;
@@ -159,8 +159,6 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
-     *
-     * - - -
      */
     public readonly source!: pulumi.Output<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
     /**
@@ -284,7 +282,7 @@ export interface BucketObjectState {
      */
     crc32c?: pulumi.Input<string>;
     /**
-     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](<https://cloud.google.com/storage/docs/encryption/customer-supplied-keys>)
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
@@ -335,8 +333,6 @@ export interface BucketObjectState {
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
-     *
-     * - - -
      */
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
@@ -385,7 +381,7 @@ export interface BucketObjectArgs {
      */
     contentType?: pulumi.Input<string>;
     /**
-     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
+     * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](<https://cloud.google.com/storage/docs/encryption/customer-supplied-keys>)
      * Structure is documented below.
      */
     customerEncryption?: pulumi.Input<inputs.storage.BucketObjectCustomerEncryption>;
@@ -415,8 +411,6 @@ export interface BucketObjectArgs {
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
-     *
-     * - - -
      */
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**

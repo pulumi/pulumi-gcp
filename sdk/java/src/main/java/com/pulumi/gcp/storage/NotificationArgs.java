@@ -99,8 +99,6 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
      * 
-     * ***
-     * 
      */
     @Import(name="topic", required=true)
     private Output<String> topic;
@@ -110,8 +108,6 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {
@@ -268,8 +264,6 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
          * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
          * you will need to use the project-level name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -283,8 +277,6 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
          * topic name, assumed to belong to the default GCP provider project, or the project-level name,
          * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
          * you will need to use the project-level name.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.vpnConnections)
     /// * How-to Guides
-    ///     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+    ///   * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -170,9 +170,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Google Cloud Platform location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -308,9 +305,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Google Cloud Platform location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -425,9 +419,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Google Cloud Platform location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

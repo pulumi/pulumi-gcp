@@ -71,8 +71,6 @@ import * as utilities from "../utilities";
  *
  * ## This resource supports User Project Overrides.
  *
- * - 
- *
  * # IAM policy for Dataproc AutoscalingPolicy
  * Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
  *
@@ -174,7 +172,7 @@ import * as utilities from "../utilities";
  *
  * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class AutoscalingPolicyIamPolicy extends pulumi.CustomResource {
     /**

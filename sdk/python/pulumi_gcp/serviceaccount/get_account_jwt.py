@@ -107,7 +107,7 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+    Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
 
     ```python
     import pulumi
@@ -157,7 +157,7 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
 
     ## Example Usage
 
-    Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+    Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
 
     ```python
     import pulumi

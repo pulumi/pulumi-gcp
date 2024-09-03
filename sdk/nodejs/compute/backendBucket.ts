@@ -19,11 +19,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
  * * How-to Guides
- *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+ *   * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
  *
- * ## Example Usage
- *
- * ### Backend Bucket Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +38,7 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  * });
  * ```
- * ### Backend Bucket Security Policy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +61,7 @@ import * as utilities from "../utilities";
  *     edgeSecurityPolicy: policy.id,
  * });
  * ```
- * ### Backend Bucket Query String Whitelist
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Bucket Include Http Headers
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -203,9 +201,6 @@ export class BackendBucket extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -311,9 +306,6 @@ export interface BackendBucketState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -370,9 +362,6 @@ export interface BackendBucketArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

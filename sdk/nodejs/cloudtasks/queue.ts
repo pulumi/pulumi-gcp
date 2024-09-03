@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * A named resource to which messages are sent by publishers.
  *
- * ## Example Usage
- *
- * ### Queue Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,7 +20,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * ### Cloud Tasks Queue Advanced
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -113,9 +111,6 @@ export class Queue extends pulumi.CustomResource {
     public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -199,9 +194,6 @@ export interface QueueState {
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -248,9 +240,6 @@ export interface QueueArgs {
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

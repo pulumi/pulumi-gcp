@@ -27,9 +27,6 @@ class GcpUserAccessBindingArgs:
         :param pulumi.Input[str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "access_levels", access_levels)
         pulumi.set(__self__, "group_key", group_key)
@@ -64,9 +61,6 @@ class GcpUserAccessBindingArgs:
     def organization_id(self) -> pulumi.Input[str]:
         """
         Required. ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization_id")
 
@@ -88,9 +82,6 @@ class _GcpUserAccessBindingState:
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         """
         if access_levels is not None:
             pulumi.set(__self__, "access_levels", access_levels)
@@ -142,9 +133,6 @@ class _GcpUserAccessBindingState:
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization_id")
 
@@ -229,9 +217,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param pulumi.Input[str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -363,9 +348,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -406,9 +388,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
     def organization_id(self) -> pulumi.Output[str]:
         """
         Required. ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization_id")
 

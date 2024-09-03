@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataproc Metastore Federation Bigquery
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ *   * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  * 
  * ## Example Usage
  * 
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkebackup Backupplan Autopilot
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -162,6 +162,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Backupplan Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -249,6 +250,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Backupplan Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -333,6 +335,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Backupplan Permissive
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -418,6 +421,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Backupplan Rpo Daily Window
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -517,6 +521,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Backupplan Rpo Weekly Window
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -803,16 +808,12 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
     /**
      * The region of the Backup Plan.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The region of the Backup Plan.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

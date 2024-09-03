@@ -27,9 +27,6 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
                Format: 'organizations/{{organization_id}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         """
@@ -56,9 +53,6 @@ class AccessPolicyArgs:
     def title(self) -> pulumi.Input[str]:
         """
         Human readable title. Does not affect behavior.
-
-
-        - - -
         """
         return pulumi.get(self, "title")
 
@@ -98,9 +92,6 @@ class _AccessPolicyState:
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         if create_time is not None:
@@ -171,9 +162,6 @@ class _AccessPolicyState:
     def title(self) -> Optional[pulumi.Input[str]]:
         """
         Human readable title. Does not affect behavior.
-
-
-        - - -
         """
         return pulumi.get(self, "title")
 
@@ -214,7 +202,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
         * How-to Guides
-            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+          * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -234,6 +222,7 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
+
         ### Access Context Manager Access Policy Scoped
 
         ```python
@@ -269,9 +258,6 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -290,7 +276,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
         * How-to Guides
-            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+          * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -310,6 +296,7 @@ class AccessPolicy(pulumi.CustomResource):
             parent="organizations/123456789",
             title="Org Access Policy")
         ```
+
         ### Access Context Manager Access Policy Scoped
 
         ```python
@@ -405,9 +392,6 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,9 +445,6 @@ class AccessPolicy(pulumi.CustomResource):
     def title(self) -> pulumi.Output[str]:
         """
         Human readable title. Does not affect behavior.
-
-
-        - - -
         """
         return pulumi.get(self, "title")
 

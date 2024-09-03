@@ -14,6 +14,33 @@ import (
 // Get info about a Google Compute SSL Certificate from its name.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myCert, err := compute.GetCertificate(ctx, &compute.GetCertificateArgs{
+//				Name: "my-cert",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("certificate", myCert.Certificate)
+//			ctx.Export("certificateId", myCert.CertificateId)
+//			ctx.Export("selfLink", myCert.SelfLink)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulumi.InvokeOption) (*GetCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificateResult
@@ -27,8 +54,6 @@ func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulum
 // A collection of arguments for invoking getCertificate.
 type GetCertificateArgs struct {
 	// The name of the certificate.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -67,8 +92,6 @@ func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, op
 // A collection of arguments for invoking getCertificate.
 type GetCertificateOutputArgs struct {
 	// The name of the certificate.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

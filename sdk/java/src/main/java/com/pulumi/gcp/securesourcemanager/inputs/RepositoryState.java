@@ -130,16 +130,12 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID for the Repository.
      * 
-     * ***
-     * 
      */
     @Import(name="repositoryId")
     private @Nullable Output<String> repositoryId;
 
     /**
      * @return The ID for the Repository.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> repositoryId() {
@@ -381,8 +377,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param repositoryId The ID for the Repository.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -393,8 +387,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param repositoryId The ID for the Repository.
-         * 
-         * ***
          * 
          * @return builder
          * 

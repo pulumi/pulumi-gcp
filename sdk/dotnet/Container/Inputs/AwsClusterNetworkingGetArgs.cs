@@ -44,8 +44,6 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-        /// 
-        /// - - -
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;

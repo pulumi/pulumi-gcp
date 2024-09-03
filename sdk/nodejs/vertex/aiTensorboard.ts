@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.tensorboards)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
- * ## Example Usage
- *
- * ### Vertex Ai Tensorboard
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,7 +31,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * ### Vertex Ai Tensorboard Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -133,9 +131,6 @@ export class AiTensorboard extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * User provided name of this Tensorboard.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -251,9 +246,6 @@ export interface AiTensorboardState {
     description?: pulumi.Input<string>;
     /**
      * User provided name of this Tensorboard.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -310,9 +302,6 @@ export interface AiTensorboardArgs {
     description?: pulumi.Input<string>;
     /**
      * User provided name of this Tensorboard.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

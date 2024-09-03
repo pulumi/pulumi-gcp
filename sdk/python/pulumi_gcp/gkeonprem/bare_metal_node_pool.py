@@ -526,6 +526,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Gkeonprem Bare Metal Node Pool Full
 
         ```python
@@ -756,6 +757,7 @@ class BareMetalNodePool(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Gkeonprem Bare Metal Node Pool Full
 
         ```python

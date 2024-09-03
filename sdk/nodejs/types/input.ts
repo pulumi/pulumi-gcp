@@ -228,7 +228,7 @@ export namespace accesscontextmanager {
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
          * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
          * Structure is documented below.
          */
         expr: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustomExpr>;
@@ -261,7 +261,7 @@ export namespace accesscontextmanager {
         basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevelBasic>;
         /**
          * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-         * See CEL spec at: https://github.com/google/cel-spec.
+         * See CEL spec at: <https://github.com/google/cel-spec>.
          * Structure is documented below.
          */
         custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevelCustom>;
@@ -428,7 +428,7 @@ export namespace accesscontextmanager {
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
          * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
          * Structure is documented below.
          */
         expr: pulumi.Input<inputs.accesscontextmanager.AccessLevelsAccessLevelCustomExpr>;
@@ -2454,7 +2454,7 @@ export namespace apigateway {
     export interface ApiConfigGatewayConfigBackendConfig {
         /**
          * Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-         * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+         * (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
          */
         googleServiceAccount: pulumi.Input<string>;
     }
@@ -2885,8 +2885,6 @@ export namespace apigee {
         countryCode?: pulumi.Input<string>;
         /**
          * Email address. Max 255 characters.
-         *
-         * - - -
          */
         email?: pulumi.Input<string>;
         /**
@@ -2950,7 +2948,7 @@ export namespace apigee {
 
     export interface TargetServerSSlInfo {
         /**
-         * The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+         * The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
          */
         ciphers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -3011,7 +3009,7 @@ export namespace appengine {
 
     export interface ApplicationIap {
         /**
-         * (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+         * (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
          * (default is false)
          */
         enabled?: pulumi.Input<boolean>;
@@ -3050,8 +3048,6 @@ export namespace appengine {
         /**
          * Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
          * The sum of the lengths of the domain and path may not exceed 100 characters.
-         *
-         * - - -
          */
         service: pulumi.Input<string>;
     }
@@ -3102,8 +3098,6 @@ export namespace appengine {
     export interface EngineSplitTrafficSplit {
         /**
          * Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
-         *
-         * - - -
          */
         allocations: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -3474,8 +3468,6 @@ export namespace appengine {
         host?: pulumi.Input<string>;
         /**
          * The initial delay before starting to execute the checks. Default: "300s"
-         *
-         * - - -
          */
         initialDelay?: pulumi.Input<string>;
         /**
@@ -3612,8 +3604,6 @@ export namespace appengine {
          * The ingress settings for version or service.
          * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
          * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
-         *
-         * - - -
          */
         ingressTrafficAllowed?: pulumi.Input<string>;
     }
@@ -3723,8 +3713,6 @@ export namespace appengine {
     export interface StandardAppVersionEntrypoint {
         /**
          * The format should be a shell command that can be fed to bash -c.
-         *
-         * - - -
          */
         shell: pulumi.Input<string>;
     }
@@ -3927,8 +3915,6 @@ export namespace apphub {
          * Possible values:
          * REGIONAL
          * Possible values are: `REGIONAL`.
-         *
-         * - - -
          */
         type: pulumi.Input<string>;
     }
@@ -4839,8 +4825,6 @@ export namespace backupdisasterrecovery {
          * Type of Network peeringMode
          * Default value is `PRIVATE_SERVICE_ACCESS`.
          * Possible values are: `PRIVATE_SERVICE_ACCESS`.
-         *
-         * - - -
          */
         peeringMode?: pulumi.Input<string>;
     }
@@ -4854,8 +4838,6 @@ export namespace beyondcorp {
         host: pulumi.Input<string>;
         /**
          * Port of the remote application endpoint.
-         *
-         * - - -
          */
         port: pulumi.Input<number>;
     }
@@ -4872,7 +4854,7 @@ export namespace beyondcorp {
         ingressPort?: pulumi.Input<number>;
         /**
          * The type of hosting used by the gateway. Refer to
-         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+         * <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
          * for a list of possible values.
          */
         type?: pulumi.Input<string>;
@@ -4894,8 +4876,6 @@ export namespace beyondcorp {
     export interface AppConnectorPrincipalInfoServiceAccount {
         /**
          * Email address of the service account.
-         *
-         * - - -
          */
         email: pulumi.Input<string>;
     }
@@ -4923,8 +4903,6 @@ export namespace biglake {
          * Stores user supplied Hive database parameters. An object containing a
          * list of"key": value pairs.
          * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-         *
-         * - - -
          */
         parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -5077,7 +5055,7 @@ export namespace bigquery {
          */
         database: pulumi.Input<string>;
         /**
-         * Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+         * Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
          */
         databaseRole?: pulumi.Input<string>;
         /**
@@ -5273,7 +5251,7 @@ export namespace bigquery {
         specialGroup?: pulumi.Input<string>;
         /**
          * An email address of a user to grant access to. For example:
-         * fred@example.com
+         * <fred@example.com>
          */
         userByEmail?: pulumi.Input<string>;
         /**
@@ -5571,8 +5549,6 @@ export namespace bigquery {
         datasetId: pulumi.Input<string>;
         /**
          * The ID of the model.
-         *
-         * - - -
          */
         modelId: pulumi.Input<string>;
         /**
@@ -6672,8 +6648,6 @@ export namespace bigqueryanalyticshub {
     export interface ListingBigqueryDataset {
         /**
          * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-         *
-         * - - -
          */
         dataset: pulumi.Input<string>;
     }
@@ -6727,7 +6701,7 @@ export namespace bigqueryanalyticshub {
 export namespace bigquerydatapolicy {
     export interface DataPolicyDataMaskingPolicy {
         /**
-         * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
+         * The available masking rules. Learn more here: <https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options>.
          * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
          */
         predefinedExpression?: pulumi.Input<string>;
@@ -6754,8 +6728,6 @@ export namespace bigtable {
     export interface AuthorizedViewSubsetView {
         /**
          * A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-         *
-         * -----
          */
         familySubsets?: pulumi.Input<pulumi.Input<inputs.bigtable.AuthorizedViewSubsetViewFamilySubset>[]>;
         /**
@@ -6789,8 +6761,6 @@ export namespace bigtable {
         days?: pulumi.Input<number>;
         /**
          * Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-         *
-         * -----
          */
         duration?: pulumi.Input<string>;
     }
@@ -6798,9 +6768,6 @@ export namespace bigtable {
     export interface GCPolicyMaxVersion {
         /**
          * Number of version before applying the GC policy.
-         *
-         * -----
-         * `gcRules` include 2 fields:
          */
         number: pulumi.Input<number>;
     }
@@ -6958,7 +6925,7 @@ export namespace billing {
         /**
          * The schema version of the notification. Only "1.0" is
          * accepted. It represents the JSON schema as defined in
-         * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+         * <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
          */
         schemaVersion?: pulumi.Input<string>;
     }
@@ -6993,8 +6960,6 @@ export namespace billing {
          * negative. If units is negative, nanos must be negative or
          * zero. For example $-1.75 is represented as units=-1 and
          * nanos=-750,000,000.
-         *
-         * - - -
          */
         nanos?: pulumi.Input<number>;
         /**
@@ -7060,7 +7025,7 @@ export namespace billing {
          * included in the budget. If omitted, the report will include
          * usage for all the services. The service names are available
          * through the Catalog API:
-         * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+         * <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
          */
         services?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -7222,8 +7187,6 @@ export namespace binaryauthorization {
          * match the structure and any object identifiers encoded in
          * publicKeyPem (i.e. this algorithm must match that of the
          * public key).
-         *
-         * - - -
          */
         signatureAlgorithm?: pulumi.Input<string>;
     }
@@ -7282,8 +7245,6 @@ export namespace binaryauthorization {
         /**
          * The action when a pod creation is denied by the admission rule.
          * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-         *
-         * - - -
          */
         enforcementMode: pulumi.Input<string>;
         /**
@@ -7765,8 +7726,6 @@ export namespace certificateauthority {
          * The algorithm to use for creating a managed Cloud KMS key for a for a simplified
          * experience. All managed keys will be have their ProtectionLevel as HSM.
          * Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-         *
-         * - - -
          */
         algorithm?: pulumi.Input<string>;
         /**
@@ -7928,7 +7887,7 @@ export namespace certificateauthority {
          */
         nameConstraints?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesNameConstraints>;
         /**
-         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
          * Structure is documented below.
          */
         policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyBaselineValuesPolicyId>[]>;
@@ -8156,7 +8115,7 @@ export namespace certificateauthority {
         /**
          * A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
          * certificate is signed. To see the full allowed syntax and some examples,
-         * see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+         * see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
          * Structure is documented below.
          */
         celExpression?: pulumi.Input<inputs.certificateauthority.CaPoolIssuancePolicyIdentityConstraintsCelExpression>;
@@ -8212,7 +8171,7 @@ export namespace certificateauthority {
         aiaIssuingCertificateUrls?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * (Output)
-         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Identifies the subjectKeyId of the parent certificate, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.1>
          * Structure is documented below.
          */
         authorityKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionAuthorityKeyId>[]>;
@@ -8224,7 +8183,7 @@ export namespace certificateauthority {
         certFingerprints?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionCertFingerprint>[]>;
         /**
          * (Output)
-         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by <https://tools.ietf.org/html/rfc5280#section-4.2.1.13>
          */
         crlDistributionPoints?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -8241,7 +8200,7 @@ export namespace certificateauthority {
         subjectDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectDescription>[]>;
         /**
          * (Output)
-         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Provides a means of identifiying certificates that contain a particular public key, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.2>.
          * Structure is documented below.
          */
         subjectKeyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionSubjectKeyId>[]>;
@@ -8443,7 +8402,7 @@ export namespace certificateauthority {
         nameConstraints?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionNameConstraint>[]>;
         /**
          * (Output)
-         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
          * Structure is documented below.
          */
         policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionX509DescriptionPolicyId>[]>;
@@ -8651,7 +8610,6 @@ export namespace certificateauthority {
          * A PublicKey describes a public key.
          * Structure is documented below.
          *
-         *
          * <a name="nestedX509Config"></a>The `x509Config` block supports:
          */
         publicKey: pulumi.Input<inputs.certificateauthority.CertificateConfigPublicKey>;
@@ -8791,7 +8749,7 @@ export namespace certificateauthority {
         nameConstraints?: pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigNameConstraints>;
         /**
          * (Output)
-         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
          * Structure is documented below.
          */
         policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateConfigX509ConfigPolicyId>[]>;
@@ -9052,7 +9010,7 @@ export namespace certificateauthority {
          */
         allowSubjectPassthrough: pulumi.Input<boolean>;
         /**
-         * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+         * Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
          * Structure is documented below.
          */
         celExpression?: pulumi.Input<inputs.certificateauthority.CertificateTemplateIdentityConstraintsCelExpression>;
@@ -9117,7 +9075,7 @@ export namespace certificateauthority {
          */
         keyUsage?: pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesKeyUsage>;
         /**
-         * Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
          * Structure is documented below.
          */
         policyIds?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateTemplatePredefinedValuesPolicyId>[]>;
@@ -9271,8 +9229,6 @@ export namespace certificatemanager {
          * A CA pool resource used to issue a certificate.
          * The CA pool string has a relative resource path following the form
          * "projects/{project}/locations/{location}/caPools/{caPool}".
-         *
-         * - - -
          */
         caPool: pulumi.Input<string>;
     }
@@ -9283,7 +9239,6 @@ export namespace certificatemanager {
          * Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
-         *
          *
          * <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
          */
@@ -9299,7 +9254,7 @@ export namespace certificatemanager {
         domains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
-         * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+         * If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
          * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          */
         issuanceConfig?: pulumi.Input<string>;
@@ -9426,9 +9381,6 @@ export namespace certificatemanager {
          * Name of the resource; provided by the client when the resource is created.
          * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
          * and all following characters must be a dash, underscore, letter or digit.
-         *
-         *
-         * - - -
          */
         name?: pulumi.Input<string>;
         /**
@@ -9517,8 +9469,6 @@ export namespace cloudasset {
     export interface FolderFeedFeedOutputConfigPubsubDestination {
         /**
          * Destination on Cloud Pubsub topic.
-         *
-         * - - -
          */
         topic: pulumi.Input<string>;
     }
@@ -9556,8 +9506,6 @@ export namespace cloudasset {
     export interface OrganizationFeedFeedOutputConfigPubsubDestination {
         /**
          * Destination on Cloud Pubsub topic.
-         *
-         * - - -
          */
         topic: pulumi.Input<string>;
     }
@@ -9595,8 +9543,6 @@ export namespace cloudasset {
     export interface ProjectFeedFeedOutputConfigPubsubDestination {
         /**
          * Destination on Cloud Pubsub topic.
-         *
-         * - - -
          */
         topic: pulumi.Input<string>;
     }
@@ -9626,8 +9572,6 @@ export namespace cloudbuild {
         /**
          * Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
          * Changing this field will result in deleting/ recreating the resource.
-         *
-         * - - -
          */
         webhookSecretVersionName: pulumi.Input<string>;
     }
@@ -9646,7 +9590,7 @@ export namespace cloudbuild {
          */
         bitbucketServerConfigResource: pulumi.Input<string>;
         /**
-         * Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+         * Key of the project that the repo is in. For example: The key for <https://mybitbucket.server/projects/TEST/repos/test-repo> is "TEST".
          */
         projectKey: pulumi.Input<string>;
         /**
@@ -9661,7 +9605,7 @@ export namespace cloudbuild {
         push?: pulumi.Input<inputs.cloudbuild.TriggerBitbucketServerTriggerConfigPush>;
         /**
          * Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
-         * For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+         * For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in <https://mybitbucket.server/projects/TEST/repos/test-repo>.
          */
         repoSlug: pulumi.Input<string>;
     }
@@ -9669,7 +9613,7 @@ export namespace cloudbuild {
     export interface TriggerBitbucketServerTriggerConfigPullRequest {
         /**
          * Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at <https://github.com/google/re2/wiki/Syntax>
          */
         branch: pulumi.Input<string>;
         /**
@@ -9859,7 +9803,6 @@ export namespace cloudbuild {
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          *
-         *
          * <a name="nestedTiming"></a>The `timing` block contains:
          */
         timings?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsObjectsTiming>[]>;
@@ -10036,7 +9979,7 @@ export namespace cloudbuild {
         /**
          * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * described at <https://github.com/google/re2/wiki/Syntax>
          */
         branchName?: pulumi.Input<string>;
         /**
@@ -10069,7 +10012,7 @@ export namespace cloudbuild {
         /**
          * Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * described at <https://github.com/google/re2/wiki/Syntax>
          */
         tagName?: pulumi.Input<string>;
     }
@@ -10150,7 +10093,7 @@ export namespace cloudbuild {
          * run directly. If not, the host will attempt to pull the image first, using
          * the builder service account's credentials if necessary.
          * The Docker daemon's cache will already have the latest versions of all of
-         * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+         * the officially supported build steps (see <https://github.com/GoogleCloudPlatform/cloud-builders>
          * for images and examples).
          * The Docker daemon will also have cached many of the layers for some popular
          * images, like "ubuntu", "debian", but they will be refreshed at the time
@@ -10247,7 +10190,7 @@ export namespace cloudbuild {
         repository?: pulumi.Input<string>;
         /**
          * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
-         * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+         * filename (optional). This field respects the same syntax/resolution as described here: <https://git-scm.com/docs/gitrevisions>
          * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
          */
         revision?: pulumi.Input<string>;
@@ -10266,12 +10209,12 @@ export namespace cloudbuild {
         enterpriseConfigResourceName?: pulumi.Input<string>;
         /**
          * Name of the repository. For example: The name for
-         * https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+         * <https://github.com/googlecloudplatform/cloud-builders> is "cloud-builders".
          */
         name?: pulumi.Input<string>;
         /**
          * Owner of the repository. For example: The owner for
-         * https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+         * <https://github.com/googlecloudplatform/cloud-builders> is "googlecloudplatform".
          */
         owner?: pulumi.Input<string>;
         /**
@@ -10289,7 +10232,7 @@ export namespace cloudbuild {
     export interface TriggerGithubPullRequest {
         /**
          * Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at <https://github.com/google/re2/wiki/Syntax>
          */
         branch: pulumi.Input<string>;
         /**
@@ -10360,7 +10303,7 @@ export namespace cloudbuild {
     export interface TriggerRepositoryEventConfigPullRequest {
         /**
          * Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at <https://github.com/google/re2/wiki/Syntax>
          */
         branch?: pulumi.Input<string>;
         /**
@@ -10473,7 +10416,7 @@ export namespace cloudbuild {
 
     export interface WorkerPoolNetworkConfig {
         /**
-         * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+         * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (<https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options>)
          */
         peeredNetwork: pulumi.Input<string>;
         /**
@@ -10484,11 +10427,11 @@ export namespace cloudbuild {
 
     export interface WorkerPoolWorkerConfig {
         /**
-         * Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+         * Size of the disk attached to the worker, in GB. See (<https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file)>. Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
          */
         diskSizeGb?: pulumi.Input<number>;
         /**
-         * Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+         * Machine type of a worker, such as `n1-standard-1`. See (<https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file)>. If left blank, Cloud Build will use `n1-standard-1`.
          */
         machineType?: pulumi.Input<string>;
         /**
@@ -10684,7 +10627,7 @@ export namespace cloudbuildv2 {
          */
         authorizerCredential: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfigAuthorizerCredential>;
         /**
-         * The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+         * The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
          */
         hostUri?: pulumi.Input<string>;
         /**
@@ -10795,8 +10738,6 @@ export namespace clouddeploy {
         id: pulumi.Input<string>;
         /**
          * Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-         *
-         * - - -
          */
         sourcePhases?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -11124,8 +11065,6 @@ export namespace clouddeploy {
         profiles?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Whether to run verify tests after the deployment.
-         *
-         * - - -
          */
         verify?: pulumi.Input<boolean>;
     }
@@ -11427,14 +11366,12 @@ export namespace clouddomains {
         /**
          * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain "care of" information.
-         *
-         * - - -
          */
         recipients?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-         * ensure the value is correct. See https://cldr.unicode.org/ and
-         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+         * ensure the value is correct. See <https://cldr.unicode.org/> and
+         * <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
          */
         regionCode: pulumi.Input<string>;
     }
@@ -11493,14 +11430,12 @@ export namespace clouddomains {
         /**
          * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain "care of" information.
-         *
-         * - - -
          */
         recipients?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-         * ensure the value is correct. See https://cldr.unicode.org/ and
-         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+         * ensure the value is correct. See <https://cldr.unicode.org/> and
+         * <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
          */
         regionCode: pulumi.Input<string>;
     }
@@ -11559,14 +11494,12 @@ export namespace clouddomains {
         /**
          * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain "care of" information.
-         *
-         * - - -
          */
         recipients?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-         * ensure the value is correct. See https://cldr.unicode.org/ and
-         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+         * ensure the value is correct. See <https://cldr.unicode.org/> and
+         * <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
          */
         regionCode: pulumi.Input<string>;
     }
@@ -11926,7 +11859,7 @@ export namespace cloudfunctionsv2 {
         /**
          * Optional. The email of the trigger's service account. The service account
          * must have permission to invoke Cloud Run services. If empty, defaults to the
-         * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+         * Compute Engine default service account: {project_<number}-compute@developer.gserviceaccount.com>.
          */
         serviceAccountEmail?: pulumi.Input<string>;
         /**
@@ -12192,8 +12125,6 @@ export namespace cloudidentity {
          * If specified, the EntityKey represents an external-identity-mapped group.
          * The namespace must correspond to an identity source created in Admin Console
          * and must be in the form of `identitysources/{identity_source_id}`.
-         *
-         * - - -
          */
         namespace?: pulumi.Input<string>;
     }
@@ -12260,8 +12191,6 @@ export namespace cloudidentity {
          * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
          * resolution and up to nine fractional digits.
          * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-         *
-         * - - -
          */
         expireTime: pulumi.Input<string>;
     }
@@ -12270,7 +12199,7 @@ export namespace cloudidentity {
 export namespace cloudquota {
     export interface SQuotaPreferenceQuotaConfig {
         /**
-         * The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+         * The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
          * An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
          */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -12286,8 +12215,6 @@ export namespace cloudquota {
         /**
          * (Output)
          * The origin of the quota preference request.
-         *
-         * - - -
          */
         requestOrigin?: pulumi.Input<string>;
         /**
@@ -12308,7 +12235,7 @@ export namespace cloudrun {
         /**
          * Annotations is a key value map stored with a resource that
          * may be set by external tools to store and retrieve arbitrary metadata.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations>
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -12331,7 +12258,7 @@ export namespace cloudrun {
          * Map of string keys and values that can be used to organize and categorize
          * (scope and select) objects. May match selectors of replication controllers
          * and routes.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+         * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/labels>
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
          */
@@ -12355,7 +12282,7 @@ export namespace cloudrun {
          * resource or set of resources. They may only be valid for a
          * particular resource or set of resources.
          * More info:
-         * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+         * <https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency>
          */
         resourceVersion?: pulumi.Input<string>;
         /**
@@ -12367,7 +12294,7 @@ export namespace cloudrun {
          * (Output)
          * UID is a unique id generated by the server on successful creation of a resource and is not
          * allowed to change on PUT operations.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
+         * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids>
          */
         uid?: pulumi.Input<string>;
     }
@@ -12377,8 +12304,6 @@ export namespace cloudrun {
          * The mode of the certificate.
          * Default value is `AUTOMATIC`.
          * Possible values are: `NONE`, `AUTOMATIC`.
-         *
-         * - - -
          */
         certificateMode?: pulumi.Input<string>;
         /**
@@ -12480,7 +12405,7 @@ export namespace cloudrun {
         /**
          * Annotations is a key value map stored with a resource that
          * may be set by external tools to store and retrieve arbitrary metadata.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations>
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -12672,7 +12597,7 @@ export namespace cloudrun {
         /**
          * Annotations is a key value map stored with a resource that
          * may be set by external tools to store and retrieve arbitrary metadata.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+         * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations>
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
@@ -12817,7 +12742,7 @@ export namespace cloudrun {
         image: pulumi.Input<string>;
         /**
          * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          * Structure is documented below.
          */
         livenessProbe?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerLivenessProbe>;
@@ -12999,7 +12924,7 @@ export namespace cloudrun {
         port?: pulumi.Input<number>;
         /**
          * The name of the service to place in the gRPC HealthCheckRequest
-         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
          * If this is not specified, the default behavior is defined by gRPC.
          */
         service?: pulumi.Input<string>;
@@ -13052,7 +12977,7 @@ export namespace cloudrun {
         /**
          * Limits describes the maximum amount of compute resources allowed.
          * The values of the map is string form of the 'quantity' k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
          */
         limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -13060,7 +12985,7 @@ export namespace cloudrun {
          * If Requests is omitted for a container, it defaults to Limits if that is
          * explicitly specified, otherwise to an implementation-defined value.
          * The values of the map is string form of the 'quantity' k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
          */
         requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -13113,7 +13038,7 @@ export namespace cloudrun {
         port?: pulumi.Input<number>;
         /**
          * The name of the service to place in the gRPC HealthCheckRequest
-         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
          * If this is not specified, the default behavior is defined by gRPC.
          */
         service?: pulumi.Input<string>;
@@ -13224,7 +13149,7 @@ export namespace cloudrun {
          */
         medium?: pulumi.Input<string>;
         /**
-         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
          */
         sizeLimit?: pulumi.Input<string>;
     }
@@ -13236,8 +13161,6 @@ export namespace cloudrun {
         path: pulumi.Input<string>;
         /**
          * If true, mount the NFS volume as read only in all mounts. Defaults to false.
-         *
-         * - - -
          */
         readOnly?: pulumi.Input<boolean>;
         /**
@@ -13332,7 +13255,7 @@ export namespace cloudrun {
 export namespace cloudrunv2 {
     export interface JobBinaryAuthorization {
         /**
-         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
          */
         breakglassJustification?: pulumi.Input<string>;
         /**
@@ -13384,7 +13307,7 @@ export namespace cloudrunv2 {
         state?: pulumi.Input<string>;
         /**
          * (Output)
-         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         * type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
          */
         type?: pulumi.Input<string>;
     }
@@ -13430,8 +13353,8 @@ export namespace cloudrunv2 {
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-         * or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-         * https://cloud.google.com/run/docs/configuring/labels.
+         * or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+         * <https://cloud.google.com/run/docs/configuring/labels>.
          * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
          * All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
          */
@@ -13441,7 +13364,7 @@ export namespace cloudrunv2 {
          */
         parallelism?: pulumi.Input<number>;
         /**
-         * Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+         * Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
          */
         taskCount?: pulumi.Input<number>;
         /**
@@ -13458,7 +13381,7 @@ export namespace cloudrunv2 {
          */
         containers?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainer>[]>;
         /**
-         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
          */
         encryptionKey?: pulumi.Input<string>;
         /**
@@ -13485,7 +13408,7 @@ export namespace cloudrunv2 {
          */
         volumes?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolume>[]>;
         /**
-         * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
          * Structure is documented below.
          */
         vpcAccess?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVpcAccess>;
@@ -13493,11 +13416,11 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateContainer {
         /**
-         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
          */
         args?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -13506,7 +13429,7 @@ export namespace cloudrunv2 {
          */
         envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerEnv>[]>;
         /**
-         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
          */
         image: pulumi.Input<string>;
         /**
@@ -13520,7 +13443,7 @@ export namespace cloudrunv2 {
          */
         ports?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerPort>[]>;
         /**
-         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerResources>;
@@ -13583,14 +13506,14 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateContainerResources {
         /**
-         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
          */
         limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobTemplateTemplateContainerVolumeMount {
         /**
-         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
          */
         mountPath: pulumi.Input<string>;
         /**
@@ -13601,7 +13524,7 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateVolume {
         /**
-         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
          * Structure is documented below.
          */
         cloudSqlInstance?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstance>;
@@ -13625,7 +13548,7 @@ export namespace cloudrunv2 {
          */
         nfs?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolumeNfs>;
         /**
-         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
          * Structure is documented below.
          */
         secret?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolumeSecret>;
@@ -13633,7 +13556,7 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateVolumeCloudSqlInstance {
         /**
-         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         * The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          */
         instances?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -13646,7 +13569,7 @@ export namespace cloudrunv2 {
          */
         medium?: pulumi.Input<string>;
         /**
-         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
          */
         sizeLimit?: pulumi.Input<string>;
     }
@@ -13740,8 +13663,6 @@ export namespace cloudrunv2 {
         subnetwork?: pulumi.Input<string>;
         /**
          * Network tags applied to this Cloud Run job.
-         *
-         * - - -
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -13785,14 +13706,14 @@ export namespace cloudrunv2 {
         state?: pulumi.Input<string>;
         /**
          * (Output)
-         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         * type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
          */
         type?: pulumi.Input<string>;
     }
 
     export interface ServiceBinaryAuthorization {
         /**
-         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
          */
         breakglassJustification?: pulumi.Input<string>;
         /**
@@ -13882,7 +13803,7 @@ export namespace cloudrunv2 {
          */
         containers?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainer>[]>;
         /**
-         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
          */
         encryptionKey?: pulumi.Input<string>;
         /**
@@ -13892,7 +13813,7 @@ export namespace cloudrunv2 {
         executionEnvironment?: pulumi.Input<string>;
         /**
          * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
          * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
          * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          */
@@ -13916,7 +13837,7 @@ export namespace cloudrunv2 {
          */
         serviceAccount?: pulumi.Input<string>;
         /**
-         * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         * Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
          */
         sessionAffinity?: pulumi.Input<boolean>;
         /**
@@ -13930,7 +13851,7 @@ export namespace cloudrunv2 {
          */
         volumes?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolume>[]>;
         /**
-         * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
          * Structure is documented below.
          */
         vpcAccess?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVpcAccess>;
@@ -13938,11 +13859,11 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainer {
         /**
-         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
          */
         args?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -13955,11 +13876,11 @@ export namespace cloudrunv2 {
          */
         envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerEnv>[]>;
         /**
-         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
          */
         image: pulumi.Input<string>;
         /**
-         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          * Structure is documented below.
          */
         livenessProbe?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerLivenessProbe>;
@@ -13974,12 +13895,12 @@ export namespace cloudrunv2 {
          */
         ports?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerPort>[]>;
         /**
-         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerResources>;
         /**
-         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          * Structure is documented below.
          */
         startupProbe?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerStartupProbe>;
@@ -14045,7 +13966,7 @@ export namespace cloudrunv2 {
          */
         httpGet?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGet>;
         /**
-         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          */
         initialDelaySeconds?: pulumi.Input<number>;
         /**
@@ -14058,7 +13979,7 @@ export namespace cloudrunv2 {
          */
         tcpSocket?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerLivenessProbeTcpSocket>;
         /**
-         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          */
         timeoutSeconds?: pulumi.Input<number>;
     }
@@ -14071,7 +13992,7 @@ export namespace cloudrunv2 {
         port?: pulumi.Input<number>;
         /**
          * The name of the service to place in the gRPC HealthCheckRequest
-         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
          * If this is not specified, the default behavior is defined by gRPC.
          */
         service?: pulumi.Input<string>;
@@ -14131,7 +14052,7 @@ export namespace cloudrunv2 {
          */
         cpuIdle?: pulumi.Input<boolean>;
         /**
-         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
          */
         limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -14156,7 +14077,7 @@ export namespace cloudrunv2 {
          */
         httpGet?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerStartupProbeHttpGet>;
         /**
-         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          */
         initialDelaySeconds?: pulumi.Input<number>;
         /**
@@ -14169,7 +14090,7 @@ export namespace cloudrunv2 {
          */
         tcpSocket?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocket>;
         /**
-         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
          */
         timeoutSeconds?: pulumi.Input<number>;
     }
@@ -14182,7 +14103,7 @@ export namespace cloudrunv2 {
         port?: pulumi.Input<number>;
         /**
          * The name of the service to place in the gRPC HealthCheckRequest
-         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
          * If this is not specified, the default behavior is defined by gRPC.
          */
         service?: pulumi.Input<string>;
@@ -14226,7 +14147,7 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerVolumeMount {
         /**
-         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
          */
         mountPath: pulumi.Input<string>;
         /**
@@ -14248,7 +14169,7 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateVolume {
         /**
-         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
          * Structure is documented below.
          */
         cloudSqlInstance?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance>;
@@ -14272,7 +14193,7 @@ export namespace cloudrunv2 {
          */
         nfs?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolumeNfs>;
         /**
-         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
          * Structure is documented below.
          */
         secret?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolumeSecret>;
@@ -14280,7 +14201,7 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateVolumeCloudSqlInstance {
         /**
-         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         * The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          */
         instances?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -14293,7 +14214,7 @@ export namespace cloudrunv2 {
          */
         medium?: pulumi.Input<string>;
         /**
-         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
          */
         sizeLimit?: pulumi.Input<string>;
     }
@@ -14316,8 +14237,6 @@ export namespace cloudrunv2 {
         path: pulumi.Input<string>;
         /**
          * If true, mount the NFS volume as read only
-         *
-         * - - -
          */
         readOnly?: pulumi.Input<boolean>;
         /**
@@ -15411,7 +15330,7 @@ export namespace compute {
          * metric scales number of virtual machines handling requests
          * to increase or decrease proportionally to the metric.
          * For example, a good metric to use as a utilizationTarget is
-         * www.googleapis.com/compute/instance/network/received_bytes_count.
+         * <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
          * The autoscaler will work to keep this value constant for each
          * of the instances.
          */
@@ -15502,7 +15421,7 @@ export namespace compute {
          */
         schedule: pulumi.Input<string>;
         /**
-         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
          */
         timeZone?: pulumi.Input<string>;
     }
@@ -16044,7 +15963,7 @@ export namespace compute {
          * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
          * Maglev is not as stable as ring hash but has faster table lookup
          * build times and host selection times. For more information about
-         * Maglev, refer to https://ai.google/research/pubs/pub44824
+         * Maglev, refer to <https://ai.google/research/pubs/pub44824>
          * Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
          */
         name: pulumi.Input<string>;
@@ -16173,7 +16092,6 @@ export namespace compute {
          * Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
          * Structure is documented below.
          *
-         *
          * <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
          */
         awsV4Authentication?: pulumi.Input<inputs.compute.BackendServiceSecuritySettingsAwsV4Authentication>;
@@ -16226,8 +16144,6 @@ export namespace compute {
         disk: pulumi.Input<string>;
         /**
          * Output-only. Status of replication on the secondary disk.
-         *
-         * - - -
          */
         state?: pulumi.Input<string>;
     }
@@ -16238,7 +16154,7 @@ export namespace compute {
          * in the cloud console. Your project's Compute Engine System service account
          * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -16292,7 +16208,7 @@ export namespace compute {
          * in the cloud console. Your project's Compute Engine System service account
          * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -16319,7 +16235,7 @@ export namespace compute {
          * in the cloud console. Your project's Compute Engine System service account
          * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
@@ -16941,7 +16857,7 @@ export namespace compute {
         deviceName?: pulumi.Input<string>;
         /**
          * A 256-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw` may be set.
          */
@@ -16949,7 +16865,7 @@ export namespace compute {
         /**
          * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * encoded SHA-256 hash of the [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
@@ -16984,7 +16900,7 @@ export namespace compute {
         deviceName?: pulumi.Input<string>;
         /**
          * A 256-bit [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw`
          * may be set.
@@ -16993,7 +16909,7 @@ export namespace compute {
         /**
          * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
          * encoded SHA-256 hash of the [customer-supplied encryption key]
-         * (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+         * (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
          */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
@@ -17076,7 +16992,7 @@ export namespace compute {
         /**
          * The URL of the storage pool in which the new disk is created.
          * For example:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
          * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
          */
         storagePool?: pulumi.Input<string>;
@@ -17968,8 +17884,6 @@ export namespace compute {
     export interface InstanceGroupManagerAllInstancesConfig {
         /**
          * , The label key-value pairs that you want to patch onto the instance.
-         *
-         * - - -
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -17993,7 +17907,6 @@ export namespace compute {
     export interface InstanceGroupManagerInstanceLifecyclePolicy {
         /**
          * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-         * - - -
          */
         defaultActionOnFailure?: pulumi.Input<string>;
         /**
@@ -18009,7 +17922,6 @@ export namespace compute {
         name: pulumi.Input<string>;
         /**
          * The port number.
-         * - - -
          */
         port: pulumi.Input<number>;
     }
@@ -18028,7 +17940,6 @@ export namespace compute {
         initialDelaySec?: pulumi.Input<number>;
         /**
          * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-         * - - -
          */
         mode?: pulumi.Input<string>;
     }
@@ -18154,7 +18065,6 @@ export namespace compute {
         mostDisruptiveAllowedAction?: pulumi.Input<string>;
         /**
          * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
-         * - - -
          */
         replacementMethod?: pulumi.Input<string>;
         /**
@@ -19575,7 +19485,6 @@ export namespace compute {
          * Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          *
-         *
          * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4Config>[]>;
@@ -19652,8 +19561,6 @@ export namespace compute {
     export interface PacketMirroringMirroredResourcesInstance {
         /**
          * The URL of the instances where this rule should be active.
-         *
-         * - - -
          */
         url: pulumi.Input<string>;
     }
@@ -19931,7 +19838,7 @@ export namespace compute {
          * metric scales number of virtual machines handling requests
          * to increase or decrease proportionally to the metric.
          * For example, a good metric to use as a utilizationTarget is
-         * www.googleapis.com/compute/instance/network/received_bytes_count.
+         * <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
          * The autoscaler will work to keep this value constant for each
          * of the instances.
          */
@@ -20022,7 +19929,7 @@ export namespace compute {
          */
         schedule: pulumi.Input<string>;
         /**
-         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
          */
         timeZone?: pulumi.Input<string>;
     }
@@ -20985,8 +20892,6 @@ export namespace compute {
     export interface RegionInstanceGroupManagerAllInstancesConfig {
         /**
          * , The label key-value pairs that you want to patch onto the instance.
-         *
-         * - - -
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -21010,8 +20915,6 @@ export namespace compute {
     export interface RegionInstanceGroupManagerInstanceLifecyclePolicy {
         /**
          * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-         *
-         * - - -
          */
         defaultActionOnFailure?: pulumi.Input<string>;
         /**
@@ -21027,7 +20930,6 @@ export namespace compute {
         name: pulumi.Input<string>;
         /**
          * The port number.
-         * - - -
          */
         port: pulumi.Input<number>;
     }
@@ -21046,7 +20948,6 @@ export namespace compute {
         initialDelaySec?: pulumi.Input<number>;
         /**
          * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-         * - - -
          */
         mode?: pulumi.Input<string>;
     }
@@ -21176,7 +21077,6 @@ export namespace compute {
         mostDisruptiveAllowedAction?: pulumi.Input<string>;
         /**
          * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
-         * - - -
          */
         replacementMethod?: pulumi.Input<string>;
         /**
@@ -23939,7 +23839,7 @@ export namespace compute {
         /**
          * The minimum CPU platform for the reservation. For example,
          * `"Intel Skylake"`. See
-         * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+         * the CPU platform availability reference](<https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones>)
          * for information on available CPU platforms.
          */
         minCpuPlatform?: pulumi.Input<string>;
@@ -23963,8 +23863,6 @@ export namespace compute {
     export interface ReservationSpecificReservationInstancePropertiesLocalSsd {
         /**
          * The size of the disk in base-2 GB.
-         *
-         * - - -
          */
         diskSizeGb: pulumi.Input<number>;
         /**
@@ -24104,7 +24002,7 @@ export namespace compute {
     export interface ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage {
         /**
          * (Output)
-         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+         * The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
          */
         locale?: pulumi.Input<string>;
         /**
@@ -24259,7 +24157,7 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
         /**
          * (Output)
-         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+         * The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
          */
         locale?: pulumi.Input<string>;
         /**
@@ -24346,7 +24244,7 @@ export namespace compute {
         startTime?: pulumi.Input<string>;
         /**
          * Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-         * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
          */
         timeZone: pulumi.Input<string>;
         /**
@@ -24722,8 +24620,7 @@ export namespace compute {
 
     export interface RouterRoutePolicyTerm {
         /**
-         * 'CEL expressions to evaluate to modify a route when this term matches.'\
-         * Structure is documented below.
+         * 'CEL expressions to evaluate to modify a route when this term matches.'Structure is documented below.
          */
         actions?: pulumi.Input<pulumi.Input<inputs.compute.RouterRoutePolicyTermAction>[]>;
         /**
@@ -24750,8 +24647,6 @@ export namespace compute {
         /**
          * String indicating the location of the expression for error
          * reporting, e.g. a file name and a position in the file
-         *
-         * - - -
          */
         location?: pulumi.Input<string>;
         /**
@@ -25418,7 +25313,7 @@ export namespace compute {
         aggregationInterval?: pulumi.Input<string>;
         /**
          * Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-         * https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+         * <https://cloud.google.com/vpc/docs/flow-logs#filtering> for details on how to format this field.
          * The default value is 'true', which evaluates to include everything.
          */
         filterExpr?: pulumi.Input<string>;
@@ -25473,7 +25368,7 @@ export namespace compute {
         errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapDefaultCustomErrorResponsePolicyErrorResponseRule>[]>;
         /**
          * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
          * compute/v1/projects/project/global/backendBuckets/myBackendBucket
          * global/backendBuckets/myBackendBucket
          * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -25941,7 +25836,7 @@ export namespace compute {
          * For example, consider a UrlMap with the following configuration:
          * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
          * A RouteRule for /coming_soon/ is configured for the error code 404.
-         * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
          * When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
          * defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
          * Structure is documented below.
@@ -26016,7 +25911,7 @@ export namespace compute {
         errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRule>[]>;
         /**
          * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
          * compute/v1/projects/project/global/backendBuckets/myBackendBucket
          * global/backendBuckets/myBackendBucket
          * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -26465,7 +26360,7 @@ export namespace compute {
          * For example, consider a UrlMap with the following configuration:
          * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
          * A PathRule for /coming_soon/ is configured for the error code 404.
-         * If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+         * If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
          * customErrorResponsePolicy is supported only for global external Application Load Balancers.
          * Structure is documented below.
          */
@@ -26511,7 +26406,7 @@ export namespace compute {
         errorResponseRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule>[]>;
         /**
          * The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-         * https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+         * <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
          * compute/v1/projects/project/global/backendBuckets/myBackendBucket
          * global/backendBuckets/myBackendBucket
          * If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -27605,7 +27500,7 @@ export namespace container {
          * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
          * to the groups. Up to ten admin groups can be provided.
          * For more info on RBAC, see
-         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
          */
         adminGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -27613,7 +27508,7 @@ export namespace container {
          * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
          * to the users. Up to ten admin users can be provided.
          * For more info on RBAC, see
-         * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
          */
         adminUsers?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -27727,11 +27622,11 @@ export namespace container {
 
     export interface AwsClusterAuthorization {
         /**
-         * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
          */
         adminGroups?: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminGroup>[]>;
         /**
-         * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AwsClusterAuthorizationAdminUser>[]>;
     }
@@ -27952,8 +27847,6 @@ export namespace container {
         serviceAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-         *
-         * - - -
          */
         vpcId: pulumi.Input<string>;
     }
@@ -28049,7 +27942,7 @@ export namespace container {
          */
         granularity: pulumi.Input<string>;
         /**
-         * The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+         * The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
          */
         metrics?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -28104,7 +27997,7 @@ export namespace container {
 
     export interface AwsNodePoolConfigSpotConfig {
         /**
-         * List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+         * List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
          */
         instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -28141,8 +28034,6 @@ export namespace container {
     export interface AwsNodePoolMaxPodsConstraint {
         /**
          * The maximum number of pods to schedule on a single node.
-         *
-         * - - -
          */
         maxPodsPerNode: pulumi.Input<number>;
     }
@@ -28167,11 +28058,11 @@ export namespace container {
 
     export interface AzureClusterAuthorization {
         /**
-         * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
          */
         adminGroups?: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminGroup>[]>;
         /**
-         * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
          */
         adminUsers: pulumi.Input<pulumi.Input<inputs.container.AzureClusterAuthorizationAdminUser>[]>;
     }
@@ -28239,7 +28130,7 @@ export namespace container {
          */
         version: pulumi.Input<string>;
         /**
-         * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+         * Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
          */
         vmSize?: pulumi.Input<string>;
     }
@@ -28330,8 +28221,6 @@ export namespace container {
         serviceAddressCidrBlocks: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-         *
-         * - - -
          */
         virtualNetworkId: pulumi.Input<string>;
     }
@@ -28428,8 +28317,6 @@ export namespace container {
     export interface AzureNodePoolMaxPodsConstraint {
         /**
          * The maximum number of pods to schedule on a single node.
-         *
-         * - - -
          */
         maxPodsPerNode: pulumi.Input<number>;
     }
@@ -28525,7 +28412,6 @@ export namespace container {
          * clusters on
          * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
          * for more information.
-         *
          *
          * This example `addonsConfig` disables two addons:
          */
@@ -28669,7 +28555,7 @@ export namespace container {
          */
         autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
         /**
-         * The list of Google Compute Engine 
+         * The list of Google Compute Engine
          * [zones](https://cloud.google.com/compute/docs/zones#available) in which the
          * NodePool's nodes can be created by NAP.
          */
@@ -28697,7 +28583,7 @@ export namespace container {
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
         /**
-         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
          */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
@@ -28709,7 +28595,7 @@ export namespace container {
          */
         diskType?: pulumi.Input<string>;
         /**
-         * The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+         * The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
          */
         imageType?: pulumi.Input<string>;
         /**
@@ -29498,7 +29384,7 @@ export namespace container {
 
     export interface ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
         /**
-         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
          */
         certificateAuthorityDomainConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>[]>;
         /**
@@ -29825,8 +29711,6 @@ export namespace container {
         /**
          * The name of the cluster, unique within the project and
          * location.
-         *
-         * - - -
          */
         name?: pulumi.Input<string>;
         /**
@@ -29951,7 +29835,7 @@ export namespace container {
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
         /**
-         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
          */
         certificateAuthorityDomainConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>[]>;
         /**
@@ -30328,7 +30212,7 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
         /**
-         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+         * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
          */
         certificateAuthorityDomainConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>[]>;
         /**
@@ -31578,8 +31462,6 @@ export namespace containeranalysis {
         /**
          * The human readable name of this Attestation Authority, for
          * example "qa".
-         *
-         * - - -
          */
         humanReadableName: pulumi.Input<string>;
     }
@@ -31631,13 +31513,11 @@ export namespace containeranalysis {
          * URI. * When possible, the key id should be an
          * immutable reference, such as a cryptographic digest.
          * Examples of valid values:
-         * * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+         * * OpenPGP V4 public key fingerprint. See <https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr>
          * for more details on this scheme.
          * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
          * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
          * * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-         *
-         * - - -
          */
         publicKeyId: pulumi.Input<string>;
         /**
@@ -31794,7 +31674,7 @@ export namespace databasemigrationservice {
         databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The database engine type and version.
-         * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+         * Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
          */
         databaseVersion?: pulumi.Input<string>;
         /**
@@ -31827,7 +31707,7 @@ export namespace databasemigrationservice {
         storageAutoResizeLimit?: pulumi.Input<string>;
         /**
          * The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-         * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+         * For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
          */
         tier?: pulumi.Input<string>;
         /**
@@ -32150,8 +32030,6 @@ export namespace databasemigrationservice {
     export interface PrivateConnectionVpcPeeringConfig {
         /**
          * A free subnet for peering. (CIDR of /29)
-         *
-         * - - -
          */
         subnet: pulumi.Input<string>;
         /**
@@ -32242,7 +32120,6 @@ export namespace datacatalog {
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          *
-         *
          * <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
          */
         sampleGcsFileSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpecSampleGcsFileSpec>[]>;
@@ -32299,8 +32176,6 @@ export namespace datacatalog {
         doubleValue?: pulumi.Input<number>;
         /**
          * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-         *
-         * - - -
          */
         enumValue?: pulumi.Input<string>;
         /**
@@ -32439,13 +32314,13 @@ export namespace dataflow {
     export interface PipelineWorkload {
         /**
          * Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest>
          * Structure is documented below.
          */
         dataflowFlexTemplateRequest?: pulumi.Input<inputs.dataflow.PipelineWorkloadDataflowFlexTemplateRequest>;
         /**
          * Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest>
          * Structure is documented below.
          */
         dataflowLaunchTemplateRequest?: pulumi.Input<inputs.dataflow.PipelineWorkloadDataflowLaunchTemplateRequest>;
@@ -32454,7 +32329,7 @@ export namespace dataflow {
     export interface PipelineWorkloadDataflowFlexTemplateRequest {
         /**
          * Parameter to launch a job from a Flex Template.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter>
          * Structure is documented below.
          */
         launchParameter: pulumi.Input<inputs.dataflow.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter>;
@@ -32479,7 +32354,7 @@ export namespace dataflow {
         containerSpecGcsPath?: pulumi.Input<string>;
         /**
          * The runtime environment for the Flex Template job.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment>
          * Structure is documented below.
          */
         environment?: pulumi.Input<inputs.dataflow.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment>;
@@ -32524,14 +32399,14 @@ export namespace dataflow {
          */
         enableStreamingEngine?: pulumi.Input<boolean>;
         /**
-         * Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+         * Set FlexRS goal for the job. <https://cloud.google.com/dataflow/docs/guides/flexrs>
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal>
          * Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
          */
         flexrsGoal?: pulumi.Input<string>;
         /**
          * Configuration for VM IPs.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
          * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
          */
         ipConfiguration?: pulumi.Input<string>;
@@ -32568,11 +32443,11 @@ export namespace dataflow {
          */
         tempLocation?: pulumi.Input<string>;
         /**
-         * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+         * The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
          */
         workerRegion?: pulumi.Input<string>;
         /**
-         * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+         * The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
          */
         workerZone?: pulumi.Input<string>;
         /**
@@ -32588,7 +32463,7 @@ export namespace dataflow {
         gcsPath?: pulumi.Input<string>;
         /**
          * The parameters of the template to launch. This should be part of the body of the POST request.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters>
          * Structure is documented below.
          */
         launchParameters?: pulumi.Input<inputs.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters>;
@@ -32609,7 +32484,7 @@ export namespace dataflow {
     export interface PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters {
         /**
          * The runtime environment for the job.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment>
          * Structure is documented below.
          */
         environment?: pulumi.Input<inputs.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment>;
@@ -32654,7 +32529,7 @@ export namespace dataflow {
         enableStreamingEngine?: pulumi.Input<boolean>;
         /**
          * Configuration for VM IPs.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+         * <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
          * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
          */
         ipConfiguration?: pulumi.Input<string>;
@@ -32691,11 +32566,11 @@ export namespace dataflow {
          */
         tempLocation?: pulumi.Input<string>;
         /**
-         * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+         * The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
          */
         workerRegion?: pulumi.Input<string>;
         /**
-         * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+         * The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
          */
         workerZone?: pulumi.Input<string>;
         /**
@@ -32722,7 +32597,7 @@ export namespace dataform {
         sshAuthenticationConfig?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfig>;
         /**
          * (Output)
-         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         * Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
          */
         tokenStatus?: pulumi.Input<string>;
         /**
@@ -32769,7 +32644,7 @@ export namespace dataform {
         defaultDatabase?: pulumi.Input<string>;
         /**
          * Optional. The default BigQuery location to use. Defaults to "US".
-         * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+         * See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
          */
         defaultLocation?: pulumi.Input<string>;
         /**
@@ -33151,7 +33026,7 @@ export namespace dataloss {
          * Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
          * This can be used on data of type: number, long, string, timestamp.
          * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
          * Structure is documented below.
          */
         bucketingConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig>;
@@ -33169,7 +33044,7 @@ export namespace dataloss {
          * Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
          * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
          * Currently, only string and integer values can be hashed.
-         * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+         * See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
          * Structure is documented below.
          */
         cryptoHashConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig>;
@@ -33180,7 +33055,7 @@ export namespace dataloss {
          */
         cryptoReplaceFfxFpeConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig>;
         /**
-         * Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+         * Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
          * Structure is documented below.
          */
         dateShiftConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig>;
@@ -33189,7 +33064,7 @@ export namespace dataloss {
          * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lowerBound = 10 and upperBound = 20, all values that are within this bucket will be replaced with "10-20".
          * This can be used on data of type: double, long.
          * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
          * Structure is documented below.
          */
         fixedSizeBucketingConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig>;
@@ -33285,8 +33160,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -33355,8 +33228,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -33425,8 +33296,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -33516,8 +33385,8 @@ export namespace dataloss {
          * This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
          * Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
          * In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-         * *   reverse a surrogate that does not correspond to an actual identifier
-         * *   be unable to parse the surrogate and result in an error
+         * * reverse a surrogate that does not correspond to an actual identifier
+         * * be unable to parse the surrogate and result in an error
          * Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
          * Structure is documented below.
          */
@@ -33670,13 +33539,13 @@ export namespace dataloss {
         /**
          * The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
          * If the context is set but:
-         * 1.  there is no record present when transforming a given value or
-         * 2.  the field is not present when transforming a given value,
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
          * a default tweak will be used.
          * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
          * The tweak is constructed as a sequence of bytes in big endian byte order such that:
-         * *   a 64 bit integer is encoded followed by a single byte of value 1
-         * *   a string is encoded in UTF-8 format followed by a single byte of value 2
+         * * a 64 bit integer is encoded followed by a single byte of value 1
+         * * a string is encoded in UTF-8 format followed by a single byte of value 2
          * Structure is documented below.
          */
         context?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext>;
@@ -33962,8 +33831,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -34157,8 +34024,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -34249,7 +34114,7 @@ export namespace dataloss {
          * Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
          * This can be used on data of type: number, long, string, timestamp.
          * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
          * Structure is documented below.
          */
         bucketingConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig>;
@@ -34267,7 +34132,7 @@ export namespace dataloss {
          * Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
          * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
          * Currently, only string and integer values can be hashed.
-         * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+         * See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
          * Structure is documented below.
          */
         cryptoHashConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig>;
@@ -34278,7 +34143,7 @@ export namespace dataloss {
          */
         cryptoReplaceFfxFpeConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig>;
         /**
-         * Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+         * Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
          * Structure is documented below.
          */
         dateShiftConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig>;
@@ -34287,7 +34152,7 @@ export namespace dataloss {
          * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lowerBound = 10 and upperBound = 20, all values that are within this bucket will be replaced with "10-20".
          * This can be used on data of type: double, long.
          * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
          * Structure is documented below.
          */
         fixedSizeBucketingConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig>;
@@ -34383,8 +34248,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -34453,8 +34316,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -34523,8 +34384,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -34614,8 +34473,8 @@ export namespace dataloss {
          * This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
          * Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
          * In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-         * *   reverse a surrogate that does not correspond to an actual identifier
-         * *   be unable to parse the surrogate and result in an error
+         * * reverse a surrogate that does not correspond to an actual identifier
+         * * be unable to parse the surrogate and result in an error
          * Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
          * Structure is documented below.
          */
@@ -34768,13 +34627,13 @@ export namespace dataloss {
         /**
          * The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
          * If the context is set but:
-         * 1.  there is no record present when transforming a given value or
-         * 2.  the field is not present when transforming a given value,
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
          * a default tweak will be used.
          * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
          * The tweak is constructed as a sequence of bytes in big endian byte order such that:
-         * *   a 64 bit integer is encoded followed by a single byte of value 1
-         * *   a string is encoded in UTF-8 format followed by a single byte of value 2
+         * * a 64 bit integer is encoded followed by a single byte of value 1
+         * * a string is encoded in UTF-8 format followed by a single byte of value 2
          * Structure is documented below.
          */
         context?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext>;
@@ -35060,8 +34919,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -35124,7 +34981,7 @@ export namespace dataloss {
          * Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
          * This can be used on data of type: number, long, string, timestamp.
          * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
          * Structure is documented below.
          */
         bucketingConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig>;
@@ -35142,7 +34999,7 @@ export namespace dataloss {
          * Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
          * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
          * Currently, only string and integer values can be hashed.
-         * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+         * See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
          * Structure is documented below.
          */
         cryptoHashConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig>;
@@ -35153,7 +35010,7 @@ export namespace dataloss {
          */
         cryptoReplaceFfxFpeConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig>;
         /**
-         * Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+         * Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
          * Structure is documented below.
          */
         dateShiftConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig>;
@@ -35162,7 +35019,7 @@ export namespace dataloss {
          * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lowerBound = 10 and upperBound = 20, all values that are within this bucket will be replaced with "10-20".
          * This can be used on data of type: double, long.
          * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
          * Structure is documented below.
          */
         fixedSizeBucketingConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig>;
@@ -35258,8 +35115,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -35332,8 +35187,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -35406,8 +35259,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -35497,8 +35348,8 @@ export namespace dataloss {
          * This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
          * Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
          * In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-         * *   reverse a surrogate that does not correspond to an actual identifier
-         * *   be unable to parse the surrogate and result in an error
+         * * reverse a surrogate that does not correspond to an actual identifier
+         * * be unable to parse the surrogate and result in an error
          * Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
          * Structure is documented below.
          */
@@ -35651,13 +35502,13 @@ export namespace dataloss {
         /**
          * The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
          * If the context is set but:
-         * 1.  there is no record present when transforming a given value or
-         * 2.  the field is not present when transforming a given value,
+         * 1. there is no record present when transforming a given value or
+         * 2. the field is not present when transforming a given value,
          * a default tweak will be used.
          * Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
          * The tweak is constructed as a sequence of bytes in big endian byte order such that:
-         * *   a 64 bit integer is encoded followed by a single byte of value 1
-         * *   a string is encoded in UTF-8 format followed by a single byte of value 2
+         * * a 64 bit integer is encoded followed by a single byte of value 1
+         * * a string is encoded in UTF-8 format followed by a single byte of value 2
          * Structure is documented below.
          */
         context?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext>;
@@ -35908,8 +35759,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -35982,8 +35831,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -36069,8 +35916,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -36229,8 +36074,6 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-         *
-         * - - -
          */
         day?: pulumi.Input<number>;
         /**
@@ -36881,7 +36724,7 @@ export namespace dataloss {
          */
         contentOptions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+         * Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
          * Structure is documented below.
          */
         customInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoType>[]>;
@@ -36895,7 +36738,7 @@ export namespace dataloss {
         includeQuote?: pulumi.Input<boolean>;
         /**
          * Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
          * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
          * By default this may be all types, but may change over time as detectors are updated.
          * Structure is documented below.
@@ -36907,7 +36750,7 @@ export namespace dataloss {
          */
         limits?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigLimits>;
         /**
-         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+         * Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
          * Default value is `POSSIBLE`.
          * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          */
@@ -36998,7 +36841,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37027,7 +36870,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -37054,7 +36897,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfigInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37109,7 +36952,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37147,7 +36990,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfigRuleSetInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37200,7 +37043,7 @@ export namespace dataloss {
          */
         excludeInfoTypes?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes>;
         /**
-         * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+         * How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
          * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
          */
         matchingType: pulumi.Input<string>;
@@ -37264,7 +37107,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression. Its syntax
-         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -37291,7 +37134,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37320,7 +37163,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -37355,7 +37198,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression. Its syntax
-         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -37577,7 +37420,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobInspectConfig {
         /**
-         * Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+         * Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
          * Structure is documented below.
          */
         customInfoTypes?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoType>[]>;
@@ -37591,7 +37434,7 @@ export namespace dataloss {
         includeQuote?: pulumi.Input<boolean>;
         /**
          * Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
          * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
          * By default this may be all types, but may change over time as detectors are updated.
          * Structure is documented below.
@@ -37603,7 +37446,7 @@ export namespace dataloss {
          */
         limits?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobInspectConfigLimits>;
         /**
-         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+         * Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
          * Default value is `POSSIBLE`.
          * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          */
@@ -37694,7 +37537,7 @@ export namespace dataloss {
     export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37723,7 +37566,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -37755,7 +37598,7 @@ export namespace dataloss {
     export interface PreventionJobTriggerInspectJobInspectConfigInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37810,7 +37653,7 @@ export namespace dataloss {
     export interface PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37848,7 +37691,7 @@ export namespace dataloss {
     export interface PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -37900,7 +37743,7 @@ export namespace dataloss {
          */
         excludeInfoTypes?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes>;
         /**
-         * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+         * How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
          * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
          */
         matchingType: pulumi.Input<string>;
@@ -37964,7 +37807,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression. Its syntax
-         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern?: pulumi.Input<string>;
     }
@@ -37991,7 +37834,7 @@ export namespace dataloss {
     export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
          */
         name: pulumi.Input<string>;
         /**
@@ -38020,7 +37863,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -38055,7 +37898,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression. Its syntax
-         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern?: pulumi.Input<string>;
     }
@@ -38402,8 +38245,6 @@ export namespace dataloss {
          * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
          * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-         *
-         * - - -
          */
         recurrencePeriodDuration?: pulumi.Input<string>;
     }
@@ -38511,7 +38352,7 @@ export namespace dataloss {
         groupIndexes?: pulumi.Input<pulumi.Input<number>[]>;
         /**
          * Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
          */
         pattern: pulumi.Input<string>;
     }
@@ -38552,7 +38393,7 @@ export namespace dataplex {
          */
         jsonOptions?: pulumi.Input<inputs.dataplex.AssetDiscoverySpecJsonOptions>;
         /**
-         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         * Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
          */
         schedule?: pulumi.Input<string>;
     }
@@ -38656,8 +38497,6 @@ export namespace dataplex {
         readAccessMode?: pulumi.Input<string>;
         /**
          * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-         *
-         * - - -
          */
         type: pulumi.Input<string>;
     }
@@ -39002,8 +38841,6 @@ export namespace dataplex {
     export interface DatascanExecutionSpecTriggerSchedule {
         /**
          * Cron schedule for running scans periodically. This field is required for Schedule scans.
-         *
-         * - - -
          */
         cron: pulumi.Input<string>;
     }
@@ -39093,7 +38930,7 @@ export namespace dataplex {
 
     export interface LakeMetastore {
         /**
-         * Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+         * Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
          */
         service?: pulumi.Input<string>;
     }
@@ -39119,13 +38956,11 @@ export namespace dataplex {
 
     export interface TaskExecutionSpec {
         /**
-         * The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+         * The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
          */
         args?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-         *
-         * - - -
          */
         kmsKey?: pulumi.Input<string>;
         /**
@@ -39409,7 +39244,7 @@ export namespace dataplex {
          */
         maxRetries?: pulumi.Input<number>;
         /**
-         * Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+         * Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
          */
         schedule?: pulumi.Input<string>;
         /**
@@ -39460,7 +39295,7 @@ export namespace dataplex {
          */
         jsonOptions?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpecJsonOptions>;
         /**
-         * Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+         * Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
          */
         schedule?: pulumi.Input<string>;
     }
@@ -39510,8 +39345,6 @@ export namespace dataplex {
     export interface ZoneResourceSpec {
         /**
          * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-         *
-         * - - -
          */
         locationType: pulumi.Input<string>;
     }
@@ -39651,7 +39484,7 @@ export namespace dataproc {
          */
         autoscalingConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAutoscalingConfig>;
         /**
-         * A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+         * A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
          * Structure defined below.
          */
         auxiliaryNodeGroups?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroup>[]>;
@@ -39699,7 +39532,6 @@ export namespace dataproc {
         /**
          * The config setting for metastore service with the cluster.
          * Structure defined below.
-         * - - -
          */
         metastoreConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigMetastoreConfig>;
         /**
@@ -39751,8 +39583,6 @@ export namespace dataproc {
          * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
          * `projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
          * Note that the policy must be in the same project and Cloud Dataproc region.
-         *
-         * - - -
          */
         policyUri: pulumi.Input<string>;
     }
@@ -39778,7 +39608,7 @@ export namespace dataproc {
          */
         nodeGroupConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig>;
         /**
-         * Node group roles. 
+         * Node group roles.
          * One of `"DRIVER"`.
          */
         roles: pulumi.Input<pulumi.Input<string>[]>;
@@ -39786,7 +39616,7 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
         /**
-         * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+         * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
          * multiple times.
          */
         accelerators?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>[]>;
@@ -39821,9 +39651,6 @@ export namespace dataproc {
     export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
         /**
          * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-         *
-         *
-         * - - -
          */
         acceleratorCount: pulumi.Input<number>;
         /**
@@ -39851,7 +39678,7 @@ export namespace dataproc {
          */
         localSsdInterface?: pulumi.Input<string>;
         /**
-         * The amount of local SSD disks that will be attached to each master cluster node. 
+         * The amount of local SSD disks that will be attached to each master cluster node.
          * Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number>;
@@ -39866,9 +39693,7 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigDataprocMetricConfigMetric {
         /**
-         * One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-         *
-         * - - -
+         * One or more [available OSS metrics] (<https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics>) to collect for the metric course.
          */
         metricOverrides?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -39881,8 +39706,6 @@ export namespace dataproc {
         /**
          * The Cloud KMS key name to use for PD disk encryption for
          * all instances in the cluster.
-         *
-         * - - -
          */
         kmsKeyName: pulumi.Input<string>;
     }
@@ -39943,8 +39766,6 @@ export namespace dataproc {
         serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-         *
-         * - - -
          */
         shieldedInstanceConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig>;
         /**
@@ -39994,8 +39815,6 @@ export namespace dataproc {
     export interface ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
         /**
          * Defines whether instances have integrity monitoring enabled.
-         *
-         * - - -
          */
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
         /**
@@ -40018,8 +39837,6 @@ export namespace dataproc {
          * The maximum duration (in seconds) which `script` is
          * allowed to take to execute its action. GCP will default to a predetermined
          * computed value if not set (currently 300).
-         *
-         * - - -
          */
         timeoutSec?: pulumi.Input<number>;
     }
@@ -40029,8 +39846,6 @@ export namespace dataproc {
          * The time when cluster will be auto-deleted.
          * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
          * Example: "2014-10-02T15:01:23.045123456Z".
-         *
-         * - - -
          */
         autoDeleteTime?: pulumi.Input<string>;
         /**
@@ -40091,8 +39906,6 @@ export namespace dataproc {
          * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
          * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
          * if you are trying to use accelerators in a given zone.
-         *
-         * - - -
          */
         acceleratorCount: pulumi.Input<number>;
         /**
@@ -40211,8 +40024,6 @@ export namespace dataproc {
         machineTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-         *
-         * - - -
          */
         rank?: pulumi.Input<number>;
     }
@@ -40310,8 +40121,6 @@ export namespace dataproc {
         /**
          * The Cloud Storage URI of the truststore file used for
          * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-         *
-         * - - -
          */
         truststoreUri?: pulumi.Input<string>;
     }
@@ -40327,8 +40136,6 @@ export namespace dataproc {
         imageVersion?: pulumi.Input<string>;
         /**
          * The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
-         *
-         * - - -
          */
         optionalComponents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -40400,8 +40207,6 @@ export namespace dataproc {
          * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
          * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
          * if you are trying to use accelerators in a given zone.
-         *
-         * - - -
          */
         acceleratorCount: pulumi.Input<number>;
         /**
@@ -40448,14 +40253,13 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfig {
         /**
-         * Configuration of auxiliary services used by this cluster. 
+         * Configuration of auxiliary services used by this cluster.
          * Structure defined below.
          */
         auxiliaryServicesConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigAuxiliaryServicesConfig>;
         /**
          * The configuration for running the Dataproc cluster on Kubernetes.
          * Structure defined below.
-         * - - -
          */
         kubernetesClusterConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfig>;
         /**
@@ -40491,7 +40295,6 @@ export namespace dataproc {
     export interface ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
         /**
          * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-         * - - -
          */
         dataprocCluster?: pulumi.Input<string>;
     }
@@ -40502,7 +40305,7 @@ export namespace dataproc {
          */
         gkeClusterConfig: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig>;
         /**
-         * A namespace within the Kubernetes cluster to deploy into. 
+         * A namespace within the Kubernetes cluster to deploy into.
          * If this namespace does not exist, it is created.
          * If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
          * If not specified, the name of the Dataproc Cluster is used.
@@ -40516,12 +40319,12 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
         /**
-         * A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+         * A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
          * (the GKE cluster can be zonal or regional)
          */
         gkeClusterTarget?: pulumi.Input<string>;
         /**
-         * GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+         * GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
          * GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
          * Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
          */
@@ -40534,14 +40337,14 @@ export namespace dataproc {
          */
         nodePool: pulumi.Input<string>;
         /**
-         * The configuration for the GKE node pool. 
+         * The configuration for the GKE node pool.
          * If specified, Dataproc attempts to create a node pool with the specified shape.
          * If one with the same name already exists, it is verified against all specified fields.
          * If a field differs, the virtual cluster creation will fail.
          */
         nodePoolConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig>;
         /**
-         * The roles associated with the GKE node pool. 
+         * The roles associated with the GKE node pool.
          * One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
          */
         roles: pulumi.Input<pulumi.Input<string>[]>;
@@ -40549,7 +40352,7 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig {
         /**
-         * The autoscaler configuration for this node pool. 
+         * The autoscaler configuration for this node pool.
          * The autoscaler is enabled only when a valid configuration is present.
          */
         autoscaling?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling>;
@@ -40558,9 +40361,8 @@ export namespace dataproc {
          */
         config?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig>;
         /**
-         * The list of Compute Engine zones where node pool nodes associated 
+         * The list of Compute Engine zones where node pool nodes associated
          * with a Dataproc on GKE virtual cluster will be located.
-         * - - -
          */
         locations: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -40578,7 +40380,7 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig {
         /**
-         * The number of local SSD disks to attach to the node, 
+         * The number of local SSD disks to attach to the node,
          * which is limited by the maximum number of disks allowable per zone.
          */
         localSsdCount?: pulumi.Input<number>;
@@ -40587,13 +40389,13 @@ export namespace dataproc {
          */
         machineType?: pulumi.Input<string>;
         /**
-         * Minimum CPU platform to be used by this instance. 
+         * Minimum CPU platform to be used by this instance.
          * The instance may be scheduled on the specified or a newer CPU platform.
          * Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
          */
         minCpuPlatform?: pulumi.Input<string>;
         /**
-         * Whether the nodes are created as preemptible VM instances. 
+         * Whether the nodes are created as preemptible VM instances.
          * Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
          * CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
          */
@@ -40606,13 +40408,12 @@ export namespace dataproc {
 
     export interface ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig {
         /**
-         * The components that should be installed in this Dataproc cluster. The key must be a string from the   
-         * KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+         * The components that should be installed in this Dataproc cluster. The key must be a string from theKubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
          * * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
          */
         componentVersion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+         * The properties to set on daemon config files. Property keys are specified in prefix:property format,
          * for example spark:spark.kubernetes.container.image.
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -40967,8 +40768,6 @@ export namespace dataproc {
         /**
          * The type of the backend metastore.
          * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-         *
-         * - - -
          */
         metastoreType: pulumi.Input<string>;
         /**
@@ -41185,7 +40984,7 @@ export namespace dataproc {
          */
         backupLocation: pulumi.Input<string>;
         /**
-         * The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+         * The scheduled interval in Cron format, see <https://en.wikipedia.org/wiki/Cron> The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
          */
         cronSchedule?: pulumi.Input<string>;
         /**
@@ -41193,7 +40992,7 @@ export namespace dataproc {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+         * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
          */
         timeZone?: pulumi.Input<string>;
     }
@@ -41397,7 +41196,7 @@ export namespace dataproc {
          */
         outputFormat?: pulumi.Input<string>;
         /**
-         * A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+         * A mapping of property names to values. Used to set Presto (<https://prestodb.io/docs/current/sql/set-session.html>) Equivalent to using the --session flag in the Presto CLI
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -41725,7 +41524,7 @@ export namespace dataproc {
          */
         softwareConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig>;
         /**
-         * A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+         * A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket))>.
          */
         stagingBucket?: pulumi.Input<string>;
         /**
@@ -41734,8 +41533,6 @@ export namespace dataproc {
         tempBucket?: pulumi.Input<string>;
         /**
          * The Compute Engine config settings for additional worker instances in a cluster.
-         *
-         * - - -
          */
         workerConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig>;
     }
@@ -41771,11 +41568,11 @@ export namespace dataproc {
          */
         internalIpOnly?: pulumi.Input<boolean>;
         /**
-         * The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+         * The Compute Engine metadata entries to add to all instances (see (<https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))>.
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+         * The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `networkUri` nor `subnetworkUri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
          */
         network?: pulumi.Input<string>;
         /**
@@ -41791,11 +41588,11 @@ export namespace dataproc {
          */
         reservationAffinity?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity>;
         /**
-         * The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+         * The (<https://cloud.google.com/compute/docs/access/service-accounts#default_service_account>) is used.
          */
         serviceAccount?: pulumi.Input<string>;
         /**
-         * The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+         * The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * <https://www.googleapis.com/auth/cloud.useraccounts.readonly> * <https://www.googleapis.com/auth/devstorage.read_write> * <https://www.googleapis.com/auth/logging.write> If no scopes are specified, the following defaults are also provided: * <https://www.googleapis.com/auth/bigquery> * <https://www.googleapis.com/auth/bigtable.admin.table> * <https://www.googleapis.com/auth/bigtable.data> * <https://www.googleapis.com/auth/devstorage.full_control>
          */
         serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -41807,7 +41604,7 @@ export namespace dataproc {
          */
         subnetwork?: pulumi.Input<string>;
         /**
-         * The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+         * The Compute Engine tags to add to all instances (see (<https://cloud.google.com/compute/docs/label-or-tag-resources#tags))>.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -41818,7 +41615,7 @@ export namespace dataproc {
 
     export interface WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity {
         /**
-         * Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
+         * Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
          */
         nodeGroup: pulumi.Input<string>;
     }
@@ -41877,26 +41674,26 @@ export namespace dataproc {
          */
         executableFile?: pulumi.Input<string>;
         /**
-         * Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+         * Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>. Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
          */
         executionTimeout?: pulumi.Input<string>;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
         /**
-         * The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+         * The time when cluster will be auto-deleted (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
          */
         autoDeleteTime?: pulumi.Input<string>;
         /**
-         * The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+         * The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
          */
         autoDeleteTtl?: pulumi.Input<string>;
         /**
-         * The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+         * The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json)>.
          */
         idleDeleteTtl?: pulumi.Input<string>;
         /**
-         * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+         * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
          */
         idleStartTime?: pulumi.Input<string>;
     }
@@ -41931,7 +41728,7 @@ export namespace dataproc {
          */
         managedGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>[]>;
         /**
-         * Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * Specifies the minimum cpu platform for the Instance Group. See (<https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)>.
          */
         minCpuPlatform?: pulumi.Input<string>;
         /**
@@ -41950,7 +41747,7 @@ export namespace dataproc {
          */
         acceleratorCount?: pulumi.Input<number>;
         /**
-         * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+         * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
          */
         acceleratorType?: pulumi.Input<string>;
     }
@@ -41965,7 +41762,7 @@ export namespace dataproc {
          */
         bootDiskType?: pulumi.Input<string>;
         /**
-         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -42037,7 +41834,7 @@ export namespace dataproc {
          */
         acceleratorCount?: pulumi.Input<number>;
         /**
-         * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+         * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
          */
         acceleratorType?: pulumi.Input<string>;
     }
@@ -42052,7 +41849,7 @@ export namespace dataproc {
          */
         bootDiskType?: pulumi.Input<string>;
         /**
-         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -42162,7 +41959,6 @@ export namespace dataproc {
          * * spark: `spark-defaults.conf`
          * * yarn: `yarn-site.xml`
          *
-         *
          * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
          */
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -42217,7 +42013,7 @@ export namespace dataproc {
          */
         acceleratorCount?: pulumi.Input<number>;
         /**
-         * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+         * Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
          */
         acceleratorType?: pulumi.Input<string>;
     }
@@ -42232,7 +42028,7 @@ export namespace dataproc {
          */
         bootDiskType?: pulumi.Input<string>;
         /**
-         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -42464,8 +42260,6 @@ export namespace datastream {
     export interface PrivateConnectionVpcPeeringConfig {
         /**
          * A free subnet for peering. (CIDR of /29)
-         *
-         * - - -
          */
         subnet: pulumi.Input<string>;
         /**
@@ -42541,7 +42335,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The MySQL data type. Full data types list can be found here:
-         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         * <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -42602,7 +42396,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The Oracle data type. Full data types list can be found here:
-         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         * <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -42681,7 +42475,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The PostgreSQL data type. Full data types list can be found here:
-         * https://www.postgresql.org/docs/current/datatype.html
+         * <https://www.postgresql.org/docs/current/datatype.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -42752,7 +42546,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The SQL Server data type. Full data types list can be found here:
-         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         * <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -42871,14 +42665,12 @@ export namespace datastream {
          * Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
          * table. The BigQuery Service Account associated with your project requires access to this
          * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-         * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-         *
-         * - - -
+         * See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
          */
         kmsKeyName?: pulumi.Input<string>;
         /**
          * The geographic location where the dataset should reside.
-         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         * See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
          */
         location: pulumi.Input<string>;
     }
@@ -43017,7 +42809,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The MySQL data type. Full data types list can be found here:
-         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         * <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43082,7 +42874,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The MySQL data type. Full data types list can be found here:
-         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+         * <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43177,7 +42969,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The Oracle data type. Full data types list can be found here:
-         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         * <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43256,7 +43048,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The Oracle data type. Full data types list can be found here:
-         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         * <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43366,7 +43158,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The PostgreSQL data type. Full data types list can be found here:
-         * https://www.postgresql.org/docs/current/datatype.html
+         * <https://www.postgresql.org/docs/current/datatype.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43437,7 +43229,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The PostgreSQL data type. Full data types list can be found here:
-         * https://www.postgresql.org/docs/current/datatype.html
+         * <https://www.postgresql.org/docs/current/datatype.html>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43529,7 +43321,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The SQL Server data type. Full data types list can be found here:
-         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         * <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43603,7 +43395,7 @@ export namespace datastream {
         column?: pulumi.Input<string>;
         /**
          * The SQL Server data type. Full data types list can be found here:
-         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         * <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
          */
         dataType?: pulumi.Input<string>;
         /**
@@ -43681,8 +43473,6 @@ export namespace deploymentmanager {
         /**
          * The name of the template to import, as declared in the YAML
          * configuration.
-         *
-         * - - -
          */
         name?: pulumi.Input<string>;
     }
@@ -43784,8 +43574,6 @@ export namespace diagflow {
         /**
          * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
          * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-         *
-         * - - -
          */
         synonyms?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -43806,8 +43594,6 @@ export namespace diagflow {
     export interface CxEnvironmentVersionConfig {
         /**
          * Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-         *
-         * - - -
          */
         version: pulumi.Input<string>;
     }
@@ -45853,8 +45639,6 @@ export namespace discoveryengine {
         defaultLanguageCode: pulumi.Input<string>;
         /**
          * Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-         *
-         * - - -
          */
         location?: pulumi.Input<string>;
         /**
@@ -45957,8 +45741,6 @@ export namespace discoveryengine {
         /**
          * The add-on that this search engine enables.
          * Each value may be one of: `SEARCH_ADD_ON_LLM`.
-         *
-         * - - -
          */
         searchAddOns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -46432,7 +46214,7 @@ export namespace dns {
 
     export interface ResponsePolicyRuleLocalDataLocalData {
         /**
-         * For example, www.example.com.
+         * For example, <http://www.example.com>.
          */
         name: pulumi.Input<string>;
         /**
@@ -46466,8 +46248,6 @@ export namespace edgecontainer {
     export interface ClusterAuthorizationAdminUsers {
         /**
          * An active Google username.
-         *
-         * - - -
          */
         username: pulumi.Input<string>;
     }
@@ -46513,7 +46293,6 @@ export namespace edgecontainer {
          * populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
-         *
          *
          * <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
          */
@@ -46686,7 +46465,7 @@ export namespace edgecontainer {
 
     export interface ClusterMaintenancePolicyWindowRecurringWindow {
         /**
-         * An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+         * An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
          * this window recurs. They go on for the span of time between the start and
          * end time.
          */
@@ -47000,8 +46779,6 @@ export namespace essentialcontacts {
         possibleValues: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-         *
-         * - - -
          */
         validationCheckDisabled?: pulumi.Input<boolean>;
     }
@@ -47103,8 +46880,6 @@ export namespace essentialcontacts {
         possibleValues: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-         *
-         * - - -
          */
         validationCheckDisabled?: pulumi.Input<boolean>;
     }
@@ -47191,7 +46966,7 @@ export namespace eventarc {
          */
         region?: pulumi.Input<string>;
         /**
-         * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+         * Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
          */
         service: pulumi.Input<string>;
     }
@@ -47243,9 +47018,7 @@ export namespace eventarc {
          */
         operator?: pulumi.Input<string>;
         /**
-         * Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-         *
-         * - - -
+         * Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
          */
         value: pulumi.Input<string>;
     }
@@ -47335,8 +47108,6 @@ export namespace filestore {
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
          * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-         *
-         * - - -
          */
         connectMode?: pulumi.Input<string>;
         /**
@@ -47403,15 +47174,13 @@ export namespace firebase {
          * with actual values. These strings include: ${param:FOO},
          * ${function:myFunc.url},
          * ${function:myFunc.name}, and ${function:myFunc.location}
-         *
-         * - - -
          */
         populatedPostinstallContent?: pulumi.Input<string>;
         /**
          * Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
          * functions. See a full list of system parameters at
-         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+         * <https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters>
          */
         systemParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -47830,8 +47599,6 @@ export namespace firebaserules {
         fingerprint?: pulumi.Input<string>;
         /**
          * File name.
-         *
-         * - - -
          */
         name: pulumi.Input<string>;
     }
@@ -47852,8 +47619,8 @@ export namespace firestore {
     export interface DatabaseCmekConfig {
         /**
          * (Output)
-         * Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-         * During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+         * Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+         * During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
          * multiple in-use key versions.
          * The expected format is
          * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -47866,11 +47633,11 @@ export namespace firestore {
          * Only keys in the same location as this database are allowed to be used
          * for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
          * multi-region us. For Firestore's eur3 multi-region, this corresponds to
-         * Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+         * Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
          * This value should be the KMS key resource ID in the format of
          * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
          * How to retrive this resource ID is listed at
-         * https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+         * <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
          */
         kmsKeyName: pulumi.Input<string>;
     }
@@ -47947,8 +47714,6 @@ export namespace firestore {
         dimension?: pulumi.Input<number>;
         /**
          * Indicates the vector index is a flat index.
-         *
-         * - - -
          */
         flat?: pulumi.Input<inputs.firestore.IndexFieldVectorConfigFlat>;
     }
@@ -47989,8 +47754,6 @@ export namespace folder {
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
-         *
-         * - - -
          */
         enrollmentLevel?: pulumi.Input<string>;
     }
@@ -48352,7 +48115,7 @@ export namespace gkebackup {
          * being restored already exist in the target cluster.
          * This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
          * if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+         * See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
          * for more information on each policy option.
          * Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
          */
@@ -48373,7 +48136,7 @@ export namespace gkebackup {
          * being restored already exist in the target cluster.
          * This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
          * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+         * See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
          * for more information on each mode.
          * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
          */
@@ -48415,7 +48178,7 @@ export namespace gkebackup {
          * This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
          * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
          * If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+         * See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
          * for more information on each policy option.
          * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
          */
@@ -48527,8 +48290,6 @@ export namespace gkebackup {
         /**
          * Kind of a Kubernetes resource, e.g.
          * "CustomResourceDefinition", "StorageClass", etc.
-         *
-         * - - -
          */
         resourceKind?: pulumi.Input<string>;
     }
@@ -48666,7 +48427,7 @@ export namespace gkebackup {
     export interface RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
         /**
          * Specifies the mechanism to be used to restore this volume data.
-         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+         * See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
          * for more information on each policy option.
          * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
          */
@@ -49617,8 +49378,6 @@ export namespace gkehub {
         /**
          * PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-         *
-         * - - -
          */
         predefinedRole: pulumi.Input<string>;
     }
@@ -49655,8 +49414,6 @@ export namespace gkehub {
         /**
          * PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-         *
-         * - - -
          */
         predefinedRole?: pulumi.Input<string>;
     }
@@ -49691,7 +49448,7 @@ export namespace gkeonprem {
          * Customizes the default API server args. Only a subset of
          * customized flags are supported. Please refer to the API server
          * documentation below to know the exact format:
-         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
          * Structure is documented below.
          */
         apiServerArgs?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterControlPlaneApiServerArg>[]>;
@@ -49730,7 +49487,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -49760,7 +49517,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50092,7 +49849,7 @@ export namespace gkeonprem {
          * Customizes the default API server args. Only a subset of
          * customized flags are supported. Please refer to the API server
          * documentation below to know the exact format:
-         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
          * Structure is documented below.
          */
         apiServerArgs?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalClusterControlPlaneApiServerArg>[]>;
@@ -50131,7 +49888,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50161,7 +49918,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50320,7 +50077,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50363,7 +50120,7 @@ export namespace gkeonprem {
          * Prevents the Kubelet from pulling multiple images at a time.
          * We recommend *not* changing the default value on nodes that run docker
          * daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-         * backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+         * backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
          * more details.
          */
         serializeImagePullsDisabled?: pulumi.Input<boolean>;
@@ -50378,7 +50135,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50465,7 +50222,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50495,7 +50252,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50739,8 +50496,6 @@ export namespace gkeonprem {
         path: pulumi.Input<string>;
         /**
          * The StorageClass name that PVs will be created with.
-         *
-         * - - -
          */
         storageClass: pulumi.Input<string>;
     }
@@ -50841,7 +50596,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50871,7 +50626,7 @@ export namespace gkeonprem {
          * version -- it's best to assume the behavior is undefined and
          * conflicts should be avoided. For more information, including usage
          * and the valid values, see:
-         * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
          * An object containing a list of "key": value pairs.
          * For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
          */
@@ -50887,8 +50642,6 @@ export namespace gkeonprem {
         /**
          * Specifies the nodes operating system (default: LINUX).
          * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-         *
-         * - - -
          */
         effect?: pulumi.Input<string>;
         /**
@@ -51539,8 +51292,6 @@ export namespace gkeonprem {
         category?: pulumi.Input<string>;
         /**
          * The Vsphere tag name.
-         *
-         * - - -
          */
         tag?: pulumi.Input<string>;
     }
@@ -51657,7 +51408,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+         * project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: pulumi.Input<string>;
@@ -51700,7 +51451,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+         * project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: pulumi.Input<string>;
@@ -51734,7 +51485,7 @@ export namespace healthcare {
         bigqueryDestination: pulumi.Input<inputs.healthcare.FhirStoreStreamConfigBigqueryDestination>;
         /**
          * Supply a FHIR resource type (such as "Patient" or "Observation"). See
-         * https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+         * <https://www.hl7.org/fhir/valueset-resource-types.html> for a list of all FHIR resource types. The server treats
          * an empty list as an intent to stream all the supported resource types in this FHIR store.
          */
         resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -51768,7 +51519,7 @@ export namespace healthcare {
         /**
          * Specifies the output schema type.
          * * ANALYTICS: Analytics schema defined by the FHIR community.
-         * See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+         * See <https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md>.
          * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
          * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
          * Default value is `ANALYTICS`.
@@ -51807,7 +51558,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+         * project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          */
         pubsubTopic: pulumi.Input<string>;
@@ -51816,7 +51567,7 @@ export namespace healthcare {
     export interface Hl7StoreNotificationConfigs {
         /**
          * Restricts notifications sent for messages matching a filter. If this is empty, all messages
-         * are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+         * are matched. Syntax: <https://cloud.google.com/appengine/docs/standard/python/search/query_strings>
          * Fields/functions available for filtering are:
          * * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
          * * sendDate or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, sendDate < "2017-01-02".
@@ -51831,7 +51582,7 @@ export namespace healthcare {
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
          * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-         * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+         * project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
          * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
          */
@@ -51904,8 +51655,6 @@ export namespace iam {
         /**
          * String indicating the location of the expression for error reporting,
          * e.g. a file name and a position in the file.
-         *
-         * - - -
          */
         location?: pulumi.Input<string>;
         /**
@@ -51968,8 +51717,6 @@ export namespace iam {
         /**
          * String indicating the location of the expression for error reporting,
          * e.g. a file name and a position in the file.
-         *
-         * - - -
          */
         location?: pulumi.Input<string>;
         /**
@@ -52052,7 +51799,7 @@ export namespace iam {
         /**
          * The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
          * filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-         * groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+         * groups should be mail enabled and security enabled. See <https://learn.microsoft.com/en-us/graph/search-query-parameter> for more details.
          */
         filter?: pulumi.Input<string>;
     }
@@ -52840,14 +52587,14 @@ export namespace identityplatform {
 
     export interface ConfigSmsRegionConfigAllowByDefault {
         /**
-         * Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         * Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
          */
         disallowedRegions?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ConfigSmsRegionConfigAllowlistOnly {
         /**
-         * Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         * Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
          */
         allowedRegions?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -52888,7 +52635,6 @@ export namespace identityplatform {
          * (Output)
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
-         *
          *
          * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
          */
@@ -53026,7 +52772,6 @@ export namespace identityplatform {
          * (Output)
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
-         *
          *
          * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
          */
@@ -53900,7 +53645,7 @@ export namespace kms {
 
     export interface EkmConnectionServiceResolver {
         /**
-         * Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+         * Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see <https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest>.
          */
         endpointFilter?: pulumi.Input<string>;
         /**
@@ -53963,8 +53708,6 @@ export namespace kms {
         /**
          * (Output)
          * Output only. The subject Alternative DNS names. Only present if parsed is true.
-         *
-         * - - -
          */
         subjectAlternativeDnsNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -54648,8 +54391,6 @@ export namespace managedkafka {
     export interface ClusterCapacityConfig {
         /**
          * The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-         *
-         * - - -
          */
         memoryBytes: pulumi.Input<string>;
         /**
@@ -54844,8 +54585,6 @@ export namespace memcache {
         cpuCount: pulumi.Input<number>;
         /**
          * Memory size in Mebibytes for each memcache node.
-         *
-         * - - -
          */
         memorySizeMb: pulumi.Input<number>;
     }
@@ -54909,14 +54648,14 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries {
         /**
-         * Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+         * Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
          */
         code?: pulumi.Input<string>;
     }
 
     export interface PreferenceSetVirtualMachinePreferencesRegionPreferences {
         /**
-         * A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+         * A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
          */
         preferredRegions?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -54943,7 +54682,7 @@ export namespace migrationcenter {
 
     export interface PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
         /**
-         * Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+         * Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
          */
         nodeName?: pulumi.Input<string>;
     }
@@ -55312,8 +55051,6 @@ export namespace monitoring {
          * in the future.
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
-         *
-         * - - -
          */
         alertRule?: pulumi.Input<string>;
         /**
@@ -55336,7 +55073,7 @@ export namespace monitoring {
          * must be valid.
          * Label values can be templatized by using variables. The only available
          * variable names are the names of the labels in the PromQL result, including
-         * "__name__" and "value". "labels" may be empty. This field is intended to be
+         * "**name**" and "value". "labels" may be empty. This field is intended to be
          * used for organizing and identifying the AlertPolicy
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -55757,7 +55494,7 @@ export namespace monitoring {
         /**
          * The full name of the resource that defines this service.
          * Formatted as described in
-         * https://cloud.google.com/apis/design/resource_names.
+         * <https://cloud.google.com/apis/design/resource_names>.
          */
         resourceName?: pulumi.Input<string>;
     }
@@ -55779,7 +55516,7 @@ export namespace monitoring {
         /**
          * The full name of the resource that defines this service.
          * Formatted as described in
-         * https://cloud.google.com/apis/design/resource_names.
+         * <https://cloud.google.com/apis/design/resource_names>.
          */
         resourceName?: pulumi.Input<string>;
     }
@@ -56311,7 +56048,7 @@ export namespace monitoring {
          */
         contentType?: pulumi.Input<string>;
         /**
-         * A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType`, as well as the following 1. `contentType` is `URL_ENCODED` and `customContentType` is set. 2. `contentType` is `USER_PROVIDED` and `customContentType` is not set.
+         * A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType`, as well as the following 1. `contentType`is`URL_ENCODED`and`custom_content_type`is set. 2.`contentType`is`USER_PROVIDED`and`custom_content_type` is not set.
          */
         customContentType?: pulumi.Input<string>;
         /**
@@ -56422,7 +56159,6 @@ export namespace monitoring {
         /**
          * Target a Synthetic Monitor GCFv2 Instance
          * Structure is documented below.
-         *
          *
          * <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
          */
@@ -56737,8 +56473,6 @@ export namespace networkconnectivity {
     export interface PolicyBasedRouteFilter {
         /**
          * The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-         *
-         * - - -
          */
         destRange?: pulumi.Input<string>;
         /**
@@ -56961,8 +56695,6 @@ export namespace networkmanagement {
          * that you provide is from the service project. In this case, the
          * network that the IP address resides in is defined in the host
          * project.
-         *
-         * - - -
          */
         projectId?: pulumi.Input<string>;
     }
@@ -57436,12 +57168,12 @@ export namespace networkservices {
          * The list of host patterns to match.
          * Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
          * When multiple hosts are specified, hosts are matched in the following priority:
-         * 1. Exact domain names: ``www.foo.com``.
-         * 2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
-         * 3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
-         * 4. Special wildcard ``*`` matching any domain.
+         * 1. Exact domain names: `www.foo.com`.
+         * 2. Suffix domain wildcards: `*.foo.com` or `*-bar.foo.com`.
+         * 3. Prefix domain wildcards: `foo.*` or `foo-*`.
+         * 4. Special wildcard `*` matching any domain.
          * Notes:
-         * The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+         * The wildcard will not match the empty string. e.g. `*-bar.foo.com` will match `baz-bar.foo.com` but not `-bar.foo.com`. The longest wildcards match first. Only a single host in the entire service can match on `*`. A domain must be unique across all configured hosts within a service.
          * Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
          * You may specify up to 10 hosts.
          */
@@ -57968,8 +57700,6 @@ export namespace networkservices {
         redirectResponseCode?: pulumi.Input<string>;
         /**
          * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-         *
-         * - - -
          */
         stripQuery?: pulumi.Input<boolean>;
     }
@@ -58002,8 +57732,6 @@ export namespace networkservices {
         labelName: pulumi.Input<string>;
         /**
          * Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-         *
-         * - - -
          */
         labelValue: pulumi.Input<string>;
     }
@@ -58099,8 +57827,6 @@ export namespace networkservices {
     export interface GrpcRouteRuleActionRetryPolicy {
         /**
          * Specifies the allowed number of retries.
-         *
-         * - - -
          */
         numRetries?: pulumi.Input<number>;
         /**
@@ -58245,8 +57971,6 @@ export namespace networkservices {
         allowOrigins?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-         *
-         * - - -
          */
         disabled?: pulumi.Input<boolean>;
         /**
@@ -58441,7 +58165,7 @@ export namespace networkservices {
          */
         queryParameters?: pulumi.Input<pulumi.Input<inputs.networkservices.HttpRouteRuleMatchQueryParameter>[]>;
         /**
-         * The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         * The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see <https://github.com/google/re2/wiki/Syntax>
          */
         regexMatch?: pulumi.Input<string>;
     }
@@ -58507,7 +58231,7 @@ export namespace networkservices {
          */
         queryParameter?: pulumi.Input<string>;
         /**
-         * The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         * The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see <https://github.com/google/re2/wiki/Syntax>
          */
         regexMatch?: pulumi.Input<string>;
     }
@@ -58551,8 +58275,6 @@ export namespace networkservices {
         /**
          * List of the HTTP headers to forward to the extension (from the client or backend).
          * If omitted, all headers are sent. Each element is a string indicating the header name.
-         *
-         * - - -
          */
         forwardHeaders?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -58637,8 +58359,6 @@ export namespace networkservices {
          * This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-         *
-         * - - -
          */
         supportedEvents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -58705,8 +58425,6 @@ export namespace networkservices {
          * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-         *
-         * - - -
          */
         weight?: pulumi.Input<number>;
     }
@@ -58751,8 +58469,6 @@ export namespace networkservices {
         serviceName?: pulumi.Input<string>;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-         *
-         * - - -
          */
         weight?: pulumi.Input<number>;
     }
@@ -58763,7 +58479,7 @@ export namespace networkservices {
          */
         alpns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+         * SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. <http://www.example.com> will be first matched against <http://www.example.com>, then *.example.com, then *.com.
          * Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
          */
         sniHosts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -59034,9 +58750,8 @@ export namespace notebooks {
         encryptionConfig?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig>;
         /**
          * (Output)
-         * The Compute Engine guest attributes. (see [Project and instance
-         * guest attributes](https://cloud.google.com/compute/docs/
-         * storing-retrieving-metadata#guest_attributes)).
+         * The Compute Engine guest attributes. (see Project and instance
+         * guest attributes).
          */
         guestAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -59051,7 +58766,7 @@ export namespace notebooks {
         /**
          * The labels to associate with this runtime. Label **keys** must
          * contain 1 to 63 characters, and must conform to [RFC 1035]
-         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
          * empty, but, if present, must contain 1 to 63 characters, and must
          * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
          * more than 32 labels can be associated with a cluster.
@@ -59063,9 +58778,7 @@ export namespace notebooks {
         machineType: pulumi.Input<string>;
         /**
          * The Compute Engine metadata entries to add to virtual machine.
-         * (see [Project and instance metadata](https://cloud.google.com
-         * /compute/docs/storing-retrieving-metadata#project_and_instance
-         * _metadata)).
+         * (see Project and instance metadata).
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -59112,7 +58825,7 @@ export namespace notebooks {
         subnet?: pulumi.Input<string>;
         /**
          * The Compute Engine tags to add to runtime (see [Tagging instances]
-         * (https://cloud.google.com/compute/docs/
+         * (<https://cloud.google.com/compute/docs/>
          * label-or-tag-resources#tags)).
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -59331,8 +59044,6 @@ export namespace organizations {
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
-         *
-         * - - -
          */
         enrollmentLevel?: pulumi.Input<string>;
     }
@@ -59387,13 +59098,13 @@ export namespace organizations {
          */
         condition?: inputs.organizations.GetIAMPolicyBindingCondition;
         /**
-         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
          * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com>.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          */
         members: string[];
@@ -59411,13 +59122,13 @@ export namespace organizations {
          */
         condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
         /**
-         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
          * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com>.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          */
         members: pulumi.Input<pulumi.Input<string>[]>;
@@ -59488,9 +59199,9 @@ export namespace organizations {
         /**
          * Identities that do not cause logging for this type of permission.
          * Each entry can have one of the following values:
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          */
         exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
@@ -59563,7 +59274,7 @@ export namespace orgpolicy {
     export interface PolicyDryRunSpec {
         /**
          * (Output)
-         * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+         * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
          */
         etag?: pulumi.Input<string>;
         /**
@@ -59769,8 +59480,6 @@ export namespace osconfig {
     export interface GuestPoliciesAssignmentOsType {
         /**
          * Targets VM instances with OS Inventory enabled and having the following OS architecture.
-         *
-         * - - -
          */
         osArchitecture?: pulumi.Input<string>;
         /**
@@ -59973,17 +59682,17 @@ export namespace osconfig {
 
     export interface GuestPoliciesRecipeArtifactGcs {
         /**
-         * Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
          * this value would be my-bucket.
          */
         bucket?: pulumi.Input<string>;
         /**
          * Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-         * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+         * <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
          */
         generation?: pulumi.Input<number>;
         /**
-         * Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
          * this value would be foo/bar.
          */
         object?: pulumi.Input<string>;
@@ -60366,11 +60075,11 @@ export namespace osconfig {
         /**
          * The id of the OS policy with the following restrictions:
          *
-         * *   Must contain only lowercase letters, numbers, and hyphens.
-         * *   Must start with a letter.
-         * *   Must be between 1-63 characters.
-         * *   Must end with a number or a letter.
-         * *   Must be unique within the assignment.
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the assignment.
          */
         id: pulumi.Input<string>;
         /**
@@ -60439,11 +60148,11 @@ export namespace osconfig {
         /**
          * The id of the resource with the following restrictions:
          *
-         * *   Must contain only lowercase letters, numbers, and hyphens.
-         * *   Must start with a letter.
-         * *   Must be between 1-63 characters.
-         * *   Must end with a number or a letter.
-         * *   Must be unique within the OS policy.
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the OS policy.
          */
         id: pulumi.Input<string>;
         /**
@@ -61114,8 +60823,6 @@ export namespace osconfig {
         /**
          * Specifies the relative value defined as a percentage,
          * which will be multiplied by a reference value.
-         *
-         * --------------------------------------------------------------------------------
          */
         percent?: pulumi.Input<number>;
     }
@@ -61150,8 +60857,6 @@ export namespace osconfig {
     export interface PatchDeploymentInstanceFilterGroupLabel {
         /**
          * Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-         *
-         * - - -
          */
         labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -61679,7 +61384,7 @@ export namespace privilegedaccessmanager {
 
     export interface EntitlementApprovalWorkflowManualApprovalsStepApprovers {
         /**
-         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
          */
         principals: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -61693,7 +61398,7 @@ export namespace privilegedaccessmanager {
 
     export interface EntitlementPrivilegedAccess {
         /**
-         * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+         * GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
          * Structure is documented below.
          */
         gcpIamAccess: pulumi.Input<inputs.privilegedaccessmanager.EntitlementPrivilegedAccessGcpIamAccess>;
@@ -61718,11 +61423,11 @@ export namespace privilegedaccessmanager {
     export interface EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
         /**
          * The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         * <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
          */
         conditionExpression?: pulumi.Input<string>;
         /**
-         * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         * IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
          */
         role: pulumi.Input<string>;
     }
@@ -61734,8 +61439,6 @@ export namespace privilegedaccessmanager {
         notMandatory?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementRequesterJustificationConfigNotMandatory>;
         /**
          * The requester has to provide a justification in the form of free flowing text.
-         *
-         * - - -
          */
         unstructured?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementRequesterJustificationConfigUnstructured>;
     }
@@ -61767,8 +61470,6 @@ export namespace projects {
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
-         *
-         * - - -
          */
         enrollmentLevel?: pulumi.Input<string>;
     }
@@ -61810,8 +61511,6 @@ export namespace projects {
         packageName: pulumi.Input<string>;
         /**
          * The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-         *
-         * - - -
          */
         sha1Fingerprint: pulumi.Input<string>;
     }
@@ -62033,7 +61732,7 @@ export namespace pubsub {
         /**
          * The service account to use to write to BigQuery. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
-         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
          */
         serviceAccountEmail?: pulumi.Input<string>;
         /**
@@ -62093,7 +61792,7 @@ export namespace pubsub {
         /**
          * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
-         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
          */
         serviceAccountEmail?: pulumi.Input<string>;
         /**
@@ -62116,7 +61815,7 @@ export namespace pubsub {
          * Format is `projects/{project}/topics/{topic}`.
          * The Cloud Pub/Sub service account associated with the enclosing subscription's
          * parent project (i.e.,
-         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
          * permission to Publish() to this topic.
          * The operation will fail if the topic does not exist.
          * Users should ensure that there is a subscription attached to this topic
@@ -62216,7 +61915,7 @@ export namespace pubsub {
          * identifies the recipients that the JWT is intended for. The audience
          * value is a single case-sensitive string. Having multiple values (array)
          * for the audience field is not supported. More info about the OIDC JWT
-         * token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+         * token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
          * Note: if not specified, the Push endpoint URL will be used.
          */
         audience?: pulumi.Input<string>;
@@ -62310,7 +62009,7 @@ export namespace pubsub {
         /**
          * The name of the schema that messages published should be
          * validated against. Format is projects/{project}/schemas/{schema}.
-         * The value of this field will be _deleted-schema_
+         * The value of this field will be *deleted-schema*
          * if the schema has been deleted.
          */
         schema: pulumi.Input<string>;
@@ -62353,7 +62052,7 @@ export namespace recaptcha {
 
     export interface EnterpriseKeyWafSettings {
         /**
-         * Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+         * Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
          */
         wafFeature: pulumi.Input<string>;
         /**
@@ -62416,8 +62115,6 @@ export namespace redis {
          * Required. The consumer network where the network address of
          * the discovery endpoint will be reserved, in the form of
          * projects/{network_project_id_or_number}/global/networks/{network_id}.
-         *
-         * - - -
          */
         network: pulumi.Input<string>;
     }
@@ -62725,8 +62422,6 @@ export namespace secretmanager {
     export interface SecretReplicationAutoCustomerManagedEncryption {
         /**
          * Describes the Cloud KMS encryption key that will be used to protect destination secret.
-         *
-         * - - -
          */
         kmsKeyName: pulumi.Input<string>;
     }
@@ -62754,8 +62449,6 @@ export namespace secretmanager {
     export interface SecretReplicationUserManagedReplicaCustomerManagedEncryption {
         /**
          * Describes the Cloud KMS encryption key that will be used to protect destination secret.
-         *
-         * - - -
          */
         kmsKeyName: pulumi.Input<string>;
     }
@@ -62858,17 +62551,17 @@ export namespace securesourcemanager {
         defaultBranch?: pulumi.Input<string>;
         /**
          * List of gitignore template names user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
          */
         gitignores?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * License template name user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
          */
         license?: pulumi.Input<string>;
         /**
          * README template name.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
          */
         readme?: pulumi.Input<string>;
     }
@@ -62998,8 +62691,6 @@ export namespace securitycenter {
     export interface FolderCustomModuleCustomConfigResourceSelector {
         /**
          * The resource types to run the detector on.
-         *
-         * - - -
          */
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -63016,7 +62707,7 @@ export namespace securitycenter {
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * >, <, >=, <= for integer values.
+         * * > , <, >=, <= for integer values.
          * * :, meaning substring matching, for strings.
          * The supported value types are:
          * * string literals in quotes.
@@ -63025,8 +62716,6 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
-         *
-         * - - -
          */
         filter: pulumi.Input<string>;
     }
@@ -63388,7 +63077,7 @@ export namespace securitycenter {
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * >, <, >=, <= for integer values.
+         * * > , <, >=, <= for integer values.
          * * :, meaning substring matching, for strings.
          * The supported value types are:
          * * string literals in quotes.
@@ -63397,8 +63086,6 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
-         *
-         * - - -
          */
         filter: pulumi.Input<string>;
     }
@@ -63508,8 +63195,6 @@ export namespace securitycenter {
     export interface OrganizationCustomModuleCustomConfigResourceSelector {
         /**
          * The resource types to run the detector on.
-         *
-         * - - -
          */
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -63619,8 +63304,6 @@ export namespace securitycenter {
     export interface ProjectCustomModuleCustomConfigResourceSelector {
         /**
          * The resource types to run the detector on.
-         *
-         * - - -
          */
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -63637,7 +63320,7 @@ export namespace securitycenter {
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * >, <, >=, <= for integer values.
+         * * > , <, >=, <= for integer values.
          * * :, meaning substring matching, for strings.
          * The supported value types are:
          * * string literals in quotes.
@@ -63646,8 +63329,6 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
-         *
-         * - - -
          */
         filter: pulumi.Input<string>;
     }
@@ -63682,7 +63363,7 @@ export namespace securitycenter {
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * >, <, >=, <= for integer values.
+         * * > , <, >=, <= for integer values.
          * * :, meaning substring matching, for strings.
          * The supported value types are:
          * * string literals in quotes.
@@ -63691,8 +63372,6 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
-         *
-         * - - -
          */
         filter: pulumi.Input<string>;
     }
@@ -63709,7 +63388,7 @@ export namespace securitycenter {
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * >, <, >=, <= for integer values.
+         * * > , <, >=, <= for integer values.
          * * :, meaning substring matching, for strings.
          * The supported value types are:
          * * string literals in quotes.
@@ -63718,8 +63397,6 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
-         *
-         * - - -
          */
         filter: pulumi.Input<string>;
     }
@@ -63748,7 +63425,7 @@ export namespace securitycenter {
          * map to those defined in the corresponding resource.
          * The supported operators are:
          * * = for all value types.
-         * * >, <, >=, <= for integer values.
+         * * > , <, >=, <= for integer values.
          * * :, meaning substring matching, for strings.
          * The supported value types are:
          * * string literals in quotes.
@@ -63757,8 +63434,6 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
-         *
-         * - - -
          */
         filter: pulumi.Input<string>;
     }
@@ -63901,7 +63576,7 @@ export namespace securityposture {
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
          * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
          * Structure is documented below.
          */
         condition?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition>;
@@ -63959,7 +63634,7 @@ export namespace securityposture {
         /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
          * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
          * Structure is documented below.
          */
         condition?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition>;
@@ -64134,8 +63809,6 @@ export namespace securityposture {
     export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector {
         /**
          * The resource types to run the detector on.
-         *
-         * - - -
          */
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -64349,8 +64022,6 @@ export namespace spanner {
         /**
          * If true, this location is designated as the default leader location where
          * leader replicas are placed.
-         *
-         * - - -
          */
         defaultLeaderLocation?: pulumi.Input<boolean>;
         /**
@@ -65207,8 +64878,6 @@ export namespace storage {
         delimiter?: pulumi.Input<string>;
         /**
          * The boolean that indicates whether or not headers are included in the inventory report CSV file.
-         *
-         * - - -
          */
         headerRequired?: pulumi.Input<boolean>;
         /**
@@ -66171,7 +65840,7 @@ export namespace vertex {
 
     export interface AiFeatureOnlineStoreFeatureviewSyncConfig {
         /**
-         * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+         * Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
          * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
          */
         cron?: pulumi.Input<string>;
@@ -66205,7 +65874,7 @@ export namespace vertex {
          */
         filterColumns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
          * Structure is documented below.
          */
         treeAhConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig>;
@@ -66419,7 +66088,7 @@ export namespace vertex {
 
     export interface AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
         /**
-         * A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+         * A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
          */
         allowedIssuers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -66501,7 +66170,7 @@ export namespace vertex {
          * field is set when calling IndexService.UpdateIndex, then no other
          * Index field can be also updated as part of the same call.
          * The expected structure and format of the files this URI points to is
-         * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+         * described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
          */
         contentsDeltaUri: pulumi.Input<string>;
         /**
@@ -66560,7 +66229,7 @@ export namespace vertex {
         bruteForceConfig?: pulumi.Input<inputs.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfig>;
         /**
          * Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-         * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
          * Structure is documented below.
          */
         treeAhConfig?: pulumi.Input<inputs.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfig>;
@@ -66629,8 +66298,6 @@ export namespace vmwareengine {
     export interface ExternalAccessRuleDestinationIpRange {
         /**
          * The name of an `ExternalAddress` resource.
-         *
-         * - - -
          */
         externalAddress?: pulumi.Input<string>;
         /**
@@ -66715,7 +66382,7 @@ export namespace vmwareengine {
          * * Begins with an alphabetical character
          * * Ends with a non-hyphen character
          * * Not formatted as a UUID
-         * * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         * * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
          */
         clusterId: pulumi.Input<string>;
         /**
@@ -66756,8 +66423,6 @@ export namespace vmwareengine {
         preferredLocation?: pulumi.Input<string>;
         /**
          * Additional zone for a higher level of availability and load balancing.
-         *
-         * - - -
          */
         secondaryLocation?: pulumi.Input<string>;
     }
@@ -66854,7 +66519,7 @@ export namespace vpcaccess {
     export interface ConnectorSubnet {
         /**
          * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-         * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+         * <https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName}> the correct input for this field would be {subnetName}"
          */
         name?: pulumi.Input<string>;
         /**
@@ -66895,11 +66560,11 @@ export namespace workbench {
         disablePublicIp?: pulumi.Input<boolean>;
         /**
          * Optional. Flag to enable ip forwarding or not, default false/off.
-         * https://cloud.google.com/vpc/docs/using-routes#canipforward
+         * <https://cloud.google.com/vpc/docs/using-routes#canipforward>
          */
         enableIpForwarding?: pulumi.Input<boolean>;
         /**
-         * Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+         * Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
          */
         machineType?: pulumi.Input<string>;
         /**
@@ -67056,7 +66721,7 @@ export namespace workbench {
         /**
          * (Output)
          * Output only. The list of scopes to be made available for this
-         * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+         * service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
          */
         scopes?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -67341,7 +67006,7 @@ export namespace workstations {
         disableSsh?: pulumi.Input<boolean>;
         /**
          * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
          */
         enableNestedVirtualization?: pulumi.Input<boolean>;
         /**
@@ -67372,7 +67037,7 @@ export namespace workstations {
         /**
          * Resource manager tags to be bound to the VM instances backing the Workstations.
          * Tag keys and values have the same definition as
-         * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+         * <https://cloud.google.com/resource-manager/docs/tags/tags-overview>
          * Keys must be in the format `tagKeys/{tag_key_id}`, and
          * values are in the format `tagValues/456`.
          */
@@ -67402,7 +67067,7 @@ export namespace workstations {
         bootDiskSizeGb?: pulumi.Input<number>;
         /**
          * Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
          */
         enableNestedVirtualization?: pulumi.Input<boolean>;
         /**
@@ -67410,7 +67075,7 @@ export namespace workstations {
          */
         id: pulumi.Input<string>;
         /**
-         * The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+         * The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types <https://cloud.google.com/workstations/docs/available-machine-types>. Defaults to e2-standard-4.
          */
         machineType?: pulumi.Input<string>;
         /**

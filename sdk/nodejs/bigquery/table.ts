@@ -281,7 +281,7 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Defines the primary key and foreign keys. 
+     * Defines the primary key and foreign keys.
      * Structure is documented below.
      */
     public readonly tableConstraints!: pulumi.Output<outputs.bigquery.TableTableConstraints | undefined>;
@@ -570,7 +570,7 @@ export interface TableState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * Defines the primary key and foreign keys. 
+     * Defines the primary key and foreign keys.
      * Structure is documented below.
      */
     tableConstraints?: pulumi.Input<inputs.bigquery.TableTableConstraints>;
@@ -710,7 +710,7 @@ export interface TableArgs {
      */
     schema?: pulumi.Input<string>;
     /**
-     * Defines the primary key and foreign keys. 
+     * Defines the primary key and foreign keys.
      * Structure is documented below.
      */
     tableConstraints?: pulumi.Input<inputs.bigquery.TableTableConstraints>;

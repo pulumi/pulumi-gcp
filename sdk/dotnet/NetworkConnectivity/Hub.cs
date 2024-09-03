@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.global.hubs)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+    ///   * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Connectivity Hub Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -42,7 +40,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Hub With Export Psc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -123,9 +121,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -248,9 +243,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,9 +312,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

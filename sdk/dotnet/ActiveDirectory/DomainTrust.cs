@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
     /// * How-to Guides
-    ///     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
+    ///   * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
     /// 
     /// ## Example Usage
     /// 
@@ -75,10 +75,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     {
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-        /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-        /// 
-        /// 
-        /// - - -
+        /// of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -181,10 +178,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     {
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-        /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-        /// 
-        /// 
-        /// - - -
+        /// of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -261,10 +255,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     {
         /// <summary>
         /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-        /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-        /// 
-        /// 
-        /// - - -
+        /// of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

@@ -75,8 +75,6 @@ public class ProjectDefaultNetworkTier extends com.pulumi.resources.CustomResour
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
      * 
-     * ***
-     * 
      */
     @Export(name="networkTier", refs={String.class}, tree="[0]")
     private Output<String> networkTier;
@@ -84,8 +82,6 @@ public class ProjectDefaultNetworkTier extends com.pulumi.resources.CustomResour
     /**
      * @return The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
-     * 
-     * ***
      * 
      */
     public Output<String> networkTier() {

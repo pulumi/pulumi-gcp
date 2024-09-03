@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/interconnects)
  * * How-to Guides
- *     * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
+ *   * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
  *
  * ## Example Usage
  *
@@ -112,9 +112,6 @@ export class Interconnect extends pulumi.CustomResource {
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
-     *
-     *
-     * - - -
      */
     public readonly customerName!: pulumi.Output<string>;
     /**
@@ -397,9 +394,6 @@ export interface InterconnectState {
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
-     *
-     *
-     * - - -
      */
     customerName?: pulumi.Input<string>;
     /**
@@ -569,9 +563,6 @@ export interface InterconnectArgs {
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
-     *
-     *
-     * - - -
      */
     customerName: pulumi.Input<string>;
     /**

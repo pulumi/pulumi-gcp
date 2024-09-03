@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// DIRECT_PEERING.
         /// Default value is `DIRECT_PEERING`.
         /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? ConnectMode;
         /// <summary>

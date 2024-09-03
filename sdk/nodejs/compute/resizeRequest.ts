@@ -17,11 +17,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
  * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+ *   * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
  *
- * ## Example Usage
- *
- * ### Compute Mig Resize Request
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -156,9 +154,6 @@ export class ResizeRequest extends pulumi.CustomResource {
      * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
-     *
-     *
-     * - - -
      */
     public readonly instanceGroupManager!: pulumi.Output<string>;
     /**
@@ -259,9 +254,6 @@ export interface ResizeRequestState {
      * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
-     *
-     *
-     * - - -
      */
     instanceGroupManager?: pulumi.Input<string>;
     /**
@@ -309,9 +301,6 @@ export interface ResizeRequestArgs {
      * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
-     *
-     *
-     * - - -
      */
     instanceGroupManager: pulumi.Input<string>;
     /**

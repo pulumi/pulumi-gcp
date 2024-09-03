@@ -32,11 +32,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+ *   * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
  * 
- * ## Example Usage
- * 
- * ### Datastream Connection Profile Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +75,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Datastream Connection Profile Postgresql Private Connection
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -198,7 +196,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Datastream Connection Profile Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -247,6 +245,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Datastream Connection Profile Postgres
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -344,6 +345,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Datastream Connection Profile Sql Server
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -587,16 +589,12 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     /**
      * The name of the location this connection profile is located in.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The name of the location this connection profile is located in.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

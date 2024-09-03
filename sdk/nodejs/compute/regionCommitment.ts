@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCommitments)
  * * How-to Guides
- *     * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
+ *   * [Committed use discounts for Compute Engine](https://cloud.google.com/compute/docs/instances/committed-use-discounts-overview)
  *
  * ## Example Usage
  *
@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Compute Region Commitment Full
  *
  * ```typescript
@@ -174,9 +175,6 @@ export class RegionCommitment extends pulumi.CustomResource {
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-     *
-     *
-     * - - -
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -330,9 +328,6 @@ export interface RegionCommitmentState {
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-     *
-     *
-     * - - -
      */
     plan?: pulumi.Input<string>;
     /**
@@ -417,9 +412,6 @@ export interface RegionCommitmentArgs {
      * The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-     *
-     *
-     * - - -
      */
     plan: pulumi.Input<string>;
     /**

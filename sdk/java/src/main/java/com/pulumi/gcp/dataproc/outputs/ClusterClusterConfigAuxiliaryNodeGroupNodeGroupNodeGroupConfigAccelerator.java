@@ -14,8 +14,6 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     /**
      * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
      * 
-     * ***
-     * 
      */
     private Integer acceleratorCount;
     /**
@@ -27,8 +25,6 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     private ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator() {}
     /**
      * @return The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-     * 
-     * ***
      * 
      */
     public Integer acceleratorCount() {

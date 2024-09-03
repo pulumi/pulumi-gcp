@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
  *
  * ## Example Usage
  *
@@ -54,6 +54,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Bigquery Row Limit
  *
  * ```typescript
@@ -95,6 +96,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Bigquery Row Limit Percentage
  *
  * ```typescript
@@ -136,6 +138,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Job Notification Emails
  *
  * ```typescript
@@ -166,6 +169,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Deidentify
  *
  * ```typescript
@@ -250,6 +254,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Hybrid
  *
  * ```typescript
@@ -290,6 +295,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Inspect
  *
  * ```typescript
@@ -379,6 +385,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Publish To Stackdriver
  *
  * ```typescript
@@ -409,6 +416,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger With Id
  *
  * ```typescript
@@ -447,6 +455,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Multiple Actions
  *
  * ```typescript
@@ -491,6 +500,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
  *
  * ```typescript
@@ -531,6 +541,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Job Trigger Timespan Config Big Query
  *
  * ```typescript

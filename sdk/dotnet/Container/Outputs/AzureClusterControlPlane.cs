@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string Version;
         /// <summary>
-        /// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+        /// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see &lt;https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions&gt;. When unspecified, it defaults to `Standard_DS2_v2`.
         /// </summary>
         public readonly string? VmSize;
 

@@ -104,9 +104,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Unique identifier provided by the client within the parent scope.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("muteConfigId")]
         public Output<string> MuteConfigId { get; private set; } = null!;
@@ -211,9 +208,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Unique identifier provided by the client within the parent scope.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("muteConfigId", required: true)]
         public Input<string> MuteConfigId { get; set; } = null!;
@@ -278,9 +272,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Unique identifier provided by the client within the parent scope.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("muteConfigId")]
         public Input<string>? MuteConfigId { get; set; }

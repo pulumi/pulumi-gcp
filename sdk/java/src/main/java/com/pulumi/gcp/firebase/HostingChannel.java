@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Channel Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -132,16 +133,12 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
      * 
-     * ***
-     * 
      */
     @Export(name="channelId", refs={String.class}, tree="[0]")
     private Output<String> channelId;
 
     /**
      * @return Required. Immutable. A unique ID within the site that identifies the channel.
-     * 
-     * ***
      * 
      */
     public Output<String> channelId() {

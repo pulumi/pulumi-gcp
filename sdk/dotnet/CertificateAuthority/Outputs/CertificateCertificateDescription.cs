@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<string> AiaIssuingCertificateUrls;
         /// <summary>
         /// (Output)
-        /// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+        /// Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionAuthorityKeyId> AuthorityKeyIds;
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionCertFingerprint> CertFingerprints;
         /// <summary>
         /// (Output)
-        /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
         /// </summary>
         public readonly ImmutableArray<string> CrlDistributionPoints;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescription> SubjectDescriptions;
         /// <summary>
         /// (Output)
-        /// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+        /// Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectKeyId> SubjectKeyIds;

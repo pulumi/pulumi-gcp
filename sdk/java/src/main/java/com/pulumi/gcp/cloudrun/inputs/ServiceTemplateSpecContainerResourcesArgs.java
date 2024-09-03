@@ -19,7 +19,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
     /**
      * Limits describes the maximum amount of compute resources allowed.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     @Import(name="limits")
@@ -28,7 +28,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     public Optional<Output<Map<String,String>>> limits() {
@@ -40,7 +40,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
      * If Requests is omitted for a container, it defaults to Limits if that is
      * explicitly specified, otherwise to an implementation-defined value.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     @Import(name="requests")
@@ -51,7 +51,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
      * If Requests is omitted for a container, it defaults to Limits if that is
      * explicitly specified, otherwise to an implementation-defined value.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     public Optional<Output<Map<String,String>>> requests() {
@@ -86,7 +86,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
         /**
          * @param limits Limits describes the maximum amount of compute resources allowed.
          * The values of the map is string form of the &#39;quantity&#39; k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
         /**
          * @param limits Limits describes the maximum amount of compute resources allowed.
          * The values of the map is string form of the &#39;quantity&#39; k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
          * If Requests is omitted for a container, it defaults to Limits if that is
          * explicitly specified, otherwise to an implementation-defined value.
          * The values of the map is string form of the &#39;quantity&#39; k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ServiceTemplateSpecContainerResourcesArgs extends com.pulumi.
          * If Requests is omitted for a container, it defaults to Limits if that is
          * explicitly specified, otherwise to an implementation-defined value.
          * The values of the map is string form of the &#39;quantity&#39; k8s type:
-         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
          * 
          * @return builder
          * 

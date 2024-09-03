@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string>? QueryParameter { get; set; }
 
         /// <summary>
-        /// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        /// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
         /// </summary>
         [Input("regexMatch")]
         public Input<string>? RegexMatch { get; set; }

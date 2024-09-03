@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.securityProfiles)
  * * How-to Guides
- *     * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
+ *   * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
  *
  * ## Example Usage
  *
@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Network Security Security Profile Overrides
  *
  * ```typescript
@@ -135,9 +136,6 @@ export class SecurityProfile extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The name of the security profile resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -257,9 +255,6 @@ export interface SecurityProfileState {
     location?: pulumi.Input<string>;
     /**
      * The name of the security profile resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -314,9 +309,6 @@ export interface SecurityProfileArgs {
     location?: pulumi.Input<string>;
     /**
      * The name of the security profile resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

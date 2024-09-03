@@ -53,8 +53,6 @@ func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts 
 // A collection of arguments for invoking getSubscription.
 type LookupSubscriptionArgs struct {
 	// The name of the Cloud Pub/Sub Subscription.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -101,8 +99,6 @@ func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutput
 // A collection of arguments for invoking getSubscription.
 type LookupSubscriptionOutputArgs struct {
 	// The name of the Cloud Pub/Sub Subscription.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

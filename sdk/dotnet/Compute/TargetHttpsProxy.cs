@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Target Https Proxy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -111,7 +109,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Target Https Proxy Http Keep Alive Timeout
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -203,7 +201,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Target Https Proxy Mtls
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -351,7 +349,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Target Https Proxy Certificate Manager Certificate
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -599,9 +597,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("urlMap")]
         public Output<string> UrlMap { get; private set; } = null!;
@@ -780,9 +775,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("urlMap", required: true)]
         public Input<string> UrlMap { get; set; } = null!;
@@ -941,9 +933,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the UrlMap resource that defines the mapping from URL
         /// to the BackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("urlMap")]
         public Input<string>? UrlMap { get; set; }

@@ -12,89 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Netapp Volume Replication Create
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/netapp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "test-network",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			sourcePool, err := netapp.NewStoragePool(ctx, "source_pool", &netapp.StoragePoolArgs{
-//				Name:         pulumi.String("source-pool"),
-//				Location:     pulumi.String("us-central1"),
-//				ServiceLevel: pulumi.String("PREMIUM"),
-//				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(_default.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			destinationPool, err := netapp.NewStoragePool(ctx, "destination_pool", &netapp.StoragePoolArgs{
-//				Name:         pulumi.String("destination-pool"),
-//				Location:     pulumi.String("us-west2"),
-//				ServiceLevel: pulumi.String("PREMIUM"),
-//				CapacityGib:  pulumi.String("2048"),
-//				Network:      pulumi.String(_default.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			sourceVolume, err := netapp.NewVolume(ctx, "source_volume", &netapp.VolumeArgs{
-//				Location:    sourcePool.Location,
-//				Name:        pulumi.String("source-volume"),
-//				CapacityGib: pulumi.String("100"),
-//				ShareName:   pulumi.String("source-volume"),
-//				StoragePool: sourcePool.Name,
-//				Protocols: pulumi.StringArray{
-//					pulumi.String("NFSV3"),
-//				},
-//				DeletionPolicy: pulumi.String("FORCE"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = netapp.NewVolumeReplication(ctx, "test_replication", &netapp.VolumeReplicationArgs{
-//				Location:            sourceVolume.Location,
-//				VolumeName:          sourceVolume.Name,
-//				Name:                pulumi.String("test-replication"),
-//				ReplicationSchedule: pulumi.String("EVERY_10_MINUTES"),
-//				Description:         pulumi.String("This is a replication resource"),
-//				DestinationVolumeParameters: &netapp.VolumeReplicationDestinationVolumeParametersArgs{
-//					StoragePool: destinationPool.ID(),
-//					VolumeId:    pulumi.String("destination-volume"),
-//					ShareName:   pulumi.String("source-volume"),
-//					Description: pulumi.String("This is a replicated volume"),
-//				},
-//				DeleteDestinationVolume: pulumi.Bool(true),
-//				WaitForMirror:           pulumi.Bool(true),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sourceVolume,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // VolumeReplication can be imported using any of these accepted formats:
@@ -155,8 +72,6 @@ type VolumeReplication struct {
 	// currently receives an update. Updated every 5 minutes.
 	MirrorState pulumi.StringOutput `pulumi:"mirrorState"`
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -268,8 +183,6 @@ type volumeReplicationState struct {
 	// currently receives an update. Updated every 5 minutes.
 	MirrorState *string `pulumi:"mirrorState"`
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -338,8 +251,6 @@ type VolumeReplicationState struct {
 	// currently receives an update. Updated every 5 minutes.
 	MirrorState pulumi.StringPtrInput
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -397,8 +308,6 @@ type volumeReplicationArgs struct {
 	// Name of region for this resource. The resource needs to be created in the region of the destination volume.
 	Location string `pulumi:"location"`
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -437,8 +346,6 @@ type VolumeReplicationArgs struct {
 	// Name of region for this resource. The resource needs to be created in the region of the destination volume.
 	Location pulumi.StringInput
 	// The name of the replication. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -612,8 +519,6 @@ func (o VolumeReplicationOutput) MirrorState() pulumi.StringOutput {
 }
 
 // The name of the replication. Needs to be unique per location.
-//
-// ***
 func (o VolumeReplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

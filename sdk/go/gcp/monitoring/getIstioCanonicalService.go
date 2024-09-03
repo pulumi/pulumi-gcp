@@ -69,10 +69,6 @@ func GetIstioCanonicalService(ctx *pulumi.Context, args *GetIstioCanonicalServic
 type GetIstioCanonicalServiceArgs struct {
 	// The name of the canonical service underlying this service.
 	// Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
-	//
-	// ***
-	//
-	// Other optional fields include:
 	CanonicalService string `pulumi:"canonicalService"`
 	// The namespace of the canonical service underlying this service.
 	// Corresponds to the destinationCanonicalServiceNamespace metric label in Istio metrics.
@@ -121,10 +117,6 @@ func GetIstioCanonicalServiceOutput(ctx *pulumi.Context, args GetIstioCanonicalS
 type GetIstioCanonicalServiceOutputArgs struct {
 	// The name of the canonical service underlying this service.
 	// Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
-	//
-	// ***
-	//
-	// Other optional fields include:
 	CanonicalService pulumi.StringInput `pulumi:"canonicalService"`
 	// The namespace of the canonical service underlying this service.
 	// Corresponds to the destinationCanonicalServiceNamespace metric label in Istio metrics.

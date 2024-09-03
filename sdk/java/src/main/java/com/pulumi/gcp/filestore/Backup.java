@@ -23,12 +23,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.backups)
  * * How-to Guides
- *     * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
- *     * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
+ *   * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
+ *   * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
  * 
- * ## Example Usage
- * 
- * ### Filestore Backup Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -224,16 +222,12 @@ public class Backup extends com.pulumi.resources.CustomResource {
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

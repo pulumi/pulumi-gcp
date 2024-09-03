@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 //
-// ## Example Usage
-//
-// ### Bigquery Analyticshub Listing Basic
+// ##
 //
 // ```go
 // package main
@@ -73,7 +71,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Analyticshub Listing Restricted
+// ##
 //
 // ```go
 // package main

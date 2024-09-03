@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.tlsInspectionPolicies)
  * * How-to Guides
- *     * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
+ *   * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
  *
- * ## Example Usage
- *
- * ### Network Security Tls Inspection Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,7 +96,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Network Security Tls Inspection Policy Custom
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -302,9 +300,6 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
     public readonly minTlsVersion!: pulumi.Output<string | undefined>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -409,9 +404,6 @@ export interface TlsInspectionPolicyState {
     minTlsVersion?: pulumi.Input<string>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -465,9 +457,6 @@ export interface TlsInspectionPolicyArgs {
     minTlsVersion?: pulumi.Input<string>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

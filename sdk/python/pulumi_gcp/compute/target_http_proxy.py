@@ -29,9 +29,6 @@ class TargetHttpProxyArgs:
         The set of arguments for constructing a TargetHttpProxy resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
                while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -69,9 +66,6 @@ class TargetHttpProxyArgs:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -190,9 +184,6 @@ class _TargetHttpProxyState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -328,9 +319,6 @@ class _TargetHttpProxyState:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -359,11 +347,9 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Target Http Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -399,7 +385,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_url_map.id)
         ```
-        ### Target Http Proxy Http Keep Alive Timeout
+        ## 
 
         ```python
         import pulumi
@@ -437,7 +423,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=610,
             url_map=default_url_map.id)
         ```
-        ### Target Http Proxy Https Redirect
+        ## 
 
         ```python
         import pulumi
@@ -500,9 +486,6 @@ class TargetHttpProxy(pulumi.CustomResource):
                this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -518,11 +501,9 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Target Http Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -558,7 +539,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_url_map.id)
         ```
-        ### Target Http Proxy Http Keep Alive Timeout
+        ## 
 
         ```python
         import pulumi
@@ -596,7 +577,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             http_keep_alive_timeout_sec=610,
             url_map=default_url_map.id)
         ```
-        ### Target Http Proxy Https Redirect
+        ## 
 
         ```python
         import pulumi
@@ -727,9 +708,6 @@ class TargetHttpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -829,9 +807,6 @@ class TargetHttpProxy(pulumi.CustomResource):
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 

@@ -85,8 +85,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
@@ -97,8 +95,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -246,8 +242,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -262,8 +256,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
          * * `projects/{{project}}/locations/{{location}}`
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 

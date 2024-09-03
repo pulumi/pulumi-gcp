@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/folders.locations.securityHealthAnalyticsCustomModules)
  * * How-to Guides
- *     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+ *   * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
  *
  * ## Example Usage
  *
@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scc Management Folder Security Health Analytics Custom Module Full
  *
  * ```typescript
@@ -164,9 +165,6 @@ export class ManagementFolderSecurityHealthAnalyticsCustomModule extends pulumi.
     public readonly enablementState!: pulumi.Output<string | undefined>;
     /**
      * Numerical ID of the parent folder.
-     *
-     *
-     * - - -
      */
     public readonly folder!: pulumi.Output<string>;
     /**
@@ -261,9 +259,6 @@ export interface ManagementFolderSecurityHealthAnalyticsCustomModuleState {
     enablementState?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent folder.
-     *
-     *
-     * - - -
      */
     folder?: pulumi.Input<string>;
     /**
@@ -311,9 +306,6 @@ export interface ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
     enablementState?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent folder.
-     *
-     *
-     * - - -
      */
     folder: pulumi.Input<string>;
     /**

@@ -13,16 +13,14 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
  * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ *   * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  *
  * > **Warning:** Due to limitations of the API, this provider cannot update the
  * number of nodes in a node group and changes to node group size either
  * through provider config or through external changes will cause
  * the provider to delete and recreate the node group.
  *
- * ## Example Usage
- *
- * ### Node Group Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +39,7 @@ import * as utilities from "../utilities";
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
- * ### Node Group Maintenance Interval
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +59,7 @@ import * as utilities from "../utilities";
  *     maintenanceInterval: "RECURRENT",
  * });
  * ```
- * ### Node Group Autoscaling Policy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,6 +87,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Node Group Share Settings
  *
  * ```typescript
@@ -220,9 +221,6 @@ export class NodeGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The URL of the node template to which this node group belongs.
-     *
-     *
-     * - - -
      */
     public readonly nodeTemplate!: pulumi.Output<string>;
     /**
@@ -345,9 +343,6 @@ export interface NodeGroupState {
     name?: pulumi.Input<string>;
     /**
      * The URL of the node template to which this node group belongs.
-     *
-     *
-     * - - -
      */
     nodeTemplate?: pulumi.Input<string>;
     /**
@@ -415,9 +410,6 @@ export interface NodeGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * The URL of the node template to which this node group belongs.
-     *
-     *
-     * - - -
      */
     nodeTemplate: pulumi.Input<string>;
     /**

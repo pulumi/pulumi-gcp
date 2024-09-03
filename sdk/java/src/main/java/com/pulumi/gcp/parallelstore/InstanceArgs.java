@@ -113,8 +113,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
@@ -126,8 +124,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -146,13 +142,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * Label values must be between 0 and 63 characters long and must conform
      *   to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     *   See https://goo.gl/xmQnxf for more information on and examples of labels.
+     *   See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
      *   If you plan to use labels in your own code, please note that additional
      *   characters may be allowed in the future. Therefore, you are advised to use
      *   an internal label representation, such as JSON, which doesn&#39;t rely upon
      *   specific characters being disallowed.  For example, representing labels
-     *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-     *   allow &#34;_&#34; in a future release.
+     *   as the string:  name + &#34;*&#34; + value  would prove problematic if we were to
+     *   allow &#34;*&#34; in a future release.
      *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      *   Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -172,13 +168,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * Label values must be between 0 and 63 characters long and must conform
      *   to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     *   See https://goo.gl/xmQnxf for more information on and examples of labels.
+     *   See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
      *   If you plan to use labels in your own code, please note that additional
      *   characters may be allowed in the future. Therefore, you are advised to use
      *   an internal label representation, such as JSON, which doesn&#39;t rely upon
      *   specific characters being disallowed.  For example, representing labels
-     *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-     *   allow &#34;_&#34; in a future release.
+     *   as the string:  name + &#34;*&#34; + value  would prove problematic if we were to
+     *   allow &#34;*&#34; in a future release.
      *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      *   Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -412,8 +408,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * Must end with a number or a letter.
          * * Must be unique within the customer project/ location
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -429,8 +423,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * Must be between 1-63 characters.
          * * Must end with a number or a letter.
          * * Must be unique within the customer project/ location
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -451,13 +443,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * Label values must be between 0 and 63 characters long and must conform
          *   to the regular expression `[a-z0-9_-]{0,63}`.
          * * No more than 64 labels can be associated with a given resource.
-         *   See https://goo.gl/xmQnxf for more information on and examples of labels.
+         *   See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
          *   If you plan to use labels in your own code, please note that additional
          *   characters may be allowed in the future. Therefore, you are advised to use
          *   an internal label representation, such as JSON, which doesn&#39;t rely upon
          *   specific characters being disallowed.  For example, representing labels
-         *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-         *   allow &#34;_&#34; in a future release.
+         *   as the string:  name + &#34;*&#34; + value  would prove problematic if we were to
+         *   allow &#34;*&#34; in a future release.
          *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          *   Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -481,13 +473,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * Label values must be between 0 and 63 characters long and must conform
          *   to the regular expression `[a-z0-9_-]{0,63}`.
          * * No more than 64 labels can be associated with a given resource.
-         *   See https://goo.gl/xmQnxf for more information on and examples of labels.
+         *   See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
          *   If you plan to use labels in your own code, please note that additional
          *   characters may be allowed in the future. Therefore, you are advised to use
          *   an internal label representation, such as JSON, which doesn&#39;t rely upon
          *   specific characters being disallowed.  For example, representing labels
-         *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-         *   allow &#34;_&#34; in a future release.
+         *   as the string:  name + &#34;*&#34; + value  would prove problematic if we were to
+         *   allow &#34;*&#34; in a future release.
          *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          *   Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 

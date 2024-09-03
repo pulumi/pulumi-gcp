@@ -139,8 +139,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
@@ -148,8 +146,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
     /**
      * @return The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -174,14 +170,14 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * @return Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -445,8 +441,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
          * @param parent The name of the parent this firewall endpoint belongs to.
          * Format: organizations/{organization_id}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -458,8 +452,6 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
          * Format: organizations/{organization_id}.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -492,7 +484,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param reconciling Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+         * @param reconciling Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
          * 
          * @return builder
          * 
@@ -503,7 +495,7 @@ public final class FirewallEndpointState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param reconciling Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+         * @param reconciling Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
          * 
          * @return builder
          * 

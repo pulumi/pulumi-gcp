@@ -16,9 +16,10 @@ import (
 //
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+//
 // ## Example Usage
 //
-// ### Basic_azure_node_pool
+// ### basicAzureNodePool
 // A basic example of a containerazure azure node pool
 // ```go
 // package main

@@ -450,8 +450,6 @@ if not MYPY:
         """
         If true, this location is designated as the default leader location where
         leader replicas are placed.
-
-        - - -
         """
         location: NotRequired[pulumi.Input[str]]
         """
@@ -476,8 +474,6 @@ class InstanceConfigReplicaArgs:
         """
         :param pulumi.Input[bool] default_leader_location: If true, this location is designated as the default leader location where
                leader replicas are placed.
-               
-               - - -
         :param pulumi.Input[str] location: The location of the serving resources, e.g. "us-central1".
         :param pulumi.Input[str] type: Indicates the type of replica.  See the [replica types
                documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
@@ -497,8 +493,6 @@ class InstanceConfigReplicaArgs:
         """
         If true, this location is designated as the default leader location where
         leader replicas are placed.
-
-        - - -
         """
         return pulumi.get(self, "default_leader_location")
 

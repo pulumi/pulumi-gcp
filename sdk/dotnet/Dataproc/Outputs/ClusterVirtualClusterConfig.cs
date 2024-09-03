@@ -14,14 +14,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterVirtualClusterConfig
     {
         /// <summary>
-        /// Configuration of auxiliary services used by this cluster. 
+        /// Configuration of auxiliary services used by this cluster.
         /// Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfig? AuxiliaryServicesConfig;
         /// <summary>
         /// The configuration for running the Dataproc cluster on Kubernetes.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfig? KubernetesClusterConfig;
         /// <summary>

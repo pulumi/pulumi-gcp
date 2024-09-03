@@ -20,9 +20,7 @@ import javax.annotation.Nullable;
  * CertificateMapEntry is a list of certificate configurations,
  * that have been issued for a particular hostname
  * 
- * ## Example Usage
- * 
- * ### Certificate Manager Certificate Map Entry Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -243,16 +241,12 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
     /**
      * A map entry that is inputted into the cetrificate map
      * 
-     * ***
-     * 
      */
     @Export(name="map", refs={String.class}, tree="[0]")
     private Output<String> map;
 
     /**
      * @return A map entry that is inputted into the cetrificate map
-     * 
-     * ***
      * 
      */
     public Output<String> map() {

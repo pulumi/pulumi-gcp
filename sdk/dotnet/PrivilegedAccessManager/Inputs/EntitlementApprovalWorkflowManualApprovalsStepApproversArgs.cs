@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Inputs
         private InputList<string>? _principals;
 
         /// <summary>
-        /// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        /// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
         /// </summary>
         public InputList<string> Principals
         {

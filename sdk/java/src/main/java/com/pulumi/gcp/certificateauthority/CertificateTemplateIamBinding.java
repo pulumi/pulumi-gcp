@@ -127,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.certificateauthority.CertificateTemplateIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -206,6 +207,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.certificateauthority.CertificateTemplateIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -287,8 +289,6 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## This resource supports User Project Overrides.
- * 
- * - 
  * 
  * # IAM policy for Certificate Authority Service CertificateTemplate
  * Three different resources help you manage your IAM policy for Certificate Authority Service CertificateTemplate. Each of these resources serves a different use case:
@@ -401,6 +401,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.certificateauthority.CertificateTemplateIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -480,6 +481,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.certificateauthority.CertificateTemplateIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -594,7 +596,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:certificateauthority/certificateTemplateIamBinding:CertificateTemplateIamBinding")
@@ -666,9 +668,9 @@ public class CertificateTemplateIamBinding extends com.pulumi.resources.CustomRe
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;
@@ -683,9 +685,9 @@ public class CertificateTemplateIamBinding extends com.pulumi.resources.CustomRe
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **projectOwner:projectid**: Owners of the given project. For example, &#34;projectOwner:my-example-project&#34;
      * * **projectEditor:projectid**: Editors of the given project. For example, &#34;projectEditor:my-example-project&#34;

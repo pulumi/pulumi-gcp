@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Endpoints
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy")]
     public partial class ConsumersIamPolicy : global::Pulumi.CustomResource

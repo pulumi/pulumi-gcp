@@ -111,14 +111,14 @@ public class NetworkPeering extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.exportCustomRoutes);
     }
     /**
-     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
      * 
      */
     @Export(name="exportSubnetRoutesWithPublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> exportSubnetRoutesWithPublicIp;
 
     /**
-     * @return Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * @return Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
      * 
      */
     public Output<Optional<Boolean>> exportSubnetRoutesWithPublicIp() {
@@ -139,14 +139,14 @@ public class NetworkPeering extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.importCustomRoutes);
     }
     /**
-     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
      * 
      */
     @Export(name="importSubnetRoutesWithPublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> importSubnetRoutesWithPublicIp;
 
     /**
-     * @return Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * @return Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
      * 
      */
     public Output<Optional<Boolean>> importSubnetRoutesWithPublicIp() {

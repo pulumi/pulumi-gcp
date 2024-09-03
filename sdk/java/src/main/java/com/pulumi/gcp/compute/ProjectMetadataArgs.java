@@ -20,16 +20,12 @@ public final class ProjectMetadataArgs extends com.pulumi.resources.ResourceArgs
     /**
      * A series of key value pairs.
      * 
-     * ***
-     * 
      */
     @Import(name="metadata", required=true)
     private Output<Map<String,String>> metadata;
 
     /**
      * @return A series of key value pairs.
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> metadata() {
@@ -81,8 +77,6 @@ public final class ProjectMetadataArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param metadata A series of key value pairs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -93,8 +87,6 @@ public final class ProjectMetadataArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param metadata A series of key value pairs.
-         * 
-         * ***
          * 
          * @return builder
          * 

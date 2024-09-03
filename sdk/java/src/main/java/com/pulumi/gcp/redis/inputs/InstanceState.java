@@ -315,16 +315,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Redis memory size in GiB.
      * 
-     * ***
-     * 
      */
     @Import(name="memorySizeGb")
     private @Nullable Output<Integer> memorySizeGb;
 
     /**
      * @return Redis memory size in GiB.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> memorySizeGb() {
@@ -514,18 +510,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redis configuration parameters, according to http://redis.io/topics/config.
+     * Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
      * 
      */
     @Import(name="redisConfigs")
     private @Nullable Output<Map<String,String>> redisConfigs;
 
     /**
-     * @return Redis configuration parameters, according to http://redis.io/topics/config.
+     * @return Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
      * 
      */
     public Optional<Output<Map<String,String>>> redisConfigs() {
@@ -1149,8 +1145,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param memorySizeGb Redis memory size in GiB.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1161,8 +1155,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memorySizeGb Redis memory size in GiB.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1425,9 +1417,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisConfigs Redis configuration parameters, according to http://redis.io/topics/config.
+         * @param redisConfigs Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
          * Please check Memorystore documentation for the list of supported parameters:
-         * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+         * &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
          * 
          * @return builder
          * 
@@ -1438,9 +1430,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisConfigs Redis configuration parameters, according to http://redis.io/topics/config.
+         * @param redisConfigs Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
          * Please check Memorystore documentation for the list of supported parameters:
-         * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+         * &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
          * 
          * @return builder
          * 

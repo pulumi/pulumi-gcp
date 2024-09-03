@@ -157,8 +157,6 @@ type EnvironmentKeyvaluemapsEntries struct {
 
 	// The Apigee environment keyvalumaps Id associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-	//
-	// ***
 	EnvKeyvaluemapId pulumi.StringOutput `pulumi:"envKeyvaluemapId"`
 	// Required. Resource URI that can be used to identify the scope of the key value map entries.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -204,8 +202,6 @@ func GetEnvironmentKeyvaluemapsEntries(ctx *pulumi.Context,
 type environmentKeyvaluemapsEntriesState struct {
 	// The Apigee environment keyvalumaps Id associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-	//
-	// ***
 	EnvKeyvaluemapId *string `pulumi:"envKeyvaluemapId"`
 	// Required. Resource URI that can be used to identify the scope of the key value map entries.
 	Name *string `pulumi:"name"`
@@ -216,8 +212,6 @@ type environmentKeyvaluemapsEntriesState struct {
 type EnvironmentKeyvaluemapsEntriesState struct {
 	// The Apigee environment keyvalumaps Id associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-	//
-	// ***
 	EnvKeyvaluemapId pulumi.StringPtrInput
 	// Required. Resource URI that can be used to identify the scope of the key value map entries.
 	Name pulumi.StringPtrInput
@@ -232,8 +226,6 @@ func (EnvironmentKeyvaluemapsEntriesState) ElementType() reflect.Type {
 type environmentKeyvaluemapsEntriesArgs struct {
 	// The Apigee environment keyvalumaps Id associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-	//
-	// ***
 	EnvKeyvaluemapId string `pulumi:"envKeyvaluemapId"`
 	// Required. Resource URI that can be used to identify the scope of the key value map entries.
 	Name *string `pulumi:"name"`
@@ -245,8 +237,6 @@ type environmentKeyvaluemapsEntriesArgs struct {
 type EnvironmentKeyvaluemapsEntriesArgs struct {
 	// The Apigee environment keyvalumaps Id associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-	//
-	// ***
 	EnvKeyvaluemapId pulumi.StringInput
 	// Required. Resource URI that can be used to identify the scope of the key value map entries.
 	Name pulumi.StringPtrInput
@@ -343,8 +333,6 @@ func (o EnvironmentKeyvaluemapsEntriesOutput) ToEnvironmentKeyvaluemapsEntriesOu
 
 // The Apigee environment keyvalumaps Id associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-//
-// ***
 func (o EnvironmentKeyvaluemapsEntriesOutput) EnvKeyvaluemapId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentKeyvaluemapsEntries) pulumi.StringOutput { return v.EnvKeyvaluemapId }).(pulumi.StringOutput)
 }

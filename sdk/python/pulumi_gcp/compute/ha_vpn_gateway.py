@@ -32,9 +32,6 @@ class HaVpnGatewayArgs:
         """
         The set of arguments for constructing a HaVpnGateway resource.
         :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
                Default value is `IPV4`.
@@ -77,9 +74,6 @@ class HaVpnGatewayArgs:
     def network(self) -> pulumi.Input[str]:
         """
         The network this VPN gateway is accepting traffic for.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -211,9 +205,6 @@ class _HaVpnGatewayState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
@@ -293,9 +284,6 @@ class _HaVpnGatewayState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The network this VPN gateway is accepting traffic for.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -392,12 +380,10 @@ class HaVpnGateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
         * How-to Guides
-            * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
-            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+          * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+          * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 
-        ## Example Usage
-
-        ### Ha Vpn Gateway Basic
+        ## 
 
         ```python
         import pulumi
@@ -411,7 +397,7 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
-        ### Ha Vpn Gateway Ipv6
+        ## 
 
         ```python
         import pulumi
@@ -426,6 +412,9 @@ class HaVpnGateway(pulumi.CustomResource):
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
+
+        ## Example Usage
+
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
         ```python
@@ -529,9 +518,6 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
@@ -557,12 +543,10 @@ class HaVpnGateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
         * How-to Guides
-            * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
-            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+          * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+          * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 
-        ## Example Usage
-
-        ### Ha Vpn Gateway Basic
+        ## 
 
         ```python
         import pulumi
@@ -576,7 +560,7 @@ class HaVpnGateway(pulumi.CustomResource):
             name="ha-vpn-1",
             network=network1.id)
         ```
-        ### Ha Vpn Gateway Ipv6
+        ## 
 
         ```python
         import pulumi
@@ -591,6 +575,9 @@ class HaVpnGateway(pulumi.CustomResource):
             network=network1.id,
             stack_type="IPV4_IPV6")
         ```
+
+        ## Example Usage
+
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
         ```python
@@ -761,9 +748,6 @@ class HaVpnGateway(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this VPN gateway is accepting traffic for.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
@@ -827,9 +811,6 @@ class HaVpnGateway(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         The network this VPN gateway is accepting traffic for.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

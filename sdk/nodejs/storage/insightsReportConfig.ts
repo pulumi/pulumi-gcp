@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/reportConfig)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
  *
- * ## Example Usage
- *
- * ### Storage Insights Report Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

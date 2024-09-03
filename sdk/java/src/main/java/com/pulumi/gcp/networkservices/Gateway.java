@@ -28,9 +28,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
  * 
- * ## Example Usage
- * 
- * ### Network Services Gateway Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -67,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Services Gateway Advanced
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -106,7 +104,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Services Gateway Secure Web Proxy
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -216,7 +214,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Services Gateway Multiple Swp Same Network
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -517,16 +515,12 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     /**
      * Short name of the Gateway resource to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Short name of the Gateway resource to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

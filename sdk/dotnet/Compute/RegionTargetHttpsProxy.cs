@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Target Https Proxy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -117,7 +115,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Target Https Proxy Mtls
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -274,7 +272,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Target Https Proxy Certificate Manager Certificate
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -459,9 +457,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the RegionUrlMap resource that defines the mapping from URL
         /// to the RegionBackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("urlMap")]
         public Output<string> UrlMap { get; private set; } = null!;
@@ -601,9 +596,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the RegionUrlMap resource that defines the mapping from URL
         /// to the RegionBackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("urlMap", required: true)]
         public Input<string> UrlMap { get; set; } = null!;
@@ -723,9 +715,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the RegionUrlMap resource that defines the mapping from URL
         /// to the RegionBackendService.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("urlMap")]
         public Input<string>? UrlMap { get; set; }

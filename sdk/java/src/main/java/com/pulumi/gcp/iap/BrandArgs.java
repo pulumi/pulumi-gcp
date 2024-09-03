@@ -19,16 +19,12 @@ public final class BrandArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Application name displayed on OAuth consent screen.
      * 
-     * ***
-     * 
      */
     @Import(name="applicationTitle", required=true)
     private Output<String> applicationTitle;
 
     /**
      * @return Application name displayed on OAuth consent screen.
-     * 
-     * ***
      * 
      */
     public Output<String> applicationTitle() {
@@ -104,8 +100,6 @@ public final class BrandArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param applicationTitle Application name displayed on OAuth consent screen.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -116,8 +110,6 @@ public final class BrandArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param applicationTitle Application name displayed on OAuth consent screen.
-         * 
-         * ***
          * 
          * @return builder
          * 

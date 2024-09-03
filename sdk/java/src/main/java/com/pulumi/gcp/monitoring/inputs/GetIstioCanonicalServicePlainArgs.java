@@ -19,10 +19,6 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
      * The name of the canonical service underlying this service.
      * Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
      * 
-     * ***
-     * 
-     * Other optional fields include:
-     * 
      */
     @Import(name="canonicalService", required=true)
     private String canonicalService;
@@ -30,10 +26,6 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
     /**
      * @return The name of the canonical service underlying this service.
      * Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
-     * 
-     * ***
-     * 
-     * Other optional fields include:
      * 
      */
     public String canonicalService() {
@@ -121,10 +113,6 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
         /**
          * @param canonicalService The name of the canonical service underlying this service.
          * Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
-         * 
-         * ***
-         * 
-         * Other optional fields include:
          * 
          * @return builder
          * 

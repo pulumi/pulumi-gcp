@@ -15,9 +15,7 @@ import * as utilities from "../utilities";
  * > **Warning:** Classic VPN is deprecating certain functionality on October 31, 2021. For more information,
  * see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
  *
- * ## Example Usage
- *
- * ### Target Vpn Gateway Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -152,9 +150,6 @@ export class VPNGateway extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -239,9 +234,6 @@ export interface VPNGatewayState {
     name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -279,9 +271,6 @@ export interface VPNGatewayArgs {
     name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

@@ -16,9 +16,10 @@ import (
 //
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+//
 // ## Example Usage
 //
-// ### Basic_azure_client
+// ### basicAzureClient
 // A basic example of a containerazure azure client
 // ```go
 // package main
@@ -87,8 +88,6 @@ type AzureClient struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The Azure Active Directory Tenant ID.
-	//
-	// ***
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Output only. A globally unique identifier for the client.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -146,8 +145,6 @@ type azureClientState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The Azure Active Directory Tenant ID.
-	//
-	// ***
 	TenantId *string `pulumi:"tenantId"`
 	// Output only. A globally unique identifier for the client.
 	Uid *string `pulumi:"uid"`
@@ -167,8 +164,6 @@ type AzureClientState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The Azure Active Directory Tenant ID.
-	//
-	// ***
 	TenantId pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the client.
 	Uid pulumi.StringPtrInput
@@ -188,8 +183,6 @@ type azureClientArgs struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The Azure Active Directory Tenant ID.
-	//
-	// ***
 	TenantId string `pulumi:"tenantId"`
 }
 
@@ -204,8 +197,6 @@ type AzureClientArgs struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The Azure Active Directory Tenant ID.
-	//
-	// ***
 	TenantId pulumi.StringInput
 }
 
@@ -327,8 +318,6 @@ func (o AzureClientOutput) Project() pulumi.StringOutput {
 }
 
 // The Azure Active Directory Tenant ID.
-//
-// ***
 func (o AzureClientOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureClient) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }

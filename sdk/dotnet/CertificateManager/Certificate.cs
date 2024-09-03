@@ -12,9 +12,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// <summary>
     /// Certificate represents a HTTP-reachable backend for a Certificate.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Certificate Manager Google Managed Certificate Dns
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -64,7 +62,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Google Managed Certificate Issuance Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -132,7 +130,6 @@ namespace Pulumi.Gcp.CertificateManager
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     // creating certificate_issuance_config to use it in the managed certificate
     ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
     ///     {
     ///         Name = "issuance-config",
@@ -172,7 +169,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Certificate Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -218,7 +215,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Self Managed Certificate Regional
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -249,7 +246,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -317,7 +314,6 @@ namespace Pulumi.Gcp.CertificateManager
     ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
-    ///     // creating certificate_issuance_config to use it in the managed certificate
     ///     var issuanceconfig = new Gcp.CertificateManager.CertificateIssuanceConfig("issuanceconfig", new()
     ///     {
     ///         Name = "issuance-config",
@@ -357,7 +353,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Google Managed Certificate Dns All Regions
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -403,7 +399,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Google Managed Regional Certificate Dns Auth
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -508,9 +504,6 @@ namespace Pulumi.Gcp.CertificateManager
         /// A user-defined name of the certificate. Certificate names must be unique
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -534,9 +527,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-        /// See https://cloud.google.com/vpc/docs/edge-locations.
+        /// See &lt;https://cloud.google.com/vpc/docs/edge-locations&gt;.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// See https://cloud.google.com/compute/docs/regions-zones
+        /// See &lt;https://cloud.google.com/compute/docs/regions-zones&gt;
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
@@ -640,9 +633,6 @@ namespace Pulumi.Gcp.CertificateManager
         /// A user-defined name of the certificate. Certificate names must be unique
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -659,9 +649,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-        /// See https://cloud.google.com/vpc/docs/edge-locations.
+        /// See &lt;https://cloud.google.com/vpc/docs/edge-locations&gt;.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// See https://cloud.google.com/compute/docs/regions-zones
+        /// See &lt;https://cloud.google.com/compute/docs/regions-zones&gt;
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -738,9 +728,6 @@ namespace Pulumi.Gcp.CertificateManager
         /// A user-defined name of the certificate. Certificate names must be unique
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -774,9 +761,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-        /// See https://cloud.google.com/vpc/docs/edge-locations.
+        /// See &lt;https://cloud.google.com/vpc/docs/edge-locations&gt;.
         /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        /// See https://cloud.google.com/compute/docs/regions-zones
+        /// See &lt;https://cloud.google.com/compute/docs/regions-zones&gt;
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Dataflow.Inputs
 
         /// <summary>
         /// The parameters of the template to launch. This should be part of the body of the POST request.
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("launchParameters")]

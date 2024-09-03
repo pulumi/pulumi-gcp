@@ -19,7 +19,7 @@ public final class MetastoreServiceScheduledBackup {
      */
     private String backupLocation;
     /**
-     * @return The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+     * @return The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
      * 
      */
     private @Nullable String cronSchedule;
@@ -29,7 +29,7 @@ public final class MetastoreServiceScheduledBackup {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+     * @return Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
      * 
      */
     private @Nullable String timeZone;
@@ -43,7 +43,7 @@ public final class MetastoreServiceScheduledBackup {
         return this.backupLocation;
     }
     /**
-     * @return The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+     * @return The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
      * 
      */
     public Optional<String> cronSchedule() {
@@ -57,7 +57,7 @@ public final class MetastoreServiceScheduledBackup {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+     * @return Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
      * 
      */
     public Optional<String> timeZone() {

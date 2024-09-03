@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         public readonly ImmutableArray<int> GroupIndexes;
         /// <summary>
         /// Pattern defining the regular expression.
-        /// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        /// Its syntax (&lt;https://github.com/google/re2/wiki/Syntax&gt;) can be found under the google/re2 repository on GitHub.
         /// </summary>
         public readonly string Pattern;
 

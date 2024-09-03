@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+ *   * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
  * 
- * ## Example Usage
- * 
- * ### Network Management Connectivity Test Instances
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -121,7 +119,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Management Connectivity Test Addresses
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

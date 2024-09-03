@@ -14,201 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ### Region Security Policy Rule Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
-//				Region:      pulumi.String("us-west2"),
-//				Name:        pulumi.String("policyruletest"),
-//				Description: pulumi.String("basic region security policy"),
-//				Type:        pulumi.String("CLOUD_ARMOR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule", &compute.RegionSecurityPolicyRuleArgs{
-//				Region:         pulumi.String("us-west2"),
-//				SecurityPolicy: _default.Name,
-//				Description:    pulumi.String("new rule"),
-//				Priority:       pulumi.Int(100),
-//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
-//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
-//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
-//						SrcIpRanges: pulumi.StringArray{
-//							pulumi.String("10.10.0.0/16"),
-//						},
-//					},
-//				},
-//				Action:  pulumi.String("allow"),
-//				Preview: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Region Security Policy Rule Multiple Rules
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
-//				Region:      pulumi.String("us-west2"),
-//				Name:        pulumi.String("policywithmultiplerules"),
-//				Description: pulumi.String("basic region security policy"),
-//				Type:        pulumi.String("CLOUD_ARMOR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule_one", &compute.RegionSecurityPolicyRuleArgs{
-//				Region:         pulumi.String("us-west2"),
-//				SecurityPolicy: _default.Name,
-//				Description:    pulumi.String("new rule one"),
-//				Priority:       pulumi.Int(100),
-//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
-//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
-//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
-//						SrcIpRanges: pulumi.StringArray{
-//							pulumi.String("10.10.0.0/16"),
-//						},
-//					},
-//				},
-//				Action:  pulumi.String("allow"),
-//				Preview: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule_two", &compute.RegionSecurityPolicyRuleArgs{
-//				Region:         pulumi.String("us-west2"),
-//				SecurityPolicy: _default.Name,
-//				Description:    pulumi.String("new rule two"),
-//				Priority:       pulumi.Int(101),
-//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
-//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
-//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
-//						SrcIpRanges: pulumi.StringArray{
-//							pulumi.String("192.168.0.0/16"),
-//							pulumi.String("10.0.0.0/8"),
-//						},
-//					},
-//				},
-//				Action:  pulumi.String("allow"),
-//				Preview: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Region Security Policy Rule With Preconfigured Waf Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
-//				Region:      pulumi.String("asia-southeast1"),
-//				Name:        pulumi.String("policyruletest"),
-//				Description: pulumi.String("basic region security policy"),
-//				Type:        pulumi.String("CLOUD_ARMOR"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule", &compute.RegionSecurityPolicyRuleArgs{
-//				Region:         pulumi.String("asia-southeast1"),
-//				SecurityPolicy: _default.Name,
-//				Description:    pulumi.String("new rule"),
-//				Priority:       pulumi.Int(100),
-//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
-//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
-//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
-//						SrcIpRanges: pulumi.StringArray{
-//							pulumi.String("10.10.0.0/16"),
-//						},
-//					},
-//				},
-//				PreconfiguredWafConfig: &compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs{
-//					Exclusions: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{
-//						&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
-//							RequestUris: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{
-//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{
-//									Operator: pulumi.String("STARTS_WITH"),
-//									Value:    pulumi.String("/admin"),
-//								},
-//							},
-//							TargetRuleSet: pulumi.String("rce-stable"),
-//						},
-//						&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
-//							RequestQueryParams: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray{
-//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{
-//									Operator: pulumi.String("CONTAINS"),
-//									Value:    pulumi.String("password"),
-//								},
-//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{
-//									Operator: pulumi.String("STARTS_WITH"),
-//									Value:    pulumi.String("freeform"),
-//								},
-//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{
-//									Operator: pulumi.String("EQUALS"),
-//									Value:    pulumi.String("description"),
-//								},
-//							},
-//							TargetRuleSet: pulumi.String("xss-stable"),
-//							TargetRuleIds: pulumi.StringArray{
-//								pulumi.String("owasp-crs-v030001-id941330-xss"),
-//								pulumi.String("owasp-crs-v030001-id941340-xss"),
-//							},
-//						},
-//					},
-//				},
-//				Action:  pulumi.String("allow"),
-//				Preview: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Region Security Policy Rule With Network Match
 //
 // ```go
@@ -370,8 +175,6 @@ type RegionSecurityPolicyRule struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 }
 
@@ -459,8 +262,6 @@ type regionSecurityPolicyRuleState struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region *string `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 }
 
@@ -507,8 +308,6 @@ type RegionSecurityPolicyRuleState struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringPtrInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringPtrInput
 }
 
@@ -559,8 +358,6 @@ type regionSecurityPolicyRuleArgs struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region string `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy string `pulumi:"securityPolicy"`
 }
 
@@ -608,8 +405,6 @@ type RegionSecurityPolicyRuleArgs struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringInput
 }
 
@@ -776,8 +571,6 @@ func (o RegionSecurityPolicyRuleOutput) Region() pulumi.StringOutput {
 }
 
 // The name of the security policy this rule belongs to.
-//
-// ***
 func (o RegionSecurityPolicyRuleOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicyRule) pulumi.StringOutput { return v.SecurityPolicy }).(pulumi.StringOutput)
 }

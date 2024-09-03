@@ -594,8 +594,6 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
      * Name or self link of a machine
      * image to create the instance based on.
      * 
-     * ***
-     * 
      */
     @Import(name="sourceMachineImage")
     private @Nullable Output<String> sourceMachineImage;
@@ -603,8 +601,6 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     /**
      * @return Name or self link of a machine
      * image to create the instance based on.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> sourceMachineImage() {
@@ -1561,8 +1557,6 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          * @param sourceMachineImage Name or self link of a machine
          * image to create the instance based on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1574,8 +1568,6 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         /**
          * @param sourceMachineImage Name or self link of a machine
          * image to create the instance based on.
-         * 
-         * ***
          * 
          * @return builder
          * 

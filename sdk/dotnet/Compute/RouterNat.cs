@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     /// * How-to Guides
-    ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+    ///   * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
     /// ## Example Usage
     /// 
@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Nat Manual Ips
     /// 
     /// ```csharp
@@ -133,6 +134,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Nat Rules
     /// 
     /// ```csharp
@@ -226,6 +228,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Router Nat Private
     /// 
     /// ```csharp
@@ -462,9 +465,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
@@ -709,9 +709,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
@@ -930,9 +927,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }

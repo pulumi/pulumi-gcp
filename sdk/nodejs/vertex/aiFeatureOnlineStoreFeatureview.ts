@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores.featureViews)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
- * ## Example Usage
- *
- * ### Vertex Ai Featureonlinestore Featureview
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +81,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * ### Vertex Ai Featureonlinestore Featureview Feature Registry
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -170,6 +168,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Vertex Ai Featureonlinestore Featureview Cross Project
  *
  * ```typescript
@@ -296,7 +297,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Vertex Ai Featureonlinestore Featureview With Vector Search
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -503,9 +504,6 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -627,9 +625,6 @@ export interface AiFeatureOnlineStoreFeatureviewState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -684,9 +679,6 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
     project?: pulumi.Input<string>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
     /**

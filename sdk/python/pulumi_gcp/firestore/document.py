@@ -28,9 +28,6 @@ class DocumentArgs:
         The set of arguments for constructing a Document resource.
         :param pulumi.Input[str] collection: The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
         :param pulumi.Input[str] document_id: The client-assigned document ID to use for this document during creation.
-               
-               
-               - - -
         :param pulumi.Input[str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -61,9 +58,6 @@ class DocumentArgs:
     def document_id(self) -> pulumi.Input[str]:
         """
         The client-assigned document ID to use for this document during creation.
-
-
-        - - -
         """
         return pulumi.get(self, "document_id")
 
@@ -127,9 +121,6 @@ class _DocumentState:
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 format.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] document_id: The client-assigned document ID to use for this document during creation.
-               
-               
-               - - -
         :param pulumi.Input[str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
         :param pulumi.Input[str] name: A server defined name for this document. Format:
                `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
@@ -198,9 +189,6 @@ class _DocumentState:
     def document_id(self) -> Optional[pulumi.Input[str]]:
         """
         The client-assigned document ID to use for this document during creation.
-
-
-        - - -
         """
         return pulumi.get(self, "document_id")
 
@@ -290,7 +278,7 @@ class Document(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
 
         > **Warning:** This resource creates a Firestore Document on a project that already has
         a Firestore database. If you haven't already created it, you may
@@ -333,6 +321,7 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
+
         ### Firestore Document Nested Document
 
         ```python
@@ -393,9 +382,6 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] collection: The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] document_id: The client-assigned document ID to use for this document during creation.
-               
-               
-               - - -
         :param pulumi.Input[str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -414,7 +400,7 @@ class Document(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
 
         > **Warning:** This resource creates a Firestore Document on a project that already has
         a Firestore database. If you haven't already created it, you may
@@ -457,6 +443,7 @@ class Document(pulumi.CustomResource):
             document_id="my-doc-id",
             fields="{\\"something\\":{\\"mapValue\\":{\\"fields\\":{\\"akey\\":{\\"stringValue\\":\\"avalue\\"}}}}}")
         ```
+
         ### Firestore Document Nested Document
 
         ```python
@@ -586,9 +573,6 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 format.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] document_id: The client-assigned document ID to use for this document during creation.
-               
-               
-               - - -
         :param pulumi.Input[str] fields: The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
         :param pulumi.Input[str] name: A server defined name for this document. Format:
                `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
@@ -641,9 +625,6 @@ class Document(pulumi.CustomResource):
     def document_id(self) -> pulumi.Output[str]:
         """
         The client-assigned document ID to use for this document during creation.
-
-
-        - - -
         """
         return pulumi.get(self, "document_id")
 

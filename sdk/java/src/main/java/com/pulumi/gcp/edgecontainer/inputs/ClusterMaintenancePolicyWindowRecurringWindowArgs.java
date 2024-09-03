@@ -17,7 +17,7 @@ public final class ClusterMaintenancePolicyWindowRecurringWindowArgs extends com
     public static final ClusterMaintenancePolicyWindowRecurringWindowArgs Empty = new ClusterMaintenancePolicyWindowRecurringWindowArgs();
 
     /**
-     * An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+     * An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
      * this window recurs. They go on for the span of time between the start and
      * end time.
      * 
@@ -26,7 +26,7 @@ public final class ClusterMaintenancePolicyWindowRecurringWindowArgs extends com
     private @Nullable Output<String> recurrence;
 
     /**
-     * @return An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+     * @return An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
      * this window recurs. They go on for the span of time between the start and
      * end time.
      * 
@@ -78,7 +78,7 @@ public final class ClusterMaintenancePolicyWindowRecurringWindowArgs extends com
         }
 
         /**
-         * @param recurrence An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+         * @param recurrence An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
          * this window recurs. They go on for the span of time between the start and
          * end time.
          * 
@@ -91,7 +91,7 @@ public final class ClusterMaintenancePolicyWindowRecurringWindowArgs extends com
         }
 
         /**
-         * @param recurrence An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+         * @param recurrence An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
          * this window recurs. They go on for the span of time between the start and
          * end time.
          * 

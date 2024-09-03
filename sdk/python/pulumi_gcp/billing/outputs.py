@@ -134,7 +134,7 @@ class BudgetAllUpdatesRule(dict):
                at regular intervals to the topic.
         :param str schema_version: The schema version of the notification. Only "1.0" is
                accepted. It represents the JSON schema as defined in
-               https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+               <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
         """
         if disable_default_iam_recipients is not None:
             pulumi.set(__self__, "disable_default_iam_recipients", disable_default_iam_recipients)
@@ -197,7 +197,7 @@ class BudgetAllUpdatesRule(dict):
         """
         The schema version of the notification. Only "1.0" is
         accepted. It represents the JSON schema as defined in
-        https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+        <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
         """
         return pulumi.get(self, "schema_version")
 
@@ -296,8 +296,6 @@ class BudgetAmountSpecifiedAmount(dict):
                negative. If units is negative, nanos must be negative or
                zero. For example $-1.75 is represented as units=-1 and
                nanos=-750,000,000.
-               
-               - - -
         :param str units: The whole units of the amount. For example if currencyCode
                is "USD", then 1 unit is one US dollar.
         """
@@ -327,8 +325,6 @@ class BudgetAmountSpecifiedAmount(dict):
         negative. If units is negative, nanos must be negative or
         zero. For example $-1.75 is represented as units=-1 and
         nanos=-750,000,000.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 
@@ -413,7 +409,7 @@ class BudgetBudgetFilter(dict):
                included in the budget. If omitted, the report will include
                usage for all the services. The service names are available
                through the Catalog API:
-               https://cloud.google.com/billing/v1/how-tos/catalog-api.
+               <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
         :param Sequence[str] subaccounts: A set of subaccounts of the form billingAccounts/{account_id},
                specifying that usage from only this set of subaccounts should
                be included in the budget. If a subaccount is set to the name of
@@ -527,7 +523,7 @@ class BudgetBudgetFilter(dict):
         included in the budget. If omitted, the report will include
         usage for all the services. The service names are available
         through the Catalog API:
-        https://cloud.google.com/billing/v1/how-tos/catalog-api.
+        <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
         """
         return pulumi.get(self, "services")
 

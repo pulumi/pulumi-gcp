@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+    ///   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Logging Metric Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -77,7 +75,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// ### Logging Metric Counter Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,7 +98,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// ### Logging Metric Counter Labels
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -136,6 +134,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Logging Metric Logging Bucket
     /// 
     /// ```csharp
@@ -162,7 +163,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
-    /// ### Logging Metric Disabled
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -237,11 +238,8 @@ namespace Pulumi.Gcp.Logging
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        /// An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
         /// is used to match log entries.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
@@ -287,7 +285,7 @@ namespace Pulumi.Gcp.Logging
         /// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
         /// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
         /// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-        /// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        /// (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
         /// log entry field. The value of the field is converted to a string before applying the regex. It is an
         /// error to specify a regex that does not include exactly one capture group.
         /// </summary>
@@ -369,11 +367,8 @@ namespace Pulumi.Gcp.Logging
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        /// An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
         /// is used to match log entries.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
@@ -425,7 +420,7 @@ namespace Pulumi.Gcp.Logging
         /// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
         /// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
         /// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-        /// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        /// (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
         /// log entry field. The value of the field is converted to a string before applying the regex. It is an
         /// error to specify a regex that does not include exactly one capture group.
         /// </summary>
@@ -469,11 +464,8 @@ namespace Pulumi.Gcp.Logging
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        /// An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
         /// is used to match log entries.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
@@ -525,7 +517,7 @@ namespace Pulumi.Gcp.Logging
         /// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
         /// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
         /// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-        /// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        /// (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
         /// log entry field. The value of the field is converted to a string before applying the regex. It is an
         /// error to specify a regex that does not include exactly one capture group.
         /// </summary>

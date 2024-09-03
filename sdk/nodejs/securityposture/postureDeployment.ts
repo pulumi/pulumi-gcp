@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * To get more information about PostureDeployment, see:
  *
  * * How-to Guides
- *     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+ *   * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
  *
  * ## Import
  *
@@ -77,7 +77,7 @@ export class PostureDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly desiredPostureRevisionId!: pulumi.Output<string>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -101,9 +101,6 @@ export class PostureDeployment extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string>;
     /**
      * ID of the posture deployment.
-     *
-     *
-     * - - -
      */
     public readonly postureDeploymentId!: pulumi.Output<string>;
     /**
@@ -232,7 +229,7 @@ export interface PostureDeploymentState {
      */
     desiredPostureRevisionId?: pulumi.Input<string>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     etag?: pulumi.Input<string>;
     /**
@@ -256,9 +253,6 @@ export interface PostureDeploymentState {
     parent?: pulumi.Input<string>;
     /**
      * ID of the posture deployment.
-     *
-     *
-     * - - -
      */
     postureDeploymentId?: pulumi.Input<string>;
     /**
@@ -310,9 +304,6 @@ export interface PostureDeploymentArgs {
     parent: pulumi.Input<string>;
     /**
      * ID of the posture deployment.
-     *
-     *
-     * - - -
      */
     postureDeploymentId: pulumi.Input<string>;
     /**

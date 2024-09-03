@@ -33,9 +33,6 @@ class ResizeRequestArgs:
         :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
                Authorization requires the following IAM permission on the specified resource instanceGroupManager:
                *compute.instanceGroupManagers.update
-               
-               
-               - - -
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         :param pulumi.Input[str] zone: Name of the compute zone scoping this request. Name should conform to RFC1035.
         :param pulumi.Input[str] description: An optional description of this resize-request.
@@ -64,9 +61,6 @@ class ResizeRequestArgs:
         The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
         Authorization requires the following IAM permission on the specified resource instanceGroupManager:
         *compute.instanceGroupManagers.update
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 
@@ -169,9 +163,6 @@ class _ResizeRequestState:
         :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
                Authorization requires the following IAM permission on the specified resource instanceGroupManager:
                *compute.instanceGroupManagers.update
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -235,9 +226,6 @@ class _ResizeRequestState:
         The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
         Authorization requires the following IAM permission on the specified resource instanceGroupManager:
         *compute.instanceGroupManagers.update
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 
@@ -357,11 +345,9 @@ class ResizeRequest(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+          * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
 
-        ## Example Usage
-
-        ### Compute Mig Resize Request
+        ## 
 
         ```python
         import pulumi
@@ -459,9 +445,6 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
                Authorization requires the following IAM permission on the specified resource instanceGroupManager:
                *compute.instanceGroupManagers.update
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -487,11 +470,9 @@ class ResizeRequest(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+          * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
 
-        ## Example Usage
-
-        ### Compute Mig Resize Request
+        ## 
 
         ```python
         import pulumi
@@ -662,9 +643,6 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
                Authorization requires the following IAM permission on the specified resource instanceGroupManager:
                *compute.instanceGroupManagers.update
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -715,9 +693,6 @@ class ResizeRequest(pulumi.CustomResource):
         The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
         Authorization requires the following IAM permission on the specified resource instanceGroupManager:
         *compute.instanceGroupManagers.update
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group_manager")
 

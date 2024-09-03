@@ -29,9 +29,6 @@ class DatasetArgs:
         """
         The set of arguments for constructing a Dataset resource.
         :param pulumi.Input[str] location: The location for the Dataset.
-               
-               
-               - - -
         :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name for the Dataset.
@@ -56,9 +53,6 @@ class DatasetArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the Dataset.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -133,9 +127,6 @@ class _DatasetState:
         :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -175,9 +166,6 @@ class _DatasetState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the Dataset.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -255,11 +243,9 @@ class Dataset(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
         * How-to Guides
-            * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+          * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 
-        ## Example Usage
-
-        ### Healthcare Dataset Basic
+        ## 
 
         ```python
         import pulumi
@@ -270,7 +256,7 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC")
         ```
-        ### Healthcare Dataset Cmek
+        ## 
 
         ```python
         import pulumi
@@ -327,9 +313,6 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -350,11 +333,9 @@ class Dataset(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
         * How-to Guides
-            * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+          * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 
-        ## Example Usage
-
-        ### Healthcare Dataset Basic
+        ## 
 
         ```python
         import pulumi
@@ -365,7 +346,7 @@ class Dataset(pulumi.CustomResource):
             location="us-central1",
             time_zone="UTC")
         ```
-        ### Healthcare Dataset Cmek
+        ## 
 
         ```python
         import pulumi
@@ -480,9 +461,6 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -517,9 +495,6 @@ class Dataset(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the Dataset.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

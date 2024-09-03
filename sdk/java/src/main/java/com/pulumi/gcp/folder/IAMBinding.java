@@ -20,13 +20,13 @@ import javax.annotation.Nullable;
  * Allows creation and management of a single binding within IAM policy for
  * an existing Google Cloud Platform folder.
  * 
- * &gt; **Note:** This resource _must not_ be used in conjunction with
- *    `gcp.folder.IAMPolicy` or they will fight over what your policy
- *    should be.
+ * &gt; **Note:** This resource *must not* be used in conjunction with
+ * `gcp.folder.IAMPolicy` or they will fight over what your policy
+ * should be.
  * 
  * &gt; **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `pulumi import` and inspect the output to ensure
- *     your existing members are preserved.
+ * Use `pulumi import` and inspect the output to ensure
+ * your existing members are preserved.
  * 
  * ## Example Usage
  * 
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM binding with a custom role, make sure to use the
  * 
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:folder/iAMBinding:IAMBinding")
@@ -124,11 +124,11 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * An array of identities that will be granted the privilege in the `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice{@literal @}gmail.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * * For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
@@ -137,11 +137,11 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return An array of identities that will be granted the privilege in the `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice{@literal @}gmail.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that is associated with a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * * For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * 
      */
     public Output<List<String>> members() {

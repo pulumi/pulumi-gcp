@@ -421,8 +421,6 @@ if not MYPY:
         Possible values:
         REGIONAL
         Possible values are: `REGIONAL`.
-
-        - - -
         """
 elif False:
     ApplicationScopeArgsDict: TypeAlias = Mapping[str, Any]
@@ -436,8 +434,6 @@ class ApplicationScopeArgs:
                Possible values:
                REGIONAL
                Possible values are: `REGIONAL`.
-               
-               - - -
         """
         pulumi.set(__self__, "type", type)
 
@@ -449,8 +445,6 @@ class ApplicationScopeArgs:
         Possible values:
         REGIONAL
         Possible values are: `REGIONAL`.
-
-        - - -
         """
         return pulumi.get(self, "type")
 

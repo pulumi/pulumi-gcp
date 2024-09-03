@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
  * 
- * ## Example Usage
- * 
- * ### Network Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -61,6 +59,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Network Custom Mtu
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -98,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Network Custom Firewall Enforcement Order
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -302,8 +304,6 @@ public class Network extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -316,8 +316,6 @@ public class Network extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

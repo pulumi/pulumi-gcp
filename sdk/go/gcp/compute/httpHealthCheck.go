@@ -26,9 +26,7 @@ import (
 // * How-to Guides
 //   - [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 //
-// ## Example Usage
-//
-// ### Http Health Check Basic
+// ##
 //
 // ```go
 // package main
@@ -105,8 +103,6 @@ type HttpHealthCheck struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The TCP port number for the HTTP health check request.
 	// The default value is 80.
@@ -180,8 +176,6 @@ type httpHealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTP health check request.
 	// The default value is 80.
@@ -226,8 +220,6 @@ type HttpHealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTP health check request.
 	// The default value is 80.
@@ -274,8 +266,6 @@ type httpHealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTP health check request.
 	// The default value is 80.
@@ -317,8 +307,6 @@ type HttpHealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTP health check request.
 	// The default value is 80.
@@ -462,8 +450,6 @@ func (o HttpHealthCheckOutput) Host() pulumi.StringPtrOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
-//
-// ***
 func (o HttpHealthCheckOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HttpHealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

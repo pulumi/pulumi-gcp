@@ -18,13 +18,11 @@ public final class OccurenceAttestationSignature {
      * URI. * When possible, the key id should be an
      * immutable reference, such as a cryptographic digest.
      * Examples of valid values:
-     * * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+     * * OpenPGP V4 public key fingerprint. See &lt;https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr&gt;
      *   for more details on this scheme.
      * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
      * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
      * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
-     * 
-     * ***
      * 
      */
     private String publicKeyId;
@@ -47,13 +45,11 @@ public final class OccurenceAttestationSignature {
      * URI. * When possible, the key id should be an
      * immutable reference, such as a cryptographic digest.
      * Examples of valid values:
-     * * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+     * * OpenPGP V4 public key fingerprint. See &lt;https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr&gt;
      *   for more details on this scheme.
      * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
      * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
      * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
-     * 
-     * ***
      * 
      */
     public String publicKeyId() {

@@ -14,9 +14,10 @@ namespace Pulumi.Gcp.Container
     /// 
     /// For more information, see:
     /// * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_azure_cluster
+    /// ### basic_azure_cluster
     /// A basic example of a containerazure azure cluster
     /// ```csharp
     /// using System.Collections.Generic;
@@ -95,7 +96,8 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
-    /// ### Beta_basic_enum_azure_cluster
+    /// 
+    /// ### beta_basic_enum_azure_cluster
     /// A basic example of a containerazure azure cluster with lowercase enums (beta)
     /// ```csharp
     /// using System.Collections.Generic;

@@ -104,7 +104,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         /// for more information.
         /// 
-        /// 
         /// This example `addons_config` disables two addons:
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> RayOperatorConfigs;

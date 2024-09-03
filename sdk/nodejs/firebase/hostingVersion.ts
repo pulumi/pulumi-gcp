@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     message: "Redirect to Google",
  * });
  * ```
+ *
  * ### Firebasehosting Version Path
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     message: "Path Rewrite",
  * });
  * ```
+ *
  * ### Firebasehosting Version Cloud Run
  *
  * ```typescript
@@ -99,6 +101,7 @@ import * as utilities from "../utilities";
  *     message: "Cloud Run Integration",
  * });
  * ```
+ *
  * ### Firebasehosting Version Cloud Functions
  *
  * ```typescript
@@ -205,9 +208,6 @@ export class HostingVersion extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. The ID of the site in which to create this Version.
-     *
-     *
-     * - - -
      */
     public readonly siteId!: pulumi.Output<string>;
     /**
@@ -263,9 +263,6 @@ export interface HostingVersionState {
     name?: pulumi.Input<string>;
     /**
      * Required. The ID of the site in which to create this Version.
-     *
-     *
-     * - - -
      */
     siteId?: pulumi.Input<string>;
     /**
@@ -285,9 +282,6 @@ export interface HostingVersionArgs {
     config?: pulumi.Input<inputs.firebase.HostingVersionConfig>;
     /**
      * Required. The ID of the site in which to create this Version.
-     *
-     *
-     * - - -
      */
     siteId: pulumi.Input<string>;
 }

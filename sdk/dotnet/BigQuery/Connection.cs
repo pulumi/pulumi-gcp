@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
     /// * How-to Guides
-    ///     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+    ///   * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Connection Cloud Resource
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,7 +39,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,7 +101,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -166,7 +164,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Aws
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -193,7 +191,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Azure
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -218,7 +216,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Cloudspanner
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -243,7 +241,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Cloudspanner Databoost
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -270,7 +268,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Spark
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -322,7 +320,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Kms
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

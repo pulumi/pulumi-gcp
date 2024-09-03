@@ -76,8 +76,6 @@ func LookupGlobalAddress(ctx *pulumi.Context, args *LookupGlobalAddressArgs, opt
 // A collection of arguments for invoking getGlobalAddress.
 type LookupGlobalAddressArgs struct {
 	// A unique name for the resource, required by GCE.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -121,8 +119,6 @@ func LookupGlobalAddressOutput(ctx *pulumi.Context, args LookupGlobalAddressOutp
 // A collection of arguments for invoking getGlobalAddress.
 type LookupGlobalAddressOutputArgs struct {
 	// A unique name for the resource, required by GCE.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

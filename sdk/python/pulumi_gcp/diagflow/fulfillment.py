@@ -29,9 +29,6 @@ class FulfillmentArgs:
         """
         The set of arguments for constructing a Fulfillment resource.
         :param pulumi.Input[str] display_name: The human-readable name of the fulfillment, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
@@ -55,9 +52,6 @@ class FulfillmentArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the fulfillment, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -129,9 +123,6 @@ class _FulfillmentState:
         """
         Input properties used for looking up and filtering Fulfillment resources.
         :param pulumi.Input[str] display_name: The human-readable name of the fulfillment, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['FulfillmentFeatureArgs']]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
@@ -160,9 +151,6 @@ class _FulfillmentState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the fulfillment, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -253,7 +241,7 @@ class Fulfillment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
+          * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 
         ## Example Usage
 
@@ -296,9 +284,6 @@ class Fulfillment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable name of the fulfillment, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
@@ -320,7 +305,7 @@ class Fulfillment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
+          * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
 
         ## Example Usage
 
@@ -421,9 +406,6 @@ class Fulfillment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable name of the fulfillment, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: Whether fulfillment is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FulfillmentFeatureArgs', 'FulfillmentFeatureArgsDict']]]] features: The field defines whether the fulfillment is enabled for certain features.
                Structure is documented below.
@@ -451,9 +433,6 @@ class Fulfillment(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the fulfillment, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

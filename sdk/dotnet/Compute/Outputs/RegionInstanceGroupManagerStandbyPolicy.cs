@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int? InitialDelaySec;
         /// <summary>
         /// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-        /// - - -
         /// </summary>
         public readonly string? Mode;
 

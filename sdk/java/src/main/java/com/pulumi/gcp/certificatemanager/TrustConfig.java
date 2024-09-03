@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.trustConfigs/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
+ *   * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
  * 
- * ## Example Usage
- * 
- * ### Certificate Manager Trust Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -79,7 +77,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Trust Config Allowlisted Certificates
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,16 +239,12 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
     /**
      * The trust config location.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The trust config location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

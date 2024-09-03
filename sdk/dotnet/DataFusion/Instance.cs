@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+    ///   * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Data Fusion Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,7 +37,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// ### Data Fusion Instance Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -102,7 +100,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// ### Data Fusion Instance Psc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -156,7 +154,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// ### Data Fusion Instance Cmek
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -206,7 +204,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// ### Data Fusion Instance Enterprise
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -226,7 +224,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// ### Data Fusion Instance Event
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -255,7 +253,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// });
     /// ```
-    /// ### Data Fusion Instance Zone
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -503,9 +501,6 @@ namespace Pulumi.Gcp.DataFusion
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
         /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -718,9 +713,6 @@ namespace Pulumi.Gcp.DataFusion
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
         /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -977,9 +969,6 @@ namespace Pulumi.Gcp.DataFusion
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
         /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

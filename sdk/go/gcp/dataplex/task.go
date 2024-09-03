@@ -86,6 +86,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Task Spark
 //
 // ```go
@@ -183,6 +184,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Task Notebook
 //
 // ```go

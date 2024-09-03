@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  * * How-to Guides
- *     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
+ *   * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  *
- * ## Example Usage
- *
- * ### Bigquery Routine Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     definitionBody: "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
  * });
  * ```
- * ### Bigquery Routine Json
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,7 +56,7 @@ import * as utilities from "../utilities";
  *     returnType: "{\"typeKind\" :  \"FLOAT64\"}",
  * });
  * ```
- * ### Bigquery Routine Tvf
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -88,7 +86,7 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
- * ### Bigquery Routine Pyspark
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -108,18 +106,18 @@ import * as utilities from "../utilities";
  *     definitionBody: `from pyspark.sql import SparkSession
  *
  * spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
- *     
+ *
  * # Load data from BigQuery.
  * words = spark.read.format("bigquery") \\
  *   .option("table", "bigquery-public-data:samples.shakespeare") \\
  *   .load()
  * words.createOrReplaceTempView("words")
- *     
+ *
  * # Perform word count.
  * word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
  * word_count.show()
  * word_count.printSchema()
- *     
+ *
  * # Saving the data to BigQuery
  * word_count.write.format("bigquery") \\
  *   .option("writeMethod", "direct") \\
@@ -131,7 +129,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Routine Pyspark Mainfile
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -159,7 +157,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Routine Spark Jar
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -190,7 +188,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Routine Data Governance Type
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -211,6 +209,9 @@ import * as utilities from "../utilities";
  *     returnType: "{\"typeKind\" :  \"STRING\"}",
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Bigquery Routine Remote Function
  *
  * ```typescript
@@ -303,7 +304,7 @@ export class Routine extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
     /**
-     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
      * Possible values are: `DATA_MASKING`.
      */
     public readonly dataGovernanceType!: pulumi.Output<string | undefined>;
@@ -314,9 +315,6 @@ export class Routine extends pulumi.CustomResource {
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     *
-     *
-     * - - -
      */
     public readonly definitionBody!: pulumi.Output<string>;
     /**
@@ -469,7 +467,7 @@ export interface RoutineState {
      */
     creationTime?: pulumi.Input<number>;
     /**
-     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
      * Possible values are: `DATA_MASKING`.
      */
     dataGovernanceType?: pulumi.Input<string>;
@@ -480,9 +478,6 @@ export interface RoutineState {
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     *
-     *
-     * - - -
      */
     definitionBody?: pulumi.Input<string>;
     /**
@@ -564,7 +559,7 @@ export interface RoutineArgs {
      */
     arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
     /**
-     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
      * Possible values are: `DATA_MASKING`.
      */
     dataGovernanceType?: pulumi.Input<string>;
@@ -575,9 +570,6 @@ export interface RoutineArgs {
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     *
-     *
-     * - - -
      */
     definitionBody: pulumi.Input<string>;
     /**

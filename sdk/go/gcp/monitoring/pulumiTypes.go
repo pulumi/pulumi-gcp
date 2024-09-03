@@ -2169,8 +2169,6 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	//
-	// ***
 	AlertRule *string `pulumi:"alertRule"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
@@ -2187,7 +2185,7 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// must be valid.
 	// Label values can be templatized by using variables. The only available
 	// variable names are the names of the labels in the PromQL result, including
-	// "__name__" and "value". "labels" may be empty. This field is intended to be
+	// "**name**" and "value". "labels" may be empty. This field is intended to be
 	// used for organizing and identifying the AlertPolicy
 	Labels map[string]string `pulumi:"labels"`
 	// The PromQL expression to evaluate. Every evaluation cycle this
@@ -2225,8 +2223,6 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	//
-	// ***
 	AlertRule pulumi.StringPtrInput `pulumi:"alertRule"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
@@ -2243,7 +2239,7 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// must be valid.
 	// Label values can be templatized by using variables. The only available
 	// variable names are the names of the labels in the PromQL result, including
-	// "__name__" and "value". "labels" may be empty. This field is intended to be
+	// "**name**" and "value". "labels" may be empty. This field is intended to be
 	// used for organizing and identifying the AlertPolicy
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The PromQL expression to evaluate. Every evaluation cycle this
@@ -2346,8 +2342,6 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) ToAlertPolic
 // in the future.
 // This field is optional. If this field is not empty, then it must be a
 // valid Prometheus label name.
-//
-// ***
 func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) AlertRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *string { return v.AlertRule }).(pulumi.StringPtrOutput)
 }
@@ -2373,7 +2367,7 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) EvaluationIn
 // must be valid.
 // Label values can be templatized by using variables. The only available
 // variable names are the names of the labels in the PromQL result, including
-// "__name__" and "value". "labels" may be empty. This field is intended to be
+// "**name**" and "value". "labels" may be empty. This field is intended to be
 // used for organizing and identifying the AlertPolicy
 func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -2430,8 +2424,6 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Elem() Al
 // in the future.
 // This field is optional. If this field is not empty, then it must be a
 // valid Prometheus label name.
-//
-// ***
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) AlertRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionPrometheusQueryLanguage) *string {
 		if v == nil {
@@ -2472,7 +2464,7 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Evaluatio
 // must be valid.
 // Label values can be templatized by using variables. The only available
 // variable names are the names of the labels in the PromQL result, including
-// "__name__" and "value". "labels" may be empty. This field is intended to be
+// "**name**" and "value". "labels" may be empty. This field is intended to be
 // used for organizing and identifying the AlertPolicy
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionPrometheusQueryLanguage) map[string]string {
@@ -4657,7 +4649,7 @@ func (o AlertPolicyDocumentationLinkArrayOutput) Index(i pulumi.IntInput) AlertP
 type CustomServiceTelemetry struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName *string `pulumi:"resourceName"`
 }
 
@@ -4675,7 +4667,7 @@ type CustomServiceTelemetryInput interface {
 type CustomServiceTelemetryArgs struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
 }
 
@@ -4758,7 +4750,7 @@ func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutputWithConte
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o CustomServiceTelemetryOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
@@ -4789,7 +4781,7 @@ func (o CustomServiceTelemetryPtrOutput) Elem() CustomServiceTelemetryOutput {
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o CustomServiceTelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomServiceTelemetry) *string {
 		if v == nil {
@@ -4966,7 +4958,7 @@ func (o GenericServiceBasicServicePtrOutput) ServiceType() pulumi.StringPtrOutpu
 type GenericServiceTelemetry struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName *string `pulumi:"resourceName"`
 }
 
@@ -4984,7 +4976,7 @@ type GenericServiceTelemetryInput interface {
 type GenericServiceTelemetryArgs struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
 }
 
@@ -5041,7 +5033,7 @@ func (o GenericServiceTelemetryOutput) ToGenericServiceTelemetryOutputWithContex
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o GenericServiceTelemetryOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenericServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
@@ -9842,7 +9834,7 @@ type UptimeCheckConfigHttpCheck struct {
 	// The content type to use for the check.
 	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
 	ContentType *string `pulumi:"contentType"`
-	// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
+	// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`custom_content_type`is set. 2.`contentType`is`USER_PROVIDED`and`custom_content_type` is not set.
 	CustomContentType *string `pulumi:"customContentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
@@ -9891,7 +9883,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// The content type to use for the check.
 	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
-	// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
+	// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`custom_content_type`is set. 2.`contentType`is`USER_PROVIDED`and`custom_content_type` is not set.
 	CustomContentType pulumi.StringPtrInput `pulumi:"customContentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
@@ -10019,7 +10011,7 @@ func (o UptimeCheckConfigHttpCheckOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
-// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
+// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`custom_content_type`is set. 2.`contentType`is`USER_PROVIDED`and`custom_content_type` is not set.
 func (o UptimeCheckConfigHttpCheckOutput) CustomContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.CustomContentType }).(pulumi.StringPtrOutput)
 }
@@ -10142,7 +10134,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ContentType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
+// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`custom_content_type`is set. 2.`contentType`is`USER_PROVIDED`and`custom_content_type` is not set.
 func (o UptimeCheckConfigHttpCheckPtrOutput) CustomContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -11697,7 +11689,7 @@ func (o UptimeCheckConfigTcpCheckPingConfigPtrOutput) PingsCount() pulumi.IntPtr
 type GetAppEngineServiceTelemetry struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -11715,7 +11707,7 @@ type GetAppEngineServiceTelemetryInput interface {
 type GetAppEngineServiceTelemetryArgs struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -11772,7 +11764,7 @@ func (o GetAppEngineServiceTelemetryOutput) ToGetAppEngineServiceTelemetryOutput
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o GetAppEngineServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppEngineServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -11800,7 +11792,7 @@ func (o GetAppEngineServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetApp
 type GetClusterIstioServiceTelemetry struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -11818,7 +11810,7 @@ type GetClusterIstioServiceTelemetryInput interface {
 type GetClusterIstioServiceTelemetryArgs struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -11875,7 +11867,7 @@ func (o GetClusterIstioServiceTelemetryOutput) ToGetClusterIstioServiceTelemetry
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o GetClusterIstioServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -11903,7 +11895,7 @@ func (o GetClusterIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) Get
 type GetIstioCanonicalServiceTelemetry struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -11921,7 +11913,7 @@ type GetIstioCanonicalServiceTelemetryInput interface {
 type GetIstioCanonicalServiceTelemetryArgs struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -11978,7 +11970,7 @@ func (o GetIstioCanonicalServiceTelemetryOutput) ToGetIstioCanonicalServiceTelem
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o GetIstioCanonicalServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -12006,7 +11998,7 @@ func (o GetIstioCanonicalServiceTelemetryArrayOutput) Index(i pulumi.IntInput) G
 type GetMeshIstioServiceTelemetry struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -12024,7 +12016,7 @@ type GetMeshIstioServiceTelemetryInput interface {
 type GetMeshIstioServiceTelemetryArgs struct {
 	// The full name of the resource that defines this service.
 	// Formatted as described in
-	// https://cloud.google.com/apis/design/resource_names.
+	// <https://cloud.google.com/apis/design/resource_names>.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -12081,7 +12073,7 @@ func (o GetMeshIstioServiceTelemetryOutput) ToGetMeshIstioServiceTelemetryOutput
 
 // The full name of the resource that defines this service.
 // Formatted as described in
-// https://cloud.google.com/apis/design/resource_names.
+// <https://cloud.google.com/apis/design/resource_names>.
 func (o GetMeshIstioServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }

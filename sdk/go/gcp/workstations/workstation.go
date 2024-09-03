@@ -12,93 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Workstation Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workstations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("workstation-cluster"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("workstation-cluster"),
-//				IpCidrRange: pulumi.String("10.0.0.0/24"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     _default.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-//				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
-//				Location:             pulumi.String("us-central1"),
-//				Labels: pulumi.StringMap{
-//					"label": pulumi.String("key"),
-//				},
-//				Annotations: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultWorkstationConfig, err := workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
-//				WorkstationConfigId:  pulumi.String("workstation-config"),
-//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
-//				Location:             pulumi.String("us-central1"),
-//				Host: &workstations.WorkstationConfigHostArgs{
-//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
-//						MachineType:              pulumi.String("e2-standard-4"),
-//						BootDiskSizeGb:           pulumi.Int(35),
-//						DisablePublicIpAddresses: pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workstations.NewWorkstation(ctx, "default", &workstations.WorkstationArgs{
-//				WorkstationId:        pulumi.String("work-station"),
-//				WorkstationConfigId:  defaultWorkstationConfig.WorkstationConfigId,
-//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
-//				Location:             pulumi.String("us-central1"),
-//				Labels: pulumi.StringMap{
-//					"label": pulumi.String("key"),
-//				},
-//				Env: pulumi.StringMap{
-//					"name": pulumi.String("foo"),
-//				},
-//				Annotations: pulumi.StringMap{
-//					"label-one": pulumi.String("value-one"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Workstation can be imported using any of these accepted formats:
@@ -147,8 +60,6 @@ type Workstation struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Full name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -239,8 +150,6 @@ type workstationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Full name of this resource.
 	Name *string `pulumi:"name"`
@@ -285,8 +194,6 @@ type WorkstationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Full name of this resource.
 	Name pulumi.StringPtrInput
@@ -326,8 +233,6 @@ type workstationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -355,8 +260,6 @@ type WorkstationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -502,8 +405,6 @@ func (o WorkstationOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the workstation parent resources reside.
-//
-// ***
 func (o WorkstationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

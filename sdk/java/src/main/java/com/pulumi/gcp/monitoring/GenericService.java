@@ -28,13 +28,11 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
  * 
- * ## Example Usage
- * 
- * ### Monitoring Service Example
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -109,7 +107,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
     /**
      * A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
      * Structure is documented below.
      * 
      */
@@ -119,7 +117,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
     /**
      * @return A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
      * Structure is documented below.
      * 
      */
@@ -176,8 +174,6 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -185,8 +181,6 @@ public class GenericService extends com.pulumi.resources.CustomResource {
     /**
      * @return An optional service ID to use. If not given, the server will generate a
      * service ID.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

@@ -7,79 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Managedkafka Cluster Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const example = new gcp.managedkafka.Cluster("example", {
- *     clusterId: "my-cluster",
- *     location: "us-central1",
- *     capacityConfig: {
- *         vcpuCount: "3",
- *         memoryBytes: "3221225472",
- *     },
- *     gcpConfig: {
- *         accessConfig: {
- *             networkConfigs: [{
- *                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
- *             }],
- *         },
- *     },
- *     rebalanceConfig: {
- *         mode: "NO_REBALANCE",
- *     },
- *     labels: {
- *         key: "value",
- *     },
- * });
- * ```
- * ### Managedkafka Cluster Cmek
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const keyRing = new gcp.kms.KeyRing("key_ring", {
- *     name: "example-key-ring",
- *     location: "us-central1",
- * });
- * const key = new gcp.kms.CryptoKey("key", {
- *     name: "example-key",
- *     keyRing: keyRing.id,
- * });
- * const project = gcp.organizations.getProject({});
- * const example = new gcp.managedkafka.Cluster("example", {
- *     clusterId: "my-cluster",
- *     location: "us-central1",
- *     capacityConfig: {
- *         vcpuCount: "3",
- *         memoryBytes: "3221225472",
- *     },
- *     gcpConfig: {
- *         accessConfig: {
- *             networkConfigs: [{
- *                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
- *             }],
- *         },
- *         kmsKey: key.id,
- *     },
- * });
- * const kafkaServiceIdentity = new gcp.projects.ServiceIdentity("kafka_service_identity", {
- *     project: project.then(project => project.projectId),
- *     service: "managedkafka.googleapis.com",
- * });
- * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("crypto_key_binding", {
- *     cryptoKeyId: key.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-managedkafka.iam.gserviceaccount.com`)],
- * });
- * ```
- *
  * ## Import
  *
  * Cluster can be imported using any of these accepted formats:
@@ -162,7 +89,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -283,7 +210,7 @@ export interface ClusterState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
      */
     location?: pulumi.Input<string>;
     /**
@@ -336,7 +263,7 @@ export interface ClusterArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
      */
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;

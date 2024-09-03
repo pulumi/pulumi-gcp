@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class WorkerPoolWorkerConfig
     {
         /// <summary>
-        /// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        /// Size of the disk attached to the worker, in GB. See (&lt;https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file)&gt;. Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
-        /// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+        /// Machine type of a worker, such as `n1-standard-1`. See (&lt;https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file)&gt;. If left blank, Cloud Build will use `n1-standard-1`.
         /// </summary>
         public readonly string? MachineType;
         /// <summary>

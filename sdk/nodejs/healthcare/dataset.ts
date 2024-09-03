@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
  * * How-to Guides
- *     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+ *   * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
  *
- * ## Example Usage
- *
- * ### Healthcare Dataset Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     timeZone: "UTC",
  * });
  * ```
- * ### Healthcare Dataset Cmek
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -121,9 +119,6 @@ export class Dataset extends pulumi.CustomResource {
     public readonly encryptionSpec!: pulumi.Output<outputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -193,9 +188,6 @@ export interface DatasetState {
     encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -230,9 +222,6 @@ export interface DatasetArgs {
     encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

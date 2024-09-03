@@ -53,16 +53,12 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
      * 
-     * ***
-     * 
      */
     @Import(name="gitCommitish")
     private @Nullable Output<String> gitCommitish;
 
     /**
      * @return Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> gitCommitish() {
@@ -149,14 +145,14 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
     }
 
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * @return Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -242,8 +238,6 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
         /**
          * @param gitCommitish Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -254,8 +248,6 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
 
         /**
          * @param gitCommitish Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -385,7 +377,7 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
          * 
          * @return builder
          * 
@@ -396,7 +388,7 @@ public final class RepositoryReleaseConfigState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
          * 
          * @return builder
          * 

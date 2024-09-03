@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CloudDeploy
         /// <summary>
         /// Retrieves the current IAM policy data for target
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Retrieves the current IAM policy data for target
-        /// 
         /// 
         /// ## example
         /// 

@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigtable App Profile Anycluster
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -68,7 +66,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigtable App Profile Singlecluster
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -108,7 +106,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigtable App Profile Multicluster
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -163,7 +161,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigtable App Profile Priority
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -237,9 +235,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("appProfileId")]
         public Output<string> AppProfileId { get; private set; } = null!;
@@ -359,9 +354,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
@@ -443,9 +435,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("appProfileId")]
         public Input<string>? AppProfileId { get; set; }

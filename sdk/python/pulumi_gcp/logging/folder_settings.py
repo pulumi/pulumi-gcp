@@ -26,9 +26,6 @@ class FolderSettingsArgs:
         """
         The set of arguments for constructing a FolderSettings resource.
         :param pulumi.Input[str] folder: The folder for which to retrieve settings.
-               
-               
-               - - -
         :param pulumi.Input[bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[str] kms_key_name: The resource name for the configured Cloud KMS key.
         :param pulumi.Input[str] storage_location: The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
@@ -46,9 +43,6 @@ class FolderSettingsArgs:
     def folder(self) -> pulumi.Input[str]:
         """
         The folder for which to retrieve settings.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -107,9 +101,6 @@ class _FolderSettingsState:
         Input properties used for looking up and filtering FolderSettings resources.
         :param pulumi.Input[bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[str] folder: The folder for which to retrieve settings.
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The resource name for the configured Cloud KMS key.
         :param pulumi.Input[str] kms_service_account_id: The service account that will be used by the Log Router to access your Cloud KMS key.
         :param pulumi.Input[str] logging_service_account_id: The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
@@ -148,9 +139,6 @@ class _FolderSettingsState:
     def folder(self) -> Optional[pulumi.Input[str]]:
         """
         The folder for which to retrieve settings.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -236,7 +224,7 @@ class FolderSettings(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getSettings)
         * How-to Guides
-            * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
+          * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
 
         ## Example Usage
 
@@ -284,9 +272,6 @@ class FolderSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[str] folder: The folder for which to retrieve settings.
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The resource name for the configured Cloud KMS key.
         :param pulumi.Input[str] storage_location: The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
         """
@@ -303,7 +288,7 @@ class FolderSettings(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getSettings)
         * How-to Guides
-            * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
+          * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
 
         ## Example Usage
 
@@ -410,9 +395,6 @@ class FolderSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_default_sink: If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         :param pulumi.Input[str] folder: The folder for which to retrieve settings.
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The resource name for the configured Cloud KMS key.
         :param pulumi.Input[str] kms_service_account_id: The service account that will be used by the Log Router to access your Cloud KMS key.
         :param pulumi.Input[str] logging_service_account_id: The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
@@ -445,9 +427,6 @@ class FolderSettings(pulumi.CustomResource):
     def folder(self) -> pulumi.Output[str]:
         """
         The folder for which to retrieve settings.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 

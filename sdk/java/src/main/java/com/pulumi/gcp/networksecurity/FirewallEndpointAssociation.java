@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
  * * How-to Guides
- *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
- *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+ *   * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+ *   * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  * 
  * ## Example Usage
  * 
@@ -177,16 +177,12 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
     /**
      * The location (zone) of the firewall endpoint association.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location (zone) of the firewall endpoint association.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -253,14 +249,14 @@ public class FirewallEndpointAssociation extends com.pulumi.resources.CustomReso
         return this.pulumiLabels;
     }
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * @return Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     public Output<Boolean> reconciling() {

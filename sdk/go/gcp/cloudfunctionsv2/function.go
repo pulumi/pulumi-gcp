@@ -82,6 +82,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Full
 //
 // ```go
@@ -178,6 +179,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Scheduler Auth
 //
 // ```go
@@ -297,6 +299,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Basic Gcs
 //
 // ```go
@@ -450,6 +453,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Basic Auditlogs
 //
 // ```go
@@ -606,6 +610,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Basic Builder
 //
 // ```go
@@ -722,6 +727,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Secret Env
 //
 // ```go
@@ -818,6 +824,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Secret Volume
 //
 // ```go
@@ -913,6 +920,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Private Workerpool
 //
 // ```go
@@ -989,6 +997,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Cmek Docs
 //
 // ```go
@@ -1116,6 +1125,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Abiu
 //
 // ```go
@@ -1212,6 +1222,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudfunctions2 Abiu On Deploy
 //
 // ```go
@@ -1358,8 +1369,6 @@ type Function struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of this cloud function.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -1442,8 +1451,6 @@ type functionState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of this cloud function.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -1489,8 +1496,6 @@ type FunctionState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of this cloud function.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -1536,8 +1541,6 @@ type functionArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of this cloud function.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -1571,8 +1574,6 @@ type FunctionArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of this cloud function.
-	//
-	// ***
 	Location pulumi.StringInput
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
@@ -1716,8 +1717,6 @@ func (o FunctionOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of this cloud function.
-//
-// ***
 func (o FunctionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

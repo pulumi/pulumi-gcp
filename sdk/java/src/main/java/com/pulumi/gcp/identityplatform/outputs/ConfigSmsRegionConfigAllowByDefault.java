@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConfigSmsRegionConfigAllowByDefault {
     /**
-     * @return Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+     * @return Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
      * 
      */
     private @Nullable List<String> disallowedRegions;
 
     private ConfigSmsRegionConfigAllowByDefault() {}
     /**
-     * @return Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+     * @return Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
      * 
      */
     public List<String> disallowedRegions() {

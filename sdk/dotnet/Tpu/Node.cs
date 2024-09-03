@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.nodes)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+    ///   * [Official Documentation](https://cloud.google.com/tpu/docs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Tpu Node Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -43,6 +41,9 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Tpu Node Full
     /// 
     /// ```csharp
@@ -229,9 +230,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// The version of Tensorflow running in the Node.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("tensorflowVersion")]
         public Output<string> TensorflowVersion { get; private set; } = null!;
@@ -372,9 +370,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// The version of Tensorflow running in the Node.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("tensorflowVersion", required: true)]
         public Input<string> TensorflowVersion { get; set; } = null!;
@@ -529,9 +524,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// The version of Tensorflow running in the Node.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("tensorflowVersion")]
         public Input<string>? TensorflowVersion { get; set; }

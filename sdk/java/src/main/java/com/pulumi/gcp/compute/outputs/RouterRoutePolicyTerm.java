@@ -16,8 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RouterRoutePolicyTerm {
     /**
-     * @return &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
-     * Structure is documented below.
+     * @return &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;Structure is documented below.
      * 
      */
     private @Nullable List<RouterRoutePolicyTermAction> actions;
@@ -35,8 +34,7 @@ public final class RouterRoutePolicyTerm {
 
     private RouterRoutePolicyTerm() {}
     /**
-     * @return &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;\
-     * Structure is documented below.
+     * @return &#39;CEL expressions to evaluate to modify a route when this term matches.&#39;Structure is documented below.
      * 
      */
     public List<RouterRoutePolicyTermAction> actions() {

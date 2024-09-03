@@ -16,14 +16,14 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
     public static final PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs Empty = new PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs();
 
     /**
-     * Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+     * Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
      * 
      */
     @Import(name="code")
     private @Nullable Output<String> code;
 
     /**
-     * @return Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+     * @return Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
      * 
      */
     public Optional<Output<String>> code() {
@@ -55,7 +55,7 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
         }
 
         /**
-         * @param code Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+         * @param code Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreference
         }
 
         /**
-         * @param code Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+         * @param code Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
          * 
          * @return builder
          * 

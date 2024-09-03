@@ -36,9 +36,6 @@ class EdgeCacheKeysetArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
@@ -100,9 +97,6 @@ class EdgeCacheKeysetArgs:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -179,9 +173,6 @@ class _EdgeCacheKeysetState:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
@@ -261,9 +252,6 @@ class _EdgeCacheKeysetState:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -351,11 +339,9 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheKeysets)
         * How-to Guides
-            * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
+          * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
 
-        ## Example Usage
-
-        ### Network Services Edge Cache Keyset Basic
+        ## 
 
         ```python
         import pulumi
@@ -375,7 +361,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Network Services Edge Cache Keyset Dual Token
+        ## 
 
         ```python
         import pulumi
@@ -434,9 +420,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
@@ -465,11 +448,9 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheKeysets)
         * How-to Guides
-            * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
+          * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
 
-        ## Example Usage
-
-        ### Network Services Edge Cache Keyset Basic
+        ## 
 
         ```python
         import pulumi
@@ -489,7 +470,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Network Services Edge Cache Keyset Dual Token
+        ## 
 
         ```python
         import pulumi
@@ -612,9 +593,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]] public_keys: An ordered list of Ed25519 public keys to use for validating signed requests.
@@ -679,9 +657,6 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

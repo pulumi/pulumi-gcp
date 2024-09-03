@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
  * * How-to Guides
- *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project` and set `user_project_override` to true
@@ -141,16 +141,12 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Access Level to add this condition to.
      * 
-     * ***
-     * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
      * @return The name of the Access Level to add this condition to.
-     * 
-     * ***
      * 
      */
     public Output<String> accessLevel() {

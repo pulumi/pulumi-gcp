@@ -57,9 +57,6 @@ class InstanceArgs:
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -206,9 +203,6 @@ class InstanceArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -383,9 +377,6 @@ class _InstanceState:
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -621,9 +612,6 @@ class _InstanceState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -786,12 +774,10 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/looker/docs/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
-            * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
+          * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
+          * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
 
-        ## Example Usage
-
-        ### Looker Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -806,7 +792,7 @@ class Instance(pulumi.CustomResource):
                 "client_secret": "my-client-secret",
             })
         ```
-        ### Looker Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -852,6 +838,9 @@ class Instance(pulumi.CustomResource):
                 "client_secret": "my-client-secret",
             })
         ```
+
+        ## Example Usage
+
         ### Looker Instance Enterprise Full
 
         ```python
@@ -921,7 +910,7 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
-        ### Looker Instance Custom Domain
+        ## 
 
         ```python
         import pulumi
@@ -991,9 +980,6 @@ class Instance(pulumi.CustomResource):
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -1033,12 +1019,10 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/looker/docs/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
-            * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
+          * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
+          * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
 
-        ## Example Usage
-
-        ### Looker Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -1053,7 +1037,7 @@ class Instance(pulumi.CustomResource):
                 "client_secret": "my-client-secret",
             })
         ```
-        ### Looker Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -1099,6 +1083,9 @@ class Instance(pulumi.CustomResource):
                 "client_secret": "my-client-secret",
             })
         ```
+
+        ## Example Usage
+
         ### Looker Instance Enterprise Full
 
         ```python
@@ -1168,7 +1155,7 @@ class Instance(pulumi.CustomResource):
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
         ```
-        ### Looker Instance Custom Domain
+        ## 
 
         ```python
         import pulumi
@@ -1343,9 +1330,6 @@ class Instance(pulumi.CustomResource):
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -1516,9 +1500,6 @@ class Instance(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

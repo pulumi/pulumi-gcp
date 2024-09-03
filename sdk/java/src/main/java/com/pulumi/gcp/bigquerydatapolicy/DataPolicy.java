@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+ *   * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Datapolicy Data Policy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -80,7 +78,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Datapolicy Data Policy Routine
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -224,8 +222,6 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      * 
-     * ***
-     * 
      */
     @Export(name="dataPolicyType", refs={String.class}, tree="[0]")
     private Output<String> dataPolicyType;
@@ -233,8 +229,6 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-     * 
-     * ***
      * 
      */
     public Output<String> dataPolicyType() {

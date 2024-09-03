@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Storage
 {
     /// <summary>
     /// Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-    ///  For more information see
+    /// For more information see
     /// [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
     /// and
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
@@ -149,8 +149,6 @@ namespace Pulumi.Gcp.Storage
         /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
         /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         /// you will need to use the project-level name.
-        /// 
-        /// - - -
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
@@ -248,8 +246,6 @@ namespace Pulumi.Gcp.Storage
         /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
         /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         /// you will need to use the project-level name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
@@ -321,8 +317,6 @@ namespace Pulumi.Gcp.Storage
         /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
         /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         /// you will need to use the project-level name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

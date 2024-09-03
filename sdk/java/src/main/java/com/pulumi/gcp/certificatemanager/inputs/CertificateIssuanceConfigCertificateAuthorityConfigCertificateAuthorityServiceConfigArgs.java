@@ -19,8 +19,6 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfigCertificat
      * The CA pool string has a relative resource path following the form
      * &#34;projects/{project}/locations/{location}/caPools/{caPool}&#34;.
      * 
-     * ***
-     * 
      */
     @Import(name="caPool", required=true)
     private Output<String> caPool;
@@ -29,8 +27,6 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfigCertificat
      * @return A CA pool resource used to issue a certificate.
      * The CA pool string has a relative resource path following the form
      * &#34;projects/{project}/locations/{location}/caPools/{caPool}&#34;.
-     * 
-     * ***
      * 
      */
     public Output<String> caPool() {
@@ -66,8 +62,6 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfigCertificat
          * The CA pool string has a relative resource path following the form
          * &#34;projects/{project}/locations/{location}/caPools/{caPool}&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -80,8 +74,6 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfigCertificat
          * @param caPool A CA pool resource used to issue a certificate.
          * The CA pool string has a relative resource path following the form
          * &#34;projects/{project}/locations/{location}/caPools/{caPool}&#34;.
-         * 
-         * ***
          * 
          * @return builder
          * 

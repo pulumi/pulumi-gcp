@@ -16,9 +16,10 @@ import (
 //
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+//
 // ## Example Usage
 //
-// ### Basic_azure_cluster
+// ### basicAzureCluster
 // A basic example of a containerazure azure cluster
 // ```go
 // package main
@@ -100,7 +101,8 @@ import (
 //	}
 //
 // ```
-// ### Beta_basic_enum_azure_cluster
+//
+// ### betaBasicEnumAzureCluster
 // A basic example of a containerazure azure cluster with lowercase enums (beta)
 // ```go
 // package main

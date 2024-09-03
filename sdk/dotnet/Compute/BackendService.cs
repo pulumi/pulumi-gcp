@@ -21,14 +21,12 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
     /// &gt; **Warning:** All arguments including the following potentially sensitive
     /// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Backend Service Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,7 +52,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service External Iap
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -78,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Cache Simple
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -109,7 +107,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Cache Include Http Headers
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -141,7 +139,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Cache Include Named Cookies
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -177,7 +175,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Cache
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -213,7 +211,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Cache Bypass Cache On Request Headers
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -260,7 +258,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Traffic Director Round Robin
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -289,7 +287,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Traffic Director Ring Hash
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -339,7 +337,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service Network Endpoint
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -388,7 +386,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Service External Managed
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -616,7 +614,7 @@ namespace Pulumi.Gcp.Compute
         /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
-        /// Maglev, refer to https://ai.google/research/pubs/pub44824
+        /// Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
         /// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         /// reported weights. If set, the Backend Service must
         /// configure a non legacy HTTP-based Health Check, and
@@ -662,9 +660,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -967,7 +962,7 @@ namespace Pulumi.Gcp.Compute
         /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
-        /// Maglev, refer to https://ai.google/research/pubs/pub44824
+        /// Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
         /// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         /// reported weights. If set, the Backend Service must
         /// configure a non legacy HTTP-based Health Check, and
@@ -1013,9 +1008,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1293,7 +1285,7 @@ namespace Pulumi.Gcp.Compute
         /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
-        /// Maglev, refer to https://ai.google/research/pubs/pub44824
+        /// Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
         /// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         /// reported weights. If set, the Backend Service must
         /// configure a non legacy HTTP-based Health Check, and
@@ -1339,9 +1331,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

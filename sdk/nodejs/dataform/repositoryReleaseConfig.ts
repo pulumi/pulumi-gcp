@@ -7,62 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Dataform Repository Release Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const gitRepository = new gcp.sourcerepo.Repository("git_repository", {name: "my/repository"});
- * const secret = new gcp.secretmanager.Secret("secret", {
- *     secretId: "my_secret",
- *     replication: {
- *         auto: {},
- *     },
- * });
- * const secretVersion = new gcp.secretmanager.SecretVersion("secret_version", {
- *     secret: secret.id,
- *     secretData: "secret-data",
- * });
- * const repository = new gcp.dataform.Repository("repository", {
- *     name: "dataform_repository",
- *     region: "us-central1",
- *     gitRemoteSettings: {
- *         url: gitRepository.url,
- *         defaultBranch: "main",
- *         authenticationTokenSecretVersion: secretVersion.id,
- *     },
- *     workspaceCompilationOverrides: {
- *         defaultDatabase: "database",
- *         schemaSuffix: "_suffix",
- *         tablePrefix: "prefix_",
- *     },
- * });
- * const release = new gcp.dataform.RepositoryReleaseConfig("release", {
- *     project: repository.project,
- *     region: repository.region,
- *     repository: repository.name,
- *     name: "my_release",
- *     gitCommitish: "main",
- *     cronSchedule: "0 7 * * *",
- *     timeZone: "America/New_York",
- *     codeCompilationConfig: {
- *         defaultDatabase: "gcp-example-project",
- *         defaultSchema: "example-dataset",
- *         defaultLocation: "us-central1",
- *         assertionSchema: "example-assertion-dataset",
- *         databaseSuffix: "",
- *         schemaSuffix: "",
- *         tablePrefix: "",
- *         vars: {
- *             var1: "value",
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * RepositoryReleaseConfig can be imported using any of these accepted formats:
@@ -132,9 +76,6 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
     public readonly cronSchedule!: pulumi.Output<string | undefined>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     *
-     *
-     * - - -
      */
     public readonly gitCommitish!: pulumi.Output<string>;
     /**
@@ -160,7 +101,7 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
      */
     public readonly repository!: pulumi.Output<string | undefined>;
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
      */
     public readonly timeZone!: pulumi.Output<string | undefined>;
 
@@ -221,9 +162,6 @@ export interface RepositoryReleaseConfigState {
     cronSchedule?: pulumi.Input<string>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     *
-     *
-     * - - -
      */
     gitCommitish?: pulumi.Input<string>;
     /**
@@ -249,7 +187,7 @@ export interface RepositoryReleaseConfigState {
      */
     repository?: pulumi.Input<string>;
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
      */
     timeZone?: pulumi.Input<string>;
 }
@@ -269,9 +207,6 @@ export interface RepositoryReleaseConfigArgs {
     cronSchedule?: pulumi.Input<string>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     *
-     *
-     * - - -
      */
     gitCommitish: pulumi.Input<string>;
     /**
@@ -292,7 +227,7 @@ export interface RepositoryReleaseConfigArgs {
      */
     repository?: pulumi.Input<string>;
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
      */
     timeZone?: pulumi.Input<string>;
 }

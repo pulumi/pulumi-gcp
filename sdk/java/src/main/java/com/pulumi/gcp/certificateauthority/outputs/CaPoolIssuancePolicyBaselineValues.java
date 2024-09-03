@@ -49,7 +49,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
      */
     private @Nullable CaPoolIssuancePolicyBaselineValuesNameConstraints nameConstraints;
     /**
-     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */
@@ -97,7 +97,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
         return Optional.ofNullable(this.nameConstraints);
     }
     /**
-     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */

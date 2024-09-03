@@ -167,8 +167,6 @@ def get_app_connection(name: Optional[str] = None,
 
 
     :param str name: The name of the App Connection.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
@@ -215,8 +213,6 @@ def get_app_connection_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of the App Connection.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it

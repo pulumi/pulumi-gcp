@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+    ///   * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -24,9 +24,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// Your account must have the `serviceusage.services.use` permission on the
     /// `billing_project` you defined.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Essential Contact
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -93,9 +91,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -172,9 +167,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -219,9 +211,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

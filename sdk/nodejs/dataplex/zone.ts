@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Basic_zone
+ * ### basicZone
  * A basic example of a dataplex zone
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

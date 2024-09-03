@@ -13,16 +13,12 @@ public final class AzureNodePoolMaxPodsConstraint {
     /**
      * @return The maximum number of pods to schedule on a single node.
      * 
-     * ***
-     * 
      */
     private Integer maxPodsPerNode;
 
     private AzureNodePoolMaxPodsConstraint() {}
     /**
      * @return The maximum number of pods to schedule on a single node.
-     * 
-     * ***
      * 
      */
     public Integer maxPodsPerNode() {

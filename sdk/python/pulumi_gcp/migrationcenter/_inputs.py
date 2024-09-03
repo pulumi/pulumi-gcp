@@ -293,7 +293,7 @@ if not MYPY:
     class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[str]]
         """
-        Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
         """
 elif False:
     PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict: TypeAlias = Mapping[str, Any]
@@ -303,7 +303,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] code: Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        :param pulumi.Input[str] code: Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -312,7 +312,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[str]]:
         """
-        Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
         """
         return pulumi.get(self, "code")
 
@@ -325,7 +325,7 @@ if not MYPY:
     class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict(TypedDict):
         preferred_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
         """
 elif False:
     PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict: TypeAlias = Mapping[str, Any]
@@ -335,7 +335,7 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs:
     def __init__(__self__, *,
                  preferred_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_regions: A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_regions: A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
         """
         if preferred_regions is not None:
             pulumi.set(__self__, "preferred_regions", preferred_regions)
@@ -344,7 +344,7 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs:
     @pulumi.getter(name="preferredRegions")
     def preferred_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
         """
         return pulumi.get(self, "preferred_regions")
 
@@ -452,7 +452,7 @@ if not MYPY:
     class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict(TypedDict):
         node_name: NotRequired[pulumi.Input[str]]
         """
-        Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
         """
 elif False:
     PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict: TypeAlias = Mapping[str, Any]
@@ -462,7 +462,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs:
     def __init__(__self__, *,
                  node_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] node_name: Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        :param pulumi.Input[str] node_name: Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
         """
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
@@ -471,7 +471,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
         """
         return pulumi.get(self, "node_name")
 

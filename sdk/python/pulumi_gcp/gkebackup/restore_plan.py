@@ -397,7 +397,7 @@ class RestorePlan(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+          * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
 
@@ -446,6 +446,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Rollback Namespace
 
         ```python
@@ -502,6 +503,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Protected Application
 
         ```python
@@ -551,6 +553,7 @@ class RestorePlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Restoreplan All Cluster Resources
 
         ```python
@@ -595,6 +598,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Rename Namespace
 
         ```python
@@ -668,6 +672,7 @@ class RestorePlan(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Gkebackup Restoreplan Second Transformation
 
         ```python
@@ -737,6 +742,7 @@ class RestorePlan(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Gkebackup Restoreplan Gitops Mode
 
         ```python
@@ -782,6 +788,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Restore Order
 
         ```python
@@ -851,6 +858,7 @@ class RestorePlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Restoreplan Volume Res
 
         ```python
@@ -952,7 +960,7 @@ class RestorePlan(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+          * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
 
@@ -1001,6 +1009,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Rollback Namespace
 
         ```python
@@ -1057,6 +1066,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Protected Application
 
         ```python
@@ -1106,6 +1116,7 @@ class RestorePlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Restoreplan All Cluster Resources
 
         ```python
@@ -1150,6 +1161,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Rename Namespace
 
         ```python
@@ -1223,6 +1235,7 @@ class RestorePlan(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Gkebackup Restoreplan Second Transformation
 
         ```python
@@ -1292,6 +1305,7 @@ class RestorePlan(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Gkebackup Restoreplan Gitops Mode
 
         ```python
@@ -1337,6 +1351,7 @@ class RestorePlan(pulumi.CustomResource):
                 "cluster_resource_conflict_policy": "USE_EXISTING_VERSION",
             })
         ```
+
         ### Gkebackup Restoreplan Restore Order
 
         ```python
@@ -1406,6 +1421,7 @@ class RestorePlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Restoreplan Volume Res
 
         ```python

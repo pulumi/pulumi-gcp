@@ -86,18 +86,14 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     * 
-     * ***
+     * Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
      * 
      */
     @Import(name="plan", required=true)
     private Output<String> plan;
 
     /**
-     * @return Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     * 
-     * ***
+     * @return Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
      * 
      */
     public Output<String> plan() {
@@ -275,9 +271,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param plan Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-         * 
-         * ***
+         * @param plan Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
          * 
          * @return builder
          * 
@@ -288,9 +282,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param plan Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-         * 
-         * ***
+         * @param plan Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
          * 
          * @return builder
          * 

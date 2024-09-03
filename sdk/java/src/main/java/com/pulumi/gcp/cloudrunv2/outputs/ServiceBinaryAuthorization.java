@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceBinaryAuthorization {
     /**
-     * @return If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+     * @return If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see &lt;https://cloud.google.com/binary-authorization/docs/using-breakglass&gt;
      * 
      */
     private @Nullable String breakglassJustification;
@@ -30,7 +30,7 @@ public final class ServiceBinaryAuthorization {
 
     private ServiceBinaryAuthorization() {}
     /**
-     * @return If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+     * @return If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see &lt;https://cloud.google.com/binary-authorization/docs/using-breakglass&gt;
      * 
      */
     public Optional<String> breakglassJustification() {

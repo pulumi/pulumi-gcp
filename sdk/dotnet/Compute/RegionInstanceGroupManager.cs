@@ -18,13 +18,13 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
     /// * How-to Guides
-    ///     * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+    ///   * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
     /// 
     /// &gt; **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
     /// 
     /// ## Example Usage
     /// 
-    /// ### With Top Level Instance Template (`Google` Provider)
+    /// ### with top level instance template (google provider)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With Multiple Versions
+    /// ### with multiple versions
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With Standby Policy (`Google-Beta` Provider)
+    /// ### with standby policy (google-beta provider)
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -283,8 +283,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Output("params")]
         public Output<Outputs.RegionInstanceGroupManagerParams?> Params { get; private set; } = null!;
@@ -298,8 +296,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -537,8 +533,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.RegionInstanceGroupManagerParamsArgs>? Params { get; set; }
@@ -552,8 +546,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -789,8 +781,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.RegionInstanceGroupManagerParamsGetArgs>? Params { get; set; }
@@ -804,8 +794,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

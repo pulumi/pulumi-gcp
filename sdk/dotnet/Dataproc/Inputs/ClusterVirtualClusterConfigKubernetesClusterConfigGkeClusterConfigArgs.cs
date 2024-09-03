@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+        /// A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
         /// (the GKE cluster can be zonal or regional)
         /// </summary>
         [Input("gkeClusterTarget")]
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<Inputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs>? _nodePoolTargets;
 
         /// <summary>
-        /// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+        /// GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
         /// GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
         /// Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         /// </summary>

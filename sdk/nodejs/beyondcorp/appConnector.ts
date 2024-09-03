@@ -16,11 +16,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appconnectors)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+ *   * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  *
- * ## Example Usage
- *
- * ### Beyondcorp App Connector Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Beyondcorp App Connector Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

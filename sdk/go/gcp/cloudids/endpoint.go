@@ -114,8 +114,6 @@ type Endpoint struct {
 	// Internal IP address of the endpoint's network entry point.
 	EndpointIp pulumi.StringOutput `pulumi:"endpointIp"`
 	// The location for the endpoint.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -181,8 +179,6 @@ type endpointState struct {
 	// Internal IP address of the endpoint's network entry point.
 	EndpointIp *string `pulumi:"endpointIp"`
 	// The location for the endpoint.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
 	Name *string `pulumi:"name"`
@@ -210,8 +206,6 @@ type EndpointState struct {
 	// Internal IP address of the endpoint's network entry point.
 	EndpointIp pulumi.StringPtrInput
 	// The location for the endpoint.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
 	Name pulumi.StringPtrInput
@@ -237,8 +231,6 @@ type endpointArgs struct {
 	// An optional description of the endpoint.
 	Description *string `pulumi:"description"`
 	// The location for the endpoint.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
 	Name *string `pulumi:"name"`
@@ -259,8 +251,6 @@ type EndpointArgs struct {
 	// An optional description of the endpoint.
 	Description pulumi.StringPtrInput
 	// The location for the endpoint.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
 	Name pulumi.StringPtrInput
@@ -384,8 +374,6 @@ func (o EndpointOutput) EndpointIp() pulumi.StringOutput {
 }
 
 // The location for the endpoint.
-//
-// ***
 func (o EndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

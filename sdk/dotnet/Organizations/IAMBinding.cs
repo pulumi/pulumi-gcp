@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Organizations
     /// Allows creation and management of a single binding within IAM policy for
     /// an existing Google Cloud Platform Organization.
     /// 
-    /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
-    ///    what your policy should be.
+    /// &gt; **Note:** This resource **must not** be used in conjunction with
+    /// `gcp.organizations.IAMMember` for the **same role** or they will fight over
+    /// what your policy should be.
     /// 
     /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
-    ///     Use `pulumi import` and inspect the `output to ensure
-    ///     your existing members are preserved.
+    /// Use `pulumi import` and inspect the `output to ensure
+    /// your existing members are preserved.
     /// 
     /// ## Example Usage
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
     public partial class IAMBinding : global::Pulumi.CustomResource
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.Organizations
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
         /// </summary>
         public InputList<string> Members
         {
@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.Organizations
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
         /// </summary>
         public InputList<string> Members
         {

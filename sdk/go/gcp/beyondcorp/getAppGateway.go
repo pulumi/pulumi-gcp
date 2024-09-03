@@ -51,8 +51,6 @@ func LookupAppGateway(ctx *pulumi.Context, args *LookupAppGatewayArgs, opts ...p
 // A collection of arguments for invoking getAppGateway.
 type LookupAppGatewayArgs struct {
 	// The name of the App Gateway.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -96,8 +94,6 @@ func LookupAppGatewayOutput(ctx *pulumi.Context, args LookupAppGatewayOutputArgs
 // A collection of arguments for invoking getAppGateway.
 type LookupAppGatewayOutputArgs struct {
 	// The name of the App Gateway.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

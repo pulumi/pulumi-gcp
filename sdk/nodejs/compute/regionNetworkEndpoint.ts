@@ -14,12 +14,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
  * * How-to Guides
- *     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ *   * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
- * ## Example Usage
- *
- * ### Region Network Endpoint Internet Ip Port
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,7 +40,7 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
- * ### Region Network Endpoint Internet Fqdn Port
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,6 +63,9 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Region Network Endpoint Portmap
  *
  * ```typescript
@@ -208,9 +209,6 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     public readonly regionNetworkEndpointGroup!: pulumi.Output<string>;
 
@@ -295,9 +293,6 @@ export interface RegionNetworkEndpointState {
     region?: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     regionNetworkEndpointGroup?: pulumi.Input<string>;
 }
@@ -340,9 +335,6 @@ export interface RegionNetworkEndpointArgs {
     region?: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     regionNetworkEndpointGroup: pulumi.Input<string>;
 }

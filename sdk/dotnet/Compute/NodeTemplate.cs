@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
     /// * How-to Guides
-    ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+    ///   * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Node Template Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,7 +39,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Node Template Server Binding
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

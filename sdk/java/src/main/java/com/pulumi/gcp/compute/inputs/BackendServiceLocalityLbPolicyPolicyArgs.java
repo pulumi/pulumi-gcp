@@ -40,7 +40,7 @@ public final class BackendServiceLocalityLbPolicyPolicyArgs extends com.pulumi.r
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
      * 
      */
@@ -73,7 +73,7 @@ public final class BackendServiceLocalityLbPolicyPolicyArgs extends com.pulumi.r
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
      * 
      */
@@ -131,7 +131,7 @@ public final class BackendServiceLocalityLbPolicyPolicyArgs extends com.pulumi.r
          * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
          *   Maglev is not as stable as ring hash but has faster table lookup
          *   build times and host selection times. For more information about
-         *   Maglev, refer to https://ai.google/research/pubs/pub44824
+         *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
          *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
          * 
          * @return builder
@@ -168,7 +168,7 @@ public final class BackendServiceLocalityLbPolicyPolicyArgs extends com.pulumi.r
          * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
          *   Maglev is not as stable as ring hash but has faster table lookup
          *   build times and host selection times. For more information about
-         *   Maglev, refer to https://ai.google/research/pubs/pub44824
+         *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
          *   Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
          * 
          * @return builder

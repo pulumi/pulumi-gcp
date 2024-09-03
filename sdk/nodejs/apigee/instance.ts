@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances/create)
  * * How-to Guides
- *     * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
+ *   * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
  *
  * ## Example Usage
  *
@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  *     orgId: apigeeOrg.id,
  * });
  * ```
+ *
  * ### Apigee Instance Cidr Range
  *
  * ```typescript
@@ -82,6 +83,7 @@ import * as utilities from "../utilities";
  *     peeringCidrRange: "SLASH_22",
  * });
  * ```
+ *
  * ### Apigee Instance Ip Range
  *
  * ```typescript
@@ -116,6 +118,7 @@ import * as utilities from "../utilities";
  *     ipRange: "10.87.8.0/22",
  * });
  * ```
+ *
  * ### Apigee Instance Full
  *
  * ```typescript
@@ -267,9 +270,6 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -388,9 +388,6 @@ export interface InstanceState {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -455,9 +452,6 @@ export interface InstanceArgs {
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     *
-     *
-     * - - -
      */
     orgId: pulumi.Input<string>;
     /**

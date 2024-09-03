@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.scopes)
  * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
  *
@@ -133,9 +133,6 @@ export class Scope extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The client-provided identifier of the scope.
-     *
-     *
-     * - - -
      */
     public readonly scopeId!: pulumi.Output<string>;
     /**
@@ -249,9 +246,6 @@ export interface ScopeState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The client-provided identifier of the scope.
-     *
-     *
-     * - - -
      */
     scopeId?: pulumi.Input<string>;
     /**
@@ -295,9 +289,6 @@ export interface ScopeArgs {
     project?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the scope.
-     *
-     *
-     * - - -
      */
     scopeId: pulumi.Input<string>;
 }

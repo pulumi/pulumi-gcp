@@ -52,14 +52,12 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddress {
      * @return The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> recipients;
     /**
      * @return Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-     * ensure the value is correct. See https://cldr.unicode.org/ and
-     * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: &#34;CH&#34; for Switzerland.
+     * ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+     * &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: &#34;CH&#34; for Switzerland.
      * 
      */
     private String regionCode;
@@ -114,16 +112,14 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddress {
      * @return The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
      * 
-     * ***
-     * 
      */
     public List<String> recipients() {
         return this.recipients == null ? List.of() : this.recipients;
     }
     /**
      * @return Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-     * ensure the value is correct. See https://cldr.unicode.org/ and
-     * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: &#34;CH&#34; for Switzerland.
+     * ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+     * &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: &#34;CH&#34; for Switzerland.
      * 
      */
     public String regionCode() {

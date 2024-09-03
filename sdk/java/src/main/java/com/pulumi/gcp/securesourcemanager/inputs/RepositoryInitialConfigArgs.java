@@ -33,7 +33,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * List of gitignore template names user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     @Import(name="gitignores")
@@ -41,7 +41,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * @return List of gitignore template names user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     public Optional<Output<List<String>>> gitignores() {
@@ -50,7 +50,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * License template name user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     @Import(name="license")
@@ -58,7 +58,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * @return License template name user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     public Optional<Output<String>> license() {
@@ -67,7 +67,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * README template name.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     @Import(name="readme")
@@ -75,7 +75,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * @return README template name.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     public Optional<Output<String>> readme() {
@@ -132,7 +132,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param gitignores List of gitignore template names user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param gitignores List of gitignore template names user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param gitignores List of gitignore template names user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param license License template name user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param license License template name user can choose from.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param readme README template name.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class RepositoryInitialConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param readme README template name.
-         * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+         * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
          * 
          * @return builder
          * 

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getSettings)
  * * How-to Guides
- *     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
+ *   * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
  * 
  * ## Example Usage
  * 
@@ -125,16 +125,12 @@ public class FolderSettings extends com.pulumi.resources.CustomResource {
     /**
      * The folder for which to retrieve settings.
      * 
-     * ***
-     * 
      */
     @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
      * @return The folder for which to retrieve settings.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {

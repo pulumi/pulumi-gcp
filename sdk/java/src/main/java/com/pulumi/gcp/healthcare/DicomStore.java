@@ -20,17 +20,15 @@ import javax.annotation.Nullable;
 
 /**
  * A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
- * (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
+ * (&lt;https://www.dicomstandard.org/about/&gt;) standard for Healthcare information exchange
  * 
  * To get more information about DicomStore, see:
  * 
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores)
  * * How-to Guides
- *     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+ *   * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
  * 
- * ## Example Usage
- * 
- * ### Healthcare Dicom Store Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -83,7 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Healthcare Dicom Store Bq Stream
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -193,8 +191,6 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
@@ -202,8 +198,6 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {
@@ -226,9 +220,9 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
     /**
      * User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -243,9 +237,9 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
     /**
      * @return User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.

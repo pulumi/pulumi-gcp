@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
  * * How-to Guides
- *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     title: "Org Access Policy",
  * });
  * ```
+ *
  * ### Access Context Manager Access Policy Scoped
  *
  * ```typescript
@@ -114,9 +115,6 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly scopes!: pulumi.Output<string | undefined>;
     /**
      * Human readable title. Does not affect behavior.
-     *
-     *
-     * - - -
      */
     public readonly title!: pulumi.Output<string>;
     /**
@@ -187,9 +185,6 @@ export interface AccessPolicyState {
     scopes?: pulumi.Input<string>;
     /**
      * Human readable title. Does not affect behavior.
-     *
-     *
-     * - - -
      */
     title?: pulumi.Input<string>;
     /**
@@ -214,9 +209,6 @@ export interface AccessPolicyArgs {
     scopes?: pulumi.Input<string>;
     /**
      * Human readable title. Does not affect behavior.
-     *
-     *
-     * - - -
      */
     title: pulumi.Input<string>;
 }

@@ -5,49 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Parallelstore Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network = new gcp.compute.Network("network", {
- *     name: "network",
- *     autoCreateSubnetworks: true,
- *     mtu: 8896,
- * });
- * // Create an IP address
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: "address",
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 24,
- *     network: network.id,
- * });
- * // Create a private connection
- * const _default = new gcp.servicenetworking.Connection("default", {
- *     network: network.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * const instance = new gcp.parallelstore.Instance("instance", {
- *     instanceId: "instance",
- *     location: "us-central1-a",
- *     description: "test instance",
- *     capacityGib: "12000",
- *     network: network.name,
- *     fileStripeLevel: "FILE_STRIPE_LEVEL_MIN",
- *     directoryStripeLevel: "DIRECTORY_STRIPE_LEVEL_MIN",
- *     labels: {
- *         test: "value",
- *     },
- * }, {
- *     dependsOn: [_default],
- * });
- * ```
- *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:
@@ -161,9 +118,6 @@ export class Instance extends pulumi.CustomResource {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -178,13 +132,13 @@ export class Instance extends pulumi.CustomResource {
      * * Label values must be between 0 and 63 characters long and must conform
      * to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     * See https://goo.gl/xmQnxf for more information on and examples of labels.
+     * See <https://goo.gl/xmQnxf> for more information on and examples of labels.
      * If you plan to use labels in your own code, please note that additional
      * characters may be allowed in the future. Therefore, you are advised to use
      * an internal label representation, such as JSON, which doesn't rely upon
      * specific characters being disallowed.  For example, representing labels
-     * as the string:  name + "_" + value  would prove problematic if we were to
-     * allow "_" in a future release.
+     * as the string:  name + "*" + value  would prove problematic if we were to
+     * allow "*" in a future release.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -372,9 +326,6 @@ export interface InstanceState {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -389,13 +340,13 @@ export interface InstanceState {
      * * Label values must be between 0 and 63 characters long and must conform
      * to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     * See https://goo.gl/xmQnxf for more information on and examples of labels.
+     * See <https://goo.gl/xmQnxf> for more information on and examples of labels.
      * If you plan to use labels in your own code, please note that additional
      * characters may be allowed in the future. Therefore, you are advised to use
      * an internal label representation, such as JSON, which doesn't rely upon
      * specific characters being disallowed.  For example, representing labels
-     * as the string:  name + "_" + value  would prove problematic if we were to
-     * allow "_" in a future release.
+     * as the string:  name + "*" + value  would prove problematic if we were to
+     * allow "*" in a future release.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -490,9 +441,6 @@ export interface InstanceArgs {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**
@@ -507,13 +455,13 @@ export interface InstanceArgs {
      * * Label values must be between 0 and 63 characters long and must conform
      * to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     * See https://goo.gl/xmQnxf for more information on and examples of labels.
+     * See <https://goo.gl/xmQnxf> for more information on and examples of labels.
      * If you plan to use labels in your own code, please note that additional
      * characters may be allowed in the future. Therefore, you are advised to use
      * an internal label representation, such as JSON, which doesn't rely upon
      * specific characters being disallowed.  For example, representing labels
-     * as the string:  name + "_" + value  would prove problematic if we were to
-     * allow "_" in a future release.
+     * as the string:  name + "*" + value  would prove problematic if we were to
+     * allow "*" in a future release.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */

@@ -41,7 +41,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
      * 
      */
     @Import(name="blacklistPatterns")
@@ -49,7 +49,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The blacklist URL patterns as described in
-     * https://cloud.google.com/security-scanner/docs/excluded-urls
+     * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
      * 
      */
     public Optional<Output<List<String>>> blacklistPatterns() {
@@ -144,16 +144,12 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * The starting URLs from which the scanner finds site pages.
      * 
-     * ***
-     * 
      */
     @Import(name="startingUrls", required=true)
     private Output<List<String>> startingUrls;
 
     /**
      * @return The starting URLs from which the scanner finds site pages.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> startingUrls() {
@@ -256,7 +252,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param blacklistPatterns The blacklist URL patterns as described in
-         * https://cloud.google.com/security-scanner/docs/excluded-urls
+         * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
          * 
          * @return builder
          * 
@@ -268,7 +264,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param blacklistPatterns The blacklist URL patterns as described in
-         * https://cloud.google.com/security-scanner/docs/excluded-urls
+         * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
          * 
          * @return builder
          * 
@@ -279,7 +275,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param blacklistPatterns The blacklist URL patterns as described in
-         * https://cloud.google.com/security-scanner/docs/excluded-urls
+         * &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
          * 
          * @return builder
          * 
@@ -406,8 +402,6 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param startingUrls The starting URLs from which the scanner finds site pages.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -419,8 +413,6 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param startingUrls The starting URLs from which the scanner finds site pages.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -430,8 +422,6 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param startingUrls The starting URLs from which the scanner finds site pages.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -140,8 +140,6 @@ type Environment struct {
 	NodeConfig EnvironmentNodeConfigOutput `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
@@ -210,8 +208,6 @@ type environmentState struct {
 	NodeConfig *EnvironmentNodeConfig `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId *string `pulumi:"orgId"`
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
@@ -248,8 +244,6 @@ type EnvironmentState struct {
 	NodeConfig EnvironmentNodeConfigPtrInput
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringPtrInput
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
@@ -290,8 +284,6 @@ type environmentArgs struct {
 	NodeConfig *EnvironmentNodeConfig `pulumi:"nodeConfig"`
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId string `pulumi:"orgId"`
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
@@ -329,8 +321,6 @@ type EnvironmentArgs struct {
 	NodeConfig EnvironmentNodeConfigPtrInput
 	// The Apigee Organization associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}`.
-	//
-	// ***
 	OrgId pulumi.StringInput
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
@@ -474,8 +464,6 @@ func (o EnvironmentOutput) NodeConfig() EnvironmentNodeConfigOutput {
 
 // The Apigee Organization associated with the Apigee environment,
 // in the format `organizations/{{org_name}}`.
-//
-// ***
 func (o EnvironmentOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

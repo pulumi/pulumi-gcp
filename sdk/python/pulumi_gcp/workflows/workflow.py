@@ -566,11 +566,9 @@ class Workflow(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/workflows/docs/reference/rest/v1/projects.locations.workflows)
         * How-to Guides
-            * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
+          * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 
-        ## Example Usage
-
-        ### Workflow Basic
+        ## 
 
         ```python
         import pulumi
@@ -666,11 +664,9 @@ class Workflow(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/workflows/docs/reference/rest/v1/projects.locations.workflows)
         * How-to Guides
-            * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
+          * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 
-        ## Example Usage
-
-        ### Workflow Basic
+        ## 
 
         ```python
         import pulumi

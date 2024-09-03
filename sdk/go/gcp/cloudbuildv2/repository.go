@@ -136,6 +136,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuildv2 Repository Github Doc
 //
 // ```go
@@ -263,8 +264,6 @@ type Repository struct {
 	// Name of the repository.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The connection for the resource
-	//
-	// ***
 	ParentConnection pulumi.StringOutput `pulumi:"parentConnection"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -325,8 +324,6 @@ type repositoryState struct {
 	// Name of the repository.
 	Name *string `pulumi:"name"`
 	// The connection for the resource
-	//
-	// ***
 	ParentConnection *string `pulumi:"parentConnection"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -352,8 +349,6 @@ type RepositoryState struct {
 	// Name of the repository.
 	Name pulumi.StringPtrInput
 	// The connection for the resource
-	//
-	// ***
 	ParentConnection pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -378,8 +373,6 @@ type repositoryArgs struct {
 	// Name of the repository.
 	Name *string `pulumi:"name"`
 	// The connection for the resource
-	//
-	// ***
 	ParentConnection string `pulumi:"parentConnection"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -399,8 +392,6 @@ type RepositoryArgs struct {
 	// Name of the repository.
 	Name pulumi.StringPtrInput
 	// The connection for the resource
-	//
-	// ***
 	ParentConnection pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -528,8 +519,6 @@ func (o RepositoryOutput) Name() pulumi.StringOutput {
 }
 
 // The connection for the resource
-//
-// ***
 func (o RepositoryOutput) ParentConnection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.ParentConnection }).(pulumi.StringOutput)
 }

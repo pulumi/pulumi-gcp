@@ -35,9 +35,6 @@ class NodeGroupArgs:
         """
         The set of arguments for constructing a NodeGroup resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
-               
-               
-               - - -
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
@@ -85,9 +82,6 @@ class NodeGroupArgs:
     def node_template(self) -> pulumi.Input[str]:
         """
         The URL of the node template to which this node group belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "node_template")
 
@@ -260,9 +254,6 @@ class _NodeGroupState:
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -408,9 +399,6 @@ class _NodeGroupState:
     def node_template(self) -> Optional[pulumi.Input[str]]:
         """
         The URL of the node template to which this node group belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "node_template")
 
@@ -505,16 +493,14 @@ class NodeGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
         * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+          * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         > **Warning:** Due to limitations of the API, this provider cannot update the
         number of nodes in a node group and changes to node group size either
         through provider config or through external changes will cause
         the provider to delete and recreate the node group.
 
-        ## Example Usage
-
-        ### Node Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -531,7 +517,7 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
-        ### Node Group Maintenance Interval
+        ## 
 
         ```python
         import pulumi
@@ -549,7 +535,7 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
-        ### Node Group Autoscaling Policy
+        ## 
 
         ```python
         import pulumi
@@ -575,6 +561,9 @@ class NodeGroup(pulumi.CustomResource):
                 "max_nodes": 10,
             })
         ```
+
+        ## Example Usage
+
         ### Node Group Share Settings
 
         ```python
@@ -651,9 +640,6 @@ class NodeGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['NodeGroupShareSettingsArgs', 'NodeGroupShareSettingsArgsDict']] share_settings: Share settings for the node group.
@@ -673,16 +659,14 @@ class NodeGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
         * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+          * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         > **Warning:** Due to limitations of the API, this provider cannot update the
         number of nodes in a node group and changes to node group size either
         through provider config or through external changes will cause
         the provider to delete and recreate the node group.
 
-        ## Example Usage
-
-        ### Node Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -699,7 +683,7 @@ class NodeGroup(pulumi.CustomResource):
             initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
-        ### Node Group Maintenance Interval
+        ## 
 
         ```python
         import pulumi
@@ -717,7 +701,7 @@ class NodeGroup(pulumi.CustomResource):
             node_template=soletenant_tmpl.id,
             maintenance_interval="RECURRENT")
         ```
-        ### Node Group Autoscaling Policy
+        ## 
 
         ```python
         import pulumi
@@ -743,6 +727,9 @@ class NodeGroup(pulumi.CustomResource):
                 "max_nodes": 10,
             })
         ```
+
+        ## Example Usage
+
         ### Node Group Share Settings
 
         ```python
@@ -900,9 +887,6 @@ class NodeGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1007,9 +991,6 @@ class NodeGroup(pulumi.CustomResource):
     def node_template(self) -> pulumi.Output[str]:
         """
         The URL of the node template to which this node group belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "node_template")
 

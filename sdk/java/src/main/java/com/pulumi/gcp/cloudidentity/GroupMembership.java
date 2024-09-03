@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+ *   * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project` and set `user_project_override` to true
@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloud Identity Group Membership User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/)
  * 
  * ## Example Usage
  * 
@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -111,6 +112,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Cmek Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -187,6 +189,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Default Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -224,6 +227,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -266,6 +270,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Cmek Database In Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -486,9 +491,9 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. The keyPrefix for this database.
-     * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
+     * This keyPrefix is used, in combination with the project id (&#34;&lt;del&gt;&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v&lt;/del&gt;foo).
      * 
      */
     @Export(name="keyPrefix", refs={String.class}, tree="[0]")
@@ -496,9 +501,9 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. The keyPrefix for this database.
-     * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
+     * This keyPrefix is used, in combination with the project id (&#34;&lt;del&gt;&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v&lt;/del&gt;foo).
      * 
      */
     public Output<String> keyPrefix() {
@@ -506,7 +511,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
      * 
      */
     @Export(name="locationId", refs={String.class}, tree="[0]")
@@ -514,7 +519,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
      * 
      */
     public Output<String> locationId() {
@@ -588,11 +593,9 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -600,11 +603,9 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {

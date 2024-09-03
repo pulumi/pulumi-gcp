@@ -28,11 +28,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
  * 
- * ## Example Usage
- * 
- * ### Ml Model Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -68,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Ml Model Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -202,16 +200,12 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
     /**
      * The name specified for the model.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name specified for the model.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

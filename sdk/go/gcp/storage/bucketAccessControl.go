@@ -35,9 +35,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 //
-// ## Example Usage
-//
-// ### Storage Bucket Access Control Public Bucket
+// ##
 //
 // ```go
 // package main
@@ -102,13 +100,11 @@ type BucketAccessControl struct {
 	// allUsers
 	// allAuthenticatedUsers
 	// Examples:
-	// The user liz@example.com would be user-liz@example.com.
-	// The group example@googlegroups.com would be
-	// group-example@googlegroups.com.
+	// The user <liz@example.com> would be <user-liz@example.com>.
+	// The group <example@googlegroups.com> would be
+	// <group-example@googlegroups.com>.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
-	//
-	// ***
 	Entity pulumi.StringOutput `pulumi:"entity"`
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -167,13 +163,11 @@ type bucketAccessControlState struct {
 	// allUsers
 	// allAuthenticatedUsers
 	// Examples:
-	// The user liz@example.com would be user-liz@example.com.
-	// The group example@googlegroups.com would be
-	// group-example@googlegroups.com.
+	// The user <liz@example.com> would be <user-liz@example.com>.
+	// The group <example@googlegroups.com> would be
+	// <group-example@googlegroups.com>.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
-	//
-	// ***
 	Entity *string `pulumi:"entity"`
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -197,13 +191,11 @@ type BucketAccessControlState struct {
 	// allUsers
 	// allAuthenticatedUsers
 	// Examples:
-	// The user liz@example.com would be user-liz@example.com.
-	// The group example@googlegroups.com would be
-	// group-example@googlegroups.com.
+	// The user <liz@example.com> would be <user-liz@example.com>.
+	// The group <example@googlegroups.com> would be
+	// <group-example@googlegroups.com>.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
-	//
-	// ***
 	Entity pulumi.StringPtrInput
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -227,13 +219,11 @@ type bucketAccessControlArgs struct {
 	// allUsers
 	// allAuthenticatedUsers
 	// Examples:
-	// The user liz@example.com would be user-liz@example.com.
-	// The group example@googlegroups.com would be
-	// group-example@googlegroups.com.
+	// The user <liz@example.com> would be <user-liz@example.com>.
+	// The group <example@googlegroups.com> would be
+	// <group-example@googlegroups.com>.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
-	//
-	// ***
 	Entity string `pulumi:"entity"`
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -254,13 +244,11 @@ type BucketAccessControlArgs struct {
 	// allUsers
 	// allAuthenticatedUsers
 	// Examples:
-	// The user liz@example.com would be user-liz@example.com.
-	// The group example@googlegroups.com would be
-	// group-example@googlegroups.com.
+	// The user <liz@example.com> would be <user-liz@example.com>.
+	// The group <example@googlegroups.com> would be
+	// <group-example@googlegroups.com>.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
-	//
-	// ***
 	Entity pulumi.StringInput
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -379,13 +367,11 @@ func (o BucketAccessControlOutput) Email() pulumi.StringOutput {
 // allUsers
 // allAuthenticatedUsers
 // Examples:
-// The user liz@example.com would be user-liz@example.com.
-// The group example@googlegroups.com would be
-// group-example@googlegroups.com.
+// The user <liz@example.com> would be <user-liz@example.com>.
+// The group <example@googlegroups.com> would be
+// <group-example@googlegroups.com>.
 // To refer to all members of the Google Apps for Business domain
 // example.com, the entity would be domain-example.com.
-//
-// ***
 func (o BucketAccessControlOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Entity }).(pulumi.StringOutput)
 }

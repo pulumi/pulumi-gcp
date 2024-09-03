@@ -32,8 +32,6 @@ public final class AwsClusterNetworking {
     /**
      * @return The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
      * 
-     * ***
-     * 
      */
     private String vpcId;
 
@@ -61,8 +59,6 @@ public final class AwsClusterNetworking {
     }
     /**
      * @return The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-     * 
-     * ***
      * 
      */
     public String vpcId() {

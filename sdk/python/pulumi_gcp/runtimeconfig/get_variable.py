@@ -121,8 +121,6 @@ def get_variable(name: Optional[str] = None,
 
     :param str name: The name of the Runtime Configurator configuration.
     :param str parent: The name of the RuntimeConfig resource containing this variable.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -162,8 +160,6 @@ def get_variable_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the Runtime Configurator configuration.
     :param str parent: The name of the RuntimeConfig resource containing this variable.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

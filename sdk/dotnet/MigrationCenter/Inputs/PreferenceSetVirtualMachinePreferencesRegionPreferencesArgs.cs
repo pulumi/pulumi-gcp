@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.MigrationCenter.Inputs
         private InputList<string>? _preferredRegions;
 
         /// <summary>
-        /// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        /// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
         /// </summary>
         public InputList<string> PreferredRegions
         {

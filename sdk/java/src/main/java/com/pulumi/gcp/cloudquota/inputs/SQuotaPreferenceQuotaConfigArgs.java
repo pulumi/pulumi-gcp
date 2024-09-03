@@ -18,7 +18,7 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
     public static final SQuotaPreferenceQuotaConfigArgs Empty = new SQuotaPreferenceQuotaConfigArgs();
 
     /**
-     * The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+     * The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
      * An object containing a list of &#34;key: value&#34; pairs. Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
@@ -26,7 +26,7 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+     * @return The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
      * An object containing a list of &#34;key: value&#34; pairs. Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
@@ -70,8 +70,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
      * (Output)
      * The origin of the quota preference request.
      * 
-     * ***
-     * 
      */
     @Import(name="requestOrigin")
     private @Nullable Output<String> requestOrigin;
@@ -79,8 +77,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
     /**
      * @return (Output)
      * The origin of the quota preference request.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> requestOrigin() {
@@ -151,7 +147,7 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param annotations The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+         * @param annotations The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
          * An object containing a list of &#34;key: value&#34; pairs. Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
          * 
          * @return builder
@@ -163,7 +159,7 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param annotations The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+         * @param annotations The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
          * An object containing a list of &#34;key: value&#34; pairs. Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
          * 
          * @return builder
@@ -221,8 +217,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
          * @param requestOrigin (Output)
          * The origin of the quota preference request.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -234,8 +228,6 @@ public final class SQuotaPreferenceQuotaConfigArgs extends com.pulumi.resources.
         /**
          * @param requestOrigin (Output)
          * The origin of the quota preference request.
-         * 
-         * ***
          * 
          * @return builder
          * 

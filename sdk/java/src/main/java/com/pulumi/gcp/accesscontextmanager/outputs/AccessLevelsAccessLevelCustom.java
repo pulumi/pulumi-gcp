@@ -13,7 +13,7 @@ public final class AccessLevelsAccessLevelCustom {
     /**
      * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
      * This page details the objects and attributes that are used to the build the CEL expressions for
-     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+     * custom access levels - &lt;https://cloud.google.com/access-context-manager/docs/custom-access-level-spec&gt;.
      * Structure is documented below.
      * 
      */
@@ -23,7 +23,7 @@ public final class AccessLevelsAccessLevelCustom {
     /**
      * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
      * This page details the objects and attributes that are used to the build the CEL expressions for
-     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+     * custom access levels - &lt;https://cloud.google.com/access-context-manager/docs/custom-access-level-spec&gt;.
      * Structure is documented below.
      * 
      */

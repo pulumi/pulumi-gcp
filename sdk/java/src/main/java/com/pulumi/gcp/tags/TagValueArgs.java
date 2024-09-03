@@ -50,8 +50,6 @@ public final class TagValueArgs extends com.pulumi.resources.ResourceArgs {
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
-     * ***
-     * 
      */
     @Import(name="shortName", required=true)
     private Output<String> shortName;
@@ -59,8 +57,6 @@ public final class TagValueArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * ***
      * 
      */
     public Output<String> shortName() {
@@ -139,8 +135,6 @@ public final class TagValueArgs extends com.pulumi.resources.ResourceArgs {
          * @param shortName Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
          * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -152,8 +146,6 @@ public final class TagValueArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param shortName Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
          * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-         * 
-         * ***
          * 
          * @return builder
          * 

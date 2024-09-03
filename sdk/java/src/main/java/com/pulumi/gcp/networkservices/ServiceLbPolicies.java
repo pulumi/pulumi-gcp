@@ -19,100 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Network Services Service Lb Policies Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networkservices.ServiceLbPolicies;
- * import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new ServiceLbPolicies("default", ServiceLbPoliciesArgs.builder()
- *             .name("my-lb-policy")
- *             .location("global")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Services Service Lb Policies Advanced
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networkservices.ServiceLbPolicies;
- * import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
- * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesAutoCapacityDrainArgs;
- * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesFailoverConfigArgs;
- * import com.pulumi.gcp.compute.BackendService;
- * import com.pulumi.gcp.compute.BackendServiceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new ServiceLbPolicies("default", ServiceLbPoliciesArgs.builder()
- *             .name("my-lb-policy")
- *             .location("global")
- *             .description("my description")
- *             .loadBalancingAlgorithm("SPRAY_TO_REGION")
- *             .autoCapacityDrain(ServiceLbPoliciesAutoCapacityDrainArgs.builder()
- *                 .enable(true)
- *                 .build())
- *             .failoverConfig(ServiceLbPoliciesFailoverConfigArgs.builder()
- *                 .failoverHealthThreshold(70)
- *                 .build())
- *             .labels(Map.of("foo", "bar"))
- *             .build());
- * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
- *             .name("my-lb-backend")
- *             .description("my description")
- *             .loadBalancingScheme("INTERNAL_SELF_MANAGED")
- *             .protocol("HTTP")
- *             .serviceLbPolicy(default_.id().applyValue(id -> String.format("//networkservices.googleapis.com/%s", id)))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ServiceLbPolicies can be imported using any of these accepted formats:
@@ -251,16 +157,12 @@ public class ServiceLbPolicies extends com.pulumi.resources.CustomResource {
     /**
      * The location of the service lb policy.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the service lb policy.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

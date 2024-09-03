@@ -34,16 +34,12 @@ public final class InstanceGroupMembershipArgs extends com.pulumi.resources.Reso
     /**
      * Represents an Instance Group resource name that the instance belongs to.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceGroup", required=true)
     private Output<String> instanceGroup;
 
     /**
      * @return Represents an Instance Group resource name that the instance belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroup() {
@@ -133,8 +129,6 @@ public final class InstanceGroupMembershipArgs extends com.pulumi.resources.Reso
         /**
          * @param instanceGroup Represents an Instance Group resource name that the instance belongs to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -145,8 +139,6 @@ public final class InstanceGroupMembershipArgs extends com.pulumi.resources.Reso
 
         /**
          * @param instanceGroup Represents an Instance Group resource name that the instance belongs to.
-         * 
-         * ***
          * 
          * @return builder
          * 

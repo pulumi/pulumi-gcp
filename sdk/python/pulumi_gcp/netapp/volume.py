@@ -63,9 +63,6 @@ class VolumeArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['VolumeRestoreParametersArgs'] restore_parameters: Used to create this volume from a snapshot (= cloning) or an backup.
@@ -264,9 +261,6 @@ class VolumeArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the volume. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -446,9 +440,6 @@ class _VolumeState:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeMountOptionArgs']]] mount_options: Reports mount instructions for this volume.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -760,9 +751,6 @@ class _VolumeState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the volume. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1058,12 +1046,10 @@ class Volume(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
-            * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+          * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 
-        ## Example Usage
-
-        ### Netapp Volume Basic
+        ## 
 
         ```python
         import pulumi
@@ -1128,9 +1114,6 @@ class Volume(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
@@ -1169,12 +1152,10 @@ class Volume(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
-            * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+          * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 
-        ## Example Usage
-
-        ### Netapp Volume Basic
+        ## 
 
         ```python
         import pulumi
@@ -1393,9 +1374,6 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]] mount_options: Reports mount instructions for this volume.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1611,9 +1589,6 @@ class Volume(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the volume. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

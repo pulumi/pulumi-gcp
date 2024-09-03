@@ -35,9 +35,6 @@ class PreventionStoredInfoTypeArgs:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] description: A description of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -73,9 +70,6 @@ class PreventionStoredInfoTypeArgs:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -186,9 +180,6 @@ class _PreventionStoredInfoTypeState:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -283,9 +274,6 @@ class _PreventionStoredInfoTypeState:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -341,7 +329,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.storedInfoTypes)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
+          * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 
         ## Example Usage
 
@@ -360,6 +348,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 "group_indexes": [2],
             })
         ```
+
         ### Dlp Stored Info Type Dictionary
 
         ```python
@@ -379,6 +368,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type Large Custom Dictionary
 
         ```python
@@ -410,6 +400,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type With Id
 
         ```python
@@ -458,9 +449,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -480,7 +468,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.storedInfoTypes)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
+          * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 
         ## Example Usage
 
@@ -499,6 +487,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 "group_indexes": [2],
             })
         ```
+
         ### Dlp Stored Info Type Dictionary
 
         ```python
@@ -518,6 +507,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type Large Custom Dictionary
 
         ```python
@@ -549,6 +539,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Stored Info Type With Id
 
         ```python
@@ -662,9 +653,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[Union['PreventionStoredInfoTypeRegexArgs', 'PreventionStoredInfoTypeRegexArgsDict']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -736,9 +724,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

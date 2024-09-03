@@ -50,16 +50,12 @@ public final class OrganizationSettingsArgs extends com.pulumi.resources.Resourc
     /**
      * The organization for which to retrieve or configure settings.
      * 
-     * ***
-     * 
      */
     @Import(name="organization", required=true)
     private Output<String> organization;
 
     /**
      * @return The organization for which to retrieve or configure settings.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {
@@ -153,8 +149,6 @@ public final class OrganizationSettingsArgs extends com.pulumi.resources.Resourc
         /**
          * @param organization The organization for which to retrieve or configure settings.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -165,8 +159,6 @@ public final class OrganizationSettingsArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param organization The organization for which to retrieve or configure settings.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -25,9 +25,7 @@ import (
 // (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
 // It is recommended to not set this field (or set it to true) until you're ready to destroy.
 //
-// ## Example Usage
-//
-// ### Privateca Certificate Authority Basic
+// ##
 //
 // ```go
 // package main
@@ -97,7 +95,7 @@ import (
 //	}
 //
 // ```
-// ### Privateca Certificate Authority Subordinate
+// ##
 //
 // ```go
 // package main
@@ -212,6 +210,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Privateca Certificate Authority Byo Key
 //
 // ```go
@@ -320,7 +321,7 @@ import (
 //	}
 //
 // ```
-// ### Privateca Certificate Authority Custom Ski
+// ##
 //
 // ```go
 // package main

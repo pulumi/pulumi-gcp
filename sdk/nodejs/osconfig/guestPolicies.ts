@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
  *
- * ## Example Usage
- *
- * ### Os Config Guest Policies Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +59,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Os Config Guest Policies Packages
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -123,7 +121,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Os Config Guest Policies Recipes
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

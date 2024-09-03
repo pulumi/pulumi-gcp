@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
 //
-// ## Example Usage
-//
-// ### Network Connectivity Policy Based Route Basic
+// ##
 //
 // ```go
 // package main
@@ -60,7 +58,7 @@ import (
 //	}
 //
 // ```
-// ### Network Connectivity Policy Based Route Full
+// ##
 //
 // ```go
 // package main
@@ -82,9 +80,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// This example substitutes an arbitrary internal IP for an internal network
-//			// load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
-//			// to set one up.
 //			ilb, err := compute.NewGlobalAddress(ctx, "ilb", &compute.GlobalAddressArgs{
 //				Name: pulumi.String("my-ilb"),
 //			})

@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+ *   * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
  *
- * ## Example Usage
- *
- * ### Network Management Connectivity Test Instances
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +68,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Management Connectivity Test Addresses
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -86,7 +86,7 @@ export class NetworkPeering extends pulumi.CustomResource {
      */
     public readonly exportCustomRoutes!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
      */
     public readonly exportSubnetRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
     /**
@@ -94,7 +94,7 @@ export class NetworkPeering extends pulumi.CustomResource {
      */
     public readonly importCustomRoutes!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
      */
     public readonly importSubnetRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
     /**
@@ -180,7 +180,7 @@ export interface NetworkPeeringState {
      */
     exportCustomRoutes?: pulumi.Input<boolean>;
     /**
-     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
      */
     exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
@@ -188,7 +188,7 @@ export interface NetworkPeeringState {
      */
     importCustomRoutes?: pulumi.Input<boolean>;
     /**
-     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
      */
     importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
@@ -228,7 +228,7 @@ export interface NetworkPeeringArgs {
      */
     exportCustomRoutes?: pulumi.Input<boolean>;
     /**
-     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
      */
     exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
@@ -236,7 +236,7 @@ export interface NetworkPeeringArgs {
      */
     importCustomRoutes?: pulumi.Input<boolean>;
     /**
-     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
      */
     importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**

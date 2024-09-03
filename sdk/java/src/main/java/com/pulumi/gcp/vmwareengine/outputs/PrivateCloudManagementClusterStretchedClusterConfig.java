@@ -19,8 +19,6 @@ public final class PrivateCloudManagementClusterStretchedClusterConfig {
     /**
      * @return Additional zone for a higher level of availability and load balancing.
      * 
-     * ***
-     * 
      */
     private @Nullable String secondaryLocation;
 
@@ -34,8 +32,6 @@ public final class PrivateCloudManagementClusterStretchedClusterConfig {
     }
     /**
      * @return Additional zone for a higher level of availability and load balancing.
-     * 
-     * ***
      * 
      */
     public Optional<String> secondaryLocation() {

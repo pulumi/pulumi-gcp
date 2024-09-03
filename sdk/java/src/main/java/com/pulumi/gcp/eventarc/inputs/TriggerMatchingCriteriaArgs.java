@@ -47,18 +47,14 @@ public final class TriggerMatchingCriteriaArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-     * 
-     * ***
+     * Required. The value for the attribute. See &lt;https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud&gt; for available values.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-     * 
-     * ***
+     * @return Required. The value for the attribute. See &lt;https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud&gt; for available values.
      * 
      */
     public Output<String> value() {
@@ -134,9 +130,7 @@ public final class TriggerMatchingCriteriaArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-         * 
-         * ***
+         * @param value Required. The value for the attribute. See &lt;https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud&gt; for available values.
          * 
          * @return builder
          * 
@@ -147,9 +141,7 @@ public final class TriggerMatchingCriteriaArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-         * 
-         * ***
+         * @param value Required. The value for the attribute. See &lt;https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud&gt; for available values.
          * 
          * @return builder
          * 

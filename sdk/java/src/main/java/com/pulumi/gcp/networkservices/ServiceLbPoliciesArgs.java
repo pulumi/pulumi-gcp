@@ -107,16 +107,12 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
     /**
      * The location of the service lb policy.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the service lb policy.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -304,8 +300,6 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param location The location of the service lb policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -316,8 +310,6 @@ public final class ServiceLbPoliciesArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The location of the service lb policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

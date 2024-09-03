@@ -16,13 +16,11 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
     /// * How-to Guides
-    ///     * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
-    ///     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-    ///     * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+    ///   * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+    ///   * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+    ///   * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Privateca Template Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -213,9 +211,6 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -346,9 +341,6 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -445,9 +437,6 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+    ///   * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Redis Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,7 +36,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// ### Redis Instance Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -98,7 +96,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// ### Redis Instance Full With Persistence Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -124,6 +122,9 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Redis Instance Private Service
     /// 
     /// ```csharp
@@ -187,7 +188,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// ### Redis Instance Mrr
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -232,6 +233,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// 
     /// ### Redis Instance Cmek
     /// 
     /// ```csharp
@@ -444,9 +446,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("memorySizeGb")]
         public Output<int> MemorySizeGb { get; private set; } = null!;
@@ -528,9 +527,9 @@ namespace Pulumi.Gcp.Redis
         public Output<string> ReadReplicasMode { get; private set; } = null!;
 
         /// <summary>
-        /// Redis configuration parameters, according to http://redis.io/topics/config.
+        /// Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
         /// Please check Memorystore documentation for the list of supported parameters:
-        /// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        /// &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
         /// </summary>
         [Output("redisConfigs")]
         public Output<ImmutableDictionary<string, string>?> RedisConfigs { get; private set; } = null!;
@@ -740,9 +739,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("memorySizeGb", required: true)]
         public Input<int> MemorySizeGb { get; set; } = null!;
@@ -783,9 +779,9 @@ namespace Pulumi.Gcp.Redis
         private InputMap<string>? _redisConfigs;
 
         /// <summary>
-        /// Redis configuration parameters, according to http://redis.io/topics/config.
+        /// Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
         /// Please check Memorystore documentation for the list of supported parameters:
-        /// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        /// &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
         /// </summary>
         public InputMap<string> RedisConfigs
         {
@@ -1016,9 +1012,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("memorySizeGb")]
         public Input<int>? MemorySizeGb { get; set; }
@@ -1119,9 +1112,9 @@ namespace Pulumi.Gcp.Redis
         private InputMap<string>? _redisConfigs;
 
         /// <summary>
-        /// Redis configuration parameters, according to http://redis.io/topics/config.
+        /// Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
         /// Please check Memorystore documentation for the list of supported parameters:
-        /// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        /// &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
         /// </summary>
         public InputMap<string> RedisConfigs
         {

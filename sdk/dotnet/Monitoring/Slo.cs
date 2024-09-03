@@ -22,12 +22,10 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
     /// * How-to Guides
-    ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-    ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+    ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+    ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Monitoring Slo Appengine
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -65,6 +63,9 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Monitoring Slo Request Based
     /// 
     /// ```csharp
@@ -103,7 +104,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Monitoring Slo Windows Based Good Bad Metric Filter
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,7 +144,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Monitoring Slo Windows Based Metric Mean
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -190,7 +191,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Monitoring Slo Windows Based Metric Sum
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -237,7 +238,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Monitoring Slo Windows Based Ratio Threshold
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -377,9 +378,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// ID of the service to which this SLO belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -522,9 +520,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// ID of the service to which this SLO belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -642,9 +637,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// ID of the service to which this SLO belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

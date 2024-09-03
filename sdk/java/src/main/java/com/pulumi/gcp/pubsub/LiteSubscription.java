@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
  * * How-to Guides
- *     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
+ *   * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
  * 
- * ## Example Usage
- * 
- * ### Pubsub Lite Subscription Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -143,16 +141,12 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
     /**
      * Name of the subscription.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the subscription.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

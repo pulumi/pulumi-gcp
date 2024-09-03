@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
  * * How-to Guides
- *     * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
- *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+ *   * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+ *   * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
  * 
  * ## Example Usage
  * 
@@ -266,16 +266,12 @@ public class AuthConfig extends com.pulumi.resources.CustomResource {
     /**
      * Location in which client needs to be provisioned.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Location in which client needs to be provisioned.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

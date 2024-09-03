@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic_fir_sec_rule
+ * ### basic_fir_sec_rule
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code

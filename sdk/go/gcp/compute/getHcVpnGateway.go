@@ -14,6 +14,30 @@ import (
 // Get a HA VPN Gateway within GCE from its name.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetHcVpnGateway(ctx, &compute.GetHcVpnGatewayArgs{
+//				Name: "foobar",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetHcVpnGateway(ctx *pulumi.Context, args *GetHcVpnGatewayArgs, opts ...pulumi.InvokeOption) (*GetHcVpnGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHcVpnGatewayResult
@@ -27,8 +51,6 @@ func GetHcVpnGateway(ctx *pulumi.Context, args *GetHcVpnGatewayArgs, opts ...pul
 // A collection of arguments for invoking getHcVpnGateway.
 type GetHcVpnGatewayArgs struct {
 	// The name of the forwarding rule.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -69,8 +91,6 @@ func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, 
 // A collection of arguments for invoking getHcVpnGateway.
 type GetHcVpnGatewayOutputArgs struct {
 	// The name of the forwarding rule.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

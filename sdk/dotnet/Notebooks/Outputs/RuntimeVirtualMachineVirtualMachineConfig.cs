@@ -35,9 +35,8 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         public readonly Outputs.RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig? EncryptionConfig;
         /// <summary>
         /// (Output)
-        /// The Compute Engine guest attributes. (see [Project and instance
-        /// guest attributes](https://cloud.google.com/compute/docs/
-        /// storing-retrieving-metadata#guest_attributes)).
+        /// The Compute Engine guest attributes. (see Project and instance
+        /// guest attributes).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? GuestAttributes;
         /// <summary>
@@ -52,7 +51,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// <summary>
         /// The labels to associate with this runtime. Label **keys** must
         /// contain 1 to 63 characters, and must conform to [RFC 1035]
-        /// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        /// (&lt;https://www.ietf.org/rfc/rfc1035.txt)&gt;. Label **values** may be
         /// empty, but, if present, must contain 1 to 63 characters, and must
         /// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         /// more than 32 labels can be associated with a cluster.
@@ -64,9 +63,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         public readonly string MachineType;
         /// <summary>
         /// The Compute Engine metadata entries to add to virtual machine.
-        /// (see [Project and instance metadata](https://cloud.google.com
-        /// /compute/docs/storing-retrieving-metadata#project_and_instance
-        /// _metadata)).
+        /// (see Project and instance metadata).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
@@ -113,7 +110,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         public readonly string? Subnet;
         /// <summary>
         /// The Compute Engine tags to add to runtime (see [Tagging instances]
-        /// (https://cloud.google.com/compute/docs/
+        /// (&lt;https://cloud.google.com/compute/docs/&gt;
         /// label-or-tag-resources#tags)).
         /// </summary>
         public readonly ImmutableArray<string> Tags;

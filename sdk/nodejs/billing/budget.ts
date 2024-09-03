@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1/billingAccounts.budgets)
  * * How-to Guides
- *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+ *   * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Billing Budget Lastperiod
  *
  * ```typescript
@@ -70,6 +71,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Billing Budget Filter
  *
  * ```typescript
@@ -110,6 +112,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Billing Budget Notify
  *
  * ```typescript
@@ -154,6 +157,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Billing Budget Notify Project Recipient
  *
  * ```typescript
@@ -182,6 +186,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Billing Budget Customperiod
  *
  * ```typescript

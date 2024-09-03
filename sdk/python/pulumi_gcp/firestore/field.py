@@ -31,9 +31,6 @@ class FieldArgs:
         The set of arguments for constructing a Field resource.
         :param pulumi.Input[str] collection: The id of the collection group to configure.
         :param pulumi.Input[str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input['FieldIndexConfigArgs'] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
@@ -73,9 +70,6 @@ class FieldArgs:
     def field(self) -> pulumi.Input[str]:
         """
         The id of the field to configure.
-
-
-        - - -
         """
         return pulumi.get(self, "field")
 
@@ -153,9 +147,6 @@ class _FieldState:
         :param pulumi.Input[str] collection: The id of the collection group to configure.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input['FieldIndexConfigArgs'] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
@@ -212,9 +203,6 @@ class _FieldState:
     def field(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the field to configure.
-
-
-        - - -
         """
         return pulumi.get(self, "field")
 
@@ -299,10 +287,10 @@ class Field(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
         > **Warning:** This resource creates a Firestore Single Field override on a project that
-         already has a Firestore database. If you haven't already created it, you may
+        already has a Firestore database. If you haven't already created it, you may
         create a `firestore.Database` resource with `location_id` set to your
         chosen location.
 
@@ -338,6 +326,7 @@ class Field(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Firestore Field Timestamp
 
         ```python
@@ -359,6 +348,7 @@ class Field(pulumi.CustomResource):
             ttl_config={},
             index_config={})
         ```
+
         ### Firestore Field Match Override
 
         ```python
@@ -409,9 +399,6 @@ class Field(pulumi.CustomResource):
         :param pulumi.Input[str] collection: The id of the collection group to configure.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
@@ -437,10 +424,10 @@ class Field(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
         > **Warning:** This resource creates a Firestore Single Field override on a project that
-         already has a Firestore database. If you haven't already created it, you may
+        already has a Firestore database. If you haven't already created it, you may
         create a `firestore.Database` resource with `location_id` set to your
         chosen location.
 
@@ -476,6 +463,7 @@ class Field(pulumi.CustomResource):
                 ],
             })
         ```
+
         ### Firestore Field Timestamp
 
         ```python
@@ -497,6 +485,7 @@ class Field(pulumi.CustomResource):
             ttl_config={},
             index_config={})
         ```
+
         ### Firestore Field Match Override
 
         ```python
@@ -610,9 +599,6 @@ class Field(pulumi.CustomResource):
         :param pulumi.Input[str] collection: The id of the collection group to configure.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] field: The id of the field to configure.
-               
-               
-               - - -
         :param pulumi.Input[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']] index_config: The single field index configuration for this field.
                Creating an index configuration for this field will override any inherited configuration with the
                indexes specified. Configuring the index configuration with an empty block disables all indexes on
@@ -659,9 +645,6 @@ class Field(pulumi.CustomResource):
     def field(self) -> pulumi.Output[str]:
         """
         The id of the field to configure.
-
-
-        - - -
         """
         return pulumi.get(self, "field")
 

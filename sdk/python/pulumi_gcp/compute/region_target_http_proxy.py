@@ -28,9 +28,6 @@ class RegionTargetHttpProxyArgs:
         The set of arguments for constructing a RegionTargetHttpProxy resource.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -60,9 +57,6 @@ class RegionTargetHttpProxyArgs:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -157,9 +151,6 @@ class _RegionTargetHttpProxyState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -276,9 +267,6 @@ class _RegionTargetHttpProxyState:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -306,11 +294,9 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Region Target Http Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -350,7 +336,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
-        ### Region Target Http Proxy Https Redirect
+        ## 
 
         ```python
         import pulumi
@@ -415,9 +401,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -433,11 +416,9 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Region Target Http Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -477,7 +458,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             name="test-proxy",
             url_map=default_region_url_map.id)
         ```
-        ### Region Target Http Proxy Https Redirect
+        ## 
 
         ```python
         import pulumi
@@ -607,9 +588,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -695,9 +673,6 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 

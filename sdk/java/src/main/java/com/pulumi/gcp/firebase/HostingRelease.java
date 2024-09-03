@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Release In Channel
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -139,6 +140,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Release Disable
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -281,16 +283,12 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
     /**
      * Required. The ID of the site to which the release belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
      * @return Required. The ID of the site to which the release belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> siteId() {

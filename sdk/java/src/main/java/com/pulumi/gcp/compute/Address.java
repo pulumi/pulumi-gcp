@@ -36,12 +36,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
  * * How-to Guides
- *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
- *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+ *   * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+ *   * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
  * 
- * ## Example Usage
- * 
- * ### Address Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +73,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Address With Subnetwork
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -128,7 +126,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Address With Gce Endpoint
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -164,7 +162,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Instance With Ip
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -227,7 +225,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Compute Address Ipsec Interconnect
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -467,8 +465,6 @@ public class Address extends com.pulumi.resources.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -480,8 +476,6 @@ public class Address extends com.pulumi.resources.CustomResource {
      * which means the first character must be a lowercase letter, and all
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

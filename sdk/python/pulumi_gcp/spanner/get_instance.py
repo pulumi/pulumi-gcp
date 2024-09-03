@@ -168,10 +168,15 @@ def get_instance(config: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_instance(name="bar")
+    ```
+
 
     :param str name: The name of the spanner instance.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -210,10 +215,15 @@ def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_instance(name="bar")
+    ```
+
 
     :param str name: The name of the spanner instance.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

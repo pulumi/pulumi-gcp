@@ -27,12 +27,9 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -48,7 +45,7 @@ class ClusterArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The resource name of the private cloud to create a new cluster in.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         """
         return pulumi.get(self, "parent")
@@ -62,9 +59,6 @@ class ClusterArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -101,14 +95,11 @@ class _ClusterState:
         :param pulumi.Input[bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[str] state: State of the Cluster.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
@@ -144,9 +135,6 @@ class _ClusterState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -173,7 +161,7 @@ class _ClusterState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the private cloud to create a new cluster in.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         """
         return pulumi.get(self, "parent")
@@ -259,6 +247,7 @@ class Cluster(pulumi.CustomResource):
                 "node_count": 3,
             }])
         ```
+
         ### Vmware Engine Cluster Full
 
         ```python
@@ -311,14 +300,11 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         """
         ...
@@ -370,6 +356,7 @@ class Cluster(pulumi.CustomResource):
                 "node_count": 3,
             }])
         ```
+
         ### Vmware Engine Cluster Full
 
         ```python
@@ -480,14 +467,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[str] name: The ID of the Cluster.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         :param pulumi.Input[str] state: State of the Cluster.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
@@ -518,9 +502,6 @@ class Cluster(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The ID of the Cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -539,7 +520,7 @@ class Cluster(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The resource name of the private cloud to create a new cluster in.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         """
         return pulumi.get(self, "parent")

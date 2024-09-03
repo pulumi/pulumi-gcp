@@ -69,8 +69,6 @@ type BucketACL struct {
 	pulumi.CustomResourceState
 
 	// The name of the bucket it applies to.
-	//
-	// ***
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Configure this ACL to be the default ACL.
 	DefaultAcl pulumi.StringPtrOutput `pulumi:"defaultAcl"`
@@ -114,8 +112,6 @@ func GetBucketACL(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BucketACL resources.
 type bucketACLState struct {
 	// The name of the bucket it applies to.
-	//
-	// ***
 	Bucket *string `pulumi:"bucket"`
 	// Configure this ACL to be the default ACL.
 	DefaultAcl *string `pulumi:"defaultAcl"`
@@ -127,8 +123,6 @@ type bucketACLState struct {
 
 type BucketACLState struct {
 	// The name of the bucket it applies to.
-	//
-	// ***
 	Bucket pulumi.StringPtrInput
 	// Configure this ACL to be the default ACL.
 	DefaultAcl pulumi.StringPtrInput
@@ -144,8 +138,6 @@ func (BucketACLState) ElementType() reflect.Type {
 
 type bucketACLArgs struct {
 	// The name of the bucket it applies to.
-	//
-	// ***
 	Bucket string `pulumi:"bucket"`
 	// Configure this ACL to be the default ACL.
 	DefaultAcl *string `pulumi:"defaultAcl"`
@@ -158,8 +150,6 @@ type bucketACLArgs struct {
 // The set of arguments for constructing a BucketACL resource.
 type BucketACLArgs struct {
 	// The name of the bucket it applies to.
-	//
-	// ***
 	Bucket pulumi.StringInput
 	// Configure this ACL to be the default ACL.
 	DefaultAcl pulumi.StringPtrInput
@@ -257,8 +247,6 @@ func (o BucketACLOutput) ToBucketACLOutputWithContext(ctx context.Context) Bucke
 }
 
 // The name of the bucket it applies to.
-//
-// ***
 func (o BucketACLOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketACL) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }

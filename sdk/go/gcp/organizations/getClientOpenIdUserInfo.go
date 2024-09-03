@@ -25,7 +25,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Exporting An Email
+// ### exporting an email
 //
 // ```go
 // package main

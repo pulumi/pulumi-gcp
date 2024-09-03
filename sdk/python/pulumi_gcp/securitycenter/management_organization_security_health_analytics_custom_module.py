@@ -29,9 +29,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs:
         """
         The set of arguments for constructing a ManagementOrganizationSecurityHealthAnalyticsCustomModule resource.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input['ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
@@ -58,9 +55,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs:
     def organization(self) -> pulumi.Input[str]:
         """
         Numerical ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -154,9 +148,6 @@ class _ManagementOrganizationSecurityHealthAnalyticsCustomModuleState:
         :param pulumi.Input[str] name: The resource name of the custom module. Its format is "organizations/{organization}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
                The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -278,9 +269,6 @@ class _ManagementOrganizationSecurityHealthAnalyticsCustomModuleState:
     def organization(self) -> Optional[pulumi.Input[str]]:
         """
         Numerical ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -325,7 +313,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.securityHealthAnalyticsCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -352,6 +340,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Organization Security Health Analytics Custom Module Full
 
         ```python
@@ -421,9 +410,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -442,7 +428,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.securityHealthAnalyticsCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -469,6 +455,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Organization Security Health Analytics Custom Module Full
 
         ```python
@@ -608,9 +595,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
         :param pulumi.Input[str] name: The resource name of the custom module. Its format is "organizations/{organization}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
                The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
                up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -700,9 +684,6 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule(pulumi.CustomRes
     def organization(self) -> pulumi.Output[str]:
         """
         Numerical ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

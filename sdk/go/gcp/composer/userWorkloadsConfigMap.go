@@ -12,51 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Composer User Workloads Config Map Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/composer"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			environment, err := composer.NewEnvironment(ctx, "environment", &composer.EnvironmentArgs{
-//				Name:   pulumi.String("test-environment"),
-//				Region: pulumi.String("us-central1"),
-//				Config: &composer.EnvironmentConfigArgs{
-//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-//						ImageVersion: pulumi.String("composer-3-airflow-2"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = composer.NewUserWorkloadsConfigMap(ctx, "config_map", &composer.UserWorkloadsConfigMapArgs{
-//				Name:        pulumi.String("test-config-map"),
-//				Region:      pulumi.String("us-central1"),
-//				Environment: environment.Name,
-//				Data: pulumi.StringMap{
-//					"api_host": pulumi.String("apihost:443"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // UserWorkloadsConfigMap can be imported using any of these accepted formats:
@@ -90,11 +45,9 @@ type UserWorkloadsConfigMap struct {
 	pulumi.CustomResourceState
 
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+	// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 	Data pulumi.StringMapOutput `pulumi:"data"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -139,11 +92,9 @@ func GetUserWorkloadsConfigMap(ctx *pulumi.Context,
 // Input properties used for looking up and filtering UserWorkloadsConfigMap resources.
 type userWorkloadsConfigMapState struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+	// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment *string `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
 	Name *string `pulumi:"name"`
@@ -156,11 +107,9 @@ type userWorkloadsConfigMapState struct {
 
 type UserWorkloadsConfigMapState struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+	// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 	Data pulumi.StringMapInput
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment pulumi.StringPtrInput
 	// Name of the Kubernetes ConfigMap.
 	Name pulumi.StringPtrInput
@@ -177,11 +126,9 @@ func (UserWorkloadsConfigMapState) ElementType() reflect.Type {
 
 type userWorkloadsConfigMapArgs struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+	// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 	Data map[string]string `pulumi:"data"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment string `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
 	Name *string `pulumi:"name"`
@@ -195,11 +142,9 @@ type userWorkloadsConfigMapArgs struct {
 // The set of arguments for constructing a UserWorkloadsConfigMap resource.
 type UserWorkloadsConfigMapArgs struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+	// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 	Data pulumi.StringMapInput
 	// Environment where the Kubernetes ConfigMap will be stored and used.
-	//
-	// ***
 	Environment pulumi.StringInput
 	// Name of the Kubernetes ConfigMap.
 	Name pulumi.StringPtrInput
@@ -298,14 +243,12 @@ func (o UserWorkloadsConfigMapOutput) ToUserWorkloadsConfigMapOutputWithContext(
 }
 
 // The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 func (o UserWorkloadsConfigMapOutput) Data() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UserWorkloadsConfigMap) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // Environment where the Kubernetes ConfigMap will be stored and used.
-//
-// ***
 func (o UserWorkloadsConfigMapOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserWorkloadsConfigMap) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }

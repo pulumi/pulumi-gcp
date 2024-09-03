@@ -332,7 +332,6 @@ if not MYPY:
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
         Structure is documented below.
 
-
         <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
 elif False:
@@ -358,7 +357,6 @@ class EntryGcsFilesetSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]] sample_gcs_file_specs: (Output)
                Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
-               
                
                <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
@@ -395,7 +393,6 @@ class EntryGcsFilesetSpecArgs:
         (Output)
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
         Structure is documented below.
-
 
         <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
@@ -668,8 +665,6 @@ if not MYPY:
         enum_value: NotRequired[pulumi.Input[str]]
         """
         Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-
-        - - -
         """
         order: NotRequired[pulumi.Input[int]]
         """
@@ -707,8 +702,6 @@ class TagFieldArgs:
                The display name of this field
         :param pulumi.Input[float] double_value: Holds the value for a tag field with double type.
         :param pulumi.Input[str] enum_value: Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-               
-               - - -
         :param pulumi.Input[int] order: (Output)
                The order of this field with respect to other fields in this tag. For example, a higher value can indicate
                a more important field. The value can be negative. Multiple fields can have the same order, and field orders
@@ -786,8 +779,6 @@ class TagFieldArgs:
     def enum_value(self) -> Optional[pulumi.Input[str]]:
         """
         Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-
-        - - -
         """
         return pulumi.get(self, "enum_value")
 

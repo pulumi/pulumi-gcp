@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// Retrieves the current IAM policy data for runtime
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Retrieves the current IAM policy data for runtime
-        /// 
         /// 
         /// ## example
         /// 

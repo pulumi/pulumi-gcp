@@ -117,14 +117,11 @@ export class ExternalAddress extends pulumi.CustomResource {
     public readonly internalIp!: pulumi.Output<string>;
     /**
      * The ID of the external IP Address.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     public readonly parent!: pulumi.Output<string>;
@@ -212,14 +209,11 @@ export interface ExternalAddressState {
     internalIp?: pulumi.Input<string>;
     /**
      * The ID of the external IP Address.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     parent?: pulumi.Input<string>;
@@ -253,14 +247,11 @@ export interface ExternalAddressArgs {
     internalIp: pulumi.Input<string>;
     /**
      * The ID of the external IP Address.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     parent: pulumi.Input<string>;

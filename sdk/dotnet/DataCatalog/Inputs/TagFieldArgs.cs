@@ -33,8 +33,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
 
         /// <summary>
         /// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-        /// 
-        /// - - -
         /// </summary>
         [Input("enumValue")]
         public Input<string>? EnumValue { get; set; }

@@ -23,12 +23,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
  * * How-to Guides
- *     * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
- *     * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
+ *   * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+ *   * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
  * 
- * ## Example Usage
- * 
- * ### Filestore Snapshot Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -82,7 +80,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Filestore Snapshot Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -225,16 +223,12 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the filestore instance.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
      * @return The resource name of the filestore instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

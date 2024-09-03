@@ -27,9 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
- * 
- * ## Example Usage
+ *   * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
  * 
  * ## Import
  * 
@@ -61,16 +59,12 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
     /**
      * The API to attach the config to.
      * 
-     * ***
-     * 
      */
     @Export(name="api", refs={String.class}, tree="[0]")
     private Output<String> api;
 
     /**
      * @return The API to attach the config to.
-     * 
-     * ***
      * 
      */
     public Output<String> api() {
@@ -189,7 +183,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      * 
@@ -198,7 +192,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<ApiConfigManagedServiceConfig>> managedServiceConfigs;
 
     /**
-     * @return Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * @return Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      * 
@@ -269,14 +263,14 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+     * The ID of the associated Service Config (&lt;https://cloud.google.com/service-infrastructure/docs/glossary#config)&gt;.
      * 
      */
     @Export(name="serviceConfigId", refs={String.class}, tree="[0]")
     private Output<String> serviceConfigId;
 
     /**
-     * @return The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+     * @return The ID of the associated Service Config (&lt;https://cloud.google.com/service-infrastructure/docs/glossary#config)&gt;.
      * 
      */
     public Output<String> serviceConfigId() {

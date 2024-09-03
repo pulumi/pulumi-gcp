@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations#getsyncauthorization)
  * * How-to Guides
- *     * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
+ *   * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
  *
  * ## Example Usage
  *
@@ -115,9 +115,6 @@ export class SyncAuthorization extends pulumi.CustomResource {
     public readonly identities!: pulumi.Output<string[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -169,9 +166,6 @@ export interface SyncAuthorizationState {
     identities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }
@@ -189,9 +183,6 @@ export interface SyncAuthorizationArgs {
     identities: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

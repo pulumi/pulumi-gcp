@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.authorizedOrgsDescs)
  * * How-to Guides
- *     * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
+ *   * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -128,9 +128,6 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -232,9 +229,6 @@ export interface AuthorizedOrgsDescState {
      * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -293,9 +287,6 @@ export interface AuthorizedOrgsDescArgs {
      * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

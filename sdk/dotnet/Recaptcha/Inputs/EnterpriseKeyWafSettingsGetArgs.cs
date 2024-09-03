@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Recaptcha.Inputs
     public sealed class EnterpriseKeyWafSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        /// Supported WAF features. For more information, see &lt;https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features&gt;. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
         /// </summary>
         [Input("wafFeature", required: true)]
         public Input<string> WafFeature { get; set; } = null!;

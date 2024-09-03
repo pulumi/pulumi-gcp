@@ -31,9 +31,6 @@ class ManagedFolderArgs:
                same name.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "bucket", bucket)
         if force_destroy is not None:
@@ -74,9 +71,6 @@ class ManagedFolderArgs:
         """
         The name of the managed folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -106,9 +100,6 @@ class _ManagedFolderState:
         :param pulumi.Input[str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] update_time: The timestamp at which this managed folder was most recently updated.
         """
@@ -184,9 +175,6 @@ class _ManagedFolderState:
         """
         The name of the managed folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -245,11 +233,9 @@ class ManagedFolder(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/managedFolder)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
+          * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
 
-        ## Example Usage
-
-        ### Storage Managed Folder Basic
+        ## 
 
         ```python
         import pulumi
@@ -292,9 +278,6 @@ class ManagedFolder(pulumi.CustomResource):
                same name.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -319,11 +302,9 @@ class ManagedFolder(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/managedFolder)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
+          * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
 
-        ## Example Usage
-
-        ### Storage Managed Folder Basic
+        ## 
 
         ```python
         import pulumi
@@ -426,9 +407,6 @@ class ManagedFolder(pulumi.CustomResource):
         :param pulumi.Input[str] metageneration: The metadata generation of the managed folder.
         :param pulumi.Input[str] name: The name of the managed folder expressed as a path. Must include
                trailing '/'. For example, `example_dir/example_dir2/`.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] update_time: The timestamp at which this managed folder was most recently updated.
         """
@@ -486,9 +464,6 @@ class ManagedFolder(pulumi.CustomResource):
         """
         The name of the managed folder expressed as a path. Must include
         trailing '/'. For example, `example_dir/example_dir2/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

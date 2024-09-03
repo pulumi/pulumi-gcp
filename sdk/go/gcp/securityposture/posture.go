@@ -177,7 +177,7 @@ type Posture struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the posture.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Location of the resource, eg: global.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -251,7 +251,7 @@ type postureState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the posture.
 	Description *string `pulumi:"description"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag *string `pulumi:"etag"`
 	// Location of the resource, eg: global.
 	Location *string `pulumi:"location"`
@@ -281,7 +281,7 @@ type PostureState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the posture.
 	Description pulumi.StringPtrInput
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrInput
 	// Location of the resource, eg: global.
 	Location pulumi.StringPtrInput
@@ -444,7 +444,7 @@ func (o PostureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// For Resource freshness validation (https://google.aip.dev/154)
+// For Resource freshness validation (<https://google.aip.dev/154>)
 func (o PostureOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.testCases)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
- * ## Example Usage
- * 
- * ### Dialogflowcx Test Case Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -245,16 +243,12 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

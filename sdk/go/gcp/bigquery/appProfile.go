@@ -18,9 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
 //
-// ## Example Usage
-//
-// ### Bigtable App Profile Anycluster
+// ##
 //
 // ```go
 // package main
@@ -76,7 +74,7 @@ import (
 //	}
 //
 // ```
-// ### Bigtable App Profile Singlecluster
+// ##
 //
 // ```go
 // package main
@@ -123,7 +121,7 @@ import (
 //	}
 //
 // ```
-// ### Bigtable App Profile Multicluster
+// ##
 //
 // ```go
 // package main
@@ -183,7 +181,7 @@ import (
 //	}
 //
 // ```
-// ### Bigtable App Profile Priority
+// ##
 //
 // ```go
 // package main
@@ -261,8 +259,6 @@ type AppProfile struct {
 	pulumi.CustomResourceState
 
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	AppProfileId pulumi.StringOutput `pulumi:"appProfileId"`
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
@@ -327,8 +323,6 @@ func GetAppProfile(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AppProfile resources.
 type appProfileState struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	AppProfileId *string `pulumi:"appProfileId"`
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
@@ -361,8 +355,6 @@ type appProfileState struct {
 
 type AppProfileState struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	AppProfileId pulumi.StringPtrInput
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
@@ -399,8 +391,6 @@ func (AppProfileState) ElementType() reflect.Type {
 
 type appProfileArgs struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	AppProfileId string `pulumi:"appProfileId"`
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
@@ -432,8 +422,6 @@ type appProfileArgs struct {
 // The set of arguments for constructing a AppProfile resource.
 type AppProfileArgs struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	//
-	// ***
 	AppProfileId pulumi.StringInput
 	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
 	// Structure is documented below.
@@ -550,8 +538,6 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 }
 
 // The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-//
-// ***
 func (o AppProfileOutput) AppProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.AppProfileId }).(pulumi.StringOutput)
 }

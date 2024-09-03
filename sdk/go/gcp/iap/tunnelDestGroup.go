@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
 //
-// ## Example Usage
-//
-// ### Iap Destgroup
+// ##
 //
 // ```go
 // package main
@@ -102,8 +100,6 @@ type TunnelDestGroup struct {
 	// List of FQDNs that this group applies to.
 	Fqdns pulumi.StringArrayOutput `pulumi:"fqdns"`
 	// Unique tunnel destination group name.
-	//
-	// ***
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
 	// Full resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -152,8 +148,6 @@ type tunnelDestGroupState struct {
 	// List of FQDNs that this group applies to.
 	Fqdns []string `pulumi:"fqdns"`
 	// Unique tunnel destination group name.
-	//
-	// ***
 	GroupName *string `pulumi:"groupName"`
 	// Full resource name.
 	Name *string `pulumi:"name"`
@@ -170,8 +164,6 @@ type TunnelDestGroupState struct {
 	// List of FQDNs that this group applies to.
 	Fqdns pulumi.StringArrayInput
 	// Unique tunnel destination group name.
-	//
-	// ***
 	GroupName pulumi.StringPtrInput
 	// Full resource name.
 	Name pulumi.StringPtrInput
@@ -192,8 +184,6 @@ type tunnelDestGroupArgs struct {
 	// List of FQDNs that this group applies to.
 	Fqdns []string `pulumi:"fqdns"`
 	// Unique tunnel destination group name.
-	//
-	// ***
 	GroupName string `pulumi:"groupName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -209,8 +199,6 @@ type TunnelDestGroupArgs struct {
 	// List of FQDNs that this group applies to.
 	Fqdns pulumi.StringArrayInput
 	// Unique tunnel destination group name.
-	//
-	// ***
 	GroupName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -317,8 +305,6 @@ func (o TunnelDestGroupOutput) Fqdns() pulumi.StringArrayOutput {
 }
 
 // Unique tunnel destination group name.
-//
-// ***
 func (o TunnelDestGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelDestGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }

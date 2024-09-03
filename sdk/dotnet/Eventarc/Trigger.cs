@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic
+    /// ### basic
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

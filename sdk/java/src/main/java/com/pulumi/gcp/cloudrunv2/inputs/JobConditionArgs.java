@@ -138,7 +138,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Output)
-     * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
      * 
      */
     @Import(name="type")
@@ -146,7 +146,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return (Output)
-     * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
      * 
      */
     public Optional<Output<String>> type() {
@@ -349,7 +349,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type (Output)
-         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+         * type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type (Output)
-         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+         * type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
          * 
          * @return builder
          * 

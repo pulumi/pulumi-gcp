@@ -560,7 +560,7 @@ class Task(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.lakes.tasks)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataplex/docs)
+          * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
 
@@ -602,6 +602,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Spark
 
         ```python
@@ -658,6 +659,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Notebook
 
         ```python
@@ -770,7 +772,7 @@ class Task(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.lakes.tasks)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataplex/docs)
+          * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
 
@@ -812,6 +814,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Spark
 
         ```python
@@ -868,6 +871,7 @@ class Task(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Task Notebook
 
         ```python

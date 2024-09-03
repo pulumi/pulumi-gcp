@@ -29,8 +29,6 @@ type LookupAiIndexArgs struct {
 	// The ID of the project in which the resource belongs.
 	Project *string `pulumi:"project"`
 	// The region of the index.
-	//
-	// ***
 	Region string `pulumi:"region"`
 }
 
@@ -76,8 +74,6 @@ type LookupAiIndexOutputArgs struct {
 	// The ID of the project in which the resource belongs.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The region of the index.
-	//
-	// ***
 	Region pulumi.StringInput `pulumi:"region"`
 }
 

@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### Automatic Envoy Deployment
+    /// ### Automatic Envoy deployment
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -243,9 +243,65 @@ namespace Pulumi.Gcp.Compute
     /// data source, which will retrieve the latest image on every `pulumi apply`, and will update
     /// the template to use that specific image:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
+    ///     {
+    ///         NamePrefix = "instance-template-",
+    ///         MachineType = "e2-medium",
+    ///         Region = "us-central1",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// To have instances update to the latest on every scaling event or instance re-creation,
     /// use the family as the image for the disk, and it will use GCP's default behavior, setting
     /// the image for the template to the family:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
+    ///     {
+    ///         NamePrefix = "instance-template-",
+    ///         MachineType = "e2-medium",
+    ///         Region = "us-central1",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-11",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -347,8 +403,6 @@ namespace Pulumi.Gcp.Compute
         /// The machine type to create.
         /// 
         /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-        /// 
-        /// - - -
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -645,8 +699,6 @@ namespace Pulumi.Gcp.Compute
         /// The machine type to create.
         /// 
         /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-        /// 
-        /// - - -
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -915,8 +967,6 @@ namespace Pulumi.Gcp.Compute
         /// The machine type to create.
         /// 
         /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-        /// 
-        /// - - -
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

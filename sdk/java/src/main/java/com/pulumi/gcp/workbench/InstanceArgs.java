@@ -127,16 +127,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Part of `parent`. See documentation of `projectsId`.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Part of `parent`. See documentation of `projectsId`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -362,8 +358,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Part of `parent`. See documentation of `projectsId`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -374,8 +368,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Part of `parent`. See documentation of `projectsId`.
-         * 
-         * ***
          * 
          * @return builder
          * 

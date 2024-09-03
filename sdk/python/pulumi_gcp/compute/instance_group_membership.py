@@ -27,9 +27,6 @@ class InstanceGroupMembershipArgs:
         The set of arguments for constructing a InstanceGroupMembership resource.
         :param pulumi.Input[str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the instance group resides.
@@ -58,9 +55,6 @@ class InstanceGroupMembershipArgs:
     def instance_group(self) -> pulumi.Input[str]:
         """
         Represents an Instance Group resource name that the instance belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group")
 
@@ -105,9 +99,6 @@ class _InstanceGroupMembershipState:
         Input properties used for looking up and filtering InstanceGroupMembership resources.
         :param pulumi.Input[str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the instance group resides.
@@ -138,9 +129,6 @@ class _InstanceGroupMembershipState:
     def instance_group(self) -> Optional[pulumi.Input[str]]:
         """
         Represents an Instance Group resource name that the instance belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group")
 
@@ -200,9 +188,9 @@ class InstanceGroupMembership(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups)
         * How-to Guides
-            * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
-            * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
-            * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
+          * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
+          * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
+          * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
 
         ## Example Usage
 
@@ -264,9 +252,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the instance group resides.
@@ -293,9 +278,9 @@ class InstanceGroupMembership(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups)
         * How-to Guides
-            * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
-            * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
-            * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
+          * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
+          * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
+          * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
 
         ## Example Usage
 
@@ -412,9 +397,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: An instance being added to the InstanceGroup
         :param pulumi.Input[str] instance_group: Represents an Instance Group resource name that the instance belongs to.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the instance group resides.
@@ -442,9 +424,6 @@ class InstanceGroupMembership(pulumi.CustomResource):
     def instance_group(self) -> pulumi.Output[str]:
         """
         Represents an Instance Group resource name that the instance belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_group")
 

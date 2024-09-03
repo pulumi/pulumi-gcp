@@ -18,9 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 //
-// ## Example Usage
-//
-// ### App Engine Service Network Settings
+// ##
 //
 // ```go
 // package main

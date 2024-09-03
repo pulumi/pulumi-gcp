@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string> BackupLocation { get; set; } = null!;
 
         /// <summary>
-        /// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        /// The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        /// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

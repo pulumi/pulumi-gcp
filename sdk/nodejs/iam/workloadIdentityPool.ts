@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
  * * How-to Guides
- *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+ *   * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  *
- * ## Example Usage
- *
- * ### Iam Workload Identity Pool Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"});
  * ```
- * ### Iam Workload Identity Pool Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -130,9 +128,6 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     public readonly workloadIdentityPoolId!: pulumi.Output<string>;
 
@@ -218,9 +213,6 @@ export interface WorkloadIdentityPoolState {
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolId?: pulumi.Input<string>;
 }
@@ -252,9 +244,6 @@ export interface WorkloadIdentityPoolArgs {
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolId: pulumi.Input<string>;
 }

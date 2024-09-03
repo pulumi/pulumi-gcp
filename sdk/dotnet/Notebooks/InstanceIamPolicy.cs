@@ -109,8 +109,6 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// ## This resource supports User Project Overrides.
     /// 
-    /// - 
-    /// 
     /// # IAM policy for Cloud AI Notebooks Instance
     /// Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
     /// 
@@ -245,7 +243,7 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:notebooks/instanceIamPolicy:InstanceIamPolicy")]
     public partial class InstanceIamPolicy : global::Pulumi.CustomResource

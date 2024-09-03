@@ -27,11 +27,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Snapshot Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -73,7 +71,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Snapshot Chainname
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -259,9 +257,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("sourceDisk")]
         public Output<string> SourceDisk { get; private set; } = null!;
@@ -414,9 +409,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("sourceDisk", required: true)]
         public Input<string> SourceDisk { get; set; } = null!;
@@ -603,9 +595,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }

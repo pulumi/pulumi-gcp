@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.targetservers/create)
  * * How-to Guides
- *     * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
+ *   * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
  *
  * ## Example Usage
  *
@@ -145,9 +145,6 @@ export class TargetServer extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envId!: pulumi.Output<string>;
     /**
@@ -234,9 +231,6 @@ export interface TargetServerState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId?: pulumi.Input<string>;
     /**
@@ -278,9 +272,6 @@ export interface TargetServerArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId: pulumi.Input<string>;
     /**

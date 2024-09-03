@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider
     {
         /// <summary>
-        /// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        /// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name@project-id.iam.gserviceaccount.com&gt;
         /// </summary>
         public readonly ImmutableArray<string> AllowedIssuers;
         /// <summary>

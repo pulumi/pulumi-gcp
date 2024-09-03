@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Os Config Guest Policies Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -91,7 +89,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// ### Os Config Guest Policies Packages
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -179,7 +177,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// });
     /// ```
-    /// ### Os Config Guest Policies Recipes
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

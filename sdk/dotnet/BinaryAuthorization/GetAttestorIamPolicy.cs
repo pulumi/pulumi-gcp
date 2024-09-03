@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <summary>
         /// Retrieves the current IAM policy data for attestor
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
         /// <summary>
         /// Retrieves the current IAM policy data for attestor
-        /// 
         /// 
         /// ## example
         /// 

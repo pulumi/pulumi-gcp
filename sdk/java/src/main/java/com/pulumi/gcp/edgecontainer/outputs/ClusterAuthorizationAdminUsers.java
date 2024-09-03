@@ -13,16 +13,12 @@ public final class ClusterAuthorizationAdminUsers {
     /**
      * @return An active Google username.
      * 
-     * ***
-     * 
      */
     private String username;
 
     private ClusterAuthorizationAdminUsers() {}
     /**
      * @return An active Google username.
-     * 
-     * ***
      * 
      */
     public String username() {

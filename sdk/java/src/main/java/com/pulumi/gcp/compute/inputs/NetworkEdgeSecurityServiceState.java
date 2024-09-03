@@ -65,16 +65,12 @@ public final class NetworkEdgeSecurityServiceState extends com.pulumi.resources.
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the resource. Provided by the client when the resource is created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -274,8 +270,6 @@ public final class NetworkEdgeSecurityServiceState extends com.pulumi.resources.
         /**
          * @param name Name of the resource. Provided by the client when the resource is created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -286,8 +280,6 @@ public final class NetworkEdgeSecurityServiceState extends com.pulumi.resources.
 
         /**
          * @param name Name of the resource. Provided by the client when the resource is created.
-         * 
-         * ***
          * 
          * @return builder
          * 

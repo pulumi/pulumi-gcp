@@ -10,78 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Network Security Client Tls Policy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.ClientTlsPolicy("default", new()
-    ///     {
-    ///         Name = "my-client-tls-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         Sni = "secure.example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Client Tls Policy Advanced
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.ClientTlsPolicy("default", new()
-    ///     {
-    ///         Name = "my-client-tls-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         ClientCertificate = new Gcp.NetworkSecurity.Inputs.ClientTlsPolicyClientCertificateArgs
-    ///         {
-    ///             CertificateProviderInstance = new Gcp.NetworkSecurity.Inputs.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs
-    ///             {
-    ///                 PluginInstance = "google_cloud_private_spiffe",
-    ///             },
-    ///         },
-    ///         ServerValidationCas = new[]
-    ///         {
-    ///             new Gcp.NetworkSecurity.Inputs.ClientTlsPolicyServerValidationCaArgs
-    ///             {
-    ///                 GrpcEndpoint = new Gcp.NetworkSecurity.Inputs.ClientTlsPolicyServerValidationCaGrpcEndpointArgs
-    ///                 {
-    ///                     TargetUri = "unix:mypath",
-    ///                 },
-    ///             },
-    ///             new Gcp.NetworkSecurity.Inputs.ClientTlsPolicyServerValidationCaArgs
-    ///             {
-    ///                 GrpcEndpoint = new Gcp.NetworkSecurity.Inputs.ClientTlsPolicyServerValidationCaGrpcEndpointArgs
-    ///                 {
-    ///                     TargetUri = "unix:mypath1",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ClientTlsPolicy can be imported using any of these accepted formats:
@@ -151,9 +79,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the ClientTlsPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -278,9 +203,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the ClientTlsPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -377,9 +299,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the ClientTlsPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

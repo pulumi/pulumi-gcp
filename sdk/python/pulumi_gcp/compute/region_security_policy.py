@@ -35,9 +35,6 @@ class RegionSecurityPolicyArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
@@ -99,9 +96,6 @@ class RegionSecurityPolicyArgs:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -191,9 +185,6 @@ class _RegionSecurityPolicyState:
                updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -279,9 +270,6 @@ class _RegionSecurityPolicyState:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -398,61 +386,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Region Security Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
-            name="my-sec-policy-basic",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        ```
-        ### Region Security Policy With Ddos Protection Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
-            name="my-sec-policy-ddos-protection",
-            description="with ddos protection config",
-            type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config={
-                "ddos_protection": "ADVANCED_PREVIEW",
-            })
-        ```
-        ### Region Security Policy With User Defined Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
-            name="my-sec-policy-user-defined-fields",
-            description="with user defined fields",
-            type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[
-                {
-                    "name": "SIG1_AT_0",
-                    "base": "UDP",
-                    "offset": 8,
-                    "size": 2,
-                    "mask": "0x8F00",
-                },
-                {
-                    "name": "SIG2_AT_8",
-                    "base": "UDP",
-                    "offset": 16,
-                    "size": 4,
-                    "mask": "0xFFFFFFFF",
-                },
-            ])
-        ```
-
         ## Import
 
         RegionSecurityPolicy can be imported using any of these accepted formats:
@@ -490,9 +423,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
@@ -515,61 +445,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  args: Optional[RegionSecurityPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Region Security Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_basic = gcp.compute.RegionSecurityPolicy("region-sec-policy-basic",
-            name="my-sec-policy-basic",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        ```
-        ### Region Security Policy With Ddos Protection Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_ddos_protection = gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection",
-            name="my-sec-policy-ddos-protection",
-            description="with ddos protection config",
-            type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config={
-                "ddos_protection": "ADVANCED_PREVIEW",
-            })
-        ```
-        ### Region Security Policy With User Defined Fields
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
-            name="my-sec-policy-user-defined-fields",
-            description="with user defined fields",
-            type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[
-                {
-                    "name": "SIG1_AT_0",
-                    "base": "UDP",
-                    "offset": 8,
-                    "size": 2,
-                    "mask": "0x8F00",
-                },
-                {
-                    "name": "SIG2_AT_8",
-                    "base": "UDP",
-                    "offset": 16,
-                    "size": 4,
-                    "mask": "0xFFFFFFFF",
-                },
-            ])
-        ```
-
         ## Import
 
         RegionSecurityPolicy can be imported using any of these accepted formats:
@@ -677,9 +552,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -747,9 +619,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

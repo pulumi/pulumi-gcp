@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic
+ * ### basic
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -144,16 +144,12 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

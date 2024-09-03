@@ -16,9 +16,10 @@ import (
 //
 // For more information, see:
 // * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+//
 // ## Example Usage
 //
-// ### Basic_aws_cluster
+// ### basicAwsCluster
 // A basic example of a containeraws cluster
 // ```go
 // package main
@@ -124,7 +125,8 @@ import (
 //	}
 //
 // ```
-// ### Basic_enum_aws_cluster
+//
+// ### basicEnumAwsCluster
 // A basic example of a containeraws cluster with lowercase enums
 // ```go
 // package main
@@ -225,7 +227,8 @@ import (
 //	}
 //
 // ```
-// ### Beta_basic_enum_aws_cluster
+//
+// ### betaBasicEnumAwsCluster
 // A basic example of a containeraws cluster with lowercase enums (beta)
 // ```go
 // package main

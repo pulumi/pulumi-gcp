@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Searching For Folders At The Root Of An Org
+// ### searching for folders at the root of an org
 //
 // ```go
 // package main

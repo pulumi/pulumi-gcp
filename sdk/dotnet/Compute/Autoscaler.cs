@@ -20,11 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
     /// * How-to Guides
-    ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+    ///   * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Autoscaler Single Instance
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -127,7 +125,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Autoscaler Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

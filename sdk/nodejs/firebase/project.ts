@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
  * * How-to Guides
- *     * Official Documentation
+ *   * Official Documentation
  *
  * > **Note:** This resource should usually be used with a provider configuration
  * with `userProjectOverride = true` unless you wish for your quota

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Canary_delivery_pipeline
+ * ### canaryDeliveryPipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,7 +53,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Canary_service_networking_delivery_pipeline
+ *
+ * ### canaryServiceNetworkingDeliveryPipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +96,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Canaryrun_delivery_pipeline
+ *
+ * ### canaryrunDeliveryPipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -137,7 +139,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Delivery_pipeline
+ *
+ * ### deliveryPipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -179,7 +182,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Verify_delivery_pipeline
+ *
+ * ### verifyDeliveryPipeline
  * tests creating and updating a delivery pipeline with deployment verification strategy
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

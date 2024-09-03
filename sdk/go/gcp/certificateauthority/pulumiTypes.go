@@ -3017,8 +3017,6 @@ type AuthorityKeySpec struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
 	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-	//
-	// ***
 	Algorithm *string `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -3040,8 +3038,6 @@ type AuthorityKeySpecArgs struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
 	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-	//
-	// ***
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -3128,8 +3124,6 @@ func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx conte
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-//
-// ***
 func (o AuthorityKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -3167,8 +3161,6 @@ func (o AuthorityKeySpecPtrOutput) Elem() AuthorityKeySpecOutput {
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-//
-// ***
 func (o AuthorityKeySpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorityKeySpec) *string {
 		if v == nil {
@@ -4688,7 +4680,7 @@ type CaPoolIssuancePolicyBaselineValues struct {
 	// Describes the X.509 name constraints extension.
 	// Structure is documented below.
 	NameConstraints *CaPoolIssuancePolicyBaselineValuesNameConstraints `pulumi:"nameConstraints"`
-	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds []CaPoolIssuancePolicyBaselineValuesPolicyId `pulumi:"policyIds"`
 }
@@ -4720,7 +4712,7 @@ type CaPoolIssuancePolicyBaselineValuesArgs struct {
 	// Describes the X.509 name constraints extension.
 	// Structure is documented below.
 	NameConstraints CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrInput `pulumi:"nameConstraints"`
-	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds CaPoolIssuancePolicyBaselineValuesPolicyIdArrayInput `pulumi:"policyIds"`
 }
@@ -4840,7 +4832,7 @@ func (o CaPoolIssuancePolicyBaselineValuesOutput) NameConstraints() CaPoolIssuan
 	}).(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput)
 }
 
-// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CaPoolIssuancePolicyBaselineValuesOutput) PolicyIds() CaPoolIssuancePolicyBaselineValuesPolicyIdArrayOutput {
 	return o.ApplyT(func(v CaPoolIssuancePolicyBaselineValues) []CaPoolIssuancePolicyBaselineValuesPolicyId {
@@ -4927,7 +4919,7 @@ func (o CaPoolIssuancePolicyBaselineValuesPtrOutput) NameConstraints() CaPoolIss
 	}).(CaPoolIssuancePolicyBaselineValuesNameConstraintsPtrOutput)
 }
 
-// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CaPoolIssuancePolicyBaselineValuesPtrOutput) PolicyIds() CaPoolIssuancePolicyBaselineValuesPolicyIdArrayOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyBaselineValues) []CaPoolIssuancePolicyBaselineValuesPolicyId {
@@ -6627,7 +6619,7 @@ type CaPoolIssuancePolicyIdentityConstraints struct {
 	AllowSubjectPassthrough bool `pulumi:"allowSubjectPassthrough"`
 	// A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
 	// certificate is signed. To see the full allowed syntax and some examples,
-	// see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+	// see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
 	// Structure is documented below.
 	CelExpression *CaPoolIssuancePolicyIdentityConstraintsCelExpression `pulumi:"celExpression"`
 }
@@ -6652,7 +6644,7 @@ type CaPoolIssuancePolicyIdentityConstraintsArgs struct {
 	AllowSubjectPassthrough pulumi.BoolInput `pulumi:"allowSubjectPassthrough"`
 	// A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
 	// certificate is signed. To see the full allowed syntax and some examples,
-	// see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+	// see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
 	// Structure is documented below.
 	CelExpression CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrInput `pulumi:"celExpression"`
 }
@@ -6748,7 +6740,7 @@ func (o CaPoolIssuancePolicyIdentityConstraintsOutput) AllowSubjectPassthrough()
 
 // A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
 // certificate is signed. To see the full allowed syntax and some examples,
-// see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+// see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
 // Structure is documented below.
 func (o CaPoolIssuancePolicyIdentityConstraintsOutput) CelExpression() CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput {
 	return o.ApplyT(func(v CaPoolIssuancePolicyIdentityConstraints) *CaPoolIssuancePolicyIdentityConstraintsCelExpression {
@@ -6804,7 +6796,7 @@ func (o CaPoolIssuancePolicyIdentityConstraintsPtrOutput) AllowSubjectPassthroug
 
 // A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
 // certificate is signed. To see the full allowed syntax and some examples,
-// see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+// see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
 // Structure is documented below.
 func (o CaPoolIssuancePolicyIdentityConstraintsPtrOutput) CelExpression() CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyIdentityConstraints) *CaPoolIssuancePolicyIdentityConstraintsCelExpression {
@@ -7221,7 +7213,7 @@ type CertificateCertificateDescription struct {
 	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
 	AiaIssuingCertificateUrls []string `pulumi:"aiaIssuingCertificateUrls"`
 	// (Output)
-	// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+	// Identifies the subjectKeyId of the parent certificate, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.1>
 	// Structure is documented below.
 	AuthorityKeyIds []CertificateCertificateDescriptionAuthorityKeyId `pulumi:"authorityKeyIds"`
 	// (Output)
@@ -7229,7 +7221,7 @@ type CertificateCertificateDescription struct {
 	// Structure is documented below.
 	CertFingerprints []CertificateCertificateDescriptionCertFingerprint `pulumi:"certFingerprints"`
 	// (Output)
-	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by <https://tools.ietf.org/html/rfc5280#section-4.2.1.13>
 	CrlDistributionPoints []string `pulumi:"crlDistributionPoints"`
 	// (Output)
 	// A PublicKey describes a public key.
@@ -7240,7 +7232,7 @@ type CertificateCertificateDescription struct {
 	// Structure is documented below.
 	SubjectDescriptions []CertificateCertificateDescriptionSubjectDescription `pulumi:"subjectDescriptions"`
 	// (Output)
-	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+	// Provides a means of identifiying certificates that contain a particular public key, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.2>.
 	// Structure is documented below.
 	SubjectKeyIds []CertificateCertificateDescriptionSubjectKeyId `pulumi:"subjectKeyIds"`
 	// (Output)
@@ -7265,7 +7257,7 @@ type CertificateCertificateDescriptionArgs struct {
 	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
 	AiaIssuingCertificateUrls pulumi.StringArrayInput `pulumi:"aiaIssuingCertificateUrls"`
 	// (Output)
-	// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+	// Identifies the subjectKeyId of the parent certificate, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.1>
 	// Structure is documented below.
 	AuthorityKeyIds CertificateCertificateDescriptionAuthorityKeyIdArrayInput `pulumi:"authorityKeyIds"`
 	// (Output)
@@ -7273,7 +7265,7 @@ type CertificateCertificateDescriptionArgs struct {
 	// Structure is documented below.
 	CertFingerprints CertificateCertificateDescriptionCertFingerprintArrayInput `pulumi:"certFingerprints"`
 	// (Output)
-	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by <https://tools.ietf.org/html/rfc5280#section-4.2.1.13>
 	CrlDistributionPoints pulumi.StringArrayInput `pulumi:"crlDistributionPoints"`
 	// (Output)
 	// A PublicKey describes a public key.
@@ -7284,7 +7276,7 @@ type CertificateCertificateDescriptionArgs struct {
 	// Structure is documented below.
 	SubjectDescriptions CertificateCertificateDescriptionSubjectDescriptionArrayInput `pulumi:"subjectDescriptions"`
 	// (Output)
-	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+	// Provides a means of identifiying certificates that contain a particular public key, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.2>.
 	// Structure is documented below.
 	SubjectKeyIds CertificateCertificateDescriptionSubjectKeyIdArrayInput `pulumi:"subjectKeyIds"`
 	// (Output)
@@ -7351,7 +7343,7 @@ func (o CertificateCertificateDescriptionOutput) AiaIssuingCertificateUrls() pul
 }
 
 // (Output)
-// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+// Identifies the subjectKeyId of the parent certificate, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.1>
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) AuthorityKeyIds() CertificateCertificateDescriptionAuthorityKeyIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionAuthorityKeyId {
@@ -7369,7 +7361,7 @@ func (o CertificateCertificateDescriptionOutput) CertFingerprints() CertificateC
 }
 
 // (Output)
-// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by <https://tools.ietf.org/html/rfc5280#section-4.2.1.13>
 func (o CertificateCertificateDescriptionOutput) CrlDistributionPoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.CrlDistributionPoints }).(pulumi.StringArrayOutput)
 }
@@ -7393,7 +7385,7 @@ func (o CertificateCertificateDescriptionOutput) SubjectDescriptions() Certifica
 }
 
 // (Output)
-// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+// Provides a means of identifiying certificates that contain a particular public key, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.2>.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) SubjectKeyIds() CertificateCertificateDescriptionSubjectKeyIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionSubjectKeyId {
@@ -8570,7 +8562,7 @@ type CertificateCertificateDescriptionX509Description struct {
 	// Structure is documented below.
 	NameConstraints []CertificateCertificateDescriptionX509DescriptionNameConstraint `pulumi:"nameConstraints"`
 	// (Output)
-	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds []CertificateCertificateDescriptionX509DescriptionPolicyId `pulumi:"policyIds"`
 }
@@ -8608,7 +8600,7 @@ type CertificateCertificateDescriptionX509DescriptionArgs struct {
 	// Structure is documented below.
 	NameConstraints CertificateCertificateDescriptionX509DescriptionNameConstraintArrayInput `pulumi:"nameConstraints"`
 	// (Output)
-	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds CertificateCertificateDescriptionX509DescriptionPolicyIdArrayInput `pulumi:"policyIds"`
 }
@@ -8708,7 +8700,7 @@ func (o CertificateCertificateDescriptionX509DescriptionOutput) NameConstraints(
 }
 
 // (Output)
-// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CertificateCertificateDescriptionX509DescriptionOutput) PolicyIds() CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionX509Description) []CertificateCertificateDescriptionX509DescriptionPolicyId {
@@ -11152,7 +11144,7 @@ type CertificateConfigX509Config struct {
 	// Structure is documented below.
 	NameConstraints *CertificateConfigX509ConfigNameConstraints `pulumi:"nameConstraints"`
 	// (Output)
-	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds []CertificateConfigX509ConfigPolicyId `pulumi:"policyIds"`
 }
@@ -11190,7 +11182,7 @@ type CertificateConfigX509ConfigArgs struct {
 	// Structure is documented below.
 	NameConstraints CertificateConfigX509ConfigNameConstraintsPtrInput `pulumi:"nameConstraints"`
 	// (Output)
-	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds CertificateConfigX509ConfigPolicyIdArrayInput `pulumi:"policyIds"`
 }
@@ -11312,7 +11304,7 @@ func (o CertificateConfigX509ConfigOutput) NameConstraints() CertificateConfigX5
 }
 
 // (Output)
-// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigOutput) PolicyIds() CertificateConfigX509ConfigPolicyIdArrayOutput {
 	return o.ApplyT(func(v CertificateConfigX509Config) []CertificateConfigX509ConfigPolicyId { return v.PolicyIds }).(CertificateConfigX509ConfigPolicyIdArrayOutput)
@@ -11403,7 +11395,7 @@ func (o CertificateConfigX509ConfigPtrOutput) NameConstraints() CertificateConfi
 }
 
 // (Output)
-// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CertificateConfigX509ConfigPtrOutput) PolicyIds() CertificateConfigX509ConfigPolicyIdArrayOutput {
 	return o.ApplyT(func(v *CertificateConfigX509Config) []CertificateConfigX509ConfigPolicyId {
@@ -13551,7 +13543,7 @@ type CertificateTemplateIdentityConstraints struct {
 	AllowSubjectAltNamesPassthrough bool `pulumi:"allowSubjectAltNamesPassthrough"`
 	// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
 	AllowSubjectPassthrough bool `pulumi:"allowSubjectPassthrough"`
-	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
 	// Structure is documented below.
 	CelExpression *CertificateTemplateIdentityConstraintsCelExpression `pulumi:"celExpression"`
 }
@@ -13572,7 +13564,7 @@ type CertificateTemplateIdentityConstraintsArgs struct {
 	AllowSubjectAltNamesPassthrough pulumi.BoolInput `pulumi:"allowSubjectAltNamesPassthrough"`
 	// Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
 	AllowSubjectPassthrough pulumi.BoolInput `pulumi:"allowSubjectPassthrough"`
-	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+	// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
 	// Structure is documented below.
 	CelExpression CertificateTemplateIdentityConstraintsCelExpressionPtrInput `pulumi:"celExpression"`
 }
@@ -13664,7 +13656,7 @@ func (o CertificateTemplateIdentityConstraintsOutput) AllowSubjectPassthrough() 
 	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) bool { return v.AllowSubjectPassthrough }).(pulumi.BoolOutput)
 }
 
-// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
 // Structure is documented below.
 func (o CertificateTemplateIdentityConstraintsOutput) CelExpression() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
 	return o.ApplyT(func(v CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraintsCelExpression {
@@ -13716,7 +13708,7 @@ func (o CertificateTemplateIdentityConstraintsPtrOutput) AllowSubjectPassthrough
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
 // Structure is documented below.
 func (o CertificateTemplateIdentityConstraintsPtrOutput) CelExpression() CertificateTemplateIdentityConstraintsCelExpressionPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplateIdentityConstraints) *CertificateTemplateIdentityConstraintsCelExpression {
@@ -14192,7 +14184,7 @@ type CertificateTemplatePredefinedValues struct {
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage *CertificateTemplatePredefinedValuesKeyUsage `pulumi:"keyUsage"`
-	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds []CertificateTemplatePredefinedValuesPolicyId `pulumi:"policyIds"`
 }
@@ -14220,7 +14212,7 @@ type CertificateTemplatePredefinedValuesArgs struct {
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
 	// Structure is documented below.
 	KeyUsage CertificateTemplatePredefinedValuesKeyUsagePtrInput `pulumi:"keyUsage"`
-	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	// Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 	// Structure is documented below.
 	PolicyIds CertificateTemplatePredefinedValuesPolicyIdArrayInput `pulumi:"policyIds"`
 }
@@ -14331,7 +14323,7 @@ func (o CertificateTemplatePredefinedValuesOutput) KeyUsage() CertificateTemplat
 	}).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
 }
 
-// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CertificateTemplatePredefinedValuesOutput) PolicyIds() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesPolicyId {
@@ -14406,7 +14398,7 @@ func (o CertificateTemplatePredefinedValuesPtrOutput) KeyUsage() CertificateTemp
 	}).(CertificateTemplatePredefinedValuesKeyUsagePtrOutput)
 }
 
-// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+// Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
 // Structure is documented below.
 func (o CertificateTemplatePredefinedValuesPtrOutput) PolicyIds() CertificateTemplatePredefinedValuesPolicyIdArrayOutput {
 	return o.ApplyT(func(v *CertificateTemplatePredefinedValues) []CertificateTemplatePredefinedValuesPolicyId {

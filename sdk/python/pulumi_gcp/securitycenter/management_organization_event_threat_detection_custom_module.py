@@ -28,9 +28,6 @@ class ManagementOrganizationEventThreatDetectionCustomModuleArgs:
         """
         The set of arguments for constructing a ManagementOrganizationEventThreatDetectionCustomModule resource.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[str] config: Config for the module. For the resident module, its config value is defined at this level.
                For the inherited module, its config value is inherited from the ancestor module.
         :param pulumi.Input[str] display_name: The human readable name to be displayed for the module.
@@ -56,9 +53,6 @@ class ManagementOrganizationEventThreatDetectionCustomModuleArgs:
     def organization(self) -> pulumi.Input[str]:
         """
         Numerical ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -153,9 +147,6 @@ class _ManagementOrganizationEventThreatDetectionCustomModuleState:
         :param pulumi.Input[str] name: The resource name of the Event Threat Detection custom module.
                Its format is "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[str] type: Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -260,9 +251,6 @@ class _ManagementOrganizationEventThreatDetectionCustomModuleState:
     def organization(self) -> Optional[pulumi.Input[str]]:
         """
         Numerical ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -318,7 +306,7 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.eventThreatDetectionCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
+          * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
 
         ## Example Usage
 
@@ -349,9 +337,6 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] location: Location ID of the parent organization. Only global is supported at the moment.
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[str] type: Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
         """
         ...
@@ -369,7 +354,7 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.eventThreatDetectionCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
+          * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
 
         ## Example Usage
 
@@ -468,9 +453,6 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
         :param pulumi.Input[str] name: The resource name of the Event Threat Detection custom module.
                Its format is "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
         :param pulumi.Input[str] organization: Numerical ID of the parent organization.
-               
-               
-               - - -
         :param pulumi.Input[str] type: Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
         :param pulumi.Input[str] update_time: The time at which the custom module was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -547,9 +529,6 @@ class ManagementOrganizationEventThreatDetectionCustomModule(pulumi.CustomResour
     def organization(self) -> pulumi.Output[str]:
         """
         Numerical ID of the parent organization.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

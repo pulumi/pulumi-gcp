@@ -2835,9 +2835,8 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// Structure is documented below.
 	EncryptionConfig *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig `pulumi:"encryptionConfig"`
 	// (Output)
-	// The Compute Engine guest attributes. (see [Project and instance
-	// guest attributes](https://cloud.google.com/compute/docs/
-	// storing-retrieving-metadata#guest_attributes)).
+	// The Compute Engine guest attributes. (see Project and instance
+	// guest attributes).
 	GuestAttributes map[string]string `pulumi:"guestAttributes"`
 	// If true, runtime will only have internal IP addresses. By default,
 	// runtimes are not restricted to internal IP addresses, and will
@@ -2848,7 +2847,7 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -2856,9 +2855,7 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// The Compute Engine machine type used for runtimes.
 	MachineType string `pulumi:"machineType"`
 	// The Compute Engine metadata entries to add to virtual machine.
-	// (see [Project and instance metadata](https://cloud.google.com
-	// /compute/docs/storing-retrieving-metadata#project_and_instance
-	// _metadata)).
+	// (see Project and instance metadata).
 	Metadata map[string]string `pulumi:"metadata"`
 	// The Compute Engine network to be used for machine communications.
 	// Cannot be specified with subnetwork. If neither `network` nor
@@ -2893,7 +2890,7 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 	Subnet *string `pulumi:"subnet"`
 	// The Compute Engine tags to add to runtime (see [Tagging instances]
-	// (https://cloud.google.com/compute/docs/
+	// (<https://cloud.google.com/compute/docs/>
 	// label-or-tag-resources#tags)).
 	Tags []string `pulumi:"tags"`
 	// (Output)
@@ -2926,9 +2923,8 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// Structure is documented below.
 	EncryptionConfig RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// (Output)
-	// The Compute Engine guest attributes. (see [Project and instance
-	// guest attributes](https://cloud.google.com/compute/docs/
-	// storing-retrieving-metadata#guest_attributes)).
+	// The Compute Engine guest attributes. (see Project and instance
+	// guest attributes).
 	GuestAttributes pulumi.StringMapInput `pulumi:"guestAttributes"`
 	// If true, runtime will only have internal IP addresses. By default,
 	// runtimes are not restricted to internal IP addresses, and will
@@ -2939,7 +2935,7 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -2947,9 +2943,7 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// The Compute Engine machine type used for runtimes.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// The Compute Engine metadata entries to add to virtual machine.
-	// (see [Project and instance metadata](https://cloud.google.com
-	// /compute/docs/storing-retrieving-metadata#project_and_instance
-	// _metadata)).
+	// (see Project and instance metadata).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The Compute Engine network to be used for machine communications.
 	// Cannot be specified with subnetwork. If neither `network` nor
@@ -2984,7 +2978,7 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
 	// The Compute Engine tags to add to runtime (see [Tagging instances]
-	// (https://cloud.google.com/compute/docs/
+	// (<https://cloud.google.com/compute/docs/>
 	// label-or-tag-resources#tags)).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// (Output)
@@ -3102,9 +3096,8 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) EncryptionConfig() Runt
 }
 
 // (Output)
-// The Compute Engine guest attributes. (see [Project and instance
-// guest attributes](https://cloud.google.com/compute/docs/
-// storing-retrieving-metadata#guest_attributes)).
+// The Compute Engine guest attributes. (see Project and instance
+// guest attributes).
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) GuestAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) map[string]string { return v.GuestAttributes }).(pulumi.StringMapOutput)
 }
@@ -3121,7 +3114,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) InternalIpOnly() pulumi
 
 // The labels to associate with this runtime. Label **keys** must
 // contain 1 to 63 characters, and must conform to [RFC 1035]
-// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 // empty, but, if present, must contain 1 to 63 characters, and must
 // conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 // more than 32 labels can be associated with a cluster.
@@ -3135,9 +3128,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) MachineType() pulumi.St
 }
 
 // The Compute Engine metadata entries to add to virtual machine.
-// (see [Project and instance metadata](https://cloud.google.com
-// /compute/docs/storing-retrieving-metadata#project_and_instance
-// _metadata)).
+// (see Project and instance metadata).
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -3192,7 +3183,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Subnet() pulumi.StringP
 }
 
 // The Compute Engine tags to add to runtime (see [Tagging instances]
-// (https://cloud.google.com/compute/docs/
+// (<https://cloud.google.com/compute/docs/>
 // label-or-tag-resources#tags)).
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
@@ -3273,9 +3264,8 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) EncryptionConfig() R
 }
 
 // (Output)
-// The Compute Engine guest attributes. (see [Project and instance
-// guest attributes](https://cloud.google.com/compute/docs/
-// storing-retrieving-metadata#guest_attributes)).
+// The Compute Engine guest attributes. (see Project and instance
+// guest attributes).
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) GuestAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) map[string]string {
 		if v == nil {
@@ -3302,7 +3292,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) InternalIpOnly() pul
 
 // The labels to associate with this runtime. Label **keys** must
 // contain 1 to 63 characters, and must conform to [RFC 1035]
-// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 // empty, but, if present, must contain 1 to 63 characters, and must
 // conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 // more than 32 labels can be associated with a cluster.
@@ -3326,9 +3316,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) MachineType() pulumi
 }
 
 // The Compute Engine metadata entries to add to virtual machine.
-// (see [Project and instance metadata](https://cloud.google.com
-// /compute/docs/storing-retrieving-metadata#project_and_instance
-// _metadata)).
+// (see Project and instance metadata).
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) map[string]string {
 		if v == nil {
@@ -3411,7 +3399,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Subnet() pulumi.Stri
 }
 
 // The Compute Engine tags to add to runtime (see [Tagging instances]
-// (https://cloud.google.com/compute/docs/
+// (<https://cloud.google.com/compute/docs/>
 // label-or-tag-resources#tags)).
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) []string {

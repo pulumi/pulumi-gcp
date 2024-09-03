@@ -26,11 +26,9 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/managedFolder)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
+    ///   * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Storage Managed Folder Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -108,9 +106,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The name of the managed folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -191,9 +186,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The name of the managed folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -236,9 +228,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The name of the managed folder expressed as a path. Must include
         /// trailing '/'. For example, `example_dir/example_dir2/`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -94,7 +94,7 @@ def get_v2_accelerator_types(project: Optional[str] = None,
     available = gcp.tpu.get_v2_accelerator_types()
     ```
 
-    ### Configure Basic TPU VM With Available Type
+    ### Configure Basic TPU VM with available type
 
     ```python
     import pulumi
@@ -144,7 +144,7 @@ def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[str]
     available = gcp.tpu.get_v2_accelerator_types()
     ```
 
-    ### Configure Basic TPU VM With Available Type
+    ### Configure Basic TPU VM with available type
 
     ```python
     import pulumi

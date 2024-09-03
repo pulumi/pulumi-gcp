@@ -64,16 +64,12 @@ public final class CxSecuritySettingsState extends com.pulumi.resources.Resource
     /**
      * The human-readable name of the security settings, unique within the location.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The human-readable name of the security settings, unique within the location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -353,8 +349,6 @@ public final class CxSecuritySettingsState extends com.pulumi.resources.Resource
         /**
          * @param displayName The human-readable name of the security settings, unique within the location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -365,8 +359,6 @@ public final class CxSecuritySettingsState extends com.pulumi.resources.Resource
 
         /**
          * @param displayName The human-readable name of the security settings, unique within the location.
-         * 
-         * ***
          * 
          * @return builder
          * 

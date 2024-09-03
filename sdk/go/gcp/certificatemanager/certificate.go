@@ -13,9 +13,7 @@ import (
 
 // Certificate represents a HTTP-reachable backend for a Certificate.
 //
-// ## Example Usage
-//
-// ### Certificate Manager Google Managed Certificate Dns
+// ##
 //
 // ```go
 // package main
@@ -71,7 +69,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Google Managed Certificate Issuance Config
+// ##
 //
 // ```go
 // package main
@@ -135,7 +133,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// creating certificate_issuance_config to use it in the managed certificate
 //			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
 //				Name:        pulumi.String("issuance-config"),
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
@@ -172,7 +169,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Certificate Basic
+// ##
 //
 // ```go
 // package main
@@ -225,7 +222,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Self Managed Certificate Regional
+// ##
 //
 // ```go
 // package main
@@ -269,7 +266,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+// ##
 //
 // ```go
 // package main
@@ -333,7 +330,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// creating certificate_issuance_config to use it in the managed certificate
 //			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
 //				Name:        pulumi.String("issuance-config"),
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
@@ -370,7 +366,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Google Managed Certificate Dns All Regions
+// ##
 //
 // ```go
 // package main
@@ -423,7 +419,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Google Managed Regional Certificate Dns Auth
+// ##
 //
 // ```go
 // package main
@@ -512,8 +508,6 @@ type Certificate struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -525,9 +519,9 @@ type Certificate struct {
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-	// See https://cloud.google.com/vpc/docs/edge-locations.
+	// See <https://cloud.google.com/vpc/docs/edge-locations>.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See <https://cloud.google.com/compute/docs/regions-zones>
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -589,8 +583,6 @@ type certificateState struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -602,9 +594,9 @@ type certificateState struct {
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-	// See https://cloud.google.com/vpc/docs/edge-locations.
+	// See <https://cloud.google.com/vpc/docs/edge-locations>.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See <https://cloud.google.com/compute/docs/regions-zones>
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -632,8 +624,6 @@ type CertificateState struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -645,9 +635,9 @@ type CertificateState struct {
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-	// See https://cloud.google.com/vpc/docs/edge-locations.
+	// See <https://cloud.google.com/vpc/docs/edge-locations>.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See <https://cloud.google.com/compute/docs/regions-zones>
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -677,8 +667,6 @@ type certificateArgs struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -687,9 +675,9 @@ type certificateArgs struct {
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-	// See https://cloud.google.com/vpc/docs/edge-locations.
+	// See <https://cloud.google.com/vpc/docs/edge-locations>.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See <https://cloud.google.com/compute/docs/regions-zones>
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -716,8 +704,6 @@ type CertificateArgs struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -726,9 +712,9 @@ type CertificateArgs struct {
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-	// See https://cloud.google.com/vpc/docs/edge-locations.
+	// See <https://cloud.google.com/vpc/docs/edge-locations>.
 	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-	// See https://cloud.google.com/compute/docs/regions-zones
+	// See <https://cloud.google.com/compute/docs/regions-zones>
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -857,8 +843,6 @@ func (o CertificateOutput) Managed() CertificateManagedPtrOutput {
 // A user-defined name of the certificate. Certificate names must be unique
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
-//
-// ***
 func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -879,9 +863,9 @@ func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
 // DEFAULT: Certificates with default scope are served from core Google data centers.
 // If unsure, choose this option.
 // EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-// See https://cloud.google.com/vpc/docs/edge-locations.
+// See <https://cloud.google.com/vpc/docs/edge-locations>.
 // ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-// See https://cloud.google.com/compute/docs/regions-zones
+// See <https://cloud.google.com/compute/docs/regions-zones>
 func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }

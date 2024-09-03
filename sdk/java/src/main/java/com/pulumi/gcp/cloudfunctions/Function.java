@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/functions/docs)
+ *   * [Official Documentation](https://cloud.google.com/functions/docs)
  * 
  * &gt; **Warning:** As of November 1, 2019, newly created Functions are
  * private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
@@ -404,7 +404,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     }
     /**
      * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
@@ -412,14 +412,14 @@ public class Function extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+     * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
      * 
      */
     public Output<Optional<String>> kmsKeyName() {
         return Codegen.optional(this.kmsKeyName);
     }
     /**
-     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -429,7 +429,7 @@ public class Function extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -526,8 +526,6 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      * 
-     * ***
-     * 
      */
     @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
@@ -535,8 +533,6 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * @return The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-     * 
-     * ***
      * 
      */
     public Output<String> runtime() {

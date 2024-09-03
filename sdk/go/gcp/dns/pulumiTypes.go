@@ -4732,7 +4732,7 @@ func (o ResponsePolicyRuleLocalDataPtrOutput) LocalDatas() ResponsePolicyRuleLoc
 }
 
 type ResponsePolicyRuleLocalDataLocalData struct {
-	// For example, www.example.com.
+	// For example, <http://www.example.com>.
 	Name string `pulumi:"name"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
 	Rrdatas []string `pulumi:"rrdatas"`
@@ -4756,7 +4756,7 @@ type ResponsePolicyRuleLocalDataLocalDataInput interface {
 }
 
 type ResponsePolicyRuleLocalDataLocalDataArgs struct {
-	// For example, www.example.com.
+	// For example, <http://www.example.com>.
 	Name pulumi.StringInput `pulumi:"name"`
 	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
 	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
@@ -4819,7 +4819,7 @@ func (o ResponsePolicyRuleLocalDataLocalDataOutput) ToResponsePolicyRuleLocalDat
 	return o
 }
 
-// For example, www.example.com.
+// For example, <http://www.example.com>.
 func (o ResponsePolicyRuleLocalDataLocalDataOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResponsePolicyRuleLocalDataLocalData) string { return v.Name }).(pulumi.StringOutput)
 }

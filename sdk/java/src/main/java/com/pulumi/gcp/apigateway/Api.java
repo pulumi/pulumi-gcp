@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+ *   * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
  * 
- * ## Example Usage
- * 
- * ### Apigateway Api Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -92,16 +90,12 @@ public class Api extends com.pulumi.resources.CustomResource {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
      * 
-     * ***
-     * 
      */
     @Export(name="apiId", refs={String.class}, tree="[0]")
     private Output<String> apiId;
 
     /**
      * @return Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     * 
-     * ***
      * 
      */
     public Output<String> apiId() {
@@ -170,7 +164,7 @@ public class Api extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+     * Immutable. The name of a Google Managed Service ( &lt;https://cloud.google.com/service-infrastructure/docs/glossary#managed)&gt;.
      * If not specified, a new Service will automatically be created in the same project as this API.
      * 
      */
@@ -178,7 +172,7 @@ public class Api extends com.pulumi.resources.CustomResource {
     private Output<String> managedService;
 
     /**
-     * @return Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+     * @return Immutable. The name of a Google Managed Service ( &lt;https://cloud.google.com/service-infrastructure/docs/glossary#managed)&gt;.
      * If not specified, a new Service will automatically be created in the same project as this API.
      * 
      */

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ *   * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
  *
@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Router Nat Manual Ips
  *
  * ```typescript
@@ -88,6 +89,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Router Nat Rules
  *
  * ```typescript
@@ -146,6 +148,7 @@ import * as utilities from "../utilities";
  *     enableEndpointIndependentMapping: false,
  * });
  * ```
+ *
  * ### Router Nat Private
  *
  * ```typescript
@@ -343,9 +346,6 @@ export class RouterNat extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -558,9 +558,6 @@ export interface RouterNatState {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     router?: pulumi.Input<string>;
     /**
@@ -701,9 +698,6 @@ export interface RouterNatArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     router: pulumi.Input<string>;
     /**

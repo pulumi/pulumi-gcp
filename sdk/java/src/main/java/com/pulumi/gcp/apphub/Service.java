@@ -182,6 +182,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apphub Service Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -529,16 +530,12 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * The Service identifier.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
      * @return The Service identifier.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

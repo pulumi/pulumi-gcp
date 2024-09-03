@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     vmwareEngineNetwork: network_policy_nw.id,
  * });
  * ```
+ *
  * ### Vmware Engine Network Policy Full
  *
  * ```typescript
@@ -142,15 +143,12 @@ export class NetworkPolicy extends pulumi.CustomResource {
     public readonly internetAccess!: pulumi.Output<outputs.vmwareengine.NetworkPolicyInternetAccess>;
     /**
      * The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-central1
      */
     public readonly location!: pulumi.Output<string>;
     /**
      * The ID of the Network Policy.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -267,15 +265,12 @@ export interface NetworkPolicyState {
     internetAccess?: pulumi.Input<inputs.vmwareengine.NetworkPolicyInternetAccess>;
     /**
      * The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-central1
      */
     location?: pulumi.Input<string>;
     /**
      * The ID of the Network Policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -333,15 +328,12 @@ export interface NetworkPolicyArgs {
     internetAccess?: pulumi.Input<inputs.vmwareengine.NetworkPolicyInternetAccess>;
     /**
      * The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-central1
      */
     location: pulumi.Input<string>;
     /**
      * The ID of the Network Policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

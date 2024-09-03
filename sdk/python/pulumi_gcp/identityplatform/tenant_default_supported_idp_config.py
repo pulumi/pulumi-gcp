@@ -29,9 +29,6 @@ class TenantDefaultSupportedIdpConfigArgs:
         The set of arguments for constructing a TenantDefaultSupportedIdpConfig resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
                * `facebook.com`
@@ -74,9 +71,6 @@ class TenantDefaultSupportedIdpConfigArgs:
     def client_secret(self) -> pulumi.Input[str]:
         """
         OAuth client secret
-
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -158,9 +152,6 @@ class _TenantDefaultSupportedIdpConfigState:
         Input properties used for looking up and filtering TenantDefaultSupportedIdpConfig resources.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
@@ -210,9 +201,6 @@ class _TenantDefaultSupportedIdpConfigState:
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth client secret
-
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -311,9 +299,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
         the marketplace prior to using this resource.
 
-        ## Example Usage
-
-        ### Identity Platform Tenant Default Supported Idp Config Basic
+        ## 
 
         ```python
         import pulumi
@@ -356,9 +342,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
@@ -388,9 +371,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
         the marketplace prior to using this resource.
 
-        ## Example Usage
-
-        ### Identity Platform Tenant Default Supported Idp Config Basic
+        ## 
 
         ```python
         import pulumi
@@ -500,9 +481,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
@@ -546,9 +524,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     def client_secret(self) -> pulumi.Output[str]:
         """
         OAuth client secret
-
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 

@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
         /// If weights are specified for any one service name, they need to be specified for all of them.
         /// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-        /// 
-        /// - - -
         /// </summary>
         public readonly int? Weight;
 

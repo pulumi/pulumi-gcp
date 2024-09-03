@@ -656,7 +656,7 @@ if not MYPY:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         deny_all: NotRequired[pulumi.Input[bool]]
@@ -688,7 +688,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
         :param pulumi.Input[bool] allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
-               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
                Structure is documented below.
         :param pulumi.Input[bool] deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         :param pulumi.Input[bool] enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
@@ -725,7 +725,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -926,7 +926,7 @@ if not MYPY:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         deny_all: NotRequired[pulumi.Input[bool]]
@@ -958,7 +958,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
         :param pulumi.Input[bool] allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
-               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
                Structure is documented below.
         :param pulumi.Input[bool] deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         :param pulumi.Input[bool] enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
@@ -995,7 +995,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -1736,8 +1736,6 @@ if not MYPY:
         resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The resource types to run the detector on.
-
-        - - -
         """
 elif False:
     PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -1748,8 +1746,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
                  resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -1758,8 +1754,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
     def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 

@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
 
         /// <summary>
         /// Additional zone for a higher level of availability and load balancing.
-        /// 
-        /// - - -
         /// </summary>
         [Input("secondaryLocation")]
         public Input<string>? SecondaryLocation { get; set; }

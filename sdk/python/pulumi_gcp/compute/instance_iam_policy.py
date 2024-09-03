@@ -255,6 +255,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
+
         ## compute.InstanceIAMBinding
 
         ```python
@@ -287,6 +288,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## compute.InstanceIAMMember
 
         ```python
@@ -321,8 +323,6 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         ```
 
         ## This resource supports User Project Overrides.
-
-        - 
 
         # IAM policy for Compute Engine Instance
         Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
@@ -379,6 +379,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
+
         ## compute.InstanceIAMBinding
 
         ```python
@@ -411,6 +412,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## compute.InstanceIAMMember
 
         ```python
@@ -480,7 +482,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -554,6 +556,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
+
         ## compute.InstanceIAMBinding
 
         ```python
@@ -586,6 +589,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## compute.InstanceIAMMember
 
         ```python
@@ -620,8 +624,6 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         ```
 
         ## This resource supports User Project Overrides.
-
-        - 
 
         # IAM policy for Compute Engine Instance
         Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
@@ -678,6 +680,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
             instance_name=default["name"],
             policy_data=admin.policy_data)
         ```
+
         ## compute.InstanceIAMBinding
 
         ```python
@@ -710,6 +713,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## compute.InstanceIAMMember
 
         ```python
@@ -779,7 +783,7 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param InstanceIAMPolicyArgs args: The arguments to use to populate this resource's properties.

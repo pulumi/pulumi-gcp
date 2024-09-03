@@ -16,11 +16,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
  * * How-to Guides
- *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
+ *   * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
  *
- * ## Example Usage
- *
- * ### Target Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +46,7 @@ import * as utilities from "../utilities";
  *     instance: target_vm.id,
  * });
  * ```
- * ### Target Instance Custom Network
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,7 +78,7 @@ import * as utilities from "../utilities";
  *     network: target_vm.then(target_vm => target_vm.selfLink),
  * });
  * ```
- * ### Target Instance With Security Policy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -222,9 +220,6 @@ export class TargetInstance extends pulumi.CustomResource {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -329,9 +324,6 @@ export interface TargetInstanceState {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -389,9 +381,6 @@ export interface TargetInstanceArgs {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

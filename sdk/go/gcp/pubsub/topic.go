@@ -22,9 +22,7 @@ import (
 // > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
 // by using the `projects.ServiceIdentity` resource.
 //
-// ## Example Usage
-//
-// ### Pubsub Topic Basic
+// ##
 //
 // ```go
 // package main
@@ -53,6 +51,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Pubsub Topic Cmek
 //
 // ```go
@@ -94,7 +95,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Topic Geo Restricted
+// ##
 //
 // ```go
 // package main
@@ -124,6 +125,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Pubsub Topic Schema Settings
 //
 // ```go
@@ -179,7 +181,7 @@ import (
 //	}
 //
 // ```
-// ### Pubsub Topic Ingestion Kinesis
+// ##
 //
 // ```go
 // package main
@@ -270,8 +272,6 @@ type Topic struct {
 	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyOutput `pulumi:"messageStoragePolicy"`
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -350,8 +350,6 @@ type topicState struct {
 	// Structure is documented below.
 	MessageStoragePolicy *TopicMessageStoragePolicy `pulumi:"messageStoragePolicy"`
 	// Name of the topic.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -396,8 +394,6 @@ type TopicState struct {
 	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyPtrInput
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -444,8 +440,6 @@ type topicArgs struct {
 	// Structure is documented below.
 	MessageStoragePolicy *TopicMessageStoragePolicy `pulumi:"messageStoragePolicy"`
 	// Name of the topic.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -486,8 +480,6 @@ type TopicArgs struct {
 	// Structure is documented below.
 	MessageStoragePolicy TopicMessageStoragePolicyPtrInput
 	// Name of the topic.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -633,8 +625,6 @@ func (o TopicOutput) MessageStoragePolicy() TopicMessageStoragePolicyOutput {
 }
 
 // Name of the topic.
-//
-// ***
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/beta/serviceAttachments)
     /// * How-to Guides
-    ///     * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+    ///   * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Service Attachment Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -120,7 +118,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Service Attachment Explicit Projects
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -233,7 +231,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Service Attachment Explicit Networks
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -352,7 +350,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Service Attachment Reconcile Connections
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -531,9 +529,6 @@ namespace Pulumi.Gcp.Compute
         /// If true, enable the proxy protocol which is for supplying client TCP/IP
         /// address data in TCP connections that traverse proxies on their way to
         /// destination servers.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("enableProxyProtocol")]
         public Output<bool> EnableProxyProtocol { get; private set; } = null!;
@@ -700,9 +695,6 @@ namespace Pulumi.Gcp.Compute
         /// If true, enable the proxy protocol which is for supplying client TCP/IP
         /// address data in TCP connections that traverse proxies on their way to
         /// destination servers.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("enableProxyProtocol", required: true)]
         public Input<bool> EnableProxyProtocol { get; set; } = null!;
@@ -838,9 +830,6 @@ namespace Pulumi.Gcp.Compute
         /// If true, enable the proxy protocol which is for supplying client TCP/IP
         /// address data in TCP connections that traverse proxies on their way to
         /// destination servers.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }

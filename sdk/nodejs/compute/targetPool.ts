@@ -121,8 +121,6 @@ export class TargetPool extends pulumi.CustomResource {
     /**
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -227,8 +225,6 @@ export interface TargetPoolState {
     /**
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -291,8 +287,6 @@ export interface TargetPoolArgs {
     /**
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

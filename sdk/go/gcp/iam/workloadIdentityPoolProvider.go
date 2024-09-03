@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 //
-// ## Example Usage
-//
-// ### Iam Workload Identity Pool Provider Aws Basic
+// ##
 //
 // ```go
 // package main
@@ -57,7 +55,7 @@ import (
 //	}
 //
 // ```
-// ### Iam Workload Identity Pool Provider Aws Full
+// ##
 //
 // ```go
 // package main
@@ -101,7 +99,7 @@ import (
 //	}
 //
 // ```
-// ### Iam Workload Identity Pool Provider Oidc Basic
+// ##
 //
 // ```go
 // package main
@@ -139,7 +137,7 @@ import (
 //	}
 //
 // ```
-// ### Iam Workload Identity Pool Provider Oidc Full
+// ##
 //
 // ```go
 // package main
@@ -187,7 +185,7 @@ import (
 //	}
 //
 // ```
-// ### Iam Workload Identity Pool Provider Saml Basic
+// ##
 //
 // ```go
 // package main
@@ -234,7 +232,7 @@ import (
 //	}
 //
 // ```
-// ### Iam Workload Identity Pool Provider Saml Full
+// ##
 //
 // ```go
 // package main
@@ -284,7 +282,7 @@ import (
 //	}
 //
 // ```
-// ### Iam Workload Identity Pool Provider Oidc Upload Key
+// ##
 //
 // ```go
 // package main
@@ -441,8 +439,6 @@ type WorkloadIdentityPoolProvider struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringOutput `pulumi:"workloadIdentityPoolProviderId"`
 }
 
@@ -563,8 +559,6 @@ type workloadIdentityPoolProviderState struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId *string `pulumi:"workloadIdentityPoolProviderId"`
 }
 
@@ -650,8 +644,6 @@ type WorkloadIdentityPoolProviderState struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringPtrInput
 }
 
@@ -730,8 +722,6 @@ type workloadIdentityPoolProviderArgs struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
 }
 
@@ -807,8 +797,6 @@ type WorkloadIdentityPoolProviderArgs struct {
 	// The ID for the provider, which becomes the final component of the resource name. This
 	// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringInput
 }
 
@@ -1016,8 +1004,6 @@ func (o WorkloadIdentityPoolProviderOutput) WorkloadIdentityPoolId() pulumi.Stri
 // The ID for the provider, which becomes the final component of the resource name. This
 // value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 // `gcp-` is reserved for use by Google, and may not be specified.
-//
-// ***
 func (o WorkloadIdentityPoolProviderOutput) WorkloadIdentityPoolProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringOutput { return v.WorkloadIdentityPoolProviderId }).(pulumi.StringOutput)
 }

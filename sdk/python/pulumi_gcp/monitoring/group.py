@@ -30,9 +30,6 @@ class GroupArgs:
                purposes.
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -70,9 +67,6 @@ class GroupArgs:
         """
         The filter used to determine which monitored resources
         belong to this group.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -137,9 +131,6 @@ class _GroupState:
                purposes.
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -183,9 +174,6 @@ class _GroupState:
         """
         The filter used to determine which monitored resources
         belong to this group.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -269,11 +257,9 @@ class Group(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+          * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 
-        ## Example Usage
-
-        ### Monitoring Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -283,7 +269,7 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
-        ### Monitoring Group Subgroup
+        ## 
 
         ```python
         import pulumi
@@ -316,9 +302,6 @@ class Group(pulumi.CustomResource):
                purposes.
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -344,11 +327,9 @@ class Group(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+          * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 
-        ## Example Usage
-
-        ### Monitoring Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -358,7 +339,7 @@ class Group(pulumi.CustomResource):
             display_name="tf-test MonitoringGroup",
             filter="resource.metadata.region=\\"europe-west2\\"")
         ```
-        ### Monitoring Group Subgroup
+        ## 
 
         ```python
         import pulumi
@@ -451,9 +432,6 @@ class Group(pulumi.CustomResource):
                purposes.
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources
                belong to this group.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
@@ -492,9 +470,6 @@ class Group(pulumi.CustomResource):
         """
         The filter used to determine which monitored resources
         belong to this group.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 

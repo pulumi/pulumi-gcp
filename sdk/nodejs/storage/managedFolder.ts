@@ -21,11 +21,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/managedFolder)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
  *
- * ## Example Usage
- *
- * ### Storage Managed Folder Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -111,9 +109,6 @@ export class ManagedFolder extends pulumi.CustomResource {
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -189,9 +184,6 @@ export interface ManagedFolderState {
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -222,9 +214,6 @@ export interface ManagedFolderArgs {
     /**
      * The name of the managed folder expressed as a path. Must include
      * trailing '/'. For example, `example_dir/example_dir2/`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

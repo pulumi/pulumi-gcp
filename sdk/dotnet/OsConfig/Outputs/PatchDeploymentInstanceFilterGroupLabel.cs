@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     {
         /// <summary>
         /// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
 

@@ -42,9 +42,6 @@ class SubscriptionArgs:
         :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
@@ -73,7 +70,7 @@ class SubscriptionArgs:
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
                parent project (i.e.,
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
@@ -164,9 +161,6 @@ class SubscriptionArgs:
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
         the topic is in the same project as the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -239,7 +233,7 @@ class SubscriptionArgs:
         is disabled.
         The Cloud Pub/Sub service account associated with this subscription's
         parent project (i.e.,
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
         permission to Acknowledge() messages on this subscription.
         Structure is documented below.
         """
@@ -470,7 +464,7 @@ class _SubscriptionState:
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
                parent project (i.e.,
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -527,9 +521,6 @@ class _SubscriptionState:
         :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         """
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -633,7 +624,7 @@ class _SubscriptionState:
         is disabled.
         The Cloud Pub/Sub service account associated with this subscription's
         parent project (i.e.,
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
         permission to Acknowledge() messages on this subscription.
         Structure is documented below.
         """
@@ -844,9 +835,6 @@ class _SubscriptionState:
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
         the topic is in the same project as the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -885,14 +873,12 @@ class Subscription(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
         * How-to Guides
-            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+          * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 
         > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
         by using the `projects.ServiceIdentity` resource.
 
-        ## Example Usage
-
-        ### Pubsub Subscription Push
+        ## 
 
         ```python
         import pulumi
@@ -913,7 +899,7 @@ class Subscription(pulumi.CustomResource):
                 },
             })
         ```
-        ### Pubsub Subscription Pull
+        ## 
 
         ```python
         import pulumi
@@ -937,7 +923,7 @@ class Subscription(pulumi.CustomResource):
             },
             enable_message_ordering=False)
         ```
-        ### Pubsub Subscription Dead Letter
+        ## 
 
         ```python
         import pulumi
@@ -953,7 +939,7 @@ class Subscription(pulumi.CustomResource):
                 "max_delivery_attempts": 10,
             })
         ```
-        ### Pubsub Subscription Push Bq
+        ## 
 
         ```python
         import pulumi
@@ -999,7 +985,7 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
-        ### Pubsub Subscription Push Bq Table Schema
+        ## 
 
         ```python
         import pulumi
@@ -1046,7 +1032,7 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
-        ### Pubsub Subscription Push Bq Service Account
+        ## 
 
         ```python
         import pulumi
@@ -1097,7 +1083,7 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
-        ### Pubsub Subscription Push Cloudstorage
+        ## 
 
         ```python
         import pulumi
@@ -1129,7 +1115,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
-        ### Pubsub Subscription Push Cloudstorage Avro
+        ## 
 
         ```python
         import pulumi
@@ -1164,7 +1150,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
-        ### Pubsub Subscription Push Cloudstorage Service Account
+        ## 
 
         ```python
         import pulumi
@@ -1256,7 +1242,7 @@ class Subscription(pulumi.CustomResource):
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
                parent project (i.e.,
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
         :param pulumi.Input[bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
@@ -1310,9 +1296,6 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -1328,14 +1311,12 @@ class Subscription(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
         * How-to Guides
-            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+          * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 
         > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
         by using the `projects.ServiceIdentity` resource.
 
-        ## Example Usage
-
-        ### Pubsub Subscription Push
+        ## 
 
         ```python
         import pulumi
@@ -1356,7 +1337,7 @@ class Subscription(pulumi.CustomResource):
                 },
             })
         ```
-        ### Pubsub Subscription Pull
+        ## 
 
         ```python
         import pulumi
@@ -1380,7 +1361,7 @@ class Subscription(pulumi.CustomResource):
             },
             enable_message_ordering=False)
         ```
-        ### Pubsub Subscription Dead Letter
+        ## 
 
         ```python
         import pulumi
@@ -1396,7 +1377,7 @@ class Subscription(pulumi.CustomResource):
                 "max_delivery_attempts": 10,
             })
         ```
-        ### Pubsub Subscription Push Bq
+        ## 
 
         ```python
         import pulumi
@@ -1442,7 +1423,7 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
-        ### Pubsub Subscription Push Bq Table Schema
+        ## 
 
         ```python
         import pulumi
@@ -1489,7 +1470,7 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
-        ### Pubsub Subscription Push Bq Service Account
+        ## 
 
         ```python
         import pulumi
@@ -1540,7 +1521,7 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
-        ### Pubsub Subscription Push Cloudstorage
+        ## 
 
         ```python
         import pulumi
@@ -1572,7 +1553,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
-        ### Pubsub Subscription Push Cloudstorage Avro
+        ## 
 
         ```python
         import pulumi
@@ -1607,7 +1588,7 @@ class Subscription(pulumi.CustomResource):
                     admin,
                 ]))
         ```
-        ### Pubsub Subscription Push Cloudstorage Service Account
+        ## 
 
         ```python
         import pulumi
@@ -1794,7 +1775,7 @@ class Subscription(pulumi.CustomResource):
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
                parent project (i.e.,
-               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1851,9 +1832,6 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
                (as in the id property of a google_pubsub_topic), or just a topic name if
                the topic is in the same project as the subscription.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1932,7 +1910,7 @@ class Subscription(pulumi.CustomResource):
         is disabled.
         The Cloud Pub/Sub service account associated with this subscription's
         parent project (i.e.,
-        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
         permission to Acknowledge() messages on this subscription.
         Structure is documented below.
         """
@@ -2087,9 +2065,6 @@ class Subscription(pulumi.CustomResource):
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
         the topic is in the same project as the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 

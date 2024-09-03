@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
     /// 
@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dialogflow Intent Full
     /// 
     /// ```csharp
@@ -161,9 +162,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -328,9 +326,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -446,9 +441,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

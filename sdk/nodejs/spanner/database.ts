@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
+ *   * [Official Documentation](https://cloud.google.com/spanner/)
  *
  * > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
  * (and run `pulumi up` to write the field to state) in order to destroy an instance.
@@ -21,9 +21,7 @@ import * as utilities from "../utilities";
  * On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
  * on databases in order to prevent accidental data loss.
  *
- * ## Example Usage
- *
- * ### Spanner Database Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -130,9 +128,6 @@ export class Database extends pulumi.CustomResource {
     public readonly encryptionConfig!: pulumi.Output<outputs.spanner.DatabaseEncryptionConfig | undefined>;
     /**
      * The instance to create the database on.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -232,9 +227,6 @@ export interface DatabaseState {
     encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -291,9 +283,6 @@ export interface DatabaseArgs {
     encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
     /**
      * The instance to create the database on.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

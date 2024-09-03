@@ -18,106 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Network Security Authorization Policy Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networksecurity.AuthorizationPolicy;
- * import com.pulumi.gcp.networksecurity.AuthorizationPolicyArgs;
- * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()
- *             .name("my-authorization-policy")
- *             .labels(Map.of("foo", "bar"))
- *             .description("my description")
- *             .action("ALLOW")
- *             .rules(AuthorizationPolicyRuleArgs.builder()
- *                 .sources(AuthorizationPolicyRuleSourceArgs.builder()
- *                     .principals("namespace/*")
- *                     .ipBlocks("1.2.3.0/24")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Security Authorization Policy Destinations
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networksecurity.AuthorizationPolicy;
- * import com.pulumi.gcp.networksecurity.AuthorizationPolicyArgs;
- * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new AuthorizationPolicy("default", AuthorizationPolicyArgs.builder()
- *             .name("my-authorization-policy")
- *             .labels(Map.of("foo", "bar"))
- *             .description("my description")
- *             .action("ALLOW")
- *             .rules(AuthorizationPolicyRuleArgs.builder()
- *                 .sources(AuthorizationPolicyRuleSourceArgs.builder()
- *                     .principals("namespace/*")
- *                     .ipBlocks("1.2.3.0/24")
- *                     .build())
- *                 .destinations(AuthorizationPolicyRuleDestinationArgs.builder()
- *                     .hosts("mydomain.*")
- *                     .ports(8080)
- *                     .methods("GET")
- *                     .httpHeaderMatch(AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs.builder()
- *                         .headerName(":method")
- *                         .regexMatch("GET")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * AuthorizationPolicy can be imported using any of these accepted formats:
@@ -240,16 +140,12 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Name of the AuthorizationPolicy resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the AuthorizationPolicy resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

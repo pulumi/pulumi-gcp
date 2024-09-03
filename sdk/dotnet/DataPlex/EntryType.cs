@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Entry Type Full
     /// 
     /// ```csharp

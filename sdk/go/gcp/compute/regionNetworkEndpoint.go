@@ -24,9 +24,7 @@ import (
 //   - [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
-// ## Example Usage
-//
-// ### Region Network Endpoint Internet Ip Port
+// ##
 //
 // ```go
 // package main
@@ -70,7 +68,7 @@ import (
 //	}
 //
 // ```
-// ### Region Network Endpoint Internet Fqdn Port
+// ##
 //
 // ```go
 // package main
@@ -114,6 +112,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Region Network Endpoint Portmap
 //
 // ```go
@@ -252,8 +253,6 @@ type RegionNetworkEndpoint struct {
 	// Region where the containing network endpoint group is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	RegionNetworkEndpointGroup pulumi.StringOutput `pulumi:"regionNetworkEndpointGroup"`
 }
 
@@ -312,8 +311,6 @@ type regionNetworkEndpointState struct {
 	// Region where the containing network endpoint group is located.
 	Region *string `pulumi:"region"`
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	RegionNetworkEndpointGroup *string `pulumi:"regionNetworkEndpointGroup"`
 }
 
@@ -337,8 +334,6 @@ type RegionNetworkEndpointState struct {
 	// Region where the containing network endpoint group is located.
 	Region pulumi.StringPtrInput
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	RegionNetworkEndpointGroup pulumi.StringPtrInput
 }
 
@@ -366,8 +361,6 @@ type regionNetworkEndpointArgs struct {
 	// Region where the containing network endpoint group is located.
 	Region *string `pulumi:"region"`
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	RegionNetworkEndpointGroup string `pulumi:"regionNetworkEndpointGroup"`
 }
 
@@ -392,8 +385,6 @@ type RegionNetworkEndpointArgs struct {
 	// Region where the containing network endpoint group is located.
 	Region pulumi.StringPtrInput
 	// The network endpoint group this endpoint is part of.
-	//
-	// ***
 	RegionNetworkEndpointGroup pulumi.StringInput
 }
 
@@ -524,8 +515,6 @@ func (o RegionNetworkEndpointOutput) Region() pulumi.StringOutput {
 }
 
 // The network endpoint group this endpoint is part of.
-//
-// ***
 func (o RegionNetworkEndpointOutput) RegionNetworkEndpointGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpoint) pulumi.StringOutput { return v.RegionNetworkEndpointGroup }).(pulumi.StringOutput)
 }

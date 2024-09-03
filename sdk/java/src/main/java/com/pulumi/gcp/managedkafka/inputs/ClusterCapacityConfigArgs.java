@@ -17,16 +17,12 @@ public final class ClusterCapacityConfigArgs extends com.pulumi.resources.Resour
     /**
      * The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
      * 
-     * ***
-     * 
      */
     @Import(name="memoryBytes", required=true)
     private Output<String> memoryBytes;
 
     /**
      * @return The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-     * 
-     * ***
      * 
      */
     public Output<String> memoryBytes() {
@@ -76,8 +72,6 @@ public final class ClusterCapacityConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param memoryBytes The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -88,8 +82,6 @@ public final class ClusterCapacityConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param memoryBytes The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-         * 
-         * ***
          * 
          * @return builder
          * 

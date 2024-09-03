@@ -171,7 +171,7 @@ if not MYPY:
     class TriggerDestinationCloudRunServiceArgsDict(TypedDict):
         service: pulumi.Input[str]
         """
-        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
         """
         path: NotRequired[pulumi.Input[str]]
         """
@@ -191,7 +191,7 @@ class TriggerDestinationCloudRunServiceArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] service: Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        :param pulumi.Input[str] service: Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
         :param pulumi.Input[str] path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param pulumi.Input[str] region: Required. The region the Cloud Run service is deployed in.
         """
@@ -205,7 +205,7 @@ class TriggerDestinationCloudRunServiceArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
         """
         return pulumi.get(self, "service")
 
@@ -416,9 +416,7 @@ if not MYPY:
         """
         value: pulumi.Input[str]
         """
-        Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-
-        - - -
+        Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
         """
         operator: NotRequired[pulumi.Input[str]]
         """
@@ -435,9 +433,7 @@ class TriggerMatchingCriteriaArgs:
                  operator: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] attribute: Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
-        :param pulumi.Input[str] value: Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-               
-               - - -
+        :param pulumi.Input[str] value: Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
         :param pulumi.Input[str] operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
         pulumi.set(__self__, "attribute", attribute)
@@ -461,9 +457,7 @@ class TriggerMatchingCriteriaArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-
-        - - -
+        Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
         """
         return pulumi.get(self, "value")
 

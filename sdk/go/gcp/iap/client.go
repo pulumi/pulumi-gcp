@@ -101,8 +101,6 @@ type Client struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
-	//
-	// ***
 	Brand pulumi.StringOutput `pulumi:"brand"`
 	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
@@ -156,8 +154,6 @@ type clientState struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
-	//
-	// ***
 	Brand *string `pulumi:"brand"`
 	// Output only. Unique identifier of the OAuth client.
 	ClientId *string `pulumi:"clientId"`
@@ -172,8 +168,6 @@ type ClientState struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
-	//
-	// ***
 	Brand pulumi.StringPtrInput
 	// Output only. Unique identifier of the OAuth client.
 	ClientId pulumi.StringPtrInput
@@ -192,8 +186,6 @@ type clientArgs struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
-	//
-	// ***
 	Brand string `pulumi:"brand"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName string `pulumi:"displayName"`
@@ -204,8 +196,6 @@ type ClientArgs struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}`.
-	//
-	// ***
 	Brand pulumi.StringInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringInput
@@ -301,8 +291,6 @@ func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutpu
 // Identifier of the brand to which this client
 // is attached to. The format is
 // `projects/{project_number}/brands/{brand_id}`.
-//
-// ***
 func (o ClientOutput) Brand() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Brand }).(pulumi.StringOutput)
 }

@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
     /// * How-to Guides
-    ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+    ///   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -133,9 +133,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -257,9 +254,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -373,9 +367,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Access Level to add this condition to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

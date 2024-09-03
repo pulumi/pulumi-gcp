@@ -59,16 +59,12 @@ public final class ServicePerimeterIngressPolicyArgs extends com.pulumi.resource
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
-     * ***
-     * 
      */
     @Import(name="perimeter", required=true)
     private Output<String> perimeter;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
-     * 
-     * ***
      * 
      */
     public Output<String> perimeter() {
@@ -154,8 +150,6 @@ public final class ServicePerimeterIngressPolicyArgs extends com.pulumi.resource
         /**
          * @param perimeter The name of the Service Perimeter to add this resource to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -166,8 +160,6 @@ public final class ServicePerimeterIngressPolicyArgs extends com.pulumi.resource
 
         /**
          * @param perimeter The name of the Service Perimeter to add this resource to.
-         * 
-         * ***
          * 
          * @return builder
          * 

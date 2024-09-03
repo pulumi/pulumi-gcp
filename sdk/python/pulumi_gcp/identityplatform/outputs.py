@@ -1102,7 +1102,7 @@ class ConfigSmsRegionConfigAllowByDefault(dict):
     def __init__(__self__, *,
                  disallowed_regions: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] disallowed_regions: Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        :param Sequence[str] disallowed_regions: Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         if disallowed_regions is not None:
             pulumi.set(__self__, "disallowed_regions", disallowed_regions)
@@ -1111,7 +1111,7 @@ class ConfigSmsRegionConfigAllowByDefault(dict):
     @pulumi.getter(name="disallowedRegions")
     def disallowed_regions(self) -> Optional[Sequence[str]]:
         """
-        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         return pulumi.get(self, "disallowed_regions")
 
@@ -1138,7 +1138,7 @@ class ConfigSmsRegionConfigAllowlistOnly(dict):
     def __init__(__self__, *,
                  allowed_regions: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] allowed_regions: Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        :param Sequence[str] allowed_regions: Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         if allowed_regions is not None:
             pulumi.set(__self__, "allowed_regions", allowed_regions)
@@ -1147,7 +1147,7 @@ class ConfigSmsRegionConfigAllowlistOnly(dict):
     @pulumi.getter(name="allowedRegions")
     def allowed_regions(self) -> Optional[Sequence[str]]:
         """
-        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         return pulumi.get(self, "allowed_regions")
 
@@ -1298,7 +1298,6 @@ class InboundSamlConfigSpConfig(dict):
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
-               
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param str sp_entity_id: Unique identifier for all SAML entities.
         """
@@ -1324,7 +1323,6 @@ class InboundSamlConfigSpConfig(dict):
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
@@ -1830,7 +1828,6 @@ class TenantInboundSamlConfigSpConfig(dict):
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
-               
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
@@ -1861,7 +1858,6 @@ class TenantInboundSamlConfigSpConfig(dict):
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """

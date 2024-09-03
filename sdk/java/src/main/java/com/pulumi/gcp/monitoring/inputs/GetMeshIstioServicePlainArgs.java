@@ -53,10 +53,6 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
      * The name of the Istio service underlying this service.
      * Corresponds to the destination_service_name metric label in Istio metrics.
      * 
-     * ***
-     * 
-     * Other optional fields include:
-     * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
@@ -64,10 +60,6 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
     /**
      * @return The name of the Istio service underlying this service.
      * Corresponds to the destination_service_name metric label in Istio metrics.
-     * 
-     * ***
-     * 
-     * Other optional fields include:
      * 
      */
     public String serviceName() {
@@ -145,10 +137,6 @@ public final class GetMeshIstioServicePlainArgs extends com.pulumi.resources.Inv
         /**
          * @param serviceName The name of the Istio service underlying this service.
          * Corresponds to the destination_service_name metric label in Istio metrics.
-         * 
-         * ***
-         * 
-         * Other optional fields include:
          * 
          * @return builder
          * 

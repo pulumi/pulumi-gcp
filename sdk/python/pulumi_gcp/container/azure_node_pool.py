@@ -562,9 +562,10 @@ class AzureNodePool(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_azure_node_pool
+        ### basic_azure_node_pool
         A basic example of a containerazure azure node pool
         ```python
         import pulumi
@@ -701,9 +702,10 @@ class AzureNodePool(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_azure_node_pool
+        ### basic_azure_node_pool
         A basic example of a containerazure azure node pool
         ```python
         import pulumi

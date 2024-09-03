@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.storedInfoTypes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
  * 
  * ## Example Usage
  * 
@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Stored Info Type Dictionary
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -114,6 +115,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Stored Info Type Large Custom Dictionary
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -182,6 +184,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Stored Info Type With Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -327,8 +330,6 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -339,8 +340,6 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

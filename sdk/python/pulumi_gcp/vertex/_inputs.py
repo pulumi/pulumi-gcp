@@ -1730,7 +1730,7 @@ if not MYPY:
     class AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict(TypedDict):
         cron: NotRequired[pulumi.Input[str]]
         """
-        Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
         To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         """
 elif False:
@@ -1741,7 +1741,7 @@ class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
     def __init__(__self__, *,
                  cron: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        :param pulumi.Input[str] cron: Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
                To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         """
         if cron is not None:
@@ -1751,7 +1751,7 @@ class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
     @pulumi.getter
     def cron(self) -> Optional[pulumi.Input[str]]:
         """
-        Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
         To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         """
         return pulumi.get(self, "cron")
@@ -1791,7 +1791,7 @@ if not MYPY:
         """
         tree_ah_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict']]
         """
-        Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
         Structure is documented below.
         """
 elif False:
@@ -1816,7 +1816,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
                Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
         :param pulumi.Input[int] embedding_dimension: The number of dimensions of the input embedding.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filter_columns: Columns of features that are used to filter vector search results.
-        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs'] tree_ah_config: Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs'] tree_ah_config: Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
                Structure is documented below.
         """
         pulumi.set(__self__, "embedding_column", embedding_column)
@@ -1911,7 +1911,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
     @pulumi.getter(name="treeAhConfig")
     def tree_ah_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]:
         """
-        Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
         Structure is documented below.
         """
         return pulumi.get(self, "tree_ah_config")
@@ -2914,7 +2914,7 @@ if not MYPY:
     class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict(TypedDict):
         allowed_issuers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
         """
         audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -2929,7 +2929,7 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs:
                  allowed_issuers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_issuers: A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_issuers: A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
         :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
         """
         if allowed_issuers is not None:
@@ -2941,7 +2941,7 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs:
     @pulumi.getter(name="allowedIssuers")
     def allowed_issuers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
         """
         return pulumi.get(self, "allowed_issuers")
 
@@ -3245,7 +3245,7 @@ if not MYPY:
         field is set when calling IndexService.UpdateIndex, then no other
         Index field can be also updated as part of the same call.
         The expected structure and format of the files this URI points to is
-        described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+        described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
         """
         config: NotRequired[pulumi.Input['AiIndexMetadataConfigArgsDict']]
         """
@@ -3272,7 +3272,7 @@ class AiIndexMetadataArgs:
                field is set when calling IndexService.UpdateIndex, then no other
                Index field can be also updated as part of the same call.
                The expected structure and format of the files this URI points to is
-               described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+               described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
         :param pulumi.Input['AiIndexMetadataConfigArgs'] config: The configuration of the Matching Engine Index.
                Structure is documented below.
         :param pulumi.Input[bool] is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
@@ -3293,7 +3293,7 @@ class AiIndexMetadataArgs:
         field is set when calling IndexService.UpdateIndex, then no other
         Index field can be also updated as part of the same call.
         The expected structure and format of the files this URI points to is
-        described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+        described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
         """
         return pulumi.get(self, "contents_delta_uri")
 
@@ -3511,7 +3511,7 @@ if not MYPY:
         tree_ah_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict']]
         """
         Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-        Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
         Structure is documented below.
         """
 elif False:
@@ -3526,7 +3526,7 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
         :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs'] brute_force_config: Configuration options for using brute force search, which simply implements the
                standard linear search in the database for each query.
         :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs'] tree_ah_config: Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-               Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+               Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
                Structure is documented below.
         """
         if brute_force_config is not None:
@@ -3552,7 +3552,7 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
     def tree_ah_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]:
         """
         Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-        Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
         Structure is documented below.
         """
         return pulumi.get(self, "tree_ah_config")

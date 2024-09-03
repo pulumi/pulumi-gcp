@@ -7,108 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Workstation Cluster Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
- * ### Workstation Cluster Private
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstation-cluster-private",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster-private",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster-private",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     privateClusterConfig: {
- *         enablePrivateEndpoint: true,
- *     },
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
- * ### Workstation Cluster Custom Domain
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     name: "workstation-cluster-custom-domain",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster-custom-domain",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: defaultNetwork.name,
- * });
- * const _default = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster-custom-domain",
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     privateClusterConfig: {
- *         enablePrivateEndpoint: true,
- *     },
- *     domainConfig: {
- *         domain: "workstations.example.com",
- *     },
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
- *
  * ## Import
  *
  * WorkstationCluster can be imported using any of these accepted formats:
@@ -250,9 +148,6 @@ export class WorkstationCluster extends pulumi.CustomResource {
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
      * ID to use for the workstation cluster.
-     *
-     *
-     * - - -
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
 
@@ -421,9 +316,6 @@ export interface WorkstationClusterState {
     uid?: pulumi.Input<string>;
     /**
      * ID to use for the workstation cluster.
-     *
-     *
-     * - - -
      */
     workstationClusterId?: pulumi.Input<string>;
 }
@@ -479,9 +371,6 @@ export interface WorkstationClusterArgs {
     subnetwork: pulumi.Input<string>;
     /**
      * ID to use for the workstation cluster.
-     *
-     *
-     * - - -
      */
     workstationClusterId: pulumi.Input<string>;
 }

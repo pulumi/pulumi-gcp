@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.inspectTemplates)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
+    ///   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
     /// 
     /// ## Example Usage
     /// 
@@ -198,6 +198,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Inspect Template Custom Type
     /// 
     /// ```csharp
@@ -306,6 +307,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Inspect Template Custom Type Surrogate
     /// 
     /// ```csharp
@@ -411,6 +413,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Inspect Template Max Infotype Per Finding Default
     /// 
     /// ```csharp
@@ -508,9 +511,6 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -594,9 +594,6 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -648,9 +645,6 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

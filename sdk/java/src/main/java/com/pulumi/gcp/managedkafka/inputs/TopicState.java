@@ -48,14 +48,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * @return ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     public Optional<Output<String>> location() {
@@ -127,16 +127,12 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
      * 
-     * ***
-     * 
      */
     @Import(name="topicId")
     private @Nullable Output<String> topicId;
 
     /**
      * @return The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> topicId() {
@@ -217,7 +213,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+         * @param location ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
          * 
          * @return builder
          * 
@@ -228,7 +224,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+         * @param location ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
          * 
          * @return builder
          * 
@@ -326,8 +322,6 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param topicId The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -338,8 +332,6 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param topicId The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-         * 
-         * ***
          * 
          * @return builder
          * 

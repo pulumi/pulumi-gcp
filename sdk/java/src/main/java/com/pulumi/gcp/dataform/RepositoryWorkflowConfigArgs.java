@@ -99,16 +99,12 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      * 
-     * ***
-     * 
      */
     @Import(name="releaseConfig", required=true)
     private Output<String> releaseConfig;
 
     /**
      * @return The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     * 
-     * ***
      * 
      */
     public Output<String> releaseConfig() {
@@ -131,14 +127,14 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * @return Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -288,8 +284,6 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
         /**
          * @param releaseConfig The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -300,8 +294,6 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
 
         /**
          * @param releaseConfig The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -332,7 +324,7 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
          * 
          * @return builder
          * 
@@ -343,7 +335,7 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+         * @param timeZone Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
          * 
          * @return builder
          * 

@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
     /// * How-to Guides
-    ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+    ///   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        /// See CEL spec at: https://github.com/google/cel-spec.
+        /// See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
         /// Structure is documented below.
         /// </summary>
         [Output("custom")]
@@ -119,9 +119,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Resource name for the Access Level. The short_name component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -194,7 +191,7 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        /// See CEL spec at: https://github.com/google/cel-spec.
+        /// See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
         /// Structure is documented below.
         /// </summary>
         [Input("custom")]
@@ -210,9 +207,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Resource name for the Access Level. The short_name component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -247,7 +241,7 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        /// See CEL spec at: https://github.com/google/cel-spec.
+        /// See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
         /// Structure is documented below.
         /// </summary>
         [Input("custom")]
@@ -263,9 +257,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Resource name for the Access Level. The short_name component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

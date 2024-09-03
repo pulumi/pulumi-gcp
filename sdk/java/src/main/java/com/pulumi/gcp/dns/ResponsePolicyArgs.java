@@ -88,16 +88,12 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
      * 
-     * ***
-     * 
      */
     @Import(name="responsePolicyName", required=true)
     private Output<String> responsePolicyName;
 
     /**
      * @return The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     * 
-     * ***
      * 
      */
     public Output<String> responsePolicyName() {
@@ -247,8 +243,6 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param responsePolicyName The user assigned name for this Response Policy, such as `myresponsepolicy`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -259,8 +253,6 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param responsePolicyName The user assigned name for this Response Policy, such as `myresponsepolicy`.
-         * 
-         * ***
          * 
          * @return builder
          * 

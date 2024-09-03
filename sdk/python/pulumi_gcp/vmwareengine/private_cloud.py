@@ -470,6 +470,7 @@ class PrivateCloud(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Vmware Engine Private Cloud Full
 
         ```python
@@ -584,6 +585,7 @@ class PrivateCloud(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Vmware Engine Private Cloud Full
 
         ```python

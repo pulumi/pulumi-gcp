@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 //
-// ## Example Usage
-//
-// ### Scan Config Basic
+// ##
 //
 // ```go
 // package main
@@ -95,7 +93,7 @@ type SecurityScanConfig struct {
 	// Structure is documented below.
 	Authentication SecurityScanConfigAuthenticationPtrOutput `pulumi:"authentication"`
 	// The blacklist URL patterns as described in
-	// https://cloud.google.com/security-scanner/docs/excluded-urls
+	// <https://cloud.google.com/security-scanner/docs/excluded-urls>
 	BlacklistPatterns pulumi.StringArrayOutput `pulumi:"blacklistPatterns"`
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -116,8 +114,6 @@ type SecurityScanConfig struct {
 	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrOutput `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
-	//
-	// ***
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -169,7 +165,7 @@ type securityScanConfigState struct {
 	// Structure is documented below.
 	Authentication *SecurityScanConfigAuthentication `pulumi:"authentication"`
 	// The blacklist URL patterns as described in
-	// https://cloud.google.com/security-scanner/docs/excluded-urls
+	// <https://cloud.google.com/security-scanner/docs/excluded-urls>
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
 	// The user provider display name of the ScanConfig.
 	DisplayName *string `pulumi:"displayName"`
@@ -190,8 +186,6 @@ type securityScanConfigState struct {
 	// Structure is documented below.
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
-	//
-	// ***
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -208,7 +202,7 @@ type SecurityScanConfigState struct {
 	// Structure is documented below.
 	Authentication SecurityScanConfigAuthenticationPtrInput
 	// The blacklist URL patterns as described in
-	// https://cloud.google.com/security-scanner/docs/excluded-urls
+	// <https://cloud.google.com/security-scanner/docs/excluded-urls>
 	BlacklistPatterns pulumi.StringArrayInput
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringPtrInput
@@ -229,8 +223,6 @@ type SecurityScanConfigState struct {
 	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
-	//
-	// ***
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -251,7 +243,7 @@ type securityScanConfigArgs struct {
 	// Structure is documented below.
 	Authentication *SecurityScanConfigAuthentication `pulumi:"authentication"`
 	// The blacklist URL patterns as described in
-	// https://cloud.google.com/security-scanner/docs/excluded-urls
+	// <https://cloud.google.com/security-scanner/docs/excluded-urls>
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
 	// The user provider display name of the ScanConfig.
 	DisplayName string `pulumi:"displayName"`
@@ -269,8 +261,6 @@ type securityScanConfigArgs struct {
 	// Structure is documented below.
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
-	//
-	// ***
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -288,7 +278,7 @@ type SecurityScanConfigArgs struct {
 	// Structure is documented below.
 	Authentication SecurityScanConfigAuthenticationPtrInput
 	// The blacklist URL patterns as described in
-	// https://cloud.google.com/security-scanner/docs/excluded-urls
+	// <https://cloud.google.com/security-scanner/docs/excluded-urls>
 	BlacklistPatterns pulumi.StringArrayInput
 	// The user provider display name of the ScanConfig.
 	DisplayName pulumi.StringInput
@@ -306,8 +296,6 @@ type SecurityScanConfigArgs struct {
 	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
-	//
-	// ***
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -413,7 +401,7 @@ func (o SecurityScanConfigOutput) Authentication() SecurityScanConfigAuthenticat
 }
 
 // The blacklist URL patterns as described in
-// https://cloud.google.com/security-scanner/docs/excluded-urls
+// <https://cloud.google.com/security-scanner/docs/excluded-urls>
 func (o SecurityScanConfigOutput) BlacklistPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringArrayOutput { return v.BlacklistPatterns }).(pulumi.StringArrayOutput)
 }
@@ -455,8 +443,6 @@ func (o SecurityScanConfigOutput) Schedule() SecurityScanConfigSchedulePtrOutput
 }
 
 // The starting URLs from which the scanner finds site pages.
-//
-// ***
 func (o SecurityScanConfigOutput) StartingUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringArrayOutput { return v.StartingUrls }).(pulumi.StringArrayOutput)
 }

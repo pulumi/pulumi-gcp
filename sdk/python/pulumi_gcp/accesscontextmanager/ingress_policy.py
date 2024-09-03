@@ -24,9 +24,6 @@ class IngressPolicyArgs:
         """
         The set of arguments for constructing a IngressPolicy resource.
         :param pulumi.Input[str] ingress_policy_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
         pulumi.set(__self__, "ingress_policy_name", ingress_policy_name)
@@ -37,9 +34,6 @@ class IngressPolicyArgs:
     def ingress_policy_name(self) -> pulumi.Input[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "ingress_policy_name")
 
@@ -68,9 +62,6 @@ class _IngressPolicyState:
         """
         Input properties used for looking up and filtering IngressPolicy resources.
         :param pulumi.Input[str] ingress_policy_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
         if ingress_policy_name is not None:
@@ -83,9 +74,6 @@ class _IngressPolicyState:
     def ingress_policy_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "ingress_policy_name")
 
@@ -136,9 +124,6 @@ class IngressPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ingress_policy_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
         ...
@@ -218,9 +203,6 @@ class IngressPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ingress_policy_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -236,9 +218,6 @@ class IngressPolicy(pulumi.CustomResource):
     def ingress_policy_name(self) -> pulumi.Output[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "ingress_policy_name")
 

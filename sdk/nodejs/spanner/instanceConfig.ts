@@ -14,9 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instanceConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
- *
- * ## Example Usage
+ *   * [Official Documentation](https://cloud.google.com/spanner/)
  *
  * ## Import
  *

@@ -42,8 +42,6 @@ public final class SourceIamBindingState extends com.pulumi.resources.ResourceAr
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      * 
-     * ***
-     * 
      */
     @Import(name="organization")
     private @Nullable Output<String> organization;
@@ -51,8 +49,6 @@ public final class SourceIamBindingState extends com.pulumi.resources.ResourceAr
     /**
      * @return The organization whose Cloud Security Command Center the Source
      * lives in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> organization() {
@@ -137,8 +133,6 @@ public final class SourceIamBindingState extends com.pulumi.resources.ResourceAr
          * @param organization The organization whose Cloud Security Command Center the Source
          * lives in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -150,8 +144,6 @@ public final class SourceIamBindingState extends com.pulumi.resources.ResourceAr
         /**
          * @param organization The organization whose Cloud Security Command Center the Source
          * lives in.
-         * 
-         * ***
          * 
          * @return builder
          * 

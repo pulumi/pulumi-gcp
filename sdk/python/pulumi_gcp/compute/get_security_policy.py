@@ -149,7 +149,7 @@ def get_security_policy(name: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+      * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
 
     ## Example Usage
 
@@ -198,7 +198,7 @@ def get_security_policy_output(name: Optional[pulumi.Input[Optional[str]]] = Non
 
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+      * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
 
     ## Example Usage
 

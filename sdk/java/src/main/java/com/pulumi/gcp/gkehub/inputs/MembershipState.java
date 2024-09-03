@@ -21,7 +21,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     /**
      * Authority encodes how Google will recognize identities from this Membership.
      * See the workload identity documentation for more details:
-     * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+     * &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
      * Structure is documented below.
      * 
      */
@@ -31,7 +31,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Authority encodes how Google will recognize identities from this Membership.
      * See the workload identity documentation for more details:
-     * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+     * &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
      * Structure is documented below.
      * 
      */
@@ -139,16 +139,12 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     /**
      * The client-provided identifier of the membership.
      * 
-     * ***
-     * 
      */
     @Import(name="membershipId")
     private @Nullable Output<String> membershipId;
 
     /**
      * @return The client-provided identifier of the membership.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> membershipId() {
@@ -240,7 +236,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param authority Authority encodes how Google will recognize identities from this Membership.
          * See the workload identity documentation for more details:
-         * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+         * &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -254,7 +250,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param authority Authority encodes how Google will recognize identities from this Membership.
          * See the workload identity documentation for more details:
-         * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+         * &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -394,8 +390,6 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param membershipId The client-provided identifier of the membership.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -406,8 +400,6 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param membershipId The client-provided identifier of the membership.
-         * 
-         * ***
          * 
          * @return builder
          * 

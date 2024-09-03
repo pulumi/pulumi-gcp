@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest/v1/users.sshPublicKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  *
- * ## Example Usage
- *
- * ### Os Login Ssh Key Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,9 +93,6 @@ export class SshPublicKey extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string | undefined>;
     /**
      * The user email.
-     *
-     *
-     * - - -
      */
     public readonly user!: pulumi.Output<string>;
 
@@ -160,9 +155,6 @@ export interface SshPublicKeyState {
     project?: pulumi.Input<string>;
     /**
      * The user email.
-     *
-     *
-     * - - -
      */
     user?: pulumi.Input<string>;
 }
@@ -185,9 +177,6 @@ export interface SshPublicKeyArgs {
     project?: pulumi.Input<string>;
     /**
      * The user email.
-     *
-     *
-     * - - -
      */
     user: pulumi.Input<string>;
 }

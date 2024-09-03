@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// 
         /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
         /// * How-to Guides
-        ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+        ///   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// 
         /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
         /// * How-to Guides
-        ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+        ///   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
         /// 
         /// ## Example Usage
         /// 
@@ -93,8 +93,6 @@ namespace Pulumi.Gcp.VpcAccess
     {
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -123,8 +121,6 @@ namespace Pulumi.Gcp.VpcAccess
     {
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

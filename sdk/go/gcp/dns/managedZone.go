@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Managing Zones](https://cloud.google.com/dns/zones/)
 //
-// ## Example Usage
-//
-// ### Dns Managed Zone Basic
+// ##
 //
 // ```go
 // package main
@@ -54,7 +52,7 @@ import (
 //	}
 //
 // ```
-// ### Dns Managed Zone Private
+// ##
 //
 // ```go
 // package main
@@ -110,6 +108,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Dns Managed Zone Private Forwarding
 //
 // ```go
@@ -176,7 +177,7 @@ import (
 //	}
 //
 // ```
-// ### Dns Managed Zone Private Gke
+// ##
 //
 // ```go
 // package main
@@ -275,7 +276,7 @@ import (
 //	}
 //
 // ```
-// ### Dns Managed Zone Private Peering
+// ##
 //
 // ```go
 // package main
@@ -330,7 +331,7 @@ import (
 //	}
 //
 // ```
-// ### Dns Managed Zone Service Directory
+// ##
 //
 // ```go
 // package main
@@ -379,7 +380,7 @@ import (
 //	}
 //
 // ```
-// ### Dns Managed Zone Cloud Logging
+// ##
 //
 // ```go
 // package main
@@ -470,8 +471,6 @@ type ManagedZone struct {
 	ManagedZoneId pulumi.StringOutput `pulumi:"managedZoneId"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Delegate your managedZone to these virtual name servers;
 	// defined by the server
@@ -576,8 +575,6 @@ type managedZoneState struct {
 	ManagedZoneId *string `pulumi:"managedZoneId"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Delegate your managedZone to these virtual name servers;
 	// defined by the server
@@ -642,8 +639,6 @@ type ManagedZoneState struct {
 	ManagedZoneId pulumi.StringPtrInput
 	// User assigned name for this resource.
 	// Must be unique within the project.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Delegate your managedZone to these virtual name servers;
 	// defined by the server
@@ -705,8 +700,6 @@ type managedZoneArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The presence of this field indicates that DNS Peering is enabled for this
 	// zone. The value of this field contains the network to peer with.
@@ -759,8 +752,6 @@ type ManagedZoneArgs struct {
 	Labels pulumi.StringMapInput
 	// User assigned name for this resource.
 	// Must be unique within the project.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The presence of this field indicates that DNS Peering is enabled for this
 	// zone. The value of this field contains the network to peer with.
@@ -935,8 +926,6 @@ func (o ManagedZoneOutput) ManagedZoneId() pulumi.StringOutput {
 
 // User assigned name for this resource.
 // Must be unique within the project.
-//
-// ***
 func (o ManagedZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

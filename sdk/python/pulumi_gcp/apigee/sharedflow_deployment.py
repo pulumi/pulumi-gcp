@@ -29,9 +29,6 @@ class SharedflowDeploymentArgs:
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[str] sharedflow_id: Id of the Sharedflow to be deployed.
         :param pulumi.Input[str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         """
@@ -71,9 +68,6 @@ class SharedflowDeploymentArgs:
     def revision(self) -> pulumi.Input[str]:
         """
         Revision of the Sharedflow to be deployed.
-
-
-        - - -
         """
         return pulumi.get(self, "revision")
 
@@ -119,9 +113,6 @@ class _SharedflowDeploymentState:
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
@@ -165,9 +156,6 @@ class _SharedflowDeploymentState:
     def revision(self) -> Optional[pulumi.Input[str]]:
         """
         Revision of the Sharedflow to be deployed.
-
-
-        - - -
         """
         return pulumi.get(self, "revision")
 
@@ -218,7 +206,7 @@ class SharedflowDeployment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
         * How-to Guides
-            * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
+          * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
 
         ## Import
 
@@ -243,9 +231,6 @@ class SharedflowDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
@@ -262,7 +247,7 @@ class SharedflowDeployment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
         * How-to Guides
-            * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
+          * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
 
         ## Import
 
@@ -349,9 +334,6 @@ class SharedflowDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[str] revision: Revision of the Sharedflow to be deployed.
-               
-               
-               - - -
         :param pulumi.Input[str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         :param pulumi.Input[str] sharedflow_id: Id of the Sharedflow to be deployed.
         """
@@ -387,9 +369,6 @@ class SharedflowDeployment(pulumi.CustomResource):
     def revision(self) -> pulumi.Output[str]:
         """
         Revision of the Sharedflow to be deployed.
-
-
-        - - -
         """
         return pulumi.get(self, "revision")
 

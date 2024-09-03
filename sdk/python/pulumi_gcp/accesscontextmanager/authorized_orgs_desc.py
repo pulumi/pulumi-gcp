@@ -54,9 +54,6 @@ class AuthorizedOrgsDescArgs:
                The `authorized_orgs_desc` component must begin with a letter, followed by
                alphanumeric characters or `_`.
                After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc.
                Format: `organizations/<org_number>`
                Example: `organizations/123456`
@@ -148,9 +145,6 @@ class AuthorizedOrgsDescArgs:
         The `authorized_orgs_desc` component must begin with a letter, followed by
         alphanumeric characters or `_`.
         After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -213,9 +207,6 @@ class _AuthorizedOrgsDescState:
                The `authorized_orgs_desc` component must begin with a letter, followed by
                alphanumeric characters or `_`.
                After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc.
                Format: `organizations/<org_number>`
                Example: `organizations/123456`
@@ -314,9 +305,6 @@ class _AuthorizedOrgsDescState:
         The `authorized_orgs_desc` component must begin with a letter, followed by
         alphanumeric characters or `_`.
         After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -386,7 +374,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.authorizedOrgsDescs)
         * How-to Guides
-            * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
+          * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -457,9 +445,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                The `authorized_orgs_desc` component must begin with a letter, followed by
                alphanumeric characters or `_`.
                After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc.
                Format: `organizations/<org_number>`
                Example: `organizations/123456`
@@ -482,7 +467,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.authorizedOrgsDescs)
         * How-to Guides
-            * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
+          * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -617,9 +602,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                The `authorized_orgs_desc` component must begin with a letter, followed by
                alphanumeric characters or `_`.
                After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc.
                Format: `organizations/<org_number>`
                Example: `organizations/123456`
@@ -699,9 +681,6 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         The `authorized_orgs_desc` component must begin with a letter, followed by
         alphanumeric characters or `_`.
         After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

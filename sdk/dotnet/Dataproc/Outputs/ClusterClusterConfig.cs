@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterConfigAutoscalingConfig? AutoscalingConfig;
         /// <summary>
-        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
         /// Structure defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigAuxiliaryNodeGroup> AuxiliaryNodeGroups;
@@ -69,7 +69,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The config setting for metastore service with the cluster.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         public readonly Outputs.ClusterClusterConfigMetastoreConfig? MetastoreConfig;
         /// <summary>

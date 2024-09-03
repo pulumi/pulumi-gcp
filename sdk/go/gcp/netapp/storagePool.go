@@ -12,84 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Storage Pool Create
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/netapp"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a network or use datasource to reference existing network
-//			peeringNetwork, err := compute.NewNetwork(ctx, "peering_network", &compute.NetworkArgs{
-//				Name: pulumi.String("test-network"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Reserve a CIDR for NetApp Volumes to use
-//			// When using shared-VPCs, this resource needs to be created in host project
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-//				Name:         pulumi.String("test-address"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(16),
-//				Network:      peeringNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a Private Service Access connection
-//			// When using shared-VPCs, this resource needs to be created in host project
-//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: peeringNetwork.ID(),
-//				Service: pulumi.String("netapp.servicenetworking.goog"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Modify the PSA Connection to allow import/export of custom routes
-//			// When using shared-VPCs, this resource needs to be created in host project
-//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "route_updates", &compute.NetworkPeeringRoutesConfigArgs{
-//				Peering:            _default.Peering,
-//				Network:            peeringNetwork.Name,
-//				ImportCustomRoutes: pulumi.Bool(true),
-//				ExportCustomRoutes: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a storage pool
-//			// Create this resource in the project which is expected to own the volumes
-//			_, err = netapp.NewStoragePool(ctx, "test_pool", &netapp.StoragePoolArgs{
-//				Name:         pulumi.String("test-pool"),
-//				Location:     pulumi.String("us-central1"),
-//				ServiceLevel: pulumi.String("PREMIUM"),
-//				CapacityGib:  pulumi.String("2048"),
-//				Network:      peeringNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // storagePool can be imported using any of these accepted formats:
@@ -141,8 +63,6 @@ type StoragePool struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -240,8 +160,6 @@ type storagePoolState struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location *string `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network *string `pulumi:"network"`
@@ -293,8 +211,6 @@ type StoragePoolState struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringPtrInput
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network pulumi.StringPtrInput
@@ -346,8 +262,6 @@ type storagePoolArgs struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location string `pulumi:"location"`
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network string `pulumi:"network"`
@@ -389,8 +303,6 @@ type StoragePoolArgs struct {
 	// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
 	Location pulumi.StringInput
 	// The resource name of the storage pool. Needs to be unique per location/region.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
 	Network pulumi.StringInput
@@ -548,8 +460,6 @@ func (o StoragePoolOutput) Location() pulumi.StringOutput {
 }
 
 // The resource name of the storage pool. Needs to be unique per location/region.
-//
-// ***
 func (o StoragePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

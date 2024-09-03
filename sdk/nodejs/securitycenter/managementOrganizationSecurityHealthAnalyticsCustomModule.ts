@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.securityHealthAnalyticsCustomModules)
  * * How-to Guides
- *     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+ *   * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
  *
  * ## Example Usage
  *
@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scc Management Organization Security Health Analytics Custom Module Full
  *
  * ```typescript
@@ -169,9 +170,6 @@ export class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends p
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -266,9 +264,6 @@ export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleState 
     name?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -307,9 +302,6 @@ export interface ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
     location?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
 }

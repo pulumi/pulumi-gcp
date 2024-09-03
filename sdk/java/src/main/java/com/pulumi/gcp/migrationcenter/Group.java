@@ -19,9 +19,7 @@ import javax.annotation.Nullable;
 /**
  * A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have something in common, while allowing users to add annotations to the group.
  * 
- * ## Example Usage
- * 
- * ### Migration Group Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -146,16 +144,12 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
      * 
-     * ***
-     * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
      * @return Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-     * 
-     * ***
      * 
      */
     public Output<String> groupId() {

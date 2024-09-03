@@ -17,7 +17,7 @@ public final class TriggerBuildSourceRepoSource {
     /**
      * @return Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     private @Nullable String branchName;
@@ -57,7 +57,7 @@ public final class TriggerBuildSourceRepoSource {
     /**
      * @return Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     private @Nullable String tagName;
@@ -66,7 +66,7 @@ public final class TriggerBuildSourceRepoSource {
     /**
      * @return Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<String> branchName() {
@@ -120,7 +120,7 @@ public final class TriggerBuildSourceRepoSource {
     /**
      * @return Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<String> tagName() {

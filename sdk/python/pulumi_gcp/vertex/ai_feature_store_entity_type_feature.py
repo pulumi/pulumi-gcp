@@ -27,10 +27,7 @@ class AiFeatureStoreEntityTypeFeatureArgs:
         """
         The set of arguments for constructing a AiFeatureStoreEntityTypeFeature resource.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
-        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
@@ -52,9 +49,6 @@ class AiFeatureStoreEntityTypeFeatureArgs:
     def entitytype(self) -> pulumi.Input[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-
-
-        - - -
         """
         return pulumi.get(self, "entitytype")
 
@@ -66,7 +60,7 @@ class AiFeatureStoreEntityTypeFeatureArgs:
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Input[str]:
         """
-        Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         """
         return pulumi.get(self, "value_type")
 
@@ -134,9 +128,6 @@ class _AiFeatureStoreEntityTypeFeatureState:
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
@@ -147,7 +138,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the feature
         :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -213,9 +204,6 @@ class _AiFeatureStoreEntityTypeFeatureState:
     def entitytype(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-
-
-        - - -
         """
         return pulumi.get(self, "entitytype")
 
@@ -303,7 +291,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         """
         return pulumi.get(self, "value_type")
 
@@ -330,11 +318,9 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
-        ## Example Usage
-
-        ### Vertex Ai Featurestore Entitytype Feature
+        ## 
 
         ```python
         import pulumi
@@ -363,7 +349,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
-        ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+        ## 
 
         ```python
         import pulumi
@@ -421,15 +407,12 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         """
         ...
     @overload
@@ -444,11 +427,9 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
-        ## Example Usage
-
-        ### Vertex Ai Featurestore Entitytype Feature
+        ## 
 
         ```python
         import pulumi
@@ -477,7 +458,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             entitytype=entity.id,
             value_type="INT64_ARRAY")
         ```
-        ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+        ## 
 
         ```python
         import pulumi
@@ -609,9 +590,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
@@ -622,7 +600,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the feature
         :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        :param pulumi.Input[str] value_type: Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -670,9 +648,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     def entitytype(self) -> pulumi.Output[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-
-
-        - - -
         """
         return pulumi.get(self, "entitytype")
 
@@ -732,7 +707,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Output[str]:
         """
-        Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
         """
         return pulumi.get(self, "value_type")
 

@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
  * * How-to Guides
- *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -82,10 +82,6 @@ export interface GetNotificationChannelArgs {
     project?: string;
     /**
      * The type of the notification channel.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     type?: string;
     /**
@@ -143,8 +139,8 @@ export interface GetNotificationChannelResult {
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
  * * How-to Guides
- *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -200,10 +196,6 @@ export interface GetNotificationChannelOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * The type of the notification channel.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     type?: pulumi.Input<string>;
     /**

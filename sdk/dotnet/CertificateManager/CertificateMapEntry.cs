@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// CertificateMapEntry is a list of certificate configurations,
     /// that have been issued for a particular hostname
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Certificate Manager Certificate Map Entry Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -166,9 +164,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A map entry that is inputted into the cetrificate map
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("map")]
         public Output<string> Map { get; private set; } = null!;
@@ -313,9 +308,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A map entry that is inputted into the cetrificate map
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("map", required: true)]
         public Input<string> Map { get; set; } = null!;
@@ -420,9 +412,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A map entry that is inputted into the cetrificate map
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("map")]
         public Input<string>? Map { get; set; }

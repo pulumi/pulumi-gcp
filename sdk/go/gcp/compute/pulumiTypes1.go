@@ -382,7 +382,7 @@ type URLMapPathMatcher struct {
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
 	// A RouteRule for /coming_soon/ is configured for the error code 404.
-	// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
 	// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 	// Structure is documented below.
@@ -446,7 +446,7 @@ type URLMapPathMatcherArgs struct {
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
 	// A RouteRule for /coming_soon/ is configured for the error code 404.
-	// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
 	// defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 	// Structure is documented below.
@@ -549,7 +549,7 @@ func (o URLMapPathMatcherOutput) ToURLMapPathMatcherOutputWithContext(ctx contex
 // For example, consider a UrlMap with the following configuration:
 // UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
 // A RouteRule for /coming_soon/ is configured for the error code 404.
-// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+// If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
 // When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
 // defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
 // Structure is documented below.
@@ -651,7 +651,7 @@ type URLMapPathMatcherDefaultCustomErrorResponsePolicy struct {
 	// Structure is documented below.
 	ErrorResponseRules []URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRule `pulumi:"errorResponseRules"`
 	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
 	// global/backendBuckets/myBackendBucket
 	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -678,7 +678,7 @@ type URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs struct {
 	// Structure is documented below.
 	ErrorResponseRules URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArrayInput `pulumi:"errorResponseRules"`
 	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
 	// global/backendBuckets/myBackendBucket
 	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -775,7 +775,7 @@ func (o URLMapPathMatcherDefaultCustomErrorResponsePolicyOutput) ErrorResponseRu
 }
 
 // The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 // compute/v1/projects/project/global/backendBuckets/myBackendBucket
 // global/backendBuckets/myBackendBucket
 // If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -823,7 +823,7 @@ func (o URLMapPathMatcherDefaultCustomErrorResponsePolicyPtrOutput) ErrorRespons
 }
 
 // The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 // compute/v1/projects/project/global/backendBuckets/myBackendBucket
 // global/backendBuckets/myBackendBucket
 // If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -4561,7 +4561,7 @@ type URLMapPathMatcherPathRule struct {
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
 	// A PathRule for /coming_soon/ is configured for the error code 404.
-	// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	// Structure is documented below.
 	CustomErrorResponsePolicy *URLMapPathMatcherPathRuleCustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
@@ -4604,7 +4604,7 @@ type URLMapPathMatcherPathRuleArgs struct {
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
 	// A PathRule for /coming_soon/ is configured for the error code 404.
-	// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+	// If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// customErrorResponsePolicy is supported only for global external Application Load Balancers.
 	// Structure is documented below.
 	CustomErrorResponsePolicy URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
@@ -4686,7 +4686,7 @@ func (o URLMapPathMatcherPathRuleOutput) ToURLMapPathMatcherPathRuleOutputWithCo
 // For example, consider a UrlMap with the following configuration:
 // UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
 // A PathRule for /coming_soon/ is configured for the error code 404.
-// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+// If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
 // customErrorResponsePolicy is supported only for global external Application Load Balancers.
 // Structure is documented below.
 func (o URLMapPathMatcherPathRuleOutput) CustomErrorResponsePolicy() URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput {
@@ -4755,7 +4755,7 @@ type URLMapPathMatcherPathRuleCustomErrorResponsePolicy struct {
 	// Structure is documented below.
 	ErrorResponseRules []URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule `pulumi:"errorResponseRules"`
 	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
 	// global/backendBuckets/myBackendBucket
 	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -4782,7 +4782,7 @@ type URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs struct {
 	// Structure is documented below.
 	ErrorResponseRules URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRuleArrayInput `pulumi:"errorResponseRules"`
 	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
 	// global/backendBuckets/myBackendBucket
 	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -4879,7 +4879,7 @@ func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyOutput) ErrorResponseR
 }
 
 // The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 // compute/v1/projects/project/global/backendBuckets/myBackendBucket
 // global/backendBuckets/myBackendBucket
 // If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -4927,7 +4927,7 @@ func (o URLMapPathMatcherPathRuleCustomErrorResponsePolicyPtrOutput) ErrorRespon
 }
 
 // The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
 // compute/v1/projects/project/global/backendBuckets/myBackendBucket
 // global/backendBuckets/myBackendBucket
 // If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -15377,8 +15377,6 @@ func (o GetBackendServiceConsistentHashArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetBackendServiceConsistentHashHttpCooky struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// Path to set for the cookie.
 	Path string `pulumi:"path"`
@@ -15399,8 +15397,6 @@ type GetBackendServiceConsistentHashHttpCookyInput interface {
 
 type GetBackendServiceConsistentHashHttpCookyArgs struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// Path to set for the cookie.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -15460,8 +15456,6 @@ func (o GetBackendServiceConsistentHashHttpCookyOutput) ToGetBackendServiceConsi
 }
 
 // The name of the Backend Service.
-//
-// ***
 func (o GetBackendServiceConsistentHashHttpCookyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCooky) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -15847,8 +15841,6 @@ type GetBackendServiceLocalityLbPolicyCustomPolicy struct {
 	// by a locally installed custom policy implementation.
 	Data string `pulumi:"data"`
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -15868,8 +15860,6 @@ type GetBackendServiceLocalityLbPolicyCustomPolicyArgs struct {
 	// by a locally installed custom policy implementation.
 	Data pulumi.StringInput `pulumi:"data"`
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -15931,8 +15921,6 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Data() pulumi.Strin
 }
 
 // The name of the Backend Service.
-//
-// ***
 func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -15959,8 +15947,6 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) Index(i pulumi
 
 type GetBackendServiceLocalityLbPolicyPolicy struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -15977,8 +15963,6 @@ type GetBackendServiceLocalityLbPolicyPolicyInput interface {
 
 type GetBackendServiceLocalityLbPolicyPolicyArgs struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -16034,8 +16018,6 @@ func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocali
 }
 
 // The name of the Backend Service.
-//
-// ***
 func (o GetBackendServiceLocalityLbPolicyPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -18929,8 +18911,6 @@ func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) Index(i pulumi.IntInpu
 
 type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
 	// The name of the global forwarding rule.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The value that the label must match. The value has a maximum
 	// length of 1024 characters.
@@ -18950,8 +18930,6 @@ type GetGlobalForwardingRuleMetadataFilterFilterLabelInput interface {
 
 type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
 	// The name of the global forwarding rule.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value that the label must match. The value has a maximum
 	// length of 1024 characters.
@@ -19010,8 +18988,6 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwa
 }
 
 // The name of the global forwarding rule.
-//
-// ***
 func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -23671,7 +23647,7 @@ func (o GetInstanceNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetInst
 type GetInstanceNetworkInterfaceAccessConfig struct {
 	// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
 	NatIp string `pulumi:"natIp"`
-	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
@@ -23693,7 +23669,7 @@ type GetInstanceNetworkInterfaceAccessConfigInput interface {
 type GetInstanceNetworkInterfaceAccessConfigArgs struct {
 	// If the instance has an access config, either the given external ip (in the `natIp` field) or the ephemeral (generated) ip (if you didn't provide one).
 	NatIp pulumi.StringInput `pulumi:"natIp"`
-	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
@@ -23757,7 +23733,7 @@ func (o GetInstanceNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.NatIp }).(pulumi.StringOutput)
 }
 
-// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 func (o GetInstanceNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
@@ -23911,7 +23887,7 @@ type GetInstanceNetworkInterfaceIpv6AccessConfig struct {
 	ExternalIpv6PrefixLength string `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
-	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
@@ -23937,7 +23913,7 @@ type GetInstanceNetworkInterfaceIpv6AccessConfigArgs struct {
 	ExternalIpv6PrefixLength pulumi.StringInput `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+	// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
@@ -24011,7 +23987,7 @@ func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) Name() pulumi.StringO
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
 func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
 }

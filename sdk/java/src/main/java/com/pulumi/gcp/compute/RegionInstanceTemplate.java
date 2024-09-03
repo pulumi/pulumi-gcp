@@ -218,8 +218,6 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      * 
-     * ***
-     * 
      */
     @Export(name="machineType", refs={String.class}, tree="[0]")
     private Output<String> machineType;
@@ -228,8 +226,6 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * @return The machine type to create.
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     * 
-     * ***
      * 
      */
     public Output<String> machineType() {

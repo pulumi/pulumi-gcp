@@ -20,8 +20,6 @@ public final class EnvironmentKeyvaluemapsEntriesArgs extends com.pulumi.resourc
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
      * 
-     * ***
-     * 
      */
     @Import(name="envKeyvaluemapId", required=true)
     private Output<String> envKeyvaluemapId;
@@ -29,8 +27,6 @@ public final class EnvironmentKeyvaluemapsEntriesArgs extends com.pulumi.resourc
     /**
      * @return The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envKeyvaluemapId() {
@@ -97,8 +93,6 @@ public final class EnvironmentKeyvaluemapsEntriesArgs extends com.pulumi.resourc
          * @param envKeyvaluemapId The Apigee environment keyvalumaps Id associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -110,8 +104,6 @@ public final class EnvironmentKeyvaluemapsEntriesArgs extends com.pulumi.resourc
         /**
          * @param envKeyvaluemapId The Apigee environment keyvalumaps Id associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

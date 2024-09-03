@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *   * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
- * ## Example Usage
- *
- * ### Binary Authorization Attestor Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,6 +54,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Binary Authorization Attestor Kms
  *
  * ```typescript

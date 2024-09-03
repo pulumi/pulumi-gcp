@@ -12,9 +12,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
  *
- * ## Example Usage
- *
- * ### Network Security Gateway Security Policy Rules Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  *     basicProfile: "ALLOW",
  * });
  * ```
- * ### Network Security Gateway Security Policy Rules Advanced
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -138,9 +136,6 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     public readonly gatewaySecurityPolicy!: pulumi.Output<string>;
     /**
@@ -277,9 +272,6 @@ export interface GatewaySecurityPolicyRuleState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     gatewaySecurityPolicy?: pulumi.Input<string>;
     /**
@@ -344,9 +336,6 @@ export interface GatewaySecurityPolicyRuleArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     gatewaySecurityPolicy: pulumi.Input<string>;
     /**

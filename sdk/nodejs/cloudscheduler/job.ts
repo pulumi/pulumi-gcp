@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/scheduler/)
+ *   * [Official Documentation](https://cloud.google.com/scheduler/)
  *
- * ## Example Usage
- *
- * ### Scheduler Job Pubsub
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +36,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Scheduler Job Http
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +64,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Scheduler Job Paused
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +93,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Scheduler Job App Engine
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -124,6 +122,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Scheduler Job Oauth
  *
  * ```typescript
@@ -146,7 +147,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Scheduler Job Oidc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -259,9 +260,6 @@ export class Job extends pulumi.CustomResource {
     public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -388,9 +386,6 @@ export interface JobState {
     httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -471,9 +466,6 @@ export interface JobArgs {
     httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

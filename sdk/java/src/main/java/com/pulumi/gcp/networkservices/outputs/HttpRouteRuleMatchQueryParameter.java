@@ -28,7 +28,7 @@ public final class HttpRouteRuleMatchQueryParameter {
      */
     private @Nullable String queryParameter;
     /**
-     * @return The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * @return The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     private @Nullable String regexMatch;
@@ -56,7 +56,7 @@ public final class HttpRouteRuleMatchQueryParameter {
         return Optional.ofNullable(this.queryParameter);
     }
     /**
-     * @return The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * @return The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<String> regexMatch() {

@@ -18,16 +18,12 @@ public final class GetMetastoreServicePlainArgs extends com.pulumi.resources.Inv
     /**
      * The location where the metastore service resides.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private String location;
 
     /**
      * @return The location where the metastore service resides.
-     * 
-     * ***
      * 
      */
     public String location() {
@@ -94,8 +90,6 @@ public final class GetMetastoreServicePlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param location The location where the metastore service resides.
-         * 
-         * ***
          * 
          * @return builder
          * 

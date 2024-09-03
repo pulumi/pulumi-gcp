@@ -12,9 +12,10 @@ namespace Pulumi.Gcp.Firebaserules
     /// <summary>
     /// For more information, see:
     /// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_ruleset
+    /// ### basic_ruleset
     /// Creates a basic Firestore ruleset
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +45,8 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// });
     /// ```
-    /// ### Minimal_ruleset
+    /// 
+    /// ### minimal_ruleset
     /// Creates a minimal Firestore ruleset
     /// ```csharp
     /// using System.Collections.Generic;

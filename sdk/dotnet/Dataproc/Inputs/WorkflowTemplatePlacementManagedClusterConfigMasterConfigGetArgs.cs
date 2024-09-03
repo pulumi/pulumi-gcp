@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        /// Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }

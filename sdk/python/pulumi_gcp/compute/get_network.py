@@ -135,11 +135,15 @@ def get_network(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_network = gcp.compute.get_network(name="default-us-east1")
+    ```
+
 
     :param str name: The name of the network.
-           
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -169,11 +173,15 @@ def get_network_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_network = gcp.compute.get_network(name="default-us-east1")
+    ```
+
 
     :param str name: The name of the network.
-           
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

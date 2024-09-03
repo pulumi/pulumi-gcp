@@ -71,6 +71,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Check App Attest Config Full
 //
 // ```go
@@ -149,8 +150,6 @@ type AppCheckAppAttestConfig struct {
 
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The relative resource name of the App Attest configuration object
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -198,8 +197,6 @@ func GetAppCheckAppAttestConfig(ctx *pulumi.Context,
 type appCheckAppAttestConfigState struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId *string `pulumi:"appId"`
 	// The relative resource name of the App Attest configuration object
 	Name *string `pulumi:"name"`
@@ -215,8 +212,6 @@ type appCheckAppAttestConfigState struct {
 type AppCheckAppAttestConfigState struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringPtrInput
 	// The relative resource name of the App Attest configuration object
 	Name pulumi.StringPtrInput
@@ -236,8 +231,6 @@ func (AppCheckAppAttestConfigState) ElementType() reflect.Type {
 type appCheckAppAttestConfigArgs struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -252,8 +245,6 @@ type appCheckAppAttestConfigArgs struct {
 type AppCheckAppAttestConfigArgs struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -353,8 +344,6 @@ func (o AppCheckAppAttestConfigOutput) ToAppCheckAppAttestConfigOutputWithContex
 
 // The ID of an
 // [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-//
-// ***
 func (o AppCheckAppAttestConfigOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckAppAttestConfig) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

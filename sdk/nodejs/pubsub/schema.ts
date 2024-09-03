@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.schemas)
  * * How-to Guides
- *     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
+ *   * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
  *
- * ## Example Usage
- *
- * ### Pubsub Schema Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +40,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Pubsub Schema Protobuf
  *
  * ```typescript
@@ -134,9 +135,6 @@ export class Schema extends pulumi.CustomResource {
     public readonly definition!: pulumi.Output<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -196,9 +194,6 @@ export interface SchemaState {
     definition?: pulumi.Input<string>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -230,9 +225,6 @@ export interface SchemaArgs {
     definition?: pulumi.Input<string>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

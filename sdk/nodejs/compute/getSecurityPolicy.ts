@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+ *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
  *
  * ## Example Usage
  *
@@ -81,7 +81,7 @@ export interface GetSecurityPolicyResult {
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+ *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
  *
  * ## Example Usage
  *

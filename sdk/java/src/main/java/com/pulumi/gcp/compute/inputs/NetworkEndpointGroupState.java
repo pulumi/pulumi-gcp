@@ -81,8 +81,6 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
      * The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
      * 
-     * ***
-     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
@@ -90,8 +88,6 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
     /**
      * @return The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -101,7 +97,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
     /**
      * Type of network endpoints in this network endpoint group.
      * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
      * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
@@ -117,7 +113,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
     /**
      * @return Type of network endpoints in this network endpoint group.
      * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
      * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
@@ -324,8 +320,6 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          * @param network The network to which all network endpoints in the NEG belong.
          * Uses &#34;default&#34; project network if unspecified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -338,8 +332,6 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          * @param network The network to which all network endpoints in the NEG belong.
          * Uses &#34;default&#34; project network if unspecified.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -350,7 +342,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group.
          * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-         * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+         * endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
          * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
          * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
          * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
@@ -370,7 +362,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group.
          * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-         * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+         * endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
          * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
          * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
          * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or

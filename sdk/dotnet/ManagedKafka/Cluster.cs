@@ -10,122 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ManagedKafka
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Managedkafka Cluster Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var example = new Gcp.ManagedKafka.Cluster("example", new()
-    ///     {
-    ///         ClusterId = "my-cluster",
-    ///         Location = "us-central1",
-    ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
-    ///         {
-    ///             VcpuCount = "3",
-    ///             MemoryBytes = "3221225472",
-    ///         },
-    ///         GcpConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigArgs
-    ///         {
-    ///             AccessConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigArgs
-    ///             {
-    ///                 NetworkConfigs = new[]
-    ///                 {
-    ///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
-    ///                     {
-    ///                         Subnet = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/subnetworks/default",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         RebalanceConfig = new Gcp.ManagedKafka.Inputs.ClusterRebalanceConfigArgs
-    ///         {
-    ///             Mode = "NO_REBALANCE",
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "key", "value" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Managedkafka Cluster Cmek
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
-    ///     {
-    ///         Name = "example-key-ring",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var key = new Gcp.Kms.CryptoKey("key", new()
-    ///     {
-    ///         Name = "example-key",
-    ///         KeyRing = keyRing.Id,
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var example = new Gcp.ManagedKafka.Cluster("example", new()
-    ///     {
-    ///         ClusterId = "my-cluster",
-    ///         Location = "us-central1",
-    ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
-    ///         {
-    ///             VcpuCount = "3",
-    ///             MemoryBytes = "3221225472",
-    ///         },
-    ///         GcpConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigArgs
-    ///         {
-    ///             AccessConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigArgs
-    ///             {
-    ///                 NetworkConfigs = new[]
-    ///                 {
-    ///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
-    ///                     {
-    ///                         Subnet = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/subnetworks/default",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             KmsKey = key.Id,
-    ///         },
-    ///     });
-    /// 
-    ///     var kafkaServiceIdentity = new Gcp.Projects.ServiceIdentity("kafka_service_identity", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Service = "managedkafka.googleapis.com",
-    ///     });
-    /// 
-    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("crypto_key_binding", new()
-    ///     {
-    ///         CryptoKeyId = key.Id,
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Members = new[]
-    ///         {
-    ///             $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-managedkafka.iam.gserviceaccount.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Cluster can be imported using any of these accepted formats:
@@ -195,7 +79,7 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -321,7 +205,7 @@ namespace Pulumi.Gcp.ManagedKafka
         }
 
         /// <summary>
-        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -401,7 +285,7 @@ namespace Pulumi.Gcp.ManagedKafka
         }
 
         /// <summary>
-        /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+        /// ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

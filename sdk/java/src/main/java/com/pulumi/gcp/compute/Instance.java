@@ -558,8 +558,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="networkInterfaces", refs={List.class,InstanceNetworkInterface.class}, tree="[0,1]")
     private Output<List<InstanceNetworkInterface>> networkInterfaces;
@@ -567,8 +565,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<List<InstanceNetworkInterface>> networkInterfaces() {

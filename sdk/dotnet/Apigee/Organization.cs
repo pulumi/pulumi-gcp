@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
     /// * How-to Guides
-    ///     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+    ///   * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
     /// 
     /// ## Example Usage
     /// 
@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Basic Disable Vpc Peering
     /// 
     /// ```csharp
@@ -93,6 +94,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Full
     /// 
     /// ```csharp
@@ -173,6 +175,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Organization Cloud Full Disable Vpc Peering
     /// 
     /// ```csharp
@@ -334,9 +337,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The project ID associated with the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -494,9 +494,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The project ID associated with the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -628,9 +625,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The project ID associated with the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

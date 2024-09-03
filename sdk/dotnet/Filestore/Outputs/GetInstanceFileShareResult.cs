@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Filestore.Outputs
         public readonly int CapacityGb;
         /// <summary>
         /// The name of a Filestore instance.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Name;
         /// <summary>

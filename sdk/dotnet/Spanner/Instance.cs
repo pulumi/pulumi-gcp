@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/spanner/)
+    ///   * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Spanner Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
-    /// ### Spanner Instance Processing Units
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -67,7 +65,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
-    /// ### Spanner Instance With Autoscaling
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -102,7 +100,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// });
     /// ```
-    /// ### Spanner Instance Multi Regional
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -177,9 +175,6 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -317,9 +312,6 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -401,9 +393,6 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -154,7 +154,7 @@ type BareMetalAdminClusterControlPlane struct {
 	// Customizes the default API server args. Only a subset of
 	// customized flags are supported. Please refer to the API server
 	// documentation below to know the exact format:
-	// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+	// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 	// Structure is documented below.
 	ApiServerArgs []BareMetalAdminClusterControlPlaneApiServerArg `pulumi:"apiServerArgs"`
 	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
@@ -177,7 +177,7 @@ type BareMetalAdminClusterControlPlaneArgs struct {
 	// Customizes the default API server args. Only a subset of
 	// customized flags are supported. Please refer to the API server
 	// documentation below to know the exact format:
-	// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+	// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 	// Structure is documented below.
 	ApiServerArgs BareMetalAdminClusterControlPlaneApiServerArgArrayInput `pulumi:"apiServerArgs"`
 	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
@@ -265,7 +265,7 @@ func (o BareMetalAdminClusterControlPlaneOutput) ToBareMetalAdminClusterControlP
 // Customizes the default API server args. Only a subset of
 // customized flags are supported. Please refer to the API server
 // documentation below to know the exact format:
-// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlaneOutput) ApiServerArgs() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterControlPlane) []BareMetalAdminClusterControlPlaneApiServerArg {
@@ -308,7 +308,7 @@ func (o BareMetalAdminClusterControlPlanePtrOutput) Elem() BareMetalAdminCluster
 // Customizes the default API server args. Only a subset of
 // customized flags are supported. Please refer to the API server
 // documentation below to know the exact format:
-// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 // Structure is documented below.
 func (o BareMetalAdminClusterControlPlanePtrOutput) ApiServerArgs() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterControlPlane) []BareMetalAdminClusterControlPlaneApiServerArg {
@@ -587,7 +587,7 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig s
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -620,7 +620,7 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigAr
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -718,7 +718,7 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
@@ -781,7 +781,7 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
@@ -833,7 +833,7 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -861,7 +861,7 @@ type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -928,7 +928,7 @@ func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfi
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
@@ -4679,7 +4679,7 @@ type BareMetalClusterControlPlane struct {
 	// Customizes the default API server args. Only a subset of
 	// customized flags are supported. Please refer to the API server
 	// documentation below to know the exact format:
-	// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+	// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 	// Structure is documented below.
 	ApiServerArgs []BareMetalClusterControlPlaneApiServerArg `pulumi:"apiServerArgs"`
 	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
@@ -4702,7 +4702,7 @@ type BareMetalClusterControlPlaneArgs struct {
 	// Customizes the default API server args. Only a subset of
 	// customized flags are supported. Please refer to the API server
 	// documentation below to know the exact format:
-	// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+	// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 	// Structure is documented below.
 	ApiServerArgs BareMetalClusterControlPlaneApiServerArgArrayInput `pulumi:"apiServerArgs"`
 	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
@@ -4790,7 +4790,7 @@ func (o BareMetalClusterControlPlaneOutput) ToBareMetalClusterControlPlanePtrOut
 // Customizes the default API server args. Only a subset of
 // customized flags are supported. Please refer to the API server
 // documentation below to know the exact format:
-// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 // Structure is documented below.
 func (o BareMetalClusterControlPlaneOutput) ApiServerArgs() BareMetalClusterControlPlaneApiServerArgArrayOutput {
 	return o.ApplyT(func(v BareMetalClusterControlPlane) []BareMetalClusterControlPlaneApiServerArg {
@@ -4833,7 +4833,7 @@ func (o BareMetalClusterControlPlanePtrOutput) Elem() BareMetalClusterControlPla
 // Customizes the default API server args. Only a subset of
 // customized flags are supported. Please refer to the API server
 // documentation below to know the exact format:
-// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+// <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
 // Structure is documented below.
 func (o BareMetalClusterControlPlanePtrOutput) ApiServerArgs() BareMetalClusterControlPlaneApiServerArgArrayOutput {
 	return o.ApplyT(func(v *BareMetalClusterControlPlane) []BareMetalClusterControlPlaneApiServerArg {
@@ -5112,7 +5112,7 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig struct
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -5145,7 +5145,7 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs st
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -5243,7 +5243,7 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutp
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
@@ -5306,7 +5306,7 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrO
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
@@ -5358,7 +5358,7 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCon
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -5386,7 +5386,7 @@ type BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCon
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -5453,7 +5453,7 @@ func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNode
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
@@ -6616,7 +6616,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -6652,7 +6652,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -6758,7 +6758,7 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
@@ -6832,7 +6832,7 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
@@ -6893,7 +6893,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// Prevents the Kubelet from pulling multiple images at a time.
 	// We recommend *not* changing the default value on nodes that run docker
 	// daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-	// backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+	// backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
 	// more details.
 	SerializeImagePullsDisabled *bool `pulumi:"serializeImagePullsDisabled"`
 }
@@ -6926,7 +6926,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// Prevents the Kubelet from pulling multiple images at a time.
 	// We recommend *not* changing the default value on nodes that run docker
 	// daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-	// backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+	// backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
 	// more details.
 	SerializeImagePullsDisabled pulumi.BoolPtrInput `pulumi:"serializeImagePullsDisabled"`
 }
@@ -7034,7 +7034,7 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // Prevents the Kubelet from pulling multiple images at a time.
 // We recommend *not* changing the default value on nodes that run docker
 // daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-// backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+// backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
 // more details.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigOutput) SerializeImagePullsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *bool {
@@ -7098,7 +7098,7 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // Prevents the Kubelet from pulling multiple images at a time.
 // We recommend *not* changing the default value on nodes that run docker
 // daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-// backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+// backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
 // more details.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigPtrOutput) SerializeImagePullsDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig) *bool {
@@ -7117,7 +7117,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -7145,7 +7145,7 @@ type BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolCo
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -7212,7 +7212,7 @@ func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
@@ -7964,7 +7964,7 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -7997,7 +7997,7 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -8095,7 +8095,7 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
@@ -8158,7 +8158,7 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
@@ -8210,7 +8210,7 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -8238,7 +8238,7 @@ type BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePool
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -8305,7 +8305,7 @@ func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodeP
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
@@ -11027,8 +11027,6 @@ type BareMetalClusterStorageLvpNodeMountsConfig struct {
 	// The host machine path.
 	Path string `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
-	//
-	// ***
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -11047,8 +11045,6 @@ type BareMetalClusterStorageLvpNodeMountsConfigArgs struct {
 	// The host machine path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
-	//
-	// ***
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -11135,8 +11131,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) Path() pulumi.StringOu
 }
 
 // The StorageClass name that PVs will be created with.
-//
-// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterStorageLvpNodeMountsConfig) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -11176,8 +11170,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) Path() pulumi.Strin
 }
 
 // The StorageClass name that PVs will be created with.
-//
-// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterStorageLvpNodeMountsConfig) *string {
 		if v == nil {
@@ -12034,7 +12026,7 @@ type BareMetalNodePoolNodePoolConfig struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -12067,7 +12059,7 @@ type BareMetalNodePoolNodePoolConfigArgs struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -12165,7 +12157,7 @@ func (o BareMetalNodePoolNodePoolConfigOutput) ToBareMetalNodePoolNodePoolConfig
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodePoolNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
@@ -12222,7 +12214,7 @@ func (o BareMetalNodePoolNodePoolConfigPtrOutput) Elem() BareMetalNodePoolNodePo
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodePoolNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
@@ -12274,7 +12266,7 @@ type BareMetalNodePoolNodePoolConfigNodeConfig struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -12302,7 +12294,7 @@ type BareMetalNodePoolNodePoolConfigNodeConfigArgs struct {
 	// version -- it's best to assume the behavior is undefined and
 	// conflicts should be avoided. For more information, including usage
 	// and the valid values, see:
-	// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 	//   An object containing a list of "key": value pairs.
 	//   For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -12369,7 +12361,7 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) ToBareMetalNodePoolNode
 // version -- it's best to assume the behavior is undefined and
 // conflicts should be avoided. For more information, including usage
 // and the valid values, see:
-//   - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+//   - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
 //     An object containing a list of "key": value pairs.
 //     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 func (o BareMetalNodePoolNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
@@ -12405,8 +12397,6 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.Int
 type BareMetalNodePoolNodePoolConfigTaint struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// ***
 	Effect *string `pulumi:"effect"`
 	// Key associated with the effect.
 	Key *string `pulumi:"key"`
@@ -12428,8 +12418,6 @@ type BareMetalNodePoolNodePoolConfigTaintInput interface {
 type BareMetalNodePoolNodePoolConfigTaintArgs struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// ***
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// Key associated with the effect.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -12490,8 +12478,6 @@ func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToBareMetalNodePoolNodePoolC
 
 // Specifies the nodes operating system (default: LINUX).
 // Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-//
-// ***
 func (o BareMetalNodePoolNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalNodePoolNodePoolConfigTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
@@ -18235,8 +18221,6 @@ type VMwareNodePoolConfigVsphereConfigTag struct {
 	// The Vsphere tag category.
 	Category *string `pulumi:"category"`
 	// The Vsphere tag name.
-	//
-	// ***
 	Tag *string `pulumi:"tag"`
 }
 
@@ -18255,8 +18239,6 @@ type VMwareNodePoolConfigVsphereConfigTagArgs struct {
 	// The Vsphere tag category.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The Vsphere tag name.
-	//
-	// ***
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -18317,8 +18299,6 @@ func (o VMwareNodePoolConfigVsphereConfigTagOutput) Category() pulumi.StringPtrO
 }
 
 // The Vsphere tag name.
-//
-// ***
 func (o VMwareNodePoolConfigVsphereConfigTagOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfigTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }

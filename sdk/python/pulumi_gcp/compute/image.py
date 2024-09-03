@@ -64,9 +64,6 @@ class ImageArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
@@ -89,7 +86,7 @@ class ImageArgs:
                * The sourceDisk URL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
-               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+               Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -228,9 +225,6 @@ class ImageArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -319,7 +313,7 @@ class ImageArgs:
         """
         Cloud Storage bucket storage location of the image
         (regional or multi-regional).
-        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         return pulumi.get(self, "storage_locations")
 
@@ -386,9 +380,6 @@ class _ImageState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -414,7 +405,7 @@ class _ImageState:
                * The sourceDisk URL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
-               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+               Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         if archive_size_bytes is not None:
             pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -615,9 +606,6 @@ class _ImageState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -731,7 +719,7 @@ class _ImageState:
         """
         Cloud Storage bucket storage location of the image
         (regional or multi-regional).
-        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         return pulumi.get(self, "storage_locations")
 
@@ -782,11 +770,9 @@ class Image(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/images)
+          * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
-        ## Example Usage
-
-        ### Image Basic
+        ## 
 
         ```python
         import pulumi
@@ -798,7 +784,7 @@ class Image(pulumi.CustomResource):
                 "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             })
         ```
-        ### Image Guest Os
+        ## 
 
         ```python
         import pulumi
@@ -818,7 +804,7 @@ class Image(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Image Basic Storage Location
+        ## 
 
         ```python
         import pulumi
@@ -885,9 +871,6 @@ class Image(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ImageRawDiskArgs', 'ImageRawDiskArgsDict']] raw_disk: The parameters of the raw disk image.
@@ -910,7 +893,7 @@ class Image(pulumi.CustomResource):
                * The sourceDisk URL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
-               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+               Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         ...
     @overload
@@ -940,11 +923,9 @@ class Image(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/images)
+          * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
-        ## Example Usage
-
-        ### Image Basic
+        ## 
 
         ```python
         import pulumi
@@ -956,7 +937,7 @@ class Image(pulumi.CustomResource):
                 "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             })
         ```
-        ### Image Guest Os
+        ## 
 
         ```python
         import pulumi
@@ -976,7 +957,7 @@ class Image(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Image Basic Storage Location
+        ## 
 
         ```python
         import pulumi
@@ -1144,9 +1125,6 @@ class Image(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1172,7 +1150,7 @@ class Image(pulumi.CustomResource):
                * The sourceDisk URL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
-               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+               Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1314,9 +1292,6 @@ class Image(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1398,7 +1373,7 @@ class Image(pulumi.CustomResource):
         """
         Cloud Storage bucket storage location of the image
         (regional or multi-regional).
-        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
         """
         return pulumi.get(self, "storage_locations")
 

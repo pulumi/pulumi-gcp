@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 //
-// ## Example Usage
-//
-// ### Certificate Manager Certificate Issuance Config
+// ##
 //
 // ```go
 // package main

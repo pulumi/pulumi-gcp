@@ -16,60 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Composer User Workloads Config Map Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.composer.Environment;
- * import com.pulumi.gcp.composer.EnvironmentArgs;
- * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
- * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
- * import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
- * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var environment = new Environment("environment", EnvironmentArgs.builder()
- *             .name("test-environment")
- *             .region("us-central1")
- *             .config(EnvironmentConfigArgs.builder()
- *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
- *                     .imageVersion("composer-3-airflow-2")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var configMap = new UserWorkloadsConfigMap("configMap", UserWorkloadsConfigMapArgs.builder()
- *             .name("test-config-map")
- *             .region("us-central1")
- *             .environment(environment.name())
- *             .data(Map.of("api_host", "apihost:443"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * UserWorkloadsConfigMap can be imported using any of these accepted formats:
@@ -105,7 +51,7 @@ import javax.annotation.Nullable;
 public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource {
     /**
      * The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
      * 
      */
     @Export(name="data", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -113,7 +59,7 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
      * 
      */
     public Output<Optional<Map<String,String>>> data() {
@@ -122,16 +68,12 @@ public class UserWorkloadsConfigMap extends com.pulumi.resources.CustomResource 
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
      * 
-     * ***
-     * 
      */
     @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
      * @return Environment where the Kubernetes ConfigMap will be stored and used.
-     * 
-     * ***
      * 
      */
     public Output<String> environment() {

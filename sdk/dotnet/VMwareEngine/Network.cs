@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vmware Engine Network Standard
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,6 +36,9 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Vmware Engine Network Legacy
     /// 
     /// ```csharp
@@ -135,9 +136,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the VMwareEngineNetwork.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -236,9 +234,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the VMwareEngineNetwork.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -279,9 +274,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the VMwareEngineNetwork.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Multi_target
+ * ### multi_target
  * tests creating and updating a multi-target
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -88,7 +88,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Run_target
+ * 
+ * ### run_target
  * tests creating and updating a cloud run target
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -146,7 +147,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Target
+ * 
+ * ### target
  * Creates a basic Cloud Deploy target
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -226,7 +228,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:clouddeploy/target:Target")
 public class Target extends com.pulumi.resources.CustomResource {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -236,7 +238,7 @@ public class Target extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * @return Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -428,16 +430,12 @@ public class Target extends com.pulumi.resources.CustomResource {
     /**
      * Name of the `Target`. Format is `a-z?`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the `Target`. Format is `a-z?`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -81,8 +81,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The service to generate identity for.
-        /// 
-        /// - - -
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -142,8 +140,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The service to generate identity for.
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -177,8 +173,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The service to generate identity for.
-        /// 
-        /// - - -
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Searching For Projects About To Be Deleted In An Org
+ * ### searching for projects about to be deleted in an org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ export interface GetProjectResult {
  *
  * ## Example Usage
  *
- * ### Searching For Projects About To Be Deleted In An Org
+ * ### searching for projects about to be deleted in an org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

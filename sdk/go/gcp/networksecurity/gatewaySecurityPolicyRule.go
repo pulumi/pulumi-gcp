@@ -19,9 +19,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
 //
-// ## Example Usage
-//
-// ### Network Security Gateway Security Policy Rules Basic
+// ##
 //
 // ```go
 // package main
@@ -61,7 +59,7 @@ import (
 //	}
 //
 // ```
-// ### Network Security Gateway Security Policy Rules Advanced
+// ##
 //
 // ```go
 // package main
@@ -144,8 +142,6 @@ type GatewaySecurityPolicyRule struct {
 	// Whether the rule is enforced.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The name of the gatewat security policy this rule belongs to.
-	//
-	// ***
 	GatewaySecurityPolicy pulumi.StringOutput `pulumi:"gatewaySecurityPolicy"`
 	// The location of the gateway security policy.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -232,8 +228,6 @@ type gatewaySecurityPolicyRuleState struct {
 	// Whether the rule is enforced.
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the gatewat security policy this rule belongs to.
-	//
-	// ***
 	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
 	// The location of the gateway security policy.
 	Location *string `pulumi:"location"`
@@ -273,8 +267,6 @@ type GatewaySecurityPolicyRuleState struct {
 	// Whether the rule is enforced.
 	Enabled pulumi.BoolPtrInput
 	// The name of the gatewat security policy this rule belongs to.
-	//
-	// ***
 	GatewaySecurityPolicy pulumi.StringPtrInput
 	// The location of the gateway security policy.
 	Location pulumi.StringPtrInput
@@ -314,8 +306,6 @@ type gatewaySecurityPolicyRuleArgs struct {
 	// Whether the rule is enforced.
 	Enabled bool `pulumi:"enabled"`
 	// The name of the gatewat security policy this rule belongs to.
-	//
-	// ***
 	GatewaySecurityPolicy string `pulumi:"gatewaySecurityPolicy"`
 	// The location of the gateway security policy.
 	Location string `pulumi:"location"`
@@ -346,8 +336,6 @@ type GatewaySecurityPolicyRuleArgs struct {
 	// Whether the rule is enforced.
 	Enabled pulumi.BoolInput
 	// The name of the gatewat security policy this rule belongs to.
-	//
-	// ***
 	GatewaySecurityPolicy pulumi.StringInput
 	// The location of the gateway security policy.
 	Location pulumi.StringInput
@@ -482,8 +470,6 @@ func (o GatewaySecurityPolicyRuleOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The name of the gatewat security policy this rule belongs to.
-//
-// ***
 func (o GatewaySecurityPolicyRuleOutput) GatewaySecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewaySecurityPolicyRule) pulumi.StringOutput { return v.GatewaySecurityPolicy }).(pulumi.StringOutput)
 }

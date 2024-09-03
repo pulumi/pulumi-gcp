@@ -532,7 +532,7 @@ class Trigger(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic
+        ### basic
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -638,7 +638,7 @@ class Trigger(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic
+        ### basic
         ```python
         import pulumi
         import pulumi_gcp as gcp

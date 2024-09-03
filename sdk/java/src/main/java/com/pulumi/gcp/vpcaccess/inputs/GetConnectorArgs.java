@@ -19,16 +19,12 @@ public final class GetConnectorArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Name of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return Name of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -98,8 +94,6 @@ public final class GetConnectorArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name Name of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -110,8 +104,6 @@ public final class GetConnectorArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name Name of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

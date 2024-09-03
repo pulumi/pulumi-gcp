@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// * [API documentation](https://cloud.google.com/blockchain-node-engine/docs/reference/rest/v1/projects.locations.blockchainNodes)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
+    ///   * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Blockchain Nodes Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +58,7 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     /// 
     /// });
     /// ```
-    /// ### Blockchain Nodes Geth Details
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -134,9 +132,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     {
         /// <summary>
         /// ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("blockchainNodeId")]
         public Output<string> BlockchainNodeId { get; private set; } = null!;
@@ -268,9 +263,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     {
         /// <summary>
         /// ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("blockchainNodeId", required: true)]
         public Input<string> BlockchainNodeId { get; set; } = null!;
@@ -327,9 +319,6 @@ namespace Pulumi.Gcp.BlockchainNodeEngine
     {
         /// <summary>
         /// ID of the requesting object.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("blockchainNodeId")]
         public Input<string>? BlockchainNodeId { get; set; }

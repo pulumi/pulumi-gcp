@@ -35,16 +35,12 @@ public final class ObjectACLArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the object to apply the acl to.
      * 
-     * ***
-     * 
      */
     @Import(name="object", required=true)
     private Output<String> object;
 
     /**
      * @return The name of the object to apply the acl to.
-     * 
-     * ***
      * 
      */
     public Output<String> object() {
@@ -134,8 +130,6 @@ public final class ObjectACLArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param object The name of the object to apply the acl to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -146,8 +140,6 @@ public final class ObjectACLArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param object The name of the object to apply the acl to.
-         * 
-         * ***
          * 
          * @return builder
          * 

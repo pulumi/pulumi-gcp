@@ -17,12 +17,10 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
     /// * How-to Guides
-    ///     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
-    ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
+    ///   * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
+    ///   * [Official Documentation](https://cloud.google.com/container-analysis/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Container Analysis Note Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,7 +44,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// });
     /// ```
-    /// ### Container Analysis Note Attestation Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

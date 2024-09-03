@@ -35,9 +35,6 @@ class KmsconfigArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the CMEK policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -108,9 +105,6 @@ class KmsconfigArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the CMEK policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -158,9 +152,6 @@ class _KmsconfigState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Name of the policy location. CMEK policies apply to the whole region.
         :param pulumi.Input[str] name: Name of the CMEK policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -269,9 +260,6 @@ class _KmsconfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the CMEK policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -339,11 +327,9 @@ class Kmsconfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.kmsConfigs)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
 
-        ## Example Usage
-
-        ### Kms Config Create
+        ## 
 
         ```python
         import pulumi
@@ -396,9 +382,6 @@ class Kmsconfig(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Name of the policy location. CMEK policies apply to the whole region.
         :param pulumi.Input[str] name: Name of the CMEK policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -417,11 +400,9 @@ class Kmsconfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.kmsConfigs)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
 
-        ## Example Usage
-
-        ### Kms Config Create
+        ## 
 
         ```python
         import pulumi
@@ -548,9 +529,6 @@ class Kmsconfig(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Name of the policy location. CMEK policies apply to the whole region.
         :param pulumi.Input[str] name: Name of the CMEK policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -630,9 +608,6 @@ class Kmsconfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the CMEK policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

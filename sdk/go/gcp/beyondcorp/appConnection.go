@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 //
-// ## Example Usage
-//
-// ### Beyondcorp App Connection Basic
+// ##
 //
 // ```go
 // package main
@@ -76,7 +74,7 @@ import (
 //	}
 //
 // ```
-// ### Beyondcorp App Connection Full
+// ##
 //
 // ```go
 // package main

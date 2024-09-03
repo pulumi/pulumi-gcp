@@ -71,16 +71,12 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of Managed Zone needs to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of Managed Zone needs to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -236,8 +232,6 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of Managed Zone needs to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -248,8 +242,6 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of Managed Zone needs to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 

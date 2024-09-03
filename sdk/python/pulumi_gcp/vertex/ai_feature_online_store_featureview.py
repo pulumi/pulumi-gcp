@@ -34,9 +34,6 @@ class AiFeatureOnlineStoreFeatureviewArgs:
         The set of arguments for constructing a AiFeatureOnlineStoreFeatureview resource.
         :param pulumi.Input[str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
         :param pulumi.Input[str] region: The region for the resource. It should be the same as the featureonlinestore region.
-               
-               
-               - - -
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs'] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs'] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
@@ -87,9 +84,6 @@ class AiFeatureOnlineStoreFeatureviewArgs:
     def region(self) -> pulumi.Input[str]:
         """
         The region for the resource. It should be the same as the featureonlinestore region.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -225,9 +219,6 @@ class _AiFeatureOnlineStoreFeatureviewState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region for the resource. It should be the same as the featureonlinestore region.
-               
-               
-               - - -
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewSyncConfigArgs'] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -381,9 +372,6 @@ class _AiFeatureOnlineStoreFeatureviewState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region for the resource. It should be the same as the featureonlinestore region.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -452,11 +440,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores.featureViews)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
-        ## Example Usage
-
-        ### Vertex Ai Featureonlinestore Featureview
+        ## 
 
         ```python
         import pulumi
@@ -523,7 +509,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        ### Vertex Ai Featureonlinestore Featureview Feature Registry
+        ## 
 
         ```python
         import pulumi
@@ -609,6 +595,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 }],
             })
         ```
+
+        ## Example Usage
+
         ### Vertex Ai Featureonlinestore Featureview Cross Project
 
         ```python
@@ -725,7 +714,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     wait30_seconds,
                 ]))
         ```
-        ### Vertex Ai Featureonlinestore Featureview With Vector Search
+        ## 
 
         ```python
         import pulumi
@@ -875,9 +864,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region for the resource. It should be the same as the featureonlinestore region.
-               
-               
-               - - -
         :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
@@ -896,11 +882,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores.featureViews)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
-        ## Example Usage
-
-        ### Vertex Ai Featureonlinestore Featureview
+        ## 
 
         ```python
         import pulumi
@@ -967,7 +951,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
-        ### Vertex Ai Featureonlinestore Featureview Feature Registry
+        ## 
 
         ```python
         import pulumi
@@ -1053,6 +1037,9 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 }],
             })
         ```
+
+        ## Example Usage
+
         ### Vertex Ai Featureonlinestore Featureview Cross Project
 
         ```python
@@ -1169,7 +1156,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                     wait30_seconds,
                 ]))
         ```
-        ### Vertex Ai Featureonlinestore Featureview With Vector Search
+        ## 
 
         ```python
         import pulumi
@@ -1403,9 +1390,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region for the resource. It should be the same as the featureonlinestore region.
-               
-               
-               - - -
         :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -1515,9 +1499,6 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region for the resource. It should be the same as the featureonlinestore region.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

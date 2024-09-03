@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Apphub.Inputs
         /// Possible values:
         /// REGIONAL
         /// Possible values are: `REGIONAL`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

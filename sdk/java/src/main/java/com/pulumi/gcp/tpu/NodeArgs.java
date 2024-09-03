@@ -170,16 +170,12 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The version of Tensorflow running in the Node.
      * 
-     * ***
-     * 
      */
     @Import(name="tensorflowVersion", required=true)
     private Output<String> tensorflowVersion;
 
     /**
      * @return The version of Tensorflow running in the Node.
-     * 
-     * ***
      * 
      */
     public Output<String> tensorflowVersion() {
@@ -455,8 +451,6 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tensorflowVersion The version of Tensorflow running in the Node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -467,8 +461,6 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tensorflowVersion The version of Tensorflow running in the Node.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -81,8 +81,6 @@ type BackendBucketSignedUrlKey struct {
 	pulumi.CustomResourceState
 
 	// The backend bucket this signed URL key belongs.
-	//
-	// ***
 	BackendBucket pulumi.StringOutput `pulumi:"backendBucket"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -139,8 +137,6 @@ func GetBackendBucketSignedUrlKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BackendBucketSignedUrlKey resources.
 type backendBucketSignedUrlKeyState struct {
 	// The backend bucket this signed URL key belongs.
-	//
-	// ***
 	BackendBucket *string `pulumi:"backendBucket"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -155,8 +151,6 @@ type backendBucketSignedUrlKeyState struct {
 
 type BackendBucketSignedUrlKeyState struct {
 	// The backend bucket this signed URL key belongs.
-	//
-	// ***
 	BackendBucket pulumi.StringPtrInput
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -175,8 +169,6 @@ func (BackendBucketSignedUrlKeyState) ElementType() reflect.Type {
 
 type backendBucketSignedUrlKeyArgs struct {
 	// The backend bucket this signed URL key belongs.
-	//
-	// ***
 	BackendBucket string `pulumi:"backendBucket"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -192,8 +184,6 @@ type backendBucketSignedUrlKeyArgs struct {
 // The set of arguments for constructing a BackendBucketSignedUrlKey resource.
 type BackendBucketSignedUrlKeyArgs struct {
 	// The backend bucket this signed URL key belongs.
-	//
-	// ***
 	BackendBucket pulumi.StringInput
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -294,8 +284,6 @@ func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutputWithCo
 }
 
 // The backend bucket this signed URL key belongs.
-//
-// ***
 func (o BackendBucketSignedUrlKeyOutput) BackendBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendBucketSignedUrlKey) pulumi.StringOutput { return v.BackendBucket }).(pulumi.StringOutput)
 }

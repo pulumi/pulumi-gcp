@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
+    ///   * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Datastream Private Connection Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

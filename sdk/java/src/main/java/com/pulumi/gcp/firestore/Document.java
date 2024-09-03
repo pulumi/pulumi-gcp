@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
  * 
  * &gt; **Warning:** This resource creates a Firestore Document on a project that already has
  * a Firestore database. If you haven&#39;t already created it, you may
@@ -110,6 +110,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Document Nested Document
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -262,16 +263,12 @@ public class Document extends com.pulumi.resources.CustomResource {
     /**
      * The client-assigned document ID to use for this document during creation.
      * 
-     * ***
-     * 
      */
     @Export(name="documentId", refs={String.class}, tree="[0]")
     private Output<String> documentId;
 
     /**
      * @return The client-assigned document ID to use for this document during creation.
-     * 
-     * ***
      * 
      */
     public Output<String> documentId() {

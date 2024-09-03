@@ -31,14 +31,11 @@ class RuntimeArgs:
         """
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
                contain 1 to 63 characters, and must conform to [RFC 1035]
-               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
                empty, but, if present, must contain 1 to 63 characters, and must
                conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
                more than 32 labels can be associated with a cluster.
@@ -72,9 +69,6 @@ class RuntimeArgs:
     def location(self) -> pulumi.Input[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -101,7 +95,7 @@ class RuntimeArgs:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
         empty, but, if present, must contain 1 to 63 characters, and must
         conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         more than 32 labels can be associated with a cluster.
@@ -192,7 +186,7 @@ class _RuntimeState:
                reference/rest/v1/projects.locations.runtimes#healthstate`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
                contain 1 to 63 characters, and must conform to [RFC 1035]
-               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
                empty, but, if present, must contain 1 to 63 characters, and must
                conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
                more than 32 labels can be associated with a cluster.
@@ -200,9 +194,6 @@ class _RuntimeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
@@ -287,7 +278,7 @@ class _RuntimeState:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
         empty, but, if present, must contain 1 to 63 characters, and must
         conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         more than 32 labels can be associated with a cluster.
@@ -306,9 +297,6 @@ class _RuntimeState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -431,11 +419,9 @@ class Runtime(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+          * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
-        ## Example Usage
-
-        ### Notebook Runtime Basic
+        ## 
 
         ```python
         import pulumi
@@ -460,7 +446,7 @@ class Runtime(pulumi.CustomResource):
                 },
             })
         ```
-        ### Notebook Runtime Basic Gpu
+        ## 
 
         ```python
         import pulumi
@@ -492,7 +478,7 @@ class Runtime(pulumi.CustomResource):
                 },
             })
         ```
-        ### Notebook Runtime Basic Container
+        ## 
 
         ```python
         import pulumi
@@ -527,7 +513,7 @@ class Runtime(pulumi.CustomResource):
                 },
             })
         ```
-        ### Notebook Runtime Kernels
+        ## 
 
         ```python
         import pulumi
@@ -561,7 +547,7 @@ class Runtime(pulumi.CustomResource):
                 "k": "val",
             })
         ```
-        ### Notebook Runtime Script
+        ## 
 
         ```python
         import pulumi
@@ -623,7 +609,7 @@ class Runtime(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
                contain 1 to 63 characters, and must conform to [RFC 1035]
-               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
                empty, but, if present, must contain 1 to 63 characters, and must
                conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
                more than 32 labels can be associated with a cluster.
@@ -631,9 +617,6 @@ class Runtime(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -659,11 +642,9 @@ class Runtime(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+          * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
-        ## Example Usage
-
-        ### Notebook Runtime Basic
+        ## 
 
         ```python
         import pulumi
@@ -688,7 +669,7 @@ class Runtime(pulumi.CustomResource):
                 },
             })
         ```
-        ### Notebook Runtime Basic Gpu
+        ## 
 
         ```python
         import pulumi
@@ -720,7 +701,7 @@ class Runtime(pulumi.CustomResource):
                 },
             })
         ```
-        ### Notebook Runtime Basic Container
+        ## 
 
         ```python
         import pulumi
@@ -755,7 +736,7 @@ class Runtime(pulumi.CustomResource):
                 },
             })
         ```
-        ### Notebook Runtime Kernels
+        ## 
 
         ```python
         import pulumi
@@ -789,7 +770,7 @@ class Runtime(pulumi.CustomResource):
                 "k": "val",
             })
         ```
-        ### Notebook Runtime Script
+        ## 
 
         ```python
         import pulumi
@@ -929,7 +910,7 @@ class Runtime(pulumi.CustomResource):
                reference/rest/v1/projects.locations.runtimes#healthstate`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
                contain 1 to 63 characters, and must conform to [RFC 1035]
-               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
                empty, but, if present, must contain 1 to 63 characters, and must
                conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
                more than 32 labels can be associated with a cluster.
@@ -937,9 +918,6 @@ class Runtime(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
@@ -1005,7 +983,7 @@ class Runtime(pulumi.CustomResource):
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
         empty, but, if present, must contain 1 to 63 characters, and must
         conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         more than 32 labels can be associated with a cluster.
@@ -1020,9 +998,6 @@ class Runtime(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

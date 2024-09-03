@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Get a HA VPN Gateway within GCE from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gateway = gcp.compute.getHcVpnGateway({
+ *     name: "foobar",
+ * });
+ * ```
  */
 export function getHcVpnGateway(args: GetHcVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetHcVpnGatewayResult> {
 
@@ -27,9 +36,6 @@ export function getHcVpnGateway(args: GetHcVpnGatewayArgs, opts?: pulumi.InvokeO
 export interface GetHcVpnGatewayArgs {
     /**
      * The name of the forwarding rule.
-     *
-     *
-     * - - -
      */
     name: string;
     /**
@@ -66,6 +72,15 @@ export interface GetHcVpnGatewayResult {
  * Get a HA VPN Gateway within GCE from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gateway = gcp.compute.getHcVpnGateway({
+ *     name: "foobar",
+ * });
+ * ```
  */
 export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHcVpnGatewayResult> {
     return pulumi.output(args).apply((a: any) => getHcVpnGateway(a, opts))
@@ -77,9 +92,6 @@ export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pu
 export interface GetHcVpnGatewayOutputArgs {
     /**
      * The name of the forwarding rule.
-     *
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

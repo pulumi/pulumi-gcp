@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
     /// * How-to Guides
-    ///     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+    ///   * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dns Policy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,9 +137,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// User assigned name for this policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -239,9 +234,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// User assigned name for this policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -307,9 +299,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// User assigned name for this policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

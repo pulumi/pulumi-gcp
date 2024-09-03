@@ -20,8 +20,6 @@ import (
 // * How-to Guides
 //   - [Configure a route extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_route_extension)
 //
-// ## Example Usage
-//
 // ## Import
 //
 // LbRouteExtension can be imported using any of these accepted formats:

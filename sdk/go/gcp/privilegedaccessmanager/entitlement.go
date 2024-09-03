@@ -122,7 +122,7 @@ type Entitlement struct {
 	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
 	// This value should be unique among all other Entitlements under the specified `parent`.
 	EntitlementId pulumi.StringOutput `pulumi:"entitlementId"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The region of the Entitlement resource.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -214,7 +214,7 @@ type entitlementState struct {
 	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
 	// This value should be unique among all other Entitlements under the specified `parent`.
 	EntitlementId *string `pulumi:"entitlementId"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag *string `pulumi:"etag"`
 	// The region of the Entitlement resource.
 	Location *string `pulumi:"location"`
@@ -256,7 +256,7 @@ type EntitlementState struct {
 	// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
 	// This value should be unique among all other Entitlements under the specified `parent`.
 	EntitlementId pulumi.StringPtrInput
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrInput
 	// The region of the Entitlement resource.
 	Location pulumi.StringPtrInput
@@ -464,7 +464,7 @@ func (o EntitlementOutput) EntitlementId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.EntitlementId }).(pulumi.StringOutput)
 }
 
-// For Resource freshness validation (https://google.aip.dev/154)
+// For Resource freshness validation (<https://google.aip.dev/154>)
 func (o EntitlementOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

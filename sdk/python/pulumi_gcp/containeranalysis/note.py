@@ -387,12 +387,10 @@ class Note(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
         * How-to Guides
-            * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
-            * [Official Documentation](https://cloud.google.com/container-analysis/)
+          * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
+          * [Official Documentation](https://cloud.google.com/container-analysis/)
 
-        ## Example Usage
-
-        ### Container Analysis Note Basic
+        ## 
 
         ```python
         import pulumi
@@ -406,7 +404,7 @@ class Note(pulumi.CustomResource):
                 },
             })
         ```
-        ### Container Analysis Note Attestation Full
+        ## 
 
         ```python
         import pulumi
@@ -490,12 +488,10 @@ class Note(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
         * How-to Guides
-            * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
-            * [Official Documentation](https://cloud.google.com/container-analysis/)
+          * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
+          * [Official Documentation](https://cloud.google.com/container-analysis/)
 
-        ## Example Usage
-
-        ### Container Analysis Note Basic
+        ## 
 
         ```python
         import pulumi
@@ -509,7 +505,7 @@ class Note(pulumi.CustomResource):
                 },
             })
         ```
-        ### Container Analysis Note Attestation Full
+        ## 
 
         ```python
         import pulumi

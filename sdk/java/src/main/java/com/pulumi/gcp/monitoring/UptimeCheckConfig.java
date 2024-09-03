@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+ *   * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
  * 
  * ## Example Usage
  * 
@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Uptime Check Config Status Code
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -173,6 +174,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Uptime Check Config Https
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -237,7 +239,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Uptime Check Tcp
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -292,6 +294,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Uptime Check Config Synthetic Monitor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -457,7 +460,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -467,7 +470,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -582,18 +585,14 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tcpCheck);
     }
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     * 
-     * ***
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      * 
      */
     @Export(name="timeout", refs={String.class}, tree="[0]")
     private Output<String> timeout;
 
     /**
-     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     * 
-     * ***
+     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      * 
      */
     public Output<String> timeout() {

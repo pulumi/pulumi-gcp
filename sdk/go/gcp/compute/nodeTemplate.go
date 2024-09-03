@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 //
-// ## Example Usage
-//
-// ### Node Template Basic
+// ##
 //
 // ```go
 // package main
@@ -50,7 +48,7 @@ import (
 //	}
 //
 // ```
-// ### Node Template Server Binding
+// ##
 //
 // ```go
 // package main

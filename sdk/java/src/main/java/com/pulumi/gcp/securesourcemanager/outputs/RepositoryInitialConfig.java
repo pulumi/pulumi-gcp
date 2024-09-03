@@ -19,19 +19,19 @@ public final class RepositoryInitialConfig {
     private @Nullable String defaultBranch;
     /**
      * @return List of gitignore template names user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     private @Nullable List<String> gitignores;
     /**
      * @return License template name user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     private @Nullable String license;
     /**
      * @return README template name.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     private @Nullable String readme;
@@ -46,7 +46,7 @@ public final class RepositoryInitialConfig {
     }
     /**
      * @return List of gitignore template names user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     public List<String> gitignores() {
@@ -54,7 +54,7 @@ public final class RepositoryInitialConfig {
     }
     /**
      * @return License template name user can choose from.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     public Optional<String> license() {
@@ -62,7 +62,7 @@ public final class RepositoryInitialConfig {
     }
     /**
      * @return README template name.
-     * Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+     * Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
      * 
      */
     public Optional<String> readme() {

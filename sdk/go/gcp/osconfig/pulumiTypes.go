@@ -373,8 +373,6 @@ func (o GuestPoliciesAssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) G
 
 type GuestPoliciesAssignmentOsType struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-	//
-	// ***
 	OsArchitecture *string `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName *string `pulumi:"osShortName"`
@@ -395,8 +393,6 @@ type GuestPoliciesAssignmentOsTypeInput interface {
 
 type GuestPoliciesAssignmentOsTypeArgs struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-	//
-	// ***
 	OsArchitecture pulumi.StringPtrInput `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName pulumi.StringPtrInput `pulumi:"osShortName"`
@@ -456,8 +452,6 @@ func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutp
 }
 
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
-//
-// ***
 func (o GuestPoliciesAssignmentOsTypeOutput) OsArchitecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsArchitecture }).(pulumi.StringPtrOutput)
 }
@@ -1868,13 +1862,13 @@ func (o GuestPoliciesRecipeArtifactArrayOutput) Index(i pulumi.IntInput) GuestPo
 }
 
 type GuestPoliciesRecipeArtifactGcs struct {
-	// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 	// this value would be my-bucket.
 	Bucket *string `pulumi:"bucket"`
 	// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-	// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+	// <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
 	Generation *int `pulumi:"generation"`
-	// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 	// this value would be foo/bar.
 	Object *string `pulumi:"object"`
 }
@@ -1891,13 +1885,13 @@ type GuestPoliciesRecipeArtifactGcsInput interface {
 }
 
 type GuestPoliciesRecipeArtifactGcsArgs struct {
-	// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 	// this value would be my-bucket.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-	// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+	// <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 	// this value would be foo/bar.
 	Object pulumi.StringPtrInput `pulumi:"object"`
 }
@@ -1979,19 +1973,19 @@ func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsPt
 	}).(GuestPoliciesRecipeArtifactGcsPtrOutput)
 }
 
-// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 // this value would be my-bucket.
 func (o GuestPoliciesRecipeArtifactGcsOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
 // Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+// <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
 func (o GuestPoliciesRecipeArtifactGcsOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 // this value would be foo/bar.
 func (o GuestPoliciesRecipeArtifactGcsOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *string { return v.Object }).(pulumi.StringPtrOutput)
@@ -2021,7 +2015,7 @@ func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Elem() GuestPoliciesRecipeArtif
 	}).(GuestPoliciesRecipeArtifactGcsOutput)
 }
 
-// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 // this value would be my-bucket.
 func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) *string {
@@ -2033,7 +2027,7 @@ func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Bucket() pulumi.StringPtrOutput
 }
 
 // Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+// <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
 func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) *int {
 		if v == nil {
@@ -2043,7 +2037,7 @@ func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Generation() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
 // this value would be foo/bar.
 func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) *string {
@@ -5592,11 +5586,11 @@ type OsPolicyAssignmentOsPolicy struct {
 	Description *string `pulumi:"description"`
 	// The id of the OS policy with the following restrictions:
 	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the assignment.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the assignment.
 	Id string `pulumi:"id"`
 	// Policy mode Possible values are: `MODE_UNSPECIFIED`,
 	// `VALIDATION`, `ENFORCEMENT`.
@@ -5633,11 +5627,11 @@ type OsPolicyAssignmentOsPolicyArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The id of the OS policy with the following restrictions:
 	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the assignment.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the assignment.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Policy mode Possible values are: `MODE_UNSPECIFIED`,
 	// `VALIDATION`, `ENFORCEMENT`.
@@ -5719,11 +5713,11 @@ func (o OsPolicyAssignmentOsPolicyOutput) Description() pulumi.StringPtrOutput {
 
 // The id of the OS policy with the following restrictions:
 //
-// *   Must contain only lowercase letters, numbers, and hyphens.
-// *   Must start with a letter.
-// *   Must be between 1-63 characters.
-// *   Must end with a number or a letter.
-// *   Must be unique within the assignment.
+// * Must contain only lowercase letters, numbers, and hyphens.
+// * Must start with a letter.
+// * Must be between 1-63 characters.
+// * Must end with a number or a letter.
+// * Must be unique within the assignment.
 func (o OsPolicyAssignmentOsPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6029,11 +6023,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResource struct {
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFile `pulumi:"file"`
 	// The id of the resource with the following restrictions:
 	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the OS policy.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the OS policy.
 	Id string `pulumi:"id"`
 	// Package resource Structure is
 	// documented below.
@@ -6063,11 +6057,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceArgs struct {
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
 	// The id of the resource with the following restrictions:
 	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the OS policy.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the OS policy.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Package resource Structure is
 	// documented below.
@@ -6146,11 +6140,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) File() OsPolicyAs
 
 // The id of the resource with the following restrictions:
 //
-// *   Must contain only lowercase letters, numbers, and hyphens.
-// *   Must start with a letter.
-// *   Must be between 1-63 characters.
-// *   Must end with a number or a letter.
-// *   Must be unique within the OS policy.
+// * Must contain only lowercase letters, numbers, and hyphens.
+// * Must start with a letter.
+// * Must be between 1-63 characters.
+// * Must end with a number or a letter.
+// * Must be unique within the OS policy.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -13006,8 +13000,6 @@ type OsPolicyAssignmentRolloutDisruptionBudget struct {
 	Fixed *int `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage,
 	// which will be multiplied by a reference value.
-	//
-	// ***
 	Percent *int `pulumi:"percent"`
 }
 
@@ -13027,8 +13019,6 @@ type OsPolicyAssignmentRolloutDisruptionBudgetArgs struct {
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage,
 	// which will be multiplied by a reference value.
-	//
-	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 }
 
@@ -13116,8 +13106,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOu
 
 // Specifies the relative value defined as a percentage,
 // which will be multiplied by a reference value.
-//
-// ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
@@ -13158,8 +13146,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPt
 
 // Specifies the relative value defined as a percentage,
 // which will be multiplied by a reference value.
-//
-// ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
 		if v == nil {
@@ -13400,8 +13386,6 @@ func (o PatchDeploymentInstanceFilterPtrOutput) Zones() pulumi.StringArrayOutput
 
 type PatchDeploymentInstanceFilterGroupLabel struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-	//
-	// ***
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -13418,8 +13402,6 @@ type PatchDeploymentInstanceFilterGroupLabelInput interface {
 
 type PatchDeploymentInstanceFilterGroupLabelArgs struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-	//
-	// ***
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -13475,8 +13457,6 @@ func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToPatchDeploymentInstance
 }
 
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-//
-// ***
 func (o PatchDeploymentInstanceFilterGroupLabelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilterGroupLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

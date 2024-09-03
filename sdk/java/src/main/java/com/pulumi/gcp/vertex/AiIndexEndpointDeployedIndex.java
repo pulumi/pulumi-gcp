@@ -27,9 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex)
  * 
- * ## Example Usage
- * 
- * ### Vertex Ai Index Endpoint Deployed Index Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,8 +139,6 @@ import javax.annotation.Nullable;
  *                     sa)
  *                 .build());
  * 
- *         // The sample data comes from the following link:
- *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
  *         var data = new BucketObject("data", BucketObjectArgs.builder()
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
@@ -157,7 +153,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Index Endpoint Deployed Index Basic Two
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -273,8 +269,6 @@ import javax.annotation.Nullable;
  *                     sa)
  *                 .build());
  * 
- *         // The sample data comes from the following link:
- *         // https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
  *         var data = new BucketObject("data", BucketObjectArgs.builder()
  *             .name("contents/data.json")
  *             .bucket(bucket.name())
@@ -471,8 +465,6 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
      * Identifies the index endpoint. Must be in the format
      * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
      * 
-     * ***
-     * 
      */
     @Export(name="indexEndpoint", refs={String.class}, tree="[0]")
     private Output<String> indexEndpoint;
@@ -480,8 +472,6 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
     /**
      * @return Identifies the index endpoint. Must be in the format
      * &#39;projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> indexEndpoint() {
@@ -536,8 +526,8 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
     /**
      * A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
-     * The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: [&#39;vertex-ai-ip-range&#39;].
-     * For more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
+     * The value should be the name of the address (&lt;https://cloud.google.com/compute/docs/reference/rest/v1/addresses&gt;) Example: [&#39;vertex-ai-ip-range&#39;].
+     * For more information about subnets and network IP ranges, please see &lt;https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges&gt;.
      * 
      */
     @Export(name="reservedIpRanges", refs={List.class,String.class}, tree="[0,1]")
@@ -546,8 +536,8 @@ public class AiIndexEndpointDeployedIndex extends com.pulumi.resources.CustomRes
     /**
      * @return A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
      * If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
-     * The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: [&#39;vertex-ai-ip-range&#39;].
-     * For more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
+     * The value should be the name of the address (&lt;https://cloud.google.com/compute/docs/reference/rest/v1/addresses&gt;) Example: [&#39;vertex-ai-ip-range&#39;].
+     * For more information about subnets and network IP ranges, please see &lt;https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges&gt;.
      * 
      */
     public Output<Optional<List<String>>> reservedIpRanges() {

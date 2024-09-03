@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+        /// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
         /// </summary>
         public readonly string NetworkTier;
         /// <summary>

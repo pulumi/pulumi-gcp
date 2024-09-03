@@ -86,8 +86,6 @@ type Brand struct {
 	pulumi.CustomResourceState
 
 	// Application name displayed on OAuth consent screen.
-	//
-	// ***
 	ApplicationTitle pulumi.StringOutput `pulumi:"applicationTitle"`
 	// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
 	// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
@@ -144,8 +142,6 @@ func GetBrand(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Brand resources.
 type brandState struct {
 	// Application name displayed on OAuth consent screen.
-	//
-	// ***
 	ApplicationTitle *string `pulumi:"applicationTitle"`
 	// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
 	// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
@@ -167,8 +163,6 @@ type brandState struct {
 
 type BrandState struct {
 	// Application name displayed on OAuth consent screen.
-	//
-	// ***
 	ApplicationTitle pulumi.StringPtrInput
 	// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
 	// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
@@ -194,8 +188,6 @@ func (BrandState) ElementType() reflect.Type {
 
 type brandArgs struct {
 	// Application name displayed on OAuth consent screen.
-	//
-	// ***
 	ApplicationTitle string `pulumi:"applicationTitle"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -211,8 +203,6 @@ type brandArgs struct {
 // The set of arguments for constructing a Brand resource.
 type BrandArgs struct {
 	// Application name displayed on OAuth consent screen.
-	//
-	// ***
 	ApplicationTitle pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -313,8 +303,6 @@ func (o BrandOutput) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 }
 
 // Application name displayed on OAuth consent screen.
-//
-// ***
 func (o BrandOutput) ApplicationTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.ApplicationTitle }).(pulumi.StringOutput)
 }

@@ -198,16 +198,12 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
      * @return The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceName() {

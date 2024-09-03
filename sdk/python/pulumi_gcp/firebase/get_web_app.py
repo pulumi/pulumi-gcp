@@ -128,9 +128,6 @@ def get_web_app(app_id: Optional[str] = None,
 
 
     :param str app_id: The app_ip of name of the Firebase webApp.
-           
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
@@ -160,9 +157,6 @@ def get_web_app_output(app_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str app_id: The app_ip of name of the Firebase webApp.
-           
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """

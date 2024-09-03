@@ -18,18 +18,14 @@ public final class ClusterClusterConfigDataprocMetricConfigMetricArgs extends co
     public static final ClusterClusterConfigDataprocMetricConfigMetricArgs Empty = new ClusterClusterConfigDataprocMetricConfigMetricArgs();
 
     /**
-     * One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-     * 
-     * ***
+     * One or more [available OSS metrics] (&lt;https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics&gt;) to collect for the metric course.
      * 
      */
     @Import(name="metricOverrides")
     private @Nullable Output<List<String>> metricOverrides;
 
     /**
-     * @return One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-     * 
-     * ***
+     * @return One or more [available OSS metrics] (&lt;https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics&gt;) to collect for the metric course.
      * 
      */
     public Optional<Output<List<String>>> metricOverrides() {
@@ -77,9 +73,7 @@ public final class ClusterClusterConfigDataprocMetricConfigMetricArgs extends co
         }
 
         /**
-         * @param metricOverrides One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-         * 
-         * ***
+         * @param metricOverrides One or more [available OSS metrics] (&lt;https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics&gt;) to collect for the metric course.
          * 
          * @return builder
          * 
@@ -90,9 +84,7 @@ public final class ClusterClusterConfigDataprocMetricConfigMetricArgs extends co
         }
 
         /**
-         * @param metricOverrides One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-         * 
-         * ***
+         * @param metricOverrides One or more [available OSS metrics] (&lt;https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics&gt;) to collect for the metric course.
          * 
          * @return builder
          * 
@@ -102,9 +94,7 @@ public final class ClusterClusterConfigDataprocMetricConfigMetricArgs extends co
         }
 
         /**
-         * @param metricOverrides One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-         * 
-         * ***
+         * @param metricOverrides One or more [available OSS metrics] (&lt;https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics&gt;) to collect for the metric course.
          * 
          * @return builder
          * 

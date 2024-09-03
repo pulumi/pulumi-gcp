@@ -38,8 +38,6 @@ public final class TargetServerArgs extends com.pulumi.resources.ResourceArgs {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      * 
-     * ***
-     * 
      */
     @Import(name="envId", required=true)
     private Output<String> envId;
@@ -47,8 +45,6 @@ public final class TargetServerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envId() {
@@ -205,8 +201,6 @@ public final class TargetServerArgs extends com.pulumi.resources.ResourceArgs {
          * @param envId The Apigee environment group associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -218,8 +212,6 @@ public final class TargetServerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param envId The Apigee environment group associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

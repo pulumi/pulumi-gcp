@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
  * * How-to Guides
- *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
- *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+ *   * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+ *   * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  *
  * ## Example Usage
  *
@@ -110,9 +110,6 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location (zone) of the firewall endpoint association.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -134,7 +131,7 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -247,9 +244,6 @@ export interface FirewallEndpointAssociationState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location (zone) of the firewall endpoint association.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -271,7 +265,7 @@ export interface FirewallEndpointAssociationState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
@@ -315,9 +309,6 @@ export interface FirewallEndpointAssociationArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location (zone) of the firewall endpoint association.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

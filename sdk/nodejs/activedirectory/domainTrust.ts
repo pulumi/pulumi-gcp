@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
  * * How-to Guides
- *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
+ *   * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
  *
  * ## Example Usage
  *
@@ -85,10 +85,7 @@ export class DomainTrust extends pulumi.CustomResource {
 
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     *
-     *
-     * - - -
+     * of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -187,10 +184,7 @@ export class DomainTrust extends pulumi.CustomResource {
 export interface DomainTrustState {
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     *
-     *
-     * - - -
+     * of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -233,10 +227,7 @@ export interface DomainTrustState {
 export interface DomainTrustArgs {
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     *
-     *
-     * - - -
+     * of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
      */
     domain: pulumi.Input<string>;
     /**

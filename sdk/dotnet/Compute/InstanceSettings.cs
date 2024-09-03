@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/instanceSettings)
     /// * How-to Guides
-    ///     * [Update Instance Settings](https://cloud.google.com/compute/docs/metadata/setting-custom-metadata#set-custom-project-zonal-metadata)
+    ///   * [Update Instance Settings](https://cloud.google.com/compute/docs/metadata/setting-custom-metadata#set-custom-project-zonal-metadata)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Instance Settings Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -95,9 +93,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -164,9 +159,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -202,9 +194,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

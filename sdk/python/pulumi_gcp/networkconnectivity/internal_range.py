@@ -35,9 +35,6 @@ class InternalRangeArgs:
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[str] usage: The type of usage set for this InternalRange.
                Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -94,9 +91,6 @@ class InternalRangeArgs:
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-
-
-        - - -
         """
         return pulumi.get(self, "peering")
 
@@ -253,9 +247,6 @@ class _InternalRangeState:
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -393,9 +384,6 @@ class _InternalRangeState:
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-
-
-        - - -
         """
         return pulumi.get(self, "peering")
 
@@ -507,11 +495,9 @@ class InternalRange(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.internalRanges)
         * How-to Guides
-            * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
+          * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
 
-        ## Example Usage
-
-        ### Network Connectivity Internal Ranges Basic
+        ## 
 
         ```python
         import pulumi
@@ -531,7 +517,7 @@ class InternalRange(pulumi.CustomResource):
                 "label-a": "b",
             })
         ```
-        ### Network Connectivity Internal Ranges Automatic Reservation
+        ## 
 
         ```python
         import pulumi
@@ -548,7 +534,7 @@ class InternalRange(pulumi.CustomResource):
             prefix_length=24,
             target_cidr_ranges=["192.16.0.0/16"])
         ```
-        ### Network Connectivity Internal Ranges External Ranges
+        ## 
 
         ```python
         import pulumi
@@ -567,7 +553,7 @@ class InternalRange(pulumi.CustomResource):
                 "external-reserved-range": "on-premises",
             })
         ```
-        ### Network Connectivity Internal Ranges Reserve With Overlap
+        ## 
 
         ```python
         import pulumi
@@ -630,9 +616,6 @@ class InternalRange(pulumi.CustomResource):
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -655,11 +638,9 @@ class InternalRange(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.internalRanges)
         * How-to Guides
-            * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
+          * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
 
-        ## Example Usage
-
-        ### Network Connectivity Internal Ranges Basic
+        ## 
 
         ```python
         import pulumi
@@ -679,7 +660,7 @@ class InternalRange(pulumi.CustomResource):
                 "label-a": "b",
             })
         ```
-        ### Network Connectivity Internal Ranges Automatic Reservation
+        ## 
 
         ```python
         import pulumi
@@ -696,7 +677,7 @@ class InternalRange(pulumi.CustomResource):
             prefix_length=24,
             target_cidr_ranges=["192.16.0.0/16"])
         ```
-        ### Network Connectivity Internal Ranges External Ranges
+        ## 
 
         ```python
         import pulumi
@@ -715,7 +696,7 @@ class InternalRange(pulumi.CustomResource):
                 "external-reserved-range": "on-premises",
             })
         ```
-        ### Network Connectivity Internal Ranges Reserve With Overlap
+        ## 
 
         ```python
         import pulumi
@@ -865,9 +846,6 @@ class InternalRange(pulumi.CustomResource):
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
         :param pulumi.Input[str] peering: The type of peering set for this internal range.
                Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-               
-               
-               - - -
         :param pulumi.Input[int] prefix_length: An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
                If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -968,9 +946,6 @@ class InternalRange(pulumi.CustomResource):
         """
         The type of peering set for this internal range.
         Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-
-
-        - - -
         """
         return pulumi.get(self, "peering")
 

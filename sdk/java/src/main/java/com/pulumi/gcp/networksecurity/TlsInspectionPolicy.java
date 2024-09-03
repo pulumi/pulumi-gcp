@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.tlsInspectionPolicies)
  * * How-to Guides
- *     * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
+ *   * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
  * 
- * ## Example Usage
- * 
- * ### Network Security Tls Inspection Policy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -162,7 +160,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Security Tls Inspection Policy Custom
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -469,16 +467,12 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Short name of the TlsInspectionPolicy resource to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

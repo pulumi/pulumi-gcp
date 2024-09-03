@@ -31,11 +31,11 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// <summary>
         /// The id of the OS policy with the following restrictions:
         /// 
-        /// *   Must contain only lowercase letters, numbers, and hyphens.
-        /// *   Must start with a letter.
-        /// *   Must be between 1-63 characters.
-        /// *   Must end with a number or a letter.
-        /// *   Must be unique within the assignment.
+        /// * Must contain only lowercase letters, numbers, and hyphens.
+        /// * Must start with a letter.
+        /// * Must be between 1-63 characters.
+        /// * Must end with a number or a letter.
+        /// * Must be unique within the assignment.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

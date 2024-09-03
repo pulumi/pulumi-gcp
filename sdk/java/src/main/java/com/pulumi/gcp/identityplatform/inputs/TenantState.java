@@ -53,16 +53,12 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     /**
      * Human friendly display name of the tenant.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return Human friendly display name of the tenant.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -194,8 +190,6 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName Human friendly display name of the tenant.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -206,8 +200,6 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName Human friendly display name of the tenant.
-         * 
-         * ***
          * 
          * @return builder
          * 

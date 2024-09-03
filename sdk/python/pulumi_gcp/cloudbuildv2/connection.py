@@ -34,9 +34,6 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -80,9 +77,6 @@ class ConnectionArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -247,9 +241,6 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Output only. Installation state of the Connection.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. The resource name of the connection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -431,9 +422,6 @@ class _ConnectionState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -514,11 +502,9 @@ class Connection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/build/docs)
+          * [Official Documentation](https://cloud.google.com/build/docs)
 
-        ## Example Usage
-
-        ### Cloudbuildv2 Connection
+        ## 
 
         ```python
         import pulumi
@@ -534,6 +520,9 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Example Usage
+
         ### Cloudbuildv2 Connection Ghe
 
         ```python
@@ -583,6 +572,7 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
+
         ### Cloudbuildv2 Connection Github
 
         ```python
@@ -663,9 +653,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. The resource name of the connection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -683,11 +670,9 @@ class Connection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/build/docs)
+          * [Official Documentation](https://cloud.google.com/build/docs)
 
-        ## Example Usage
-
-        ### Cloudbuildv2 Connection
+        ## 
 
         ```python
         import pulumi
@@ -703,6 +688,9 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Example Usage
+
         ### Cloudbuildv2 Connection Ghe
 
         ```python
@@ -752,6 +740,7 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
+
         ### Cloudbuildv2 Connection Github
 
         ```python
@@ -919,9 +908,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Output only. Installation state of the Connection.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. The resource name of the connection.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1048,9 +1034,6 @@ class Connection(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

@@ -43,7 +43,7 @@ public final class HttpRouteRuleMatch {
      */
     private @Nullable List<HttpRouteRuleMatchQueryParameter> queryParameters;
     /**
-     * @return The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * @return The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     private @Nullable String regexMatch;
@@ -87,7 +87,7 @@ public final class HttpRouteRuleMatch {
         return this.queryParameters == null ? List.of() : this.queryParameters;
     }
     /**
-     * @return The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * @return The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<String> regexMatch() {

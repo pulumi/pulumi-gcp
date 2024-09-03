@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.versions)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dialogflowcx Version Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -98,9 +96,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the version. Limit of 64 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -188,9 +183,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the version. Limit of 64 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -224,9 +216,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the version. Limit of 64 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

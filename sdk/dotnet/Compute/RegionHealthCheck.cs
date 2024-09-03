@@ -26,11 +26,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionHealthChecks)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Health Check Tcp
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Tcp Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Ssl
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -106,7 +104,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Ssl Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -136,7 +134,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Http
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -159,7 +157,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Http Logs
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -186,7 +184,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Http Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -217,7 +215,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Https
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -240,7 +238,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Https Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -271,7 +269,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Http2
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -294,7 +292,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Http2 Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -325,7 +323,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Grpc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -348,7 +346,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Health Check Grpc Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -477,9 +475,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -649,9 +644,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -777,9 +769,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

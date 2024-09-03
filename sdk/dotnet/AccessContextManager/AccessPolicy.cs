@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
     /// * How-to Guides
-    ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+    ///   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
+    /// 
     /// ### Access Context Manager Access Policy Scoped
     /// 
     /// ```csharp
@@ -118,9 +119,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Human readable title. Does not affect behavior.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -193,9 +191,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Human readable title. Does not affect behavior.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
@@ -236,9 +231,6 @@ namespace Pulumi.Gcp.AccessContextManager
 
         /// <summary>
         /// Human readable title. Does not affect behavior.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

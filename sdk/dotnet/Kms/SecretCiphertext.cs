@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
     /// * How-to Guides
-    ///     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+    ///   * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
     /// 
     /// ## Example Usage
     /// 
@@ -109,9 +109,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cryptoKey")]
         public Output<string> CryptoKey { get; private set; } = null!;
@@ -194,9 +191,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey", required: true)]
         public Input<string> CryptoKey { get; set; } = null!;
@@ -252,9 +246,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }

@@ -16,8 +16,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RouterRoutePolicyTermActionGetArgs>? _actions;
 
         /// <summary>
-        /// 'CEL expressions to evaluate to modify a route when this term matches.'\
-        /// Structure is documented below.
+        /// 'CEL expressions to evaluate to modify a route when this term matches.'Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterRoutePolicyTermActionGetArgs> Actions
         {

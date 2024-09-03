@@ -38,7 +38,7 @@ export function getSubnet(args: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetSubnetArgs {
     /**
-     * Name of the resource. 
+     * Name of the resource.
      * UserDefined subnets are named in the format of "service-n", where n ranges from 1 to 5.
      * Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
      */
@@ -98,7 +98,7 @@ export function getSubnetOutput(args: GetSubnetOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetSubnetOutputArgs {
     /**
-     * Name of the resource. 
+     * Name of the resource.
      * UserDefined subnets are named in the format of "service-n", where n ranges from 1 to 5.
      * Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
      */

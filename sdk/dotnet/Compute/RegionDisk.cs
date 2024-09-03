@@ -30,11 +30,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
     /// * How-to Guides
-    ///     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+    ///   * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Disk Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -76,7 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Disk Async
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -118,7 +116,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Disk Features
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -331,9 +329,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("replicaZones")]
         public Output<ImmutableArray<string>> ReplicaZones { get; private set; } = null!;
@@ -370,8 +365,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         /// For example, the following are valid values:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
         /// * projects/{project}/zones/{zone}/disks/{disk}
         /// * projects/{project}/regions/{region}/disks/{disk}
         /// * zones/{zone}/disks/{disk}
@@ -591,9 +586,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> ReplicaZones
         {
@@ -627,8 +619,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         /// For example, the following are valid values:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
         /// * projects/{project}/zones/{zone}/disks/{disk}
         /// * projects/{project}/regions/{region}/disks/{disk}
         /// * zones/{zone}/disks/{disk}
@@ -837,9 +829,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> ReplicaZones
         {
@@ -879,8 +868,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         /// For example, the following are valid values:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
         /// * projects/{project}/zones/{zone}/disks/{disk}
         /// * projects/{project}/regions/{region}/disks/{disk}
         /// * zones/{zone}/disks/{disk}

@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly string? Subnetwork;
         /// <summary>
         /// Network tags applied to this Cloud Run job.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 

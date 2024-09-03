@@ -42,9 +42,6 @@ class BackupPolicyArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -156,9 +153,6 @@ class BackupPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the backup policy. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -213,9 +207,6 @@ class _BackupPolicyState:
         :param pulumi.Input[str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -369,9 +360,6 @@ class _BackupPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the backup policy. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -454,11 +442,9 @@ class BackupPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupPolicies)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
 
-        ## Example Usage
-
-        ### Netapp Backup Policy Full
+        ## 
 
         ```python
         import pulumi
@@ -514,9 +500,6 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] weekly_backup_limit: Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
@@ -536,11 +519,9 @@ class BackupPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupPolicies)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
 
-        ## Example Usage
-
-        ### Netapp Backup Policy Full
+        ## 
 
         ```python
         import pulumi
@@ -685,9 +666,6 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[str] name: The name of the backup policy. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -796,9 +774,6 @@ class BackupPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the backup policy. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

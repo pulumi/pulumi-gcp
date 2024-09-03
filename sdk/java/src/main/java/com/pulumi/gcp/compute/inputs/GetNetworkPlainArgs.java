@@ -18,16 +18,12 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the network.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the network.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -78,8 +74,6 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the network.
-         * 
-         * ***
          * 
          * @return builder
          * 

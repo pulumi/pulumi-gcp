@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setCloudArmorTier)
  * * How-to Guides
- *     * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
+ *   * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
  *
  * ## Example Usage
  *
@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const cloudArmorTierConfig = new gcp.compute.ProjectCloudArmorTier("cloud_armor_tier_config", {cloudArmorTier: "CA_STANDARD"});
  * ```
+ *
  * ### Compute Project Cloud Armor Tier Project Set
  *
  * ```typescript
@@ -96,9 +97,6 @@ export class ProjectCloudArmorTier extends pulumi.CustomResource {
     /**
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-     *
-     *
-     * - - -
      */
     public readonly cloudArmorTier!: pulumi.Output<string>;
     /**
@@ -142,9 +140,6 @@ export interface ProjectCloudArmorTierState {
     /**
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-     *
-     *
-     * - - -
      */
     cloudArmorTier?: pulumi.Input<string>;
     /**
@@ -161,9 +156,6 @@ export interface ProjectCloudArmorTierArgs {
     /**
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-     *
-     *
-     * - - -
      */
     cloudArmorTier: pulumi.Input<string>;
     /**

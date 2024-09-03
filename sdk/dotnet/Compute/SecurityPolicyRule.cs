@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/securityPolicies/addRule)
     /// * How-to Guides
-    ///     * [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+    ///   * [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Security Policy Rule Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,6 +57,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Security Policy Rule Default Rule
     /// 
     /// ```csharp
@@ -122,7 +123,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Security Policy Rule Multiple Rules
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -273,9 +274,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("securityPolicy")]
         public Output<string> SecurityPolicy { get; private set; } = null!;
@@ -389,9 +387,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityPolicy", required: true)]
         public Input<string> SecurityPolicy { get; set; } = null!;
@@ -467,9 +462,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }

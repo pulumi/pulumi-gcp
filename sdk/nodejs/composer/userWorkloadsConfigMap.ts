@@ -5,33 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Composer User Workloads Config Map Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const environment = new gcp.composer.Environment("environment", {
- *     name: "test-environment",
- *     region: "us-central1",
- *     config: {
- *         softwareConfig: {
- *             imageVersion: "composer-3-airflow-2",
- *         },
- *     },
- * });
- * const configMap = new gcp.composer.UserWorkloadsConfigMap("config_map", {
- *     name: "test-config-map",
- *     region: "us-central1",
- *     environment: environment.name,
- *     data: {
- *         api_host: "apihost:443",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * UserWorkloadsConfigMap can be imported using any of these accepted formats:
@@ -92,14 +65,11 @@ export class UserWorkloadsConfigMap extends pulumi.CustomResource {
 
     /**
      * The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
      */
     public readonly data!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
-     *
-     *
-     * - - -
      */
     public readonly environment!: pulumi.Output<string>;
     /**
@@ -156,14 +126,11 @@ export class UserWorkloadsConfigMap extends pulumi.CustomResource {
 export interface UserWorkloadsConfigMapState {
     /**
      * The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
-     *
-     *
-     * - - -
      */
     environment?: pulumi.Input<string>;
     /**
@@ -187,14 +154,11 @@ export interface UserWorkloadsConfigMapState {
 export interface UserWorkloadsConfigMapArgs {
     /**
      * The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
-     *
-     *
-     * - - -
      */
     environment: pulumi.Input<string>;
     /**

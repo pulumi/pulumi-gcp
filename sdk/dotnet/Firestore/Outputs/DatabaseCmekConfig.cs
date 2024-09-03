@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.Firestore.Outputs
     {
         /// <summary>
         /// (Output)
-        /// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-        /// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+        /// Currently in-use KMS key versions (&lt;https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)&gt;.
+        /// During key rotation (&lt;https://cloud.google.com/kms/docs/key-rotation)&gt;, there can be
         /// multiple in-use key versions.
         /// The expected format is
         /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -29,11 +29,11 @@ namespace Pulumi.Gcp.Firestore.Outputs
         /// Only keys in the same location as this database are allowed to be used
         /// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
         /// multi-region us. For Firestore's eur3 multi-region, this corresponds to
-        /// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+        /// Cloud KMS multi-region europe. See &lt;https://cloud.google.com/kms/docs/locations&gt;.
         /// This value should be the KMS key resource ID in the format of
         /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         /// How to retrive this resource ID is listed at
-        /// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+        /// &lt;https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version&gt;.
         /// </summary>
         public readonly string KmsKeyName;
 

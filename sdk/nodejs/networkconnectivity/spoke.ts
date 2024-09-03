@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+ *   * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
  *
- * ## Example Usage
- *
- * ### Network Connectivity Spoke Linked Vpc Network Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +49,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Connectivity Spoke Router Appliance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -206,9 +204,6 @@ export class Spoke extends pulumi.CustomResource {
     public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -347,9 +342,6 @@ export interface SpokeState {
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -420,9 +412,6 @@ export interface SpokeArgs {
     linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

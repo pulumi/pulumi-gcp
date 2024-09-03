@@ -1447,8 +1447,6 @@ class AuthorityKeySpec(dict):
         :param str algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified
                experience. All managed keys will be have their ProtectionLevel as HSM.
                Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-               
-               - - -
         :param str cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
@@ -1464,8 +1462,6 @@ class AuthorityKeySpec(dict):
         The algorithm to use for creating a managed Cloud KMS key for a for a simplified
         experience. All managed keys will be have their ProtectionLevel as HSM.
         Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-
-        - - -
         """
         return pulumi.get(self, "algorithm")
 
@@ -1999,7 +1995,7 @@ class CaPoolIssuancePolicyBaselineValues(dict):
                "Authority Information Access" extension in the certificate.
         :param 'CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs' name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param Sequence['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param Sequence['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
                Structure is documented below.
         """
         pulumi.set(__self__, "ca_options", ca_options)
@@ -2062,7 +2058,7 @@ class CaPoolIssuancePolicyBaselineValues(dict):
     @pulumi.getter(name="policyIds")
     def policy_ids(self) -> Optional[Sequence['outputs.CaPoolIssuancePolicyBaselineValuesPolicyId']]:
         """
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
         Structure is documented below.
         """
         return pulumi.get(self, "policy_ids")
@@ -2869,7 +2865,7 @@ class CaPoolIssuancePolicyIdentityConstraints(dict):
                Otherwise, the requested Subject will be discarded.
         :param 'CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs' cel_expression: A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
                certificate is signed. To see the full allowed syntax and some examples,
-               see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+               see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
                Structure is documented below.
         """
         pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
@@ -2901,7 +2897,7 @@ class CaPoolIssuancePolicyIdentityConstraints(dict):
         """
         A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
         certificate is signed. To see the full allowed syntax and some examples,
-        see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+        see <https://cloud.google.com/certificate-authority-service/docs/cel-guide>
         Structure is documented below.
         """
         return pulumi.get(self, "cel_expression")
@@ -3085,13 +3081,13 @@ class CertificateCertificateDescription(dict):
         :param Sequence[str] aia_issuing_certificate_urls: (Output)
                Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
         :param Sequence['CertificateCertificateDescriptionAuthorityKeyIdArgs'] authority_key_ids: (Output)
-               Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+               Identifies the subjectKeyId of the parent certificate, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.1>
                Structure is documented below.
         :param Sequence['CertificateCertificateDescriptionCertFingerprintArgs'] cert_fingerprints: (Output)
                The hash of the x.509 certificate.
                Structure is documented below.
         :param Sequence[str] crl_distribution_points: (Output)
-               Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+               Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by <https://tools.ietf.org/html/rfc5280#section-4.2.1.13>
         :param Sequence['CertificateCertificateDescriptionPublicKeyArgs'] public_keys: (Output)
                A PublicKey describes a public key.
                Structure is documented below.
@@ -3099,7 +3095,7 @@ class CertificateCertificateDescription(dict):
                Describes some of the values in a certificate that are related to the subject and lifetime.
                Structure is documented below.
         :param Sequence['CertificateCertificateDescriptionSubjectKeyIdArgs'] subject_key_ids: (Output)
-               Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+               Provides a means of identifiying certificates that contain a particular public key, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.2>.
                Structure is documented below.
         :param Sequence['CertificateCertificateDescriptionX509DescriptionArgs'] x509_descriptions: (Output)
                A structured description of the issued X.509 certificate.
@@ -3136,7 +3132,7 @@ class CertificateCertificateDescription(dict):
     def authority_key_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionAuthorityKeyId']]:
         """
         (Output)
-        Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+        Identifies the subjectKeyId of the parent certificate, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.1>
         Structure is documented below.
         """
         return pulumi.get(self, "authority_key_ids")
@@ -3156,7 +3152,7 @@ class CertificateCertificateDescription(dict):
     def crl_distribution_points(self) -> Optional[Sequence[str]]:
         """
         (Output)
-        Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by <https://tools.ietf.org/html/rfc5280#section-4.2.1.13>
         """
         return pulumi.get(self, "crl_distribution_points")
 
@@ -3185,7 +3181,7 @@ class CertificateCertificateDescription(dict):
     def subject_key_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectKeyId']]:
         """
         (Output)
-        Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+        Provides a means of identifiying certificates that contain a particular public key, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.2>.
         Structure is documented below.
         """
         return pulumi.get(self, "subject_key_ids")
@@ -3845,7 +3841,7 @@ class CertificateCertificateDescriptionX509Description(dict):
                Describes the X.509 name constraints extension.
                Structure is documented below.
         :param Sequence['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs'] policy_ids: (Output)
-               Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+               Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
                Structure is documented below.
         """
         if additional_extensions is not None:
@@ -3916,7 +3912,7 @@ class CertificateCertificateDescriptionX509Description(dict):
     def policy_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionPolicyId']]:
         """
         (Output)
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
         Structure is documented below.
         """
         return pulumi.get(self, "policy_ids")
@@ -4698,7 +4694,6 @@ class CertificateConfig(dict):
         :param 'CertificateConfigPublicKeyArgs' public_key: A PublicKey describes a public key.
                Structure is documented below.
                
-               
                <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param 'CertificateConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
@@ -4719,7 +4714,6 @@ class CertificateConfig(dict):
         """
         A PublicKey describes a public key.
         Structure is documented below.
-
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -5127,7 +5121,7 @@ class CertificateConfigX509Config(dict):
                Describes the X.509 name constraints extension.
                Structure is documented below.
         :param Sequence['CertificateConfigX509ConfigPolicyIdArgs'] policy_ids: (Output)
-               Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+               Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
                Structure is documented below.
         """
         pulumi.set(__self__, "key_usage", key_usage)
@@ -5197,7 +5191,7 @@ class CertificateConfigX509Config(dict):
     def policy_ids(self) -> Optional[Sequence['outputs.CertificateConfigX509ConfigPolicyId']]:
         """
         (Output)
-        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
         Structure is documented below.
         """
         return pulumi.get(self, "policy_ids")
@@ -6128,7 +6122,7 @@ class CertificateTemplateIdentityConstraints(dict):
         """
         :param bool allow_subject_alt_names_passthrough: Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
         :param bool allow_subject_passthrough: Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
-        :param 'CertificateTemplateIdentityConstraintsCelExpressionArgs' cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        :param 'CertificateTemplateIdentityConstraintsCelExpressionArgs' cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
                Structure is documented below.
         """
         pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
@@ -6156,7 +6150,7 @@ class CertificateTemplateIdentityConstraints(dict):
     @pulumi.getter(name="celExpression")
     def cel_expression(self) -> Optional['outputs.CertificateTemplateIdentityConstraintsCelExpression']:
         """
-        Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see <https://cloud.google.com/certificate-authority-service/docs/using-cel>
         Structure is documented below.
         """
         return pulumi.get(self, "cel_expression")
@@ -6345,7 +6339,7 @@ class CertificateTemplatePredefinedValues(dict):
                Structure is documented below.
         :param 'CertificateTemplatePredefinedValuesKeyUsageArgs' key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
                Structure is documented below.
         """
         if additional_extensions is not None:
@@ -6398,7 +6392,7 @@ class CertificateTemplatePredefinedValues(dict):
     @pulumi.getter(name="policyIds")
     def policy_ids(self) -> Optional[Sequence['outputs.CertificateTemplatePredefinedValuesPolicyId']]:
         """
-        Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        Optional. Describes the X.509 certificate policy object identifiers, per <https://tools.ietf.org/html/rfc5280#section-4.2.1.4>.
         Structure is documented below.
         """
         return pulumi.get(self, "policy_ids")

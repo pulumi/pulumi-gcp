@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
     public sealed class EntitlementApprovalWorkflowManualApprovalsStepApprovers
     {
         /// <summary>
-        /// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        /// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
         /// </summary>
         public readonly ImmutableArray<string> Principals;
 

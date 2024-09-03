@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
-    /// 
-    /// ## Example Usage
+    ///   * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
     /// 
     /// ## Import
     /// 
@@ -49,9 +47,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// The API to attach the config to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("api")]
         public Output<string> Api { get; private set; } = null!;
@@ -106,7 +101,7 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
         /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         /// Structure is documented below.
         /// </summary>
@@ -141,7 +136,7 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        /// The ID of the associated Service Config (&lt;https://cloud.google.com/service-infrastructure/docs/glossary#config)&gt;.
         /// </summary>
         [Output("serviceConfigId")]
         public Output<string> ServiceConfigId { get; private set; } = null!;
@@ -199,9 +194,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// The API to attach the config to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("api", required: true)]
         public Input<string> Api { get; set; } = null!;
@@ -265,7 +257,7 @@ namespace Pulumi.Gcp.ApiGateway
         private InputList<Inputs.ApiConfigManagedServiceConfigArgs>? _managedServiceConfigs;
 
         /// <summary>
-        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
         /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         /// Structure is documented below.
         /// </summary>
@@ -305,9 +297,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// The API to attach the config to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("api")]
         public Input<string>? Api { get; set; }
@@ -387,7 +376,7 @@ namespace Pulumi.Gcp.ApiGateway
         private InputList<Inputs.ApiConfigManagedServiceConfigGetArgs>? _managedServiceConfigs;
 
         /// <summary>
-        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
         /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         /// Structure is documented below.
         /// </summary>
@@ -441,7 +430,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
 
         /// <summary>
-        /// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        /// The ID of the associated Service Config (&lt;https://cloud.google.com/service-infrastructure/docs/glossary#config)&gt;.
         /// </summary>
         [Input("serviceConfigId")]
         public Input<string>? ServiceConfigId { get; set; }

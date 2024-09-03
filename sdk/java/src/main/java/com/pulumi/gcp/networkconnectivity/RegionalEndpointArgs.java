@@ -90,16 +90,12 @@ public final class RegionalEndpointArgs extends com.pulumi.resources.ResourceArg
     /**
      * The location of the RegionalEndpoint.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the RegionalEndpoint.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -313,8 +309,6 @@ public final class RegionalEndpointArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param location The location of the RegionalEndpoint.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -325,8 +319,6 @@ public final class RegionalEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param location The location of the RegionalEndpoint.
-         * 
-         * ***
          * 
          * @return builder
          * 

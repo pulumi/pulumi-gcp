@@ -35,14 +35,11 @@ class SecurityScanConfigArgs:
         The set of arguments for constructing a SecurityScanConfig resource.
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
-               
-               
-               - - -
         :param pulumi.Input['SecurityScanConfigAuthenticationArgs'] authentication: The authentication configuration.
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
-               https://cloud.google.com/security-scanner/docs/excluded-urls
+               <https://cloud.google.com/security-scanner/docs/excluded-urls>
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are: `ENABLED`, `DISABLED`.
@@ -94,9 +91,6 @@ class SecurityScanConfigArgs:
     def starting_urls(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The starting URLs from which the scanner finds site pages.
-
-
-        - - -
         """
         return pulumi.get(self, "starting_urls")
 
@@ -123,7 +117,7 @@ class SecurityScanConfigArgs:
     def blacklist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The blacklist URL patterns as described in
-        https://cloud.google.com/security-scanner/docs/excluded-urls
+        <https://cloud.google.com/security-scanner/docs/excluded-urls>
         """
         return pulumi.get(self, "blacklist_patterns")
 
@@ -232,7 +226,7 @@ class _SecurityScanConfigState:
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
-               https://cloud.google.com/security-scanner/docs/excluded-urls
+               <https://cloud.google.com/security-scanner/docs/excluded-urls>
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
@@ -246,9 +240,6 @@ class _SecurityScanConfigState:
         :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
@@ -297,7 +288,7 @@ class _SecurityScanConfigState:
     def blacklist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The blacklist URL patterns as described in
-        https://cloud.google.com/security-scanner/docs/excluded-urls
+        <https://cloud.google.com/security-scanner/docs/excluded-urls>
         """
         return pulumi.get(self, "blacklist_patterns")
 
@@ -388,9 +379,6 @@ class _SecurityScanConfigState:
     def starting_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The starting URLs from which the scanner finds site pages.
-
-
-        - - -
         """
         return pulumi.get(self, "starting_urls")
 
@@ -449,11 +437,9 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
         * How-to Guides
-            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+          * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 
-        ## Example Usage
-
-        ### Scan Config Basic
+        ## 
 
         ```python
         import pulumi
@@ -496,7 +482,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
-               https://cloud.google.com/security-scanner/docs/excluded-urls
+               <https://cloud.google.com/security-scanner/docs/excluded-urls>
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
@@ -508,9 +494,6 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
@@ -530,11 +513,9 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
         * How-to Guides
-            * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+          * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 
-        ## Example Usage
-
-        ### Scan Config Basic
+        ## 
 
         ```python
         import pulumi
@@ -652,7 +633,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                If specified, service will use the authentication configuration during scanning.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The blacklist URL patterns as described in
-               https://cloud.google.com/security-scanner/docs/excluded-urls
+               <https://cloud.google.com/security-scanner/docs/excluded-urls>
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
@@ -666,9 +647,6 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
@@ -707,7 +685,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     def blacklist_patterns(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The blacklist URL patterns as described in
-        https://cloud.google.com/security-scanner/docs/excluded-urls
+        <https://cloud.google.com/security-scanner/docs/excluded-urls>
         """
         return pulumi.get(self, "blacklist_patterns")
 
@@ -770,9 +748,6 @@ class SecurityScanConfig(pulumi.CustomResource):
     def starting_urls(self) -> pulumi.Output[Sequence[str]]:
         """
         The starting URLs from which the scanner finds site pages.
-
-
-        - - -
         """
         return pulumi.get(self, "starting_urls")
 

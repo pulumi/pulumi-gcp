@@ -116,7 +116,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -130,7 +130,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -383,8 +383,6 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
      * 
-     * ***
-     * 
      */
     @Import(name="topic", required=true)
     private Output<String> topic;
@@ -393,8 +391,6 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * @return A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {
@@ -549,7 +545,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * is disabled.
          * The Cloud Pub/Sub service account associated with this subscription&#39;s
          * parent project (i.e.,
-         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
          * permission to Acknowledge() messages on this subscription.
          * Structure is documented below.
          * 
@@ -567,7 +563,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * is disabled.
          * The Cloud Pub/Sub service account associated with this subscription&#39;s
          * parent project (i.e.,
-         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
          * permission to Acknowledge() messages on this subscription.
          * Structure is documented below.
          * 
@@ -888,8 +884,6 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * (as in the id property of a google_pubsub_topic), or just a topic name if
          * the topic is in the same project as the subscription.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -902,8 +896,6 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * @param topic A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
          * (as in the id property of a google_pubsub_topic), or just a topic name if
          * the topic is in the same project as the subscription.
-         * 
-         * ***
          * 
          * @return builder
          * 

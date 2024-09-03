@@ -18,137 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Region Security Policy Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.RegionSecurityPolicy;
- * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var region_sec_policy_basic = new RegionSecurityPolicy("region-sec-policy-basic", RegionSecurityPolicyArgs.builder()
- *             .name("my-sec-policy-basic")
- *             .description("basic region security policy")
- *             .type("CLOUD_ARMOR")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Security Policy With Ddos Protection Config
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.RegionSecurityPolicy;
- * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
- * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var region_sec_policy_ddos_protection = new RegionSecurityPolicy("region-sec-policy-ddos-protection", RegionSecurityPolicyArgs.builder()
- *             .name("my-sec-policy-ddos-protection")
- *             .description("with ddos protection config")
- *             .type("CLOUD_ARMOR_NETWORK")
- *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
- *                 .ddosProtection("ADVANCED_PREVIEW")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Security Policy With User Defined Fields
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.RegionSecurityPolicy;
- * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
- * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy("region-sec-policy-user-defined-fields", RegionSecurityPolicyArgs.builder()
- *             .name("my-sec-policy-user-defined-fields")
- *             .description("with user defined fields")
- *             .type("CLOUD_ARMOR_NETWORK")
- *             .userDefinedFields(            
- *                 RegionSecurityPolicyUserDefinedFieldArgs.builder()
- *                     .name("SIG1_AT_0")
- *                     .base("UDP")
- *                     .offset(8)
- *                     .size(2)
- *                     .mask("0x8F00")
- *                     .build(),
- *                 RegionSecurityPolicyUserDefinedFieldArgs.builder()
- *                     .name("SIG2_AT_8")
- *                     .base("UDP")
- *                     .offset(16)
- *                     .size(4)
- *                     .mask("0xFFFFFFFF")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * RegionSecurityPolicy can be imported using any of these accepted formats:
@@ -232,8 +101,6 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -241,8 +108,6 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

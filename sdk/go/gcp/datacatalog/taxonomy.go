@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
-// ## Example Usage
-//
-// ### Data Catalog Taxonomy Basic
+// ##
 //
 // ```go
 // package main
@@ -79,8 +77,6 @@ type Taxonomy struct {
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource name of this taxonomy, whose format is:
 	// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
@@ -138,8 +134,6 @@ type taxonomyState struct {
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Resource name of this taxonomy, whose format is:
 	// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
@@ -165,8 +159,6 @@ type TaxonomyState struct {
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// Resource name of this taxonomy, whose format is:
 	// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
@@ -196,8 +188,6 @@ type taxonomyArgs struct {
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -221,8 +211,6 @@ type TaxonomyArgs struct {
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -337,8 +325,6 @@ func (o TaxonomyOutput) Description() pulumi.StringPtrOutput {
 // It must: contain only unicode letters, numbers, underscores, dashes
 // and spaces; not start or end with spaces; and be at most 200 bytes
 // long when encoded in UTF-8.
-//
-// ***
 func (o TaxonomyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

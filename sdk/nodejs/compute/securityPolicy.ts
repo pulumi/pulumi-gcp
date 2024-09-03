@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With ReCAPTCHA Configuration Options
+ * ### With reCAPTCHA configuration options
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With Header Actions
+ * ### With header actions
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With EnforceOnKey Value As Empty String
+ * ### With enforceOnKey value as empty string
  * A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
  *
  * ```typescript
@@ -232,8 +232,6 @@ export class SecurityPolicy extends pulumi.CustomResource {
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The name of the security policy.
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -331,8 +329,6 @@ export interface SecurityPolicyState {
     fingerprint?: pulumi.Input<string>;
     /**
      * The name of the security policy.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -386,8 +382,6 @@ export interface SecurityPolicyArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the security policy.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

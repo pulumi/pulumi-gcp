@@ -153,7 +153,7 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
     ```
 
 
-    :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+    :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
            `kms.CryptoKey` resource/datasource.
     :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """
@@ -200,7 +200,7 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
     ```
 
 
-    :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+    :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
            `kms.CryptoKey` resource/datasource.
     :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """

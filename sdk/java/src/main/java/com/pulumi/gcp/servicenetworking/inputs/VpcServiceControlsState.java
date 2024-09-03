@@ -68,8 +68,6 @@ public final class VpcServiceControlsState extends com.pulumi.resources.Resource
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
      * 
-     * ***
-     * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
@@ -78,8 +76,6 @@ public final class VpcServiceControlsState extends com.pulumi.resources.Resource
      * @return The service that is managing peering connectivity for a service
      * producer&#39;s organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> service() {
@@ -183,8 +179,6 @@ public final class VpcServiceControlsState extends com.pulumi.resources.Resource
          * producer&#39;s organization. For Google services that support this
          * functionality, this value is `servicenetworking.googleapis.com`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -197,8 +191,6 @@ public final class VpcServiceControlsState extends com.pulumi.resources.Resource
          * @param service The service that is managing peering connectivity for a service
          * producer&#39;s organization. For Google services that support this
          * functionality, this value is `servicenetworking.googleapis.com`.
-         * 
-         * ***
          * 
          * @return builder
          * 

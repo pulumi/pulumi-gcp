@@ -55,12 +55,12 @@ public final class InstanceGceSetup {
     private @Nullable Boolean disablePublicIp;
     /**
      * @return Optional. Flag to enable ip forwarding or not, default false/off.
-     * https://cloud.google.com/vpc/docs/using-routes#canipforward
+     * &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
      * 
      */
     private @Nullable Boolean enableIpForwarding;
     /**
-     * @return Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+     * @return Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
      * 
      */
     private @Nullable String machineType;
@@ -147,14 +147,14 @@ public final class InstanceGceSetup {
     }
     /**
      * @return Optional. Flag to enable ip forwarding or not, default false/off.
-     * https://cloud.google.com/vpc/docs/using-routes#canipforward
+     * &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
      * 
      */
     public Optional<Boolean> enableIpForwarding() {
         return Optional.ofNullable(this.enableIpForwarding);
     }
     /**
-     * @return Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+     * @return Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
      * 
      */
     public Optional<String> machineType() {

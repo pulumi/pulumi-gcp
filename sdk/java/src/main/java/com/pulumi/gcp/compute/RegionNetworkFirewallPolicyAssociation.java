@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Regional
+ * ### regional
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -123,16 +123,12 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name for an association.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

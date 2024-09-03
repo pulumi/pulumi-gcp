@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/locations.buckets.links)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+ *   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  * 
  * ## Example Usage
  * 
@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Logging Linked Dataset All Params
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -161,16 +162,12 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
     /**
      * The bucket to which the linked dataset is attached.
      * 
-     * ***
-     * 
      */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
      * @return The bucket to which the linked dataset is attached.
-     * 
-     * ***
      * 
      */
     public Output<String> bucket() {

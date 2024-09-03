@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Datastore
     /// 
     /// * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+    ///   * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
     /// 
     /// &gt; **Warning:** `datastore_index` is deprecated and will be removed in a future major release.
     /// Use `firestore_index` instead; this resource is deprecated because it only supports the (default) database.
@@ -122,9 +122,6 @@ namespace Pulumi.Gcp.Datastore
 
         /// <summary>
         /// The entity kind which the index applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -199,9 +196,6 @@ namespace Pulumi.Gcp.Datastore
 
         /// <summary>
         /// The entity kind which the index applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -250,9 +244,6 @@ namespace Pulumi.Gcp.Datastore
 
         /// <summary>
         /// The entity kind which the index applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

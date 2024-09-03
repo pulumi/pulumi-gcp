@@ -32,9 +32,6 @@ class RepositoryWorkflowConfigArgs:
         """
         The set of arguments for constructing a RepositoryWorkflowConfig resource.
         :param pulumi.Input[str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input['RepositoryWorkflowConfigInvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
                Structure is documented below.
@@ -43,7 +40,7 @@ class RepositoryWorkflowConfigArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] repository: A reference to the Dataform repository
-        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         pulumi.set(__self__, "release_config", release_config)
         if cron_schedule is not None:
@@ -66,9 +63,6 @@ class RepositoryWorkflowConfigArgs:
     def release_config(self) -> pulumi.Input[str]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-
-
-        - - -
         """
         return pulumi.get(self, "release_config")
 
@@ -154,7 +148,7 @@ class RepositoryWorkflowConfigArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         return pulumi.get(self, "time_zone")
 
@@ -187,11 +181,8 @@ class _RepositoryWorkflowConfigState:
                Structure is documented below.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[str] repository: A reference to the Dataform repository
-        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
@@ -292,9 +283,6 @@ class _RepositoryWorkflowConfigState:
     def release_config(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-
-
-        - - -
         """
         return pulumi.get(self, "release_config")
 
@@ -318,7 +306,7 @@ class _RepositoryWorkflowConfigState:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         return pulumi.get(self, "time_zone")
 
@@ -342,88 +330,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Dataform Repository Workflow Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my_secret",
-            replication={
-                "auto": {},
-            })
-        secret_version = gcp.secretmanager.SecretVersion("secret_version",
-            secret=secret.id,
-            secret_data="secret-data")
-        repository = gcp.dataform.Repository("repository",
-            name="dataform_repository",
-            region="us-central1",
-            git_remote_settings={
-                "url": git_repository.url,
-                "default_branch": "main",
-                "authentication_token_secret_version": secret_version.id,
-            },
-            workspace_compilation_overrides={
-                "default_database": "database",
-                "schema_suffix": "_suffix",
-                "table_prefix": "prefix_",
-            })
-        release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            name="my_release",
-            git_commitish="main",
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            code_compilation_config={
-                "default_database": "gcp-example-project",
-                "default_schema": "example-dataset",
-                "default_location": "us-central1",
-                "assertion_schema": "example-assertion-dataset",
-                "database_suffix": "",
-                "schema_suffix": "",
-                "table_prefix": "",
-                "vars": {
-                    "var1": "value",
-                },
-            })
-        dataform_sa = gcp.serviceaccount.Account("dataform_sa",
-            account_id="dataform-sa",
-            display_name="Dataform Service Account")
-        workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            name="my_workflow",
-            release_config=release_config.id,
-            invocation_config={
-                "included_targets": [
-                    {
-                        "database": "gcp-example-project",
-                        "schema": "example-dataset",
-                        "name": "target_1",
-                    },
-                    {
-                        "database": "gcp-example-project",
-                        "schema": "example-dataset",
-                        "name": "target_2",
-                    },
-                ],
-                "included_tags": ["tag_1"],
-                "transitive_dependencies_included": True,
-                "transitive_dependents_included": True,
-                "fully_refresh_incremental_tables_enabled": False,
-                "service_account": dataform_sa.email,
-            },
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York")
-        ```
-
         ## Import
 
         RepositoryWorkflowConfig can be imported using any of these accepted formats:
@@ -464,11 +370,8 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[str] repository: A reference to the Dataform repository
-        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         ...
     @overload
@@ -477,88 +380,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                  args: RepositoryWorkflowConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Dataform Repository Workflow Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        git_repository = gcp.sourcerepo.Repository("git_repository", name="my/repository")
-        secret = gcp.secretmanager.Secret("secret",
-            secret_id="my_secret",
-            replication={
-                "auto": {},
-            })
-        secret_version = gcp.secretmanager.SecretVersion("secret_version",
-            secret=secret.id,
-            secret_data="secret-data")
-        repository = gcp.dataform.Repository("repository",
-            name="dataform_repository",
-            region="us-central1",
-            git_remote_settings={
-                "url": git_repository.url,
-                "default_branch": "main",
-                "authentication_token_secret_version": secret_version.id,
-            },
-            workspace_compilation_overrides={
-                "default_database": "database",
-                "schema_suffix": "_suffix",
-                "table_prefix": "prefix_",
-            })
-        release_config = gcp.dataform.RepositoryReleaseConfig("release_config",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            name="my_release",
-            git_commitish="main",
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York",
-            code_compilation_config={
-                "default_database": "gcp-example-project",
-                "default_schema": "example-dataset",
-                "default_location": "us-central1",
-                "assertion_schema": "example-assertion-dataset",
-                "database_suffix": "",
-                "schema_suffix": "",
-                "table_prefix": "",
-                "vars": {
-                    "var1": "value",
-                },
-            })
-        dataform_sa = gcp.serviceaccount.Account("dataform_sa",
-            account_id="dataform-sa",
-            display_name="Dataform Service Account")
-        workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
-            project=repository.project,
-            region=repository.region,
-            repository=repository.name,
-            name="my_workflow",
-            release_config=release_config.id,
-            invocation_config={
-                "included_targets": [
-                    {
-                        "database": "gcp-example-project",
-                        "schema": "example-dataset",
-                        "name": "target_1",
-                    },
-                    {
-                        "database": "gcp-example-project",
-                        "schema": "example-dataset",
-                        "name": "target_2",
-                    },
-                ],
-                "included_tags": ["tag_1"],
-                "transitive_dependencies_included": True,
-                "transitive_dependents_included": True,
-                "fully_refresh_incremental_tables_enabled": False,
-                "service_account": dataform_sa.email,
-            },
-            cron_schedule="0 7 * * *",
-            time_zone="America/New_York")
-        ```
-
         ## Import
 
         RepositoryWorkflowConfig can be imported using any of these accepted formats:
@@ -668,11 +489,8 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[str] release_config: The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-               
-               
-               - - -
         :param pulumi.Input[str] repository: A reference to the Dataform repository
-        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -745,9 +563,6 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     def release_config(self) -> pulumi.Output[str]:
         """
         The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-
-
-        - - -
         """
         return pulumi.get(self, "release_config")
 
@@ -763,7 +578,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
         """
         return pulumi.get(self, "time_zone")
 

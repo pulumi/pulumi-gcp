@@ -68,8 +68,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
 
         /// <summary>
         /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-        /// 
-        /// - - -
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

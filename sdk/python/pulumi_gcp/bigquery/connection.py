@@ -533,11 +533,9 @@ class Connection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
         * How-to Guides
-            * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+          * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
-        ## Example Usage
-
-        ### Bigquery Connection Cloud Resource
+        ## 
 
         ```python
         import pulumi
@@ -550,7 +548,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_resource={})
         ```
-        ### Bigquery Connection Basic
+        ## 
 
         ```python
         import pulumi
@@ -589,7 +587,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Full
+        ## 
 
         ```python
         import pulumi
@@ -629,7 +627,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Aws
+        ## 
 
         ```python
         import pulumi
@@ -646,7 +644,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Azure
+        ## 
 
         ```python
         import pulumi
@@ -662,7 +660,7 @@ class Connection(pulumi.CustomResource):
                 "federated_application_client_id": "b43eeeee-eeee-eeee-eeee-a480155501ce",
             })
         ```
-        ### Bigquery Connection Cloudspanner
+        ## 
 
         ```python
         import pulumi
@@ -678,7 +676,7 @@ class Connection(pulumi.CustomResource):
                 "database_role": "database_role",
             })
         ```
-        ### Bigquery Connection Cloudspanner Databoost
+        ## 
 
         ```python
         import pulumi
@@ -696,7 +694,7 @@ class Connection(pulumi.CustomResource):
                 "max_parallelism": 100,
             })
         ```
-        ### Bigquery Connection Spark
+        ## 
 
         ```python
         import pulumi
@@ -730,7 +728,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Kms
+        ## 
 
         ```python
         import pulumi
@@ -839,11 +837,9 @@ class Connection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
         * How-to Guides
-            * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+          * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
-        ## Example Usage
-
-        ### Bigquery Connection Cloud Resource
+        ## 
 
         ```python
         import pulumi
@@ -856,7 +852,7 @@ class Connection(pulumi.CustomResource):
             description="a riveting description",
             cloud_resource={})
         ```
-        ### Bigquery Connection Basic
+        ## 
 
         ```python
         import pulumi
@@ -895,7 +891,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Full
+        ## 
 
         ```python
         import pulumi
@@ -935,7 +931,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Aws
+        ## 
 
         ```python
         import pulumi
@@ -952,7 +948,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Azure
+        ## 
 
         ```python
         import pulumi
@@ -968,7 +964,7 @@ class Connection(pulumi.CustomResource):
                 "federated_application_client_id": "b43eeeee-eeee-eeee-eeee-a480155501ce",
             })
         ```
-        ### Bigquery Connection Cloudspanner
+        ## 
 
         ```python
         import pulumi
@@ -984,7 +980,7 @@ class Connection(pulumi.CustomResource):
                 "database_role": "database_role",
             })
         ```
-        ### Bigquery Connection Cloudspanner Databoost
+        ## 
 
         ```python
         import pulumi
@@ -1002,7 +998,7 @@ class Connection(pulumi.CustomResource):
                 "max_parallelism": 100,
             })
         ```
-        ### Bigquery Connection Spark
+        ## 
 
         ```python
         import pulumi
@@ -1036,7 +1032,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Kms
+        ## 
 
         ```python
         import pulumi

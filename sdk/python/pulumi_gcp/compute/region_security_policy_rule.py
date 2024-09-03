@@ -45,9 +45,6 @@ class RegionSecurityPolicyRuleArgs:
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
@@ -137,9 +134,6 @@ class RegionSecurityPolicyRuleArgs:
     def security_policy(self) -> pulumi.Input[str]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 
@@ -294,9 +288,6 @@ class _RegionSecurityPolicyRuleState:
                Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -467,9 +458,6 @@ class _RegionSecurityPolicyRuleState:
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 
@@ -498,129 +486,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Region Security Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            name="policyruletest",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule",
-            priority=100,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": ["10.10.0.0/16"],
-                },
-            },
-            action="allow",
-            preview=True)
-        ```
-        ### Region Security Policy Rule Multiple Rules
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            name="policywithmultiplerules",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policy_rule_one",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule one",
-            priority=100,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": ["10.10.0.0/16"],
-                },
-            },
-            action="allow",
-            preview=True)
-        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policy_rule_two",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule two",
-            priority=101,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": [
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                },
-            },
-            action="allow",
-            preview=True)
-        ```
-        ### Region Security Policy Rule With Preconfigured Waf Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="asia-southeast1",
-            name="policyruletest",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
-            region="asia-southeast1",
-            security_policy=default.name,
-            description="new rule",
-            priority=100,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": ["10.10.0.0/16"],
-                },
-            },
-            preconfigured_waf_config={
-                "exclusions": [
-                    {
-                        "request_uris": [{
-                            "operator": "STARTS_WITH",
-                            "value": "/admin",
-                        }],
-                        "target_rule_set": "rce-stable",
-                    },
-                    {
-                        "request_query_params": [
-                            {
-                                "operator": "CONTAINS",
-                                "value": "password",
-                            },
-                            {
-                                "operator": "STARTS_WITH",
-                                "value": "freeform",
-                            },
-                            {
-                                "operator": "EQUALS",
-                                "value": "description",
-                            },
-                        ],
-                        "target_rule_set": "xss-stable",
-                        "target_rule_ids": [
-                            "owasp-crs-v030001-id941330-xss",
-                            "owasp-crs-v030001-id941340-xss",
-                        ],
-                    },
-                ],
-            },
-            action="allow",
-            preview=True)
-        ```
         ### Region Security Policy Rule With Network Match
 
         ```python
@@ -735,9 +600,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -748,129 +610,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Region Security Policy Rule Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            name="policyruletest",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule",
-            priority=100,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": ["10.10.0.0/16"],
-                },
-            },
-            action="allow",
-            preview=True)
-        ```
-        ### Region Security Policy Rule Multiple Rules
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="us-west2",
-            name="policywithmultiplerules",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policy_rule_one",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule one",
-            priority=100,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": ["10.10.0.0/16"],
-                },
-            },
-            action="allow",
-            preview=True)
-        policy_rule_two = gcp.compute.RegionSecurityPolicyRule("policy_rule_two",
-            region="us-west2",
-            security_policy=default.name,
-            description="new rule two",
-            priority=101,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": [
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                },
-            },
-            action="allow",
-            preview=True)
-        ```
-        ### Region Security Policy Rule With Preconfigured Waf Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.RegionSecurityPolicy("default",
-            region="asia-southeast1",
-            name="policyruletest",
-            description="basic region security policy",
-            type="CLOUD_ARMOR")
-        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
-            region="asia-southeast1",
-            security_policy=default.name,
-            description="new rule",
-            priority=100,
-            match={
-                "versioned_expr": "SRC_IPS_V1",
-                "config": {
-                    "src_ip_ranges": ["10.10.0.0/16"],
-                },
-            },
-            preconfigured_waf_config={
-                "exclusions": [
-                    {
-                        "request_uris": [{
-                            "operator": "STARTS_WITH",
-                            "value": "/admin",
-                        }],
-                        "target_rule_set": "rce-stable",
-                    },
-                    {
-                        "request_query_params": [
-                            {
-                                "operator": "CONTAINS",
-                                "value": "password",
-                            },
-                            {
-                                "operator": "STARTS_WITH",
-                                "value": "freeform",
-                            },
-                            {
-                                "operator": "EQUALS",
-                                "value": "description",
-                            },
-                        ],
-                        "target_rule_set": "xss-stable",
-                        "target_rule_ids": [
-                            "owasp-crs-v030001-id941330-xss",
-                            "owasp-crs-v030001-id941340-xss",
-                        ],
-                    },
-                ],
-            },
-            action="allow",
-            preview=True)
-        ```
         ### Region Security Policy Rule With Network Match
 
         ```python
@@ -1065,9 +804,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1192,9 +928,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     def security_policy(self) -> pulumi.Output[str]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 

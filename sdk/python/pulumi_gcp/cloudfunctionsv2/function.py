@@ -33,9 +33,6 @@ class FunctionArgs:
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
@@ -79,9 +76,6 @@ class FunctionArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of this cloud function.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -233,9 +227,6 @@ class _FunctionState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -376,9 +367,6 @@ class _FunctionState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of this cloud function.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -534,6 +522,7 @@ class Function(pulumi.CustomResource):
                 "timeout_seconds": 60,
             })
         ```
+
         ### Cloudfunctions2 Full
 
         ```python
@@ -592,6 +581,7 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
+
         ### Cloudfunctions2 Scheduler Auth
 
         ```python
@@ -657,6 +647,7 @@ class Function(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudfunctions2 Basic Gcs
 
         ```python
@@ -744,6 +735,7 @@ class Function(pulumi.CustomResource):
                     artifactregistry_reader,
                 ]))
         ```
+
         ### Cloudfunctions2 Basic Auditlogs
 
         ```python
@@ -842,6 +834,7 @@ class Function(pulumi.CustomResource):
                     artifactregistry_reader,
                 ]))
         ```
+
         ### Cloudfunctions2 Basic Builder
 
         ```python
@@ -902,6 +895,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
+
         ### Cloudfunctions2 Secret Env
 
         ```python
@@ -957,6 +951,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
+
         ### Cloudfunctions2 Secret Volume
 
         ```python
@@ -1011,6 +1006,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
+
         ### Cloudfunctions2 Private Workerpool
 
         ```python
@@ -1055,6 +1051,7 @@ class Function(pulumi.CustomResource):
                 "timeout_seconds": 60,
             })
         ```
+
         ### Cloudfunctions2 Cmek Docs
 
         ```python
@@ -1123,6 +1120,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
+
         ### Cloudfunctions2 Abiu
 
         ```python
@@ -1181,6 +1179,7 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
+
         ### Cloudfunctions2 Abiu On Deploy
 
         ```python
@@ -1280,9 +1279,6 @@ class Function(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1340,6 +1336,7 @@ class Function(pulumi.CustomResource):
                 "timeout_seconds": 60,
             })
         ```
+
         ### Cloudfunctions2 Full
 
         ```python
@@ -1398,6 +1395,7 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
+
         ### Cloudfunctions2 Scheduler Auth
 
         ```python
@@ -1463,6 +1461,7 @@ class Function(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Cloudfunctions2 Basic Gcs
 
         ```python
@@ -1550,6 +1549,7 @@ class Function(pulumi.CustomResource):
                     artifactregistry_reader,
                 ]))
         ```
+
         ### Cloudfunctions2 Basic Auditlogs
 
         ```python
@@ -1648,6 +1648,7 @@ class Function(pulumi.CustomResource):
                     artifactregistry_reader,
                 ]))
         ```
+
         ### Cloudfunctions2 Basic Builder
 
         ```python
@@ -1708,6 +1709,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60s]))
         ```
+
         ### Cloudfunctions2 Secret Env
 
         ```python
@@ -1763,6 +1765,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
+
         ### Cloudfunctions2 Secret Volume
 
         ```python
@@ -1817,6 +1820,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[secret_secret_version]))
         ```
+
         ### Cloudfunctions2 Private Workerpool
 
         ```python
@@ -1861,6 +1865,7 @@ class Function(pulumi.CustomResource):
                 "timeout_seconds": 60,
             })
         ```
+
         ### Cloudfunctions2 Cmek Docs
 
         ```python
@@ -1929,6 +1934,7 @@ class Function(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[gcf_cmek_keyuser]))
         ```
+
         ### Cloudfunctions2 Abiu
 
         ```python
@@ -1987,6 +1993,7 @@ class Function(pulumi.CustomResource):
                 "retry_policy": "RETRY_POLICY_RETRY",
             })
         ```
+
         ### Cloudfunctions2 Abiu On Deploy
 
         ```python
@@ -2170,9 +2177,6 @@ class Function(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -2275,9 +2279,6 @@ class Function(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of this cloud function.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

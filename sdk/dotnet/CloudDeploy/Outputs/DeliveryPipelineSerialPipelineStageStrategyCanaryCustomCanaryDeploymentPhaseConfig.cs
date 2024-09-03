@@ -35,8 +35,6 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         public readonly ImmutableArray<string> Profiles;
         /// <summary>
         /// Whether to run verify tests after the deployment.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? Verify;
 

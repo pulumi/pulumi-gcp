@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/interconnects)
  * * How-to Guides
- *     * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
+ *   * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
  * 
  * ## Example Usage
  * 
@@ -176,8 +176,6 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
      * 
-     * ***
-     * 
      */
     @Export(name="customerName", refs={String.class}, tree="[0]")
     private Output<String> customerName;
@@ -185,8 +183,6 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     /**
      * @return Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
-     * 
-     * ***
      * 
      */
     public Output<String> customerName() {

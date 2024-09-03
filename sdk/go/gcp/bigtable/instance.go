@@ -11,13 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## +---
-//
+// +---
 // subcategory: "Cloud Bigtable"
 // description: |-
-//
-//	Creates a Google Bigtable instance.
-//
+// Creates a Google Bigtable instance.
 // ---
 //
 // # bigtable.Instance
@@ -142,8 +139,6 @@ type Instance struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -151,8 +146,6 @@ type Instance struct {
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	//
-	// ***
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
@@ -164,7 +157,7 @@ type Instance struct {
 	//
 	// Deprecated: It is recommended to leave this field unspecified since the distinction between "DEVELOPMENT" and "PRODUCTION" instances is going away, and all instances will become "PRODUCTION" instances. This means that new and existing "DEVELOPMENT" instances will be converted to "PRODUCTION" instances. It is recommended for users to use "PRODUCTION" instances in any case, since a 1-node "PRODUCTION" instance is functionally identical to a "DEVELOPMENT" instance, but without the accompanying restrictions.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
-	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -216,8 +209,6 @@ type instanceState struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -225,8 +216,6 @@ type instanceState struct {
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	//
-	// ***
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -238,7 +227,7 @@ type instanceState struct {
 	//
 	// Deprecated: It is recommended to leave this field unspecified since the distinction between "DEVELOPMENT" and "PRODUCTION" instances is going away, and all instances will become "PRODUCTION" instances. This means that new and existing "DEVELOPMENT" instances will be converted to "PRODUCTION" instances. It is recommended for users to use "PRODUCTION" instances in any case, since a 1-node "PRODUCTION" instance is functionally identical to a "DEVELOPMENT" instance, but without the accompanying restrictions.
 	InstanceType *string `pulumi:"instanceType"`
-	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -256,8 +245,6 @@ type InstanceState struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -265,8 +252,6 @@ type InstanceState struct {
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	//
-	// ***
 	EffectiveLabels pulumi.StringMapInput
 	// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `forceDestroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
 	ForceDestroy pulumi.BoolPtrInput
@@ -278,7 +263,7 @@ type InstanceState struct {
 	//
 	// Deprecated: It is recommended to leave this field unspecified since the distinction between "DEVELOPMENT" and "PRODUCTION" instances is going away, and all instances will become "PRODUCTION" instances. This means that new and existing "DEVELOPMENT" instances will be converted to "PRODUCTION" instances. It is recommended for users to use "PRODUCTION" instances in any case, since a 1-node "PRODUCTION" instance is functionally identical to a "DEVELOPMENT" instance, but without the accompanying restrictions.
 	InstanceType pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -300,8 +285,6 @@ type instanceArgs struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -318,7 +301,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: It is recommended to leave this field unspecified since the distinction between "DEVELOPMENT" and "PRODUCTION" instances is going away, and all instances will become "PRODUCTION" instances. This means that new and existing "DEVELOPMENT" instances will be converted to "PRODUCTION" instances. It is recommended for users to use "PRODUCTION" instances in any case, since a 1-node "PRODUCTION" instance is functionally identical to a "DEVELOPMENT" instance, but without the accompanying restrictions.
 	InstanceType *string `pulumi:"instanceType"`
-	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -335,8 +318,6 @@ type InstanceArgs struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -353,7 +334,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: It is recommended to leave this field unspecified since the distinction between "DEVELOPMENT" and "PRODUCTION" instances is going away, and all instances will become "PRODUCTION" instances. This means that new and existing "DEVELOPMENT" instances will be converted to "PRODUCTION" instances. It is recommended for users to use "PRODUCTION" instances in any case, since a 1-node "PRODUCTION" instance is functionally identical to a "DEVELOPMENT" instance, but without the accompanying restrictions.
 	InstanceType pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -455,8 +436,6 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // A block of cluster configuration options. This can be specified at least once, and up
 // to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 // to default to the backend value. See structure below.
-//
-// ***
 func (o InstanceOutput) Clusters() InstanceClusterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceClusterArrayOutput { return v.Clusters }).(InstanceClusterArrayOutput)
 }
@@ -473,8 +452,6 @@ func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-//
-// ***
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -495,7 +472,7 @@ func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 //
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field 'effective_labels' for all of the labels present on the resource.

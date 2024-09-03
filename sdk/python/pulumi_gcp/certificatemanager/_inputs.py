@@ -87,8 +87,6 @@ if not MYPY:
         A CA pool resource used to issue a certificate.
         The CA pool string has a relative resource path following the form
         "projects/{project}/locations/{location}/caPools/{caPool}".
-
-        - - -
         """
 elif False:
     CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -101,8 +99,6 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
         :param pulumi.Input[str] ca_pool: A CA pool resource used to issue a certificate.
                The CA pool string has a relative resource path following the form
                "projects/{project}/locations/{location}/caPools/{caPool}".
-               
-               - - -
         """
         pulumi.set(__self__, "ca_pool", ca_pool)
 
@@ -113,8 +109,6 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
         A CA pool resource used to issue a certificate.
         The CA pool string has a relative resource path following the form
         "projects/{project}/locations/{location}/caPools/{caPool}".
-
-        - - -
         """
         return pulumi.get(self, "ca_pool")
 
@@ -132,7 +126,6 @@ if not MYPY:
         specified for this Managed Certificate.
         Structure is documented below.
 
-
         <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
         dns_authorizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -147,7 +140,7 @@ if not MYPY:
         issuance_config: NotRequired[pulumi.Input[str]]
         """
         The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-        If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
         Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         """
         provisioning_issues: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgsDict']]]]
@@ -179,13 +172,12 @@ class CertificateManagedArgs:
                specified for this Managed Certificate.
                Structure is documented below.
                
-               
                <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
         :param pulumi.Input[str] issuance_config: The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-               If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+               If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
                Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]] provisioning_issues: (Output)
                Information about issues with provisioning this Managed Certificate.
@@ -214,7 +206,6 @@ class CertificateManagedArgs:
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
-
 
         <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
@@ -254,7 +245,7 @@ class CertificateManagedArgs:
     def issuance_config(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-        If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
         Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         """
         return pulumi.get(self, "issuance_config")
@@ -734,9 +725,6 @@ if not MYPY:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -763,9 +751,6 @@ class DnsAuthorizationDnsResourceRecordArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
                be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
                FIXED_RECORD DNS authorization uses DNS-01 validation method
@@ -801,9 +786,6 @@ class DnsAuthorizationDnsResourceRecordArgs:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

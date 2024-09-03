@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Dataform.Outputs
         public readonly Outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig? SshAuthenticationConfig;
         /// <summary>
         /// (Output)
-        /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        /// Indicates the status of the Git access token. &lt;https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus&gt;
         /// </summary>
         public readonly string? TokenStatus;
         /// <summary>

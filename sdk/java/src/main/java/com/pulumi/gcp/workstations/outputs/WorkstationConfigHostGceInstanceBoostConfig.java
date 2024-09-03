@@ -29,7 +29,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     private @Nullable Integer bootDiskSizeGb;
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
      * 
      */
     private @Nullable Boolean enableNestedVirtualization;
@@ -39,7 +39,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
      */
     private String id;
     /**
-     * @return The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+     * @return The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types &lt;https://cloud.google.com/workstations/docs/available-machine-types&gt;. Defaults to e2-standard-4.
      * 
      */
     private @Nullable String machineType;
@@ -67,7 +67,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
     }
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
      * 
      */
     public Optional<Boolean> enableNestedVirtualization() {
@@ -81,7 +81,7 @@ public final class WorkstationConfigHostGceInstanceBoostConfig {
         return this.id;
     }
     /**
-     * @return The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+     * @return The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types &lt;https://cloud.google.com/workstations/docs/available-machine-types&gt;. Defaults to e2-standard-4.
      * 
      */
     public Optional<String> machineType() {

@@ -30,11 +30,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
     /// * How-to Guides
-    ///     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+    ///   * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Disk Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,7 +57,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Disk Async
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -91,7 +89,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Disk Features
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -310,9 +308,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -405,8 +400,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         /// For example, the following are valid values:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
         /// * projects/{project}/zones/{zone}/disks/{disk}
         /// * projects/{project}/regions/{region}/disks/{disk}
         /// * zones/{zone}/disks/{disk}
@@ -464,7 +459,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The URL of the storage pool in which the new disk is created.
         /// For example:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
         /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         /// </summary>
         [Output("storagePool")]
@@ -664,9 +659,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -752,8 +744,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         /// For example, the following are valid values:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
         /// * projects/{project}/zones/{zone}/disks/{disk}
         /// * projects/{project}/regions/{region}/disks/{disk}
         /// * zones/{zone}/disks/{disk}
@@ -782,7 +774,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The URL of the storage pool in which the new disk is created.
         /// For example:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
         /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         /// </summary>
         [Input("storagePool")]
@@ -979,9 +971,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1090,8 +1079,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         /// For example, the following are valid values:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
         /// * projects/{project}/zones/{zone}/disks/{disk}
         /// * projects/{project}/regions/{region}/disks/{disk}
         /// * zones/{zone}/disks/{disk}
@@ -1149,7 +1138,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The URL of the storage pool in which the new disk is created.
         /// For example:
-        /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
         /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         /// </summary>
         [Input("storagePool")]

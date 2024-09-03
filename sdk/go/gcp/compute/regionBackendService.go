@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 //
-// ## Example Usage
-//
-// ### Region Backend Service Basic
+// ##
 //
 // ```go
 // package main
@@ -62,7 +60,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service External Iap
+// ##
 //
 // ```go
 // package main
@@ -94,7 +92,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service Cache
+// ##
 //
 // ```go
 // package main
@@ -142,7 +140,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service Ilb Round Robin
+// ##
 //
 // ```go
 // package main
@@ -181,7 +179,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service External
+// ##
 //
 // ```go
 // package main
@@ -220,7 +218,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service External Weighted
+// ##
 //
 // ```go
 // package main
@@ -260,7 +258,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service Ilb Ring Hash
+// ##
 //
 // ```go
 // package main
@@ -315,7 +313,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service Balancing Mode
+// ##
 //
 // ```go
 // package main
@@ -425,7 +423,7 @@ import (
 //	}
 //
 // ```
-// ### Region Backend Service Connection Tracking
+// ##
 //
 // ```go
 // package main
@@ -588,7 +586,7 @@ type RegionBackendService struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -626,8 +624,6 @@ type RegionBackendService struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -783,7 +779,7 @@ type regionBackendServiceState struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -821,8 +817,6 @@ type regionBackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -949,7 +943,7 @@ type RegionBackendServiceState struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -987,8 +981,6 @@ type RegionBackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -1112,7 +1104,7 @@ type regionBackendServiceArgs struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -1150,8 +1142,6 @@ type regionBackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -1270,7 +1260,7 @@ type RegionBackendServiceArgs struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -1308,8 +1298,6 @@ type RegionBackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -1570,7 +1558,7 @@ func (o RegionBackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 //   - `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 //     Maglev is not as stable as ring hash but has faster table lookup
 //     build times and host selection times. For more information about
-//     Maglev, refer to https://ai.google/research/pubs/pub44824
+//     Maglev, refer to <https://ai.google/research/pubs/pub44824>
 //   - `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 //     reported weights. If set, the Backend Service must
 //     configure a non legacy HTTP-based Health Check, and
@@ -1614,8 +1602,6 @@ func (o RegionBackendServiceOutput) LogConfig() RegionBackendServiceLogConfigOut
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o RegionBackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

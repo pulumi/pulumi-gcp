@@ -74,7 +74,7 @@ def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) ->
 
     ## Example Usage
 
-    ### Exporting An Email
+    ### exporting an email
 
     ```python
     import pulumi
@@ -110,7 +110,7 @@ def get_client_open_id_user_info_output(opts: Optional[pulumi.InvokeOptions] = N
 
     ## Example Usage
 
-    ### Exporting An Email
+    ### exporting an email
 
     ```python
     import pulumi

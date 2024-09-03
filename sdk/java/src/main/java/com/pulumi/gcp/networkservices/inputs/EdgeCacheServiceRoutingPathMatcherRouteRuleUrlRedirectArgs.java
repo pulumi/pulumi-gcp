@@ -116,16 +116,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs ex
     /**
      * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
      * 
-     * ***
-     * 
      */
     @Import(name="stripQuery")
     private @Nullable Output<Boolean> stripQuery;
 
     /**
      * @return If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Boolean>> stripQuery() {
@@ -291,8 +287,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs ex
         /**
          * @param stripQuery If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -303,8 +297,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs ex
 
         /**
          * @param stripQuery If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-         * 
-         * ***
          * 
          * @return builder
          * 

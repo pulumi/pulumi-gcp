@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
  * * How-to Guides
- *     * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+ *   * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
  *
  * ## Import
  *
@@ -63,8 +63,6 @@ export class Sharedflow extends pulumi.CustomResource {
 
     /**
      * Path to the config zip bundle.
-     *
-     * - - -
      */
     public readonly configBundle!: pulumi.Output<string>;
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
@@ -143,8 +141,6 @@ export class Sharedflow extends pulumi.CustomResource {
 export interface SharedflowState {
     /**
      * Path to the config zip bundle.
-     *
-     * - - -
      */
     configBundle?: pulumi.Input<string>;
     detectMd5hash?: pulumi.Input<string>;
@@ -181,8 +177,6 @@ export interface SharedflowState {
 export interface SharedflowArgs {
     /**
      * Path to the config zip bundle.
-     *
-     * - - -
      */
     configBundle: pulumi.Input<string>;
     detectMd5hash?: pulumi.Input<string>;

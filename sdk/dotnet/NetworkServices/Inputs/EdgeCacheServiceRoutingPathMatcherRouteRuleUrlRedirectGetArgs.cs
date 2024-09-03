@@ -55,8 +55,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
 
         /// <summary>
         /// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-        /// 
-        /// - - -
         /// </summary>
         [Input("stripQuery")]
         public Input<bool>? StripQuery { get; set; }

@@ -25,9 +25,6 @@ class TagBindingArgs:
         The set of arguments for constructing a TagBinding resource.
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "tag_value", tag_value)
@@ -49,9 +46,6 @@ class TagBindingArgs:
     def tag_value(self) -> pulumi.Input[str]:
         """
         The TagValue of the TagBinding. Must be of the form tagValues/456.
-
-
-        - - -
         """
         return pulumi.get(self, "tag_value")
 
@@ -71,9 +65,6 @@ class _TagBindingState:
         :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
-               
-               
-               - - -
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -111,9 +102,6 @@ class _TagBindingState:
     def tag_value(self) -> Optional[pulumi.Input[str]]:
         """
         The TagValue of the TagBinding. Must be of the form tagValues/456.
-
-
-        - - -
         """
         return pulumi.get(self, "tag_value")
 
@@ -137,7 +125,7 @@ class TagBinding(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -186,9 +174,6 @@ class TagBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -203,7 +188,7 @@ class TagBinding(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -304,9 +289,6 @@ class TagBinding(pulumi.CustomResource):
         :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,9 +320,6 @@ class TagBinding(pulumi.CustomResource):
     def tag_value(self) -> pulumi.Output[str]:
         """
         The TagValue of the TagBinding. Must be of the form tagValues/456.
-
-
-        - - -
         """
         return pulumi.get(self, "tag_value")
 

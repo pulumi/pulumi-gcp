@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/spanner/)
 //
-// ## Example Usage
-//
-// ### Spanner Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -53,7 +51,7 @@ import (
 //	}
 //
 // ```
-// ### Spanner Instance Processing Units
+// ##
 //
 // ```go
 // package main
@@ -83,7 +81,7 @@ import (
 //	}
 //
 // ```
-// ### Spanner Instance With Autoscaling
+// ##
 //
 // ```go
 // package main
@@ -122,7 +120,7 @@ import (
 //	}
 //
 // ```
-// ### Spanner Instance Multi Regional
+// ##
 //
 // ```go
 // package main
@@ -194,8 +192,6 @@ type Instance struct {
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -281,8 +277,6 @@ type instanceState struct {
 	Config *string `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -328,8 +322,6 @@ type InstanceState struct {
 	Config pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -379,8 +371,6 @@ type instanceArgs struct {
 	Config string `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -420,8 +410,6 @@ type InstanceArgs struct {
 	Config pulumi.StringInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -552,8 +540,6 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 
 // The descriptive name for this instance as it appears in UIs. Must be
 // unique per project and between 4 and 30 characters in length.
-//
-// ***
 func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

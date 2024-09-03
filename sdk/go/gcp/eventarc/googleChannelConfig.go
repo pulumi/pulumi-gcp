@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic
+// ### basic
 // ```go
 // package main
 //
@@ -109,8 +109,6 @@ type GoogleChannelConfig struct {
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -156,8 +154,6 @@ type googleChannelConfigState struct {
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -171,8 +167,6 @@ type GoogleChannelConfigState struct {
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -190,8 +184,6 @@ type googleChannelConfigArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -204,8 +196,6 @@ type GoogleChannelConfigArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -309,8 +299,6 @@ func (o GoogleChannelConfigOutput) Location() pulumi.StringOutput {
 }
 
 // Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-//
-// ***
 func (o GoogleChannelConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GoogleChannelConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

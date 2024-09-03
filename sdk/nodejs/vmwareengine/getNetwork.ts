@@ -40,8 +40,6 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
 export interface GetNetworkArgs {
     /**
      * Location of the resource.
-     *
-     * - - -
      */
     location: string;
     /**
@@ -99,8 +97,6 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
 export interface GetNetworkOutputArgs {
     /**
      * Location of the resource.
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -231,7 +231,7 @@ class IAMPolicy(pulumi.CustomResource):
             })
         ```
 
-        ### Additional Examples
+        ### Example Usage
 
         ### Service Account IAM Policy
 
@@ -462,7 +462,7 @@ class IAMPolicy(pulumi.CustomResource):
             })
         ```
 
-        ### Additional Examples
+        ### Example Usage
 
         ### Service Account IAM Policy
 

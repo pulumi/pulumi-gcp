@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
- * ## Example Usage
- *
- * ### Artifact Registry Repository Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +28,7 @@ import * as utilities from "../utilities";
  *     format: "DOCKER",
  * });
  * ```
- * ### Artifact Registry Repository Docker
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Cmek
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +66,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKey],
  * });
  * ```
- * ### Artifact Registry Repository Virtual
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -108,7 +106,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -128,7 +126,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote Apt
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,7 +149,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote Yum
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -174,7 +172,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Cleanup
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -226,7 +224,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Artifact Registry Repository Remote Dockerhub Auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -269,7 +267,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote Docker Custom With Auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -314,7 +312,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote Maven Custom With Auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -359,7 +357,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote Npm Custom With Auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -404,7 +402,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Artifact Registry Repository Remote Python Custom With Auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -543,9 +541,6 @@ export class Repository extends pulumi.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     *
-     *
-     * - - -
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -724,9 +719,6 @@ export interface RepositoryState {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     *
-     *
-     * - - -
      */
     format?: pulumi.Input<string>;
     /**
@@ -831,9 +823,6 @@ export interface RepositoryArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     *
-     *
-     * - - -
      */
     format: pulumi.Input<string>;
     /**

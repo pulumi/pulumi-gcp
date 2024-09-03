@@ -31,9 +31,6 @@ class TrustConfigArgs:
         """
         The set of arguments for constructing a TrustConfig resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['TrustConfigAllowlistedCertificateArgs']]] allowlisted_certificates: Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
                the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
                Structure is documented below.
@@ -67,9 +64,6 @@ class TrustConfigArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The trust config location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -185,9 +179,6 @@ class _TrustConfigState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -294,9 +285,6 @@ class _TrustConfigState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The trust config location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -391,11 +379,9 @@ class TrustConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.trustConfigs/create)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
+          * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
 
-        ## Example Usage
-
-        ### Certificate Manager Trust Config
+        ## 
 
         ```python
         import pulumi
@@ -418,7 +404,7 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ### Certificate Manager Trust Config Allowlisted Certificates
+        ## 
 
         ```python
         import pulumi
@@ -476,9 +462,6 @@ class TrustConfig(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -499,11 +482,9 @@ class TrustConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.trustConfigs/create)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
+          * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
 
-        ## Example Usage
-
-        ### Certificate Manager Trust Config
+        ## 
 
         ```python
         import pulumi
@@ -526,7 +507,7 @@ class TrustConfig(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ### Certificate Manager Trust Config Allowlisted Certificates
+        ## 
 
         ```python
         import pulumi
@@ -660,9 +641,6 @@ class TrustConfig(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -743,9 +721,6 @@ class TrustConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The trust config location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

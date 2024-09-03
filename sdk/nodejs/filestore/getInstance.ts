@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * Get info about a Google Cloud Filestore instance.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myInstance = gcp.filestore.getInstance({
+ *     name: "my-filestore-instance",
+ * });
+ * export const instanceIpAddresses = myInstance.then(myInstance => myInstance.networks?.ipAddresses);
+ * export const instanceConnectMode = myInstance.then(myInstance => myInstance.networks?.connectMode);
+ * export const instanceFileShareName = myInstance.then(myInstance => myInstance.fileShares?.name);
+ * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
 
@@ -26,15 +38,13 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetInstanceArgs {
     /**
-     * The name of the location of the instance. This 
+     * The name of the location of the instance. This
      * can be a region for ENTERPRISE tier instances. If it is not provided,
      * the provider region or zone is used.
      */
     location?: string;
     /**
      * The name of a Filestore instance.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -72,6 +82,18 @@ export interface GetInstanceResult {
  * Get info about a Google Cloud Filestore instance.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myInstance = gcp.filestore.getInstance({
+ *     name: "my-filestore-instance",
+ * });
+ * export const instanceIpAddresses = myInstance.then(myInstance => myInstance.networks?.ipAddresses);
+ * export const instanceConnectMode = myInstance.then(myInstance => myInstance.networks?.connectMode);
+ * export const instanceFileShareName = myInstance.then(myInstance => myInstance.fileShares?.name);
+ * ```
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
     return pulumi.output(args).apply((a: any) => getInstance(a, opts))
@@ -82,15 +104,13 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
  */
 export interface GetInstanceOutputArgs {
     /**
-     * The name of the location of the instance. This 
+     * The name of the location of the instance. This
      * can be a region for ENTERPRISE tier instances. If it is not provided,
      * the provider region or zone is used.
      */
     location?: pulumi.Input<string>;
     /**
      * The name of a Filestore instance.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

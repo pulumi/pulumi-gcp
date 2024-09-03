@@ -135,14 +135,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * The Compute Engine zone that the instance should serve from, per &lt;https://cloud.google.com/compute/docs/regions-zones&gt; This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
     @Import(name="gceZone")
     private @Nullable Output<String> gceZone;
 
     /**
-     * @return The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * @return The Compute Engine zone that the instance should serve from, per &lt;https://cloud.google.com/compute/docs/regions-zones&gt; This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
     public Optional<Output<String>> gceZone() {
@@ -152,16 +152,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the alloydb instance.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
      * @return The ID of the alloydb instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -482,7 +478,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gceZone The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+         * @param gceZone The Compute Engine zone that the instance should serve from, per &lt;https://cloud.google.com/compute/docs/regions-zones&gt; This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
          * 
          * @return builder
          * 
@@ -493,7 +489,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gceZone The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+         * @param gceZone The Compute Engine zone that the instance should serve from, per &lt;https://cloud.google.com/compute/docs/regions-zones&gt; This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
          * 
          * @return builder
          * 
@@ -505,8 +501,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceId The ID of the alloydb instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -517,8 +511,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceId The ID of the alloydb instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// Retrieves the current IAM policy data for topic
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Retrieves the current IAM policy data for topic
-        /// 
         /// 
         /// ## example
         /// 

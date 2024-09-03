@@ -25,12 +25,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
  * * How-to Guides
- *     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ *   * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  * 
- * ## Example Usage
- * 
- * ### Region Network Endpoint Internet Ip Port
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -83,7 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Network Endpoint Internet Fqdn Port
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -136,6 +134,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Region Network Endpoint Portmap
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -371,16 +372,12 @@ public class RegionNetworkEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The network endpoint group this endpoint is part of.
      * 
-     * ***
-     * 
      */
     @Export(name="regionNetworkEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> regionNetworkEndpointGroup;
 
     /**
      * @return The network endpoint group this endpoint is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> regionNetworkEndpointGroup() {

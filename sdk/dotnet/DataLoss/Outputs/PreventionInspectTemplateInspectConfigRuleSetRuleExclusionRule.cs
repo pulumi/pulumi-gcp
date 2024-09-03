@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes? ExcludeInfoTypes;
         /// <summary>
-        /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        /// How the rule is applied. See the documentation for more information: &lt;https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType&gt;
         /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         /// </summary>
         public readonly string MatchingType;

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.users/create)
     /// * How-to Guides
-    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    ///   * [AlloyDB](https://cloud.google.com/alloydb/docs/)
     /// 
     /// ## Example Usage
     /// 
@@ -100,6 +100,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb User Iam
     /// 
     /// ```csharp
@@ -241,9 +242,6 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The type of this user.
         /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("userType")]
         public Output<string> UserType { get; private set; } = null!;
@@ -328,9 +326,6 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The type of this user.
         /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("userType", required: true)]
         public Input<string> UserType { get; set; } = null!;
@@ -383,9 +378,6 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The type of this user.
         /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }

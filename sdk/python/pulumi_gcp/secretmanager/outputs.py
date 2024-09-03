@@ -236,8 +236,6 @@ class SecretReplicationAutoCustomerManagedEncryption(dict):
                  kms_key_name: str):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -246,8 +244,6 @@ class SecretReplicationAutoCustomerManagedEncryption(dict):
     def kms_key_name(self) -> str:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -344,8 +340,6 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
                  kms_key_name: str):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -354,8 +348,6 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption(dict):
     def kms_key_name(self) -> str:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 

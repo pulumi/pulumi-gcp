@@ -37,10 +37,7 @@ class UptimeCheckConfigArgs:
         """
         The set of arguments for constructing a UptimeCheckConfig resource.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
-        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
+        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         :param pulumi.Input[str] checker_type: The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -48,7 +45,7 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+               (<https://cloud.google.com/monitoring/api/resources>) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
@@ -104,10 +101,7 @@ class UptimeCheckConfigArgs:
     @pulumi.getter
     def timeout(self) -> pulumi.Input[str]:
         """
-        The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-
-
-        - - -
+        The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         """
         return pulumi.get(self, "timeout")
 
@@ -159,7 +153,7 @@ class UptimeCheckConfigArgs:
     def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
         """
         The [monitored resource]
-        (https://cloud.google.com/monitoring/api/resources) associated with the
+        (<https://cloud.google.com/monitoring/api/resources>) associated with the
         configuration. The following monitored resource types are supported for
         uptime checks:
         """
@@ -286,7 +280,7 @@ class _UptimeCheckConfigState:
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+               (<https://cloud.google.com/monitoring/api/resources>) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
@@ -300,10 +294,7 @@ class _UptimeCheckConfigState:
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigTcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
-        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
+        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         :param pulumi.Input[str] uptime_check_id: The id of the uptime check
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
@@ -394,7 +385,7 @@ class _UptimeCheckConfigState:
     def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
         """
         The [monitored resource]
-        (https://cloud.google.com/monitoring/api/resources) associated with the
+        (<https://cloud.google.com/monitoring/api/resources>) associated with the
         configuration. The following monitored resource types are supported for
         uptime checks:
         """
@@ -496,10 +487,7 @@ class _UptimeCheckConfigState:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-
-
-        - - -
+        The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         """
         return pulumi.get(self, "timeout")
 
@@ -558,7 +546,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+          * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 
         ## Example Usage
 
@@ -602,6 +590,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             }],
             checker_type="STATIC_IP_CHECKERS")
         ```
+
         ### Uptime Check Config Status Code
 
         ```python
@@ -646,6 +635,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             }],
             checker_type="STATIC_IP_CHECKERS")
         ```
+
         ### Uptime Check Config Https
 
         ```python
@@ -680,7 +670,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 },
             }])
         ```
-        ### Uptime Check Tcp
+        ## 
 
         ```python
         import pulumi
@@ -703,6 +693,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 "group_id": check.name,
             })
         ```
+
         ### Uptime Check Config Synthetic Monitor
 
         ```python
@@ -767,7 +758,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+               (<https://cloud.google.com/monitoring/api/resources>) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
@@ -780,10 +771,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
-        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
+        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         ...
@@ -799,7 +787,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+          * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 
         ## Example Usage
 
@@ -843,6 +831,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             }],
             checker_type="STATIC_IP_CHECKERS")
         ```
+
         ### Uptime Check Config Status Code
 
         ```python
@@ -887,6 +876,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             }],
             checker_type="STATIC_IP_CHECKERS")
         ```
+
         ### Uptime Check Config Https
 
         ```python
@@ -921,7 +911,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 },
             }])
         ```
-        ### Uptime Check Tcp
+        ## 
 
         ```python
         import pulumi
@@ -944,6 +934,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 "group_id": check.name,
             })
         ```
+
         ### Uptime Check Config Synthetic Monitor
 
         ```python
@@ -1094,7 +1085,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']] monitored_resource: The [monitored resource]
-               (https://cloud.google.com/monitoring/api/resources) associated with the
+               (<https://cloud.google.com/monitoring/api/resources>) associated with the
                configuration. The following monitored resource types are supported for
                uptime checks:
         :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
@@ -1108,10 +1099,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']] tcp_check: Contains information needed to make a TCP check.
                Structure is documented below.
-        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-               
-               
-               - - -
+        :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         :param pulumi.Input[str] uptime_check_id: The id of the uptime check
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
@@ -1176,7 +1164,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def monitored_resource(self) -> pulumi.Output[Optional['outputs.UptimeCheckConfigMonitoredResource']]:
         """
         The [monitored resource]
-        (https://cloud.google.com/monitoring/api/resources) associated with the
+        (<https://cloud.google.com/monitoring/api/resources>) associated with the
         configuration. The following monitored resource types are supported for
         uptime checks:
         """
@@ -1246,10 +1234,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter
     def timeout(self) -> pulumi.Output[str]:
         """
-        The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-
-
-        - - -
+        The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         """
         return pulumi.get(self, "timeout")
 

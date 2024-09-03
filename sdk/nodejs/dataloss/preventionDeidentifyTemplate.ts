@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.deidentifyTemplates)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
  *
  * ## Example Usage
  *
@@ -116,6 +116,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Deidentify Template Image Transformations
  *
  * ```typescript

@@ -181,8 +181,6 @@ public class ExternalAddress extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the external IP Address.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -190,15 +188,13 @@ public class ExternalAddress extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the external IP Address.
      * 
-     * ***
-     * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
      * The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -207,7 +203,7 @@ public class ExternalAddress extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the private cloud to create a new external address in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */

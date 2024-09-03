@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Additional Examples
+    /// ### Example Usage
     /// 
     /// ### Service Account IAM Policy
     /// 

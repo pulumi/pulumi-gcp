@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
  * * How-to Guides
- *     * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+ *   * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
  * 
  * ## Import
  * 
@@ -49,16 +49,12 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
     /**
      * Path to the config zip bundle.
      * 
-     * ***
-     * 
      */
     @Export(name="configBundle", refs={String.class}, tree="[0]")
     private Output<String> configBundle;
 
     /**
      * @return Path to the config zip bundle.
-     * 
-     * ***
      * 
      */
     public Output<String> configBundle() {

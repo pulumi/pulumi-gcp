@@ -158,8 +158,8 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
     * How-to Guides
-        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+      * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+      * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
 
@@ -182,10 +182,6 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
            If it is not provided, the provider project is used.
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
-           
-           - - -
-           
-           Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """
@@ -228,8 +224,8 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
 
     * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
     * How-to Guides
-        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+      * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+      * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
 
@@ -252,10 +248,6 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
            If it is not provided, the provider project is used.
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
-           
-           - - -
-           
-           Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """

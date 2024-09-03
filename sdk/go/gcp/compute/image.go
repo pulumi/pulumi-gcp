@@ -34,9 +34,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/images)
 //
-// ## Example Usage
-//
-// ### Image Basic
+// ##
 //
 // ```go
 // package main
@@ -64,7 +62,7 @@ import (
 //	}
 //
 // ```
-// ### Image Guest Os
+// ##
 //
 // ```go
 // package main
@@ -100,7 +98,7 @@ import (
 //	}
 //
 // ```
-// ### Image Basic Storage Location
+// ##
 //
 // ```go
 // package main
@@ -202,8 +200,6 @@ type Image struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -237,7 +233,7 @@ type Image struct {
 	SourceSnapshot pulumi.StringPtrOutput `pulumi:"sourceSnapshot"`
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
-	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	// Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
 	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
 }
 
@@ -320,8 +316,6 @@ type imageState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -355,7 +349,7 @@ type imageState struct {
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
-	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	// Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
 	StorageLocations []string `pulumi:"storageLocations"`
 }
 
@@ -404,8 +398,6 @@ type ImageState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -439,7 +431,7 @@ type ImageState struct {
 	SourceSnapshot pulumi.StringPtrInput
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
-	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	// Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
 	StorageLocations pulumi.StringArrayInput
 }
 
@@ -482,8 +474,6 @@ type imageArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -512,7 +502,7 @@ type imageArgs struct {
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
-	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	// Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
 	StorageLocations []string `pulumi:"storageLocations"`
 }
 
@@ -552,8 +542,6 @@ type ImageArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -582,7 +570,7 @@ type ImageArgs struct {
 	SourceSnapshot pulumi.StringPtrInput
 	// Cloud Storage bucket storage location of the image
 	// (regional or multi-regional).
-	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	// Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
 	StorageLocations pulumi.StringArrayInput
 }
 
@@ -750,8 +738,6 @@ func (o ImageOutput) Licenses() pulumi.StringArrayOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
-//
-// ***
 func (o ImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -809,7 +795,7 @@ func (o ImageOutput) SourceSnapshot() pulumi.StringPtrOutput {
 
 // Cloud Storage bucket storage location of the image
 // (regional or multi-regional).
-// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+// Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
 func (o ImageOutput) StorageLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.StorageLocations }).(pulumi.StringArrayOutput)
 }

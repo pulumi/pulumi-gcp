@@ -249,8 +249,6 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     *
-     * - - -
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceNetworkInterface[]>;
     /**
@@ -585,8 +583,6 @@ export interface InstanceState {
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     *
-     * - - -
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
@@ -786,8 +782,6 @@ export interface InstanceArgs {
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     *
-     * - - -
      */
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**

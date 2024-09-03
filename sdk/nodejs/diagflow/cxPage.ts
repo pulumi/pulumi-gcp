@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
- * ## Example Usage
- *
- * ### Dialogflowcx Page Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -641,9 +639,6 @@ export class CxPage extends pulumi.CustomResource {
     public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -762,9 +757,6 @@ export interface CxPageState {
     advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
     /**
      * The human-readable name of the page, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -840,9 +832,6 @@ export interface CxPageArgs {
     advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
     /**
      * The human-readable name of the page, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

@@ -40,9 +40,6 @@ class V2VmArgs:
         """
         The set of arguments for constructing a V2Vm resource.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input['V2VmAcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
                Structure is documented below.
@@ -113,9 +110,6 @@ class V2VmArgs:
     def runtime_version(self) -> pulumi.Input[str]:
         """
         Runtime version for the TPU.
-
-
-        - - -
         """
         return pulumi.get(self, "runtime_version")
 
@@ -387,9 +381,6 @@ class _V2VmState:
                and default labels configured on the provider.
         :param pulumi.Input[str] queued_resource: The qualified name of the QueuedResource that requested this Node.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input['V2VmSchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
                Structure is documented below.
         :param pulumi.Input['V2VmServiceAccountArgs'] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
@@ -693,9 +684,6 @@ class _V2VmState:
     def runtime_version(self) -> Optional[pulumi.Input[str]]:
         """
         Runtime version for the TPU.
-
-
-        - - -
         """
         return pulumi.get(self, "runtime_version")
 
@@ -816,89 +804,6 @@ class V2Vm(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Tpu V2 Vm Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_v2_runtime_versions()
-        tpu = gcp.tpu.V2Vm("tpu",
-            name="test-tpu",
-            zone="us-central1-c",
-            runtime_version="tpu-vm-tf-2.13.0")
-        ```
-        ### Tpu V2 Vm Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_time as time
-
-        available = gcp.tpu.get_v2_runtime_versions()
-        available_get_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
-        network = gcp.compute.Network("network",
-            name="tpu-net",
-            auto_create_subnetworks=False)
-        subnet = gcp.compute.Subnetwork("subnet",
-            name="tpu-subnet",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=network.id)
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="tpu-sa",
-            display_name="Test TPU VM")
-        disk = gcp.compute.Disk("disk",
-            name="tpu-disk",
-            image="debian-cloud/debian-11",
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-c")
-        # Wait after service account creation to limit eventual consistency errors.
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts = pulumi.ResourceOptions(depends_on=[sa]))
-        tpu = gcp.tpu.V2Vm("tpu",
-            name="test-tpu",
-            zone="us-central1-c",
-            description="Text description of the TPU.",
-            runtime_version="tpu-vm-tf-2.13.0",
-            accelerator_config={
-                "type": "V2",
-                "topology": "2x2",
-            },
-            cidr_block="10.0.0.0/29",
-            network_config={
-                "can_ip_forward": True,
-                "enable_external_ips": True,
-                "network": network.id,
-                "subnetwork": subnet.id,
-            },
-            scheduling_config={
-                "preemptible": True,
-            },
-            shielded_instance_config={
-                "enable_secure_boot": True,
-            },
-            service_account={
-                "email": sa.email,
-                "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
-            },
-            data_disks=[{
-                "source_disk": disk.id,
-                "mode": "READ_ONLY",
-            }],
-            labels={
-                "foo": "bar",
-            },
-            metadata={
-                "foo": "bar",
-            },
-            tags=["foo"],
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
-        ```
-
         ## Import
 
         Vm can be imported using any of these accepted formats:
@@ -955,9 +860,6 @@ class V2Vm(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
                Structure is documented below.
         :param pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
@@ -975,89 +877,6 @@ class V2Vm(pulumi.CustomResource):
                  args: V2VmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Tpu V2 Vm Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        available = gcp.tpu.get_v2_runtime_versions()
-        tpu = gcp.tpu.V2Vm("tpu",
-            name="test-tpu",
-            zone="us-central1-c",
-            runtime_version="tpu-vm-tf-2.13.0")
-        ```
-        ### Tpu V2 Vm Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_time as time
-
-        available = gcp.tpu.get_v2_runtime_versions()
-        available_get_v2_accelerator_types = gcp.tpu.get_v2_accelerator_types()
-        network = gcp.compute.Network("network",
-            name="tpu-net",
-            auto_create_subnetworks=False)
-        subnet = gcp.compute.Subnetwork("subnet",
-            name="tpu-subnet",
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
-            network=network.id)
-        sa = gcp.serviceaccount.Account("sa",
-            account_id="tpu-sa",
-            display_name="Test TPU VM")
-        disk = gcp.compute.Disk("disk",
-            name="tpu-disk",
-            image="debian-cloud/debian-11",
-            size=10,
-            type="pd-ssd",
-            zone="us-central1-c")
-        # Wait after service account creation to limit eventual consistency errors.
-        wait60_seconds = time.index.Sleep("wait_60_seconds", create_duration=60s,
-        opts = pulumi.ResourceOptions(depends_on=[sa]))
-        tpu = gcp.tpu.V2Vm("tpu",
-            name="test-tpu",
-            zone="us-central1-c",
-            description="Text description of the TPU.",
-            runtime_version="tpu-vm-tf-2.13.0",
-            accelerator_config={
-                "type": "V2",
-                "topology": "2x2",
-            },
-            cidr_block="10.0.0.0/29",
-            network_config={
-                "can_ip_forward": True,
-                "enable_external_ips": True,
-                "network": network.id,
-                "subnetwork": subnet.id,
-            },
-            scheduling_config={
-                "preemptible": True,
-            },
-            shielded_instance_config={
-                "enable_secure_boot": True,
-            },
-            service_account={
-                "email": sa.email,
-                "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
-            },
-            data_disks=[{
-                "source_disk": disk.id,
-                "mode": "READ_ONLY",
-            }],
-            labels={
-                "foo": "bar",
-            },
-            metadata={
-                "foo": "bar",
-            },
-            tags=["foo"],
-            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
-        ```
-
         ## Import
 
         Vm can be imported using any of these accepted formats:
@@ -1236,9 +1055,6 @@ class V2Vm(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] queued_resource: The qualified name of the QueuedResource that requested this Node.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
                Structure is documented below.
         :param pulumi.Input[Union['V2VmServiceAccountArgs', 'V2VmServiceAccountArgsDict']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
@@ -1449,9 +1265,6 @@ class V2Vm(pulumi.CustomResource):
     def runtime_version(self) -> pulumi.Output[str]:
         """
         Runtime version for the TPU.
-
-
-        - - -
         """
         return pulumi.get(self, "runtime_version")
 

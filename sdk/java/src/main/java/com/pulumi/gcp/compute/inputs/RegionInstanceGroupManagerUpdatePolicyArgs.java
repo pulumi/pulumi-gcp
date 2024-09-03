@@ -139,7 +139,6 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
 
     /**
      * , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-     * ***
      * 
      */
     @Import(name="replacementMethod")
@@ -147,7 +146,6 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
 
     /**
      * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-     * ***
      * 
      */
     public Optional<Output<String>> replacementMethod() {
@@ -372,7 +370,6 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
 
         /**
          * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-         * ***
          * 
          * @return builder
          * 
@@ -384,7 +381,6 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
 
         /**
          * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-         * ***
          * 
          * @return builder
          * 

@@ -19,16 +19,12 @@ public final class GetMetastoreServiceArgs extends com.pulumi.resources.InvokeAr
     /**
      * The location where the metastore service resides.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location where the metastore service resides.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -96,8 +92,6 @@ public final class GetMetastoreServiceArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param location The location where the metastore service resides.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -108,8 +102,6 @@ public final class GetMetastoreServiceArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param location The location where the metastore service resides.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.EssentialContacts.Outputs
         public readonly ImmutableArray<string> PossibleValues;
         /// <summary>
         /// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? ValidationCheckDisabled;
 

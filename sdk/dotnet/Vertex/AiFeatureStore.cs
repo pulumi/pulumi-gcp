@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    ///   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featurestore With Beta Fields
     /// 
     /// ```csharp
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vertex Ai Featurestore Scaling
     /// 
     /// ```csharp

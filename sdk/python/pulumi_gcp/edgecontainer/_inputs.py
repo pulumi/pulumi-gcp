@@ -112,8 +112,6 @@ if not MYPY:
         username: pulumi.Input[str]
         """
         An active Google username.
-
-        - - -
         """
 elif False:
     ClusterAuthorizationAdminUsersArgsDict: TypeAlias = Mapping[str, Any]
@@ -124,8 +122,6 @@ class ClusterAuthorizationAdminUsersArgs:
                  username: pulumi.Input[str]):
         """
         :param pulumi.Input[str] username: An active Google username.
-               
-               - - -
         """
         pulumi.set(__self__, "username", username)
 
@@ -134,8 +130,6 @@ class ClusterAuthorizationAdminUsersArgs:
     def username(self) -> pulumi.Input[str]:
         """
         An active Google username.
-
-        - - -
         """
         return pulumi.get(self, "username")
 
@@ -233,7 +227,6 @@ if not MYPY:
         If populated, this field contains the error status reported by Cloud KMS.
         Structure is documented below.
 
-
         <a name="nested_kms_status"></a>The `kms_status` block contains:
         """
 elif False:
@@ -264,7 +257,6 @@ class ClusterControlPlaneEncryptionArgs:
                populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
                If populated, this field contains the error status reported by Cloud KMS.
                Structure is documented below.
-               
                
                <a name="nested_kms_status"></a>The `kms_status` block contains:
         """
@@ -331,7 +323,6 @@ class ClusterControlPlaneEncryptionArgs:
         populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
         If populated, this field contains the error status reported by Cloud KMS.
         Structure is documented below.
-
 
         <a name="nested_kms_status"></a>The `kms_status` block contains:
         """
@@ -1070,7 +1061,7 @@ if not MYPY:
     class ClusterMaintenancePolicyWindowRecurringWindowArgsDict(TypedDict):
         recurrence: NotRequired[pulumi.Input[str]]
         """
-        An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
         this window recurs. They go on for the span of time between the start and
         end time.
         """
@@ -1088,7 +1079,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
                  recurrence: Optional[pulumi.Input[str]] = None,
                  window: Optional[pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']] = None):
         """
-        :param pulumi.Input[str] recurrence: An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        :param pulumi.Input[str] recurrence: An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
                this window recurs. They go on for the span of time between the start and
                end time.
         :param pulumi.Input['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs'] window: Represents an arbitrary window of time.
@@ -1103,7 +1094,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgs:
     @pulumi.getter
     def recurrence(self) -> Optional[pulumi.Input[str]]:
         """
-        An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
         this window recurs. They go on for the span of time between the start and
         end time.
         """

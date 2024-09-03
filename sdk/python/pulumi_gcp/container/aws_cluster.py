@@ -595,9 +595,10 @@ class AwsCluster(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_aws_cluster
+        ### basic_aws_cluster
         A basic example of a containeraws cluster
         ```python
         import pulumi
@@ -670,7 +671,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        ### Basic_enum_aws_cluster
+
+        ### basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums
         ```python
         import pulumi
@@ -740,7 +742,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        ### Beta_basic_enum_aws_cluster
+
+        ### beta_basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums (beta)
         ```python
         import pulumi
@@ -877,9 +880,10 @@ class AwsCluster(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_aws_cluster
+        ### basic_aws_cluster
         A basic example of a containeraws cluster
         ```python
         import pulumi
@@ -952,7 +956,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        ### Basic_enum_aws_cluster
+
+        ### basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums
         ```python
         import pulumi
@@ -1022,7 +1027,8 @@ class AwsCluster(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         ```
-        ### Beta_basic_enum_aws_cluster
+
+        ### beta_basic_enum_aws_cluster
         A basic example of a containeraws cluster with lowercase enums (beta)
         ```python
         import pulumi

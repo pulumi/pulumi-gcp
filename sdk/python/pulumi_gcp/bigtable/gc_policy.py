@@ -43,8 +43,7 @@ class GCPolicyArgs:
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-               you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-               -----
+               you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
@@ -137,8 +136,7 @@ class GCPolicyArgs:
         """
         Boolean for whether to allow ignoring warnings when updating the gc policy.
         Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-        you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-        -----
+        you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         """
         return pulumi.get(self, "ignore_warnings")
 
@@ -218,8 +216,7 @@ class _GCPolicyState:
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-               you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-               -----
+               you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
@@ -293,8 +290,7 @@ class _GCPolicyState:
         """
         Boolean for whether to allow ignoring warnings when updating the gc policy.
         Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-        you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-        -----
+        you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         """
         return pulumi.get(self, "ignore_warnings")
 
@@ -525,8 +521,7 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-               you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-               -----
+               you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
@@ -749,8 +744,7 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[bool] ignore_warnings: Boolean for whether to allow ignoring warnings when updating the gc policy.
                Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-               you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-               -----
+               you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
@@ -807,8 +801,7 @@ class GCPolicy(pulumi.CustomResource):
         """
         Boolean for whether to allow ignoring warnings when updating the gc policy.
         Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-        you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-        -----
+        you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
         """
         return pulumi.get(self, "ignore_warnings")
 

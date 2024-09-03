@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        /// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see &lt;https://cloud.google.com/spanner/docs/fgac-about&gt;.
         /// </summary>
         [Input("databaseRole")]
         public Input<string>? DatabaseRole { get; set; }

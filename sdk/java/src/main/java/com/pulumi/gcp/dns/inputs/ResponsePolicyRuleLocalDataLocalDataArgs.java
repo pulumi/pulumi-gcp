@@ -19,14 +19,14 @@ public final class ResponsePolicyRuleLocalDataLocalDataArgs extends com.pulumi.r
     public static final ResponsePolicyRuleLocalDataLocalDataArgs Empty = new ResponsePolicyRuleLocalDataLocalDataArgs();
 
     /**
-     * For example, www.example.com.
+     * For example, &lt;http://www.example.com&gt;.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return For example, www.example.com.
+     * @return For example, &lt;http://www.example.com&gt;.
      * 
      */
     public Output<String> name() {
@@ -110,7 +110,7 @@ public final class ResponsePolicyRuleLocalDataLocalDataArgs extends com.pulumi.r
         }
 
         /**
-         * @param name For example, www.example.com.
+         * @param name For example, &lt;http://www.example.com&gt;.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ResponsePolicyRuleLocalDataLocalDataArgs extends com.pulumi.r
         }
 
         /**
-         * @param name For example, www.example.com.
+         * @param name For example, &lt;http://www.example.com&gt;.
          * 
          * @return builder
          * 

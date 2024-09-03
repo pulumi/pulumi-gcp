@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateVolume {
     /**
-     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
      * Structure is documented below.
      * 
      */
@@ -47,7 +47,7 @@ public final class ServiceTemplateVolume {
      */
     private @Nullable ServiceTemplateVolumeNfs nfs;
     /**
-     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * @return Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
      * Structure is documented below.
      * 
      */
@@ -55,7 +55,7 @@ public final class ServiceTemplateVolume {
 
     private ServiceTemplateVolume() {}
     /**
-     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
      * Structure is documented below.
      * 
      */
@@ -94,7 +94,7 @@ public final class ServiceTemplateVolume {
         return Optional.ofNullable(this.nfs);
     }
     /**
-     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * @return Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
      * Structure is documented below.
      * 
      */

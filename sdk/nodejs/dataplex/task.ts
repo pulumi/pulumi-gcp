@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.lakes.tasks)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+ *   * [Official Documentation](https://cloud.google.com/dataplex/docs)
  *
  * ## Example Usage
  *
@@ -57,6 +57,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Task Spark
  *
  * ```typescript
@@ -116,6 +117,7 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ *
  * ### Dataplex Task Notebook
  *
  * ```typescript

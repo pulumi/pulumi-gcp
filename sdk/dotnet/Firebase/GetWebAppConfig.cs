@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Firebase
         /// 
         /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
         /// * How-to Guides
-        ///     * [Official Documentation](https://firebase.google.com/)
+        ///   * [Official Documentation](https://firebase.google.com/)
         /// </summary>
         public static Task<GetWebAppConfigResult> InvokeAsync(GetWebAppConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigArgs(), options.WithDefaults());
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Firebase
         /// 
         /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
         /// * How-to Guides
-        ///     * [Official Documentation](https://firebase.google.com/)
+        ///   * [Official Documentation](https://firebase.google.com/)
         /// </summary>
         public static Output<GetWebAppConfigResult> Invoke(GetWebAppConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigInvokeArgs(), options.WithDefaults());
@@ -48,8 +48,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// the id of the firebase web app
-        /// 
-        /// - - -
         /// </summary>
         [Input("webAppId", required: true)]
         public string WebAppId { get; set; } = null!;
@@ -71,8 +69,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// the id of the firebase web app
-        /// 
-        /// - - -
         /// </summary>
         [Input("webAppId", required: true)]
         public Input<string> WebAppId { get; set; } = null!;

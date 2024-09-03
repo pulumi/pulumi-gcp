@@ -65,6 +65,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ *
  * ## gcp.compute.InstanceIAMBinding
  *
  * ```typescript
@@ -99,6 +100,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ## gcp.compute.InstanceIAMMember
  *
  * ```typescript
@@ -135,8 +137,6 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## This resource supports User Project Overrides.
- *
- * - 
  *
  * # IAM policy for Compute Engine Instance
  * Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
@@ -199,6 +199,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ *
  * ## gcp.compute.InstanceIAMBinding
  *
  * ```typescript
@@ -233,6 +234,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ## gcp.compute.InstanceIAMMember
  *
  * ```typescript
@@ -304,7 +306,7 @@ import * as utilities from "../utilities";
  *
  * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceIAMPolicy extends pulumi.CustomResource {
     /**

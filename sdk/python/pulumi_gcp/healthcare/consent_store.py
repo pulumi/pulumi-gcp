@@ -28,9 +28,6 @@ class ConsentStoreArgs:
         The set of arguments for constructing a ConsentStore resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
@@ -64,9 +61,6 @@ class ConsentStoreArgs:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -149,9 +143,6 @@ class _ConsentStoreState:
         Input properties used for looking up and filtering ConsentStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -193,9 +184,6 @@ class _ConsentStoreState:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -307,11 +295,9 @@ class ConsentStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
         * How-to Guides
-            * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+          * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
-        ## Example Usage
-
-        ### Healthcare Consent Store Basic
+        ## 
 
         ```python
         import pulumi
@@ -324,7 +310,7 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         ```
-        ### Healthcare Consent Store Full
+        ## 
 
         ```python
         import pulumi
@@ -342,7 +328,7 @@ class ConsentStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        ### Healthcare Consent Store Iam
+        ## 
 
         ```python
         import pulumi
@@ -380,9 +366,6 @@ class ConsentStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
@@ -413,11 +396,9 @@ class ConsentStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
         * How-to Guides
-            * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+          * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
-        ## Example Usage
-
-        ### Healthcare Consent Store Basic
+        ## 
 
         ```python
         import pulumi
@@ -430,7 +411,7 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         ```
-        ### Healthcare Consent Store Full
+        ## 
 
         ```python
         import pulumi
@@ -448,7 +429,7 @@ class ConsentStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        ### Healthcare Consent Store Iam
+        ## 
 
         ```python
         import pulumi
@@ -548,9 +529,6 @@ class ConsentStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -590,9 +568,6 @@ class ConsentStore(pulumi.CustomResource):
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 

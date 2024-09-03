@@ -350,7 +350,7 @@ type AssetDiscoverySpec struct {
 	IncludePatterns []string `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions *AssetDiscoverySpecJsonOptions `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -376,7 +376,7 @@ type AssetDiscoverySpecArgs struct {
 	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions AssetDiscoverySpecJsonOptionsPtrInput `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -482,7 +482,7 @@ func (o AssetDiscoverySpecOutput) JsonOptions() AssetDiscoverySpecJsonOptionsPtr
 	return o.ApplyT(func(v AssetDiscoverySpec) *AssetDiscoverySpecJsonOptions { return v.JsonOptions }).(AssetDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 func (o AssetDiscoverySpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoverySpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -561,7 +561,7 @@ func (o AssetDiscoverySpecPtrOutput) JsonOptions() AssetDiscoverySpecJsonOptions
 	}).(AssetDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 func (o AssetDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssetDiscoverySpec) *string {
 		if v == nil {
@@ -1519,8 +1519,6 @@ type AssetResourceSpec struct {
 	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
 	ReadAccessMode *string `pulumi:"readAccessMode"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-	//
-	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -1541,8 +1539,6 @@ type AssetResourceSpecArgs struct {
 	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
 	ReadAccessMode pulumi.StringPtrInput `pulumi:"readAccessMode"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-	//
-	// ***
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1634,8 +1630,6 @@ func (o AssetResourceSpecOutput) ReadAccessMode() pulumi.StringPtrOutput {
 }
 
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-//
-// ***
 func (o AssetResourceSpecOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetResourceSpec) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1685,8 +1679,6 @@ func (o AssetResourceSpecPtrOutput) ReadAccessMode() pulumi.StringPtrOutput {
 }
 
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-//
-// ***
 func (o AssetResourceSpecPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssetResourceSpec) *string {
 		if v == nil {
@@ -5466,8 +5458,6 @@ func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) Elem() DatascanExecutionS
 
 type DatascanExecutionSpecTriggerSchedule struct {
 	// Cron schedule for running scans periodically. This field is required for Schedule scans.
-	//
-	// ***
 	Cron string `pulumi:"cron"`
 }
 
@@ -5484,8 +5474,6 @@ type DatascanExecutionSpecTriggerScheduleInput interface {
 
 type DatascanExecutionSpecTriggerScheduleArgs struct {
 	// Cron schedule for running scans periodically. This field is required for Schedule scans.
-	//
-	// ***
 	Cron pulumi.StringInput `pulumi:"cron"`
 }
 
@@ -5567,8 +5555,6 @@ func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTrigg
 }
 
 // Cron schedule for running scans periodically. This field is required for Schedule scans.
-//
-// ***
 func (o DatascanExecutionSpecTriggerScheduleOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v DatascanExecutionSpecTriggerSchedule) string { return v.Cron }).(pulumi.StringOutput)
 }
@@ -5598,8 +5584,6 @@ func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Elem() DatascanExecutionS
 }
 
 // Cron schedule for running scans periodically. This field is required for Schedule scans.
-//
-// ***
 func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Cron() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatascanExecutionSpecTriggerSchedule) *string {
 		if v == nil {
@@ -7238,7 +7222,7 @@ func (o LakeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type LakeMetastore struct {
-	// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+	// Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
 	Service *string `pulumi:"service"`
 }
 
@@ -7254,7 +7238,7 @@ type LakeMetastoreInput interface {
 }
 
 type LakeMetastoreArgs struct {
-	// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+	// Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -7335,7 +7319,7 @@ func (o LakeMetastoreOutput) ToLakeMetastorePtrOutputWithContext(ctx context.Con
 	}).(LakeMetastorePtrOutput)
 }
 
-// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+// Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
 func (o LakeMetastoreOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeMetastore) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -7364,7 +7348,7 @@ func (o LakeMetastorePtrOutput) Elem() LakeMetastoreOutput {
 	}).(LakeMetastoreOutput)
 }
 
-// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+// Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
 func (o LakeMetastorePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LakeMetastore) *string {
 		if v == nil {
@@ -7499,11 +7483,9 @@ func (o LakeMetastoreStatusArrayOutput) Index(i pulumi.IntInput) LakeMetastoreSt
 }
 
 type TaskExecutionSpec struct {
-	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args map[string]string `pulumi:"args"`
 	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-	//
-	// ***
 	KmsKey *string `pulumi:"kmsKey"`
 	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
@@ -7526,11 +7508,9 @@ type TaskExecutionSpecInput interface {
 }
 
 type TaskExecutionSpecArgs struct {
-	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args pulumi.StringMapInput `pulumi:"args"`
 	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-	//
-	// ***
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
@@ -7618,14 +7598,12 @@ func (o TaskExecutionSpecOutput) ToTaskExecutionSpecPtrOutputWithContext(ctx con
 	}).(TaskExecutionSpecPtrOutput)
 }
 
-// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 func (o TaskExecutionSpecOutput) Args() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskExecutionSpec) map[string]string { return v.Args }).(pulumi.StringMapOutput)
 }
 
 // The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-//
-// ***
 func (o TaskExecutionSpecOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -7670,7 +7648,7 @@ func (o TaskExecutionSpecPtrOutput) Elem() TaskExecutionSpecOutput {
 	}).(TaskExecutionSpecOutput)
 }
 
-// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 func (o TaskExecutionSpecPtrOutput) Args() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TaskExecutionSpec) map[string]string {
 		if v == nil {
@@ -7681,8 +7659,6 @@ func (o TaskExecutionSpecPtrOutput) Args() pulumi.StringMapOutput {
 }
 
 // The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-//
-// ***
 func (o TaskExecutionSpecPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskExecutionSpec) *string {
 		if v == nil {
@@ -10265,7 +10241,7 @@ type TaskTriggerSpec struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
 	MaxRetries *int `pulumi:"maxRetries"`
-	// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+	// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 	Schedule *string `pulumi:"schedule"`
 	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
 	StartTime *string `pulumi:"startTime"`
@@ -10290,7 +10266,7 @@ type TaskTriggerSpecArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
-	// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+	// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -10386,7 +10362,7 @@ func (o TaskTriggerSpecOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TaskTriggerSpec) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
 
-// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 func (o TaskTriggerSpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskTriggerSpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -10446,7 +10422,7 @@ func (o TaskTriggerSpecPtrOutput) MaxRetries() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 func (o TaskTriggerSpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskTriggerSpec) *string {
 		if v == nil {
@@ -10603,7 +10579,7 @@ type ZoneDiscoverySpec struct {
 	IncludePatterns []string `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions *ZoneDiscoverySpecJsonOptions `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -10629,7 +10605,7 @@ type ZoneDiscoverySpecArgs struct {
 	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions ZoneDiscoverySpecJsonOptionsPtrInput `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -10735,7 +10711,7 @@ func (o ZoneDiscoverySpecOutput) JsonOptions() ZoneDiscoverySpecJsonOptionsPtrOu
 	return o.ApplyT(func(v ZoneDiscoverySpec) *ZoneDiscoverySpecJsonOptions { return v.JsonOptions }).(ZoneDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 func (o ZoneDiscoverySpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneDiscoverySpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -10814,7 +10790,7 @@ func (o ZoneDiscoverySpecPtrOutput) JsonOptions() ZoneDiscoverySpecJsonOptionsPt
 	}).(ZoneDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 func (o ZoneDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneDiscoverySpec) *string {
 		if v == nil {
@@ -11502,8 +11478,6 @@ func (o ZoneIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type ZoneResourceSpec struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-	//
-	// ***
 	LocationType string `pulumi:"locationType"`
 }
 
@@ -11520,8 +11494,6 @@ type ZoneResourceSpecInput interface {
 
 type ZoneResourceSpecArgs struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-	//
-	// ***
 	LocationType pulumi.StringInput `pulumi:"locationType"`
 }
 
@@ -11603,8 +11575,6 @@ func (o ZoneResourceSpecOutput) ToZoneResourceSpecPtrOutputWithContext(ctx conte
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-//
-// ***
 func (o ZoneResourceSpecOutput) LocationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneResourceSpec) string { return v.LocationType }).(pulumi.StringOutput)
 }
@@ -11634,8 +11604,6 @@ func (o ZoneResourceSpecPtrOutput) Elem() ZoneResourceSpecOutput {
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-//
-// ***
 func (o ZoneResourceSpecPtrOutput) LocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneResourceSpec) *string {
 		if v == nil {

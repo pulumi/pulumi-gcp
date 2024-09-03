@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
  *
- * ## Example Usage
- *
- * ### Network Services Edge Cache Origin Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,7 +25,7 @@ import * as utilities from "../utilities";
  *     description: "The default bucket for media edge test",
  * });
  * ```
- * ### Network Services Edge Cache Origin Advanced
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -88,7 +86,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Services Edge Cache Origin V4auth
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -209,9 +207,6 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -379,9 +374,6 @@ export interface EdgeCacheOriginState {
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -488,9 +480,6 @@ export interface EdgeCacheOriginArgs {
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

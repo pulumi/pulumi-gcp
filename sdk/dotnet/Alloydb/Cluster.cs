@@ -12,110 +12,6 @@ namespace Pulumi.Gcp.Alloydb
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ### Alloydb Cluster Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "alloydb-cluster",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Alloydb.Cluster("default", new()
-    ///     {
-    ///         ClusterId = "alloydb-cluster",
-    ///         Location = "us-central1",
-    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
-    ///         {
-    ///             Network = defaultNetwork.Id,
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
-    /// ### Alloydb Cluster Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "alloydb-cluster-full",
-    ///     });
-    /// 
-    ///     var full = new Gcp.Alloydb.Cluster("full", new()
-    ///     {
-    ///         ClusterId = "alloydb-cluster-full",
-    ///         Location = "us-central1",
-    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
-    ///         {
-    ///             Network = @default.Id,
-    ///         },
-    ///         DatabaseVersion = "POSTGRES_15",
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             User = "alloydb-cluster-full",
-    ///             Password = "alloydb-cluster-full",
-    ///         },
-    ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
-    ///         {
-    ///             Enabled = true,
-    ///             RecoveryWindowDays = 14,
-    ///         },
-    ///         AutomatedBackupPolicy = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyArgs
-    ///         {
-    ///             Location = "us-central1",
-    ///             BackupWindow = "1800s",
-    ///             Enabled = true,
-    ///             WeeklySchedule = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs
-    ///             {
-    ///                 DaysOfWeeks = new[]
-    ///                 {
-    ///                     "MONDAY",
-    ///                 },
-    ///                 StartTimes = new[]
-    ///                 {
-    ///                     new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs
-    ///                     {
-    ///                         Hours = 23,
-    ///                         Minutes = 0,
-    ///                         Seconds = 0,
-    ///                         Nanos = 0,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             QuantityBasedRetention = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs
-    ///             {
-    ///                 Count = 1,
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "test", "alloydb-cluster-full" },
-    ///             },
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "test", "alloydb-cluster-full" },
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
     /// ### Alloydb Cluster Restore
     /// 
     /// ```csharp
@@ -221,6 +117,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Secondary Cluster Basic
     /// 
     /// ```csharp
@@ -340,7 +237,7 @@ namespace Pulumi.Gcp.Alloydb
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -437,7 +334,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.ClusterEncryptionInfo>> EncryptionInfos { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Output("etag")]
         public Output<string?> Etag { get; private set; } = null!;
@@ -459,9 +356,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -525,7 +419,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        /// Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
         /// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
         /// This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
@@ -620,7 +514,7 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -689,7 +583,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.ClusterEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -717,9 +611,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -795,7 +686,7 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -928,7 +819,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -956,9 +847,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -1038,7 +926,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        /// Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
         /// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
         /// This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>

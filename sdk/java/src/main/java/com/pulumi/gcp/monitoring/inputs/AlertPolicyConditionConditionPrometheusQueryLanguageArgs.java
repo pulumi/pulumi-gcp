@@ -28,8 +28,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     @Import(name="alertRule")
     private @Nullable Output<String> alertRule;
@@ -44,8 +42,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * in the future.
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> alertRule() {
@@ -101,7 +97,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * must be valid.
      * Label values can be templatized by using variables. The only available
      * variable names are the names of the labels in the PromQL result, including
-     * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
+     * &#34;**name**&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
      * used for organizing and identifying the AlertPolicy
      * 
      */
@@ -113,7 +109,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * must be valid.
      * Label values can be templatized by using variables. The only available
      * variable names are the names of the labels in the PromQL result, including
-     * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
+     * &#34;**name**&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
      * used for organizing and identifying the AlertPolicy
      * 
      */
@@ -207,8 +203,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -227,8 +221,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * in the future.
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -298,7 +290,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * must be valid.
          * Label values can be templatized by using variables. The only available
          * variable names are the names of the labels in the PromQL result, including
-         * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
+         * &#34;**name**&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
          * used for organizing and identifying the AlertPolicy
          * 
          * @return builder
@@ -314,7 +306,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * must be valid.
          * Label values can be templatized by using variables. The only available
          * variable names are the names of the labels in the PromQL result, including
-         * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
+         * &#34;**name**&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
          * used for organizing and identifying the AlertPolicy
          * 
          * @return builder

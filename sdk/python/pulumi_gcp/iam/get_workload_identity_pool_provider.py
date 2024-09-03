@@ -176,6 +176,14 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool_provider(workload_identity_pool_id="foo-pool",
+        workload_identity_pool_provider_id="bar-provider")
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -183,8 +191,6 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
            final component of the pool resource name.
     :param str workload_identity_pool_provider_id: The id of the provider which is the
            final component of the resource name.
-           
-           - - -
     """
     __args__ = dict()
     __args__['project'] = project
@@ -220,6 +226,14 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool_provider(workload_identity_pool_id="foo-pool",
+        workload_identity_pool_provider_id="bar-provider")
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -227,7 +241,5 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
            final component of the pool resource name.
     :param str workload_identity_pool_provider_id: The id of the provider which is the
            final component of the resource name.
-           
-           - - -
     """
     ...

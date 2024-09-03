@@ -105,16 +105,12 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The connection for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="parentConnection")
     private @Nullable Output<String> parentConnection;
 
     /**
      * @return The connection for the resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parentConnection() {
@@ -322,8 +318,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parentConnection The connection for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -334,8 +328,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parentConnection The connection for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

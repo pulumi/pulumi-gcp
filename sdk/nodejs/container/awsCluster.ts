@@ -11,9 +11,10 @@ import * as utilities from "../utilities";
  *
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+ *
  * ## Example Usage
  *
- * ### Basic_aws_cluster
+ * ### basicAwsCluster
  * A basic example of a containeraws cluster
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +90,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * ### Basic_enum_aws_cluster
+ *
+ * ### basicEnumAwsCluster
  * A basic example of a containeraws cluster with lowercase enums
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -162,7 +164,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * ### Beta_basic_enum_aws_cluster
+ *
+ * ### betaBasicEnumAwsCluster
  * A basic example of a containeraws cluster with lowercase enums (beta)
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

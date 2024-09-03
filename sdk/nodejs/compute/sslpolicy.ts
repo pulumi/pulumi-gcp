@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
  * * How-to Guides
- *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+ *   * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
  *
- * ## Example Usage
- *
- * ### Ssl Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -138,9 +136,6 @@ export class SSLPolicy extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -254,9 +249,6 @@ export interface SSLPolicyState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -317,9 +309,6 @@ export interface SSLPolicyArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

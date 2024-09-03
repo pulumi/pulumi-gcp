@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
  * 
- * ## Example Usage
- * 
- * ### Storage Hmac Key
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -55,7 +53,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a new service account
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
  *             .accountId("my-svc-acc")
  *             .build());
@@ -147,16 +144,12 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
     /**
      * The email address of the key&#39;s associated service account.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
      * @return The email address of the key&#39;s associated service account.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceAccountEmail() {

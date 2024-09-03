@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * A Workbench instance.
  *
- * ## Example Usage
- *
- * ### Workbench Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,7 +20,7 @@ import * as utilities from "../utilities";
  *     location: "us-west1-a",
  * });
  * ```
- * ### Workbench Instance Basic Container
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Workbench Instance Basic Gpu
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,6 +59,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Workbench Instance Labels Stopped
  *
  * ```typescript
@@ -90,6 +91,7 @@ import * as utilities from "../utilities";
  *     desiredState: "STOPPED",
  * });
  * ```
+ *
  * ### Workbench Instance Full
  *
  * ```typescript
@@ -276,9 +278,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -439,9 +438,6 @@ export interface InstanceState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -516,9 +512,6 @@ export interface InstanceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

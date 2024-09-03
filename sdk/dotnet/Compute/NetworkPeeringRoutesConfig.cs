@@ -19,11 +19,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+    ///   * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Peering Routes Config Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -71,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Network Peering Routes Config Gke
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -183,9 +181,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the primary network for the peering.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -263,9 +258,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the primary network for the peering.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -305,9 +297,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the primary network for the peering.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

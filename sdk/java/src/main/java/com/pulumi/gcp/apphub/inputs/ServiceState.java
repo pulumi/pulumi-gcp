@@ -163,16 +163,12 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Service identifier.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
      * @return The Service identifier.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -496,8 +492,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceId The Service identifier.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -508,8 +502,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceId The Service identifier.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setCloudArmorTier)
     /// * How-to Guides
-    ///     * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
+    ///   * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
     /// 
     /// ## Example Usage
     /// 
@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ### Compute Project Cloud Armor Tier Project Set
     /// 
     /// ```csharp
@@ -100,9 +101,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Managed protection tier to be set.
         /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cloudArmorTier")]
         public Output<string> CloudArmorTier { get; private set; } = null!;
@@ -163,9 +161,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Managed protection tier to be set.
         /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudArmorTier", required: true)]
         public Input<string> CloudArmorTier { get; set; } = null!;
@@ -188,9 +183,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Managed protection tier to be set.
         /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cloudArmorTier")]
         public Input<string>? CloudArmorTier { get; set; }

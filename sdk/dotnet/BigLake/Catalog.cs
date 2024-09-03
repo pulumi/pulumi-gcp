@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/biglake/rest/v1/projects.locations.catalogs)
     /// * How-to Guides
-    ///     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
+    ///   * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Biglake Catalog
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,9 +98,6 @@ namespace Pulumi.Gcp.BigLake
         /// <summary>
         /// The name of the Catalog. Format:
         /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -177,9 +172,6 @@ namespace Pulumi.Gcp.BigLake
         /// <summary>
         /// The name of the Catalog. Format:
         /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -233,9 +225,6 @@ namespace Pulumi.Gcp.BigLake
         /// <summary>
         /// The name of the Catalog. Format:
         /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

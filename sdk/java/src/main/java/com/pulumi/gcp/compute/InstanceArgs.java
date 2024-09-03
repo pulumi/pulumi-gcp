@@ -390,8 +390,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="networkInterfaces", required=true)
     private Output<List<InstanceNetworkInterfaceArgs>> networkInterfaces;
@@ -399,8 +397,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<List<InstanceNetworkInterfaceArgs>> networkInterfaces() {
@@ -1156,8 +1152,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param networkInterfaces Networks to attach to the instance. This can
          * be specified multiple times. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1170,8 +1164,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param networkInterfaces Networks to attach to the instance. This can
          * be specified multiple times. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1182,8 +1174,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param networkInterfaces Networks to attach to the instance. This can
          * be specified multiple times. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

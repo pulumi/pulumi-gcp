@@ -19,9 +19,7 @@ import javax.annotation.Nullable;
 /**
  * A secret version resource.
  * 
- * ## Example Usage
- * 
- * ### Secret Version Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -68,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secret Version Deletion Policy Abandon
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -119,7 +117,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secret Version Deletion Policy Disable
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -170,7 +168,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secret Version With Base64 String Secret Data
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -338,16 +336,12 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
     /**
      * Secret Manager secret resource
      * 
-     * ***
-     * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
      * @return Secret Manager secret resource
-     * 
-     * ***
      * 
      */
     public Output<String> secret() {

@@ -19,9 +19,7 @@ import (
 // * How-to Guides
 //   - [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 //
-// ## Example Usage
-//
-// ### Workflow Basic
+// ##
 //
 // ```go
 // package main

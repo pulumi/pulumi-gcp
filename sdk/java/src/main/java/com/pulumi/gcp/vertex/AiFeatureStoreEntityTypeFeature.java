@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  * 
- * ## Example Usage
- * 
- * ### Vertex Ai Featurestore Entitytype Feature
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -84,7 +82,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -218,16 +216,12 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
      * 
-     * ***
-     * 
      */
     @Export(name="entitytype", refs={String.class}, tree="[0]")
     private Output<String> entitytype;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     * 
-     * ***
      * 
      */
     public Output<String> entitytype() {
@@ -326,14 +320,14 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
         return this.updateTime;
     }
     /**
-     * Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
      * 
      */
     @Export(name="valueType", refs={String.class}, tree="[0]")
     private Output<String> valueType;
 
     /**
-     * @return Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * @return Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
      * 
      */
     public Output<String> valueType() {

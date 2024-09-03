@@ -17,81 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Parallelstore Instance Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
- * import com.pulumi.gcp.parallelstore.Instance;
- * import com.pulumi.gcp.parallelstore.InstanceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var network = new Network("network", NetworkArgs.builder()
- *             .name("network")
- *             .autoCreateSubnetworks(true)
- *             .mtu(8896)
- *             .build());
- * 
- *         // Create an IP address
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
- *             .name("address")
- *             .purpose("VPC_PEERING")
- *             .addressType("INTERNAL")
- *             .prefixLength(24)
- *             .network(network.id())
- *             .build());
- * 
- *         // Create a private connection
- *         var default_ = new Connection("default", ConnectionArgs.builder()
- *             .network(network.id())
- *             .service("servicenetworking.googleapis.com")
- *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build());
- * 
- *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .instanceId("instance")
- *             .location("us-central1-a")
- *             .description("test instance")
- *             .capacityGib(12000)
- *             .network(network.name())
- *             .fileStripeLevel("FILE_STRIPE_LEVEL_MIN")
- *             .directoryStripeLevel("DIRECTORY_STRIPE_LEVEL_MIN")
- *             .labels(Map.of("test", "value"))
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
- *                 .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Instance can be imported using any of these accepted formats:
@@ -289,8 +214,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
@@ -302,8 +225,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Must be between 1-63 characters.
      * * Must end with a number or a letter.
      * * Must be unique within the customer project/ location
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -321,13 +242,13 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Label values must be between 0 and 63 characters long and must conform
      *   to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     *   See https://goo.gl/xmQnxf for more information on and examples of labels.
+     *   See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
      *   If you plan to use labels in your own code, please note that additional
      *   characters may be allowed in the future. Therefore, you are advised to use
      *   an internal label representation, such as JSON, which doesn&#39;t rely upon
      *   specific characters being disallowed.  For example, representing labels
-     *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-     *   allow &#34;_&#34; in a future release.
+     *   as the string:  name + &#34;*&#34; + value  would prove problematic if we were to
+     *   allow &#34;*&#34; in a future release.
      *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      *   Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -347,13 +268,13 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * Label values must be between 0 and 63 characters long and must conform
      *   to the regular expression `[a-z0-9_-]{0,63}`.
      * * No more than 64 labels can be associated with a given resource.
-     *   See https://goo.gl/xmQnxf for more information on and examples of labels.
+     *   See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
      *   If you plan to use labels in your own code, please note that additional
      *   characters may be allowed in the future. Therefore, you are advised to use
      *   an internal label representation, such as JSON, which doesn&#39;t rely upon
      *   specific characters being disallowed.  For example, representing labels
-     *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-     *   allow &#34;_&#34; in a future release.
+     *   as the string:  name + &#34;*&#34; + value  would prove problematic if we were to
+     *   allow &#34;*&#34; in a future release.
      *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      *   Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 

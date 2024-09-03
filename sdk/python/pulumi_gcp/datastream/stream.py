@@ -512,11 +512,9 @@ class Stream(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.streams)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
+          * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 
-        ## Example Usage
-
-        ### Datastream Stream Full
+        ## 
 
         ```python
         import pulumi
@@ -687,6 +685,9 @@ class Stream(pulumi.CustomResource):
             customer_managed_encryption_key="kms-name",
             opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
+
+        ## Example Usage
+
         ### Datastream Stream Postgresql
 
         ```python
@@ -769,6 +770,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Oracle
 
         ```python
@@ -851,6 +853,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Sql Server
 
         ```python
@@ -939,7 +942,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
-        ### Datastream Stream Postgresql Bigquery Dataset Id
+        ## 
 
         ```python
         import pulumi
@@ -1026,7 +1029,7 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
-        ### Datastream Stream Bigquery
+        ## 
 
         ```python
         import pulumi
@@ -1117,7 +1120,7 @@ class Stream(pulumi.CustomResource):
             backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
-        ### Datastream Stream Bigquery Append Only
+        ## 
 
         ```python
         import pulumi
@@ -1258,11 +1261,9 @@ class Stream(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.streams)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
+          * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 
-        ## Example Usage
-
-        ### Datastream Stream Full
+        ## 
 
         ```python
         import pulumi
@@ -1433,6 +1434,9 @@ class Stream(pulumi.CustomResource):
             customer_managed_encryption_key="kms-name",
             opts = pulumi.ResourceOptions(depends_on=[key_user]))
         ```
+
+        ## Example Usage
+
         ### Datastream Stream Postgresql
 
         ```python
@@ -1515,6 +1519,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Oracle
 
         ```python
@@ -1597,6 +1602,7 @@ class Stream(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Datastream Stream Sql Server
 
         ```python
@@ -1685,7 +1691,7 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
-        ### Datastream Stream Postgresql Bigquery Dataset Id
+        ## 
 
         ```python
         import pulumi
@@ -1772,7 +1778,7 @@ class Stream(pulumi.CustomResource):
             instance=instance.name,
             name="db")
         ```
-        ### Datastream Stream Bigquery
+        ## 
 
         ```python
         import pulumi
@@ -1863,7 +1869,7 @@ class Stream(pulumi.CustomResource):
             backfill_none={},
             opts = pulumi.ResourceOptions(depends_on=[bigquery_key_user]))
         ```
-        ### Datastream Stream Bigquery Append Only
+        ## 
 
         ```python
         import pulumi

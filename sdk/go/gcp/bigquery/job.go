@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 //
-// ## Example Usage
-//
-// ### Bigquery Job Query
+// ##
 //
 // ```go
 // package main
@@ -81,7 +79,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Job Query Table Reference
+// ##
 //
 // ```go
 // package main
@@ -140,7 +138,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Job Load
+// ##
 //
 // ```go
 // package main
@@ -202,6 +200,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Bigquery Job Load Geojson
 //
 // ```go
@@ -287,7 +288,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Job Load Parquet
+// ##
 //
 // ```go
 // package main
@@ -376,6 +377,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Job Copy
 //
 // ```go
@@ -550,7 +552,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Job Extract
+// ##
 //
 // ```go
 // package main

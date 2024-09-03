@@ -76,7 +76,7 @@ type Occurence struct {
 	Remediation pulumi.StringPtrOutput `pulumi:"remediation"`
 	// Required. Immutable. A URI that represents the resource for which
 	// the occurrence applies. For example,
-	// https://gcr.io/project/image@sha256:123abc for a Docker image.
+	// <https://gcr.io/project/image@sha256:123abc> for a Docker image.
 	ResourceUri pulumi.StringOutput `pulumi:"resourceUri"`
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -148,7 +148,7 @@ type occurenceState struct {
 	Remediation *string `pulumi:"remediation"`
 	// Required. Immutable. A URI that represents the resource for which
 	// the occurrence applies. For example,
-	// https://gcr.io/project/image@sha256:123abc for a Docker image.
+	// <https://gcr.io/project/image@sha256:123abc> for a Docker image.
 	ResourceUri *string `pulumi:"resourceUri"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -182,7 +182,7 @@ type OccurenceState struct {
 	Remediation pulumi.StringPtrInput
 	// Required. Immutable. A URI that represents the resource for which
 	// the occurrence applies. For example,
-	// https://gcr.io/project/image@sha256:123abc for a Docker image.
+	// <https://gcr.io/project/image@sha256:123abc> for a Docker image.
 	ResourceUri pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -212,7 +212,7 @@ type occurenceArgs struct {
 	Remediation *string `pulumi:"remediation"`
 	// Required. Immutable. A URI that represents the resource for which
 	// the occurrence applies. For example,
-	// https://gcr.io/project/image@sha256:123abc for a Docker image.
+	// <https://gcr.io/project/image@sha256:123abc> for a Docker image.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
@@ -237,7 +237,7 @@ type OccurenceArgs struct {
 	Remediation pulumi.StringPtrInput
 	// Required. Immutable. A URI that represents the resource for which
 	// the occurrence applies. For example,
-	// https://gcr.io/project/image@sha256:123abc for a Docker image.
+	// <https://gcr.io/project/image@sha256:123abc> for a Docker image.
 	ResourceUri pulumi.StringInput
 }
 
@@ -376,7 +376,7 @@ func (o OccurenceOutput) Remediation() pulumi.StringPtrOutput {
 
 // Required. Immutable. A URI that represents the resource for which
 // the occurrence applies. For example,
-// https://gcr.io/project/image@sha256:123abc for a Docker image.
+// <https://gcr.io/project/image@sha256:123abc> for a Docker image.
 func (o OccurenceOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.ResourceUri }).(pulumi.StringOutput)
 }

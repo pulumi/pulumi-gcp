@@ -98,8 +98,6 @@ type FirewallEndpointAssociation struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the firewall endpoint association resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -111,7 +109,7 @@ type FirewallEndpointAssociation struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+	// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -183,8 +181,6 @@ type firewallEndpointAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name of the firewall endpoint association resource.
 	Name *string `pulumi:"name"`
@@ -196,7 +192,7 @@ type firewallEndpointAssociationState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+	// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -225,8 +221,6 @@ type FirewallEndpointAssociationState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name of the firewall endpoint association resource.
 	Name pulumi.StringPtrInput
@@ -238,7 +232,7 @@ type FirewallEndpointAssociationState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+	// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 	Reconciling pulumi.BoolPtrInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
@@ -267,8 +261,6 @@ type firewallEndpointAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name of the firewall endpoint association resource.
 	Name *string `pulumi:"name"`
@@ -295,8 +287,6 @@ type FirewallEndpointAssociationArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location (zone) of the firewall endpoint association.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name of the firewall endpoint association resource.
 	Name pulumi.StringPtrInput
@@ -427,8 +417,6 @@ func (o FirewallEndpointAssociationOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location (zone) of the firewall endpoint association.
-//
-// ***
 func (o FirewallEndpointAssociationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -455,7 +443,7 @@ func (o FirewallEndpointAssociationOutput) PulumiLabels() pulumi.StringMapOutput
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 func (o FirewallEndpointAssociationOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }

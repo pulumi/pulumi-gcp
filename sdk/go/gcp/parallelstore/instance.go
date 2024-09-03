@@ -12,77 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Parallelstore Instance Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/parallelstore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("network"),
-//				AutoCreateSubnetworks: pulumi.Bool(true),
-//				Mtu:                   pulumi.Int(8896),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create an IP address
-//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-//				Name:         pulumi.String("address"),
-//				Purpose:      pulumi.String("VPC_PEERING"),
-//				AddressType:  pulumi.String("INTERNAL"),
-//				PrefixLength: pulumi.Int(24),
-//				Network:      network.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a private connection
-//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: network.ID(),
-//				Service: pulumi.String("servicenetworking.googleapis.com"),
-//				ReservedPeeringRanges: pulumi.StringArray{
-//					privateIpAlloc.Name,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = parallelstore.NewInstance(ctx, "instance", &parallelstore.InstanceArgs{
-//				InstanceId:           pulumi.String("instance"),
-//				Location:             pulumi.String("us-central1-a"),
-//				Description:          pulumi.String("test instance"),
-//				CapacityGib:          pulumi.String("12000"),
-//				Network:              network.Name,
-//				FileStripeLevel:      pulumi.String("FILE_STRIPE_LEVEL_MIN"),
-//				DirectoryStripeLevel: pulumi.String("DIRECTORY_STRIPE_LEVEL_MIN"),
-//				Labels: pulumi.StringMap{
-//					"test": pulumi.String("value"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				_default,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Instance can be imported using any of these accepted formats:
@@ -151,8 +80,6 @@ type Instance struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
 	// resources into groups that reflect a customer's organizational needs and
@@ -165,13 +92,13 @@ type Instance struct {
 	// * Label values must be between 0 and 63 characters long and must conform
 	//   to the regular expression `[a-z0-9_-]{0,63}`.
 	// * No more than 64 labels can be associated with a given resource.
-	//   See https://goo.gl/xmQnxf for more information on and examples of labels.
+	//   See <https://goo.gl/xmQnxf> for more information on and examples of labels.
 	//   If you plan to use labels in your own code, please note that additional
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
+	//   as the string:  name + "*" + value  would prove problematic if we were to
+	//   allow "*" in a future release.
 	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -294,8 +221,6 @@ type instanceState struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
 	// resources into groups that reflect a customer's organizational needs and
@@ -308,13 +233,13 @@ type instanceState struct {
 	// * Label values must be between 0 and 63 characters long and must conform
 	//   to the regular expression `[a-z0-9_-]{0,63}`.
 	// * No more than 64 labels can be associated with a given resource.
-	//   See https://goo.gl/xmQnxf for more information on and examples of labels.
+	//   See <https://goo.gl/xmQnxf> for more information on and examples of labels.
 	//   If you plan to use labels in your own code, please note that additional
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
+	//   as the string:  name + "*" + value  would prove problematic if we were to
+	//   allow "*" in a future release.
 	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -394,8 +319,6 @@ type InstanceState struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
 	// resources into groups that reflect a customer's organizational needs and
@@ -408,13 +331,13 @@ type InstanceState struct {
 	// * Label values must be between 0 and 63 characters long and must conform
 	//   to the regular expression `[a-z0-9_-]{0,63}`.
 	// * No more than 64 labels can be associated with a given resource.
-	//   See https://goo.gl/xmQnxf for more information on and examples of labels.
+	//   See <https://goo.gl/xmQnxf> for more information on and examples of labels.
 	//   If you plan to use labels in your own code, please note that additional
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
+	//   as the string:  name + "*" + value  would prove problematic if we were to
+	//   allow "*" in a future release.
 	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -484,8 +407,6 @@ type instanceArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
 	// resources into groups that reflect a customer's organizational needs and
@@ -498,13 +419,13 @@ type instanceArgs struct {
 	// * Label values must be between 0 and 63 characters long and must conform
 	//   to the regular expression `[a-z0-9_-]{0,63}`.
 	// * No more than 64 labels can be associated with a given resource.
-	//   See https://goo.gl/xmQnxf for more information on and examples of labels.
+	//   See <https://goo.gl/xmQnxf> for more information on and examples of labels.
 	//   If you plan to use labels in your own code, please note that additional
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
+	//   as the string:  name + "*" + value  would prove problematic if we were to
+	//   allow "*" in a future release.
 	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -554,8 +475,6 @@ type InstanceArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	// * Must be unique within the customer project/ location
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
 	// resources into groups that reflect a customer's organizational needs and
@@ -568,13 +487,13 @@ type InstanceArgs struct {
 	// * Label values must be between 0 and 63 characters long and must conform
 	//   to the regular expression `[a-z0-9_-]{0,63}`.
 	// * No more than 64 labels can be associated with a given resource.
-	//   See https://goo.gl/xmQnxf for more information on and examples of labels.
+	//   See <https://goo.gl/xmQnxf> for more information on and examples of labels.
 	//   If you plan to use labels in your own code, please note that additional
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
+	//   as the string:  name + "*" + value  would prove problematic if we were to
+	//   allow "*" in a future release.
 	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -750,8 +669,6 @@ func (o InstanceOutput) FileStripeLevel() pulumi.StringPtrOutput {
 // * Must be between 1-63 characters.
 // * Must end with a number or a letter.
 // * Must be unique within the customer project/ location
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -767,13 +684,13 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 //   - Label values must be between 0 and 63 characters long and must conform
 //     to the regular expression `[a-z0-9_-]{0,63}`.
 //   - No more than 64 labels can be associated with a given resource.
-//     See https://goo.gl/xmQnxf for more information on and examples of labels.
+//     See <https://goo.gl/xmQnxf> for more information on and examples of labels.
 //     If you plan to use labels in your own code, please note that additional
 //     characters may be allowed in the future. Therefore, you are advised to use
 //     an internal label representation, such as JSON, which doesn't rely upon
 //     specific characters being disallowed.  For example, representing labels
-//     as the string:  name + "_" + value  would prove problematic if we were to
-//     allow "_" in a future release.
+//     as the string:  name + "*" + value  would prove problematic if we were to
+//     allow "*" in a future release.
 //     **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 //     Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {

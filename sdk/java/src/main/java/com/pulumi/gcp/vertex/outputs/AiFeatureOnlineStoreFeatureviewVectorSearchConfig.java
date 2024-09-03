@@ -49,7 +49,7 @@ public final class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
      */
     private @Nullable List<String> filterColumns;
     /**
-     * @return Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * @return Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
      * Structure is documented below.
      * 
      */
@@ -101,7 +101,7 @@ public final class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
         return this.filterColumns == null ? List.of() : this.filterColumns;
     }
     /**
-     * @return Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * @return Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
      * Structure is documented below.
      * 
      */

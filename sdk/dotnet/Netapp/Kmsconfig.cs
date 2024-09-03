@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.kmsConfigs)
     /// * How-to Guides
-    ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
+    ///   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Kms Config Create
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -124,9 +122,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Name of the CMEK policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -237,9 +232,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Name of the CMEK policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -317,9 +309,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// Name of the CMEK policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -31,9 +31,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 //
-// ## Example Usage
-//
-// ### Firewall Basic
+// ##
 //
 // ```go
 // package main
@@ -81,6 +79,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Firewall With Target Tags
 //
 // ```go
@@ -198,8 +199,6 @@ type Firewall struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or selfLink of the network to attach this firewall to.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
@@ -340,8 +339,6 @@ type firewallState struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the network to attach this firewall to.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
@@ -450,8 +447,6 @@ type FirewallState struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the network to attach this firewall to.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
@@ -562,8 +557,6 @@ type firewallArgs struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the network to attach this firewall to.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
@@ -669,8 +662,6 @@ type FirewallArgs struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the network to attach this firewall to.
-	//
-	// ***
 	Network pulumi.StringInput
 	// Priority for this rule. This is an integer between 0 and 65535, both
 	// inclusive. When not specified, the value assumed is 1000. Relative
@@ -893,8 +884,6 @@ func (o FirewallOutput) Name() pulumi.StringOutput {
 }
 
 // The name or selfLink of the network to attach this firewall to.
-//
-// ***
 func (o FirewallOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

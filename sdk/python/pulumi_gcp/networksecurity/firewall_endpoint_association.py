@@ -31,9 +31,6 @@ class FirewallEndpointAssociationArgs:
         The set of arguments for constructing a FirewallEndpointAssociation resource.
         :param pulumi.Input[str] firewall_endpoint: The URL of the firewall endpoint that is being associated.
         :param pulumi.Input[str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network that is being associated.
         :param pulumi.Input[bool] disabled: Whether the association is disabled. True indicates that traffic will not be intercepted.
                > **Note:** The API will reject the request if this value is set to true when creating the resource,
@@ -78,9 +75,6 @@ class FirewallEndpointAssociationArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location (zone) of the firewall endpoint association.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -198,16 +192,13 @@ class _FirewallEndpointAssociationState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the firewall endpoint association resource.
         :param pulumi.Input[str] network: The URL of the network that is being associated.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint association belongs to.
                Format: projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] state: The current state of the endpoint.
         :param pulumi.Input[str] tls_inspection_policy: The URL of the TlsInspectionPolicy that is being associated.
@@ -314,9 +305,6 @@ class _FirewallEndpointAssociationState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location (zone) of the firewall endpoint association.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -378,7 +366,7 @@ class _FirewallEndpointAssociationState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         """
         return pulumi.get(self, "reconciling")
 
@@ -459,8 +447,8 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
         * How-to Guides
-            * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
-            * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+          * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+          * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 
         ## Example Usage
 
@@ -509,9 +497,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the firewall endpoint association resource.
         :param pulumi.Input[str] network: The URL of the network that is being associated.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint association belongs to.
@@ -534,8 +519,8 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.firewallEndpointAssociations#FirewallEndpointAssociation)
         * How-to Guides
-            * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
-            * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+          * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+          * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 
         ## Example Usage
 
@@ -671,16 +656,13 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location (zone) of the firewall endpoint association.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the firewall endpoint association resource.
         :param pulumi.Input[str] network: The URL of the network that is being associated.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint association belongs to.
                Format: projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] state: The current state of the endpoint.
         :param pulumi.Input[str] tls_inspection_policy: The URL of the TlsInspectionPolicy that is being associated.
@@ -757,9 +739,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location (zone) of the firewall endpoint association.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -801,7 +780,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         """
         return pulumi.get(self, "reconciling")
 

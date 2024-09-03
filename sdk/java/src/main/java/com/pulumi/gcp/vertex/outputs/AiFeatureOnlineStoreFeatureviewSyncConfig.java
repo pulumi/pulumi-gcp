@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiFeatureOnlineStoreFeatureviewSyncConfig {
     /**
-     * @return Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+     * @return Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
      * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
      * 
      */
@@ -20,7 +20,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfig {
 
     private AiFeatureOnlineStoreFeatureviewSyncConfig() {}
     /**
-     * @return Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+     * @return Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
      * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
      * 
      */

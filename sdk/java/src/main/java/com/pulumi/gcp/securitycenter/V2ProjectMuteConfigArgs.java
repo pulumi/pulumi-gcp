@@ -72,16 +72,12 @@ public final class V2ProjectMuteConfigArgs extends com.pulumi.resources.Resource
     /**
      * Unique identifier provided by the client within the parent scope.
      * 
-     * ***
-     * 
      */
     @Import(name="muteConfigId", required=true)
     private Output<String> muteConfigId;
 
     /**
      * @return Unique identifier provided by the client within the parent scope.
-     * 
-     * ***
      * 
      */
     public Output<String> muteConfigId() {
@@ -223,8 +219,6 @@ public final class V2ProjectMuteConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param muteConfigId Unique identifier provided by the client within the parent scope.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -235,8 +229,6 @@ public final class V2ProjectMuteConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param muteConfigId Unique identifier provided by the client within the parent scope.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -41,9 +41,6 @@ class RegionDiskArgs:
         """
         The set of arguments for constructing a RegionDisk resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input['RegionDiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -99,8 +96,8 @@ class RegionDiskArgs:
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -154,9 +151,6 @@ class RegionDiskArgs:
     def replica_zones(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -367,8 +361,8 @@ class RegionDiskArgs:
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+        * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
         * projects/{project}/zones/{zone}/disks/{disk}
         * projects/{project}/regions/{region}/disks/{disk}
         * zones/{zone}/disks/{disk}
@@ -490,9 +484,6 @@ class _RegionDiskState:
                and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -509,8 +500,8 @@ class _RegionDiskState:
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -832,9 +823,6 @@ class _RegionDiskState:
     def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -895,8 +883,8 @@ class _RegionDiskState:
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+        * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
         * projects/{project}/zones/{zone}/disks/{disk}
         * projects/{project}/regions/{region}/disks/{disk}
         * zones/{zone}/disks/{disk}
@@ -1025,11 +1013,9 @@ class RegionDisk(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
         * How-to Guides
-            * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+          * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 
-        ## Example Usage
-
-        ### Region Disk Basic
+        ## 
 
         ```python
         import pulumi
@@ -1056,7 +1042,7 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
-        ### Region Disk Async
+        ## 
 
         ```python
         import pulumi
@@ -1084,7 +1070,7 @@ class RegionDisk(pulumi.CustomResource):
                 "us-east1-c",
             ])
         ```
-        ### Region Disk Features
+        ## 
 
         ```python
         import pulumi
@@ -1186,9 +1172,6 @@ class RegionDisk(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
                sourceSnapshot parameter, or specify it alone to create an empty
@@ -1204,8 +1187,8 @@ class RegionDisk(pulumi.CustomResource):
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -1244,11 +1227,9 @@ class RegionDisk(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
         * How-to Guides
-            * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+          * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 
-        ## Example Usage
-
-        ### Region Disk Basic
+        ## 
 
         ```python
         import pulumi
@@ -1275,7 +1256,7 @@ class RegionDisk(pulumi.CustomResource):
                 "us-central1-f",
             ])
         ```
-        ### Region Disk Async
+        ## 
 
         ```python
         import pulumi
@@ -1303,7 +1284,7 @@ class RegionDisk(pulumi.CustomResource):
                 "us-east1-c",
             ])
         ```
-        ### Region Disk Features
+        ## 
 
         ```python
         import pulumi
@@ -1527,9 +1508,6 @@ class RegionDisk(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -1546,8 +1524,8 @@ class RegionDisk(pulumi.CustomResource):
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -1776,9 +1754,6 @@ class RegionDisk(pulumi.CustomResource):
     def replica_zones(self) -> pulumi.Output[Sequence[str]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -1823,8 +1798,8 @@ class RegionDisk(pulumi.CustomResource):
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+        * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
         * projects/{project}/zones/{zone}/disks/{disk}
         * projects/{project}/regions/{region}/disks/{disk}
         * zones/{zone}/disks/{disk}

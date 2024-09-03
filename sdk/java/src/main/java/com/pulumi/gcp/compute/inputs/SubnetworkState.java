@@ -255,8 +255,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      * 
-     * ***
-     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
@@ -264,8 +262,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -824,8 +820,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * @param network The network this subnet belongs to.
          * Only networks that are in the distributed mode can have subnetworks.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -837,8 +831,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network this subnet belongs to.
          * Only networks that are in the distributed mode can have subnetworks.
-         * 
-         * ***
          * 
          * @return builder
          * 

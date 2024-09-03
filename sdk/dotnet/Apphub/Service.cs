@@ -166,6 +166,7 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apphub Service Full
     /// 
     /// ```csharp
@@ -442,9 +443,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// The Service identifier.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -574,9 +572,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// The Service identifier.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -648,9 +643,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// The Service identifier.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

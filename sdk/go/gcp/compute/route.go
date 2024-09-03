@@ -41,9 +41,7 @@ import (
 // * How-to Guides
 //   - [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 //
-// ## Example Usage
-//
-// ### Route Basic
+// ##
 //
 // ```go
 // package main
@@ -78,7 +76,7 @@ import (
 //	}
 //
 // ```
-// ### Route Ilb
+// ##
 //
 // ```go
 // package main
@@ -154,7 +152,7 @@ import (
 //	}
 //
 // ```
-// ### Route Ilb Vip
+// ##
 //
 // ```go
 // package main
@@ -311,8 +309,6 @@ type Route struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -329,7 +325,7 @@ type Route struct {
 	// rule as a partial or full URL. For example, the following
 	// are all valid values:
 	// * 10.128.0.56
-	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
 	// * regions/region/forwardingRules/forwardingRule
 	//   When the beta provider, you can also specify the IP address
 	//   of a forwarding rule from the same VPC or any peered VPC.
@@ -420,8 +416,6 @@ type routeState struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -438,7 +432,7 @@ type routeState struct {
 	// rule as a partial or full URL. For example, the following
 	// are all valid values:
 	// * 10.128.0.56
-	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
 	// * regions/region/forwardingRules/forwardingRule
 	//   When the beta provider, you can also specify the IP address
 	//   of a forwarding rule from the same VPC or any peered VPC.
@@ -494,8 +488,6 @@ type RouteState struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -512,7 +504,7 @@ type RouteState struct {
 	// rule as a partial or full URL. For example, the following
 	// are all valid values:
 	// * 10.128.0.56
-	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
 	// * regions/region/forwardingRules/forwardingRule
 	//   When the beta provider, you can also specify the IP address
 	//   of a forwarding rule from the same VPC or any peered VPC.
@@ -572,8 +564,6 @@ type routeArgs struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -590,7 +580,7 @@ type routeArgs struct {
 	// rule as a partial or full URL. For example, the following
 	// are all valid values:
 	// * 10.128.0.56
-	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
 	// * regions/region/forwardingRules/forwardingRule
 	//   When the beta provider, you can also specify the IP address
 	//   of a forwarding rule from the same VPC or any peered VPC.
@@ -643,8 +633,6 @@ type RouteArgs struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -661,7 +649,7 @@ type RouteArgs struct {
 	// rule as a partial or full URL. For example, the following
 	// are all valid values:
 	// * 10.128.0.56
-	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
 	// * regions/region/forwardingRules/forwardingRule
 	//   When the beta provider, you can also specify the IP address
 	//   of a forwarding rule from the same VPC or any peered VPC.
@@ -808,8 +796,6 @@ func (o RouteOutput) Name() pulumi.StringOutput {
 }
 
 // The network that this route applies to.
-//
-// ***
 func (o RouteOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -832,7 +818,7 @@ func (o RouteOutput) NextHopGateway() pulumi.StringPtrOutput {
 // rule as a partial or full URL. For example, the following
 // are all valid values:
 //   - 10.128.0.56
-//   - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+//   - <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
 //   - regions/region/forwardingRules/forwardingRule
 //     When the beta provider, you can also specify the IP address
 //     of a forwarding rule from the same VPC or any peered VPC.

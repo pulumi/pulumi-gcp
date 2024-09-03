@@ -187,7 +187,7 @@ def get_connector(name: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
     * How-to Guides
-        * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+      * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
     ## Example Usage
 
@@ -205,8 +205,6 @@ def get_connector(name: Optional[str] = None,
 
 
     :param str name: Name of the resource.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
@@ -249,7 +247,7 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
 
     * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
     * How-to Guides
-        * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+      * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
     ## Example Usage
 
@@ -267,8 +265,6 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: Name of the resource.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it

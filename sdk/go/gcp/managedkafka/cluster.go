@@ -12,141 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Managedkafka Cluster Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/managedkafka"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = managedkafka.NewCluster(ctx, "example", &managedkafka.ClusterArgs{
-//				ClusterId: pulumi.String("my-cluster"),
-//				Location:  pulumi.String("us-central1"),
-//				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
-//					VcpuCount:   pulumi.String("3"),
-//					MemoryBytes: pulumi.String("3221225472"),
-//				},
-//				GcpConfig: &managedkafka.ClusterGcpConfigArgs{
-//					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
-//						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
-//							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
-//							},
-//						},
-//					},
-//				},
-//				RebalanceConfig: &managedkafka.ClusterRebalanceConfigArgs{
-//					Mode: pulumi.String("NO_REBALANCE"),
-//				},
-//				Labels: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Managedkafka Cluster Cmek
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/managedkafka"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("example-key-ring"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
-//				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = managedkafka.NewCluster(ctx, "example", &managedkafka.ClusterArgs{
-//				ClusterId: pulumi.String("my-cluster"),
-//				Location:  pulumi.String("us-central1"),
-//				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
-//					VcpuCount:   pulumi.String("3"),
-//					MemoryBytes: pulumi.String("3221225472"),
-//				},
-//				GcpConfig: &managedkafka.ClusterGcpConfigArgs{
-//					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
-//						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
-//							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
-//							},
-//						},
-//					},
-//					KmsKey: key.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewServiceIdentity(ctx, "kafka_service_identity", &projects.ServiceIdentityArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Service: pulumi.String("managedkafka.googleapis.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: key.ID(),
-//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-managedkafka.iam.gserviceaccount.com", project.Number),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Cluster can be imported using any of these accepted formats:
@@ -190,7 +55,7 @@ type Cluster struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	Name    pulumi.StringOutput `pulumi:"name"`
@@ -270,7 +135,7 @@ type clusterState struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location *string `pulumi:"location"`
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	Name    *string `pulumi:"name"`
@@ -304,7 +169,7 @@ type ClusterState struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location pulumi.StringPtrInput
 	// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
 	Name    pulumi.StringPtrInput
@@ -338,7 +203,7 @@ type clusterArgs struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location string  `pulumi:"location"`
 	Project  *string `pulumi:"project"`
 	// Defines rebalancing behavior of a Kafka cluster.
@@ -360,7 +225,7 @@ type ClusterArgs struct {
 	// characters, and numbers. **Note**: This field is non-authoritative, and will only manage the labels present in your
 	// configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location pulumi.StringInput
 	Project  pulumi.StringPtrInput
 	// Defines rebalancing behavior of a Kafka cluster.
@@ -489,7 +354,7 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -31,9 +31,9 @@ type InstanceGceSetup struct {
 	// Optional. If true, no external IP will be assigned to this VM instance.
 	DisablePublicIp *bool `pulumi:"disablePublicIp"`
 	// Optional. Flag to enable ip forwarding or not, default false/off.
-	// https://cloud.google.com/vpc/docs/using-routes#canipforward
+	// <https://cloud.google.com/vpc/docs/using-routes#canipforward>
 	EnableIpForwarding *bool `pulumi:"enableIpForwarding"`
-	// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+	// Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
 	MachineType *string `pulumi:"machineType"`
 	// Optional. Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -86,9 +86,9 @@ type InstanceGceSetupArgs struct {
 	// Optional. If true, no external IP will be assigned to this VM instance.
 	DisablePublicIp pulumi.BoolPtrInput `pulumi:"disablePublicIp"`
 	// Optional. Flag to enable ip forwarding or not, default false/off.
-	// https://cloud.google.com/vpc/docs/using-routes#canipforward
+	// <https://cloud.google.com/vpc/docs/using-routes#canipforward>
 	EnableIpForwarding pulumi.BoolPtrInput `pulumi:"enableIpForwarding"`
-	// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+	// Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Optional. Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
@@ -221,12 +221,12 @@ func (o InstanceGceSetupOutput) DisablePublicIp() pulumi.BoolPtrOutput {
 }
 
 // Optional. Flag to enable ip forwarding or not, default false/off.
-// https://cloud.google.com/vpc/docs/using-routes#canipforward
+// <https://cloud.google.com/vpc/docs/using-routes#canipforward>
 func (o InstanceGceSetupOutput) EnableIpForwarding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetup) *bool { return v.EnableIpForwarding }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+// Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
 func (o InstanceGceSetupOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetup) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -350,7 +350,7 @@ func (o InstanceGceSetupPtrOutput) DisablePublicIp() pulumi.BoolPtrOutput {
 }
 
 // Optional. Flag to enable ip forwarding or not, default false/off.
-// https://cloud.google.com/vpc/docs/using-routes#canipforward
+// <https://cloud.google.com/vpc/docs/using-routes#canipforward>
 func (o InstanceGceSetupPtrOutput) EnableIpForwarding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceGceSetup) *bool {
 		if v == nil {
@@ -360,7 +360,7 @@ func (o InstanceGceSetupPtrOutput) EnableIpForwarding() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+// Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
 func (o InstanceGceSetupPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGceSetup) *string {
 		if v == nil {
@@ -1409,7 +1409,7 @@ type InstanceGceSetupServiceAccount struct {
 	Email *string `pulumi:"email"`
 	// (Output)
 	// Output only. The list of scopes to be made available for this
-	// service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+	// service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -1429,7 +1429,7 @@ type InstanceGceSetupServiceAccountArgs struct {
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// (Output)
 	// Output only. The list of scopes to be made available for this
-	// service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+	// service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
@@ -1491,7 +1491,7 @@ func (o InstanceGceSetupServiceAccountOutput) Email() pulumi.StringPtrOutput {
 
 // (Output)
 // Output only. The list of scopes to be made available for this
-// service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+// service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
 func (o InstanceGceSetupServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceGceSetupServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }

@@ -34,7 +34,7 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
     /**
      * The Oracle data type. Full data types list can be found here:
-     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+     * &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
      * 
      */
     @Import(name="dataType")
@@ -42,7 +42,7 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
     /**
      * @return The Oracle data type. Full data types list can be found here:
-     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+     * &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
      * 
      */
     public Optional<Output<String>> dataType() {
@@ -223,7 +223,7 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
         /**
          * @param dataType The Oracle data type. Full data types list can be found here:
-         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         * &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
         /**
          * @param dataType The Oracle data type. Full data types list can be found here:
-         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+         * &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
          * 
          * @return builder
          * 

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.subnets)
  * * How-to Guides
- *     * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
+ *   * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
  * 
  * ## Example Usage
  * 
@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Edgenetwork Subnet With Vlan Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -322,16 +323,12 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     /**
      * A unique ID that identifies this subnet.
      * 
-     * ***
-     * 
      */
     @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output<String> subnetId;
 
     /**
      * @return A unique ID that identifies this subnet.
-     * 
-     * ***
      * 
      */
     public Output<String> subnetId() {

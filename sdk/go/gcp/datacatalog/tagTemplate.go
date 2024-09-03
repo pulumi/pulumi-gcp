@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
-// ## Example Usage
-//
-// ### Data Catalog Tag Template Basic
+// ##
 //
 // ```go
 // package main

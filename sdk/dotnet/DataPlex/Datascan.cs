@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dataplex/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Full Profile
     /// 
     /// ```csharp
@@ -131,6 +132,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Basic Quality
     /// 
     /// ```csharp
@@ -177,6 +179,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Datascan Full Quality
     /// 
     /// ```csharp

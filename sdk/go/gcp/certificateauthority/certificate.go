@@ -178,6 +178,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Privateca Certificate With Template
 //
 // ```go
@@ -354,6 +355,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Privateca Certificate Csr
 //
 // ```go
@@ -440,6 +442,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Privateca Certificate No Authority
 //
 // ```go
@@ -559,6 +562,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Privateca Certificate Custom Ski
 //
 // ```go
@@ -743,8 +747,6 @@ type Certificate struct {
 	Lifetime pulumi.StringPtrOutput `pulumi:"lifetime"`
 	// Location of the Certificate. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name for this Certificate.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -847,8 +849,6 @@ type certificateState struct {
 	Lifetime *string `pulumi:"lifetime"`
 	// Location of the Certificate. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name for this Certificate.
 	Name *string `pulumi:"name"`
@@ -911,8 +911,6 @@ type CertificateState struct {
 	Lifetime pulumi.StringPtrInput
 	// Location of the Certificate. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name for this Certificate.
 	Name pulumi.StringPtrInput
@@ -969,8 +967,6 @@ type certificateArgs struct {
 	Lifetime *string `pulumi:"lifetime"`
 	// Location of the Certificate. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name for this Certificate.
 	Name *string `pulumi:"name"`
@@ -1010,8 +1006,6 @@ type CertificateArgs struct {
 	Lifetime pulumi.StringPtrInput
 	// Location of the Certificate. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name for this Certificate.
 	Name pulumi.StringPtrInput
@@ -1173,8 +1167,6 @@ func (o CertificateOutput) Lifetime() pulumi.StringPtrOutput {
 
 // Location of the Certificate. A full list of valid locations can be found by
 // running `gcloud privateca locations list`.
-//
-// ***
 func (o CertificateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
  * * How-to Guides
- *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+ *   * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -96,9 +96,6 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
 
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     public readonly perimeterName!: pulumi.Output<string>;
     /**
@@ -145,9 +142,6 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
 export interface ServicePerimeterDryRunResourceState {
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeterName?: pulumi.Input<string>;
     /**
@@ -164,9 +158,6 @@ export interface ServicePerimeterDryRunResourceState {
 export interface ServicePerimeterDryRunResourceArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
-     *
-     *
-     * - - -
      */
     perimeterName: pulumi.Input<string>;
     /**

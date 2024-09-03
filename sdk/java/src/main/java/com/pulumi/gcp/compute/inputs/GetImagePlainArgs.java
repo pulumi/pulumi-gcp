@@ -62,8 +62,6 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
      * filter must return exactly one image unless you use `most_recent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable String name;
@@ -76,8 +74,6 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
      * filter must return exactly one image unless you use `most_recent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
-     * ***
-     * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
@@ -86,7 +82,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
-     * [public base image][pubimg], be sure to specify the correct Image Project.
+     * [public base image](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), be sure to specify the correct Image Project.
      * 
      */
     @Import(name="project")
@@ -95,7 +91,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
-     * [public base image][pubimg], be sure to specify the correct Image Project.
+     * [public base image](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), be sure to specify the correct Image Project.
      * 
      */
     public Optional<String> project() {
@@ -166,8 +162,6 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
          * filter must return exactly one image unless you use `most_recent`.
          * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -179,7 +173,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param project The project in which the resource belongs. If it is not
          * provided, the provider project is used. If you are using a
-         * [public base image][pubimg], be sure to specify the correct Image Project.
+         * [public base image](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), be sure to specify the correct Image Project.
          * 
          * @return builder
          * 

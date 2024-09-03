@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles/create)
     /// * How-to Guides
-    ///     * [Database Migration](https://cloud.google.com/database-migration/docs/)
+    ///   * [Database Migration](https://cloud.google.com/database-migration/docs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Database Migration Service Connection Profile Cloudsql
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -145,7 +143,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
-    /// ### Database Migration Service Connection Profile Postgres
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -224,6 +222,9 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Database Migration Service Connection Profile Oracle
     /// 
     /// ```csharp
@@ -256,6 +257,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// 
     /// ### Database Migration Service Connection Profile Alloydb
     /// 
     /// ```csharp
@@ -385,9 +387,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("connectionProfileId")]
         public Output<string> ConnectionProfileId { get; private set; } = null!;
@@ -552,9 +551,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
@@ -638,9 +634,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectionProfileId")]
         public Input<string>? ConnectionProfileId { get; set; }

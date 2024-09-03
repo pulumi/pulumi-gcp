@@ -25,7 +25,7 @@ public final class SubnetworkLogConfig {
     private @Nullable String aggregationInterval;
     /**
      * @return Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-     * https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+     * &lt;https://cloud.google.com/vpc/docs/flow-logs#filtering&gt; for details on how to format this field.
      * The default value is &#39;true&#39;, which evaluates to include everything.
      * 
      */
@@ -70,7 +70,7 @@ public final class SubnetworkLogConfig {
     }
     /**
      * @return Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-     * https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+     * &lt;https://cloud.google.com/vpc/docs/flow-logs#filtering&gt; for details on how to format this field.
      * The default value is &#39;true&#39;, which evaluates to include everything.
      * 
      */

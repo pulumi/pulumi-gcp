@@ -26,11 +26,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
  *
- * ## Example Usage
- *
- * ### Storage Bucket Access Control Public Bucket
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -110,14 +108,11 @@ export class BucketAccessControl extends pulumi.CustomResource {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user <liz@example.com> would be <user-liz@example.com>.
+     * The group <example@googlegroups.com> would be
+     * <group-example@googlegroups.com>.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     *
-     *
-     * - - -
      */
     public readonly entity!: pulumi.Output<string>;
     /**
@@ -190,14 +185,11 @@ export interface BucketAccessControlState {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user <liz@example.com> would be <user-liz@example.com>.
+     * The group <example@googlegroups.com> would be
+     * <group-example@googlegroups.com>.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     *
-     *
-     * - - -
      */
     entity?: pulumi.Input<string>;
     /**
@@ -226,14 +218,11 @@ export interface BucketAccessControlArgs {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz@example.com would be user-liz@example.com.
-     * The group example@googlegroups.com would be
-     * group-example@googlegroups.com.
+     * The user <liz@example.com> would be <user-liz@example.com>.
+     * The group <example@googlegroups.com> would be
+     * <group-example@googlegroups.com>.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     *
-     *
-     * - - -
      */
     entity: pulumi.Input<string>;
     /**

@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  * To get more information about Repository, see:
  *
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
  *
- * ## Example Usage
- *
- * ### Secure Source Manager Repository Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  * });
  * ```
- * ### Secure Source Manager Repository Initial Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -146,9 +144,6 @@ export class Repository extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     public readonly repositoryId!: pulumi.Output<string>;
     /**
@@ -253,9 +248,6 @@ export interface RepositoryState {
     project?: pulumi.Input<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     repositoryId?: pulumi.Input<string>;
     /**
@@ -301,9 +293,6 @@ export interface RepositoryArgs {
     project?: pulumi.Input<string>;
     /**
      * The ID for the Repository.
-     *
-     *
-     * - - -
      */
     repositoryId: pulumi.Input<string>;
 }

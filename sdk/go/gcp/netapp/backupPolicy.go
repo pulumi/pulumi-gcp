@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
 //
-// ## Example Usage
-//
-// ### Netapp Backup Policy Full
+// ##
 //
 // ```go
 // package main
@@ -108,8 +106,6 @@ type BackupPolicy struct {
 	// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
 	MonthlyBackupLimit pulumi.IntOutput `pulumi:"monthlyBackupLimit"`
 	// The name of the backup policy. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -193,8 +189,6 @@ type backupPolicyState struct {
 	// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
 	MonthlyBackupLimit *int `pulumi:"monthlyBackupLimit"`
 	// The name of the backup policy. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -232,8 +226,6 @@ type BackupPolicyState struct {
 	// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
 	MonthlyBackupLimit pulumi.IntPtrInput
 	// The name of the backup policy. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -269,8 +261,6 @@ type backupPolicyArgs struct {
 	// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
 	MonthlyBackupLimit int `pulumi:"monthlyBackupLimit"`
 	// The name of the backup policy. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -298,8 +288,6 @@ type BackupPolicyArgs struct {
 	// Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
 	MonthlyBackupLimit pulumi.IntInput
 	// The name of the backup policy. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -445,8 +433,6 @@ func (o BackupPolicyOutput) MonthlyBackupLimit() pulumi.IntOutput {
 }
 
 // The name of the backup policy. Needs to be unique per location.
-//
-// ***
 func (o BackupPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

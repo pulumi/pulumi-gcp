@@ -49,8 +49,6 @@ func LookupConfig(ctx *pulumi.Context, args *LookupConfigArgs, opts ...pulumi.In
 // A collection of arguments for invoking getConfig.
 type LookupConfigArgs struct {
 	// The name of the Runtime Configurator configuration.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -82,8 +80,6 @@ func LookupConfigOutput(ctx *pulumi.Context, args LookupConfigOutputArgs, opts .
 // A collection of arguments for invoking getConfig.
 type LookupConfigOutputArgs struct {
 	// The name of the Runtime Configurator configuration.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

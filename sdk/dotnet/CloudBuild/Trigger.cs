@@ -16,13 +16,11 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
     /// * How-to Guides
-    ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+    ///   * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
     /// 
     /// &gt; **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Cloudbuild Trigger Filename
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -50,7 +48,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Build
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -217,7 +215,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Service Account
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -268,6 +266,9 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Cloudbuild Trigger Include Build Logs
     /// 
     /// ```csharp
@@ -297,7 +298,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Pubsub Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -343,7 +344,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Webhook Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -426,7 +427,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Manual
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -460,6 +461,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Manual Github Enterprise
     /// 
     /// ```csharp
@@ -492,7 +494,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Manual Bitbucket Server
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -524,7 +526,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Repo
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -571,7 +573,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Bitbucket Server Push
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -601,7 +603,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Bitbucket Server Pull Request
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -632,6 +634,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuild Trigger Github Enterprise
     /// 
     /// ```csharp
@@ -661,7 +664,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Allow Failure
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -788,7 +791,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Allow Exit Codes
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -919,7 +922,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Trigger Pubsub With Repo
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1085,7 +1088,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<Outputs.TriggerGithub?> Github { get; private set; } = null!;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
         /// extended with support for `**`.
         /// If ignoredFiles and changed files are both empty, then they are not
         /// used to determine whether or not to trigger a build.
@@ -1106,7 +1109,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string?> IncludeBuildLogs { get; private set; } = null!;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
         /// extended with support for `**`.
         /// If any of the files altered in the commit pass the ignoredFiles filter
         /// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1328,7 +1331,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _ignoredFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
         /// extended with support for `**`.
         /// If ignoredFiles and changed files are both empty, then they are not
         /// used to determine whether or not to trigger a build.
@@ -1355,7 +1358,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _includedFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
         /// extended with support for `**`.
         /// If any of the files altered in the commit pass the ignoredFiles filter
         /// and includedFiles is empty, then as far as this filter is concerned, we
@@ -1554,7 +1557,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _ignoredFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
         /// extended with support for `**`.
         /// If ignoredFiles and changed files are both empty, then they are not
         /// used to determine whether or not to trigger a build.
@@ -1581,7 +1584,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _includedFiles;
 
         /// <summary>
-        /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        /// ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
         /// extended with support for `**`.
         /// If any of the files altered in the commit pass the ignoredFiles filter
         /// and includedFiles is empty, then as far as this filter is concerned, we

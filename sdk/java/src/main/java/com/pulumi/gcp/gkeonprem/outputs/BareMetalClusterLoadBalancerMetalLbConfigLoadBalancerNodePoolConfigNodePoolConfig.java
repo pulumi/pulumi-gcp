@@ -23,7 +23,7 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePool
      * version -- it&#39;s best to assume the behavior is undefined and
      * conflicts should be avoided. For more information, including usage
      * and the valid values, see:
-     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+     * - &lt;http://kubernetes.io/v1.1/docs/user-guide/labels.html&gt;
      *   An object containing a list of &#34;key&#34;: value pairs.
      *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
@@ -56,7 +56,7 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePool
      * version -- it&#39;s best to assume the behavior is undefined and
      * conflicts should be avoided. For more information, including usage
      * and the valid values, see:
-     * - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+     * - &lt;http://kubernetes.io/v1.1/docs/user-guide/labels.html&gt;
      *   An object containing a list of &#34;key&#34;: value pairs.
      *   For example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 

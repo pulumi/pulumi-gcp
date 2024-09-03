@@ -21,11 +21,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  * 
- * ## Example Usage
- * 
- * ### Data Catalog Entry Group Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -59,7 +57,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Catalog Entry Group Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -143,8 +141,6 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="entryGroupId", refs={String.class}, tree="[0]")
     private Output<String> entryGroupId;
@@ -152,8 +148,6 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> entryGroupId() {

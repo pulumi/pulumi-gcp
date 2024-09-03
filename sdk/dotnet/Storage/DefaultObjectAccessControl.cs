@@ -28,11 +28,9 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+    ///   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Storage Default Object Access Control Public
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -133,9 +131,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The access permission for the entity.
         /// Possible values are: `OWNER`, `READER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -215,9 +210,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The access permission for the entity.
         /// Possible values are: `OWNER`, `READER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -296,9 +288,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// The access permission for the entity.
         /// Possible values are: `OWNER`, `READER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

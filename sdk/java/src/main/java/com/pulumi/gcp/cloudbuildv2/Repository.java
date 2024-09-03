@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/build/docs)
+ *   * [Official Documentation](https://cloud.google.com/build/docs)
  * 
  * ## Example Usage
  * 
@@ -137,6 +137,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudbuildv2 Repository Github Doc
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -336,16 +337,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * The connection for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="parentConnection", refs={String.class}, tree="[0]")
     private Output<String> parentConnection;
 
     /**
      * @return The connection for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> parentConnection() {

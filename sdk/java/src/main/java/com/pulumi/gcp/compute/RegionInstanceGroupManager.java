@@ -38,13 +38,13 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
  * * How-to Guides
- *     * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+ *   * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  * 
  * &gt; **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
  * 
  * ## Example Usage
  * 
- * ### With Top Level Instance Template (`Google` Provider)
+ * ### with top level instance template (google provider)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With Multiple Versions
+ * ### with multiple versions
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With Standby Policy (`Google-Beta` Provider)
+ * ### with standby policy (google-beta provider)
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -456,16 +456,12 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Export(name="params", refs={RegionInstanceGroupManagerParams.class}, tree="[0]")
     private Output</* @Nullable */ RegionInstanceGroupManagerParams> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Output<Optional<RegionInstanceGroupManagerParams>> params() {
@@ -490,16 +486,12 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The region where the managed instance group resides. If not provided, the provider region is used.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

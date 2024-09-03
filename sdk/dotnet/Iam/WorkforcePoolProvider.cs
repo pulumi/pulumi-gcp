@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers)
     /// * How-to Guides
-    ///     * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
+    ///   * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
     /// 
     /// &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
     /// billing/quota project. The account team notifies you when the project is granted access.
@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Saml Full
     /// 
     /// ```csharp
@@ -95,6 +96,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Oidc Basic
     /// 
     /// ```csharp
@@ -142,6 +144,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Oidc Full
     /// 
     /// ```csharp
@@ -198,6 +201,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
     /// 
     /// ```csharp
@@ -258,6 +262,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
     /// 
     /// ```csharp
@@ -454,9 +459,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name.
         /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("providerId")]
         public Output<string> ProviderId { get; private set; } = null!;
@@ -643,9 +645,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name.
         /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("providerId", required: true)]
         public Input<string> ProviderId { get; set; } = null!;
@@ -790,9 +789,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name.
         /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("providerId")]
         public Input<string>? ProviderId { get; set; }

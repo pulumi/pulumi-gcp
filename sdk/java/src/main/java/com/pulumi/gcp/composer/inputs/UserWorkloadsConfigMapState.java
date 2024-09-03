@@ -18,7 +18,7 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
 
     /**
      * The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
      * 
      */
     @Import(name="data")
@@ -26,7 +26,7 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
 
     /**
      * @return The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
      * 
      */
     public Optional<Output<Map<String,String>>> data() {
@@ -36,16 +36,12 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
     /**
      * Environment where the Kubernetes ConfigMap will be stored and used.
      * 
-     * ***
-     * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
      * @return Environment where the Kubernetes ConfigMap will be stored and used.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> environment() {
@@ -129,7 +125,7 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
 
         /**
          * @param data The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-         * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+         * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
          * 
          * @return builder
          * 
@@ -141,7 +137,7 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
 
         /**
          * @param data The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-         * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+         * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
          * 
          * @return builder
          * 
@@ -153,8 +149,6 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
         /**
          * @param environment Environment where the Kubernetes ConfigMap will be stored and used.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -165,8 +159,6 @@ public final class UserWorkloadsConfigMapState extends com.pulumi.resources.Reso
 
         /**
          * @param environment Environment where the Kubernetes ConfigMap will be stored and used.
-         * 
-         * ***
          * 
          * @return builder
          * 

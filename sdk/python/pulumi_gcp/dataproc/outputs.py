@@ -662,7 +662,7 @@ class ClusterClusterConfig(dict):
                Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
                only be removed by setting `policy_uri = ""`, rather than removing the whole block.
                Structure defined below.
-        :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupArgs'] auxiliary_node_groups: A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupArgs'] auxiliary_node_groups: A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
                Structure defined below.
         :param str bucket: The name of the cloud storage bucket ultimately used to house the staging data
                for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
@@ -683,7 +683,6 @@ class ClusterClusterConfig(dict):
                in a cluster. Structure defined below.
         :param 'ClusterClusterConfigMetastoreConfigArgs' metastore_config: The config setting for metastore service with the cluster.
                Structure defined below.
-               - - -
         :param 'ClusterClusterConfigPreemptibleWorkerConfigArgs' preemptible_worker_config: The Google Compute Engine config settings for the additional
                instances in a cluster. Structure defined below.
                * **NOTE** : `preemptible_worker_config` is
@@ -755,7 +754,7 @@ class ClusterClusterConfig(dict):
     @pulumi.getter(name="auxiliaryNodeGroups")
     def auxiliary_node_groups(self) -> Optional[Sequence['outputs.ClusterClusterConfigAuxiliaryNodeGroup']]:
         """
-        A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
         Structure defined below.
         """
         return pulumi.get(self, "auxiliary_node_groups")
@@ -839,7 +838,6 @@ class ClusterClusterConfig(dict):
         """
         The config setting for metastore service with the cluster.
         Structure defined below.
-        - - -
         """
         return pulumi.get(self, "metastore_config")
 
@@ -935,8 +933,6 @@ class ClusterClusterConfigAutoscalingConfig(dict):
                `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
                `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
                Note that the policy must be in the same project and Cloud Dataproc region.
-               
-               - - -
         """
         pulumi.set(__self__, "policy_uri", policy_uri)
 
@@ -951,8 +947,6 @@ class ClusterClusterConfigAutoscalingConfig(dict):
         `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
         `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
         Note that the policy must be in the same project and Cloud Dataproc region.
-
-        - - -
         """
         return pulumi.get(self, "policy_uri")
 
@@ -1030,7 +1024,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup(dict):
                  name: Optional[str] = None,
                  node_group_config: Optional['outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig'] = None):
         """
-        :param Sequence[str] roles: Node group roles. 
+        :param Sequence[str] roles: Node group roles.
                One of `"DRIVER"`.
         :param str name: The Node group resource name.
         :param 'ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs' node_group_config: The node group instance group configuration.
@@ -1045,7 +1039,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup(dict):
     @pulumi.getter
     def roles(self) -> Sequence[str]:
         """
-        Node group roles. 
+        Node group roles.
         One of `"DRIVER"`.
         """
         return pulumi.get(self, "roles")
@@ -1102,7 +1096,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
                  min_cpu_platform: Optional[str] = None,
                  num_instances: Optional[int] = None):
         """
-        :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
                multiple times.
         :param 'ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs' disk_config: Disk Config
         :param Sequence[str] instance_names: List of auxiliary node group instance names which have been assigned to the cluster.
@@ -1133,7 +1127,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator']]:
         """
-        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
         multiple times.
         """
         return pulumi.get(self, "accelerators")
@@ -1211,9 +1205,6 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator(
                  accelerator_type: str):
         """
         :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-               
-               
-               - - -
         :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -1224,9 +1215,6 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator(
     def accelerator_count(self) -> int:
         """
         The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-
-
-        - - -
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -1278,7 +1266,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
         :param str boot_disk_type: The disk type of the primary disk attached to each node.
                One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
         :param str local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        :param int num_local_ssds: The amount of local SSD disks that will be attached to each master cluster node. 
+        :param int num_local_ssds: The amount of local SSD disks that will be attached to each master cluster node.
                Defaults to 0.
         """
         if boot_disk_size_gb is not None:
@@ -1323,7 +1311,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig(d
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        The amount of local SSD disks that will be attached to each master cluster node. 
+        The amount of local SSD disks that will be attached to each master cluster node.
         Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
@@ -1373,9 +1361,7 @@ class ClusterClusterConfigDataprocMetricConfigMetric(dict):
                  metric_overrides: Optional[Sequence[str]] = None):
         """
         :param str metric_source: A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
-        :param Sequence[str] metric_overrides: One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-               
-               - - -
+        :param Sequence[str] metric_overrides: One or more [available OSS metrics] (<https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics>) to collect for the metric course.
         """
         pulumi.set(__self__, "metric_source", metric_source)
         if metric_overrides is not None:
@@ -1393,9 +1379,7 @@ class ClusterClusterConfigDataprocMetricConfigMetric(dict):
     @pulumi.getter(name="metricOverrides")
     def metric_overrides(self) -> Optional[Sequence[str]]:
         """
-        One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-
-        - - -
+        One or more [available OSS metrics] (<https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics>) to collect for the metric course.
         """
         return pulumi.get(self, "metric_overrides")
 
@@ -1424,8 +1408,6 @@ class ClusterClusterConfigEncryptionConfig(dict):
         """
         :param str kms_key_name: The Cloud KMS key name to use for PD disk encryption for
                all instances in the cluster.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -1435,8 +1417,6 @@ class ClusterClusterConfigEncryptionConfig(dict):
         """
         The Cloud KMS key name to use for PD disk encryption for
         all instances in the cluster.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -1556,8 +1536,6 @@ class ClusterClusterConfigGceClusterConfig(dict):
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
         :param 'ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-               
-               - - -
         :param str subnetwork: The name or self_link of the Google Compute Engine
                subnetwork the cluster will be part of. Conflicts with `network`.
         :param Sequence[str] tags: The list of instance tags applied to instances in the cluster.
@@ -1666,8 +1644,6 @@ class ClusterClusterConfigGceClusterConfig(dict):
     def shielded_instance_config(self) -> Optional['outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig']:
         """
         Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-
-        - - -
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -1828,8 +1804,6 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
                  enable_vtpm: Optional[bool] = None):
         """
         :param bool enable_integrity_monitoring: Defines whether instances have integrity monitoring enabled.
-               
-               - - -
         :param bool enable_secure_boot: Defines whether instances have Secure Boot enabled.
         :param bool enable_vtpm: Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
         """
@@ -1845,8 +1819,6 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig(dict):
     def enable_integrity_monitoring(self) -> Optional[bool]:
         """
         Defines whether instances have integrity monitoring enabled.
-
-        - - -
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -1895,8 +1867,6 @@ class ClusterClusterConfigInitializationAction(dict):
         :param int timeout_sec: The maximum duration (in seconds) which `script` is
                allowed to take to execute its action. GCP will default to a predetermined
                computed value if not set (currently 300).
-               
-               - - -
         """
         pulumi.set(__self__, "script", script)
         if timeout_sec is not None:
@@ -1918,8 +1888,6 @@ class ClusterClusterConfigInitializationAction(dict):
         The maximum duration (in seconds) which `script` is
         allowed to take to execute its action. GCP will default to a predetermined
         computed value if not set (currently 300).
-
-        - - -
         """
         return pulumi.get(self, "timeout_sec")
 
@@ -1955,8 +1923,6 @@ class ClusterClusterConfigLifecycleConfig(dict):
         :param str auto_delete_time: The time when cluster will be auto-deleted.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
-               
-               - - -
         :param str idle_delete_ttl: The duration to keep the cluster alive while idling
                (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
         :param str idle_start_time: Time when the cluster became idle
@@ -1976,8 +1942,6 @@ class ClusterClusterConfigLifecycleConfig(dict):
         The time when cluster will be auto-deleted.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         Example: "2014-10-02T15:01:23.045123456Z".
-
-        - - -
         """
         return pulumi.get(self, "auto_delete_time")
 
@@ -2164,8 +2128,6 @@ class ClusterClusterConfigMasterConfigAccelerator(dict):
                > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
                zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
                if you are trying to use accelerators in a given zone.
-               
-               - - -
         :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -2180,8 +2142,6 @@ class ClusterClusterConfigMasterConfigAccelerator(dict):
         > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
         zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
         if you are trying to use accelerators in a given zone.
-
-        - - -
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -2598,8 +2558,6 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         """
         :param Sequence[str] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
         :param int rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-               
-               - - -
         """
         if machine_types is not None:
             pulumi.set(__self__, "machine_types", machine_types)
@@ -2619,8 +2577,6 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     def rank(self) -> Optional[int]:
         """
         Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
-
-        - - -
         """
         return pulumi.get(self, "rank")
 
@@ -2803,8 +2759,6 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
                certificate, this password is generated by Dataproc.
         :param str truststore_uri: The Cloud Storage URI of the truststore file used for
                SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-               
-               - - -
         """
         pulumi.set(__self__, "kms_key_uri", kms_key_uri)
         pulumi.set(__self__, "root_principal_password_uri", root_principal_password_uri)
@@ -2968,8 +2922,6 @@ class ClusterClusterConfigSecurityConfigKerberosConfig(dict):
         """
         The Cloud Storage URI of the truststore file used for
         SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-
-        - - -
         """
         return pulumi.get(self, "truststore_uri")
 
@@ -3009,8 +2961,6 @@ class ClusterClusterConfigSoftwareConfig(dict):
                latest version. For a list of valid versions see
                [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
         :param Sequence[str] optional_components: The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
-               
-               - - -
         :param Mapping[str, str] override_properties: A list of override and additional properties (key/value pairs)
                used to modify various aspects of the common configuration files used when creating
                a cluster. For a list of valid properties please see
@@ -3044,8 +2994,6 @@ class ClusterClusterConfigSoftwareConfig(dict):
     def optional_components(self) -> Optional[Sequence[str]]:
         """
         The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
-
-        - - -
         """
         return pulumi.get(self, "optional_components")
 
@@ -3258,8 +3206,6 @@ class ClusterClusterConfigWorkerConfigAccelerator(dict):
                > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
                zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
                if you are trying to use accelerators in a given zone.
-               
-               - - -
         :param str accelerator_type: The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -3274,8 +3220,6 @@ class ClusterClusterConfigWorkerConfigAccelerator(dict):
         > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
         zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
         if you are trying to use accelerators in a given zone.
-
-        - - -
         """
         return pulumi.get(self, "accelerator_count")
 
@@ -3458,11 +3402,10 @@ class ClusterVirtualClusterConfig(dict):
                  kubernetes_cluster_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfig'] = None,
                  staging_bucket: Optional[str] = None):
         """
-        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs' auxiliary_services_config: Configuration of auxiliary services used by this cluster. 
+        :param 'ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs' auxiliary_services_config: Configuration of auxiliary services used by this cluster.
                Structure defined below.
         :param 'ClusterVirtualClusterConfigKubernetesClusterConfigArgs' kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
                Structure defined below.
-               - - -
         :param str staging_bucket: The Cloud Storage staging bucket used to stage files,
                such as Hadoop jars, between client machines and the cluster.
                Note: If you don't explicitly specify a `staging_bucket`
@@ -3482,7 +3425,7 @@ class ClusterVirtualClusterConfig(dict):
     @pulumi.getter(name="auxiliaryServicesConfig")
     def auxiliary_services_config(self) -> Optional['outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfig']:
         """
-        Configuration of auxiliary services used by this cluster. 
+        Configuration of auxiliary services used by this cluster.
         Structure defined below.
         """
         return pulumi.get(self, "auxiliary_services_config")
@@ -3493,7 +3436,6 @@ class ClusterVirtualClusterConfig(dict):
         """
         The configuration for running the Dataproc cluster on Kubernetes.
         Structure defined below.
-        - - -
         """
         return pulumi.get(self, "kubernetes_cluster_config")
 
@@ -3621,7 +3563,6 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
                  dataproc_cluster: Optional[str] = None):
         """
         :param str dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-               - - -
         """
         if dataproc_cluster is not None:
             pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
@@ -3631,7 +3572,6 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
     def dataproc_cluster(self) -> Optional[str]:
         """
         Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-        - - -
         """
         return pulumi.get(self, "dataproc_cluster")
 
@@ -3666,7 +3606,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
         """
         :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs' gke_cluster_config: The configuration for running the Dataproc cluster on GKE.
         :param 'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs' kubernetes_software_config: The software configuration for this Dataproc cluster running on Kubernetes.
-        :param str kubernetes_namespace: A namespace within the Kubernetes cluster to deploy into. 
+        :param str kubernetes_namespace: A namespace within the Kubernetes cluster to deploy into.
                If this namespace does not exist, it is created.
                If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
                If not specified, the name of the Dataproc Cluster is used.
@@ -3696,7 +3636,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig(dict):
     @pulumi.getter(name="kubernetesNamespace")
     def kubernetes_namespace(self) -> Optional[str]:
         """
-        A namespace within the Kubernetes cluster to deploy into. 
+        A namespace within the Kubernetes cluster to deploy into.
         If this namespace does not exist, it is created.
         If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
         If not specified, the name of the Dataproc Cluster is used.
@@ -3729,9 +3669,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
                  gke_cluster_target: Optional[str] = None,
                  node_pool_targets: Optional[Sequence['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget']] = None):
         """
-        :param str gke_cluster_target: A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+        :param str gke_cluster_target: A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
                (the GKE cluster can be zonal or regional)
-        :param Sequence['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs'] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+        :param Sequence['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs'] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
                GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
                Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         """
@@ -3744,7 +3684,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
     @pulumi.getter(name="gkeClusterTarget")
     def gke_cluster_target(self) -> Optional[str]:
         """
-        A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
+        A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
         (the GKE cluster can be zonal or regional)
         """
         return pulumi.get(self, "gke_cluster_target")
@@ -3753,7 +3693,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig(dict):
     @pulumi.getter(name="nodePoolTargets")
     def node_pool_targets(self) -> Optional[Sequence['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget']]:
         """
-        GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+        GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
         GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
         Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         """
@@ -3787,9 +3727,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
                  node_pool_config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig'] = None):
         """
         :param str node_pool: The target GKE node pool.
-        :param Sequence[str] roles: The roles associated with the GKE node pool. 
+        :param Sequence[str] roles: The roles associated with the GKE node pool.
                One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs' node_pool_config: The configuration for the GKE node pool. 
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs' node_pool_config: The configuration for the GKE node pool.
                If specified, Dataproc attempts to create a node pool with the specified shape.
                If one with the same name already exists, it is verified against all specified fields.
                If a field differs, the virtual cluster creation will fail.
@@ -3811,7 +3751,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def roles(self) -> Sequence[str]:
         """
-        The roles associated with the GKE node pool. 
+        The roles associated with the GKE node pool.
         One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
         """
         return pulumi.get(self, "roles")
@@ -3820,7 +3760,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="nodePoolConfig")
     def node_pool_config(self) -> Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig']:
         """
-        The configuration for the GKE node pool. 
+        The configuration for the GKE node pool.
         If specified, Dataproc attempts to create a node pool with the specified shape.
         If one with the same name already exists, it is verified against all specified fields.
         If a field differs, the virtual cluster creation will fail.
@@ -3835,10 +3775,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
                  autoscaling: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling'] = None,
                  config: Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig'] = None):
         """
-        :param Sequence[str] locations: The list of Compute Engine zones where node pool nodes associated 
+        :param Sequence[str] locations: The list of Compute Engine zones where node pool nodes associated
                with a Dataproc on GKE virtual cluster will be located.
-               - - -
-        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs' autoscaling: The autoscaler configuration for this node pool. 
+        :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs' autoscaling: The autoscaler configuration for this node pool.
                The autoscaler is enabled only when a valid configuration is present.
         :param 'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs' config: The node pool configuration.
         """
@@ -3852,9 +3791,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def locations(self) -> Sequence[str]:
         """
-        The list of Compute Engine zones where node pool nodes associated 
+        The list of Compute Engine zones where node pool nodes associated
         with a Dataproc on GKE virtual cluster will be located.
-        - - -
         """
         return pulumi.get(self, "locations")
 
@@ -3862,7 +3800,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def autoscaling(self) -> Optional['outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling']:
         """
-        The autoscaler configuration for this node pool. 
+        The autoscaler configuration for this node pool.
         The autoscaler is enabled only when a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
@@ -3956,13 +3894,13 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
                  preemptible: Optional[bool] = None,
                  spot: Optional[bool] = None):
         """
-        :param int local_ssd_count: The number of local SSD disks to attach to the node, 
+        :param int local_ssd_count: The number of local SSD disks to attach to the node,
                which is limited by the maximum number of disks allowable per zone.
         :param str machine_type: The name of a Compute Engine machine type.
-        :param str min_cpu_platform: Minimum CPU platform to be used by this instance. 
+        :param str min_cpu_platform: Minimum CPU platform to be used by this instance.
                The instance may be scheduled on the specified or a newer CPU platform.
                Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
-        :param bool preemptible: Whether the nodes are created as preemptible VM instances. 
+        :param bool preemptible: Whether the nodes are created as preemptible VM instances.
                Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
                CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         :param bool spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
@@ -3982,7 +3920,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[int]:
         """
-        The number of local SSD disks to attach to the node, 
+        The number of local SSD disks to attach to the node,
         which is limited by the maximum number of disks allowable per zone.
         """
         return pulumi.get(self, "local_ssd_count")
@@ -3999,7 +3937,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Minimum CPU platform to be used by this instance. 
+        Minimum CPU platform to be used by this instance.
         The instance may be scheduled on the specified or a newer CPU platform.
         Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
         """
@@ -4009,7 +3947,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     @pulumi.getter
     def preemptible(self) -> Optional[bool]:
         """
-        Whether the nodes are created as preemptible VM instances. 
+        Whether the nodes are created as preemptible VM instances.
         Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
         CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         """
@@ -4047,10 +3985,9 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
                  component_version: Mapping[str, str],
                  properties: Optional[Mapping[str, str]] = None):
         """
-        :param Mapping[str, str] component_version: The components that should be installed in this Dataproc cluster. The key must be a string from the   
-               KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+        :param Mapping[str, str] component_version: The components that should be installed in this Dataproc cluster. The key must be a string from theKubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
                * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
-        :param Mapping[str, str] properties: The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+        :param Mapping[str, str] properties: The properties to set on daemon config files. Property keys are specified in prefix:property format,
                for example spark:spark.kubernetes.container.image.
         """
         pulumi.set(__self__, "component_version", component_version)
@@ -4061,8 +3998,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
     @pulumi.getter(name="componentVersion")
     def component_version(self) -> Mapping[str, str]:
         """
-        The components that should be installed in this Dataproc cluster. The key must be a string from the   
-        KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+        The components that should be installed in this Dataproc cluster. The key must be a string from theKubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
         * **NOTE** : `component_version[SPARK]` is mandatory to set, or the creation of the cluster will fail.
         """
         return pulumi.get(self, "component_version")
@@ -4071,7 +4007,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        The properties to set on daemon config files. Property keys are specified in prefix:property format, 
+        The properties to set on daemon config files. Property keys are specified in prefix:property format,
         for example spark:spark.kubernetes.container.image.
         """
         return pulumi.get(self, "properties")
@@ -5449,8 +5385,6 @@ class MetastoreFederationBackendMetastore(dict):
         """
         :param str metastore_type: The type of the backend metastore.
                Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-               
-               - - -
         :param str name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         :param str rank: The identifier for this object. Format specified above.
         """
@@ -5464,8 +5398,6 @@ class MetastoreFederationBackendMetastore(dict):
         """
         The type of the backend metastore.
         Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-
-        - - -
         """
         return pulumi.get(self, "metastore_type")
 
@@ -6303,9 +6235,9 @@ class MetastoreServiceScheduledBackup(dict):
                  time_zone: Optional[str] = None):
         """
         :param str backup_location: A Cloud Storage URI of a folder, in the format gs://<bucket_name>/<path_inside_bucket>. A sub-folder <backup_folder> containing backup files will be stored below it.
-        :param str cron_schedule: The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        :param str cron_schedule: The scheduled interval in Cron format, see <https://en.wikipedia.org/wiki/Cron> The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
         :param bool enabled: Defines whether the scheduled backup is enabled. The default value is false.
-        :param str time_zone: Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        :param str time_zone: Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
         """
         pulumi.set(__self__, "backup_location", backup_location)
         if cron_schedule is not None:
@@ -6327,7 +6259,7 @@ class MetastoreServiceScheduledBackup(dict):
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> Optional[str]:
         """
-        The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        The scheduled interval in Cron format, see <https://en.wikipedia.org/wiki/Cron> The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -6343,7 +6275,7 @@ class MetastoreServiceScheduledBackup(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[str]:
         """
-        Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
         """
         return pulumi.get(self, "time_zone")
 
@@ -7075,7 +7007,7 @@ class WorkflowTemplateJobPrestoJob(dict):
         :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         :param 'WorkflowTemplateJobPrestoJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
         :param str output_format: The format in which query output will be displayed. See the Presto documentation for supported output formats
-        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto (<https://prestodb.io/docs/current/sql/set-session.html>) Equivalent to using the --session flag in the Presto CLI
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
         :param 'WorkflowTemplateJobPrestoJobQueryListArgs' query_list: A list of queries.
         """
@@ -7130,7 +7062,7 @@ class WorkflowTemplateJobPrestoJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        A mapping of property names to values. Used to set Presto (<https://prestodb.io/docs/current/sql/set-session.html>) Equivalent to using the --session flag in the Presto CLI
         """
         return pulumi.get(self, "properties")
 
@@ -8232,11 +8164,9 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
         :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
         :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs' security_config: Security settings for the cluster.
         :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
-        :param str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        :param str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket))>.
         :param str temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
         :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster.
-               
-               - - -
         """
         if autoscaling_config is not None:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
@@ -8369,7 +8299,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="stagingBucket")
     def staging_bucket(self) -> Optional[str]:
         """
-        A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket))>.
         """
         return pulumi.get(self, "staging_bucket")
 
@@ -8386,8 +8316,6 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     def worker_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig']:
         """
         The Compute Engine config settings for additional worker instances in a cluster.
-
-        - - -
         """
         return pulumi.get(self, "worker_config")
 
@@ -8543,16 +8471,16 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
                  zone: Optional[str] = None):
         """
         :param bool internal_ip_only: If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
-        :param Mapping[str, str] metadata: The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-        :param str network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+        :param Mapping[str, str] metadata: The Compute Engine metadata entries to add to all instances (see (<https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))>.
+        :param str network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
         :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param str private_ipv6_google_access: The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
         :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming Zonal reservation.
-        :param str service_account: The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-        :param Sequence[str] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        :param str service_account: The (<https://cloud.google.com/compute/docs/access/service-accounts#default_service_account>) is used.
+        :param Sequence[str] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * <https://www.googleapis.com/auth/cloud.useraccounts.readonly> * <https://www.googleapis.com/auth/devstorage.read_write> * <https://www.googleapis.com/auth/logging.write> If no scopes are specified, the following defaults are also provided: * <https://www.googleapis.com/auth/bigquery> * <https://www.googleapis.com/auth/bigtable.admin.table> * <https://www.googleapis.com/auth/bigtable.data> * <https://www.googleapis.com/auth/devstorage.full_control>
         :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         :param str subnetwork: The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
-        :param Sequence[str] tags: The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        :param Sequence[str] tags: The Compute Engine tags to add to all instances (see (<https://cloud.google.com/compute/docs/label-or-tag-resources#tags))>.
         :param str zone: The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
         """
         if internal_ip_only is not None:
@@ -8592,7 +8520,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        The Compute Engine metadata entries to add to all instances (see (<https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))>.
         """
         return pulumi.get(self, "metadata")
 
@@ -8600,7 +8528,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+        The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
         """
         return pulumi.get(self, "network")
 
@@ -8632,7 +8560,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[str]:
         """
-        The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        The (<https://cloud.google.com/compute/docs/access/service-accounts#default_service_account>) is used.
         """
         return pulumi.get(self, "service_account")
 
@@ -8640,7 +8568,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="serviceAccountScopes")
     def service_account_scopes(self) -> Optional[Sequence[str]]:
         """
-        The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * <https://www.googleapis.com/auth/cloud.useraccounts.readonly> * <https://www.googleapis.com/auth/devstorage.read_write> * <https://www.googleapis.com/auth/logging.write> If no scopes are specified, the following defaults are also provided: * <https://www.googleapis.com/auth/bigquery> * <https://www.googleapis.com/auth/bigtable.admin.table> * <https://www.googleapis.com/auth/bigtable.data> * <https://www.googleapis.com/auth/devstorage.full_control>
         """
         return pulumi.get(self, "service_account_scopes")
 
@@ -8664,7 +8592,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        The Compute Engine tags to add to all instances (see (<https://cloud.google.com/compute/docs/label-or-tag-resources#tags))>.
         """
         return pulumi.get(self, "tags")
 
@@ -8699,7 +8627,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
     def __init__(__self__, *,
                  node_group: str):
         """
-        :param str node_group: Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
+        :param str node_group: Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
         """
         pulumi.set(__self__, "node_group", node_group)
 
@@ -8707,7 +8635,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
     @pulumi.getter(name="nodeGroup")
     def node_group(self) -> str:
         """
-        Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
+        Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1`*`node-group-1`
         """
         return pulumi.get(self, "node_group")
 
@@ -8948,7 +8876,7 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
                  execution_timeout: Optional[str] = None):
         """
         :param str executable_file: Required. Cloud Storage URI of executable file.
-        :param str execution_timeout: Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+        :param str execution_timeout: Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>. Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
         if executable_file is not None:
             pulumi.set(__self__, "executable_file", executable_file)
@@ -8967,7 +8895,7 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
     @pulumi.getter(name="executionTimeout")
     def execution_timeout(self) -> Optional[str]:
         """
-        Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+        Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>. Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
         return pulumi.get(self, "execution_timeout")
 
@@ -9003,10 +8931,10 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
                  idle_delete_ttl: Optional[str] = None,
                  idle_start_time: Optional[str] = None):
         """
-        :param str auto_delete_time: The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param str auto_delete_ttl: The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param str idle_delete_ttl: The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
-        :param str idle_start_time: Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        :param str auto_delete_time: The time when cluster will be auto-deleted (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
+        :param str auto_delete_ttl: The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
+        :param str idle_delete_ttl: The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json)>.
+        :param str idle_start_time: Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
         """
         if auto_delete_time is not None:
             pulumi.set(__self__, "auto_delete_time", auto_delete_time)
@@ -9021,7 +8949,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="autoDeleteTime")
     def auto_delete_time(self) -> Optional[str]:
         """
-        The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        The time when cluster will be auto-deleted (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
         """
         return pulumi.get(self, "auto_delete_time")
 
@@ -9029,7 +8957,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="autoDeleteTtl")
     def auto_delete_ttl(self) -> Optional[str]:
         """
-        The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
         """
         return pulumi.get(self, "auto_delete_ttl")
 
@@ -9037,7 +8965,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="idleDeleteTtl")
     def idle_delete_ttl(self) -> Optional[str]:
         """
-        The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json)>.
         """
         return pulumi.get(self, "idle_delete_ttl")
 
@@ -9045,7 +8973,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="idleStartTime")
     def idle_start_time(self) -> Optional[str]:
         """
-        Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (<https://developers.google.com/protocol-buffers/docs/proto3#json))>.
         """
         return pulumi.get(self, "idle_start_time")
 
@@ -9100,7 +9028,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (<https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)>.
         :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
@@ -9185,7 +9113,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        Specifies the minimum cpu platform for the Instance Group. See (<https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)>.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -9232,7 +9160,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict)
                  accelerator_type: Optional[str] = None):
         """
         :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance.
-        :param str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        :param str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -9251,7 +9179,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(dict)
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[str]:
         """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -9286,7 +9214,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
         """
         :param int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
         :param str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -9315,7 +9243,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -9587,7 +9515,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
                  accelerator_type: Optional[str] = None):
         """
         :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance.
-        :param str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        :param str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -9606,7 +9534,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[str]:
         """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -9641,7 +9569,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
         """
         :param int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
         :param str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -9670,7 +9598,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -10029,7 +9957,6 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
                * spark: `spark-defaults.conf`
                * yarn: `yarn-site.xml`
                
-               
                For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         if image_version is not None:
@@ -10072,7 +9999,6 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
         * pig: `pig.properties`
         * spark: `spark-defaults.conf`
         * yarn: `yarn-site.xml`
-
 
         For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
@@ -10261,7 +10187,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict)
                  accelerator_type: Optional[str] = None):
         """
         :param int accelerator_count: The number of the accelerator cards of this type exposed to this instance.
-        :param str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        :param str accelerator_type: Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
@@ -10280,7 +10206,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator(dict)
     @pulumi.getter(name="acceleratorType")
     def accelerator_type(self) -> Optional[str]:
         """
-        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (<https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement>) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -10315,7 +10241,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
         """
         :param int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
         :param str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -10344,7 +10270,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (<https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html>) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 

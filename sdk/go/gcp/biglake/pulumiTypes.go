@@ -19,8 +19,6 @@ type DatabaseHiveOptions struct {
 	// Stores user supplied Hive database parameters. An object containing a
 	// list of"key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// ***
 	Parameters map[string]string `pulumi:"parameters"`
 }
 
@@ -41,8 +39,6 @@ type DatabaseHiveOptionsArgs struct {
 	// Stores user supplied Hive database parameters. An object containing a
 	// list of"key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	//
-	// ***
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 }
 
@@ -131,8 +127,6 @@ func (o DatabaseHiveOptionsOutput) LocationUri() pulumi.StringPtrOutput {
 // Stores user supplied Hive database parameters. An object containing a
 // list of"key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-//
-// ***
 func (o DatabaseHiveOptionsOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DatabaseHiveOptions) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -174,8 +168,6 @@ func (o DatabaseHiveOptionsPtrOutput) LocationUri() pulumi.StringPtrOutput {
 // Stores user supplied Hive database parameters. An object containing a
 // list of"key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-//
-// ***
 func (o DatabaseHiveOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DatabaseHiveOptions) map[string]string {
 		if v == nil {

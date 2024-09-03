@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// The port number.
-        /// - - -
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;

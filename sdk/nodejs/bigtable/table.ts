@@ -106,8 +106,6 @@ export class Table extends pulumi.CustomResource {
 
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-     *
-     * -----
      */
     public readonly automatedBackupPolicy!: pulumi.Output<outputs.bigtable.TableAutomatedBackupPolicy | undefined>;
     /**
@@ -188,8 +186,6 @@ export class Table extends pulumi.CustomResource {
 export interface TableState {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-     *
-     * -----
      */
     automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy>;
     /**
@@ -231,8 +227,6 @@ export interface TableState {
 export interface TableArgs {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-     *
-     * -----
      */
     automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy>;
     /**

@@ -14,6 +14,33 @@ import (
 // Get info about a Region Google Compute SSL Certificate from its name.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myCert, err := compute.LookupRegionSslCertificate(ctx, &compute.LookupRegionSslCertificateArgs{
+//				Name: "my-cert",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("certificate", myCert.Certificate)
+//			ctx.Export("certificateId", myCert.CertificateId)
+//			ctx.Export("selfLink", myCert.SelfLink)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertificateArgs, opts ...pulumi.InvokeOption) (*LookupRegionSslCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionSslCertificateResult
@@ -27,8 +54,6 @@ func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertif
 // A collection of arguments for invoking getRegionSslCertificate.
 type LookupRegionSslCertificateArgs struct {
 	// The name of the certificate.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -71,8 +96,6 @@ func LookupRegionSslCertificateOutput(ctx *pulumi.Context, args LookupRegionSslC
 // A collection of arguments for invoking getRegionSslCertificate.
 type LookupRegionSslCertificateOutputArgs struct {
 	// The name of the certificate.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

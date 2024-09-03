@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.streams)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
+ *   * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
  *
- * ## Example Usage
- *
- * ### Datastream Stream Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -201,6 +199,9 @@ import * as utilities from "../utilities";
  *     dependsOn: [keyUser],
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Datastream Stream Postgresql
  *
  * ```typescript
@@ -286,6 +287,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Stream Oracle
  *
  * ```typescript
@@ -371,6 +373,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Stream Sql Server
  *
  * ```typescript
@@ -466,7 +469,7 @@ import * as utilities from "../utilities";
  *     backfillNone: {},
  * });
  * ```
- * ### Datastream Stream Postgresql Bigquery Dataset Id
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -561,7 +564,7 @@ import * as utilities from "../utilities";
  *     name: "db",
  * });
  * ```
- * ### Datastream Stream Bigquery
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -661,7 +664,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [bigqueryKeyUser],
  * });
  * ```
- * ### Datastream Stream Bigquery Append Only
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

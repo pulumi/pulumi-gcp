@@ -45,8 +45,8 @@ namespace Pulumi.Gcp.Dataflow.Inputs
         public Input<bool>? EnableStreamingEngine { get; set; }
 
         /// <summary>
-        /// Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+        /// Set FlexRS goal for the job. &lt;https://cloud.google.com/dataflow/docs/guides/flexrs&gt;
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal&gt;
         /// Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
         /// </summary>
         [Input("flexrsGoal")]
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Dataflow.Inputs
 
         /// <summary>
         /// Configuration for VM IPs.
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration&gt;
         /// Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         /// </summary>
         [Input("ipConfiguration")]
@@ -109,13 +109,13 @@ namespace Pulumi.Gcp.Dataflow.Inputs
         public Input<string>? TempLocation { get; set; }
 
         /// <summary>
-        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        /// The Compute Engine region (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
         /// </summary>
         [Input("workerRegion")]
         public Input<string>? WorkerRegion { get; set; }
 
         /// <summary>
-        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        /// The Compute Engine zone (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         /// </summary>
         [Input("workerZone")]
         public Input<string>? WorkerZone { get; set; }

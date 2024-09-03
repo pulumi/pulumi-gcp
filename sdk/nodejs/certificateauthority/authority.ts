@@ -14,15 +14,13 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+ *   * [Official Documentation](https://cloud.google.com/certificate-authority-service)
  *
  * > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
  * (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
  * It is recommended to not set this field (or set it to true) until you're ready to destroy.
  *
- * ## Example Usage
- *
- * ### Privateca Certificate Authority Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Privateca Certificate Authority Subordinate
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -168,6 +166,9 @@ import * as utilities from "../utilities";
  *     type: "SUBORDINATE",
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Privateca Certificate Authority Byo Key
  *
  * ```typescript
@@ -234,7 +235,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Privateca Certificate Authority Custom Ski
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

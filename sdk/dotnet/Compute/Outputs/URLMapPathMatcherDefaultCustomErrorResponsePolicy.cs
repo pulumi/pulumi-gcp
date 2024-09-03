@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRule> ErrorResponseRules;
         /// <summary>
         /// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        /// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        /// &lt;https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket&gt;
         /// compute/v1/projects/project/global/backendBuckets/myBackendBucket
         /// global/backendBuckets/myBackendBucket
         /// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.

@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Vmware Engine Cluster Full
  *
  * ```typescript
@@ -139,9 +140,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly management!: pulumi.Output<boolean>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -152,7 +150,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly nodeTypeConfigs!: pulumi.Output<outputs.vmwareengine.ClusterNodeTypeConfig[] | undefined>;
     /**
      * The resource name of the private cloud to create a new cluster in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     public readonly parent!: pulumi.Output<string>;
@@ -212,9 +210,6 @@ export interface ClusterState {
     management?: pulumi.Input<boolean>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -225,7 +220,7 @@ export interface ClusterState {
     nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterNodeTypeConfig>[]>;
     /**
      * The resource name of the private cloud to create a new cluster in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     parent?: pulumi.Input<string>;
@@ -245,9 +240,6 @@ export interface ClusterState {
 export interface ClusterArgs {
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -258,7 +250,7 @@ export interface ClusterArgs {
     nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterNodeTypeConfig>[]>;
     /**
      * The resource name of the private cloud to create a new cluster in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     parent: pulumi.Input<string>;

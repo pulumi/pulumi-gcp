@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+ *   * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
  *
- * ## Example Usage
- *
- * ### Bigquery Datapolicy Data Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +39,7 @@ import * as utilities from "../utilities";
  *     dataPolicyType: "COLUMN_LEVEL_SECURITY_POLICY",
  * });
  * ```
- * ### Bigquery Datapolicy Data Policy Routine
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -150,9 +148,6 @@ export class DataPolicy extends pulumi.CustomResource {
     /**
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-     *
-     *
-     * - - -
      */
     public readonly dataPolicyType!: pulumi.Output<string>;
     /**
@@ -236,9 +231,6 @@ export interface DataPolicyState {
     /**
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-     *
-     *
-     * - - -
      */
     dataPolicyType?: pulumi.Input<string>;
     /**
@@ -276,9 +268,6 @@ export interface DataPolicyArgs {
     /**
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-     *
-     *
-     * - - -
      */
     dataPolicyType: pulumi.Input<string>;
     /**

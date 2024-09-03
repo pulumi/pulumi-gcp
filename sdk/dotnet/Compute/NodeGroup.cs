@@ -16,16 +16,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
     /// * How-to Guides
-    ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+    ///   * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
     /// 
     /// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
     /// number of nodes in a node group and changes to node group size either
     /// through provider config or through external changes will cause
     /// the provider to delete and recreate the node group.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Node Group Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Node Group Maintenance Interval
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -82,7 +80,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Node Group Autoscaling Policy
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -121,6 +119,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Node Group Share Settings
     /// 
     /// ```csharp
@@ -259,9 +260,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("nodeTemplate")]
         public Output<string> NodeTemplate { get; private set; } = null!;
@@ -395,9 +393,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("nodeTemplate", required: true)]
         public Input<string> NodeTemplate { get; set; } = null!;
@@ -487,9 +482,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("nodeTemplate")]
         public Input<string>? NodeTemplate { get; set; }

@@ -118,7 +118,7 @@ public final class ExternalAccessRuleArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      * 
      */
@@ -127,7 +127,7 @@ public final class ExternalAccessRuleArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      * 
      */
@@ -373,7 +373,7 @@ public final class ExternalAccessRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param parent The resource name of the network policy.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
          * 
          * @return builder
@@ -386,7 +386,7 @@ public final class ExternalAccessRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param parent The resource name of the network policy.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
          * 
          * @return builder

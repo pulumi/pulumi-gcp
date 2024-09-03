@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureGroups.features)
  * * How-to Guides
- *     * [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
+ *   * [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
  *
- * ## Example Usage
- *
- * ### Vertex Ai Feature Group Feature
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -171,9 +169,6 @@ export class AiFeatureGroupFeature extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The region for the resource. It should be the same as the feature group's region.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -278,9 +273,6 @@ export interface AiFeatureGroupFeatureState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region for the resource. It should be the same as the feature group's region.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -322,9 +314,6 @@ export interface AiFeatureGroupFeatureArgs {
     project?: pulumi.Input<string>;
     /**
      * The region for the resource. It should be the same as the feature group's region.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
     /**

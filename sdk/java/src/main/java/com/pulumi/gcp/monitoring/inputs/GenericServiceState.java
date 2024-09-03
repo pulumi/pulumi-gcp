@@ -22,7 +22,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
      * Structure is documented below.
      * 
      */
@@ -32,7 +32,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * @return A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
      * Structure is documented below.
      * 
      */
@@ -93,8 +93,6 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
@@ -102,8 +100,6 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * @return An optional service ID to use. If not given, the server will generate a
      * service ID.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -185,7 +181,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param basicService A well-known service type, defined by its service type and service labels.
          * Valid values of service types and services labels are described at
-         * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+         * &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -199,7 +195,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param basicService A well-known service type, defined by its service type and service labels.
          * Valid values of service types and services labels are described at
-         * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+         * &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -280,8 +276,6 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
          * @param serviceId An optional service ID to use. If not given, the server will generate a
          * service ID.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -293,8 +287,6 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param serviceId An optional service ID to use. If not given, the server will generate a
          * service ID.
-         * 
-         * ***
          * 
          * @return builder
          * 

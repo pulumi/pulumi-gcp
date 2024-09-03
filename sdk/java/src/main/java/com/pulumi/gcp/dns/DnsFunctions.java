@@ -943,6 +943,46 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("sample-zone")
+     *             .build());
+     * 
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRecordSetResult> getRecordSet(GetRecordSetArgs args) {
         return getRecordSet(args, InvokeOptions.Empty);
@@ -955,6 +995,46 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("sample-zone")
+     *             .build());
+     * 
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordSetResult> getRecordSetPlain(GetRecordSetPlainArgs args) {
@@ -969,6 +1049,46 @@ public final class DnsFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("sample-zone")
+     *             .build());
+     * 
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRecordSetResult> getRecordSet(GetRecordSetArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:dns/getRecordSet:getRecordSet", TypeShape.of(GetRecordSetResult.class), args, Utilities.withVersion(options));
@@ -981,6 +1101,46 @@ public final class DnsFunctions {
      * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+     * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sample = DnsFunctions.getManagedZone(GetManagedZoneArgs.builder()
+     *             .name("sample-zone")
+     *             .build());
+     * 
+     *         final var rs = DnsFunctions.getRecordSet(GetRecordSetArgs.builder()
+     *             .managedZone(sample.applyValue(getManagedZoneResult -> getManagedZoneResult.name()))
+     *             .name(String.format("my-record.%s", sample.applyValue(getManagedZoneResult -> getManagedZoneResult.dnsName())))
+     *             .type("A")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordSetResult> getRecordSetPlain(GetRecordSetPlainArgs args, InvokeOptions options) {

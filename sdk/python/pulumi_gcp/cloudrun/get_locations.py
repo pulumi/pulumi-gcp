@@ -79,7 +79,7 @@ def get_locations(project: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/run/docs/)
+      * [Official Documentation](https://cloud.google.com/run/docs/)
 
     ## Example Usage
 
@@ -115,7 +115,7 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/run/docs/)
+      * [Official Documentation](https://cloud.google.com/run/docs/)
 
     ## Example Usage
 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1/billingAccounts.budgets)
     /// * How-to Guides
-    ///     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+    ///   * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Lastperiod
     /// 
     /// ```csharp
@@ -107,6 +108,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Filter
     /// 
     /// ```csharp
@@ -173,6 +175,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Notify
     /// 
     /// ```csharp
@@ -243,6 +246,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Notify Project Recipient
     /// 
     /// ```csharp
@@ -288,6 +292,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// });
     /// ```
+    /// 
     /// ### Billing Budget Customperiod
     /// 
     /// ```csharp

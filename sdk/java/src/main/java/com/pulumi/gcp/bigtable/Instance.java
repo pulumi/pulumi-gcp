@@ -19,11 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## +---
- * 
+ * +---
  * subcategory: &#34;Cloud Bigtable&#34;
  * description: |-
- *   Creates a Google Bigtable instance.
+ * Creates a Google Bigtable instance.
  * ---
  * 
  * # gcp.bigtable.Instance
@@ -32,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
+ *   * [Official Documentation](https://cloud.google.com/bigtable/docs)
  * 
  * ## Example Usage
  * 
@@ -165,8 +164,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      * 
-     * ***
-     * 
      */
     @Export(name="clusters", refs={List.class,InstanceCluster.class}, tree="[0,1]")
     private Output<List<InstanceCluster>> clusters;
@@ -175,8 +172,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     * 
-     * ***
      * 
      */
     public Output<List<InstanceCluster>> clusters() {
@@ -215,16 +210,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
-     * ***
-     * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {
@@ -271,7 +262,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceType);
     }
     /**
-     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -281,7 +272,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.

@@ -17,16 +17,12 @@ public final class AwsNodePoolMaxPodsConstraintArgs extends com.pulumi.resources
     /**
      * The maximum number of pods to schedule on a single node.
      * 
-     * ***
-     * 
      */
     @Import(name="maxPodsPerNode", required=true)
     private Output<Integer> maxPodsPerNode;
 
     /**
      * @return The maximum number of pods to schedule on a single node.
-     * 
-     * ***
      * 
      */
     public Output<Integer> maxPodsPerNode() {
@@ -60,8 +56,6 @@ public final class AwsNodePoolMaxPodsConstraintArgs extends com.pulumi.resources
         /**
          * @param maxPodsPerNode The maximum number of pods to schedule on a single node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class AwsNodePoolMaxPodsConstraintArgs extends com.pulumi.resources
 
         /**
          * @param maxPodsPerNode The maximum number of pods to schedule on a single node.
-         * 
-         * ***
          * 
          * @return builder
          * 

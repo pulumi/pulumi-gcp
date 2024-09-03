@@ -44,8 +44,6 @@ namespace Pulumi.Gcp.Folder.Inputs
         /// The enrollment level of the service.
         /// Default value is `BLOCK_ALL`.
         /// Possible values are: `BLOCK_ALL`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("enrollmentLevel")]
         public Input<string>? EnrollmentLevel { get; set; }

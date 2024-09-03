@@ -13,16 +13,12 @@ public final class SecretReplicationAutoCustomerManagedEncryption {
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect destination secret.
      * 
-     * ***
-     * 
      */
     private String kmsKeyName;
 
     private SecretReplicationAutoCustomerManagedEncryption() {}
     /**
      * @return Describes the Cloud KMS encryption key that will be used to protect destination secret.
-     * 
-     * ***
      * 
      */
     public String kmsKeyName() {

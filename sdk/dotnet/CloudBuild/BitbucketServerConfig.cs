@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.bitbucketServerConfigs)
     /// * How-to Guides
-    ///     * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
+    ///   * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Cloudbuild Bitbucket Server Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -47,6 +45,9 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Cloudbuild Bitbucket Server Config Repositories
     /// 
     /// ```csharp
@@ -87,7 +88,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
-    /// ### Cloudbuild Bitbucket Server Config Peered Network
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

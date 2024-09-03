@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
+ *   * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true

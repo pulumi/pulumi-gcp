@@ -28,8 +28,6 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         public readonly double? DoubleValue;
         /// <summary>
         /// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? EnumValue;
         /// <summary>

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/build/docs)
 //
-// ## Example Usage
-//
-// ### Cloudbuildv2 Connection
+// ##
 //
 // ```go
 // package main
@@ -54,6 +52,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Cloudbuildv2 Connection Ghe
 //
 // ```go
@@ -159,6 +160,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloudbuildv2 Connection Github
 //
 // ```go
@@ -299,8 +301,6 @@ type Connection struct {
 	// Structure is documented below.
 	InstallationStates ConnectionInstallationStateArrayOutput `pulumi:"installationStates"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -376,8 +376,6 @@ type connectionState struct {
 	// Structure is documented below.
 	InstallationStates []ConnectionInstallationState `pulumi:"installationStates"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Immutable. The resource name of the connection.
 	Name *string `pulumi:"name"`
@@ -421,8 +419,6 @@ type ConnectionState struct {
 	// Structure is documented below.
 	InstallationStates ConnectionInstallationStateArrayInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Immutable. The resource name of the connection.
 	Name pulumi.StringPtrInput
@@ -462,8 +458,6 @@ type connectionArgs struct {
 	// Structure is documented below.
 	GitlabConfig *ConnectionGitlabConfig `pulumi:"gitlabConfig"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Immutable. The resource name of the connection.
 	Name *string `pulumi:"name"`
@@ -496,8 +490,6 @@ type ConnectionArgs struct {
 	// Structure is documented below.
 	GitlabConfig ConnectionGitlabConfigPtrInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// Immutable. The resource name of the connection.
 	Name pulumi.StringPtrInput
@@ -656,8 +648,6 @@ func (o ConnectionOutput) InstallationStates() ConnectionInstallationStateArrayO
 }
 
 // The location for the resource
-//
-// ***
 func (o ConnectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

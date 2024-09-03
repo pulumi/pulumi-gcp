@@ -54,8 +54,6 @@ public final class GetWorkloadIdentityPoolProviderArgs extends com.pulumi.resour
      * The id of the provider which is the
      * final component of the resource name.
      * 
-     * ***
-     * 
      */
     @Import(name="workloadIdentityPoolProviderId", required=true)
     private Output<String> workloadIdentityPoolProviderId;
@@ -63,8 +61,6 @@ public final class GetWorkloadIdentityPoolProviderArgs extends com.pulumi.resour
     /**
      * @return The id of the provider which is the
      * final component of the resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadIdentityPoolProviderId() {
@@ -147,8 +143,6 @@ public final class GetWorkloadIdentityPoolProviderArgs extends com.pulumi.resour
          * @param workloadIdentityPoolProviderId The id of the provider which is the
          * final component of the resource name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -160,8 +154,6 @@ public final class GetWorkloadIdentityPoolProviderArgs extends com.pulumi.resour
         /**
          * @param workloadIdentityPoolProviderId The id of the provider which is the
          * final component of the resource name.
-         * 
-         * ***
          * 
          * @return builder
          * 

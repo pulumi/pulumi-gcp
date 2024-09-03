@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances/create)
  * * How-to Guides
- *     * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
+ *   * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
  * 
  * ## Example Usage
  * 
@@ -100,6 +100,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Instance Cidr Range
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -175,6 +176,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Instance Ip Range
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -250,6 +252,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -519,8 +522,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
@@ -528,8 +529,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> orgId() {

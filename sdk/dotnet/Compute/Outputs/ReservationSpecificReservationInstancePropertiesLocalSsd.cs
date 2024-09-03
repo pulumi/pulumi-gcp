@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// The size of the disk in base-2 GB.
-        /// 
-        /// - - -
         /// </summary>
         public readonly int DiskSizeGb;
         /// <summary>

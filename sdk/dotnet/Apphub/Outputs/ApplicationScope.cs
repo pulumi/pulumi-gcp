@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Apphub.Outputs
         /// Possible values:
         /// REGIONAL
         /// Possible values are: `REGIONAL`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Type;
 

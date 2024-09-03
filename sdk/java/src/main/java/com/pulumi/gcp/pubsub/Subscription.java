@@ -32,14 +32,12 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
  * * How-to Guides
- *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+ *   * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
  * 
  * &gt; **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
  * by using the `gcp.projects.ServiceIdentity` resource.
  * 
- * ## Example Usage
- * 
- * ### Pubsub Subscription Push
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -87,7 +85,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Pull
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,7 +139,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Dead Letter
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -191,7 +189,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Push Bq
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -288,7 +286,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Push Bq Table Schema
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -386,7 +384,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Push Bq Service Account
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -492,7 +490,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Push Cloudstorage
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -567,7 +565,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Push Cloudstorage Avro
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -646,7 +644,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Subscription Push Cloudstorage Service Account
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -846,7 +844,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -860,7 +858,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription&#39;s
      * parent project (i.e.,
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      * 
@@ -1131,8 +1129,6 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
      * 
-     * ***
-     * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
@@ -1141,8 +1137,6 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * @return A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {

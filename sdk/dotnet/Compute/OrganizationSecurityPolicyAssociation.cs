@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
     /// * How-to Guides
-    ///     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+    ///   * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
     /// 
     /// ## Example Usage
     /// 
@@ -122,9 +122,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The security policy ID of the association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
@@ -189,9 +186,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The security policy ID of the association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
@@ -224,9 +218,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The security policy ID of the association.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }

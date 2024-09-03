@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/billing/docs/reference/rest/v1/projects)
  * * How-to Guides
- *     * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
+ *   * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
  *
  * ## Example Usage
  *
@@ -82,9 +82,6 @@ export class ProjectInfo extends pulumi.CustomResource {
      * The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
-     *
-     *
-     * - - -
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
@@ -129,9 +126,6 @@ export interface ProjectInfoState {
      * The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
-     *
-     *
-     * - - -
      */
     billingAccount?: pulumi.Input<string>;
     /**
@@ -149,9 +143,6 @@ export interface ProjectInfoArgs {
      * The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
-     *
-     *
-     * - - -
      */
     billingAccount: pulumi.Input<string>;
     /**

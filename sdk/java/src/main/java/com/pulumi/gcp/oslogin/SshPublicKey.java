@@ -21,11 +21,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest/v1/users.sshPublicKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  * 
- * ## Example Usage
- * 
- * ### Os Login Ssh Key Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -146,16 +144,12 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
     /**
      * The user email.
      * 
-     * ***
-     * 
      */
     @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
      * @return The user email.
-     * 
-     * ***
      * 
      */
     public Output<String> user() {

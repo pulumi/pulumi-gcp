@@ -581,7 +581,7 @@ if not MYPY:
         database_version: NotRequired[pulumi.Input[str]]
         """
         The database engine type and version.
-        Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+        Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
         """
         edition: NotRequired[pulumi.Input[str]]
         """
@@ -610,7 +610,7 @@ if not MYPY:
         tier: NotRequired[pulumi.Input[str]]
         """
         The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-        For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+        For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
         """
         user_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -656,7 +656,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
                Possible values are: `PD_SSD`, `PD_HDD`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: The database flags passed to the Cloud SQL instance at startup.
         :param pulumi.Input[str] database_version: The database engine type and version.
-               Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+               Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
         :param pulumi.Input[str] edition: The edition of the given Cloud SQL instance.
                Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -667,7 +667,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
                Output only. Indicates If this connection profile root password is stored.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-               For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+               For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
         :param pulumi.Input[str] zone: The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
         """
@@ -809,7 +809,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
         The database engine type and version.
-        Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+        Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
         """
         return pulumi.get(self, "database_version")
 
@@ -886,7 +886,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-        For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+        For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
         """
         return pulumi.get(self, "tier")
 
@@ -2311,8 +2311,6 @@ if not MYPY:
         subnet: pulumi.Input[str]
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         vpc_name: pulumi.Input[str]
         """
@@ -2329,8 +2327,6 @@ class PrivateConnectionVpcPeeringConfigArgs:
                  vpc_name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29)
-               
-               - - -
         :param pulumi.Input[str] vpc_name: Fully qualified name of the VPC that Database Migration Service will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
@@ -2342,8 +2338,6 @@ class PrivateConnectionVpcPeeringConfigArgs:
     def subnet(self) -> pulumi.Input[str]:
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         return pulumi.get(self, "subnet")
 

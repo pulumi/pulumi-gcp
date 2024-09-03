@@ -57,8 +57,6 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
     /**
      * The location of the ServiceConnectionPolicy.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
@@ -66,22 +64,20 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
     /**
      * @return The location of the ServiceConnectionPolicy.
      * 
-     * ***
-     * 
      */
     public Output<String> location() {
         return this.location;
     }
 
     /**
-     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * @return The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
      * 
      */
     public Optional<Output<String>> name() {
@@ -236,8 +232,6 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
         /**
          * @param location The location of the ServiceConnectionPolicy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -249,8 +243,6 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
         /**
          * @param location The location of the ServiceConnectionPolicy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -259,7 +251,7 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+         * @param name The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
          * 
          * @return builder
          * 
@@ -270,7 +262,7 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+         * @param name The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
          * 
          * @return builder
          * 

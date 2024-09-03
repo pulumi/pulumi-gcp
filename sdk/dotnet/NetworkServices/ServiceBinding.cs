@@ -10,49 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Network Services Service Binding Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.ServiceDirectory.Namespace("default", new()
-    ///     {
-    ///         NamespaceId = "my-namespace",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var defaultService = new Gcp.ServiceDirectory.Service("default", new()
-    ///     {
-    ///         ServiceId = "my-service",
-    ///         Namespace = @default.Id,
-    ///         Metadata = 
-    ///         {
-    ///             { "stage", "prod" },
-    ///             { "region", "us-central1" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultServiceBinding = new Gcp.NetworkServices.ServiceBinding("default", new()
-    ///     {
-    ///         Name = "my-service-binding",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         Service = defaultService.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ServiceBinding can be imported using any of these accepted formats:
@@ -108,9 +65,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Name of the ServiceBinding resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -215,9 +169,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Name of the ServiceBinding resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -288,9 +239,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Name of the ServiceBinding resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

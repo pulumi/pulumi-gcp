@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Regional
+ * ### regional
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -86,10 +86,6 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
     public readonly firewallPolicy!: pulumi.Output<string>;
     /**
      * The name for an association.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -158,10 +154,6 @@ export interface RegionNetworkFirewallPolicyAssociationState {
     firewallPolicy?: pulumi.Input<string>;
     /**
      * The name for an association.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -192,10 +184,6 @@ export interface RegionNetworkFirewallPolicyAssociationArgs {
     firewallPolicy: pulumi.Input<string>;
     /**
      * The name for an association.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -10,45 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Composer User Workloads Config Map Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var environment = new Gcp.Composer.Environment("environment", new()
-    ///     {
-    ///         Name = "test-environment",
-    ///         Region = "us-central1",
-    ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-    ///         {
-    ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-    ///             {
-    ///                 ImageVersion = "composer-3-airflow-2",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var configMap = new Gcp.Composer.UserWorkloadsConfigMap("config_map", new()
-    ///     {
-    ///         Name = "test-config-map",
-    ///         Region = "us-central1",
-    ///         Environment = environment.Name,
-    ///         Data = 
-    ///         {
-    ///             { "api_host", "apihost:443" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// UserWorkloadsConfigMap can be imported using any of these accepted formats:
@@ -84,16 +45,13 @@ namespace Pulumi.Gcp.Composer
     {
         /// <summary>
         /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        /// For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
         /// </summary>
         [Output("data")]
         public Output<ImmutableDictionary<string, string>?> Data { get; private set; } = null!;
 
         /// <summary>
         /// Environment where the Kubernetes ConfigMap will be stored and used.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("environment")]
         public Output<string> Environment { get; private set; } = null!;
@@ -168,7 +126,7 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        /// For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
         /// </summary>
         public InputMap<string> Data
         {
@@ -178,9 +136,6 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// Environment where the Kubernetes ConfigMap will be stored and used.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("environment", required: true)]
         public Input<string> Environment { get; set; } = null!;
@@ -217,7 +172,7 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        /// For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
         /// </summary>
         public InputMap<string> Data
         {
@@ -227,9 +182,6 @@ namespace Pulumi.Gcp.Composer
 
         /// <summary>
         /// Environment where the Kubernetes ConfigMap will be stored and used.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

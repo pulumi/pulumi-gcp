@@ -297,6 +297,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Organization Access Approval Active Key Version
 
         ```python
@@ -402,6 +403,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Organization Access Approval Active Key Version
 
         ```python

@@ -127,14 +127,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
     }
 
     /**
-     * Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
      * 
      */
     @Import(name="minCpuPlatform")
     private @Nullable Output<String> minCpuPlatform;
 
     /**
-     * @return Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
      * 
      */
     public Optional<Output<String>> minCpuPlatform() {
@@ -382,7 +382,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param minCpuPlatform Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * @param minCpuPlatform Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param minCpuPlatform Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * @param minCpuPlatform Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
          * 
          * @return builder
          * 

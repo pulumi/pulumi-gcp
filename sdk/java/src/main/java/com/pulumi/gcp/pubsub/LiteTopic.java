@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
  * * How-to Guides
- *     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
+ *   * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
  * 
- * ## Example Usage
- * 
- * ### Pubsub Lite Topic Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -129,16 +127,12 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
     /**
      * Name of the topic.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the topic.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

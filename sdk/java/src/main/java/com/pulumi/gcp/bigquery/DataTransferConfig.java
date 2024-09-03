@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+ *   * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
  * 
  * ## Example Usage
  * 
@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquerydatatransfer Config Salesforce
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -328,10 +329,8 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
     /**
      * Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * &lt;https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq&gt;
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     * 
-     * ***
      * 
      */
     @Export(name="params", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -340,10 +339,8 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return Parameters specific to each data source. For more information see the bq tab in the &#39;Setting up a data transfer&#39;
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * &lt;https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq&gt;
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> params() {
@@ -372,7 +369,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
-     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+     * &lt;https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format&gt;
      * NOTE: The minimum interval time between recurring transfers depends
      * on the data source; refer to the documentation for your data source.
      * 
@@ -387,7 +384,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
      * jun 13:15, and first sunday of quarter 00:00. See more explanation
      * about the format here:
-     * https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+     * &lt;https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format&gt;
      * NOTE: The minimum interval time between recurring transfers depends
      * on the data source; refer to the documentation for your data source.
      * 

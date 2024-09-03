@@ -130,16 +130,12 @@ public final class InstanceGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The zone that this instance group should be created in.
      * 
-     * ***
-     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
      * @return The zone that this instance group should be created in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> zone() {
@@ -347,8 +343,6 @@ public final class InstanceGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param zone The zone that this instance group should be created in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -359,8 +353,6 @@ public final class InstanceGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zone The zone that this instance group should be created in.
-         * 
-         * ***
          * 
          * @return builder
          * 

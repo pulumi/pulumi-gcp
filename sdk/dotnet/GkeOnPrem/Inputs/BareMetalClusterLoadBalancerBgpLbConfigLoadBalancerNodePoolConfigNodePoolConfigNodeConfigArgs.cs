@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// version -- it's best to assume the behavior is undefined and
         /// conflicts should be avoided. For more information, including usage
         /// and the valid values, see:
-        /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        /// - &lt;http://kubernetes.io/v1.1/docs/user-guide/labels.html&gt;
         /// An object containing a list of "key": value pairs.
         /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// </summary>

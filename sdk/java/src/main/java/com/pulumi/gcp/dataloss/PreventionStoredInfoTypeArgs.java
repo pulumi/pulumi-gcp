@@ -90,8 +90,6 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
-     * ***
-     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
@@ -102,8 +100,6 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -271,8 +267,6 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -287,8 +281,6 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
          * * `projects/{{project}}/locations/{{location}}`
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 

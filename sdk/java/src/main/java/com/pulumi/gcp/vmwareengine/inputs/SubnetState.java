@@ -104,8 +104,6 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
      * The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -114,8 +112,6 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
      * @return The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
@@ -123,7 +119,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -132,7 +128,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -398,8 +394,6 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
          * @param name The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
          * where n ranges from 1 to 5.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -412,8 +406,6 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
          * @param name The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
          * where n ranges from 1 to 5.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -423,7 +415,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent The resource name of the private cloud to create a new subnet in.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
          * 
          * @return builder
@@ -436,7 +428,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent The resource name of the private cloud to create a new subnet in.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
          * 
          * @return builder

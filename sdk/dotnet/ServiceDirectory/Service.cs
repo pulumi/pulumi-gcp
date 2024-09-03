@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
     /// * How-to Guides
-    ///     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
+    ///   * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Service Directory Service Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -102,9 +100,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -179,9 +174,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -225,9 +217,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

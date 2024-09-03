@@ -13,16 +13,12 @@ public final class DatascanExecutionSpecTriggerSchedule {
     /**
      * @return Cron schedule for running scans periodically. This field is required for Schedule scans.
      * 
-     * ***
-     * 
      */
     private String cron;
 
     private DatascanExecutionSpecTriggerSchedule() {}
     /**
      * @return Cron schedule for running scans periodically. This field is required for Schedule scans.
-     * 
-     * ***
      * 
      */
     public String cron() {

@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+    ///   * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
     /// 
     /// ## Example Usage
     /// 
@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquerydatatransfer Config Salesforce
     /// 
     /// ```csharp
@@ -201,11 +202,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
         /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// &lt;https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq&gt;
         /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("params")]
         public Output<ImmutableDictionary<string, string>> Params { get; private set; } = null!;
@@ -224,7 +222,7 @@ namespace Pulumi.Gcp.BigQuery
         /// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
         /// jun 13:15, and first sunday of quarter 00:00. See more explanation
         /// about the format here:
-        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// &lt;https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format&gt;
         /// NOTE: The minimum interval time between recurring transfers depends
         /// on the data source; refer to the documentation for your data source.
         /// </summary>
@@ -366,11 +364,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
         /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// &lt;https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq&gt;
         /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Params
         {
@@ -392,7 +387,7 @@ namespace Pulumi.Gcp.BigQuery
         /// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
         /// jun 13:15, and first sunday of quarter 00:00. See more explanation
         /// about the format here:
-        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// &lt;https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format&gt;
         /// NOTE: The minimum interval time between recurring transfers depends
         /// on the data source; refer to the documentation for your data source.
         /// </summary>
@@ -506,11 +501,8 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
         /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// &lt;https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq&gt;
         /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Params
         {
@@ -532,7 +524,7 @@ namespace Pulumi.Gcp.BigQuery
         /// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
         /// jun 13:15, and first sunday of quarter 00:00. See more explanation
         /// about the format here:
-        /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+        /// &lt;https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format&gt;
         /// NOTE: The minimum interval time between recurring transfers depends
         /// on the data source; refer to the documentation for your data source.
         /// </summary>

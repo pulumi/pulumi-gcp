@@ -75,10 +75,6 @@ type GetMeshIstioServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// The name of the Istio service underlying this service.
 	// Corresponds to the destinationServiceName metric label in Istio metrics.
-	//
-	// ***
-	//
-	// Other optional fields include:
 	ServiceName string `pulumi:"serviceName"`
 	// The namespace of the Istio service underlying this service.
 	// Corresponds to the destinationServiceNamespace metric label in Istio metrics.
@@ -127,10 +123,6 @@ type GetMeshIstioServiceOutputArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The name of the Istio service underlying this service.
 	// Corresponds to the destinationServiceName metric label in Istio metrics.
-	//
-	// ***
-	//
-	// Other optional fields include:
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// The namespace of the Istio service underlying this service.
 	// Corresponds to the destinationServiceNamespace metric label in Istio metrics.

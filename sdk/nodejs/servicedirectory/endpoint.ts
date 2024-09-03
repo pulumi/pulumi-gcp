@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
  * * How-to Guides
- *     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
+ *   * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
  *
- * ## Example Usage
- *
- * ### Service Directory Endpoint Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +38,7 @@ import * as utilities from "../utilities";
  *     port: 5353,
  * });
  * ```
- * ### Service Directory Endpoint With Network
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -128,9 +126,6 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     public readonly endpointId!: pulumi.Output<string>;
     /**
@@ -211,9 +206,6 @@ export interface EndpointState {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     endpointId?: pulumi.Input<string>;
     /**
@@ -254,9 +246,6 @@ export interface EndpointArgs {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     endpointId: pulumi.Input<string>;
     /**

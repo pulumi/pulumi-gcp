@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Inputs
     public sealed class EntitlementPrivilegedAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        /// GcpIamAccess represents IAM based access control on a GCP resource. Refer to &lt;https://cloud.google.com/iam/docs&gt; to understand more about IAM.
         /// Structure is documented below.
         /// </summary>
         [Input("gcpIamAccess", required: true)]

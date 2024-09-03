@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
         /// Type of Network peeringMode
         /// Default value is `PRIVATE_SERVICE_ACCESS`.
         /// Possible values are: `PRIVATE_SERVICE_ACCESS`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("peeringMode")]
         public Input<string>? PeeringMode { get; set; }

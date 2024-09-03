@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
  *
- * ## Example Usage
- *
- * ### Dataproc Metastore Service Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +38,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Dataproc Metastore Service Cmek Example
  *
  * ```typescript
@@ -66,6 +67,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Private Service Connect
  *
  * ```typescript
@@ -96,6 +98,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dataproc Metastore Service Private Service Connect Custom Routes
  *
  * ```typescript
@@ -127,7 +130,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Dpms2
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -145,7 +148,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Dpms2 Scaling Factor
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -163,7 +166,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Scheduled Backup
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -196,7 +199,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -219,7 +222,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -243,7 +246,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -266,7 +269,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dataproc Metastore Service Autoscaling No Limit Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -439,9 +442,6 @@ export class MetastoreService extends pulumi.CustomResource {
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -647,9 +647,6 @@ export interface MetastoreServiceState {
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -759,9 +756,6 @@ export interface MetastoreServiceArgs {
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
     /**

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
  * ## Example Usage
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const available = gcp.artifactregistry.getLocations({});
  * ```
  *
- * ### Multi-Regional Artifact Registry Deployment
+ * ### Multi-regional Artifact Registry deployment
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,7 +82,7 @@ export interface GetLocationsResult {
  *
  * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
  * ## Example Usage
  *
@@ -93,7 +93,7 @@ export interface GetLocationsResult {
  * const available = gcp.artifactregistry.getLocations({});
  * ```
  *
- * ### Multi-Regional Artifact Registry Deployment
+ * ### Multi-regional Artifact Registry deployment
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

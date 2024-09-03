@@ -121,8 +121,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A unique name for the resource, required by GCE. Changing
         /// this forces a new resource to be created.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -253,8 +251,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A unique name for the resource, required by GCE. Changing
         /// this forces a new resource to be created.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -341,8 +337,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A unique name for the resource, required by GCE. Changing
         /// this forces a new resource to be created.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -77,10 +77,6 @@ export interface GetAppEngineServiceArgs {
     /**
      * The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     moduleId: string;
     /**
@@ -128,8 +124,8 @@ export interface GetAppEngineServiceResult {
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -182,10 +178,6 @@ export interface GetAppEngineServiceOutputArgs {
     /**
      * The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     moduleId: pulumi.Input<string>;
     /**

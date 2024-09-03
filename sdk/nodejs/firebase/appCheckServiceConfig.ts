@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.services)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/app-check)
+ *   * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
  *
@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [appcheck],
  * });
  * ```
+ *
  * ### Firebase App Check Service Config Enforced
  *
  * ```typescript
@@ -52,6 +53,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [appcheck],
  * });
  * ```
+ *
  * ### Firebase App Check Service Config Unenforced
  *
  * ```typescript
@@ -140,9 +142,6 @@ export class AppCheckServiceConfig extends pulumi.CustomResource {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
 
@@ -198,9 +197,6 @@ export interface AppCheckServiceConfigState {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
 }
@@ -221,9 +217,6 @@ export interface AppCheckServiceConfigArgs {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

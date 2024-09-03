@@ -278,8 +278,6 @@ class GuestPoliciesAssignmentOsType(dict):
                  os_version: Optional[str] = None):
         """
         :param str os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
-               
-               - - -
         :param str os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param str os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
@@ -295,8 +293,6 @@ class GuestPoliciesAssignmentOsType(dict):
     def os_architecture(self) -> Optional[str]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
-
-        - - -
         """
         return pulumi.get(self, "os_architecture")
 
@@ -940,11 +936,11 @@ class GuestPoliciesRecipeArtifactGcs(dict):
                  generation: Optional[int] = None,
                  object: Optional[str] = None):
         """
-        :param str bucket: Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        :param str bucket: Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
                this value would be my-bucket.
         :param int generation: Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-               https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
-        :param str object: Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+               <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
+        :param str object: Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
                this value would be foo/bar.
         """
         if bucket is not None:
@@ -958,7 +954,7 @@ class GuestPoliciesRecipeArtifactGcs(dict):
     @pulumi.getter
     def bucket(self) -> Optional[str]:
         """
-        Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        Bucket of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
         this value would be my-bucket.
         """
         return pulumi.get(self, "bucket")
@@ -968,7 +964,7 @@ class GuestPoliciesRecipeArtifactGcs(dict):
     def generation(self) -> Optional[int]:
         """
         Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-        https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+        <https://storage.googleapis.com/my-bucket/foo/bar#1234567> this value would be 1234567.
         """
         return pulumi.get(self, "generation")
 
@@ -976,7 +972,7 @@ class GuestPoliciesRecipeArtifactGcs(dict):
     @pulumi.getter
     def object(self) -> Optional[str]:
         """
-        Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        Name of the Google Cloud Storage object. Given an example URL: <https://storage.googleapis.com/my-bucket/foo/bar#1234567>
         this value would be foo/bar.
         """
         return pulumi.get(self, "object")
@@ -2349,11 +2345,11 @@ class OsPolicyAssignmentOsPolicy(dict):
         """
         :param str id: The id of the OS policy with the following restrictions:
                
-               *   Must contain only lowercase letters, numbers, and hyphens.
-               *   Must start with a letter.
-               *   Must be between 1-63 characters.
-               *   Must end with a number or a letter.
-               *   Must be unique within the assignment.
+               * Must contain only lowercase letters, numbers, and hyphens.
+               * Must start with a letter.
+               * Must be between 1-63 characters.
+               * Must end with a number or a letter.
+               * Must be unique within the assignment.
         :param str mode: Policy mode Possible values are: `MODE_UNSPECIFIED`,
                `VALIDATION`, `ENFORCEMENT`.
         :param Sequence['OsPolicyAssignmentOsPolicyResourceGroupArgs'] resource_groups: List of resource groups for the policy. For a
@@ -2384,11 +2380,11 @@ class OsPolicyAssignmentOsPolicy(dict):
         """
         The id of the OS policy with the following restrictions:
 
-        *   Must contain only lowercase letters, numbers, and hyphens.
-        *   Must start with a letter.
-        *   Must be between 1-63 characters.
-        *   Must end with a number or a letter.
-        *   Must be unique within the assignment.
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the assignment.
         """
         return pulumi.get(self, "id")
 
@@ -2586,11 +2582,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
         """
         :param str id: The id of the resource with the following restrictions:
                
-               *   Must contain only lowercase letters, numbers, and hyphens.
-               *   Must start with a letter.
-               *   Must be between 1-63 characters.
-               *   Must end with a number or a letter.
-               *   Must be unique within the OS policy.
+               * Must contain only lowercase letters, numbers, and hyphens.
+               * Must start with a letter.
+               * Must be between 1-63 characters.
+               * Must end with a number or a letter.
+               * Must be unique within the OS policy.
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs' exec_: Exec resource Structure is
                documented below.
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs' file: File resource Structure is
@@ -2616,11 +2612,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource(dict):
         """
         The id of the resource with the following restrictions:
 
-        *   Must contain only lowercase letters, numbers, and hyphens.
-        *   Must start with a letter.
-        *   Must be between 1-63 characters.
-        *   Must end with a number or a letter.
-        *   Must be unique within the OS policy.
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the OS policy.
         """
         return pulumi.get(self, "id")
 
@@ -4780,8 +4776,6 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
         :param int fixed: Specifies a fixed value.
         :param int percent: Specifies the relative value defined as a percentage,
                which will be multiplied by a reference value.
-               
-               --------------------------------------------------------------------------------
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -4802,8 +4796,6 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
         """
         Specifies the relative value defined as a percentage,
         which will be multiplied by a reference value.
-
-        --------------------------------------------------------------------------------
         """
         return pulumi.get(self, "percent")
 
@@ -4908,8 +4900,6 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
                  labels: Mapping[str, str]):
         """
         :param Mapping[str, str] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-               
-               - - -
         """
         pulumi.set(__self__, "labels", labels)
 
@@ -4918,8 +4908,6 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
     def labels(self) -> Mapping[str, str]:
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-        - - -
         """
         return pulumi.get(self, "labels")
 

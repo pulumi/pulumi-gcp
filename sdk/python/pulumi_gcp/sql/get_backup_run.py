@@ -92,7 +92,7 @@ class GetBackupRunResult:
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
-        The time the backup operation actually started in UTC timezone in RFC 3339 format, for 
+        The time the backup operation actually started in UTC timezone in RFC 3339 format, for
         example 2012-11-15T16:19:00.094Z.
         """
         return pulumi.get(self, "start_time")
@@ -144,7 +144,7 @@ def get_backup_run(backup_id: Optional[int] = None,
     :param int backup_id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
            If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
     :param str instance: The name of the instance the backup is taken from.
-    :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a 
+    :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a
            Cloud SQL instance.
     :param str project: The project to list instances for. If it
            is not provided, the provider project is used.
@@ -191,7 +191,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     :param int backup_id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
            If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
     :param str instance: The name of the instance the backup is taken from.
-    :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a 
+    :param bool most_recent: Toggles use of the most recent backup run if multiple backups exist for a
            Cloud SQL instance.
     :param str project: The project to list instances for. If it
            is not provided, the provider project is used.

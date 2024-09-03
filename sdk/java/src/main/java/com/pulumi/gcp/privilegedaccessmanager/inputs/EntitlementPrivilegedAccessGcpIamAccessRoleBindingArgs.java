@@ -18,7 +18,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
 
     /**
      * The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-     * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+     * &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
      * 
      */
     @Import(name="conditionExpression")
@@ -26,7 +26,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
 
     /**
      * @return The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-     * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+     * &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
      * 
      */
     public Optional<Output<String>> conditionExpression() {
@@ -34,14 +34,14 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
     }
 
     /**
-     * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+     * IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+     * @return IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
      * 
      */
     public Output<String> role() {
@@ -75,7 +75,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
 
         /**
          * @param conditionExpression The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         * &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
          * 
          * @return builder
          * 
@@ -87,7 +87,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
 
         /**
          * @param conditionExpression The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         * &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
         }
 
         /**
-         * @param role IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         * @param role IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs extend
         }
 
         /**
-         * @param role IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         * @param role IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
          * 
          * @return builder
          * 

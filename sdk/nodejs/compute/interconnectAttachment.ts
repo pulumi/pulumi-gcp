@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * Represents an InterconnectAttachment (VLAN attachment) resource. For more
  * information, see Creating VLAN Attachments.
  *
- * ## Example Usage
- *
- * ### Interconnect Attachment Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +35,7 @@ import * as utilities from "../utilities";
  *     mtu: "1500",
  * });
  * ```
- * ### Compute Interconnect Attachment Ipsec Encryption
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -249,9 +247,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * `a-z?` which means the first character must be a
      * lowercase letter, and all following characters must be a dash, lowercase
      * letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -527,9 +522,6 @@ export interface InterconnectAttachmentState {
      * `a-z?` which means the first character must be a
      * lowercase letter, and all following characters must be a dash, lowercase
      * letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -697,9 +689,6 @@ export interface InterconnectAttachmentArgs {
      * `a-z?` which means the first character must be a
      * lowercase letter, and all following characters must be a dash, lowercase
      * letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

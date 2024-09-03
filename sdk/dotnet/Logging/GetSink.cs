@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Retrieve Project Logging Sink Basic
         /// 
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.Gcp.Logging
         /// 
         /// ### Retrieve Project Logging Sink Basic
         /// 
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,12 +74,12 @@ namespace Pulumi.Gcp.Logging
     public sealed class GetSinkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifier for the resource. 
+        /// The identifier for the resource.
         /// Examples:
         /// 
         /// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
         /// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-        /// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+        /// - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
         /// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
         /// </summary>
         [Input("id", required: true)]
@@ -96,12 +94,12 @@ namespace Pulumi.Gcp.Logging
     public sealed class GetSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The identifier for the resource. 
+        /// The identifier for the resource.
         /// Examples:
         /// 
         /// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
         /// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-        /// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+        /// - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
         /// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
         /// </summary>
         [Input("id", required: true)]

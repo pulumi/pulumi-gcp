@@ -554,9 +554,7 @@ class EdgeCacheService(pulumi.CustomResource):
 
         > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 
-        ## Example Usage
-
-        ### Network Services Edge Cache Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -608,7 +606,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Network Services Edge Cache Service Advanced
+        ## 
 
         ```python
         import pulumi
@@ -803,7 +801,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 "sample_rate": 0.01,
             })
         ```
-        ### Network Services Edge Cache Service Dual Token
+        ## 
 
         ```python
         import pulumi
@@ -987,9 +985,7 @@ class EdgeCacheService(pulumi.CustomResource):
 
         > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
 
-        ## Example Usage
-
-        ### Network Services Edge Cache Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -1041,7 +1037,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Network Services Edge Cache Service Advanced
+        ## 
 
         ```python
         import pulumi
@@ -1236,7 +1232,7 @@ class EdgeCacheService(pulumi.CustomResource):
                 "sample_rate": 0.01,
             })
         ```
-        ### Network Services Edge Cache Service Dual Token
+        ## 
 
         ```python
         import pulumi

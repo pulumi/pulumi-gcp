@@ -7,55 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Network Security Client Tls Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.ClientTlsPolicy("default", {
- *     name: "my-client-tls-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     sni: "secure.example.com",
- * });
- * ```
- * ### Network Security Client Tls Policy Advanced
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.ClientTlsPolicy("default", {
- *     name: "my-client-tls-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     clientCertificate: {
- *         certificateProviderInstance: {
- *             pluginInstance: "google_cloud_private_spiffe",
- *         },
- *     },
- *     serverValidationCas: [
- *         {
- *             grpcEndpoint: {
- *                 targetUri: "unix:mypath",
- *             },
- *         },
- *         {
- *             grpcEndpoint: {
- *                 targetUri: "unix:mypath1",
- *             },
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * ClientTlsPolicy can be imported using any of these accepted formats:
@@ -138,9 +89,6 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Name of the ClientTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -248,9 +196,6 @@ export interface ClientTlsPolicyState {
     location?: pulumi.Input<string>;
     /**
      * Name of the ClientTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -304,9 +249,6 @@ export interface ClientTlsPolicyArgs {
     location?: pulumi.Input<string>;
     /**
      * Name of the ClientTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

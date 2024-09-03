@@ -185,7 +185,7 @@ namespace Pulumi.Gcp.Composer
     {
         /// <summary>
         /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        /// For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
         /// </summary>
         public readonly ImmutableDictionary<string, string> Data;
         public readonly string Environment;

@@ -62,8 +62,6 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
      * List of the HTTP headers to forward to the extension (from the client or backend).
      * If omitted, all headers are sent. Each element is a string indicating the header name.
      * 
-     * ***
-     * 
      */
     @Import(name="forwardHeaders")
     private @Nullable Output<List<String>> forwardHeaders;
@@ -71,8 +69,6 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
     /**
      * @return List of the HTTP headers to forward to the extension (from the client or backend).
      * If omitted, all headers are sent. Each element is a string indicating the header name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> forwardHeaders() {
@@ -217,8 +213,6 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
          * @param forwardHeaders List of the HTTP headers to forward to the extension (from the client or backend).
          * If omitted, all headers are sent. Each element is a string indicating the header name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -231,8 +225,6 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
          * @param forwardHeaders List of the HTTP headers to forward to the extension (from the client or backend).
          * If omitted, all headers are sent. Each element is a string indicating the header name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -243,8 +235,6 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
         /**
          * @param forwardHeaders List of the HTTP headers to forward to the extension (from the client or backend).
          * If omitted, all headers are sent. Each element is a string indicating the header name.
-         * 
-         * ***
          * 
          * @return builder
          * 

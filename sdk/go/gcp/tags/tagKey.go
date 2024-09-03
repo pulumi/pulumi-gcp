@@ -90,8 +90,6 @@ type TagKey struct {
 	PurposeData pulumi.StringMapOutput `pulumi:"purposeData"`
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -154,8 +152,6 @@ type tagKeyState struct {
 	PurposeData map[string]string `pulumi:"purposeData"`
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName *string `pulumi:"shortName"`
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -183,8 +179,6 @@ type TagKeyState struct {
 	PurposeData pulumi.StringMapInput
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName pulumi.StringPtrInput
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -209,8 +203,6 @@ type tagKeyArgs struct {
 	PurposeData map[string]string `pulumi:"purposeData"`
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName string `pulumi:"shortName"`
 }
 
@@ -229,8 +221,6 @@ type TagKeyArgs struct {
 	PurposeData pulumi.StringMapInput
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName pulumi.StringInput
 }
 
@@ -362,8 +352,6 @@ func (o TagKeyOutput) PurposeData() pulumi.StringMapOutput {
 
 // Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 // The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-//
-// ***
 func (o TagKeyOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }

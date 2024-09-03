@@ -477,11 +477,9 @@ class ConnectivityTest(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+          * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 
-        ## Example Usage
-
-        ### Network Management Connectivity Test Instances
+        ## 
 
         ```python
         import pulumi
@@ -527,7 +525,7 @@ class ConnectivityTest(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        ### Network Management Connectivity Test Addresses
+        ## 
 
         ```python
         import pulumi
@@ -651,11 +649,9 @@ class ConnectivityTest(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+          * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 
-        ## Example Usage
-
-        ### Network Management Connectivity Test Instances
+        ## 
 
         ```python
         import pulumi
@@ -701,7 +697,7 @@ class ConnectivityTest(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        ### Network Management Connectivity Test Addresses
+        ## 
 
         ```python
         import pulumi

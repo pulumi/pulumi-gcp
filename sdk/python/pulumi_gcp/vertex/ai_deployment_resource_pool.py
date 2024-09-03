@@ -30,9 +30,6 @@ class AiDeploymentResourcePoolArgs:
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs'] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of deployment resource pool. eg us-central1
@@ -64,9 +61,6 @@ class AiDeploymentResourcePoolArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -114,9 +108,6 @@ class _AiDeploymentResourcePoolState:
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs'] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of deployment resource pool. eg us-central1
@@ -162,9 +153,6 @@ class _AiDeploymentResourcePoolState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -216,9 +204,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.deploymentResourcePools)
 
-        ## Example Usage
-
-        ### Vertex Ai Deployment Resource Pool
+        ## 
 
         ```python
         import pulumi
@@ -277,9 +263,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of deployment resource pool. eg us-central1
@@ -298,9 +281,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.deploymentResourcePools)
 
-        ## Example Usage
-
-        ### Vertex Ai Deployment Resource Pool
+        ## 
 
         ```python
         import pulumi
@@ -413,9 +394,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']] dedicated_resources: The underlying dedicated resources that the deployment resource pool uses.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of deployment resource pool. eg us-central1
@@ -453,9 +431,6 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

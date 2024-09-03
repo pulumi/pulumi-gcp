@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ *   * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  * 
  * ## Example Usage
  * 
@@ -112,6 +112,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Rollback Namespace
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -207,6 +208,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Protected Application
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -296,6 +298,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan All Cluster Resources
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -379,6 +382,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Rename Namespace
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -491,6 +495,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Second Transformation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -598,6 +603,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Gitops Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -682,6 +688,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Restore Order
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -790,6 +797,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkebackup Restoreplan Volume Res
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

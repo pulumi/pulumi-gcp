@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+    ///   * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Redis Cluster Ha
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -94,7 +92,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
-    /// ### Redis Cluster Ha Single Zone
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

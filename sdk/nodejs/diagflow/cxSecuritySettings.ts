@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.securitySettings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
- * ## Example Usage
- *
- * ### Dialogflowcx Security Settings Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +29,9 @@ import * as utilities from "../utilities";
  *     retentionWindowDays: 7,
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Dialogflowcx Security Settings Full
  *
  * ```typescript
@@ -157,9 +158,6 @@ export class CxSecuritySettings extends pulumi.CustomResource {
     public readonly deidentifyTemplate!: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -291,9 +289,6 @@ export interface CxSecuritySettingsState {
     deidentifyTemplate?: pulumi.Input<string>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -373,9 +368,6 @@ export interface CxSecuritySettingsArgs {
     deidentifyTemplate?: pulumi.Input<string>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

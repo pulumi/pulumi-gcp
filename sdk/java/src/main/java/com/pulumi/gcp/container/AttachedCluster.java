@@ -33,12 +33,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest)
  * * How-to Guides
- *     * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
- *     * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+ *   * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
+ *   * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  * 
- * ## Example Usage
- * 
- * ### Container Attached Cluster Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -96,7 +94,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Container Attached Cluster Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -195,7 +193,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Container Attached Cluster Ignore Errors
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

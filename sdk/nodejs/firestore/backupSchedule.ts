@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/backups)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/backups)
  *
  * > **Warning:** This resource creates a Firestore Backup Schedule on a project that already has
  * a Firestore database.
@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     dailyRecurrence: {},
  * });
  * ```
+ *
  * ### Firestore Backup Schedule Weekly
  *
  * ```typescript
@@ -143,9 +144,6 @@ export class BackupSchedule extends pulumi.CustomResource {
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * You can set this to a value up to 14 weeks.
-     *
-     *
-     * - - -
      */
     public readonly retention!: pulumi.Output<string>;
     /**
@@ -216,9 +214,6 @@ export interface BackupScheduleState {
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * You can set this to a value up to 14 weeks.
-     *
-     *
-     * - - -
      */
     retention?: pulumi.Input<string>;
     /**
@@ -249,9 +244,6 @@ export interface BackupScheduleArgs {
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * You can set this to a value up to 14 weeks.
-     *
-     *
-     * - - -
      */
     retention: pulumi.Input<string>;
     /**

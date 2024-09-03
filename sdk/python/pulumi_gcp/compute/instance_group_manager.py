@@ -76,8 +76,6 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
@@ -101,8 +99,6 @@ class InstanceGroupManagerArgs:
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         pulumi.set(__self__, "base_instance_name", base_instance_name)
         pulumi.set(__self__, "versions", versions)
@@ -282,8 +278,6 @@ class InstanceGroupManagerArgs:
     def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -450,8 +444,6 @@ class InstanceGroupManagerArgs:
         """
         The zone that instances in this group should be created
         in.
-
-        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -524,8 +516,6 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
@@ -554,8 +544,6 @@ class _InstanceGroupManagerState:
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         if all_instances_config is not None:
             pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -780,8 +768,6 @@ class _InstanceGroupManagerState:
     def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -986,8 +972,6 @@ class _InstanceGroupManagerState:
         """
         The zone that instances in this group should be created
         in.
-
-        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -1035,7 +1019,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### With Top Level Instance Template (`Google` Provider)
+        ### with top level instance template (google provider)
 
         ```python
         import pulumi
@@ -1078,7 +1062,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             })
         ```
 
-        ### With Multiple Versions (`Google-Beta` Provider)
+        ### with multiple versions (google-beta provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1103,7 +1087,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
-        ### With Standby Policy (`Google-Beta` Provider)
+        ### with standby policy (google-beta provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1184,8 +1168,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
@@ -1212,8 +1194,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         ...
     @overload
@@ -1231,7 +1211,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### With Top Level Instance Template (`Google` Provider)
+        ### with top level instance template (google provider)
 
         ```python
         import pulumi
@@ -1274,7 +1254,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             })
         ```
 
-        ### With Multiple Versions (`Google-Beta` Provider)
+        ### with multiple versions (google-beta provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1299,7 +1279,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
-        ### With Standby Policy (`Google-Beta` Provider)
+        ### with standby policy (google-beta provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1507,8 +1487,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerNamedPortArgs', 'InstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['InstanceGroupManagerParamsArgs', 'InstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
@@ -1537,8 +1515,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1691,8 +1667,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def params(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerParams']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -1833,8 +1807,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         """
         The zone that instances in this group should be created
         in.
-
-        - - -
         """
         return pulumi.get(self, "zone")
 

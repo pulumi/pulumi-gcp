@@ -55,6 +55,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Stored Info Type Dictionary
 //
 // ```go
@@ -90,6 +91,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Stored Info Type Large Custom Dictionary
 //
 // ```go
@@ -150,6 +152,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Stored Info Type With Id
 //
 // ```go
@@ -222,8 +225,6 @@ type PreventionStoredInfoType struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -284,8 +285,6 @@ type preventionStoredInfoTypeState struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -314,8 +313,6 @@ type PreventionStoredInfoTypeState struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -346,8 +343,6 @@ type preventionStoredInfoTypeArgs struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -375,8 +370,6 @@ type PreventionStoredInfoTypeArgs struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringInput
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -508,8 +501,6 @@ func (o PreventionStoredInfoTypeOutput) Name() pulumi.StringOutput {
 // * `projects/{{project}}/locations/{{location}}`
 // * `organizations/{{organization_id}}`
 // * `organizations/{{organization_id}}/locations/{{location}}`
-//
-// ***
 func (o PreventionStoredInfoTypeOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionStoredInfoType) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

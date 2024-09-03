@@ -138,8 +138,6 @@ export class AuthorizedView extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     *
-     * -----
      */
     public readonly subsetView!: pulumi.Output<outputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**
@@ -206,8 +204,6 @@ export interface AuthorizedViewState {
     project?: pulumi.Input<string>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     *
-     * -----
      */
     subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView>;
     /**
@@ -236,8 +232,6 @@ export interface AuthorizedViewArgs {
     project?: pulumi.Input<string>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     *
-     * -----
      */
     subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView>;
     /**

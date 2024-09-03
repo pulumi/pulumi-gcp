@@ -92,7 +92,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -102,7 +102,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      * 
@@ -210,18 +210,14 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     * 
-     * ***
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      * 
      */
     @Import(name="timeout", required=true)
     private Output<String> timeout;
 
     /**
-     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     * 
-     * ***
+     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      * 
      */
     public Output<String> timeout() {
@@ -382,7 +378,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param monitoredResource The [monitored resource]
-         * (https://cloud.google.com/monitoring/api/resources) associated with the
+         * (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
          * configuration. The following monitored resource types are supported for
          * uptime checks:
          * 
@@ -396,7 +392,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param monitoredResource The [monitored resource]
-         * (https://cloud.google.com/monitoring/api/resources) associated with the
+         * (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
          * configuration. The following monitored resource types are supported for
          * uptime checks:
          * 
@@ -552,9 +548,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-         * 
-         * ***
+         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
          * 
          * @return builder
          * 
@@ -565,9 +559,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-         * 
-         * ***
+         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
          * 
          * @return builder
          * 

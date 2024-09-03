@@ -26,9 +26,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
-// ## Example Usage
-//
-// ### Notebook Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -59,7 +57,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Instance Basic Stopped
+// ##
 //
 // ```go
 // package main
@@ -91,7 +89,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Instance Basic Container
+// ##
 //
 // ```go
 // package main
@@ -125,7 +123,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Instance Basic Gpu
+// ##
 //
 // ```go
 // package main
@@ -161,6 +159,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Notebook Instance Full
 //
 // ```go
@@ -303,7 +304,7 @@ type Instance struct {
 	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrOutput `pulumi:"installGpuDriver"`
 	// The list of owners of this instance after creation.
-	// Format: alias@example.com.
+	// Format: <alias@example.com>.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
@@ -318,8 +319,6 @@ type Instance struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -366,8 +365,8 @@ type Instance struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
 	// If not specified, the following scopes are defined:
-	// - https://www.googleapis.com/auth/cloud-platform
-	// - https://www.googleapis.com/auth/userinfo.email
+	// - <https://www.googleapis.com/auth/cloud-platform>
+	// - <https://www.googleapis.com/auth/userinfo.email>
 	ServiceAccountScopes pulumi.StringArrayOutput `pulumi:"serviceAccountScopes"`
 	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
 	// Not all combinations are valid
@@ -468,7 +467,7 @@ type instanceState struct {
 	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// The list of owners of this instance after creation.
-	// Format: alias@example.com.
+	// Format: <alias@example.com>.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
@@ -483,8 +482,6 @@ type instanceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType *string `pulumi:"machineType"`
@@ -531,8 +528,8 @@ type instanceState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
 	// If not specified, the following scopes are defined:
-	// - https://www.googleapis.com/auth/cloud-platform
-	// - https://www.googleapis.com/auth/userinfo.email
+	// - <https://www.googleapis.com/auth/cloud-platform>
+	// - <https://www.googleapis.com/auth/userinfo.email>
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
 	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
 	// Not all combinations are valid
@@ -593,7 +590,7 @@ type InstanceState struct {
 	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
 	// The list of owners of this instance after creation.
-	// Format: alias@example.com.
+	// Format: <alias@example.com>.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
@@ -608,8 +605,6 @@ type InstanceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringPtrInput
@@ -656,8 +651,8 @@ type InstanceState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
 	// If not specified, the following scopes are defined:
-	// - https://www.googleapis.com/auth/cloud-platform
-	// - https://www.googleapis.com/auth/userinfo.email
+	// - <https://www.googleapis.com/auth/cloud-platform>
+	// - <https://www.googleapis.com/auth/userinfo.email>
 	ServiceAccountScopes pulumi.StringArrayInput
 	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
 	// Not all combinations are valid
@@ -720,7 +715,7 @@ type instanceArgs struct {
 	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// The list of owners of this instance after creation.
-	// Format: alias@example.com.
+	// Format: <alias@example.com>.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
@@ -735,8 +730,6 @@ type instanceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType string `pulumi:"machineType"`
@@ -775,8 +768,8 @@ type instanceArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
 	// If not specified, the following scopes are defined:
-	// - https://www.googleapis.com/auth/cloud-platform
-	// - https://www.googleapis.com/auth/userinfo.email
+	// - <https://www.googleapis.com/auth/cloud-platform>
+	// - <https://www.googleapis.com/auth/userinfo.email>
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
 	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
 	// Not all combinations are valid
@@ -834,7 +827,7 @@ type InstanceArgs struct {
 	// won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
 	// The list of owners of this instance after creation.
-	// Format: alias@example.com.
+	// Format: <alias@example.com>.
 	// Currently supports one owner only.
 	// If not specified, all of the service account users of
 	// your VM instance's service account can use the instance.
@@ -849,8 +842,6 @@ type InstanceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringInput
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringInput
@@ -889,8 +880,8 @@ type InstanceArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
 	// If not specified, the following scopes are defined:
-	// - https://www.googleapis.com/auth/cloud-platform
-	// - https://www.googleapis.com/auth/userinfo.email
+	// - <https://www.googleapis.com/auth/cloud-platform>
+	// - <https://www.googleapis.com/auth/userinfo.email>
 	ServiceAccountScopes pulumi.StringArrayInput
 	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
 	// Not all combinations are valid
@@ -1071,7 +1062,7 @@ func (o InstanceOutput) InstallGpuDriver() pulumi.BoolPtrOutput {
 }
 
 // The list of owners of this instance after creation.
-// Format: alias@example.com.
+// Format: <alias@example.com>.
 // Currently supports one owner only.
 // If not specified, all of the service account users of
 // your VM instance's service account can use the instance.
@@ -1095,8 +1086,6 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 }
 
 // A reference to the zone where the machine resides.
-//
-// ***
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -1188,8 +1177,8 @@ func (o InstanceOutput) ServiceAccount() pulumi.StringOutput {
 
 // Optional. The URIs of service account scopes to be included in Compute Engine instances.
 // If not specified, the following scopes are defined:
-// - https://www.googleapis.com/auth/cloud-platform
-// - https://www.googleapis.com/auth/userinfo.email
+// - <https://www.googleapis.com/auth/cloud-platform>
+// - <https://www.googleapis.com/auth/userinfo.email>
 func (o InstanceOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
 }

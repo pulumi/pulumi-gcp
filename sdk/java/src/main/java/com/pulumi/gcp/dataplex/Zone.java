@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic_zone
+ * ### basic_zone
  * A basic example of a dataplex zone
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

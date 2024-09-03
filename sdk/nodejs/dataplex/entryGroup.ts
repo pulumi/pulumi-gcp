@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
+ *
  * ### Dataplex Entry Group Full
  *
  * ```typescript

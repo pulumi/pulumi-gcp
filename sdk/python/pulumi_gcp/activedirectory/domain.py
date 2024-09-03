@@ -29,10 +29,7 @@ class DomainArgs:
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
+               of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
@@ -64,10 +61,7 @@ class DomainArgs:
     def domain_name(self) -> pulumi.Input[str]:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-
-
-        - - -
+        of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         """
         return pulumi.get(self, "domain_name")
 
@@ -176,10 +170,7 @@ class _DomainState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
+               of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service.
                Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -250,10 +241,7 @@ class _DomainState:
     def domain_name(self) -> Optional[pulumi.Input[str]]:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-
-
-        - - -
+        of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         """
         return pulumi.get(self, "domain_name")
 
@@ -385,7 +373,7 @@ class Domain(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains)
         * How-to Guides
-            * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
+          * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
 
@@ -420,10 +408,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
+               of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -447,7 +432,7 @@ class Domain(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains)
         * How-to Guides
-            * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
+          * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
 
@@ -558,10 +543,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-               of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-               
-               
-               - - -
+               of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service.
                Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -618,10 +600,7 @@ class Domain(pulumi.CustomResource):
     def domain_name(self) -> pulumi.Output[str]:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-        of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-
-
-        - - -
+        of <https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains>.
         """
         return pulumi.get(self, "domain_name")
 

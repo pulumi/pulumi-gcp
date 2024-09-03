@@ -19,16 +19,12 @@ public final class GetAppleAppArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The app_id of name of the Firebase iosApp.
      * 
-     * ***
-     * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
      * @return The app_id of name of the Firebase iosApp.
-     * 
-     * ***
      * 
      */
     public Output<String> appId() {
@@ -80,8 +76,6 @@ public final class GetAppleAppArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param appId The app_id of name of the Firebase iosApp.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -92,8 +86,6 @@ public final class GetAppleAppArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param appId The app_id of name of the Firebase iosApp.
-         * 
-         * ***
          * 
          * @return builder
          * 

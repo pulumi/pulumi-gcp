@@ -153,8 +153,6 @@ type AutokeyConfig struct {
 	pulumi.CustomResourceState
 
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -196,8 +194,6 @@ func GetAutokeyConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AutokeyConfig resources.
 type autokeyConfigState struct {
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder *string `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -207,8 +203,6 @@ type autokeyConfigState struct {
 
 type AutokeyConfigState struct {
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder pulumi.StringPtrInput
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -222,8 +216,6 @@ func (AutokeyConfigState) ElementType() reflect.Type {
 
 type autokeyConfigArgs struct {
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder string `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -234,8 +226,6 @@ type autokeyConfigArgs struct {
 // The set of arguments for constructing a AutokeyConfig resource.
 type AutokeyConfigArgs struct {
 	// The folder for which to retrieve config.
-	//
-	// ***
 	Folder pulumi.StringInput
 	// The target key project for a given folder where KMS Autokey will provision a
 	// CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -331,8 +321,6 @@ func (o AutokeyConfigOutput) ToAutokeyConfigOutputWithContext(ctx context.Contex
 }
 
 // The folder for which to retrieve config.
-//
-// ***
 func (o AutokeyConfigOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutokeyConfig) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }

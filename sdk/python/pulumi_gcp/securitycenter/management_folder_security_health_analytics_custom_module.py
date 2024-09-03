@@ -29,9 +29,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs:
         """
         The set of arguments for constructing a ManagementFolderSecurityHealthAnalyticsCustomModule resource.
         :param pulumi.Input[str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input['ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This
@@ -58,9 +55,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs:
     def folder(self) -> pulumi.Input[str]:
         """
         Numerical ID of the parent folder.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -150,9 +144,6 @@ class _ManagementFolderSecurityHealthAnalyticsCustomModuleState:
         :param pulumi.Input[str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input[str] last_editor: The editor that last updated the custom module.
         :param pulumi.Input[str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         :param pulumi.Input[str] name: The resource name of the custom module. Its format is "folders/{folder}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
@@ -241,9 +232,6 @@ class _ManagementFolderSecurityHealthAnalyticsCustomModuleState:
     def folder(self) -> Optional[pulumi.Input[str]]:
         """
         Numerical ID of the parent folder.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 
@@ -325,7 +313,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/folders.locations.securityHealthAnalyticsCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -355,6 +343,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Folder Security Health Analytics Custom Module Full
 
         ```python
@@ -426,9 +415,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
         :param pulumi.Input[str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input[str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         """
         ...
@@ -448,7 +434,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/folders.locations.securityHealthAnalyticsCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -478,6 +464,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Folder Security Health Analytics Custom Module Full
 
         ```python
@@ -616,9 +603,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
         :param pulumi.Input[str] enablement_state: The enablement state of the custom module.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] folder: Numerical ID of the parent folder.
-               
-               
-               - - -
         :param pulumi.Input[str] last_editor: The editor that last updated the custom module.
         :param pulumi.Input[str] location: Location ID of the parent organization. If not provided, 'global' will be used as the default location.
         :param pulumi.Input[str] name: The resource name of the custom module. Its format is "folders/{folder}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
@@ -687,9 +671,6 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
     def folder(self) -> pulumi.Output[str]:
         """
         Numerical ID of the parent folder.
-
-
-        - - -
         """
         return pulumi.get(self, "folder")
 

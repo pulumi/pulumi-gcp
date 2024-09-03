@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.scopes.namespaces)
  * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  *
  * ## Example Usage
  *
@@ -142,9 +142,6 @@ export class Namespace extends pulumi.CustomResource {
     public readonly scope!: pulumi.Output<string>;
     /**
      * Id of the scope
-     *
-     *
-     * - - -
      */
     public readonly scopeId!: pulumi.Output<string>;
     /**
@@ -276,9 +273,6 @@ export interface NamespaceState {
     scope?: pulumi.Input<string>;
     /**
      * Id of the scope
-     *
-     *
-     * - - -
      */
     scopeId?: pulumi.Input<string>;
     /**
@@ -330,9 +324,6 @@ export interface NamespaceArgs {
     scope: pulumi.Input<string>;
     /**
      * Id of the scope
-     *
-     *
-     * - - -
      */
     scopeId: pulumi.Input<string>;
     /**

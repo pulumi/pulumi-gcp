@@ -31,9 +31,6 @@ class PostureDeploymentArgs:
         :param pulumi.Input[str] location: The location of the resource, eg. global`.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -81,9 +78,6 @@ class PostureDeploymentArgs:
     def posture_deployment_id(self) -> pulumi.Input[str]:
         """
         ID of the posture deployment.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_deployment_id")
 
@@ -173,7 +167,7 @@ class _PostureDeploymentState:
         :param pulumi.Input[str] desired_posture_revision_id: This is an output only optional field which will be filled in case when
                PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
                It denotes the desired posture revision_id to be deployed.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[str] failure_message: This is a output only optional field which will be filled in case where
                PostureDeployment enters a failure state like UPDATE_FAILED or
                CREATE_FAILED or DELETE_FAILED. It will have the failure message for posture deployment's
@@ -182,9 +176,6 @@ class _PostureDeploymentState:
         :param pulumi.Input[str] name: Name of the posture deployment instance.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -286,7 +277,7 @@ class _PostureDeploymentState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -350,9 +341,6 @@ class _PostureDeploymentState:
     def posture_deployment_id(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the posture deployment.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_deployment_id")
 
@@ -461,7 +449,7 @@ class PostureDeployment(pulumi.CustomResource):
         To get more information about PostureDeployment, see:
 
         * How-to Guides
-            * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+          * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
 
         ## Import
 
@@ -481,9 +469,6 @@ class PostureDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the resource, eg. global`.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -508,7 +493,7 @@ class PostureDeployment(pulumi.CustomResource):
         To get more information about PostureDeployment, see:
 
         * How-to Guides
-            * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+          * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
 
         ## Import
 
@@ -622,7 +607,7 @@ class PostureDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] desired_posture_revision_id: This is an output only optional field which will be filled in case when
                PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
                It denotes the desired posture revision_id to be deployed.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[str] failure_message: This is a output only optional field which will be filled in case where
                PostureDeployment enters a failure state like UPDATE_FAILED or
                CREATE_FAILED or DELETE_FAILED. It will have the failure message for posture deployment's
@@ -631,9 +616,6 @@ class PostureDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the posture deployment instance.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[str] posture_deployment_id: ID of the posture deployment.
-               
-               
-               - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
                organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
@@ -708,7 +690,7 @@ class PostureDeployment(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -752,9 +734,6 @@ class PostureDeployment(pulumi.CustomResource):
     def posture_deployment_id(self) -> pulumi.Output[str]:
         """
         ID of the posture deployment.
-
-
-        - - -
         """
         return pulumi.get(self, "posture_deployment_id")
 

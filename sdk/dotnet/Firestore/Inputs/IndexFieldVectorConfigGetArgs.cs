@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Firestore.Inputs
 
         /// <summary>
         /// Indicates the vector index is a flat index.
-        /// 
-        /// - - -
         /// </summary>
         [Input("flat")]
         public Input<Inputs.IndexFieldVectorConfigFlatGetArgs>? Flat { get; set; }

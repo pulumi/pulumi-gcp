@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 //
-// ## Example Usage
-//
-// ### Pubsub Lite Subscription Basic
+// ##
 //
 // ```go
 // package main
@@ -111,8 +109,6 @@ type LiteSubscription struct {
 	// Structure is documented below.
 	DeliveryConfig LiteSubscriptionDeliveryConfigPtrOutput `pulumi:"deliveryConfig"`
 	// Name of the subscription.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -162,8 +158,6 @@ type liteSubscriptionState struct {
 	// Structure is documented below.
 	DeliveryConfig *LiteSubscriptionDeliveryConfig `pulumi:"deliveryConfig"`
 	// Name of the subscription.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -181,8 +175,6 @@ type LiteSubscriptionState struct {
 	// Structure is documented below.
 	DeliveryConfig LiteSubscriptionDeliveryConfigPtrInput
 	// Name of the subscription.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -204,8 +196,6 @@ type liteSubscriptionArgs struct {
 	// Structure is documented below.
 	DeliveryConfig *LiteSubscriptionDeliveryConfig `pulumi:"deliveryConfig"`
 	// Name of the subscription.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -224,8 +214,6 @@ type LiteSubscriptionArgs struct {
 	// Structure is documented below.
 	DeliveryConfig LiteSubscriptionDeliveryConfigPtrInput
 	// Name of the subscription.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -332,8 +320,6 @@ func (o LiteSubscriptionOutput) DeliveryConfig() LiteSubscriptionDeliveryConfigP
 }
 
 // Name of the subscription.
-//
-// ***
 func (o LiteSubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LiteSubscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

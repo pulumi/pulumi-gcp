@@ -53,9 +53,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
+     * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
      * 
      */
     @Import(name="domainName")
@@ -63,9 +61,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
+     * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -299,9 +295,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param domainName The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-         * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-         * 
-         * ***
+         * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
          * 
          * @return builder
          * 
@@ -313,9 +307,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param domainName The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-         * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-         * 
-         * ***
+         * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
          * 
          * @return builder
          * 

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// and
         /// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,7 +43,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// For more information see [the official documentation](https://cloud.google.com/source-repositories)
         /// and
         /// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
-        /// 
         /// 
         /// ## Example Usage
         /// 

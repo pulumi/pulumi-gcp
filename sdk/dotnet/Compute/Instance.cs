@@ -304,8 +304,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Networks to attach to the instance. This can
         /// be specified multiple times. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.InstanceNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
@@ -645,8 +643,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Networks to attach to the instance. This can
         /// be specified multiple times. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceArgs> NetworkInterfaces
         {
@@ -992,8 +988,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Networks to attach to the instance. This can
         /// be specified multiple times. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceGetArgs> NetworkInterfaces
         {

@@ -10,153 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Workstations
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Workstation Cluster Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstation-cluster",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstation-cluster",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
-    /// ### Workstation Cluster Private
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-private",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-private",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "workstation-cluster-private",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
-    ///         {
-    ///             EnablePrivateEndpoint = true,
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
-    /// ### Workstation Cluster Custom Domain
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-custom-domain",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstation-cluster-custom-domain",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "workstation-cluster-custom-domain",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         PrivateClusterConfig = new Gcp.Workstations.Inputs.WorkstationClusterPrivateClusterConfigArgs
-    ///         {
-    ///             EnablePrivateEndpoint = true,
-    ///         },
-    ///         DomainConfig = new Gcp.Workstations.Inputs.WorkstationClusterDomainConfigArgs
-    ///         {
-    ///             Domain = "workstations.example.com",
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// WorkstationCluster can be imported using any of these accepted formats:
@@ -311,9 +164,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// ID to use for the workstation cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
@@ -446,9 +296,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// ID to use for the workstation cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;
@@ -631,9 +478,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// ID to use for the workstation cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workstationClusterId")]
         public Input<string>? WorkstationClusterId { get; set; }

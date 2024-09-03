@@ -86,7 +86,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig;
     /**
-     * @return A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster&#39;s staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+     * @return A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster&#39;s staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (&lt;https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket))&gt;.
      * 
      */
     private @Nullable String stagingBucket;
@@ -97,8 +97,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     private @Nullable String tempBucket;
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster.
-     * 
-     * ***
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
@@ -189,7 +187,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.softwareConfig);
     }
     /**
-     * @return A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster&#39;s staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+     * @return A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster&#39;s staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (&lt;https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket))&gt;.
      * 
      */
     public Optional<String> stagingBucket() {
@@ -204,8 +202,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     }
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster.
-     * 
-     * ***
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigWorkerConfig> workerConfig() {

@@ -22,11 +22,9 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+    ///   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Notebook Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -50,7 +48,7 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// });
     /// ```
-    /// ### Notebook Instance Basic Stopped
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -75,7 +73,7 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// });
     /// ```
-    /// ### Notebook Instance Basic Container
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,7 +101,7 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// });
     /// ```
-    /// ### Notebook Instance Basic Gpu
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -133,6 +131,9 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Notebook Instance Full
     /// 
     /// ```csharp
@@ -320,7 +321,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// The list of owners of this instance after creation.
-        /// Format: alias@example.com.
+        /// Format: &lt;alias@example.com&gt;.
         /// Currently supports one owner only.
         /// If not specified, all of the service account users of
         /// your VM instance's service account can use the instance.
@@ -347,9 +348,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -456,8 +454,8 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
         /// If not specified, the following scopes are defined:
-        /// - https://www.googleapis.com/auth/cloud-platform
-        /// - https://www.googleapis.com/auth/userinfo.email
+        /// - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+        /// - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
         /// </summary>
         [Output("serviceAccountScopes")]
         public Output<ImmutableArray<string>> ServiceAccountScopes { get; private set; } = null!;
@@ -639,7 +637,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// The list of owners of this instance after creation.
-        /// Format: alias@example.com.
+        /// Format: &lt;alias@example.com&gt;.
         /// Currently supports one owner only.
         /// If not specified, all of the service account users of
         /// your VM instance's service account can use the instance.
@@ -675,9 +673,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -777,8 +772,8 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
         /// If not specified, the following scopes are defined:
-        /// - https://www.googleapis.com/auth/cloud-platform
-        /// - https://www.googleapis.com/auth/userinfo.email
+        /// - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+        /// - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
         /// </summary>
         public InputList<string> ServiceAccountScopes
         {
@@ -936,7 +931,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// The list of owners of this instance after creation.
-        /// Format: alias@example.com.
+        /// Format: &lt;alias@example.com&gt;.
         /// Currently supports one owner only.
         /// If not specified, all of the service account users of
         /// your VM instance's service account can use the instance.
@@ -972,9 +967,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -1100,8 +1092,8 @@ namespace Pulumi.Gcp.Notebooks
         /// <summary>
         /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
         /// If not specified, the following scopes are defined:
-        /// - https://www.googleapis.com/auth/cloud-platform
-        /// - https://www.googleapis.com/auth/userinfo.email
+        /// - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+        /// - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
         /// </summary>
         public InputList<string> ServiceAccountScopes
         {

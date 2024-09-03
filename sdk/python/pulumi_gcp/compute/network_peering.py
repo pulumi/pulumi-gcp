@@ -33,9 +33,9 @@ class NetworkPeeringArgs:
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
         """
@@ -95,7 +95,7 @@ class NetworkPeeringArgs:
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
     def export_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         """
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
@@ -119,7 +119,7 @@ class NetworkPeeringArgs:
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
     def import_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         """
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 
@@ -168,9 +168,9 @@ class _NetworkPeeringState:
         """
         Input properties used for looking up and filtering NetworkPeering resources.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
@@ -217,7 +217,7 @@ class _NetworkPeeringState:
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
     def export_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         """
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
@@ -241,7 +241,7 @@ class _NetworkPeeringState:
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
     def import_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         """
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 
@@ -386,9 +386,9 @@ class NetworkPeering(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
@@ -520,9 +520,9 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
@@ -560,7 +560,7 @@ class NetworkPeering(pulumi.CustomResource):
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
     def export_subnet_routes_with_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+        Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always exported to peers and are not controlled by this field.
         """
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
@@ -576,7 +576,7 @@ class NetworkPeering(pulumi.CustomResource):
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
     def import_subnet_routes_with_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+        Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (<https://en.wikipedia.org/wiki/IPv4#Special_addresses>) are always imported from peers and are not controlled by this field.
         """
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 

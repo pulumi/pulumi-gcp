@@ -20,150 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Managedkafka Cluster Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.managedkafka.Cluster;
- * import com.pulumi.gcp.managedkafka.ClusterArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var example = new Cluster("example", ClusterArgs.builder()
- *             .clusterId("my-cluster")
- *             .location("us-central1")
- *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
- *                 .build())
- *             .gcpConfig(ClusterGcpConfigArgs.builder()
- *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
- *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.applyValue(getProjectResult -> getProjectResult.number())))
- *                         .build())
- *                     .build())
- *                 .build())
- *             .rebalanceConfig(ClusterRebalanceConfigArgs.builder()
- *                 .mode("NO_REBALANCE")
- *                 .build())
- *             .labels(Map.of("key", "value"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Managedkafka Cluster Cmek
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.managedkafka.Cluster;
- * import com.pulumi.gcp.managedkafka.ClusterArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
- * import com.pulumi.gcp.projects.ServiceIdentity;
- * import com.pulumi.gcp.projects.ServiceIdentityArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
- *             .name("example-key-ring")
- *             .location("us-central1")
- *             .build());
- * 
- *         var key = new CryptoKey("key", CryptoKeyArgs.builder()
- *             .name("example-key")
- *             .keyRing(keyRing.id())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var example = new Cluster("example", ClusterArgs.builder()
- *             .clusterId("my-cluster")
- *             .location("us-central1")
- *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
- *                 .build())
- *             .gcpConfig(ClusterGcpConfigArgs.builder()
- *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
- *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.applyValue(getProjectResult -> getProjectResult.number())))
- *                         .build())
- *                     .build())
- *                 .kmsKey(key.id())
- *                 .build())
- *             .build());
- * 
- *         var kafkaServiceIdentity = new ServiceIdentity("kafkaServiceIdentity", ServiceIdentityArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .service("managedkafka.googleapis.com")
- *             .build());
- * 
- *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
- *             .cryptoKeyId(key.id())
- *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-managedkafka.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Cluster can be imported using any of these accepted formats:
@@ -286,14 +142,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * @return ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     public Output<String> location() {

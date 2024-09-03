@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type JobBinaryAuthorization struct {
-	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 	BreakglassJustification *string `pulumi:"breakglassJustification"`
 	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
 	Policy *string `pulumi:"policy"`
@@ -34,7 +34,7 @@ type JobBinaryAuthorizationInput interface {
 }
 
 type JobBinaryAuthorizationArgs struct {
-	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 	BreakglassJustification pulumi.StringPtrInput `pulumi:"breakglassJustification"`
 	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
@@ -119,7 +119,7 @@ func (o JobBinaryAuthorizationOutput) ToJobBinaryAuthorizationPtrOutputWithConte
 	}).(JobBinaryAuthorizationPtrOutput)
 }
 
-// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 func (o JobBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobBinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +158,7 @@ func (o JobBinaryAuthorizationPtrOutput) Elem() JobBinaryAuthorizationOutput {
 	}).(JobBinaryAuthorizationOutput)
 }
 
-// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 func (o JobBinaryAuthorizationPtrOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobBinaryAuthorization) *string {
 		if v == nil {
@@ -212,7 +212,7 @@ type JobCondition struct {
 	// State of the condition.
 	State *string `pulumi:"state"`
 	// (Output)
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	// type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type *string `pulumi:"type"`
 }
 
@@ -251,7 +251,7 @@ type JobConditionArgs struct {
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// (Output)
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	// type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -350,7 +350,7 @@ func (o JobConditionOutput) State() pulumi.StringPtrOutput {
 }
 
 // (Output)
-// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+// type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o JobConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -835,14 +835,14 @@ type JobTemplate struct {
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels.
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+	// <https://cloud.google.com/run/docs/configuring/labels>.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
-	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
 	TaskCount *int `pulumi:"taskCount"`
 	// Describes the task(s) that will be created when executing an execution
 	// Structure is documented below.
@@ -867,14 +867,14 @@ type JobTemplateArgs struct {
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-	// https://cloud.google.com/run/docs/configuring/labels.
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+	// <https://cloud.google.com/run/docs/configuring/labels>.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
-	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
 	TaskCount pulumi.IntPtrInput `pulumi:"taskCount"`
 	// Describes the task(s) that will be created when executing an execution
 	// Structure is documented below.
@@ -967,8 +967,8 @@ func (o JobTemplateOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-// https://cloud.google.com/run/docs/configuring/labels.
+// or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+// <https://cloud.google.com/run/docs/configuring/labels>.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o JobTemplateOutput) Labels() pulumi.StringMapOutput {
@@ -980,7 +980,7 @@ func (o JobTemplateOutput) Parallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplate) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
 func (o JobTemplateOutput) TaskCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplate) *int { return v.TaskCount }).(pulumi.IntPtrOutput)
 }
@@ -1029,8 +1029,8 @@ func (o JobTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-// https://cloud.google.com/run/docs/configuring/labels.
+// or break down billing charges by team, component, environment, state, etc. For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or
+// <https://cloud.google.com/run/docs/configuring/labels>.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o JobTemplatePtrOutput) Labels() pulumi.StringMapOutput {
@@ -1052,7 +1052,7 @@ func (o JobTemplatePtrOutput) Parallelism() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>
 func (o JobTemplatePtrOutput) TaskCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobTemplate) *int {
 		if v == nil {
@@ -1077,7 +1077,7 @@ type JobTemplateTemplate struct {
 	// Holds the single container that defines the unit of execution for this task.
 	// Structure is documented below.
 	Containers []JobTemplateTemplateContainer `pulumi:"containers"`
-	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
@@ -1092,7 +1092,7 @@ type JobTemplateTemplate struct {
 	// A list of Volumes to make available to containers.
 	// Structure is documented below.
 	Volumes []JobTemplateTemplateVolume `pulumi:"volumes"`
-	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 	// Structure is documented below.
 	VpcAccess *JobTemplateTemplateVpcAccess `pulumi:"vpcAccess"`
 }
@@ -1112,7 +1112,7 @@ type JobTemplateTemplateArgs struct {
 	// Holds the single container that defines the unit of execution for this task.
 	// Structure is documented below.
 	Containers JobTemplateTemplateContainerArrayInput `pulumi:"containers"`
-	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
@@ -1127,7 +1127,7 @@ type JobTemplateTemplateArgs struct {
 	// A list of Volumes to make available to containers.
 	// Structure is documented below.
 	Volumes JobTemplateTemplateVolumeArrayInput `pulumi:"volumes"`
-	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 	// Structure is documented below.
 	VpcAccess JobTemplateTemplateVpcAccessPtrInput `pulumi:"vpcAccess"`
 }
@@ -1215,7 +1215,7 @@ func (o JobTemplateTemplateOutput) Containers() JobTemplateTemplateContainerArra
 	return o.ApplyT(func(v JobTemplateTemplate) []JobTemplateTemplateContainer { return v.Containers }).(JobTemplateTemplateContainerArrayOutput)
 }
 
-// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 func (o JobTemplateTemplateOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -1248,7 +1248,7 @@ func (o JobTemplateTemplateOutput) Volumes() JobTemplateTemplateVolumeArrayOutpu
 	return o.ApplyT(func(v JobTemplateTemplate) []JobTemplateTemplateVolume { return v.Volumes }).(JobTemplateTemplateVolumeArrayOutput)
 }
 
-// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 // Structure is documented below.
 func (o JobTemplateTemplateOutput) VpcAccess() JobTemplateTemplateVpcAccessPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *JobTemplateTemplateVpcAccess { return v.VpcAccess }).(JobTemplateTemplateVpcAccessPtrOutput)
@@ -1289,7 +1289,7 @@ func (o JobTemplateTemplatePtrOutput) Containers() JobTemplateTemplateContainerA
 	}).(JobTemplateTemplateContainerArrayOutput)
 }
 
-// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 func (o JobTemplateTemplatePtrOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplate) *string {
 		if v == nil {
@@ -1352,7 +1352,7 @@ func (o JobTemplateTemplatePtrOutput) Volumes() JobTemplateTemplateVolumeArrayOu
 	}).(JobTemplateTemplateVolumeArrayOutput)
 }
 
-// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 // Structure is documented below.
 func (o JobTemplateTemplatePtrOutput) VpcAccess() JobTemplateTemplateVpcAccessPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplate) *JobTemplateTemplateVpcAccess {
@@ -1364,14 +1364,14 @@ func (o JobTemplateTemplatePtrOutput) VpcAccess() JobTemplateTemplateVpcAccessPt
 }
 
 type JobTemplateTemplateContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Commands []string `pulumi:"commands"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []JobTemplateTemplateContainerEnv `pulumi:"envs"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
 	Image string `pulumi:"image"`
 	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
@@ -1379,7 +1379,7 @@ type JobTemplateTemplateContainer struct {
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 	// Structure is documented below.
 	Ports []JobTemplateTemplateContainerPort `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
 	// Structure is documented below.
 	Resources *JobTemplateTemplateContainerResources `pulumi:"resources"`
 	// Volume to mount into the container's filesystem.
@@ -1401,14 +1401,14 @@ type JobTemplateTemplateContainerInput interface {
 }
 
 type JobTemplateTemplateContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs JobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
 	Image pulumi.StringInput `pulumi:"image"`
 	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1416,7 +1416,7 @@ type JobTemplateTemplateContainerArgs struct {
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 	// Structure is documented below.
 	Ports JobTemplateTemplateContainerPortArrayInput `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
 	// Structure is documented below.
 	Resources JobTemplateTemplateContainerResourcesPtrInput `pulumi:"resources"`
 	// Volume to mount into the container's filesystem.
@@ -1477,12 +1477,12 @@ func (o JobTemplateTemplateContainerOutput) ToJobTemplateTemplateContainerOutput
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 func (o JobTemplateTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 func (o JobTemplateTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
@@ -1493,7 +1493,7 @@ func (o JobTemplateTemplateContainerOutput) Envs() JobTemplateTemplateContainerE
 	return o.ApplyT(func(v JobTemplateTemplateContainer) []JobTemplateTemplateContainerEnv { return v.Envs }).(JobTemplateTemplateContainerEnvArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
 func (o JobTemplateTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -1510,7 +1510,7 @@ func (o JobTemplateTemplateContainerOutput) Ports() JobTemplateTemplateContainer
 	return o.ApplyT(func(v JobTemplateTemplateContainer) []JobTemplateTemplateContainerPort { return v.Ports }).(JobTemplateTemplateContainerPortArrayOutput)
 }
 
-// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
 // Structure is documented below.
 func (o JobTemplateTemplateContainerOutput) Resources() JobTemplateTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerResources { return v.Resources }).(JobTemplateTemplateContainerResourcesPtrOutput)
@@ -2073,7 +2073,7 @@ func (o JobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobTemplateTemplateContainerResources struct {
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -2089,7 +2089,7 @@ type JobTemplateTemplateContainerResourcesInput interface {
 }
 
 type JobTemplateTemplateContainerResourcesArgs struct {
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 }
 
@@ -2170,7 +2170,7 @@ func (o JobTemplateTemplateContainerResourcesOutput) ToJobTemplateTemplateContai
 	}).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 func (o JobTemplateTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -2199,7 +2199,7 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) Elem() JobTemplateTempla
 	}).(JobTemplateTemplateContainerResourcesOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 func (o JobTemplateTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerResources) map[string]string {
 		if v == nil {
@@ -2210,7 +2210,7 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMa
 }
 
 type JobTemplateTemplateContainerVolumeMount struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
 	MountPath string `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
@@ -2228,7 +2228,7 @@ type JobTemplateTemplateContainerVolumeMountInput interface {
 }
 
 type JobTemplateTemplateContainerVolumeMountArgs struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -2285,7 +2285,7 @@ func (o JobTemplateTemplateContainerVolumeMountOutput) ToJobTemplateTemplateCont
 	return o
 }
 
-// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
 func (o JobTemplateTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
@@ -2316,7 +2316,7 @@ func (o JobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntIn
 }
 
 type JobTemplateTemplateVolume struct {
-	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *JobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
@@ -2330,7 +2330,7 @@ type JobTemplateTemplateVolume struct {
 	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
 	// Structure is documented below.
 	Nfs *JobTemplateTemplateVolumeNfs `pulumi:"nfs"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
 	// Structure is documented below.
 	Secret *JobTemplateTemplateVolumeSecret `pulumi:"secret"`
 }
@@ -2347,7 +2347,7 @@ type JobTemplateTemplateVolumeInput interface {
 }
 
 type JobTemplateTemplateVolumeArgs struct {
-	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance JobTemplateTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
@@ -2361,7 +2361,7 @@ type JobTemplateTemplateVolumeArgs struct {
 	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
 	// Structure is documented below.
 	Nfs JobTemplateTemplateVolumeNfsPtrInput `pulumi:"nfs"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
 	// Structure is documented below.
 	Secret JobTemplateTemplateVolumeSecretPtrInput `pulumi:"secret"`
 }
@@ -2417,7 +2417,7 @@ func (o JobTemplateTemplateVolumeOutput) ToJobTemplateTemplateVolumeOutputWithCo
 	return o
 }
 
-// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
 // Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) CloudSqlInstance() JobTemplateTemplateVolumeCloudSqlInstancePtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeCloudSqlInstance {
@@ -2448,7 +2448,7 @@ func (o JobTemplateTemplateVolumeOutput) Nfs() JobTemplateTemplateVolumeNfsPtrOu
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeNfs { return v.Nfs }).(JobTemplateTemplateVolumeNfsPtrOutput)
 }
 
-// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
 // Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) Secret() JobTemplateTemplateVolumeSecretPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeSecret { return v.Secret }).(JobTemplateTemplateVolumeSecretPtrOutput)
@@ -2475,7 +2475,7 @@ func (o JobTemplateTemplateVolumeArrayOutput) Index(i pulumi.IntInput) JobTempla
 }
 
 type JobTemplateTemplateVolumeCloudSqlInstance struct {
-	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances []string `pulumi:"instances"`
 }
 
@@ -2491,7 +2491,7 @@ type JobTemplateTemplateVolumeCloudSqlInstanceInput interface {
 }
 
 type JobTemplateTemplateVolumeCloudSqlInstanceArgs struct {
-	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 }
 
@@ -2572,7 +2572,7 @@ func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) ToJobTemplateTemplateVo
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
@@ -2601,7 +2601,7 @@ func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) Elem() JobTemplateTe
 	}).(JobTemplateTemplateVolumeCloudSqlInstanceOutput)
 }
 
-// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateVolumeCloudSqlInstance) []string {
 		if v == nil {
@@ -2616,7 +2616,7 @@ type JobTemplateTemplateVolumeEmptyDir struct {
 	// Default value is `MEMORY`.
 	// Possible values are: `MEMORY`.
 	Medium *string `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -2636,7 +2636,7 @@ type JobTemplateTemplateVolumeEmptyDirArgs struct {
 	// Default value is `MEMORY`.
 	// Possible values are: `MEMORY`.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -2724,7 +2724,7 @@ func (o JobTemplateTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput
 	return o.ApplyT(func(v JobTemplateTemplateVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 func (o JobTemplateTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -2765,7 +2765,7 @@ func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateVolumeEmptyDir) *string {
 		if v == nil {
@@ -3595,8 +3595,6 @@ type JobTemplateTemplateVpcAccessNetworkInterface struct {
 	// subnetwork with the same name with the network will be used.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Network tags applied to this Cloud Run job.
-	//
-	// ***
 	Tags []string `pulumi:"tags"`
 }
 
@@ -3621,8 +3619,6 @@ type JobTemplateTemplateVpcAccessNetworkInterfaceArgs struct {
 	// subnetwork with the same name with the network will be used.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// Network tags applied to this Cloud Run job.
-	//
-	// ***
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -3692,8 +3688,6 @@ func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.
 }
 
 // Network tags applied to this Cloud Run job.
-//
-// ***
 func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -3742,7 +3736,7 @@ type JobTerminalCondition struct {
 	// State of the condition.
 	State *string `pulumi:"state"`
 	// (Output)
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	// type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type *string `pulumi:"type"`
 }
 
@@ -3781,7 +3775,7 @@ type JobTerminalConditionArgs struct {
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// (Output)
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	// type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -3880,7 +3874,7 @@ func (o JobTerminalConditionOutput) State() pulumi.StringPtrOutput {
 }
 
 // (Output)
-// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+// type is used to communicate the status of the reconciliation process. See also: <https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting> Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o JobTerminalConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3906,7 +3900,7 @@ func (o JobTerminalConditionArrayOutput) Index(i pulumi.IntInput) JobTerminalCon
 }
 
 type ServiceBinaryAuthorization struct {
-	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 	BreakglassJustification *string `pulumi:"breakglassJustification"`
 	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
 	Policy *string `pulumi:"policy"`
@@ -3926,7 +3920,7 @@ type ServiceBinaryAuthorizationInput interface {
 }
 
 type ServiceBinaryAuthorizationArgs struct {
-	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 	BreakglassJustification pulumi.StringPtrInput `pulumi:"breakglassJustification"`
 	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
@@ -4011,7 +4005,7 @@ func (o ServiceBinaryAuthorizationOutput) ToServiceBinaryAuthorizationPtrOutputW
 	}).(ServiceBinaryAuthorizationPtrOutput)
 }
 
-// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 func (o ServiceBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceBinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
 }
@@ -4050,7 +4044,7 @@ func (o ServiceBinaryAuthorizationPtrOutput) Elem() ServiceBinaryAuthorizationOu
 	}).(ServiceBinaryAuthorizationOutput)
 }
 
-// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see <https://cloud.google.com/binary-authorization/docs/using-breakglass>
 func (o ServiceBinaryAuthorizationPtrOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceBinaryAuthorization) *string {
 		if v == nil {
@@ -4739,13 +4733,13 @@ type ServiceTemplate struct {
 	// Holds the containers that define the unit of execution for this Service.
 	// Structure is documented below.
 	Containers []ServiceTemplateContainer `pulumi:"containers"`
-	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
@@ -4759,7 +4753,7 @@ type ServiceTemplate struct {
 	Scaling *ServiceTemplateScaling `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+	// Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
 	SessionAffinity *bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -4767,7 +4761,7 @@ type ServiceTemplate struct {
 	// A list of Volumes to make available to containers.
 	// Structure is documented below.
 	Volumes []ServiceTemplateVolume `pulumi:"volumes"`
-	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 	// Structure is documented below.
 	VpcAccess *ServiceTemplateVpcAccess `pulumi:"vpcAccess"`
 }
@@ -4792,13 +4786,13 @@ type ServiceTemplateArgs struct {
 	// Holds the containers that define the unit of execution for this Service.
 	// Structure is documented below.
 	Containers ServiceTemplateContainerArrayInput `pulumi:"containers"`
-	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -4812,7 +4806,7 @@ type ServiceTemplateArgs struct {
 	Scaling ServiceTemplateScalingPtrInput `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+	// Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
 	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -4820,7 +4814,7 @@ type ServiceTemplateArgs struct {
 	// A list of Volumes to make available to containers.
 	// Structure is documented below.
 	Volumes ServiceTemplateVolumeArrayInput `pulumi:"volumes"`
-	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 	// Structure is documented below.
 	VpcAccess ServiceTemplateVpcAccessPtrInput `pulumi:"vpcAccess"`
 }
@@ -4916,7 +4910,7 @@ func (o ServiceTemplateOutput) Containers() ServiceTemplateContainerArrayOutput 
 	return o.ApplyT(func(v ServiceTemplate) []ServiceTemplateContainer { return v.Containers }).(ServiceTemplateContainerArrayOutput)
 }
 
-// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 func (o ServiceTemplateOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -4928,7 +4922,7 @@ func (o ServiceTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o ServiceTemplateOutput) Labels() pulumi.StringMapOutput {
@@ -4957,7 +4951,7 @@ func (o ServiceTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+// Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
 func (o ServiceTemplateOutput) SessionAffinity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
 }
@@ -4974,7 +4968,7 @@ func (o ServiceTemplateOutput) Volumes() ServiceTemplateVolumeArrayOutput {
 	return o.ApplyT(func(v ServiceTemplate) []ServiceTemplateVolume { return v.Volumes }).(ServiceTemplateVolumeArrayOutput)
 }
 
-// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 // Structure is documented below.
 func (o ServiceTemplateOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateVpcAccess { return v.VpcAccess }).(ServiceTemplateVpcAccessPtrOutput)
@@ -5028,7 +5022,7 @@ func (o ServiceTemplatePtrOutput) Containers() ServiceTemplateContainerArrayOutp
 	}).(ServiceTemplateContainerArrayOutput)
 }
 
-// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to <https://cloud.google.com/run/docs/securing/using-cmek>
 func (o ServiceTemplatePtrOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *string {
 		if v == nil {
@@ -5050,7 +5044,7 @@ func (o ServiceTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOutput 
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit <https://cloud.google.com/resource-manager/docs/creating-managing-labels> or <https://cloud.google.com/run/docs/configuring/labels>.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o ServiceTemplatePtrOutput) Labels() pulumi.StringMapOutput {
@@ -5104,7 +5098,7 @@ func (o ServiceTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+// Enables session affinity. For more information, go to <https://cloud.google.com/run/docs/configuring/session-affinity>
 func (o ServiceTemplatePtrOutput) SessionAffinity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *bool {
 		if v == nil {
@@ -5136,7 +5130,7 @@ func (o ServiceTemplatePtrOutput) Volumes() ServiceTemplateVolumeArrayOutput {
 	}).(ServiceTemplateVolumeArrayOutput)
 }
 
-// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+// VPC Access configuration to use for this Task. For more information, visit <https://cloud.google.com/run/docs/configuring/connecting-vpc>.
 // Structure is documented below.
 func (o ServiceTemplatePtrOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateVpcAccess {
@@ -5148,18 +5142,18 @@ func (o ServiceTemplatePtrOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput 
 }
 
 type ServiceTemplateContainer struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Commands []string `pulumi:"commands"`
 	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []ServiceTemplateContainerEnv `pulumi:"envs"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
 	Image string `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	// Structure is documented below.
 	LivenessProbe *ServiceTemplateContainerLivenessProbe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
@@ -5168,10 +5162,10 @@ type ServiceTemplateContainer struct {
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 	// Structure is documented below.
 	Ports []ServiceTemplateContainerPort `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
 	// Structure is documented below.
 	Resources *ServiceTemplateContainerResources `pulumi:"resources"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	// Structure is documented below.
 	StartupProbe *ServiceTemplateContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
@@ -5193,18 +5187,18 @@ type ServiceTemplateContainerInput interface {
 }
 
 type ServiceTemplateContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs ServiceTemplateContainerEnvArrayInput `pulumi:"envs"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
 	Image pulumi.StringInput `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	// Structure is documented below.
 	LivenessProbe ServiceTemplateContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
@@ -5213,10 +5207,10 @@ type ServiceTemplateContainerArgs struct {
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 	// Structure is documented below.
 	Ports ServiceTemplateContainerPortArrayInput `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
 	// Structure is documented below.
 	Resources ServiceTemplateContainerResourcesPtrInput `pulumi:"resources"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	// Structure is documented below.
 	StartupProbe ServiceTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
@@ -5277,12 +5271,12 @@ func (o ServiceTemplateContainerOutput) ToServiceTemplateContainerOutputWithCont
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 func (o ServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: <https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell>
 func (o ServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
@@ -5298,12 +5292,12 @@ func (o ServiceTemplateContainerOutput) Envs() ServiceTemplateContainerEnvArrayO
 	return o.ApplyT(func(v ServiceTemplateContainer) []ServiceTemplateContainerEnv { return v.Envs }).(ServiceTemplateContainerEnvArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: <https://kubernetes.io/docs/concepts/containers/images>
 func (o ServiceTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 // Structure is documented below.
 func (o ServiceTemplateContainerOutput) LivenessProbe() ServiceTemplateContainerLivenessProbePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerLivenessProbe { return v.LivenessProbe }).(ServiceTemplateContainerLivenessProbePtrOutput)
@@ -5321,13 +5315,13 @@ func (o ServiceTemplateContainerOutput) Ports() ServiceTemplateContainerPortArra
 	return o.ApplyT(func(v ServiceTemplateContainer) []ServiceTemplateContainerPort { return v.Ports }).(ServiceTemplateContainerPortArrayOutput)
 }
 
-// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Compute Resource requirements by this container. More info: <https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources>
 // Structure is documented below.
 func (o ServiceTemplateContainerOutput) Resources() ServiceTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerResources { return v.Resources }).(ServiceTemplateContainerResourcesPtrOutput)
 }
 
-// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 // Structure is documented below.
 func (o ServiceTemplateContainerOutput) StartupProbe() ServiceTemplateContainerStartupProbePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerStartupProbe { return v.StartupProbe }).(ServiceTemplateContainerStartupProbePtrOutput)
@@ -5790,14 +5784,14 @@ type ServiceTemplateContainerLivenessProbe struct {
 	// HTTPGet specifies the http request to perform.
 	// Structure is documented below.
 	HttpGet *ServiceTemplateContainerLivenessProbeHttpGet `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds *int `pulumi:"periodSeconds"`
 	// TCPSocketAction describes an action based on opening a socket
 	// Structure is documented below.
 	TcpSocket *ServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -5821,14 +5815,14 @@ type ServiceTemplateContainerLivenessProbeArgs struct {
 	// HTTPGet specifies the http request to perform.
 	// Structure is documented below.
 	HttpGet ServiceTemplateContainerLivenessProbeHttpGetPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
 	// TCPSocketAction describes an action based on opening a socket
 	// Structure is documented below.
 	TcpSocket ServiceTemplateContainerLivenessProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -5930,7 +5924,7 @@ func (o ServiceTemplateContainerLivenessProbeOutput) HttpGet() ServiceTemplateCo
 	}).(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
@@ -5948,7 +5942,7 @@ func (o ServiceTemplateContainerLivenessProbeOutput) TcpSocket() ServiceTemplate
 	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -6009,7 +6003,7 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) HttpGet() ServiceTemplat
 	}).(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerLivenessProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *int {
 		if v == nil {
@@ -6040,7 +6034,7 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) TcpSocket() ServiceTempl
 	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *int {
 		if v == nil {
@@ -6055,7 +6049,7 @@ type ServiceTemplateContainerLivenessProbeGrpc struct {
 	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
-	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 	// If this is not specified, the default behavior is defined by gRPC.
 	Service *string `pulumi:"service"`
 }
@@ -6076,7 +6070,7 @@ type ServiceTemplateContainerLivenessProbeGrpcArgs struct {
 	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
-	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 	// If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
@@ -6165,7 +6159,7 @@ func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOut
 }
 
 // The name of the service to place in the gRPC HealthCheckRequest
-// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 // If this is not specified, the default behavior is defined by gRPC.
 func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -6207,7 +6201,7 @@ func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtr
 }
 
 // The name of the service to place in the gRPC HealthCheckRequest
-// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 // If this is not specified, the default behavior is defined by gRPC.
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) *string {
@@ -6760,7 +6754,7 @@ type ServiceTemplateContainerResources struct {
 	// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
 	// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle *bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 	Limits map[string]string `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost *bool `pulumi:"startupCpuBoost"`
@@ -6781,7 +6775,7 @@ type ServiceTemplateContainerResourcesArgs struct {
 	// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
 	// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost pulumi.BoolPtrInput `pulumi:"startupCpuBoost"`
@@ -6870,7 +6864,7 @@ func (o ServiceTemplateContainerResourcesOutput) CpuIdle() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v ServiceTemplateContainerResources) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 func (o ServiceTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -6915,7 +6909,7 @@ func (o ServiceTemplateContainerResourcesPtrOutput) CpuIdle() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: <https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go>
 func (o ServiceTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerResources) map[string]string {
 		if v == nil {
@@ -6944,14 +6938,14 @@ type ServiceTemplateContainerStartupProbe struct {
 	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	// Structure is documented below.
 	HttpGet *ServiceTemplateContainerStartupProbeHttpGet `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds *int `pulumi:"periodSeconds"`
 	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 	// Structure is documented below.
 	TcpSocket *ServiceTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -6975,14 +6969,14 @@ type ServiceTemplateContainerStartupProbeArgs struct {
 	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	// Structure is documented below.
 	HttpGet ServiceTemplateContainerStartupProbeHttpGetPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
 	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 	// Structure is documented below.
 	TcpSocket ServiceTemplateContainerStartupProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -7082,7 +7076,7 @@ func (o ServiceTemplateContainerStartupProbeOutput) HttpGet() ServiceTemplateCon
 	}).(ServiceTemplateContainerStartupProbeHttpGetPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
@@ -7100,7 +7094,7 @@ func (o ServiceTemplateContainerStartupProbeOutput) TcpSocket() ServiceTemplateC
 	}).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -7161,7 +7155,7 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) HttpGet() ServiceTemplate
 	}).(ServiceTemplateContainerStartupProbeHttpGetPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerStartupProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbe) *int {
 		if v == nil {
@@ -7192,7 +7186,7 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) TcpSocket() ServiceTempla
 	}).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: <https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes>
 func (o ServiceTemplateContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbe) *int {
 		if v == nil {
@@ -7207,7 +7201,7 @@ type ServiceTemplateContainerStartupProbeGrpc struct {
 	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
-	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 	// If this is not specified, the default behavior is defined by gRPC.
 	Service *string `pulumi:"service"`
 }
@@ -7228,7 +7222,7 @@ type ServiceTemplateContainerStartupProbeGrpcArgs struct {
 	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
-	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 	// If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
@@ -7317,7 +7311,7 @@ func (o ServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutp
 }
 
 // The name of the service to place in the gRPC HealthCheckRequest
-// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 // If this is not specified, the default behavior is defined by gRPC.
 func (o ServiceTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
@@ -7359,7 +7353,7 @@ func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrO
 }
 
 // The name of the service to place in the gRPC HealthCheckRequest
-// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// (see <https://github.com/grpc/grpc/blob/master/doc/health-checking.md)>.
 // If this is not specified, the default behavior is defined by gRPC.
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) *string {
@@ -7803,7 +7797,7 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.In
 }
 
 type ServiceTemplateContainerVolumeMount struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
 	MountPath string `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
@@ -7821,7 +7815,7 @@ type ServiceTemplateContainerVolumeMountInput interface {
 }
 
 type ServiceTemplateContainerVolumeMountArgs struct {
-	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -7878,7 +7872,7 @@ func (o ServiceTemplateContainerVolumeMountOutput) ToServiceTemplateContainerVol
 	return o
 }
 
-// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit <https://cloud.google.com/sql/docs/mysql/connect-run>
 func (o ServiceTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
@@ -8065,7 +8059,7 @@ func (o ServiceTemplateScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput 
 }
 
 type ServiceTemplateVolume struct {
-	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
@@ -8079,7 +8073,7 @@ type ServiceTemplateVolume struct {
 	// Represents an NFS mount.
 	// Structure is documented below.
 	Nfs *ServiceTemplateVolumeNfs `pulumi:"nfs"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
 	// Structure is documented below.
 	Secret *ServiceTemplateVolumeSecret `pulumi:"secret"`
 }
@@ -8096,7 +8090,7 @@ type ServiceTemplateVolumeInput interface {
 }
 
 type ServiceTemplateVolumeArgs struct {
-	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
@@ -8110,7 +8104,7 @@ type ServiceTemplateVolumeArgs struct {
 	// Represents an NFS mount.
 	// Structure is documented below.
 	Nfs ServiceTemplateVolumeNfsPtrInput `pulumi:"nfs"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
 	// Structure is documented below.
 	Secret ServiceTemplateVolumeSecretPtrInput `pulumi:"secret"`
 }
@@ -8166,7 +8160,7 @@ func (o ServiceTemplateVolumeOutput) ToServiceTemplateVolumeOutputWithContext(ct
 	return o
 }
 
-// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run.
 // Structure is documented below.
 func (o ServiceTemplateVolumeOutput) CloudSqlInstance() ServiceTemplateVolumeCloudSqlInstancePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeCloudSqlInstance { return v.CloudSqlInstance }).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
@@ -8195,7 +8189,7 @@ func (o ServiceTemplateVolumeOutput) Nfs() ServiceTemplateVolumeNfsPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeNfs { return v.Nfs }).(ServiceTemplateVolumeNfsPtrOutput)
 }
 
-// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Secret represents a secret that should populate this volume. More info: <https://kubernetes.io/docs/concepts/storage/volumes#secret>
 // Structure is documented below.
 func (o ServiceTemplateVolumeOutput) Secret() ServiceTemplateVolumeSecretPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeSecret { return v.Secret }).(ServiceTemplateVolumeSecretPtrOutput)
@@ -8222,7 +8216,7 @@ func (o ServiceTemplateVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTempla
 }
 
 type ServiceTemplateVolumeCloudSqlInstance struct {
-	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances []string `pulumi:"instances"`
 }
 
@@ -8238,7 +8232,7 @@ type ServiceTemplateVolumeCloudSqlInstanceInput interface {
 }
 
 type ServiceTemplateVolumeCloudSqlInstanceArgs struct {
-	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 }
 
@@ -8319,7 +8313,7 @@ func (o ServiceTemplateVolumeCloudSqlInstanceOutput) ToServiceTemplateVolumeClou
 	}).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o ServiceTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
@@ -8348,7 +8342,7 @@ func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Elem() ServiceTemplateVo
 	}).(ServiceTemplateVolumeCloudSqlInstanceOutput)
 }
 
-// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+// The Cloud SQL instance connection names, as can be found in <https://console.cloud.google.com/sql/instances>. Visit <https://cloud.google.com/sql/docs/mysql/connect-run> for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeCloudSqlInstance) []string {
 		if v == nil {
@@ -8363,7 +8357,7 @@ type ServiceTemplateVolumeEmptyDir struct {
 	// Default value is `MEMORY`.
 	// Possible values are: `MEMORY`.
 	Medium *string `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -8383,7 +8377,7 @@ type ServiceTemplateVolumeEmptyDirArgs struct {
 	// Default value is `MEMORY`.
 	// Possible values are: `MEMORY`.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
-	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -8471,7 +8465,7 @@ func (o ServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 func (o ServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -8512,7 +8506,7 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: <https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/>. The default is nil which means that the limit is undefined. More info: <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>.
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
 		if v == nil {
@@ -8682,8 +8676,6 @@ type ServiceTemplateVolumeNfs struct {
 	// Path that is exported by the NFS server.
 	Path string `pulumi:"path"`
 	// If true, mount the NFS volume as read only
-	//
-	// ***
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Hostname or IP address of the NFS server
 	Server string `pulumi:"server"`
@@ -8704,8 +8696,6 @@ type ServiceTemplateVolumeNfsArgs struct {
 	// Path that is exported by the NFS server.
 	Path pulumi.StringInput `pulumi:"path"`
 	// If true, mount the NFS volume as read only
-	//
-	// ***
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// Hostname or IP address of the NFS server
 	Server pulumi.StringInput `pulumi:"server"`
@@ -8794,8 +8784,6 @@ func (o ServiceTemplateVolumeNfsOutput) Path() pulumi.StringOutput {
 }
 
 // If true, mount the NFS volume as read only
-//
-// ***
 func (o ServiceTemplateVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -8840,8 +8828,6 @@ func (o ServiceTemplateVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 // If true, mount the NFS volume as read only
-//
-// ***
 func (o ServiceTemplateVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeNfs) *bool {
 		if v == nil {

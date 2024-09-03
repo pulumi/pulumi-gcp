@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+ *   * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
  *
  * ## Example Usage
  *
@@ -58,6 +58,7 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
+ *
  * ### Uptime Check Config Status Code
  *
  * ```typescript
@@ -103,6 +104,7 @@ import * as utilities from "../utilities";
  *     checkerType: "STATIC_IP_CHECKERS",
  * });
  * ```
+ *
  * ### Uptime Check Config Https
  *
  * ```typescript
@@ -138,7 +140,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Uptime Check Tcp
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -163,6 +165,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Uptime Check Config Synthetic Monitor
  *
  * ```typescript
@@ -270,7 +273,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
      * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (<https://cloud.google.com/monitoring/api/resources>) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
@@ -308,10 +311,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     *
-     *
-     * - - -
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      */
     public readonly timeout!: pulumi.Output<string>;
     /**
@@ -405,7 +405,7 @@ export interface UptimeCheckConfigState {
     httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     /**
      * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (<https://cloud.google.com/monitoring/api/resources>) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
@@ -443,10 +443,7 @@ export interface UptimeCheckConfigState {
      */
     tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     *
-     *
-     * - - -
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      */
     timeout?: pulumi.Input<string>;
     /**
@@ -484,7 +481,7 @@ export interface UptimeCheckConfigArgs {
     httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     /**
      * The [monitored resource]
-     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * (<https://cloud.google.com/monitoring/api/resources>) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
@@ -518,10 +515,7 @@ export interface UptimeCheckConfigArgs {
      */
     tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-     *
-     *
-     * - - -
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
      */
     timeout: pulumi.Input<string>;
     /**

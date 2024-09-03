@@ -14,55 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ### Bigquery Dataset Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bqowner, err := serviceaccount.NewAccount(ctx, "bqowner", &serviceaccount.AccountArgs{
-//				AccountId: pulumi.String("bqowner"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("example_dataset"),
-//				FriendlyName:             pulumi.String("test"),
-//				Description:              pulumi.String("This is a test description"),
-//				Location:                 pulumi.String("EU"),
-//				DefaultTableExpirationMs: pulumi.Int(3600000),
-//				Labels: pulumi.StringMap{
-//					"env": pulumi.String("default"),
-//				},
-//				Accesses: bigquery.DatasetAccessTypeArray{
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:        pulumi.String("OWNER"),
-//						UserByEmail: bqowner.Email,
-//					},
-//					&bigquery.DatasetAccessTypeArgs{
-//						Role:   pulumi.String("READER"),
-//						Domain: pulumi.String("hashicorp.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Bigquery Dataset Cmek
 //
 // ```go
@@ -110,7 +61,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Dataset Authorized Dataset
+// ##
 //
 // ```go
 // package main
@@ -193,6 +144,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Authorized Routine
 //
 // ```go
@@ -280,6 +232,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset External Reference Aws
 //
 // ```go
@@ -348,8 +301,6 @@ type Dataset struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -499,8 +450,6 @@ type datasetState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId *string `pulumi:"datasetId"`
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -613,8 +562,6 @@ type DatasetState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringPtrInput
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -728,8 +675,6 @@ type datasetArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId string `pulumi:"datasetId"`
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -828,8 +773,6 @@ type DatasetArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringInput
 	// Defines the default collation specification of future tables created
 	// in the dataset. If a table is created in this dataset without table-level
@@ -1022,8 +965,6 @@ func (o DatasetOutput) CreationTime() pulumi.IntOutput {
 // A unique ID for this dataset, without the project name. The ID
 // must contain only letters (a-z, A-Z), numbers (0-9), or
 // underscores (_). The maximum length is 1,024 characters.
-//
-// ***
 func (o DatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }

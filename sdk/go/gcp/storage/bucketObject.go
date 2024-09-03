@@ -14,9 +14,7 @@ import (
 
 // Creates a new object inside an existing bucket in Google cloud storage service (GCS).
 // [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `storage.ObjectACL` resource.
-//
-//	For more information see
-//
+// For more information see
 // [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
@@ -131,8 +129,6 @@ type BucketObject struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
-	//
-	// ***
 	Source pulumi.AssetOrArchiveOutput `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -232,8 +228,6 @@ type bucketObjectState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
-	//
-	// ***
 	Source pulumi.AssetOrArchive `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -290,8 +284,6 @@ type BucketObjectState struct {
 	SelfLink pulumi.StringPtrInput
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
-	//
-	// ***
 	Source pulumi.AssetOrArchiveInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -339,8 +331,6 @@ type bucketObjectArgs struct {
 	Retention *BucketObjectRetention `pulumi:"retention"`
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
-	//
-	// ***
 	Source pulumi.AssetOrArchive `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -385,8 +375,6 @@ type BucketObjectArgs struct {
 	Retention BucketObjectRetentionPtrInput
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
-	//
-	// ***
 	Source pulumi.AssetOrArchiveInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -589,8 +577,6 @@ func (o BucketObjectOutput) SelfLink() pulumi.StringOutput {
 
 // A path to the data you want to upload. Must be defined
 // if `content` is not.
-//
-// ***
 func (o BucketObjectOutput) Source() pulumi.AssetOrArchiveOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.AssetOrArchiveOutput { return v.Source }).(pulumi.AssetOrArchiveOutput)
 }

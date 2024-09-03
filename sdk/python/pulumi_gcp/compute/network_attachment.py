@@ -41,9 +41,6 @@ class NetworkAttachmentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "connection_preference", connection_preference)
         pulumi.set(__self__, "subnetworks", subnetworks)
@@ -151,9 +148,6 @@ class NetworkAttachmentArgs:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -199,9 +193,6 @@ class _NetworkAttachmentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource's resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
@@ -379,9 +370,6 @@ class _NetworkAttachmentState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -447,7 +435,7 @@ class NetworkAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+          * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
 
         ## Example Usage
 
@@ -484,7 +472,7 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
-        ### Network Attachment Instance Usage
+        ## 
 
         ```python
         import pulumi
@@ -564,9 +552,6 @@ class NetworkAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
         """
         ...
@@ -582,7 +567,7 @@ class NetworkAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+          * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
 
         ## Example Usage
 
@@ -619,7 +604,7 @@ class NetworkAttachment(pulumi.CustomResource):
             producer_accept_lists=[accepted_producer_project.project_id],
             producer_reject_lists=[rejected_producer_project.project_id])
         ```
-        ### Network Attachment Instance Usage
+        ## 
 
         ```python
         import pulumi
@@ -788,9 +773,6 @@ class NetworkAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource's resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
@@ -914,9 +896,6 @@ class NetworkAttachment(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

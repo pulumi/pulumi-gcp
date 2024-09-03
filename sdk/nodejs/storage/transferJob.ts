@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs)
  * * How-to Guides
- *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+ *   * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
  *
  * ## Example Usage
  *
@@ -187,8 +187,6 @@ export class TransferJob extends pulumi.CustomResource {
     public readonly status!: pulumi.Output<string | undefined>;
     /**
      * Transfer specification. Structure documented below.
-     *
-     * - - -
      */
     public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec>;
 
@@ -288,8 +286,6 @@ export interface TransferJobState {
     status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
-     *
-     * - - -
      */
     transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }
@@ -329,8 +325,6 @@ export interface TransferJobArgs {
     status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
-     *
-     * - - -
      */
     transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }

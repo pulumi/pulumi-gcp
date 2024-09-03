@@ -117,9 +117,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// The Workload identifier.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workloadId")]
         public Output<string> WorkloadId { get; private set; } = null!;
@@ -230,9 +227,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// The Workload identifier.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadId", required: true)]
         public Input<string> WorkloadId { get; set; } = null!;
@@ -321,9 +315,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// The Workload identifier.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadId")]
         public Input<string>? WorkloadId { get; set; }

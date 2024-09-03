@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
 
         /// <summary>
         /// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-        /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        /// See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
         /// </summary>
         [Input("enableNestedVirtualization")]
         public Input<bool>? EnableNestedVirtualization { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
         /// <summary>
         /// Resource manager tags to be bound to the VM instances backing the Workstations.
         /// Tag keys and values have the same definition as
-        /// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        /// &lt;https://cloud.google.com/resource-manager/docs/tags/tags-overview&gt;
         /// Keys must be in the format `tagKeys/{tag_key_id}`, and
         /// values are in the format `tagValues/456`.
         /// </summary>

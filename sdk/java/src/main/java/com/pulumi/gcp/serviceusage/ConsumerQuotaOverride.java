@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
  * To get more information about ConsumerQuotaOverride, see:
  * 
  * * How-to Guides
- *     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
- *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+ *   * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+ *   * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  * 
  * ## Example Usage
  * 
@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Region Consumer Quota Override
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -132,6 +133,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Consumer Quota Override Custom Dimension
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -247,8 +249,6 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * &gt; Make sure that `limit` is in a format that doesn&#39;t start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
      * 
-     * ***
-     * 
      */
     @Export(name="limit", refs={String.class}, tree="[0]")
     private Output<String> limit;
@@ -257,8 +257,6 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * @return The limit on the metric, e.g. `/project/region`.
      * &gt; Make sure that `limit` is in a format that doesn&#39;t start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
-     * 
-     * ***
      * 
      */
     public Output<String> limit() {

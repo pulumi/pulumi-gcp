@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
  * * How-to Guides
- *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+ *   * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
  * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = [&#34;attached_disk&#34;]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
  * 
@@ -138,16 +138,12 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     /**
      * `name` or `self_link` of the disk that will be attached.
      * 
-     * ***
-     * 
      */
     @Export(name="disk", refs={String.class}, tree="[0]")
     private Output<String> disk;
 
     /**
      * @return `name` or `self_link` of the disk that will be attached.
-     * 
-     * ***
      * 
      */
     public Output<String> disk() {

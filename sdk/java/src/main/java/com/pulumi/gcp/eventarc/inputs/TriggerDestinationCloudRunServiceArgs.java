@@ -47,14 +47,14 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+     * Required. The name of the Cloud Run service being addressed. See &lt;https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services&gt;. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
-     * @return Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+     * @return Required. The name of the Cloud Run service being addressed. See &lt;https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services&gt;. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     public Output<String> service() {
@@ -130,7 +130,7 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+         * @param service Required. The name of the Cloud Run service being addressed. See &lt;https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services&gt;. Only services located in the same project of the trigger object can be addressed.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+         * @param service Required. The name of the Cloud Run service being addressed. See &lt;https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services&gt;. Only services located in the same project of the trigger object can be addressed.
          * 
          * @return builder
          * 

@@ -28,19 +28,19 @@ import * as utilities from "../utilities";
  * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
  * provider update errors in cases where the service account does not yet exist.
  *
- * >  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
- *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
- *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
- *    bucket configuration, otherwise the API calls will fail.
- *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
- *    See the examples here and in the `gcp.storage.Notification` resource.
+ * > When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+ * you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
+ * Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
+ * bucket configuration, otherwise the API calls will fail.
+ * You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+ * See the examples here and in the `gcp.storage.Notification` resource.
  *
  * For more information see
  * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  *
  * ## Example Usage
  *
- * ### Pub/Sub Notifications
+ * ### pub/sub notifications
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Cloud KMS Keys
+ * ### Cloud KMS keys
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -146,19 +146,19 @@ export interface GetProjectServiceAccountResult {
  * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
  * provider update errors in cases where the service account does not yet exist.
  *
- * >  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
- *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
- *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
- *    bucket configuration, otherwise the API calls will fail.
- *    You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
- *    See the examples here and in the `gcp.storage.Notification` resource.
+ * > When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+ * you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
+ * Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
+ * bucket configuration, otherwise the API calls will fail.
+ * You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+ * See the examples here and in the `gcp.storage.Notification` resource.
  *
  * For more information see
  * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  *
  * ## Example Usage
  *
- * ### Pub/Sub Notifications
+ * ### pub/sub notifications
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -172,7 +172,7 @@ export interface GetProjectServiceAccountResult {
  * });
  * ```
  *
- * ### Cloud KMS Keys
+ * ### Cloud KMS keys
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

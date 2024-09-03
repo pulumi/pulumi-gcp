@@ -50,9 +50,7 @@ import (
 // underlying VPC Service Controls configuration for the service
 // producer network.
 //
-// ## Example Usage
-//
-// ### Service Networking Vpc Service Controls Basic
+// ##
 //
 // ```go
 // package main
@@ -67,14 +65,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a VPC
 //			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name: pulumi.String("example-network"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			// Create an IP address
 //			defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "default", &compute.GlobalAddressArgs{
 //				Name:         pulumi.String("psa-range"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
@@ -85,7 +81,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Create a private connection
 //			defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
@@ -96,7 +91,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Enable VPC-SC on the producer network
 //			_, err = servicenetworking.NewVpcServiceControls(ctx, "default", &servicenetworking.VpcServiceControlsArgs{
 //				Network: _default.Name,
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
@@ -149,8 +143,6 @@ type VpcServiceControls struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
@@ -203,8 +195,6 @@ type vpcServiceControlsState struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service *string `pulumi:"service"`
 }
 
@@ -219,8 +209,6 @@ type VpcServiceControlsState struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service pulumi.StringPtrInput
 }
 
@@ -239,8 +227,6 @@ type vpcServiceControlsArgs struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service string `pulumi:"service"`
 }
 
@@ -256,8 +242,6 @@ type VpcServiceControlsArgs struct {
 	// The service that is managing peering connectivity for a service
 	// producer's organization. For Google services that support this
 	// functionality, this value is `servicenetworking.googleapis.com`.
-	//
-	// ***
 	Service pulumi.StringInput
 }
 
@@ -367,8 +351,6 @@ func (o VpcServiceControlsOutput) Project() pulumi.StringPtrOutput {
 // The service that is managing peering connectivity for a service
 // producer's organization. For Google services that support this
 // functionality, this value is `servicenetworking.googleapis.com`.
-//
-// ***
 func (o VpcServiceControlsOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcServiceControls) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

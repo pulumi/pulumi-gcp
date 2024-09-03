@@ -20,14 +20,14 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
     public static final TargetServerSSlInfoArgs Empty = new TargetServerSSlInfoArgs();
 
     /**
-     * The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+     * The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: &lt;http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites&gt;. For configurable proxies, it must follow the configuration specified in: &lt;https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration&gt;. This setting has no effect for configurable proxies when negotiating TLS 1.3.
      * 
      */
     @Import(name="ciphers")
     private @Nullable Output<List<String>> ciphers;
 
     /**
-     * @return The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+     * @return The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: &lt;http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites&gt;. For configurable proxies, it must follow the configuration specified in: &lt;https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration&gt;. This setting has no effect for configurable proxies when negotiating TLS 1.3.
      * 
      */
     public Optional<Output<List<String>>> ciphers() {
@@ -189,7 +189,7 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ciphers The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+         * @param ciphers The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: &lt;http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites&gt;. For configurable proxies, it must follow the configuration specified in: &lt;https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration&gt;. This setting has no effect for configurable proxies when negotiating TLS 1.3.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ciphers The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+         * @param ciphers The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: &lt;http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites&gt;. For configurable proxies, it must follow the configuration specified in: &lt;https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration&gt;. This setting has no effect for configurable proxies when negotiating TLS 1.3.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ciphers The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+         * @param ciphers The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: &lt;http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites&gt;. For configurable proxies, it must follow the configuration specified in: &lt;https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration&gt;. This setting has no effect for configurable proxies when negotiating TLS 1.3.
          * 
          * @return builder
          * 

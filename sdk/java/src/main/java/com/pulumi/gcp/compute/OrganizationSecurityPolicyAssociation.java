@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
  * * How-to Guides
- *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+ *   * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
  * 
  * ## Example Usage
  * 
@@ -162,16 +162,12 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
     /**
      * The security policy ID of the association.
      * 
-     * ***
-     * 
      */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
      * @return The security policy ID of the association.
-     * 
-     * ***
      * 
      */
     public Output<String> policyId() {

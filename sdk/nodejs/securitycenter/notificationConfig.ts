@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.notificationConfigs)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+ *   * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  *
  * ## Example Usage
  *

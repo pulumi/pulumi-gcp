@@ -31,10 +31,7 @@ class CustomTargetTypeArgs:
         """
         The set of arguments for constructing a CustomTargetType resource.
         :param pulumi.Input[str] location: The location of the source.
-               
-               
-               - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['CustomTargetTypeCustomActionsArgs'] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
@@ -66,9 +63,6 @@ class CustomTargetTypeArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the source.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -80,7 +74,7 @@ class CustomTargetTypeArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -175,7 +169,7 @@ class _CustomTargetTypeState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CustomTargetType resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Time at which the `CustomTargetType` was created.
@@ -189,9 +183,6 @@ class _CustomTargetTypeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -235,7 +226,7 @@ class _CustomTargetTypeState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -346,9 +337,6 @@ class _CustomTargetTypeState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the source.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -440,11 +428,9 @@ class CustomTargetType(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.customTargetTypes)
         * How-to Guides
-            * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
+          * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
 
-        ## Example Usage
-
-        ### Clouddeploy Custom Target Type Basic
+        ## 
 
         ```python
         import pulumi
@@ -467,7 +453,7 @@ class CustomTargetType(pulumi.CustomResource):
                 "deploy_action": "deployAction",
             })
         ```
-        ### Clouddeploy Custom Target Type Git Skaffold Modules
+        ## 
 
         ```python
         import pulumi
@@ -490,7 +476,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Clouddeploy Custom Target Type Gcs Skaffold Modules
+        ## 
 
         ```python
         import pulumi
@@ -512,7 +498,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+        ## 
 
         ```python
         import pulumi
@@ -562,7 +548,7 @@ class CustomTargetType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['CustomTargetTypeCustomActionsArgs', 'CustomTargetTypeCustomActionsArgsDict']] custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
@@ -572,9 +558,6 @@ class CustomTargetType(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -593,11 +576,9 @@ class CustomTargetType(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.customTargetTypes)
         * How-to Guides
-            * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
+          * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
 
-        ## Example Usage
-
-        ### Clouddeploy Custom Target Type Basic
+        ## 
 
         ```python
         import pulumi
@@ -620,7 +601,7 @@ class CustomTargetType(pulumi.CustomResource):
                 "deploy_action": "deployAction",
             })
         ```
-        ### Clouddeploy Custom Target Type Git Skaffold Modules
+        ## 
 
         ```python
         import pulumi
@@ -643,7 +624,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Clouddeploy Custom Target Type Gcs Skaffold Modules
+        ## 
 
         ```python
         import pulumi
@@ -665,7 +646,7 @@ class CustomTargetType(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+        ## 
 
         ```python
         import pulumi
@@ -795,7 +776,7 @@ class CustomTargetType(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Time at which the `CustomTargetType` was created.
@@ -809,9 +790,6 @@ class CustomTargetType(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the source.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the `CustomTargetType`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -845,7 +823,7 @@ class CustomTargetType(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -920,9 +898,6 @@ class CustomTargetType(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the source.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

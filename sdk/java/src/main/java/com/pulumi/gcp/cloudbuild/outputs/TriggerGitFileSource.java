@@ -44,7 +44,7 @@ public final class TriggerGitFileSource {
     private @Nullable String repository;
     /**
      * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
-     * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+     * filename (optional). This field respects the same syntax/resolution as described here: &lt;https://git-scm.com/docs/gitrevisions&gt;
      * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
      * 
      */
@@ -99,7 +99,7 @@ public final class TriggerGitFileSource {
     }
     /**
      * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
-     * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+     * filename (optional). This field respects the same syntax/resolution as described here: &lt;https://git-scm.com/docs/gitrevisions&gt;
      * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
      * 
      */

@@ -32,11 +32,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters)
  * * How-to Guides
- *     * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
+ *   * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
  * 
- * ## Example Usage
- * 
- * ### Edgecontainer Cluster
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -95,7 +93,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Edgecontainer Cluster With Maintenance Window
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -165,6 +163,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Edgecontainer Local Control Plane Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

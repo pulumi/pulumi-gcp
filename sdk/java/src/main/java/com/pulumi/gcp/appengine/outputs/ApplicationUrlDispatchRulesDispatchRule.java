@@ -28,8 +28,6 @@ public final class ApplicationUrlDispatchRulesDispatchRule {
      * @return Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
      * The sum of the lengths of the domain and path may not exceed 100 characters.
      * 
-     * ***
-     * 
      */
     private String service;
 
@@ -53,8 +51,6 @@ public final class ApplicationUrlDispatchRulesDispatchRule {
     /**
      * @return Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
      * The sum of the lengths of the domain and path may not exceed 100 characters.
-     * 
-     * ***
      * 
      */
     public String service() {

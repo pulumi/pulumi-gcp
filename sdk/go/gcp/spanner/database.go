@@ -26,9 +26,7 @@ import (
 // On older versions, it is strongly recommended to set `lifecycle { preventDestroy = true }`
 // on databases in order to prevent accidental data loss.
 //
-// ## Example Usage
-//
-// ### Spanner Database Basic
+// ##
 //
 // ```go
 // package main
@@ -118,8 +116,6 @@ type Database struct {
 	// Structure is documented below.
 	EncryptionConfig DatabaseEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
 	// The instance to create the database on.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
 	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -187,8 +183,6 @@ type databaseState struct {
 	// Structure is documented below.
 	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
 	// The instance to create the database on.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
 	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -224,8 +218,6 @@ type DatabaseState struct {
 	// Structure is documented below.
 	EncryptionConfig DatabaseEncryptionConfigPtrInput
 	// The instance to create the database on.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// A unique identifier for the database, which cannot be changed after
 	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -265,8 +257,6 @@ type databaseArgs struct {
 	// Structure is documented below.
 	EncryptionConfig *DatabaseEncryptionConfig `pulumi:"encryptionConfig"`
 	// The instance to create the database on.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
 	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -301,8 +291,6 @@ type DatabaseArgs struct {
 	// Structure is documented below.
 	EncryptionConfig DatabaseEncryptionConfigPtrInput
 	// The instance to create the database on.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// A unique identifier for the database, which cannot be changed after
 	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -437,8 +425,6 @@ func (o DatabaseOutput) EncryptionConfig() DatabaseEncryptionConfigPtrOutput {
 }
 
 // The instance to create the database on.
-//
-// ***
 func (o DatabaseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

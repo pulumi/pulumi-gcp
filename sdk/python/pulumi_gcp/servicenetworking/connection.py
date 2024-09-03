@@ -230,7 +230,7 @@ class Connection(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
 
-        ## Example Usage
+        ## Example usage
 
         ```python
         import pulumi
@@ -299,7 +299,7 @@ class Connection(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
 
-        ## Example Usage
+        ## Example usage
 
         ```python
         import pulumi

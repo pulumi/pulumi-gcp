@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations#setaddons)
  * * How-to Guides
- *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+ *   * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  *
  * ## Example Usage
  *
@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Apigee Addons Full
  *
  * ```typescript
@@ -159,9 +160,6 @@ export class AddonsConfig extends pulumi.CustomResource {
     public readonly addonsConfig!: pulumi.Output<outputs.apigee.AddonsConfigAddonsConfig | undefined>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     public readonly org!: pulumi.Output<string>;
 
@@ -204,9 +202,6 @@ export interface AddonsConfigState {
     addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     org?: pulumi.Input<string>;
 }
@@ -222,9 +217,6 @@ export interface AddonsConfigArgs {
     addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig>;
     /**
      * Name of the Apigee organization.
-     *
-     *
-     * - - -
      */
     org: pulumi.Input<string>;
 }

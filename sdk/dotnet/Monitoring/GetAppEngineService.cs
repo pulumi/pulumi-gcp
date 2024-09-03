@@ -19,18 +19,16 @@ namespace Pulumi.Gcp.Monitoring
         /// An App Engine monitoring service is automatically created by GCP to monitor
         /// App Engine services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         /// * How-to Guides
-        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// ## Example Usage
         /// 
         /// ### Monitoring App Engine Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -101,18 +99,16 @@ namespace Pulumi.Gcp.Monitoring
         /// An App Engine monitoring service is automatically created by GCP to monitor
         /// App Engine services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         /// * How-to Guides
-        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// ## Example Usage
         /// 
         /// ### Monitoring App Engine Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -182,10 +178,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The ID of the App Engine module underlying this
         /// service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-        /// 
-        /// - - -
-        /// 
-        /// Other optional fields include:
         /// </summary>
         [Input("moduleId", required: true)]
         public string ModuleId { get; set; } = null!;
@@ -208,10 +200,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The ID of the App Engine module underlying this
         /// service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-        /// 
-        /// - - -
-        /// 
-        /// Other optional fields include:
         /// </summary>
         [Input("moduleId", required: true)]
         public Input<string> ModuleId { get; set; } = null!;

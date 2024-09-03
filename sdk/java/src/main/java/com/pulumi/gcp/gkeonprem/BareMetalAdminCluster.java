@@ -139,6 +139,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkeonprem Bare Metal Admin Cluster Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -551,16 +552,12 @@ public class BareMetalAdminCluster extends com.pulumi.resources.CustomResource {
     /**
      * The location of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

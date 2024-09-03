@@ -1254,9 +1254,8 @@ if not MYPY:
         guest_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         (Output)
-        The Compute Engine guest attributes. (see [Project and instance
-        guest attributes](https://cloud.google.com/compute/docs/
-        storing-retrieving-metadata#guest_attributes)).
+        The Compute Engine guest attributes. (see Project and instance
+        guest attributes).
         """
         internal_ip_only: NotRequired[pulumi.Input[bool]]
         """
@@ -1271,7 +1270,7 @@ if not MYPY:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
         empty, but, if present, must contain 1 to 63 characters, and must
         conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         more than 32 labels can be associated with a cluster.
@@ -1279,9 +1278,7 @@ if not MYPY:
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The Compute Engine metadata entries to add to virtual machine.
-        (see [Project and instance metadata](https://cloud.google.com
-        /compute/docs/storing-retrieving-metadata#project_and_instance
-        _metadata)).
+        (see Project and instance metadata).
         """
         network: NotRequired[pulumi.Input[str]]
         """
@@ -1328,7 +1325,7 @@ if not MYPY:
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The Compute Engine tags to add to runtime (see [Tagging instances]
-        (https://cloud.google.com/compute/docs/
+        (<https://cloud.google.com/compute/docs/>
         label-or-tag-resources#tags)).
         """
         zone: NotRequired[pulumi.Input[str]]
@@ -1369,9 +1366,8 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs'] encryption_config: Encryption settings for virtual machine data disk.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] guest_attributes: (Output)
-               The Compute Engine guest attributes. (see [Project and instance
-               guest attributes](https://cloud.google.com/compute/docs/
-               storing-retrieving-metadata#guest_attributes)).
+               The Compute Engine guest attributes. (see Project and instance
+               guest attributes).
         :param pulumi.Input[bool] internal_ip_only: If true, runtime will only have internal IP addresses. By default,
                runtimes are not restricted to internal IP addresses, and will
                have ephemeral external IP addresses assigned to each vm. This
@@ -1380,14 +1376,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
                contain 1 to 63 characters, and must conform to [RFC 1035]
-               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
                empty, but, if present, must contain 1 to 63 characters, and must
                conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
                more than 32 labels can be associated with a cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to virtual machine.
-               (see [Project and instance metadata](https://cloud.google.com
-               /compute/docs/storing-retrieving-metadata#project_and_instance
-               _metadata)).
+               (see Project and instance metadata).
         :param pulumi.Input[str] network: The Compute Engine network to be used for machine communications.
                Cannot be specified with subnetwork. If neither `network` nor
                `subnet` is specified, the "default" network of the project is
@@ -1416,7 +1410,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                regions/us-east1/subnetworks/sub0`
                * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime (see [Tagging instances]
-               (https://cloud.google.com/compute/docs/
+               (<https://cloud.google.com/compute/docs/>
                label-or-tag-resources#tags)).
         :param pulumi.Input[str] zone: (Output)
                The zone where the virtual machine is located.
@@ -1521,9 +1515,8 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     def guest_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         (Output)
-        The Compute Engine guest attributes. (see [Project and instance
-        guest attributes](https://cloud.google.com/compute/docs/
-        storing-retrieving-metadata#guest_attributes)).
+        The Compute Engine guest attributes. (see Project and instance
+        guest attributes).
         """
         return pulumi.get(self, "guest_attributes")
 
@@ -1554,7 +1547,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035]
-        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
         empty, but, if present, must contain 1 to 63 characters, and must
         conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
         more than 32 labels can be associated with a cluster.
@@ -1570,9 +1563,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The Compute Engine metadata entries to add to virtual machine.
-        (see [Project and instance metadata](https://cloud.google.com
-        /compute/docs/storing-retrieving-metadata#project_and_instance
-        _metadata)).
+        (see Project and instance metadata).
         """
         return pulumi.get(self, "metadata")
 
@@ -1667,7 +1658,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The Compute Engine tags to add to runtime (see [Tagging instances]
-        (https://cloud.google.com/compute/docs/
+        (<https://cloud.google.com/compute/docs/>
         label-or-tag-resources#tags)).
         """
         return pulumi.get(self, "tags")

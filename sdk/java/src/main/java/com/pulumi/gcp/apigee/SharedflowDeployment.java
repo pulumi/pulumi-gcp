@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
  * * How-to Guides
- *     * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
+ *   * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
  * 
  * ## Import
  * 
@@ -75,16 +75,12 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
     /**
      * Revision of the Sharedflow to be deployed.
      * 
-     * ***
-     * 
      */
     @Export(name="revision", refs={String.class}, tree="[0]")
     private Output<String> revision;
 
     /**
      * @return Revision of the Sharedflow to be deployed.
-     * 
-     * ***
      * 
      */
     public Output<String> revision() {

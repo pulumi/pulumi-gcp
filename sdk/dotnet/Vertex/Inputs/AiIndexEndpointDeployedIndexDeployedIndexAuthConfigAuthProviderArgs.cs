@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         private InputList<string>? _allowedIssuers;
 
         /// <summary>
-        /// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+        /// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name@project-id.iam.gserviceaccount.com&gt;
         /// </summary>
         public InputList<string> AllowedIssuers
         {

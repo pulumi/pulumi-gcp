@@ -19,9 +19,7 @@ import (
 // * How-to Guides
 //   - [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 //
-// ## Example Usage
-//
-// ### Vpc Access Connector
+// ##
 //
 // ```go
 // package main
@@ -48,7 +46,7 @@ import (
 //	}
 //
 // ```
-// ### Vpc Access Connector Shared Vpc
+// ##
 //
 // ```go
 // package main
@@ -142,8 +140,6 @@ type Connector struct {
 	// minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
 	MinThroughput pulumi.IntPtrOutput `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -213,8 +209,6 @@ type connectorState struct {
 	// minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
 	MinThroughput *int `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
@@ -255,8 +249,6 @@ type ConnectorState struct {
 	// minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
 	MinThroughput pulumi.IntPtrInput
 	// The name of the resource (Max 25 characters).
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
@@ -299,8 +291,6 @@ type connectorArgs struct {
 	// minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
 	MinThroughput *int `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
@@ -336,8 +326,6 @@ type ConnectorArgs struct {
 	// minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
 	MinThroughput pulumi.IntPtrInput
 	// The name of the resource (Max 25 characters).
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
@@ -481,8 +469,6 @@ func (o ConnectorOutput) MinThroughput() pulumi.IntPtrOutput {
 }
 
 // The name of the resource (Max 25 characters).
-//
-// ***
 func (o ConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

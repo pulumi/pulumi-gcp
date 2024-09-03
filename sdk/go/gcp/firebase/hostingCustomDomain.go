@@ -41,6 +41,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebasehosting Customdomain Full
 //
 // ```go
@@ -78,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebasehosting Customdomain Cloud Run
 //
 // ```go
@@ -202,8 +204,6 @@ type HostingCustomDomain struct {
 	// The `CustomDomain`'s create time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-	//
-	// ***
 	CustomDomain pulumi.StringOutput `pulumi:"customDomain"`
 	// The time the `CustomDomain` was deleted; null for `CustomDomains` that
 	// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
@@ -350,8 +350,6 @@ type hostingCustomDomainState struct {
 	// The `CustomDomain`'s create time.
 	CreateTime *string `pulumi:"createTime"`
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-	//
-	// ***
 	CustomDomain *string `pulumi:"customDomain"`
 	// The time the `CustomDomain` was deleted; null for `CustomDomains` that
 	// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
@@ -463,8 +461,6 @@ type HostingCustomDomainState struct {
 	// The `CustomDomain`'s create time.
 	CreateTime pulumi.StringPtrInput
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-	//
-	// ***
 	CustomDomain pulumi.StringPtrInput
 	// The time the `CustomDomain` was deleted; null for `CustomDomains` that
 	// haven't been deleted. Deleted `CustomDomains` persist for approximately 30
@@ -572,8 +568,6 @@ type hostingCustomDomainArgs struct {
 	// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
 	CertPreference *string `pulumi:"certPreference"`
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-	//
-	// ***
 	CustomDomain string `pulumi:"customDomain"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -596,8 +590,6 @@ type HostingCustomDomainArgs struct {
 	// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
 	CertPreference pulumi.StringPtrInput
 	// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-	//
-	// ***
 	CustomDomain pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -722,8 +714,6 @@ func (o HostingCustomDomainOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-//
-// ***
 func (o HostingCustomDomainOutput) CustomDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.StringOutput { return v.CustomDomain }).(pulumi.StringOutput)
 }

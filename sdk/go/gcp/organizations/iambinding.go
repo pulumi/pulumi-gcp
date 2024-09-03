@@ -15,15 +15,13 @@ import (
 // Allows creation and management of a single binding within IAM policy for
 // an existing Google Cloud Platform Organization.
 //
-// > **Note:** This resource __must not__ be used in conjunction with
-//
-//	`organizations.IAMMember` for the __same role__ or they will fight over
-//	what your policy should be.
+// > **Note:** This resource **must not** be used in conjunction with
+// `organizations.IAMMember` for the **same role** or they will fight over
+// what your policy should be.
 //
 // > **Note:** On create, this resource will overwrite members of any existing roles.
-//
-//	Use `pulumi import` and inspect the `output to ensure
-//	your existing members are preserved.
+// Use `pulumi import` and inspect the `output to ensure
+// your existing members are preserved.
 //
 // ## Example Usage
 //
@@ -65,14 +63,14 @@ import (
 //
 // -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 //
-//	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
 	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// A list of users that the role should apply to. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
@@ -124,7 +122,7 @@ type iambindingState struct {
 	Condition *IAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the organization's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// A list of users that the role should apply to. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
 	Members []string `pulumi:"members"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId *string `pulumi:"orgId"`
@@ -138,7 +136,7 @@ type IAMBindingState struct {
 	Condition IAMBindingConditionPtrInput
 	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// A list of users that the role should apply to. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
 	Members pulumi.StringArrayInput
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringPtrInput
@@ -154,7 +152,7 @@ func (IAMBindingState) ElementType() reflect.Type {
 
 type iambindingArgs struct {
 	Condition *IAMBindingCondition `pulumi:"condition"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// A list of users that the role should apply to. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
 	Members []string `pulumi:"members"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId string `pulumi:"orgId"`
@@ -167,7 +165,7 @@ type iambindingArgs struct {
 // The set of arguments for constructing a IAMBinding resource.
 type IAMBindingArgs struct {
 	Condition IAMBindingConditionPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	// A list of users that the role should apply to. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
 	Members pulumi.StringArrayInput
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringInput
@@ -273,7 +271,7 @@ func (o IAMBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+// A list of users that the role should apply to. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
 func (o IAMBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebase Database Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -91,6 +92,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebase Database Instance Default Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -221,8 +223,6 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
@@ -230,8 +230,6 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {
@@ -307,7 +305,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
      * Creating user Databases is only available for projects on the Blaze plan.
-     * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+     * Projects can be upgraded using the Cloud Billing API &lt;https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo&gt;.
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      * 
@@ -319,7 +317,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * @return The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
      * Creating user Databases is only available for projects on the Blaze plan.
-     * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+     * Projects can be upgraded using the Cloud Billing API &lt;https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo&gt;.
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      * 

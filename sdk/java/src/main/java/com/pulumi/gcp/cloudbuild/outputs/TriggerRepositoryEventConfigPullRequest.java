@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class TriggerRepositoryEventConfigPullRequest {
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     private @Nullable String branch;
@@ -33,7 +33,7 @@ public final class TriggerRepositoryEventConfigPullRequest {
     private TriggerRepositoryEventConfigPullRequest() {}
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<String> branch() {

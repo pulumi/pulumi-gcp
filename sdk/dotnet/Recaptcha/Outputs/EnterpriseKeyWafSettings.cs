@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Recaptcha.Outputs
     public sealed class EnterpriseKeyWafSettings
     {
         /// <summary>
-        /// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        /// Supported WAF features. For more information, see &lt;https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features&gt;. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
         /// </summary>
         public readonly string WafFeature;
         /// <summary>

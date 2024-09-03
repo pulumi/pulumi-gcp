@@ -14,9 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
  *
- * ## Example Usage
- *
- * ### Network Services Gateway Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     ports: [443],
  * });
  * ```
- * ### Network Services Gateway Advanced
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +44,7 @@ import * as utilities from "../utilities";
  *     scope: "default-scope-advance",
  * });
  * ```
- * ### Network Services Gateway Secure Web Proxy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -115,7 +113,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [proxyonlysubnet],
  * });
  * ```
- * ### Network Services Gateway Multiple Swp Same Network
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -299,9 +297,6 @@ export class Gateway extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Short name of the Gateway resource to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -478,9 +473,6 @@ export interface GatewayState {
     location?: pulumi.Input<string>;
     /**
      * Short name of the Gateway resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -581,9 +573,6 @@ export interface GatewayArgs {
     location?: pulumi.Input<string>;
     /**
      * Short name of the Gateway resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

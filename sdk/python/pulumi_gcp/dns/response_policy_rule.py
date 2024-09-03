@@ -31,9 +31,6 @@ class ResponsePolicyRuleArgs:
         The set of arguments for constructing a ResponsePolicyRule resource.
         :param pulumi.Input[str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         :param pulumi.Input[str] response_policy: Identifies the response policy addressed by this request.
-               
-               
-               - - -
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         :param pulumi.Input[str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input['ResponsePolicyRuleLocalDataArgs'] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
@@ -69,9 +66,6 @@ class ResponsePolicyRuleArgs:
     def response_policy(self) -> pulumi.Input[str]:
         """
         Identifies the response policy addressed by this request.
-
-
-        - - -
         """
         return pulumi.get(self, "response_policy")
 
@@ -150,9 +144,6 @@ class _ResponsePolicyRuleState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] response_policy: Identifies the response policy addressed by this request.
-               
-               
-               - - -
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
         if behavior is not None:
@@ -224,9 +215,6 @@ class _ResponsePolicyRuleState:
     def response_policy(self) -> Optional[pulumi.Input[str]]:
         """
         Identifies the response policy addressed by this request.
-
-
-        - - -
         """
         return pulumi.get(self, "response_policy")
 
@@ -265,9 +253,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
         Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
         as identified by the dns_name field with the longest matching suffix.
 
-        ## Example Usage
-
-        ### Dns Response Policy Rule Basic
+        ## 
 
         ```python
         import pulumi
@@ -337,9 +323,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] response_policy: Identifies the response policy addressed by this request.
-               
-               
-               - - -
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
         ...
@@ -354,9 +337,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
         Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
         as identified by the dns_name field with the longest matching suffix.
 
-        ## Example Usage
-
-        ### Dns Response Policy Rule Basic
+        ## 
 
         ```python
         import pulumi
@@ -489,9 +470,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] response_policy: Identifies the response policy addressed by this request.
-               
-               
-               - - -
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -546,9 +524,6 @@ class ResponsePolicyRule(pulumi.CustomResource):
     def response_policy(self) -> pulumi.Output[str]:
         """
         Identifies the response policy addressed by this request.
-
-
-        - - -
         """
         return pulumi.get(self, "response_policy")
 

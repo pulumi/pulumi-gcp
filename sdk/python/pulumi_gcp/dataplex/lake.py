@@ -39,10 +39,6 @@ class LakeArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['LakeMetastoreArgs'] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[str] name: The name of the lake.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "location", location)
@@ -127,10 +123,6 @@ class LakeArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the lake.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -185,10 +177,6 @@ class _LakeState:
         :param pulumi.Input['LakeMetastoreArgs'] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[Sequence[pulumi.Input['LakeMetastoreStatusArgs']]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[str] name: The name of the lake.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
@@ -345,10 +333,6 @@ class _LakeState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the lake.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -447,7 +431,7 @@ class Lake(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_lake
+        ### basic_lake
         A basic example of a dataplex lake
         ```python
         import pulumi
@@ -499,10 +483,6 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[str] name: The name of the lake.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -516,7 +496,7 @@ class Lake(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_lake
+        ### basic_lake
         A basic example of a dataplex lake
         ```python
         import pulumi
@@ -654,10 +634,6 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LakeMetastoreStatusArgs', 'LakeMetastoreStatusArgsDict']]]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[str] name: The name of the lake.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
@@ -767,10 +743,6 @@ class Lake(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the lake.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

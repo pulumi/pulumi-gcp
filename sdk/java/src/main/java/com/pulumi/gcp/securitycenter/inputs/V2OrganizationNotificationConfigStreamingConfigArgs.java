@@ -35,8 +35,6 @@ public final class V2OrganizationNotificationConfigStreamingConfigArgs extends c
      *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      *   for information on how to write a filter.
      * 
-     * ***
-     * 
      */
     @Import(name="filter", required=true)
     private Output<String> filter;
@@ -61,8 +59,6 @@ public final class V2OrganizationNotificationConfigStreamingConfigArgs extends c
      *   See
      *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      *   for information on how to write a filter.
-     * 
-     * ***
      * 
      */
     public Output<String> filter() {
@@ -114,8 +110,6 @@ public final class V2OrganizationNotificationConfigStreamingConfigArgs extends c
          *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          *   for information on how to write a filter.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -144,8 +138,6 @@ public final class V2OrganizationNotificationConfigStreamingConfigArgs extends c
          *   See
          *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          *   for information on how to write a filter.
-         * 
-         * ***
          * 
          * @return builder
          * 

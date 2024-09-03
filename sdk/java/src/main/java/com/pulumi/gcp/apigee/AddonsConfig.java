@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations#setaddons)
  * * How-to Guides
- *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+ *   * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  * 
  * ## Example Usage
  * 
@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Addons Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -231,16 +232,12 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
     /**
      * Name of the Apigee organization.
      * 
-     * ***
-     * 
      */
     @Export(name="org", refs={String.class}, tree="[0]")
     private Output<String> org;
 
     /**
      * @return Name of the Apigee organization.
-     * 
-     * ***
      * 
      */
     public Output<String> org() {

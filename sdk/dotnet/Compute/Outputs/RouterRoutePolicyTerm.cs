@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RouterRoutePolicyTerm
     {
         /// <summary>
-        /// 'CEL expressions to evaluate to modify a route when this term matches.'\
-        /// Structure is documented below.
+        /// 'CEL expressions to evaluate to modify a route when this term matches.'Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RouterRoutePolicyTermAction> Actions;
         /// <summary>

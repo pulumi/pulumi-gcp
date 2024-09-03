@@ -482,7 +482,7 @@ func (o EnterpriseKeyTestingOptionsPtrOutput) TestingScore() pulumi.Float64PtrOu
 }
 
 type EnterpriseKeyWafSettings struct {
-	// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+	// Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
 	WafFeature string `pulumi:"wafFeature"`
 	// The WAF service that uses this key. Possible values: CA, FASTLY
 	WafService string `pulumi:"wafService"`
@@ -500,7 +500,7 @@ type EnterpriseKeyWafSettingsInput interface {
 }
 
 type EnterpriseKeyWafSettingsArgs struct {
-	// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+	// Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
 	WafFeature pulumi.StringInput `pulumi:"wafFeature"`
 	// The WAF service that uses this key. Possible values: CA, FASTLY
 	WafService pulumi.StringInput `pulumi:"wafService"`
@@ -583,7 +583,7 @@ func (o EnterpriseKeyWafSettingsOutput) ToEnterpriseKeyWafSettingsPtrOutputWithC
 	}).(EnterpriseKeyWafSettingsPtrOutput)
 }
 
-// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+// Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
 func (o EnterpriseKeyWafSettingsOutput) WafFeature() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseKeyWafSettings) string { return v.WafFeature }).(pulumi.StringOutput)
 }
@@ -617,7 +617,7 @@ func (o EnterpriseKeyWafSettingsPtrOutput) Elem() EnterpriseKeyWafSettingsOutput
 	}).(EnterpriseKeyWafSettingsOutput)
 }
 
-// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+// Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
 func (o EnterpriseKeyWafSettingsPtrOutput) WafFeature() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnterpriseKeyWafSettings) *string {
 		if v == nil {

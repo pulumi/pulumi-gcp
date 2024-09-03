@@ -25,16 +25,12 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The API to attach the config to.
      * 
-     * ***
-     * 
      */
     @Import(name="api", required=true)
     private Output<String> api;
 
     /**
      * @return The API to attach the config to.
-     * 
-     * ***
      * 
      */
     public Output<String> api() {
@@ -146,7 +142,7 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      * 
@@ -155,7 +151,7 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ApiConfigManagedServiceConfigArgs>> managedServiceConfigs;
 
     /**
-     * @return Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+     * @return Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
      * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      * Structure is documented below.
      * 
@@ -234,8 +230,6 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param api The API to attach the config to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -246,8 +240,6 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param api The API to attach the config to.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -408,7 +400,7 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServiceConfigs Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+         * @param managedServiceConfigs Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
          * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
          * Structure is documented below.
          * 
@@ -421,7 +413,7 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServiceConfigs Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+         * @param managedServiceConfigs Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
          * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
          * Structure is documented below.
          * 
@@ -433,7 +425,7 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServiceConfigs Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+         * @param managedServiceConfigs Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See &lt;https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview&gt; for the expected file contents.
          * If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using &#34;last one wins&#34; semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
          * Structure is documented below.
          * 

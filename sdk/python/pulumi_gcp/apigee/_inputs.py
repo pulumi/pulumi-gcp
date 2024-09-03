@@ -1511,8 +1511,6 @@ if not MYPY:
         email: NotRequired[pulumi.Input[str]]
         """
         Email address. Max 255 characters.
-
-        - - -
         """
         locality: NotRequired[pulumi.Input[str]]
         """
@@ -1547,8 +1545,6 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
         :param pulumi.Input[str] common_name: Common name of the organization. Maximum length is 64 characters.
         :param pulumi.Input[str] country_code: Two-letter country code. Example, IN for India, US for United States of America.
         :param pulumi.Input[str] email: Email address. Max 255 characters.
-               
-               - - -
         :param pulumi.Input[str] locality: City or town name. Maximum length is 128 characters.
         :param pulumi.Input[str] org: Organization name. Maximum length is 64 characters.
         :param pulumi.Input[str] org_unit: Organization team name. Maximum length is 64 characters.
@@ -1598,8 +1594,6 @@ class KeystoresAliasesSelfSignedCertSubjectArgs:
     def email(self) -> Optional[pulumi.Input[str]]:
         """
         Email address. Max 255 characters.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -1855,7 +1849,7 @@ if not MYPY:
         """
         ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         """
         client_auth_enabled: NotRequired[pulumi.Input[bool]]
         """
@@ -1903,7 +1897,7 @@ class TargetServerSSlInfoArgs:
                  trust_store: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         :param pulumi.Input[bool] client_auth_enabled: Enables two-way TLS.
         :param pulumi.Input['TargetServerSSlInfoCommonNameArgs'] common_name: The TLS Common Name of the certificate.
                Structure is documented below.
@@ -1947,7 +1941,7 @@ class TargetServerSSlInfoArgs:
     @pulumi.getter
     def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         """
         return pulumi.get(self, "ciphers")
 

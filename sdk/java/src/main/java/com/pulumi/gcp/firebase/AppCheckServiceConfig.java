@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.services)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/app-check)
+ *   * [Official Documentation](https://firebase.google.com/docs/app-check)
  * 
  * ## Example Usage
  * 
@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebase App Check Service Config Enforced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -118,6 +119,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebase App Check Service Config Unenforced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -236,8 +238,6 @@ public class AppCheckServiceConfig extends com.pulumi.resources.CustomResource {
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -248,8 +248,6 @@ public class AppCheckServiceConfig extends com.pulumi.resources.CustomResource {
      * firebasedatabase.googleapis.com (Firebase Realtime Database)
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

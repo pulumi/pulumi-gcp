@@ -81,13 +81,9 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -315,8 +311,6 @@ class RegionInstanceGroupManagerArgs:
     def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -342,8 +336,6 @@ class RegionInstanceGroupManagerArgs:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -560,13 +552,9 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
@@ -833,8 +821,6 @@ class _RegionInstanceGroupManagerState:
     def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -860,8 +846,6 @@ class _RegionInstanceGroupManagerState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -1088,13 +1072,13 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
         * How-to Guides
-            * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+          * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
 
         > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
 
         ## Example Usage
 
-        ### With Top Level Instance Template (`Google` Provider)
+        ### with top level instance template (google provider)
 
         ```python
         import pulumi
@@ -1141,7 +1125,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             })
         ```
 
-        ### With Multiple Versions
+        ### with multiple versions
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1164,7 +1148,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
-        ### With Standby Policy (`Google-Beta` Provider)
+        ### with standby policy (google-beta provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1230,13 +1214,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1275,13 +1255,13 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
         * How-to Guides
-            * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+          * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
 
         > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
 
         ## Example Usage
 
-        ### With Top Level Instance Template (`Google` Provider)
+        ### with top level instance template (google provider)
 
         ```python
         import pulumi
@@ -1328,7 +1308,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             })
         ```
 
-        ### With Multiple Versions
+        ### with multiple versions
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1351,7 +1331,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
-        ### With Standby Policy (`Google-Beta` Provider)
+        ### with standby policy (google-beta provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1548,13 +1528,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
@@ -1744,8 +1720,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def params(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerParams']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -1763,8 +1737,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
-
-        - - -
         """
         return pulumi.get(self, "region")
 

@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.webhooks)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
- * ## Example Usage
- *
- * ### Dialogflowcx Webhook Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -102,9 +100,6 @@ export class CxWebhook extends pulumi.CustomResource {
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * The human-readable name of the webhook, unique within the agent.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -204,9 +199,6 @@ export interface CxWebhookState {
     disabled?: pulumi.Input<boolean>;
     /**
      * The human-readable name of the webhook, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -261,9 +253,6 @@ export interface CxWebhookArgs {
     disabled?: pulumi.Input<boolean>;
     /**
      * The human-readable name of the webhook, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

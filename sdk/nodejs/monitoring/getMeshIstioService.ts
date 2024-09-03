@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -65,10 +65,6 @@ export interface GetMeshIstioServiceArgs {
     /**
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     serviceName: string;
     /**
@@ -118,8 +114,8 @@ export interface GetMeshIstioServiceResult {
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -158,10 +154,6 @@ export interface GetMeshIstioServiceOutputArgs {
     /**
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     serviceName: pulumi.Input<string>;
     /**

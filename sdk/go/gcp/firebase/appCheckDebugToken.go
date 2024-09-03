@@ -104,8 +104,6 @@ type AppCheckDebugToken struct {
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-	//
-	// ***
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The last segment of the resource name of the debug token.
 	DebugTokenId pulumi.StringOutput `pulumi:"debugTokenId"`
@@ -174,8 +172,6 @@ type appCheckDebugTokenState struct {
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-	//
-	// ***
 	AppId *string `pulumi:"appId"`
 	// The last segment of the resource name of the debug token.
 	DebugTokenId *string `pulumi:"debugTokenId"`
@@ -199,8 +195,6 @@ type AppCheckDebugTokenState struct {
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-	//
-	// ***
 	AppId pulumi.StringPtrInput
 	// The last segment of the resource name of the debug token.
 	DebugTokenId pulumi.StringPtrInput
@@ -228,8 +222,6 @@ type appCheckDebugTokenArgs struct {
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// A human readable display name used to identify this debug token.
 	DisplayName string `pulumi:"displayName"`
@@ -252,8 +244,6 @@ type AppCheckDebugTokenArgs struct {
 	// [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 	// or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-	//
-	// ***
 	AppId pulumi.StringInput
 	// A human readable display name used to identify this debug token.
 	DisplayName pulumi.StringInput
@@ -361,8 +351,6 @@ func (o AppCheckDebugTokenOutput) ToAppCheckDebugTokenOutputWithContext(ctx cont
 // [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id),
 // [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id),
 // or [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id)
-//
-// ***
 func (o AppCheckDebugTokenOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckDebugToken) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

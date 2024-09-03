@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
  *
@@ -109,9 +109,6 @@ export class TagKey extends pulumi.CustomResource {
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     *
-     * - - -
      */
     public readonly shortName!: pulumi.Output<string>;
     /**
@@ -204,9 +201,6 @@ export interface TagKeyState {
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     *
-     * - - -
      */
     shortName?: pulumi.Input<string>;
     /**
@@ -242,9 +236,6 @@ export interface TagKeyArgs {
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     *
-     * - - -
      */
     shortName: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.restorePlans)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ *   * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  *
  * ## Example Usage
  *
@@ -65,6 +65,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Rollback Namespace
  *
  * ```typescript
@@ -124,6 +125,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Protected Application
  *
  * ```typescript
@@ -176,6 +178,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan All Cluster Resources
  *
  * ```typescript
@@ -223,6 +226,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Rename Namespace
  *
  * ```typescript
@@ -299,6 +303,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Second Transformation
  *
  * ```typescript
@@ -371,6 +376,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Gitops Mode
  *
  * ```typescript
@@ -419,6 +425,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Restore Order
  *
  * ```typescript
@@ -491,6 +498,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Restoreplan Volume Res
  *
  * ```typescript

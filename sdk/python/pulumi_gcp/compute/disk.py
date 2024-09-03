@@ -97,9 +97,6 @@ class DiskArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -139,8 +136,8 @@ class DiskArgs:
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -154,7 +151,7 @@ class DiskArgs:
                Structure is documented below.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
                For example:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
@@ -389,9 +386,6 @@ class DiskArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -519,8 +513,8 @@ class DiskArgs:
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+        * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
         * projects/{project}/zones/{zone}/disks/{disk}
         * projects/{project}/regions/{region}/disks/{disk}
         * zones/{zone}/disks/{disk}
@@ -567,7 +561,7 @@ class DiskArgs:
         """
         The URL of the storage pool in which the new disk is created.
         For example:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         """
         return pulumi.get(self, "storage_pool")
@@ -700,9 +694,6 @@ class _DiskState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -745,8 +736,8 @@ class _DiskState:
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -774,7 +765,7 @@ class _DiskState:
                used.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
                For example:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
@@ -1108,9 +1099,6 @@ class _DiskState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1263,8 +1251,8 @@ class _DiskState:
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+        * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
         * projects/{project}/zones/{zone}/disks/{disk}
         * projects/{project}/regions/{region}/disks/{disk}
         * zones/{zone}/disks/{disk}
@@ -1358,7 +1346,7 @@ class _DiskState:
         """
         The URL of the storage pool in which the new disk is created.
         For example:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         """
         return pulumi.get(self, "storage_pool")
@@ -1458,11 +1446,9 @@ class Disk(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
         * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+          * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
-        ## Example Usage
-
-        ### Disk Basic
+        ## 
 
         ```python
         import pulumi
@@ -1478,7 +1464,7 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
-        ### Disk Async
+        ## 
 
         ```python
         import pulumi
@@ -1498,7 +1484,7 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
-        ### Disk Features
+        ## 
 
         ```python
         import pulumi
@@ -1607,9 +1593,6 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -1649,8 +1632,8 @@ class Disk(pulumi.CustomResource):
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -1664,7 +1647,7 @@ class Disk(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
                For example:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
@@ -1697,11 +1680,9 @@ class Disk(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
         * How-to Guides
-            * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+          * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 
-        ## Example Usage
-
-        ### Disk Basic
+        ## 
 
         ```python
         import pulumi
@@ -1717,7 +1698,7 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
-        ### Disk Async
+        ## 
 
         ```python
         import pulumi
@@ -1737,7 +1718,7 @@ class Disk(pulumi.CustomResource):
             },
             physical_block_size_bytes=4096)
         ```
-        ### Disk Features
+        ## 
 
         ```python
         import pulumi
@@ -1993,9 +1974,6 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -2038,8 +2016,8 @@ class Disk(pulumi.CustomResource):
                * `global/snapshots/snapshot`
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-               * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+               * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
                * projects/{project}/zones/{zone}/disks/{disk}
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
@@ -2067,7 +2045,7 @@ class Disk(pulumi.CustomResource):
                used.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
                For example:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
@@ -2298,9 +2276,6 @@ class Disk(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2413,8 +2388,8 @@ class Disk(pulumi.CustomResource):
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-        * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+        * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
         * projects/{project}/zones/{zone}/disks/{disk}
         * projects/{project}/regions/{region}/disks/{disk}
         * zones/{zone}/disks/{disk}
@@ -2484,7 +2459,7 @@ class Disk(pulumi.CustomResource):
         """
         The URL of the storage pool in which the new disk is created.
         For example:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         """
         return pulumi.get(self, "storage_pool")

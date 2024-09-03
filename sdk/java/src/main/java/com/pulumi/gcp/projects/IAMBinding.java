@@ -29,17 +29,17 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &gt; **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
- *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
+ * IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
  * 
  * ## gcp.projects.IAMPolicy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
- *    from anyone without organization-level access to the project. Proceed with caution.
- *    It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
- *    to avoid locking yourself out, and it should generally only be used with projects
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
+ * using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
+ * from anyone without organization-level access to the project. Proceed with caution.
+ * It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
+ * to avoid locking yourself out, and it should generally only be used with projects
+ * fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ * applying the change.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -342,12 +342,12 @@ import javax.annotation.Nullable;
  * ## gcp.projects.IAMPolicy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
- *    from anyone without organization-level access to the project. Proceed with caution.
- *    It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
- *    to avoid locking yourself out, and it should generally only be used with projects
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
+ * using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
+ * from anyone without organization-level access to the project. Proceed with caution.
+ * It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
+ * to avoid locking yourself out, and it should generally only be used with projects
+ * fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ * applying the change.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -709,9 +709,9 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -721,9 +721,9 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */

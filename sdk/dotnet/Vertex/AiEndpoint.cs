@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    ///   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See &lt;https://goo.gl/xmQnxf&gt; for more information and examples of labels.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -177,9 +177,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -302,7 +299,7 @@ namespace Pulumi.Gcp.Vertex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See &lt;https://goo.gl/xmQnxf&gt; for more information and examples of labels.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -314,9 +311,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -419,7 +413,7 @@ namespace Pulumi.Gcp.Vertex
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See &lt;https://goo.gl/xmQnxf&gt; for more information and examples of labels.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -431,9 +425,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

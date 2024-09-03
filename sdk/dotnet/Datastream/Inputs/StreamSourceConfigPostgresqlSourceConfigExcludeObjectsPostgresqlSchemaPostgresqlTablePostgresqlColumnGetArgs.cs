@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// The PostgreSQL data type. Full data types list can be found here:
-        /// https://www.postgresql.org/docs/current/datatype.html
+        /// &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
         /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }

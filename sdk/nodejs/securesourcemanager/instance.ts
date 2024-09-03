@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
+ *   * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
  *
- * ## Example Usage
- *
- * ### Secure Source Manager Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +29,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Secure Source Manager Instance Cmek
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,7 +57,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
- * ### Secure Source Manager Instance Private
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -114,7 +112,6 @@ import * as utilities from "../utilities";
  *     role: "roles/privateca.certificateRequester",
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
- * // ca pool IAM permissions can take time to propagate
  * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
@@ -132,7 +129,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Secure Source Manager Instance Private Psc Backend
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -187,7 +184,6 @@ import * as utilities from "../utilities";
  *     role: "roles/privateca.certificateRequester",
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
- * // ca pool IAM permissions can take time to propagate
  * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
@@ -294,7 +290,7 @@ import * as utilities from "../utilities";
  *     rrdatas: [fwRuleTargetProxy.ipAddress],
  * });
  * ```
- * ### Secure Source Manager Instance Private Psc Endpoint
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -349,7 +345,6 @@ import * as utilities from "../utilities";
  *     role: "roles/privateca.certificateRequester",
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`)],
  * });
- * // ca pool IAM permissions can take time to propagate
  * const wait120Seconds = new time.index.Sleep("wait_120_seconds", {createDuration: "120s"}, {
  *     dependsOn: [caPoolBinding],
  * });
@@ -500,9 +495,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly hostConfigs!: pulumi.Output<outputs.securesourcemanager.InstanceHostConfig[]>;
     /**
      * The name for the Instance.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -628,9 +620,6 @@ export interface InstanceState {
     hostConfigs?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.InstanceHostConfig>[]>;
     /**
      * The name for the Instance.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -687,9 +676,6 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * The name for the Instance.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

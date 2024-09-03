@@ -81,14 +81,14 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
     }
 
     /**
-     * A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * @return A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -250,7 +250,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+         * @param properties A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+         * @param properties A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
          * 
          * @return builder
          * 

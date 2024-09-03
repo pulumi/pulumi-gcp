@@ -46,9 +46,6 @@ class SubnetworkArgs:
                non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
@@ -161,9 +158,6 @@ class SubnetworkArgs:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -458,9 +452,6 @@ class _SubnetworkState:
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -719,9 +710,6 @@ class _SubnetworkState:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -925,12 +913,10 @@ class Subnetwork(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
         * How-to Guides
-            * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
-            * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
+          * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+          * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
 
-        ## Example Usage
-
-        ### Subnetwork Basic
+        ## 
 
         ```python
         import pulumi
@@ -949,7 +935,7 @@ class Subnetwork(pulumi.CustomResource):
                 "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
-        ### Subnetwork Logging Config
+        ## 
 
         ```python
         import pulumi
@@ -969,7 +955,7 @@ class Subnetwork(pulumi.CustomResource):
                 "metadata": "INCLUDE_ALL_METADATA",
             })
         ```
-        ### Subnetwork Internal L7lb
+        ## 
 
         ```python
         import pulumi
@@ -986,7 +972,7 @@ class Subnetwork(pulumi.CustomResource):
             role="ACTIVE",
             network=custom_test.id)
         ```
-        ### Subnetwork Ipv6
+        ## 
 
         ```python
         import pulumi
@@ -1003,7 +989,7 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="EXTERNAL",
             network=custom_test.id)
         ```
-        ### Subnetwork Internal Ipv6
+        ## 
 
         ```python
         import pulumi
@@ -1021,7 +1007,7 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="INTERNAL",
             network=custom_test.id)
         ```
-        ### Subnetwork Purpose Private Nat
+        ## 
 
         ```python
         import pulumi
@@ -1037,7 +1023,7 @@ class Subnetwork(pulumi.CustomResource):
             purpose="PRIVATE_NAT",
             network=custom_test.id)
         ```
-        ### Subnetwork Cidr Overlap
+        ## 
 
         ```python
         import pulumi
@@ -1116,9 +1102,6 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1187,12 +1170,10 @@ class Subnetwork(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
         * How-to Guides
-            * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
-            * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
+          * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+          * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
 
-        ## Example Usage
-
-        ### Subnetwork Basic
+        ## 
 
         ```python
         import pulumi
@@ -1211,7 +1192,7 @@ class Subnetwork(pulumi.CustomResource):
                 "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
-        ### Subnetwork Logging Config
+        ## 
 
         ```python
         import pulumi
@@ -1231,7 +1212,7 @@ class Subnetwork(pulumi.CustomResource):
                 "metadata": "INCLUDE_ALL_METADATA",
             })
         ```
-        ### Subnetwork Internal L7lb
+        ## 
 
         ```python
         import pulumi
@@ -1248,7 +1229,7 @@ class Subnetwork(pulumi.CustomResource):
             role="ACTIVE",
             network=custom_test.id)
         ```
-        ### Subnetwork Ipv6
+        ## 
 
         ```python
         import pulumi
@@ -1265,7 +1246,7 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="EXTERNAL",
             network=custom_test.id)
         ```
-        ### Subnetwork Internal Ipv6
+        ## 
 
         ```python
         import pulumi
@@ -1283,7 +1264,7 @@ class Subnetwork(pulumi.CustomResource):
             ipv6_access_type="INTERNAL",
             network=custom_test.id)
         ```
-        ### Subnetwork Purpose Private Nat
+        ## 
 
         ```python
         import pulumi
@@ -1299,7 +1280,7 @@ class Subnetwork(pulumi.CustomResource):
             purpose="PRIVATE_NAT",
             network=custom_test.id)
         ```
-        ### Subnetwork Cidr Overlap
+        ## 
 
         ```python
         import pulumi
@@ -1490,9 +1471,6 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1682,9 +1660,6 @@ class Subnetwork(pulumi.CustomResource):
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

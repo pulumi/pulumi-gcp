@@ -11,12 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## subcategory: "Site Verification"
-//
+// subcategory: "Site Verification"
 // description: |-
-//
-//	A verification token is used to demonstrate ownership of a website or domain.
-//
+// A verification token is used to demonstrate ownership of a website or domain.
 // ---
 //
 // # siteverification.getToken
@@ -31,7 +28,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Site Verification Via Site META Tag
+// ### Site Verification via Site META Tag
 //
 // ```go
 // package main
@@ -59,7 +56,7 @@ import (
 //
 // ```
 //
-// ### Site Verification Via DNS TXT Record
+// ### Site Verification via DNS TXT Record
 //
 // ```go
 // package main
@@ -107,8 +104,6 @@ type GetTokenArgs struct {
 	// The verification method for the Site Verification system to use to verify
 	// this site or domain.
 	// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-	//
-	// ***
 	VerificationMethod string `pulumi:"verificationMethod"`
 }
 
@@ -147,8 +142,6 @@ type GetTokenOutputArgs struct {
 	// The verification method for the Site Verification system to use to verify
 	// this site or domain.
 	// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-	//
-	// ***
 	VerificationMethod pulumi.StringInput `pulumi:"verificationMethod"`
 }
 

@@ -22,7 +22,7 @@ public final class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
     private @Nullable String containerSpecGcsPath;
     /**
      * @return The runtime environment for the Flex Template job.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment&gt;
      * Structure is documented below.
      * 
      */
@@ -66,7 +66,7 @@ public final class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
     }
     /**
      * @return The runtime environment for the Flex Template job.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment&gt;
      * Structure is documented below.
      * 
      */

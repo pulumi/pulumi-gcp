@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
+ *   * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
  * 
- * ## Example Usage
- * 
- * ### Monitoring Metric Descriptor Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -79,7 +77,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Monitoring Metric Descriptor Alert
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -168,16 +166,12 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -322,7 +316,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
      * The supported units are a subset of The Unified Code for Units of Measure standard.
      * More info can be found in the API documentation
-     * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+     * (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
      * 
      */
     @Export(name="unit", refs={String.class}, tree="[0]")
@@ -345,7 +339,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
      * The supported units are a subset of The Unified Code for Units of Measure standard.
      * More info can be found in the API documentation
-     * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+     * (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
      * 
      */
     public Output<Optional<String>> unit() {

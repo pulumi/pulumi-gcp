@@ -59,9 +59,6 @@ class NetworkArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -193,9 +190,6 @@ class NetworkArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -296,9 +290,6 @@ class _NetworkState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -451,9 +442,6 @@ class _NetworkState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -553,11 +541,9 @@ class Network(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+          * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 
-        ## Example Usage
-
-        ### Network Basic
+        ## 
 
         ```python
         import pulumi
@@ -565,6 +551,9 @@ class Network(pulumi.CustomResource):
 
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
+
+        ## Example Usage
+
         ### Network Custom Mtu
 
         ```python
@@ -577,6 +566,7 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             mtu=1460)
         ```
+
         ### Network Custom Firewall Enforcement Order
 
         ```python
@@ -644,9 +634,6 @@ class Network(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -672,11 +659,9 @@ class Network(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+          * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 
-        ## Example Usage
-
-        ### Network Basic
+        ## 
 
         ```python
         import pulumi
@@ -684,6 +669,9 @@ class Network(pulumi.CustomResource):
 
         vpc_network = gcp.compute.Network("vpc_network", name="vpc-network")
         ```
+
+        ## Example Usage
+
         ### Network Custom Mtu
 
         ```python
@@ -696,6 +684,7 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             mtu=1460)
         ```
+
         ### Network Custom Firewall Enforcement Order
 
         ```python
@@ -840,9 +829,6 @@ class Network(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -959,9 +945,6 @@ class Network(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

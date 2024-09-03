@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Vmware Engine External Access Rule Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -315,7 +316,7 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      * 
      */
@@ -324,7 +325,7 @@ public class ExternalAccessRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      * 
      */

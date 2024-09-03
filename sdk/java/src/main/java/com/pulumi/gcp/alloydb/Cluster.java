@@ -34,137 +34,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Alloydb Cluster Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.alloydb.Cluster;
- * import com.pulumi.gcp.alloydb.ClusterArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .name("alloydb-cluster")
- *             .build());
- * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()
- *             .clusterId("alloydb-cluster")
- *             .location("us-central1")
- *             .networkConfig(ClusterNetworkConfigArgs.builder()
- *                 .network(defaultNetwork.id())
- *                 .build())
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Alloydb Cluster Full
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.alloydb.Cluster;
- * import com.pulumi.gcp.alloydb.ClusterArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("alloydb-cluster-full")
- *             .build());
- * 
- *         var full = new Cluster("full", ClusterArgs.builder()
- *             .clusterId("alloydb-cluster-full")
- *             .location("us-central1")
- *             .networkConfig(ClusterNetworkConfigArgs.builder()
- *                 .network(default_.id())
- *                 .build())
- *             .databaseVersion("POSTGRES_15")
- *             .initialUser(ClusterInitialUserArgs.builder()
- *                 .user("alloydb-cluster-full")
- *                 .password("alloydb-cluster-full")
- *                 .build())
- *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
- *                 .enabled(true)
- *                 .recoveryWindowDays(14)
- *                 .build())
- *             .automatedBackupPolicy(ClusterAutomatedBackupPolicyArgs.builder()
- *                 .location("us-central1")
- *                 .backupWindow("1800s")
- *                 .enabled(true)
- *                 .weeklySchedule(ClusterAutomatedBackupPolicyWeeklyScheduleArgs.builder()
- *                     .daysOfWeeks("MONDAY")
- *                     .startTimes(ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs.builder()
- *                         .hours(23)
- *                         .minutes(0)
- *                         .seconds(0)
- *                         .nanos(0)
- *                         .build())
- *                     .build())
- *                 .quantityBasedRetention(ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs.builder()
- *                     .count(1)
- *                     .build())
- *                 .labels(Map.of("test", "alloydb-cluster-full"))
- *                 .build())
- *             .labels(Map.of("test", "alloydb-cluster-full"))
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Alloydb Cluster Restore
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -282,6 +151,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Alloydb Secondary Cluster Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -413,7 +283,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:alloydb/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -424,7 +294,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -633,14 +503,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.encryptionInfos;
     }
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> etag;
 
     /**
-     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * @return For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     public Output<Optional<String>> etag() {
@@ -683,16 +553,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The location where the alloydb cluster should reside.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -835,7 +701,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
      * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
@@ -844,7 +710,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * @return Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
      * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 

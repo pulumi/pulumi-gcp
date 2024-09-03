@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Vmware Engine Network Policy Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -240,7 +241,7 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-central1
      * 
      */
@@ -249,7 +250,7 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-central1
      * 
      */
@@ -259,16 +260,12 @@ public class NetworkPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the Network Policy.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the Network Policy.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

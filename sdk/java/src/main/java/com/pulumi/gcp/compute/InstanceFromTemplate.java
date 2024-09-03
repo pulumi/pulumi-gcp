@@ -632,8 +632,6 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`self_link_unique` attribute).
      * 
-     * ***
-     * 
      */
     @Export(name="sourceInstanceTemplate", refs={String.class}, tree="[0]")
     private Output<String> sourceInstanceTemplate;
@@ -642,8 +640,6 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * @return Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`self_link_unique` attribute).
-     * 
-     * ***
      * 
      */
     public Output<String> sourceInstanceTemplate() {

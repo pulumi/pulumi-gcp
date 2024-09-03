@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// Retrieves the current IAM policy data for autoscalingpolicy
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// Retrieves the current IAM policy data for autoscalingpolicy
-        /// 
         /// 
         /// ## example
         /// 

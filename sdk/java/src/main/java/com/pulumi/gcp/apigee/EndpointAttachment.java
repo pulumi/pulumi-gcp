@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Example Usage
  * 
@@ -138,16 +138,12 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
     /**
      * ID of the endpoint attachment.
      * 
-     * ***
-     * 
      */
     @Export(name="endpointAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> endpointAttachmentId;
 
     /**
      * @return ID of the endpoint attachment.
-     * 
-     * ***
      * 
      */
     public Output<String> endpointAttachmentId() {

@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
+    ///   * [Official Documentation](https://cloud.google.com/container-analysis/)
     /// 
     /// ## Example Usage
     /// 
@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// <summary>
         /// Required. Immutable. A URI that represents the resource for which
         /// the occurrence applies. For example,
-        /// https://gcr.io/project/image@sha256:123abc for a Docker image.
+        /// &lt;https://gcr.io/project/image@sha256:123abc&gt; for a Docker image.
         /// </summary>
         [Output("resourceUri")]
         public Output<string> ResourceUri { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// <summary>
         /// Required. Immutable. A URI that represents the resource for which
         /// the occurrence applies. For example,
-        /// https://gcr.io/project/image@sha256:123abc for a Docker image.
+        /// &lt;https://gcr.io/project/image@sha256:123abc&gt; for a Docker image.
         /// </summary>
         [Input("resourceUri", required: true)]
         public Input<string> ResourceUri { get; set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// <summary>
         /// Required. Immutable. A URI that represents the resource for which
         /// the occurrence applies. For example,
-        /// https://gcr.io/project/image@sha256:123abc for a Docker image.
+        /// &lt;https://gcr.io/project/image@sha256:123abc&gt; for a Docker image.
         /// </summary>
         [Input("resourceUri")]
         public Input<string>? ResourceUri { get; set; }

@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
  *
- * ## Example Usage
- *
- * ### Region Url Map Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -74,7 +72,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Region Url Map Default Route Action
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -236,7 +234,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Region Url Map L7 Ilb Path
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -340,7 +338,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Region Url Map L7 Ilb Path Partial
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -412,7 +410,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Region Url Map L7 Ilb Route
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -494,7 +492,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Region Url Map L7 Ilb Route Partial
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -551,7 +549,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Region Url Map Path Template Match
+ *
+ * ## Example Usage
+ *
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -745,9 +746,6 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -885,9 +883,6 @@ export interface RegionUrlMapState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -964,9 +959,6 @@ export interface RegionUrlMapArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

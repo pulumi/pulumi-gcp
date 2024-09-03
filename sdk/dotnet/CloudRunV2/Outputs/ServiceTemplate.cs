@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateContainer> Containers;
         /// <summary>
-        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        /// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
         /// </summary>
         public readonly string? EncryptionKey;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly string? ExecutionEnvironment;
         /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-        /// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        /// For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
         /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
         /// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>
-        /// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        /// Enables session affinity. For more information, go to &lt;https://cloud.google.com/run/docs/configuring/session-affinity&gt;
         /// </summary>
         public readonly bool? SessionAffinity;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateVolume> Volumes;
         /// <summary>
-        /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        /// VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateVpcAccess? VpcAccess;

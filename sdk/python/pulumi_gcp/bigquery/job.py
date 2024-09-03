@@ -434,11 +434,9 @@ class Job(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
         * How-to Guides
-            * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+          * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 
-        ## Example Usage
-
-        ### Bigquery Job Query
+        ## 
 
         ```python
         import pulumi
@@ -472,7 +470,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Job Query Table Reference
+        ## 
 
         ```python
         import pulumi
@@ -507,7 +505,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Job Load
+        ## 
 
         ```python
         import pulumi
@@ -543,6 +541,9 @@ class Job(pulumi.CustomResource):
                 "autodetect": True,
             })
         ```
+
+        ## Example Usage
+
         ### Bigquery Job Load Geojson
 
         ```python
@@ -592,7 +593,7 @@ class Job(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
-        ### Bigquery Job Load Parquet
+        ## 
 
         ```python
         import pulumi
@@ -644,6 +645,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Job Copy
 
         ```python
@@ -750,7 +752,7 @@ class Job(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
-        ### Bigquery Job Extract
+        ## 
 
         ```python
         import pulumi
@@ -870,11 +872,9 @@ class Job(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
         * How-to Guides
-            * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+          * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 
-        ## Example Usage
-
-        ### Bigquery Job Query
+        ## 
 
         ```python
         import pulumi
@@ -908,7 +908,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Job Query Table Reference
+        ## 
 
         ```python
         import pulumi
@@ -943,7 +943,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Job Load
+        ## 
 
         ```python
         import pulumi
@@ -979,6 +979,9 @@ class Job(pulumi.CustomResource):
                 "autodetect": True,
             })
         ```
+
+        ## Example Usage
+
         ### Bigquery Job Load Geojson
 
         ```python
@@ -1028,7 +1031,7 @@ class Job(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[object]))
         ```
-        ### Bigquery Job Load Parquet
+        ## 
 
         ```python
         import pulumi
@@ -1080,6 +1083,7 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Bigquery Job Copy
 
         ```python
@@ -1186,7 +1190,7 @@ class Job(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         ```
-        ### Bigquery Job Extract
+        ## 
 
         ```python
         import pulumi

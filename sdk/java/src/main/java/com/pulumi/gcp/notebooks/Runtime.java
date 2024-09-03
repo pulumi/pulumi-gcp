@@ -31,11 +31,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  * 
- * ## Example Usage
- * 
- * ### Notebook Runtime Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -90,7 +88,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Runtime Basic Gpu
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -154,7 +152,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Runtime Basic Container
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -218,7 +216,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Runtime Kernels
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -281,7 +279,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Runtime Script
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -420,7 +418,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (&lt;https://www.ietf.org/rfc/rfc1035.txt)&gt;. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -435,7 +433,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
     /**
      * @return The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (&lt;https://www.ietf.org/rfc/rfc1035.txt)&gt;. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -450,16 +448,12 @@ public class Runtime extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

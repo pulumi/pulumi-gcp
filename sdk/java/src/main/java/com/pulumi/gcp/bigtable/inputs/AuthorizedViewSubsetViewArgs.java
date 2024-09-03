@@ -20,16 +20,12 @@ public final class AuthorizedViewSubsetViewArgs extends com.pulumi.resources.Res
     /**
      * A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="familySubsets")
     private @Nullable Output<List<AuthorizedViewSubsetViewFamilySubsetArgs>> familySubsets;
 
     /**
      * @return A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<AuthorizedViewSubsetViewFamilySubsetArgs>>> familySubsets() {
@@ -79,8 +75,6 @@ public final class AuthorizedViewSubsetViewArgs extends com.pulumi.resources.Res
         /**
          * @param familySubsets A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -92,8 +86,6 @@ public final class AuthorizedViewSubsetViewArgs extends com.pulumi.resources.Res
         /**
          * @param familySubsets A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -103,8 +95,6 @@ public final class AuthorizedViewSubsetViewArgs extends com.pulumi.resources.Res
 
         /**
          * @param familySubsets A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

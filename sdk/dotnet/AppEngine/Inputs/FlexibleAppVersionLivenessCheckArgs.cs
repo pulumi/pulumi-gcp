@@ -32,8 +32,6 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
         /// <summary>
         /// The initial delay before starting to execute the checks. Default: "300s"
-        /// 
-        /// - - -
         /// </summary>
         [Input("initialDelay")]
         public Input<string>? InitialDelay { get; set; }

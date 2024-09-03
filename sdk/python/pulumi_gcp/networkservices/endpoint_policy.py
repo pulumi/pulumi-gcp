@@ -455,57 +455,6 @@ class EndpointPolicy(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Services Endpoint Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            name="my-endpoint-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector={
-                "ports": ["8081"],
-            },
-            endpoint_matcher={
-                "metadata_label_matcher": {
-                    "metadata_label_match_criteria": "MATCH_ANY",
-                    "metadata_labels": [{
-                        "label_name": "foo",
-                        "label_value": "bar",
-                    }],
-                },
-            })
-        ```
-        ### Network Services Endpoint Policy Empty Match
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            name="my-endpoint-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector={
-                "ports": ["8081"],
-            },
-            endpoint_matcher={
-                "metadata_label_matcher": {
-                    "metadata_label_match_criteria": "MATCH_ANY",
-                },
-            })
-        ```
-
         ## Import
 
         EndpointPolicy can be imported using any of these accepted formats:
@@ -556,57 +505,6 @@ class EndpointPolicy(pulumi.CustomResource):
                  args: EndpointPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Services Endpoint Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            name="my-endpoint-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector={
-                "ports": ["8081"],
-            },
-            endpoint_matcher={
-                "metadata_label_matcher": {
-                    "metadata_label_match_criteria": "MATCH_ANY",
-                    "metadata_labels": [{
-                        "label_name": "foo",
-                        "label_value": "bar",
-                    }],
-                },
-            })
-        ```
-        ### Network Services Endpoint Policy Empty Match
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.EndpointPolicy("default",
-            name="my-endpoint-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            type="SIDECAR_PROXY",
-            traffic_port_selector={
-                "ports": ["8081"],
-            },
-            endpoint_matcher={
-                "metadata_label_matcher": {
-                    "metadata_label_match_criteria": "MATCH_ANY",
-                },
-            })
-        ```
-
         ## Import
 
         EndpointPolicy can be imported using any of these accepted formats:

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.inspectTemplates)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
  *
  * ## Example Usage
  *
@@ -132,6 +132,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Inspect Template Custom Type
  *
  * ```typescript
@@ -196,6 +197,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Inspect Template Custom Type Surrogate
  *
  * ```typescript
@@ -258,6 +260,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Inspect Template Max Infotype Per Finding Default
  *
  * ```typescript
@@ -356,9 +359,6 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -431,9 +431,6 @@ export interface PreventionInspectTemplateState {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -467,9 +464,6 @@ export interface PreventionInspectTemplateArgs {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

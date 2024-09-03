@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/BiReservation)
     /// * How-to Guides
-    ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+    ///   * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Reservation Bi Reservation Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -68,9 +66,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// LOCATION_DESCRIPTION
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -156,9 +151,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// LOCATION_DESCRIPTION
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -199,9 +191,6 @@ namespace Pulumi.Gcp.BigQuery
     {
         /// <summary>
         /// LOCATION_DESCRIPTION
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

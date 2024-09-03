@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ### Creating A New Key
+    /// ### creating a new Key
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Creating And Regularly Rotating A Key
+    /// ### creating and regularly rotating a key
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// });
     /// ```
     /// 
-    /// ### Save Key In Kubernetes Secret - DEPRECATED
+    /// ### save key in Kubernetes secret - DEPRECATED
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

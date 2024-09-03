@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v2/folders.locations.notificationConfigs)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+    ///   * [Official Documentation](https://cloud.google.com/security-command-center/docs)
     /// 
     /// ## Example Usage
     /// 

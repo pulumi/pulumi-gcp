@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig> ManagedGroupConfigs;
         /// <summary>
-        /// Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        /// Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>

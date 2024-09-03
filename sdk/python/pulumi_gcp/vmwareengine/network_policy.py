@@ -35,7 +35,7 @@ class NetworkPolicyArgs:
                An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
                prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
         :param pulumi.Input[str] location: The resource name of the location (region) to create the new network policy in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[str] vmware_engine_network: The relative resource name of the VMware Engine network. Specify the name in the following form:
                projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
@@ -47,9 +47,6 @@ class NetworkPolicyArgs:
         :param pulumi.Input['NetworkPolicyInternetAccessArgs'] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -86,7 +83,7 @@ class NetworkPolicyArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The resource name of the location (region) to create the new network policy in.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-central1
         """
         return pulumi.get(self, "location")
@@ -153,9 +150,6 @@ class NetworkPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Network Policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -207,12 +201,9 @@ class _NetworkPolicyState:
         :param pulumi.Input['NetworkPolicyInternetAccessArgs'] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[str] location: The resource name of the location (region) to create the new network policy in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
@@ -322,7 +313,7 @@ class _NetworkPolicyState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the location (region) to create the new network policy in.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-central1
         """
         return pulumi.get(self, "location")
@@ -336,9 +327,6 @@ class _NetworkPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Network Policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -453,6 +441,7 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
+
         ### Vmware Engine Network Policy Full
 
         ```python
@@ -514,12 +503,9 @@ class NetworkPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[str] location: The resource name of the location (region) to create the new network policy in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] vmware_engine_network: The relative resource name of the VMware Engine network. Specify the name in the following form:
@@ -558,6 +544,7 @@ class NetworkPolicy(pulumi.CustomResource):
             edge_services_cidr="192.168.30.0/26",
             vmware_engine_network=network_policy_nw.id)
         ```
+
         ### Vmware Engine Network Policy Full
 
         ```python
@@ -699,12 +686,9 @@ class NetworkPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['NetworkPolicyInternetAccessArgs', 'NetworkPolicyInternetAccessArgsDict']] internet_access: Network service that allows VMware workloads to access the internet.
                Structure is documented below.
         :param pulumi.Input[str] location: The resource name of the location (region) to create the new network policy in.
-               Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+               Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
                For example: projects/my-project/locations/us-central1
         :param pulumi.Input[str] name: The ID of the Network Policy.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
@@ -787,7 +771,7 @@ class NetworkPolicy(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The resource name of the location (region) to create the new network policy in.
-        Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
         For example: projects/my-project/locations/us-central1
         """
         return pulumi.get(self, "location")
@@ -797,9 +781,6 @@ class NetworkPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The ID of the Network Policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

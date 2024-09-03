@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ## Example Usage
     /// 
-    /// ### Multi_target
+    /// ### multi_target
     /// tests creating and updating a multi-target
     /// ```csharp
     /// using System.Collections.Generic;
@@ -66,7 +66,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// ### Run_target
+    /// 
+    /// ### run_target
     /// tests creating and updating a cloud run target
     /// ```csharp
     /// using System.Collections.Generic;
@@ -114,7 +115,8 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
-    /// ### Target
+    /// 
+    /// ### target
     /// Creates a basic Cloud Deploy target
     /// ```csharp
     /// using System.Collections.Generic;
@@ -182,7 +184,7 @@ namespace Pulumi.Gcp.CloudDeploy
     public partial class Target : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -270,10 +272,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Name of the `Target`. Format is `a-z?`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -375,7 +373,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -463,10 +461,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Name of the `Target`. Format is `a-z?`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -501,7 +495,7 @@ namespace Pulumi.Gcp.CloudDeploy
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -625,10 +619,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Name of the `Target`. Format is `a-z?`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

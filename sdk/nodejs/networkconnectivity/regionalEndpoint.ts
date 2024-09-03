@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.regionalEndpoints)
  * * How-to Guides
- *     * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
+ *   * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
  *
- * ## Example Usage
- *
- * ### Network Connectivity Regional Endpoint Regional Access
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Connectivity Regional Endpoint Global Access
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -155,9 +153,6 @@ export class RegionalEndpoint extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the RegionalEndpoint.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -292,9 +287,6 @@ export interface RegionalEndpointState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the RegionalEndpoint.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -360,9 +352,6 @@ export interface RegionalEndpointArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the RegionalEndpoint.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

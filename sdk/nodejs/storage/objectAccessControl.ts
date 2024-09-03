@@ -24,11 +24,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  *
- * ## Example Usage
- *
- * ### Storage Object Access Control Public Object
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -135,9 +133,6 @@ export class ObjectAccessControl extends pulumi.CustomResource {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -240,9 +235,6 @@ export interface ObjectAccessControlState {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     role?: pulumi.Input<string>;
 }
@@ -274,9 +266,6 @@ export interface ObjectAccessControlArgs {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     *
-     *
-     * - - -
      */
     role: pulumi.Input<string>;
 }

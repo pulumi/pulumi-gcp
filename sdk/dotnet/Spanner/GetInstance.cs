@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Spanner
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_spanner_instance" "foo" {
-        ///   name = "bar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Spanner.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "bar",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Spanner
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_spanner_instance" "foo" {
-        ///   name = "bar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Spanner.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "bar",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
@@ -51,8 +71,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The name of the spanner instance.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -80,8 +98,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The name of the spanner instance.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

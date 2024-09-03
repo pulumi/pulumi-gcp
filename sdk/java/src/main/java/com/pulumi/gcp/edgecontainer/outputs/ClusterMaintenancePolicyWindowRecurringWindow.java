@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterMaintenancePolicyWindowRecurringWindow {
     /**
-     * @return An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+     * @return An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
      * this window recurs. They go on for the span of time between the start and
      * end time.
      * 
@@ -28,7 +28,7 @@ public final class ClusterMaintenancePolicyWindowRecurringWindow {
 
     private ClusterMaintenancePolicyWindowRecurringWindow() {}
     /**
-     * @return An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+     * @return An RRULE (&lt;https://tools.ietf.org/html/rfc5545#section-3.8.5.3&gt;) for how
      * this window recurs. They go on for the span of time between the start and
      * end time.
      * 

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.OsLogin
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest/v1/users.sshPublicKeys)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Os Login Ssh Key Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -92,9 +90,6 @@ namespace Pulumi.Gcp.OsLogin
 
         /// <summary>
         /// The user email.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
@@ -165,9 +160,6 @@ namespace Pulumi.Gcp.OsLogin
 
         /// <summary>
         /// The user email.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
@@ -206,9 +198,6 @@ namespace Pulumi.Gcp.OsLogin
 
         /// <summary>
         /// The user email.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

@@ -42,7 +42,7 @@ class OccurenceArgs:
                filter in list requests.
         :param pulumi.Input[str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
-               https://gcr.io/project/image@sha256:123abc for a Docker image.
+               <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         """
         pulumi.set(__self__, "attestation", attestation)
@@ -93,7 +93,7 @@ class OccurenceArgs:
         """
         Required. Immutable. A URI that represents the resource for which
         the occurrence applies. For example,
-        https://gcr.io/project/image@sha256:123abc for a Docker image.
+        <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         """
         return pulumi.get(self, "resource_uri")
 
@@ -157,7 +157,7 @@ class _OccurenceState:
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
-               https://gcr.io/project/image@sha256:123abc for a Docker image.
+               <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
         if attestation is not None:
@@ -278,7 +278,7 @@ class _OccurenceState:
         """
         Required. Immutable. A URI that represents the resource for which
         the occurrence applies. For example,
-        https://gcr.io/project/image@sha256:123abc for a Docker image.
+        <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         """
         return pulumi.get(self, "resource_uri")
 
@@ -318,7 +318,7 @@ class Occurence(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/container-analysis/)
+          * [Official Documentation](https://cloud.google.com/container-analysis/)
 
         ## Example Usage
 
@@ -363,7 +363,7 @@ class Occurence(pulumi.CustomResource):
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
-               https://gcr.io/project/image@sha256:123abc for a Docker image.
+               <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         """
         ...
     @overload
@@ -379,7 +379,7 @@ class Occurence(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/container-analysis/)
+          * [Official Documentation](https://cloud.google.com/container-analysis/)
 
         ## Example Usage
 
@@ -497,7 +497,7 @@ class Occurence(pulumi.CustomResource):
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[str] resource_uri: Required. Immutable. A URI that represents the resource for which
                the occurrence applies. For example,
-               https://gcr.io/project/image@sha256:123abc for a Docker image.
+               <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -586,7 +586,7 @@ class Occurence(pulumi.CustomResource):
         """
         Required. Immutable. A URI that represents the resource for which
         the occurrence applies. For example,
-        https://gcr.io/project/image@sha256:123abc for a Docker image.
+        <https://gcr.io/project/image@sha256:123abc> for a Docker image.
         """
         return pulumi.get(self, "resource_uri")
 

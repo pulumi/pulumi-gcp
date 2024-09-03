@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/migration-center/docs/reference/rest/v1)
  * * How-to Guides
- *     * [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
+ *   * [Managing Migration Preferences](https://cloud.google.com/migration-center/docs/migration-preferences)
  *
- * ## Example Usage
- *
- * ### Preference Set Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +35,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Preference Set Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -154,9 +152,6 @@ export class PreferenceSet extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-     *
-     *
-     * - - -
      */
     public readonly preferenceSetId!: pulumi.Output<string>;
     /**
@@ -245,9 +240,6 @@ export interface PreferenceSetState {
     name?: pulumi.Input<string>;
     /**
      * Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-     *
-     *
-     * - - -
      */
     preferenceSetId?: pulumi.Input<string>;
     /**
@@ -284,9 +276,6 @@ export interface PreferenceSetArgs {
     location: pulumi.Input<string>;
     /**
      * Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
-     *
-     *
-     * - - -
      */
     preferenceSetId: pulumi.Input<string>;
     /**

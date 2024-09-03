@@ -33,9 +33,6 @@ class CertificateTemplateArgs:
         """
         The set of arguments for constructing a CertificateTemplate resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
                Structure is documented below.
@@ -74,9 +71,6 @@ class CertificateTemplateArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -214,9 +208,6 @@ class _CertificateTemplateState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input['CertificateTemplatePassthroughExtensionsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
@@ -324,9 +315,6 @@ class _CertificateTemplateState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -445,13 +433,11 @@ class CertificateTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
         * How-to Guides
-            * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
-            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-            * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+          * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+          * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+          * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
 
-        ## Example Usage
-
-        ### Privateca Template Basic
+        ## 
 
         ```python
         import pulumi
@@ -569,9 +555,6 @@ class CertificateTemplate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
@@ -594,13 +577,11 @@ class CertificateTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
         * How-to Guides
-            * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
-            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
-            * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+          * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+          * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+          * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
 
-        ## Example Usage
-
-        ### Privateca Template Basic
+        ## 
 
         ```python
         import pulumi
@@ -798,9 +779,6 @@ class CertificateTemplate(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] maximum_lifetime: Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         :param pulumi.Input[str] name: The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         :param pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
@@ -880,9 +858,6 @@ class CertificateTemplate(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

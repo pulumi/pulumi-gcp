@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Import
  * 
@@ -62,8 +62,6 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
@@ -71,8 +69,6 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envId() {

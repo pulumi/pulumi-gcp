@@ -35,9 +35,6 @@ class SecurityProfileGroupArgs:
         :param pulumi.Input[str] location: The location of the security profile group.
                The default value is `global`.
         :param pulumi.Input[str] name: The name of the security profile group resource.
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
@@ -100,9 +97,6 @@ class SecurityProfileGroupArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the security profile group resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -165,9 +159,6 @@ class _SecurityProfileGroupState:
         :param pulumi.Input[str] location: The location of the security profile group.
                The default value is `global`.
         :param pulumi.Input[str] name: The name of the security profile group resource.
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -281,9 +272,6 @@ class _SecurityProfileGroupState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the security profile group resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -361,8 +349,8 @@ class SecurityProfileGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfileGroups)
         * How-to Guides
-            * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
-            * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
+          * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
+          * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
 
         ## Example Usage
 
@@ -409,9 +397,6 @@ class SecurityProfileGroup(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the security profile group.
                The default value is `global`.
         :param pulumi.Input[str] name: The name of the security profile group resource.
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
@@ -429,8 +414,8 @@ class SecurityProfileGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfileGroups)
         * How-to Guides
-            * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
-            * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
+          * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
+          * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
 
         ## Example Usage
 
@@ -551,9 +536,6 @@ class SecurityProfileGroup(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the security profile group.
                The default value is `global`.
         :param pulumi.Input[str] name: The name of the security profile group resource.
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The name of the parent this security profile group belongs to.
                Format: organizations/{organization_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -637,9 +619,6 @@ class SecurityProfileGroup(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the security profile group resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
 //
-// ## Example Usage
-//
-// ### Bigquery Datapolicy Data Policy Basic
+// ##
 //
 // ```go
 // package main
@@ -70,7 +68,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Datapolicy Data Policy Routine
+// ##
 //
 // ```go
 // package main
@@ -181,8 +179,6 @@ type DataPolicy struct {
 	DataPolicyId pulumi.StringOutput `pulumi:"dataPolicyId"`
 	// The enrollment level of the service.
 	// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-	//
-	// ***
 	DataPolicyType pulumi.StringOutput `pulumi:"dataPolicyType"`
 	// The name of the location of the data policy.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -244,8 +240,6 @@ type dataPolicyState struct {
 	DataPolicyId *string `pulumi:"dataPolicyId"`
 	// The enrollment level of the service.
 	// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-	//
-	// ***
 	DataPolicyType *string `pulumi:"dataPolicyType"`
 	// The name of the location of the data policy.
 	Location *string `pulumi:"location"`
@@ -266,8 +260,6 @@ type DataPolicyState struct {
 	DataPolicyId pulumi.StringPtrInput
 	// The enrollment level of the service.
 	// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-	//
-	// ***
 	DataPolicyType pulumi.StringPtrInput
 	// The name of the location of the data policy.
 	Location pulumi.StringPtrInput
@@ -292,8 +284,6 @@ type dataPolicyArgs struct {
 	DataPolicyId string `pulumi:"dataPolicyId"`
 	// The enrollment level of the service.
 	// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-	//
-	// ***
 	DataPolicyType string `pulumi:"dataPolicyType"`
 	// The name of the location of the data policy.
 	Location string `pulumi:"location"`
@@ -313,8 +303,6 @@ type DataPolicyArgs struct {
 	DataPolicyId pulumi.StringInput
 	// The enrollment level of the service.
 	// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-	//
-	// ***
 	DataPolicyType pulumi.StringInput
 	// The name of the location of the data policy.
 	Location pulumi.StringInput
@@ -425,8 +413,6 @@ func (o DataPolicyOutput) DataPolicyId() pulumi.StringOutput {
 
 // The enrollment level of the service.
 // Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-//
-// ***
 func (o DataPolicyOutput) DataPolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataPolicy) pulumi.StringOutput { return v.DataPolicyType }).(pulumi.StringOutput)
 }

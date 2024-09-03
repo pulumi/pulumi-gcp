@@ -14,9 +14,7 @@ import (
 
 // DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 //
-// ## Example Usage
-//
-// ### Certificate Manager Dns Authorization Basic
+// ##
 //
 // ```go
 // package main
@@ -53,7 +51,7 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Dns Authorization Regional
+// ##
 //
 // ```go
 // package main
@@ -131,8 +129,6 @@ type DnsAuthorization struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,8 +206,6 @@ type dnsAuthorizationState struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -252,8 +246,6 @@ type DnsAuthorizationState struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -291,8 +283,6 @@ type dnsAuthorizationArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -324,8 +314,6 @@ type DnsAuthorizationArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -467,8 +455,6 @@ func (o DnsAuthorizationOutput) Location() pulumi.StringPtrOutput {
 // Name of the resource; provided by the client when the resource is created.
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
-//
-// ***
 func (o DnsAuthorizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

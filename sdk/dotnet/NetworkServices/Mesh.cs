@@ -10,54 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Network Services Mesh Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkServices.Mesh("default", new()
-    ///     {
-    ///         Name = "my-mesh",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         InterceptionPort = 443,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Services Mesh No Port
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkServices.Mesh("default", new()
-    ///     {
-    ///         Name = "my-mesh-noport",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Mesh can be imported using any of these accepted formats:
@@ -123,9 +75,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -239,9 +188,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -315,9 +261,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Mesh resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

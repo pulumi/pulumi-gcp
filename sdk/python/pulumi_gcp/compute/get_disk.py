@@ -474,8 +474,6 @@ def get_disk(name: Optional[str] = None,
 
 
     :param str name: The name of a specific disk.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param str zone: A reference to the zone where the disk resides.
@@ -554,8 +552,6 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of a specific disk.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param str zone: A reference to the zone where the disk resides.

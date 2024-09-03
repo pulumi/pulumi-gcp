@@ -161,8 +161,6 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -175,8 +173,6 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -291,7 +287,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
-     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
      * 
      */
     @Import(name="storageLocations")
@@ -300,7 +296,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
-     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
      * 
      */
     public Optional<Output<List<String>>> storageLocations() {
@@ -548,8 +544,6 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
          * characters must be a dash, lowercase letter, or digit, except the
          * last character, which cannot be a dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -566,8 +560,6 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
          * the first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the
          * last character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -714,7 +706,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storageLocations Cloud Storage bucket storage location of the image
          * (regional or multi-regional).
-         * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+         * Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
          * 
          * @return builder
          * 
@@ -727,7 +719,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storageLocations Cloud Storage bucket storage location of the image
          * (regional or multi-regional).
-         * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+         * Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
          * 
          * @return builder
          * 
@@ -739,7 +731,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storageLocations Cloud Storage bucket storage location of the image
          * (regional or multi-regional).
-         * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+         * Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
          * 
          * @return builder
          * 

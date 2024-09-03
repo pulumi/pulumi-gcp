@@ -126,7 +126,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Additional Examples
+ * ### Example Usage
  *
  * ### Service Account IAM Policy
  *

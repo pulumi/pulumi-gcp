@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of local SSD disks to attach to the node, 
+        /// The number of local SSD disks to attach to the node,
         /// which is limited by the maximum number of disks allowable per zone.
         /// </summary>
         [Input("localSsdCount")]
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// Minimum CPU platform to be used by this instance. 
+        /// Minimum CPU platform to be used by this instance.
         /// The instance may be scheduled on the specified or a newer CPU platform.
         /// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
         /// </summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Whether the nodes are created as preemptible VM instances. 
+        /// Whether the nodes are created as preemptible VM instances.
         /// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
         /// CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>

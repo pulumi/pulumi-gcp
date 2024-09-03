@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
 //
-// ## Example Usage
-//
-// ### Storage Insights Report Config
+// ##
 //
 // ```go
 // package main

@@ -13,12 +13,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/looker/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
- *     * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
+ *   * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
+ *   * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
  *
- * ## Example Usage
- *
- * ### Looker Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +32,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Looker Instance Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,6 +79,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Looker Instance Enterprise Full
  *
  * ```typescript
@@ -155,7 +156,7 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-looker.iam.gserviceaccount.com`),
  * });
  * ```
- * ### Looker Instance Custom Domain
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -296,9 +297,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintenanceWindow!: pulumi.Output<outputs.looker.InstanceMaintenanceWindow | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -488,9 +486,6 @@ export interface InstanceState {
     maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -591,9 +586,6 @@ export interface InstanceArgs {
     maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

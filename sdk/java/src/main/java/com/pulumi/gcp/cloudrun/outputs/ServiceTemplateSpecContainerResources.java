@@ -14,7 +14,7 @@ public final class ServiceTemplateSpecContainerResources {
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     private @Nullable Map<String,String> limits;
@@ -23,7 +23,7 @@ public final class ServiceTemplateSpecContainerResources {
      * If Requests is omitted for a container, it defaults to Limits if that is
      * explicitly specified, otherwise to an implementation-defined value.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     private @Nullable Map<String,String> requests;
@@ -32,7 +32,7 @@ public final class ServiceTemplateSpecContainerResources {
     /**
      * @return Limits describes the maximum amount of compute resources allowed.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     public Map<String,String> limits() {
@@ -43,7 +43,7 @@ public final class ServiceTemplateSpecContainerResources {
      * If Requests is omitted for a container, it defaults to Limits if that is
      * explicitly specified, otherwise to an implementation-defined value.
      * The values of the map is string form of the &#39;quantity&#39; k8s type:
-     * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+     * &lt;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go&gt;
      * 
      */
     public Map<String,String> requests() {

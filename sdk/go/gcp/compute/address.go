@@ -32,9 +32,7 @@ import (
 //   - [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
 //   - [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 //
-// ## Example Usage
-//
-// ### Address Basic
+// ##
 //
 // ```go
 // package main
@@ -59,7 +57,7 @@ import (
 //	}
 //
 // ```
-// ### Address With Subnetwork
+// ##
 //
 // ```go
 // package main
@@ -103,7 +101,7 @@ import (
 //	}
 //
 // ```
-// ### Address With Gce Endpoint
+// ##
 //
 // ```go
 // package main
@@ -130,7 +128,7 @@ import (
 //	}
 //
 // ```
-// ### Instance With Ip
+// ##
 //
 // ```go
 // package main
@@ -185,7 +183,7 @@ import (
 //	}
 //
 // ```
-// ### Compute Address Ipsec Interconnect
+// ##
 //
 // ```go
 // package main
@@ -292,8 +290,6 @@ type Address struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -412,8 +408,6 @@ type addressState struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -498,8 +492,6 @@ type AddressState struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -581,8 +573,6 @@ type addressArgs struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -654,8 +644,6 @@ type AddressArgs struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -846,8 +834,6 @@ func (o AddressOutput) Labels() pulumi.StringMapOutput {
 // which means the first character must be a lowercase letter, and all
 // following characters must be a dash, lowercase letter, or digit,
 // except the last character, which cannot be a dash.
-//
-// ***
 func (o AddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

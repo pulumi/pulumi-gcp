@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * A Response Policy is a collection of selectors that apply to queries
  * made against one or more Virtual Private Cloud networks.
  *
- * ## Example Usage
- *
- * ### Dns Response Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -157,9 +155,6 @@ export class ResponsePolicy extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     *
-     *
-     * - - -
      */
     public readonly responsePolicyName!: pulumi.Output<string>;
 
@@ -222,9 +217,6 @@ export interface ResponsePolicyState {
     project?: pulumi.Input<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     *
-     *
-     * - - -
      */
     responsePolicyName?: pulumi.Input<string>;
 }
@@ -254,9 +246,6 @@ export interface ResponsePolicyArgs {
     project?: pulumi.Input<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     *
-     *
-     * - - -
      */
     responsePolicyName: pulumi.Input<string>;
 }

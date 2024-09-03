@@ -65,16 +65,12 @@ public final class CxSecuritySettingsArgs extends com.pulumi.resources.ResourceA
     /**
      * The human-readable name of the security settings, unique within the location.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the security settings, unique within the location.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -336,8 +332,6 @@ public final class CxSecuritySettingsArgs extends com.pulumi.resources.ResourceA
         /**
          * @param displayName The human-readable name of the security settings, unique within the location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -348,8 +342,6 @@ public final class CxSecuritySettingsArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param displayName The human-readable name of the security settings, unique within the location.
-         * 
-         * ***
          * 
          * @return builder
          * 

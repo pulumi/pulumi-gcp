@@ -20,13 +20,13 @@ import javax.annotation.Nullable;
  * Allows creation and management of a single binding within IAM policy for
  * an existing Google Cloud Platform Organization.
  * 
- * &gt; **Note:** This resource __must not__ be used in conjunction with
- *    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
- *    what your policy should be.
+ * &gt; **Note:** This resource **must not** be used in conjunction with
+ * `gcp.organizations.IAMMember` for the **same role** or they will fight over
+ * what your policy should be.
  * 
  * &gt; **Note:** On create, this resource will overwrite members of any existing roles.
- *     Use `pulumi import` and inspect the `output to ensure
- *     your existing members are preserved.
+ * Use `pulumi import` and inspect the `output to ensure
+ * your existing members are preserved.
  * 
  * ## Example Usage
  * 
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:organizations/iAMBinding:IAMBinding")
@@ -101,14 +101,14 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
-     * @return A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * @return A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * 
      */
     public Output<List<String>> members() {

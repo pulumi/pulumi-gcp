@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.activeDirectories)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
+ *   * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
  * 
- * ## Example Usage
- * 
- * ### Netapp Active Directory Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -320,16 +318,12 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the Active Directory pool. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

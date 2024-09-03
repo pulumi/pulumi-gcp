@@ -52,8 +52,6 @@ type LookupVariableArgs struct {
 	// The name of the Runtime Configurator configuration.
 	Name string `pulumi:"name"`
 	// The name of the RuntimeConfig resource containing this variable.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -90,8 +88,6 @@ type LookupVariableOutputArgs struct {
 	// The name of the Runtime Configurator configuration.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the RuntimeConfig resource containing this variable.
-	//
-	// ***
 	Parent pulumi.StringInput `pulumi:"parent"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

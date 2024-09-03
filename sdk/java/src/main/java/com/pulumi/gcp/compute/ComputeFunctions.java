@@ -789,6 +789,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *             .name("my-backend")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBackendBucketResult> getBackendBucket(GetBackendBucketArgs args) {
         return getBackendBucket(args, InvokeOptions.Empty);
@@ -797,6 +830,39 @@ public final class ComputeFunctions {
      * Get information about a BackendBucket.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *             .name("my-backend")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackendBucketResult> getBackendBucketPlain(GetBackendBucketPlainArgs args) {
@@ -807,6 +873,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *             .name("my-backend")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBackendBucketResult> getBackendBucket(GetBackendBucketArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getBackendBucket:getBackendBucket", TypeShape.of(GetBackendBucketResult.class), args, Utilities.withVersion(options));
@@ -815,6 +914,39 @@ public final class ComputeFunctions {
      * Get information about a BackendBucket.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backend-bucket = ComputeFunctions.getBackendBucket(GetBackendBucketArgs.builder()
+     *             .name("my-backend")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackendBucketResult> getBackendBucketPlain(GetBackendBucketPlainArgs args, InvokeOptions options) {
@@ -839,6 +971,46 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
+     * import com.pulumi.gcp.compute.BackendService;
+     * import com.pulumi.gcp.compute.BackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baz = ComputeFunctions.getBackendService(GetBackendServiceArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+     *             .name("backend-service")
+     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBackendServiceResult> getBackendService(GetBackendServiceArgs args) {
         return getBackendService(args, InvokeOptions.Empty);
@@ -849,6 +1021,46 @@ public final class ComputeFunctions {
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
+     * import com.pulumi.gcp.compute.BackendService;
+     * import com.pulumi.gcp.compute.BackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baz = ComputeFunctions.getBackendService(GetBackendServiceArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+     *             .name("backend-service")
+     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args) {
@@ -861,6 +1073,46 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
+     * import com.pulumi.gcp.compute.BackendService;
+     * import com.pulumi.gcp.compute.BackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baz = ComputeFunctions.getBackendService(GetBackendServiceArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+     *             .name("backend-service")
+     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBackendServiceResult> getBackendService(GetBackendServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getBackendService:getBackendService", TypeShape.of(GetBackendServiceResult.class), args, Utilities.withVersion(options));
@@ -871,6 +1123,46 @@ public final class ComputeFunctions {
      * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
+     * import com.pulumi.gcp.compute.BackendService;
+     * import com.pulumi.gcp.compute.BackendServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var baz = ComputeFunctions.getBackendService(GetBackendServiceArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+     *             .name("backend-service")
+     *             .healthChecks(baz.applyValue(getBackendServiceResult -> getBackendServiceResult.healthChecks()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args, InvokeOptions options) {
@@ -893,6 +1185,42 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args) {
         return getCertificate(args, InvokeOptions.Empty);
@@ -901,6 +1229,42 @@ public final class ComputeFunctions {
      * Get info about a Google Compute SSL Certificate from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args) {
@@ -911,6 +1275,42 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
@@ -919,6 +1319,42 @@ public final class ComputeFunctions {
      * Get info about a Google Compute SSL Certificate from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getCertificateResult -> getCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getCertificateResult -> getCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getCertificateResult -> getCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
@@ -1571,6 +2007,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetForwardingRuleResult> getForwardingRule(GetForwardingRuleArgs args) {
         return getForwardingRule(args, InvokeOptions.Empty);
@@ -1579,6 +2048,39 @@ public final class ComputeFunctions {
      * Get a forwarding rule within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRuleResult> getForwardingRulePlain(GetForwardingRulePlainArgs args) {
@@ -1589,6 +2091,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetForwardingRuleResult> getForwardingRule(GetForwardingRuleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getForwardingRule:getForwardingRule", TypeShape.of(GetForwardingRuleResult.class), args, Utilities.withVersion(options));
@@ -1597,6 +2132,39 @@ public final class ComputeFunctions {
      * Get a forwarding rule within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getForwardingRule(GetForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRuleResult> getForwardingRulePlain(GetForwardingRulePlainArgs args, InvokeOptions options) {
@@ -1607,6 +2175,40 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project("my-cloud-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules() {
         return getForwardingRules(GetForwardingRulesArgs.Empty, InvokeOptions.Empty);
@@ -1615,6 +2217,40 @@ public final class ComputeFunctions {
      * List all networks in a specified Google Cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project("my-cloud-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain() {
@@ -1625,6 +2261,40 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project("my-cloud-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args) {
         return getForwardingRules(args, InvokeOptions.Empty);
@@ -1633,6 +2303,40 @@ public final class ComputeFunctions {
      * List all networks in a specified Google Cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project("my-cloud-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args) {
@@ -1643,6 +2347,40 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project("my-cloud-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getForwardingRules:getForwardingRules", TypeShape.of(GetForwardingRulesResult.class), args, Utilities.withVersion(options));
@@ -1651,6 +2389,40 @@ public final class ComputeFunctions {
      * List all networks in a specified Google Cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetForwardingRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rules = ComputeFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
+     *             .project("my-cloud-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args, InvokeOptions options) {
@@ -1901,6 +2673,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGlobalForwardingRuleResult> getGlobalForwardingRule(GetGlobalForwardingRuleArgs args) {
         return getGlobalForwardingRule(args, InvokeOptions.Empty);
@@ -1909,6 +2714,39 @@ public final class ComputeFunctions {
      * Get a global forwarding rule within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalForwardingRuleResult> getGlobalForwardingRulePlain(GetGlobalForwardingRulePlainArgs args) {
@@ -1919,6 +2757,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGlobalForwardingRuleResult> getGlobalForwardingRule(GetGlobalForwardingRuleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", TypeShape.of(GetGlobalForwardingRuleResult.class), args, Utilities.withVersion(options));
@@ -1927,6 +2798,39 @@ public final class ComputeFunctions {
      * Get a global forwarding rule within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetGlobalForwardingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-forwarding-rule = ComputeFunctions.getGlobalForwardingRule(GetGlobalForwardingRuleArgs.builder()
+     *             .name("forwarding-rule-global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalForwardingRuleResult> getGlobalForwardingRulePlain(GetGlobalForwardingRulePlainArgs args, InvokeOptions options) {
@@ -1937,6 +2841,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHcVpnGatewayResult> getHcVpnGateway(GetHcVpnGatewayArgs args) {
         return getHcVpnGateway(args, InvokeOptions.Empty);
@@ -1945,6 +2882,39 @@ public final class ComputeFunctions {
      * Get a HA VPN Gateway within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHcVpnGatewayResult> getHcVpnGatewayPlain(GetHcVpnGatewayPlainArgs args) {
@@ -1955,6 +2925,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHcVpnGatewayResult> getHcVpnGateway(GetHcVpnGatewayArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getHcVpnGateway:getHcVpnGateway", TypeShape.of(GetHcVpnGatewayResult.class), args, Utilities.withVersion(options));
@@ -1963,6 +2966,39 @@ public final class ComputeFunctions {
      * Get a HA VPN Gateway within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = ComputeFunctions.getHcVpnGateway(GetHcVpnGatewayArgs.builder()
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHcVpnGatewayResult> getHcVpnGatewayPlain(GetHcVpnGatewayPlainArgs args, InvokeOptions options) {
@@ -1973,6 +3009,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *             .name("my-hc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHealthCheckResult> getHealthCheck(GetHealthCheckArgs args) {
         return getHealthCheck(args, InvokeOptions.Empty);
@@ -1981,6 +3050,39 @@ public final class ComputeFunctions {
      * Get information about a HealthCheck.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *             .name("my-hc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHealthCheckResult> getHealthCheckPlain(GetHealthCheckPlainArgs args) {
@@ -1991,6 +3093,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *             .name("my-hc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHealthCheckResult> getHealthCheck(GetHealthCheckArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getHealthCheck:getHealthCheck", TypeShape.of(GetHealthCheckResult.class), args, Utilities.withVersion(options));
@@ -2000,12 +3135,45 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var healthCheck = ComputeFunctions.getHealthCheck(GetHealthCheckArgs.builder()
+     *             .name("my-hc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetHealthCheckResult> getHealthCheckPlain(GetHealthCheckPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getHealthCheck:getHealthCheck", TypeShape.of(GetHealthCheckResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), do not forget to specify the dedicated project. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
      * 
      * ## Example Usage
@@ -2061,7 +3229,7 @@ public final class ComputeFunctions {
         return getImage(GetImageArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), do not forget to specify the dedicated project. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
      * 
      * ## Example Usage
@@ -2117,7 +3285,7 @@ public final class ComputeFunctions {
         return getImagePlain(GetImagePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), do not forget to specify the dedicated project. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
      * 
      * ## Example Usage
@@ -2173,7 +3341,7 @@ public final class ComputeFunctions {
         return getImage(args, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), do not forget to specify the dedicated project. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
      * 
      * ## Example Usage
@@ -2229,7 +3397,7 @@ public final class ComputeFunctions {
         return getImagePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), do not forget to specify the dedicated project. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
      * 
      * ## Example Usage
@@ -2285,7 +3453,7 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+     * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support &#34;Google Cloud Public Base Images&#34;), do not forget to specify the dedicated project. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
      * 
      * ## Example Usage
@@ -4083,9 +5251,53 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access IP ranges in your firewall rules.
      * 
-     * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * &lt;https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules&gt;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall("lb", FirewallArgs.builder()
+     *             .name("lb-firewall")
+     *             .network(main.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .targetTags("InstanceBehindLoadBalancer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges() {
@@ -4094,9 +5306,53 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access IP ranges in your firewall rules.
      * 
-     * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * &lt;https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules&gt;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall("lb", FirewallArgs.builder()
+     *             .name("lb-firewall")
+     *             .network(main.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .targetTags("InstanceBehindLoadBalancer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain() {
@@ -4105,9 +5361,53 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access IP ranges in your firewall rules.
      * 
-     * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * &lt;https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules&gt;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall("lb", FirewallArgs.builder()
+     *             .name("lb-firewall")
+     *             .network(main.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .targetTags("InstanceBehindLoadBalancer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args) {
@@ -4116,9 +5416,53 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access IP ranges in your firewall rules.
      * 
-     * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * &lt;https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules&gt;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall("lb", FirewallArgs.builder()
+     *             .name("lb-firewall")
+     *             .network(main.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .targetTags("InstanceBehindLoadBalancer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args) {
@@ -4127,9 +5471,53 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access IP ranges in your firewall rules.
      * 
-     * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * &lt;https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules&gt;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall("lb", FirewallArgs.builder()
+     *             .name("lb-firewall")
+     *             .network(main.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .targetTags("InstanceBehindLoadBalancer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args, InvokeOptions options) {
@@ -4138,9 +5526,53 @@ public final class ComputeFunctions {
     /**
      * Use this data source to access IP ranges in your firewall rules.
      * 
-     * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * &lt;https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules&gt;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall("lb", FirewallArgs.builder()
+     *             .name("lb-firewall")
+     *             .network(main.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -> getLBIPRangesResult.networks()))
+     *             .targetTags("InstanceBehindLoadBalancer")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args, InvokeOptions options) {
@@ -4255,7 +5687,93 @@ public final class ComputeFunctions {
      * 
      * ### Cloud Ranges
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     * 
+     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Allow Health Checks
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .rangeType("legacy-health-checkers")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .name("test-network")
+     *             .build());
+     * 
+     *         var allow_hcs = new Firewall("allow-hcs", FirewallArgs.builder()
+     *             .name("allow-hcs")
+     *             .network(default_.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(legacy_hcs.cidrBlocksIpv4s())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetblockIPRangesResult> getNetblockIPRanges() {
@@ -4268,7 +5786,93 @@ public final class ComputeFunctions {
      * 
      * ### Cloud Ranges
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     * 
+     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Allow Health Checks
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .rangeType("legacy-health-checkers")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .name("test-network")
+     *             .build());
+     * 
+     *         var allow_hcs = new Firewall("allow-hcs", FirewallArgs.builder()
+     *             .name("allow-hcs")
+     *             .network(default_.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(legacy_hcs.cidrBlocksIpv4s())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetblockIPRangesResult> getNetblockIPRangesPlain() {
@@ -4281,7 +5885,93 @@ public final class ComputeFunctions {
      * 
      * ### Cloud Ranges
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     * 
+     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Allow Health Checks
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .rangeType("legacy-health-checkers")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .name("test-network")
+     *             .build());
+     * 
+     *         var allow_hcs = new Firewall("allow-hcs", FirewallArgs.builder()
+     *             .name("allow-hcs")
+     *             .network(default_.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(legacy_hcs.cidrBlocksIpv4s())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetblockIPRangesResult> getNetblockIPRanges(GetNetblockIPRangesArgs args) {
@@ -4294,7 +5984,93 @@ public final class ComputeFunctions {
      * 
      * ### Cloud Ranges
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     * 
+     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Allow Health Checks
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .rangeType("legacy-health-checkers")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .name("test-network")
+     *             .build());
+     * 
+     *         var allow_hcs = new Firewall("allow-hcs", FirewallArgs.builder()
+     *             .name("allow-hcs")
+     *             .network(default_.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(legacy_hcs.cidrBlocksIpv4s())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetblockIPRangesResult> getNetblockIPRangesPlain(GetNetblockIPRangesPlainArgs args) {
@@ -4307,7 +6083,93 @@ public final class ComputeFunctions {
      * 
      * ### Cloud Ranges
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     * 
+     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Allow Health Checks
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .rangeType("legacy-health-checkers")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .name("test-network")
+     *             .build());
+     * 
+     *         var allow_hcs = new Firewall("allow-hcs", FirewallArgs.builder()
+     *             .name("allow-hcs")
+     *             .network(default_.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(legacy_hcs.cidrBlocksIpv4s())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetblockIPRangesResult> getNetblockIPRanges(GetNetblockIPRangesArgs args, InvokeOptions options) {
@@ -4320,7 +6182,93 @@ public final class ComputeFunctions {
      * 
      * ### Cloud Ranges
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var netblock = ComputeFunctions.getNetblockIPRanges();
+     * 
+     *         ctx.export("cidrBlocks", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocks()));
+     *         ctx.export("cidrBlocksIpv4", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv4s()));
+     *         ctx.export("cidrBlocksIpv6", netblock.applyValue(getNetblockIPRangesResult -> getNetblockIPRangesResult.cidrBlocksIpv6s()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ### Allow Health Checks
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
+     * import com.pulumi.gcp.compute.Network;
+     * import com.pulumi.gcp.compute.NetworkArgs;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var legacy-hcs = ComputeFunctions.getNetblockIPRanges(GetNetblockIPRangesArgs.builder()
+     *             .rangeType("legacy-health-checkers")
+     *             .build());
+     * 
+     *         var default_ = new Network("default", NetworkArgs.builder()
+     *             .name("test-network")
+     *             .build());
+     * 
+     *         var allow_hcs = new Firewall("allow-hcs", FirewallArgs.builder()
+     *             .name("allow-hcs")
+     *             .network(default_.name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol("tcp")
+     *                 .ports("80")
+     *                 .build())
+     *             .sourceRanges(legacy_hcs.cidrBlocksIpv4s())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetblockIPRangesResult> getNetblockIPRangesPlain(GetNetblockIPRangesPlainArgs args, InvokeOptions options) {
@@ -4331,6 +6279,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("default-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
         return getNetwork(args, InvokeOptions.Empty);
@@ -4339,6 +6320,39 @@ public final class ComputeFunctions {
      * Get a network within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("default-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args) {
@@ -4349,6 +6363,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("default-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
@@ -4357,6 +6404,39 @@ public final class ComputeFunctions {
      * Get a network within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("default-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
@@ -4949,6 +7029,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project("my-cloud-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworksResult> getNetworks() {
         return getNetworks(GetNetworksArgs.Empty, InvokeOptions.Empty);
@@ -4957,6 +7070,39 @@ public final class ComputeFunctions {
      * List all networks in a specified Google Cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project("my-cloud-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain() {
@@ -4967,6 +7113,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project("my-cloud-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
         return getNetworks(args, InvokeOptions.Empty);
@@ -4975,6 +7154,39 @@ public final class ComputeFunctions {
      * List all networks in a specified Google Cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project("my-cloud-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
@@ -4985,6 +7197,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project("my-cloud-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
@@ -4993,6 +7238,39 @@ public final class ComputeFunctions {
      * List all networks in a specified Google Cloud project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-networks = ComputeFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .project("my-cloud-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
@@ -6601,6 +8879,42 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRegionSslCertificateResult> getRegionSslCertificate(GetRegionSslCertificateArgs args) {
         return getRegionSslCertificate(args, InvokeOptions.Empty);
@@ -6609,6 +8923,42 @@ public final class ComputeFunctions {
      * Get info about a Region Google Compute SSL Certificate from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionSslCertificateResult> getRegionSslCertificatePlain(GetRegionSslCertificatePlainArgs args) {
@@ -6619,6 +8969,42 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetRegionSslCertificateResult> getRegionSslCertificate(GetRegionSslCertificateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", TypeShape.of(GetRegionSslCertificateResult.class), args, Utilities.withVersion(options));
@@ -6627,6 +9013,42 @@ public final class ComputeFunctions {
      * Get info about a Region Google Compute SSL Certificate from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCert = ComputeFunctions.getRegionSslCertificate(GetRegionSslCertificateArgs.builder()
+     *             .name("my-cert")
+     *             .build());
+     * 
+     *         ctx.export("certificate", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificate()));
+     *         ctx.export("certificateId", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.certificateId()));
+     *         ctx.export("selfLink", myCert.applyValue(getRegionSslCertificateResult -> getRegionSslCertificateResult.selfLink()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionSslCertificateResult> getRegionSslCertificatePlain(GetRegionSslCertificatePlainArgs args, InvokeOptions options) {
@@ -7453,7 +9875,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     *   * [Official Documentation](https://cloud.google.com/router/docs/)
      * 
      * ## Example Usage
      * 
@@ -7500,7 +9922,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     *   * [Official Documentation](https://cloud.google.com/router/docs/)
      * 
      * ## Example Usage
      * 
@@ -7547,7 +9969,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     *   * [Official Documentation](https://cloud.google.com/router/docs/)
      * 
      * ## Example Usage
      * 
@@ -7594,7 +10016,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/router/docs/)
+     *   * [Official Documentation](https://cloud.google.com/router/docs/)
      * 
      * ## Example Usage
      * 
@@ -7826,9 +10248,42 @@ public final class ComputeFunctions {
     }
     /**
      * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
-     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSSLPolicyResult> getSSLPolicy(GetSSLPolicyArgs args) {
@@ -7836,9 +10291,42 @@ public final class ComputeFunctions {
     }
     /**
      * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
-     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSSLPolicyResult> getSSLPolicyPlain(GetSSLPolicyPlainArgs args) {
@@ -7846,9 +10334,42 @@ public final class ComputeFunctions {
     }
     /**
      * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
-     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSSLPolicyResult> getSSLPolicy(GetSSLPolicyArgs args, InvokeOptions options) {
@@ -7856,9 +10377,42 @@ public final class ComputeFunctions {
     }
     /**
      * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
-     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getSSLPolicy(GetSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSSLPolicyResult> getSSLPolicyPlain(GetSSLPolicyPlainArgs args, InvokeOptions options) {
@@ -7869,7 +10423,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
      * 
      * ## Example Usage
      * 
@@ -7920,7 +10474,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
      * 
      * ## Example Usage
      * 
@@ -7971,7 +10525,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
      * 
      * ## Example Usage
      * 
@@ -8022,7 +10576,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
      * 
      * ## Example Usage
      * 
@@ -8073,7 +10627,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
      * 
      * ## Example Usage
      * 
@@ -8124,7 +10678,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+     *   * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
      * 
      * ## Example Usage
      * 
@@ -8175,7 +10729,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
      * 
      * ## Example Usage
      * 
@@ -8202,7 +10756,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         //by name 
+     *         //by name
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name("my-snapshot")
      *             .build());
@@ -8228,7 +10782,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
      * 
      * ## Example Usage
      * 
@@ -8255,7 +10809,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         //by name 
+     *         //by name
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name("my-snapshot")
      *             .build());
@@ -8281,7 +10835,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
      * 
      * ## Example Usage
      * 
@@ -8308,7 +10862,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         //by name 
+     *         //by name
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name("my-snapshot")
      *             .build());
@@ -8334,7 +10888,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
      * 
      * ## Example Usage
      * 
@@ -8361,7 +10915,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         //by name 
+     *         //by name
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name("my-snapshot")
      *             .build());
@@ -8387,7 +10941,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
      * 
      * ## Example Usage
      * 
@@ -8414,7 +10968,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         //by name 
+     *         //by name
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name("my-snapshot")
      *             .build());
@@ -8440,7 +10994,7 @@ public final class ComputeFunctions {
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+     *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
      * 
      * ## Example Usage
      * 
@@ -8467,7 +11021,7 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         //by name 
+     *         //by name
      *         final var snapshot = ComputeFunctions.getSnapshot(GetSnapshotArgs.builder()
      *             .name("my-snapshot")
      *             .build());
@@ -9375,6 +11929,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *             .name("vpn-gateway-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVPNGatewayResult> getVPNGateway(GetVPNGatewayArgs args) {
         return getVPNGateway(args, InvokeOptions.Empty);
@@ -9383,6 +11970,39 @@ public final class ComputeFunctions {
      * Get a VPN gateway within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *             .name("vpn-gateway-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVPNGatewayResult> getVPNGatewayPlain(GetVPNGatewayPlainArgs args) {
@@ -9393,6 +12013,39 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *             .name("vpn-gateway-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVPNGatewayResult> getVPNGateway(GetVPNGatewayArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getVPNGateway:getVPNGateway", TypeShape.of(GetVPNGatewayResult.class), args, Utilities.withVersion(options));
@@ -9401,6 +12054,39 @@ public final class ComputeFunctions {
      * Get a VPN gateway within GCE from its name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vpn-gateway = ComputeFunctions.getVPNGateway(GetVPNGatewayArgs.builder()
+     *             .name("vpn-gateway-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVPNGatewayResult> getVPNGatewayPlain(GetVPNGatewayPlainArgs args, InvokeOptions options) {

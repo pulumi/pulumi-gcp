@@ -38,7 +38,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
     /**
      * The name of the schema that messages published should be
      * validated against. Format is projects/{project}/schemas/{schema}.
-     * The value of this field will be _deleted-schema_
+     * The value of this field will be *deleted-schema*
      * if the schema has been deleted.
      * 
      */
@@ -48,7 +48,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
     /**
      * @return The name of the schema that messages published should be
      * validated against. Format is projects/{project}/schemas/{schema}.
-     * The value of this field will be _deleted-schema_
+     * The value of this field will be *deleted-schema*
      * if the schema has been deleted.
      * 
      */
@@ -109,7 +109,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
         /**
          * @param schema The name of the schema that messages published should be
          * validated against. Format is projects/{project}/schemas/{schema}.
-         * The value of this field will be _deleted-schema_
+         * The value of this field will be *deleted-schema*
          * if the schema has been deleted.
          * 
          * @return builder
@@ -123,7 +123,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
         /**
          * @param schema The name of the schema that messages published should be
          * validated against. Format is projects/{project}/schemas/{schema}.
-         * The value of this field will be _deleted-schema_
+         * The value of this field will be *deleted-schema*
          * if the schema has been deleted.
          * 
          * @return builder

@@ -384,10 +384,18 @@ def get_backend_service(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    baz = gcp.compute.get_backend_service(name="foobar")
+    default = gcp.compute.BackendService("default",
+        name="backend-service",
+        health_checks=baz.health_checks[0])
+    ```
+
 
     :param str name: The name of the Backend Service.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     """
     __args__ = dict()
@@ -443,10 +451,18 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    baz = gcp.compute.get_backend_service(name="foobar")
+    default = gcp.compute.BackendService("default",
+        name="backend-service",
+        health_checks=baz.health_checks[0])
+    ```
+
 
     :param str name: The name of the Backend Service.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     """
     ...

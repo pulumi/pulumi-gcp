@@ -226,8 +226,7 @@ type GCPolicy struct {
 	GcRules pulumi.StringPtrOutput `pulumi:"gcRules"`
 	// Boolean for whether to allow ignoring warnings when updating the gc policy.
 	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-	// ---
+	// you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
 	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
@@ -293,8 +292,7 @@ type gcpolicyState struct {
 	GcRules *string `pulumi:"gcRules"`
 	// Boolean for whether to allow ignoring warnings when updating the gc policy.
 	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-	// ---
+	// you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
@@ -322,8 +320,7 @@ type GCPolicyState struct {
 	GcRules pulumi.StringPtrInput
 	// Boolean for whether to allow ignoring warnings when updating the gc policy.
 	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-	// ---
+	// you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
@@ -355,8 +352,7 @@ type gcpolicyArgs struct {
 	GcRules *string `pulumi:"gcRules"`
 	// Boolean for whether to allow ignoring warnings when updating the gc policy.
 	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-	// ---
+	// you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
@@ -385,8 +381,7 @@ type GCPolicyArgs struct {
 	GcRules pulumi.StringPtrInput
 	// Boolean for whether to allow ignoring warnings when updating the gc policy.
 	// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-	// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-	// ---
+	// you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
@@ -509,8 +504,7 @@ func (o GCPolicyOutput) GcRules() pulumi.StringPtrOutput {
 
 // Boolean for whether to allow ignoring warnings when updating the gc policy.
 // Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-// ---
+// you understand the risks listed at <https://cloud.google.com/bigtable/docs/garbage-collection#increasing> before setting this option.
 func (o GCPolicyOutput) IgnoreWarnings() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.BoolPtrOutput { return v.IgnoreWarnings }).(pulumi.BoolPtrOutput)
 }

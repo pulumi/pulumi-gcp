@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations#setaddons)
     /// * How-to Guides
-    ///     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+    ///   * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
     /// 
     /// ## Example Usage
     /// 
@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Addons Full
     /// 
     /// ```csharp
@@ -186,9 +187,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("org")]
         public Output<string> Org { get; private set; } = null!;
@@ -248,9 +246,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("org", required: true)]
         public Input<string> Org { get; set; } = null!;
@@ -272,9 +267,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }

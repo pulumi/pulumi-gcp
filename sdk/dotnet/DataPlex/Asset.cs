@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_asset
+    /// ### basic_asset
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

@@ -36,11 +36,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults.backups)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
  * 
- * ## Example Usage
- * 
- * ### Netapp Backup
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -253,16 +251,12 @@ public class Backup extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the backup. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the backup. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

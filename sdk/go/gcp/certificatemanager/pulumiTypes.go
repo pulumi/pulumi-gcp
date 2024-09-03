@@ -160,8 +160,6 @@ type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServ
 	// A CA pool resource used to issue a certificate.
 	// The CA pool string has a relative resource path following the form
 	// "projects/{project}/locations/{location}/caPools/{caPool}".
-	//
-	// ***
 	CaPool string `pulumi:"caPool"`
 }
 
@@ -180,8 +178,6 @@ type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServ
 	// A CA pool resource used to issue a certificate.
 	// The CA pool string has a relative resource path following the form
 	// "projects/{project}/locations/{location}/caPools/{caPool}".
-	//
-	// ***
 	CaPool pulumi.StringInput `pulumi:"caPool"`
 }
 
@@ -265,8 +261,6 @@ func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityS
 // A CA pool resource used to issue a certificate.
 // The CA pool string has a relative resource path following the form
 // "projects/{project}/locations/{location}/caPools/{caPool}".
-//
-// ***
 func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) CaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) string {
 		return v.CaPool
@@ -300,8 +294,6 @@ func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityS
 // A CA pool resource used to issue a certificate.
 // The CA pool string has a relative resource path following the form
 // "projects/{project}/locations/{location}/caPools/{caPool}".
-//
-// ***
 func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) *string {
 		if v == nil {
@@ -325,7 +317,7 @@ type CertificateManaged struct {
 	// Wildcard domains are only supported with DNS challenge resolution
 	Domains []string `pulumi:"domains"`
 	// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-	// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	// If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
 	// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 	IssuanceConfig *string `pulumi:"issuanceConfig"`
 	// (Output)
@@ -362,7 +354,7 @@ type CertificateManagedArgs struct {
 	// Wildcard domains are only supported with DNS challenge resolution
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-	// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	// If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
 	// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 	IssuanceConfig pulumi.StringPtrInput `pulumi:"issuanceConfig"`
 	// (Output)
@@ -475,7 +467,7 @@ func (o CertificateManagedOutput) Domains() pulumi.StringArrayOutput {
 }
 
 // The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+// If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
 // Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 func (o CertificateManagedOutput) IssuanceConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManaged) *string { return v.IssuanceConfig }).(pulumi.StringPtrOutput)
@@ -555,7 +547,7 @@ func (o CertificateManagedPtrOutput) Domains() pulumi.StringArrayOutput {
 }
 
 // The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
-// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+// If this field is not set, the certificates will instead be publicly signed as documented at <https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa>.
 // Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 func (o CertificateManagedPtrOutput) IssuanceConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateManaged) *string {
@@ -1332,8 +1324,6 @@ type DnsAuthorizationDnsResourceRecord struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -1363,8 +1353,6 @@ type DnsAuthorizationDnsResourceRecordArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
 	// be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -1436,8 +1424,6 @@ func (o DnsAuthorizationDnsResourceRecordOutput) Data() pulumi.StringPtrOutput {
 // Name of the resource; provided by the client when the resource is created.
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
-//
-// ***
 func (o DnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

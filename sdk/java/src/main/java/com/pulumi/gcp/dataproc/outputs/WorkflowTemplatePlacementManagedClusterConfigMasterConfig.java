@@ -53,7 +53,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig> managedGroupConfigs;
     /**
-     * @return Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
      * 
      */
     private @Nullable String minCpuPlatform;
@@ -119,7 +119,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         return this.managedGroupConfigs == null ? List.of() : this.managedGroupConfigs;
     }
     /**
-     * @return Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See (&lt;https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)&gt;.
      * 
      */
     public Optional<String> minCpuPlatform() {

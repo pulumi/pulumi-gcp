@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/build/docs)
+    ///   * [Official Documentation](https://cloud.google.com/build/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -123,6 +123,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuildv2 Repository Github Doc
     /// 
     /// ```csharp
@@ -262,9 +263,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parentConnection")]
         public Output<string> ParentConnection { get; private set; } = null!;
@@ -362,9 +360,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parentConnection", required: true)]
         public Input<string> ParentConnection { get; set; } = null!;
@@ -438,9 +433,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parentConnection")]
         public Input<string>? ParentConnection { get; set; }

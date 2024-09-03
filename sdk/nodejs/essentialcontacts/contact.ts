@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -19,9 +19,7 @@ import * as utilities from "../utilities";
  * Your account must have the `serviceusage.services.use` permission on the
  * `billingProject` you defined.
  *
- * ## Example Usage
- *
- * ### Essential Contact
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,9 +92,6 @@ export class Contact extends pulumi.CustomResource {
     public readonly notificationCategorySubscriptions!: pulumi.Output<string[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
 
@@ -165,9 +160,6 @@ export interface ContactState {
     notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
 }
@@ -190,9 +182,6 @@ export interface ContactArgs {
     notificationCategorySubscriptions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
 }

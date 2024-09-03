@@ -446,11 +446,9 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.certificateIssuanceConfigs)
         * How-to Guides
-            * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
+          * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 
-        ## Example Usage
-
-        ### Certificate Manager Certificate Issuance Config
+        ## 
 
         ```python
         import pulumi
@@ -571,11 +569,9 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.certificateIssuanceConfigs)
         * How-to Guides
-            * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
+          * [Manage certificate issuance configs](https://cloud.google.com/certificate-manager/docs/issuance-configs)
 
-        ## Example Usage
-
-        ### Certificate Manager Certificate Issuance Config
+        ## 
 
         ```python
         import pulumi

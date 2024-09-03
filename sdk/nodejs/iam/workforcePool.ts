@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools)
  * * How-to Guides
- *     * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
+ *   * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
  *
  * > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for
  * your billing/quota project. The account team notifies you when the project is granted access.
@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
+ *
  * ### Iam Workforce Pool Full
  *
  * ```typescript
@@ -132,9 +133,6 @@ export class WorkforcePool extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -249,9 +247,6 @@ export interface WorkforcePoolState {
     name?: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -312,9 +307,6 @@ export interface WorkforcePoolArgs {
     location: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

@@ -21,11 +21,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
     /// * How-to Guides
-    ///     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
+    ///   * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Target Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Target Instance Custom Network
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -121,7 +119,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Target Instance With Security Policy
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -277,9 +275,6 @@ namespace Pulumi.Gcp.Compute
         /// name is given, the zone will default to the given zone or
         /// the provider-default zone and the project will default to the
         /// provider-level project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -395,9 +390,6 @@ namespace Pulumi.Gcp.Compute
         /// name is given, the zone will default to the given zone or
         /// the provider-default zone and the project will default to the
         /// provider-level project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -475,9 +467,6 @@ namespace Pulumi.Gcp.Compute
         /// name is given, the zone will default to the given zone or
         /// the provider-default zone and the project will default to the
         /// provider-level project.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

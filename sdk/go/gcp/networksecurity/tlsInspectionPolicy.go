@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
 //
-// ## Example Usage
-//
-// ### Network Security Tls Inspection Policy Basic
+// ##
 //
 // ```go
 // package main
@@ -134,7 +132,7 @@ import (
 //	}
 //
 // ```
-// ### Network Security Tls Inspection Policy Custom
+// ##
 //
 // ```go
 // package main
@@ -344,8 +342,6 @@ type TlsInspectionPolicy struct {
 	// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion pulumi.StringPtrOutput `pulumi:"minTlsVersion"`
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -408,8 +404,6 @@ type tlsInspectionPolicyState struct {
 	// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -440,8 +434,6 @@ type TlsInspectionPolicyState struct {
 	// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -474,8 +466,6 @@ type tlsInspectionPolicyArgs struct {
 	// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -503,8 +493,6 @@ type TlsInspectionPolicyArgs struct {
 	// Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -640,8 +628,6 @@ func (o TlsInspectionPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 }
 
 // Short name of the TlsInspectionPolicy resource to be created.
-//
-// ***
 func (o TlsInspectionPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsInspectionPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

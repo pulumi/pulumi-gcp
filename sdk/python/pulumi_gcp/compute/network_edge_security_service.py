@@ -28,9 +28,6 @@ class NetworkEdgeSecurityServiceArgs:
         The set of arguments for constructing a NetworkEdgeSecurityService resource.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the gateway security policy.
@@ -64,9 +61,6 @@ class NetworkEdgeSecurityServiceArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -132,9 +126,6 @@ class _NetworkEdgeSecurityServiceState:
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
                An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the gateway security policy.
@@ -206,9 +197,6 @@ class _NetworkEdgeSecurityServiceState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -350,9 +338,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the gateway security policy.
@@ -480,9 +465,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
                An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the gateway security policy.
@@ -537,9 +519,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the resource. Provided by the client when the resource is created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

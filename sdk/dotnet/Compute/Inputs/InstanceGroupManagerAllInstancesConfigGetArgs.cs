@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , The label key-value pairs that you want to patch onto the instance.
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Labels
         {

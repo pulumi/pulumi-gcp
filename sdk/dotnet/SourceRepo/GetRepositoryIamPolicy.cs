@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Retrieves the current IAM policy data for repository
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// Retrieves the current IAM policy data for repository
-        /// 
         /// 
         /// ## example
         /// 

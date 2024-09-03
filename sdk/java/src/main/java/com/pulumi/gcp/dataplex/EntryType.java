@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataplex Entry Type Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

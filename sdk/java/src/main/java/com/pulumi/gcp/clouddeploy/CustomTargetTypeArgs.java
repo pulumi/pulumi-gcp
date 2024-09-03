@@ -19,7 +19,7 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
     public static final CustomTargetTypeArgs Empty = new CustomTargetTypeArgs();
 
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -28,7 +28,7 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -91,16 +91,12 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
     /**
      * The location of the source.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the source.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -170,7 +166,7 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -183,7 +179,7 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -266,8 +262,6 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param location The location of the source.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -278,8 +272,6 @@ public final class CustomTargetTypeArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param location The location of the source.
-         * 
-         * ***
          * 
          * @return builder
          * 

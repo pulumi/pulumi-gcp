@@ -13,14 +13,12 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
  * * How-to Guides
- *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+ *   * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
  *
  * > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
  * by using the `gcp.projects.ServiceIdentity` resource.
  *
- * ## Example Usage
- *
- * ### Pubsub Topic Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +32,9 @@ import * as utilities from "../utilities";
  *     messageRetentionDuration: "86600s",
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Pubsub Topic Cmek
  *
  * ```typescript
@@ -53,7 +54,7 @@ import * as utilities from "../utilities";
  *     kmsKeyName: cryptoKey.id,
  * });
  * ```
- * ### Pubsub Topic Geo Restricted
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,6 +67,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Pubsub Topic Schema Settings
  *
  * ```typescript
@@ -101,7 +103,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [example],
  * });
  * ```
- * ### Pubsub Topic Ingestion Kinesis
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -216,9 +218,6 @@ export class Topic extends pulumi.CustomResource {
     public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -328,9 +327,6 @@ export interface TopicState {
     messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -394,9 +390,6 @@ export interface TopicArgs {
     messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

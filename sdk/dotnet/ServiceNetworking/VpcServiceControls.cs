@@ -39,18 +39,16 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// 
     /// * [API documentation](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services)
     /// * How-to Guides
-    ///     * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
-    ///     * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
-    ///     * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
+    ///   * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
+    ///   * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
+    ///   * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
     /// 
     /// &gt; **Note:** Destroying a `gcp.servicenetworking.VpcServiceControls`
     /// resource will remove it from state, but will not change the
     /// underlying VPC Service Controls configuration for the service
     /// producer network.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Service Networking Vpc Service Controls Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,13 +58,11 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a VPC
     ///     var @default = new Gcp.Compute.Network("default", new()
     ///     {
     ///         Name = "example-network",
     ///     });
     /// 
-    ///     // Create an IP address
     ///     var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("default", new()
     ///     {
     ///         Name = "psa-range",
@@ -76,7 +72,6 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///         Network = @default.Id,
     ///     });
     /// 
-    ///     // Create a private connection
     ///     var defaultConnection = new Gcp.ServiceNetworking.Connection("default", new()
     ///     {
     ///         Network = @default.Id,
@@ -87,7 +82,6 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///         },
     ///     });
     /// 
-    ///     // Enable VPC-SC on the producer network
     ///     var defaultVpcServiceControls = new Gcp.ServiceNetworking.VpcServiceControls("default", new()
     ///     {
     ///         Network = @default.Name,
@@ -154,9 +148,6 @@ namespace Pulumi.Gcp.ServiceNetworking
         /// The service that is managing peering connectivity for a service
         /// producer's organization. For Google services that support this
         /// functionality, this value is `servicenetworking.googleapis.com`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -230,9 +221,6 @@ namespace Pulumi.Gcp.ServiceNetworking
         /// The service that is managing peering connectivity for a service
         /// producer's organization. For Google services that support this
         /// functionality, this value is `servicenetworking.googleapis.com`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -268,9 +256,6 @@ namespace Pulumi.Gcp.ServiceNetworking
         /// The service that is managing peering connectivity for a service
         /// producer's organization. For Google services that support this
         /// functionality, this value is `servicenetworking.googleapis.com`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

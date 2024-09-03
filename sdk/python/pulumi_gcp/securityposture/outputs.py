@@ -537,7 +537,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule(dict):
         :param bool allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param 'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs' condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
-               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
                Structure is documented below.
         :param bool deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         :param bool enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
@@ -570,7 +570,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule(dict):
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -737,7 +737,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule(dict):
         :param bool allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param 'PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs' condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
-               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
                Structure is documented below.
         :param bool deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         :param bool enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
@@ -770,7 +770,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule(dict):
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -1311,8 +1311,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
                  resource_types: Sequence[str]):
         """
         :param Sequence[str] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -1321,8 +1319,6 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
     def resource_types(self) -> Sequence[str]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 

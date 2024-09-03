@@ -92,7 +92,7 @@ class ApiConfigGatewayConfigBackendConfig(dict):
                  google_service_account: str):
         """
         :param str google_service_account: Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-               (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+               (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
         """
         pulumi.set(__self__, "google_service_account", google_service_account)
 
@@ -101,7 +101,7 @@ class ApiConfigGatewayConfigBackendConfig(dict):
     def google_service_account(self) -> str:
         """
         Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-        (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+        (<https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)>.
         """
         return pulumi.get(self, "google_service_account")
 

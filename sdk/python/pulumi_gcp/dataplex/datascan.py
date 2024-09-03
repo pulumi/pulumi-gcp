@@ -529,7 +529,7 @@ class Datascan(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataplex/docs)
+          * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
 
@@ -553,6 +553,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Profile
 
         ```python
@@ -601,6 +602,7 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
+
         ### Dataplex Datascan Basic Quality
 
         ```python
@@ -630,6 +632,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Quality
 
         ```python
@@ -795,7 +798,7 @@ class Datascan(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataplex/docs)
+          * [Official Documentation](https://cloud.google.com/dataplex/docs)
 
         ## Example Usage
 
@@ -819,6 +822,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec={},
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Profile
 
         ```python
@@ -867,6 +871,7 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
+
         ### Dataplex Datascan Basic Quality
 
         ```python
@@ -896,6 +901,7 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+
         ### Dataplex Datascan Full Quality
 
         ```python

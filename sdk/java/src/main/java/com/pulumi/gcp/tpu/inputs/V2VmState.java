@@ -331,16 +331,12 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     /**
      * Runtime version for the TPU.
      * 
-     * ***
-     * 
      */
     @Import(name="runtimeVersion")
     private @Nullable Output<String> runtimeVersion;
 
     /**
      * @return Runtime version for the TPU.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> runtimeVersion() {
@@ -947,8 +943,6 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runtimeVersion Runtime version for the TPU.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -959,8 +953,6 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param runtimeVersion Runtime version for the TPU.
-         * 
-         * ***
          * 
          * @return builder
          * 

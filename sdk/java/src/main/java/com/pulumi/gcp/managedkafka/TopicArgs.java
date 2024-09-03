@@ -49,14 +49,14 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * @return ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     public Output<String> location() {
@@ -113,16 +113,12 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
      * 
-     * ***
-     * 
      */
     @Import(name="topicId", required=true)
     private Output<String> topicId;
 
     /**
      * @return The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-     * 
-     * ***
      * 
      */
     public Output<String> topicId() {
@@ -202,7 +198,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+         * @param location ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
          * 
          * @return builder
          * 
@@ -213,7 +209,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+         * @param location ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
          * 
          * @return builder
          * 
@@ -290,8 +286,6 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param topicId The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -302,8 +296,6 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param topicId The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-         * 
-         * ***
          * 
          * @return builder
          * 

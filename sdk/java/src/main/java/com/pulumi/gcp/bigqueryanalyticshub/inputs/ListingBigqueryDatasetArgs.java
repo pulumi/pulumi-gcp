@@ -17,16 +17,12 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     /**
      * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
      * 
-     * ***
-     * 
      */
     @Import(name="dataset", required=true)
     private Output<String> dataset;
 
     /**
      * @return Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {
@@ -60,8 +56,6 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         /**
          * @param dataset Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
 
         /**
          * @param dataset Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-         * 
-         * ***
          * 
          * @return builder
          * 

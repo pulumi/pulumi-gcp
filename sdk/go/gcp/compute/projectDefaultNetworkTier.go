@@ -61,8 +61,6 @@ type ProjectDefaultNetworkTier struct {
 
 	// The default network tier to be configured for the project.
 	// This field can take the following values: `PREMIUM` or `STANDARD`.
-	//
-	// ***
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -104,8 +102,6 @@ func GetProjectDefaultNetworkTier(ctx *pulumi.Context,
 type projectDefaultNetworkTierState struct {
 	// The default network tier to be configured for the project.
 	// This field can take the following values: `PREMIUM` or `STANDARD`.
-	//
-	// ***
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -115,8 +111,6 @@ type projectDefaultNetworkTierState struct {
 type ProjectDefaultNetworkTierState struct {
 	// The default network tier to be configured for the project.
 	// This field can take the following values: `PREMIUM` or `STANDARD`.
-	//
-	// ***
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -130,8 +124,6 @@ func (ProjectDefaultNetworkTierState) ElementType() reflect.Type {
 type projectDefaultNetworkTierArgs struct {
 	// The default network tier to be configured for the project.
 	// This field can take the following values: `PREMIUM` or `STANDARD`.
-	//
-	// ***
 	NetworkTier string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -142,8 +134,6 @@ type projectDefaultNetworkTierArgs struct {
 type ProjectDefaultNetworkTierArgs struct {
 	// The default network tier to be configured for the project.
 	// This field can take the following values: `PREMIUM` or `STANDARD`.
-	//
-	// ***
 	NetworkTier pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -239,8 +229,6 @@ func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierOutputWithCo
 
 // The default network tier to be configured for the project.
 // This field can take the following values: `PREMIUM` or `STANDARD`.
-//
-// ***
 func (o ProjectDefaultNetworkTierOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectDefaultNetworkTier) pulumi.StringOutput { return v.NetworkTier }).(pulumi.StringOutput)
 }

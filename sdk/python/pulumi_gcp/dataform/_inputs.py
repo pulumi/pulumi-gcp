@@ -65,7 +65,7 @@ if not MYPY:
         token_status: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
         """
 elif False:
     RepositoryGitRemoteSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -85,7 +85,7 @@ class RepositoryGitRemoteSettingsArgs:
         :param pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs'] ssh_authentication_config: Authentication fields for remote uris using SSH protocol.
                Structure is documented below.
         :param pulumi.Input[str] token_status: (Output)
-               Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+               Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
         """
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "url", url)
@@ -150,7 +150,7 @@ class RepositoryGitRemoteSettingsArgs:
     def token_status(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
         """
         return pulumi.get(self, "token_status")
 
@@ -320,7 +320,7 @@ if not MYPY:
         default_location: NotRequired[pulumi.Input[str]]
         """
         Optional. The default BigQuery location to use. Defaults to "US".
-        See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
         """
         default_schema: NotRequired[pulumi.Input[str]]
         """
@@ -359,7 +359,7 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
         :param pulumi.Input[str] database_suffix: Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
         :param pulumi.Input[str] default_database: Optional. The default database (Google Cloud project ID).
         :param pulumi.Input[str] default_location: Optional. The default BigQuery location to use. Defaults to "US".
-               See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+               See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
         :param pulumi.Input[str] default_schema: Optional. The default schema (BigQuery dataset ID).
         :param pulumi.Input[str] schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
         :param pulumi.Input[str] table_prefix: Optional. The prefix that should be prepended to all table names.
@@ -425,7 +425,7 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
     def default_location(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. The default BigQuery location to use. Defaults to "US".
-        See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
         """
         return pulumi.get(self, "default_location")
 

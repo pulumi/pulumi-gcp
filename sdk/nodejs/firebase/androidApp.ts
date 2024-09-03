@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     sha256Hashes: ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
  * });
  * ```
+ *
  * ### Firebase Android App Custom Api Key
  *
  * ```typescript
@@ -143,9 +144,6 @@ export class AndroidApp extends pulumi.CustomResource {
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     *
-     *
-     * - - -
      */
     public readonly packageName!: pulumi.Output<string>;
     /**
@@ -242,9 +240,6 @@ export interface AndroidAppState {
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     *
-     *
-     * - - -
      */
     packageName?: pulumi.Input<string>;
     /**
@@ -280,9 +275,6 @@ export interface AndroidAppArgs {
     /**
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     *
-     *
-     * - - -
      */
     packageName: pulumi.Input<string>;
     /**

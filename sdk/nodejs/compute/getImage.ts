@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+ * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), do not forget to specify the dedicated project. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
  *
  * ## Example Usage
@@ -59,14 +59,12 @@ export interface GetImageArgs {
      * that is part of an image family and is not deprecated. If you specify `filter`, your
      * filter must return exactly one image unless you use `mostRecent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-     *
-     * - - -
      */
     name?: string;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
-     * [public base image][pubimg], be sure to specify the correct Image Project.
+     * [public base image](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), be sure to specify the correct Image Project.
      */
     project?: string;
 }
@@ -156,7 +154,7 @@ export interface GetImageResult {
     readonly status: string;
 }
 /**
- * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+ * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), do not forget to specify the dedicated project. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
  *
  * ## Example Usage
@@ -201,14 +199,12 @@ export interface GetImageOutputArgs {
      * that is part of an image family and is not deprecated. If you specify `filter`, your
      * filter must return exactly one image unless you use `mostRecent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * The project in which the resource belongs. If it is not
      * provided, the provider project is used. If you are using a
-     * [public base image][pubimg], be sure to specify the correct Image Project.
+     * [public base image](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), be sure to specify the correct Image Project.
      */
     project?: pulumi.Input<string>;
 }

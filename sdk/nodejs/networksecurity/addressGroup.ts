@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
  * * How-to Guides
- *     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+ *   * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
  *
  * ## Example Usage
  *
@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ *
  * ### Network Security Address Groups Organization Basic
  *
  * ```typescript
@@ -45,6 +46,7 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ *
  * ### Network Security Address Groups Advanced
  *
  * ```typescript
@@ -61,6 +63,7 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  * });
  * ```
+ *
  * ### Network Security Address Groups Cloud Armor
  *
  * ```typescript
@@ -151,9 +154,6 @@ export class AddressGroup extends pulumi.CustomResource {
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -281,9 +281,6 @@ export interface AddressGroupState {
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -344,9 +341,6 @@ export interface AddressGroupArgs {
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

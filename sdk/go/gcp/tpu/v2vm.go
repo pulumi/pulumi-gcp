@@ -12,161 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Tpu V2 Vm Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/tpu"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
-//				Name:           pulumi.String("test-tpu"),
-//				Zone:           pulumi.String("us-central1-c"),
-//				RuntimeVersion: pulumi.String("tpu-vm-tf-2.13.0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Tpu V2 Vm Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/tpu"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tpu.GetV2AcceleratorTypes(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tpu-net"),
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tpu-subnet"),
-//				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tpu-sa"),
-//				DisplayName: pulumi.String("Test TPU VM"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
-//				Name:  pulumi.String("tpu-disk"),
-//				Image: pulumi.String("debian-cloud/debian-11"),
-//				Size:  pulumi.Int(10),
-//				Type:  pulumi.String("pd-ssd"),
-//				Zone:  pulumi.String("us-central1-c"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Wait after service account creation to limit eventual consistency errors.
-//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				sa,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = tpu.NewV2Vm(ctx, "tpu", &tpu.V2VmArgs{
-//				Name:           pulumi.String("test-tpu"),
-//				Zone:           pulumi.String("us-central1-c"),
-//				Description:    pulumi.String("Text description of the TPU."),
-//				RuntimeVersion: pulumi.String("tpu-vm-tf-2.13.0"),
-//				AcceleratorConfig: &tpu.V2VmAcceleratorConfigArgs{
-//					Type:     pulumi.String("V2"),
-//					Topology: pulumi.String("2x2"),
-//				},
-//				CidrBlock: pulumi.String("10.0.0.0/29"),
-//				NetworkConfig: &tpu.V2VmNetworkConfigArgs{
-//					CanIpForward:      pulumi.Bool(true),
-//					EnableExternalIps: pulumi.Bool(true),
-//					Network:           network.ID(),
-//					Subnetwork:        subnet.ID(),
-//				},
-//				SchedulingConfig: &tpu.V2VmSchedulingConfigArgs{
-//					Preemptible: pulumi.Bool(true),
-//				},
-//				ShieldedInstanceConfig: &tpu.V2VmShieldedInstanceConfigArgs{
-//					EnableSecureBoot: pulumi.Bool(true),
-//				},
-//				ServiceAccount: &tpu.V2VmServiceAccountArgs{
-//					Email: sa.Email,
-//					Scopes: pulumi.StringArray{
-//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-//					},
-//				},
-//				DataDisks: tpu.V2VmDataDiskArray{
-//					&tpu.V2VmDataDiskArgs{
-//						SourceDisk: disk.ID(),
-//						Mode:       pulumi.String("READ_ONLY"),
-//					},
-//				},
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Metadata: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo"),
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait60Seconds,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Vm can be imported using any of these accepted formats:
@@ -252,8 +97,6 @@ type V2Vm struct {
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringOutput `pulumi:"queuedResource"`
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -367,8 +210,6 @@ type v2vmState struct {
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource *string `pulumi:"queuedResource"`
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -445,8 +286,6 @@ type V2VmState struct {
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringPtrInput
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion pulumi.StringPtrInput
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -508,8 +347,6 @@ type v2vmArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -563,8 +400,6 @@ type V2VmArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion pulumi.StringInput
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -776,8 +611,6 @@ func (o V2VmOutput) QueuedResource() pulumi.StringOutput {
 }
 
 // Runtime version for the TPU.
-//
-// ***
 func (o V2VmOutput) RuntimeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Vm) pulumi.StringOutput { return v.RuntimeVersion }).(pulumi.StringOutput)
 }

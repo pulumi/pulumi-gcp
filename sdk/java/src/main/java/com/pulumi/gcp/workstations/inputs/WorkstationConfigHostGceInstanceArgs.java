@@ -121,7 +121,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
     /**
      * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
      * 
      */
     @Import(name="enableNestedVirtualization")
@@ -129,7 +129,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
     /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
      * 
      */
     public Optional<Output<Boolean>> enableNestedVirtualization() {
@@ -231,7 +231,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     /**
      * Resource manager tags to be bound to the VM instances backing the Workstations.
      * Tag keys and values have the same definition as
-     * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+     * &lt;https://cloud.google.com/resource-manager/docs/tags/tags-overview&gt;
      * Keys must be in the format `tagKeys/{tag_key_id}`, and
      * values are in the format `tagValues/456`.
      * 
@@ -242,7 +242,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     /**
      * @return Resource manager tags to be bound to the VM instances backing the Workstations.
      * Tag keys and values have the same definition as
-     * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+     * &lt;https://cloud.google.com/resource-manager/docs/tags/tags-overview&gt;
      * Keys must be in the format `tagKeys/{tag_key_id}`, and
      * values are in the format `tagValues/456`.
      * 
@@ -444,7 +444,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
         /**
          * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
         /**
          * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         /**
          * @param vmTags Resource manager tags to be bound to the VM instances backing the Workstations.
          * Tag keys and values have the same definition as
-         * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+         * &lt;https://cloud.google.com/resource-manager/docs/tags/tags-overview&gt;
          * Keys must be in the format `tagKeys/{tag_key_id}`, and
          * values are in the format `tagValues/456`.
          * 
@@ -631,7 +631,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         /**
          * @param vmTags Resource manager tags to be bound to the VM instances backing the Workstations.
          * Tag keys and values have the same definition as
-         * https://cloud.google.com/resource-manager/docs/tags/tags-overview
+         * &lt;https://cloud.google.com/resource-manager/docs/tags/tags-overview&gt;
          * Keys must be in the format `tagKeys/{tag_key_id}`, and
          * values are in the format `tagValues/456`.
          * 

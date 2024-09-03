@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+    ///   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Notebook Environment Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -97,9 +95,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -199,9 +194,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -269,9 +261,6 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

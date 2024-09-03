@@ -1025,6 +1025,7 @@ public final class SqlFunctions {
     }
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1066,6 +1067,7 @@ public final class SqlFunctions {
     }
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1107,6 +1109,7 @@ public final class SqlFunctions {
     }
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1148,6 +1151,7 @@ public final class SqlFunctions {
     }
     /**
      * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;

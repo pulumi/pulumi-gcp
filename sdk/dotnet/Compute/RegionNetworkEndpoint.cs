@@ -19,12 +19,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
     /// * How-to Guides
-    ///     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+    ///   * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Network Endpoint Internet Ip Port
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +56,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Internet Fqdn Port
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -92,6 +90,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Region Network Endpoint Portmap
     /// 
     /// ```csharp
@@ -250,9 +251,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("regionNetworkEndpointGroup")]
         public Output<string> RegionNetworkEndpointGroup { get; private set; } = null!;
@@ -351,9 +349,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("regionNetworkEndpointGroup", required: true)]
         public Input<string> RegionNetworkEndpointGroup { get; set; } = null!;
@@ -414,9 +409,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("regionNetworkEndpointGroup")]
         public Input<string>? RegionNetworkEndpointGroup { get; set; }

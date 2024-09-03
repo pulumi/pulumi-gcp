@@ -30,14 +30,11 @@ class DicomStoreArgs:
         The set of arguments for constructing a DicomStore resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
                Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -68,9 +65,6 @@ class DicomStoreArgs:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -84,9 +78,9 @@ class DicomStoreArgs:
         """
         User-supplied key-value pairs used to organize DICOM stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-        conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+        conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
         Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+        bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -156,15 +150,12 @@ class _DicomStoreState:
         Input properties used for looking up and filtering DicomStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
                Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -205,9 +196,6 @@ class _DicomStoreState:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -233,9 +221,9 @@ class _DicomStoreState:
         """
         User-supplied key-value pairs used to organize DICOM stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-        conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+        conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
         Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+        bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -328,17 +316,15 @@ class DicomStore(pulumi.CustomResource):
                  __props__=None):
         """
         A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
-        (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
+        (<https://www.dicomstandard.org/about/>) standard for Healthcare information exchange
 
         To get more information about DicomStore, see:
 
         * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores)
         * How-to Guides
-            * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+          * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 
-        ## Example Usage
-
-        ### Healthcare Dicom Store Basic
+        ## 
 
         ```python
         import pulumi
@@ -358,7 +344,7 @@ class DicomStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        ### Healthcare Dicom Store Bq Stream
+        ## 
 
         ```python
         import pulumi
@@ -422,14 +408,11 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
                Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -452,17 +435,15 @@ class DicomStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A DicomStore is a datastore inside a Healthcare dataset that conforms to the DICOM
-        (https://www.dicomstandard.org/about/) standard for Healthcare information exchange
+        (<https://www.dicomstandard.org/about/>) standard for Healthcare information exchange
 
         To get more information about DicomStore, see:
 
         * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores)
         * How-to Guides
-            * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
+          * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 
-        ## Example Usage
-
-        ### Healthcare Dicom Store Basic
+        ## 
 
         ```python
         import pulumi
@@ -482,7 +463,7 @@ class DicomStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        ### Healthcare Dicom Store Bq Stream
+        ## 
 
         ```python
         import pulumi
@@ -610,15 +591,12 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+               conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
                Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+               bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -656,9 +634,6 @@ class DicomStore(pulumi.CustomResource):
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -676,9 +651,9 @@ class DicomStore(pulumi.CustomResource):
         """
         User-supplied key-value pairs used to organize DICOM stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-        conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
+        conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}*-]{0,62}
         Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-        bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}
+        bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}*-]{0,63}
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

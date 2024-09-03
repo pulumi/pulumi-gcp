@@ -56,7 +56,7 @@ public final class JobTerminalCondition {
     private @Nullable String state;
     /**
      * @return (Output)
-     * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
      * 
      */
     private @Nullable String type;
@@ -121,7 +121,7 @@ public final class JobTerminalCondition {
     }
     /**
      * @return (Output)
-     * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * type is used to communicate the status of the reconciliation process. See also: &lt;https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting&gt; Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
      * 
      */
     public Optional<String> type() {

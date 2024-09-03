@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
 //
-// ## Example Usage
-//
-// ### Discoveryengine Datastore Basic
+// ##
 //
 // ```go
 // package main
@@ -58,7 +56,7 @@ import (
 //	}
 //
 // ```
-// ### Discoveryengine Datastore Document Processing Config
+// ##
 //
 // ```go
 // package main
@@ -141,8 +139,6 @@ type DataStore struct {
 	// Timestamp when the DataStore was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
 	// The id of the default Schema associated with this data store.
 	DefaultSchemaId pulumi.StringOutput `pulumi:"defaultSchemaId"`
@@ -234,8 +230,6 @@ type dataStoreState struct {
 	// Timestamp when the DataStore was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId *string `pulumi:"dataStoreId"`
 	// The id of the default Schema associated with this data store.
 	DefaultSchemaId *string `pulumi:"defaultSchemaId"`
@@ -283,8 +277,6 @@ type DataStoreState struct {
 	// Timestamp when the DataStore was created.
 	CreateTime pulumi.StringPtrInput
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringPtrInput
 	// The id of the default Schema associated with this data store.
 	DefaultSchemaId pulumi.StringPtrInput
@@ -334,8 +326,6 @@ type dataStoreArgs struct {
 	// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
 	CreateAdvancedSiteSearch *bool `pulumi:"createAdvancedSiteSearch"`
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId string `pulumi:"dataStoreId"`
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
@@ -375,8 +365,6 @@ type DataStoreArgs struct {
 	// PUBLIC_WEBSITE contentConfig), this flag will be ignored.
 	CreateAdvancedSiteSearch pulumi.BoolPtrInput
 	// The unique id of the data store.
-	//
-	// ***
 	DataStoreId pulumi.StringInput
 	// The display name of the data store. This field must be a UTF-8 encoded
 	// string with a length limit of 128 characters.
@@ -512,8 +500,6 @@ func (o DataStoreOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The unique id of the data store.
-//
-// ***
 func (o DataStoreOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
 }

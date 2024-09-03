@@ -221,7 +221,7 @@ class _SQuotaPreferenceState:
                preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
                and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
                Inc"}' where "provider" is a service specific dimension.
-        :param pulumi.Input[str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+        :param pulumi.Input[str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See <https://google.aip.dev/134#etags> for more details on etags.
         :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
                ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
@@ -312,7 +312,7 @@ class _SQuotaPreferenceState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+        The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See <https://google.aip.dev/134#etags> for more details on etags.
         """
         return pulumi.get(self, "etag")
 
@@ -455,7 +455,7 @@ class SQuotaPreference(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1/projects.locations.quotaPreferences)
         * How-to Guides
-            * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
+          * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
 
         ## Example Usage
 
@@ -527,7 +527,7 @@ class SQuotaPreference(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1/projects.locations.quotaPreferences)
         * How-to Guides
-            * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
+          * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
 
         ## Example Usage
 
@@ -653,7 +653,7 @@ class SQuotaPreference(pulumi.CustomResource):
                preferences configured for the specific value. NOTE: QuotaPreferences can only be applied across all values of "user"
                and "resource" dimension. Do not set values for "user" or "resource" in the dimension map. Example: '{"provider": "Foo
                Inc"}' where "provider" is a service specific dimension.
-        :param pulumi.Input[str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+        :param pulumi.Input[str] etag: The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See <https://google.aip.dev/134#etags> for more details on etags.
         :param pulumi.Input[str] ignore_safety_checks: The list of quota safety checks to be ignored. Default value: "QUOTA_SAFETY_CHECK_UNSPECIFIED" Possible values:
                ["QUOTA_SAFETY_CHECK_UNSPECIFIED", "QUOTA_DECREASE_BELOW_USAGE", "QUOTA_DECREASE_PERCENTAGE_TOO_HIGH"]
         :param pulumi.Input[str] justification: The reason / justification for this quota preference.
@@ -724,7 +724,7 @@ class SQuotaPreference(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+        The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See <https://google.aip.dev/134#etags> for more details on etags.
         """
         return pulumi.get(self, "etag")
 

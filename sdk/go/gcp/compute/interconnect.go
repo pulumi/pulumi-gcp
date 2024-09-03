@@ -103,8 +103,6 @@ type Interconnect struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect.
-	//
-	// ***
 	CustomerName pulumi.StringOutput `pulumi:"customerName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -276,8 +274,6 @@ type interconnectState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect.
-	//
-	// ***
 	CustomerName *string `pulumi:"customerName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -400,8 +396,6 @@ type InterconnectState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect.
-	//
-	// ***
 	CustomerName pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -518,8 +512,6 @@ type interconnectArgs struct {
 	AdminEnabled *bool `pulumi:"adminEnabled"`
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect.
-	//
-	// ***
 	CustomerName string `pulumi:"customerName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -586,8 +578,6 @@ type InterconnectArgs struct {
 	AdminEnabled pulumi.BoolPtrInput
 	// Customer name, to put in the Letter of Authorization as the party authorized to request a
 	// crossconnect.
-	//
-	// ***
 	CustomerName pulumi.StringInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -761,8 +751,6 @@ func (o InterconnectOutput) CreationTimestamp() pulumi.StringOutput {
 
 // Customer name, to put in the Letter of Authorization as the party authorized to request a
 // crossconnect.
-//
-// ***
 func (o InterconnectOutput) CustomerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.CustomerName }).(pulumi.StringOutput)
 }

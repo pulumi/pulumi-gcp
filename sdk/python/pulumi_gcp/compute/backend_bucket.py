@@ -49,9 +49,6 @@ class BackendBucketArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -171,9 +168,6 @@ class BackendBucketArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -229,9 +223,6 @@ class _BackendBucketState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -369,9 +360,6 @@ class _BackendBucketState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -433,11 +421,9 @@ class BackendBucket(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
         * How-to Guides
-            * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+          * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
-        ## Example Usage
-
-        ### Backend Bucket Basic
+        ## 
 
         ```python
         import pulumi
@@ -452,7 +438,7 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
-        ### Backend Bucket Security Policy
+        ## 
 
         ```python
         import pulumi
@@ -472,7 +458,7 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
-        ### Backend Bucket Query String Whitelist
+        ## 
 
         ```python
         import pulumi
@@ -492,7 +478,7 @@ class BackendBucket(pulumi.CustomResource):
                 },
             })
         ```
-        ### Backend Bucket Include Http Headers
+        ## 
 
         ```python
         import pulumi
@@ -556,9 +542,6 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -581,11 +564,9 @@ class BackendBucket(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
         * How-to Guides
-            * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+          * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
-        ## Example Usage
-
-        ### Backend Bucket Basic
+        ## 
 
         ```python
         import pulumi
@@ -600,7 +581,7 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name=image_bucket.name,
             enable_cdn=True)
         ```
-        ### Backend Bucket Security Policy
+        ## 
 
         ```python
         import pulumi
@@ -620,7 +601,7 @@ class BackendBucket(pulumi.CustomResource):
             enable_cdn=True,
             edge_security_policy=policy.id)
         ```
-        ### Backend Bucket Query String Whitelist
+        ## 
 
         ```python
         import pulumi
@@ -640,7 +621,7 @@ class BackendBucket(pulumi.CustomResource):
                 },
             })
         ```
-        ### Backend Bucket Include Http Headers
+        ## 
 
         ```python
         import pulumi
@@ -777,9 +758,6 @@ class BackendBucket(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -879,9 +857,6 @@ class BackendBucket(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

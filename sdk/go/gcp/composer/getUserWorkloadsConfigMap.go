@@ -85,7 +85,7 @@ type LookupUserWorkloadsConfigMapArgs struct {
 // A collection of values returned by getUserWorkloadsConfigMap.
 type LookupUserWorkloadsConfigMapResult struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+	// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 	Data        map[string]string `pulumi:"data"`
 	Environment string            `pulumi:"environment"`
 	// The provider-assigned unique ID for this managed resource.
@@ -141,7 +141,7 @@ func (o LookupUserWorkloadsConfigMapResultOutput) ToLookupUserWorkloadsConfigMap
 }
 
 // The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+// For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
 func (o LookupUserWorkloadsConfigMapResultOutput) Data() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupUserWorkloadsConfigMapResult) map[string]string { return v.Data }).(pulumi.StringMapOutput)
 }

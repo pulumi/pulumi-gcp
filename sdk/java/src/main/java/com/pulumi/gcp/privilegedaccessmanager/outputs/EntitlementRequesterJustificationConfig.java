@@ -20,8 +20,6 @@ public final class EntitlementRequesterJustificationConfig {
     /**
      * @return The requester has to provide a justification in the form of free flowing text.
      * 
-     * ***
-     * 
      */
     private @Nullable EntitlementRequesterJustificationConfigUnstructured unstructured;
 
@@ -35,8 +33,6 @@ public final class EntitlementRequesterJustificationConfig {
     }
     /**
      * @return The requester has to provide a justification in the form of free flowing text.
-     * 
-     * ***
      * 
      */
     public Optional<EntitlementRequesterJustificationConfigUnstructured> unstructured() {

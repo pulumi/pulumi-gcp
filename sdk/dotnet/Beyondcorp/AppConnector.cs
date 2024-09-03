@@ -19,11 +19,9 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appconnectors)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+    ///   * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Beyondcorp App Connector Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// });
     /// ```
-    /// ### Beyondcorp App Connector Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

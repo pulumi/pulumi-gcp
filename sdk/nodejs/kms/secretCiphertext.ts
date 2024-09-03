@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
  * * How-to Guides
- *     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+ *   * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
  *
  * ## Example Usage
  *
@@ -102,9 +102,6 @@ export class SecretCiphertext extends pulumi.CustomResource {
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     public readonly cryptoKey!: pulumi.Output<string>;
     /**
@@ -166,9 +163,6 @@ export interface SecretCiphertextState {
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     cryptoKey?: pulumi.Input<string>;
     /**
@@ -190,9 +184,6 @@ export interface SecretCiphertextArgs {
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     cryptoKey: pulumi.Input<string>;
     /**

@@ -35,9 +35,6 @@ class SubnetArgs:
         :param pulumi.Input[str] network: The ID of the network to which this router belongs.
                Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
         :param pulumi.Input[str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[str] zone: The name of the target Distributed Cloud Edge zone.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_cidrs: The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
@@ -94,9 +91,6 @@ class SubnetArgs:
     def subnet_id(self) -> pulumi.Input[str]:
         """
         A unique ID that identifies this subnet.
-
-
-        - - -
         """
         return pulumi.get(self, "subnet_id")
 
@@ -225,9 +219,6 @@ class _SubnetState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: The time when the subnet was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -393,9 +384,6 @@ class _SubnetState:
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
         A unique ID that identifies this subnet.
-
-
-        - - -
         """
         return pulumi.get(self, "subnet_id")
 
@@ -465,7 +453,7 @@ class Subnet(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.subnets)
         * How-to Guides
-            * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
+          * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 
         ## Example Usage
 
@@ -492,6 +480,7 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+
         ### Edgenetwork Subnet With Vlan Id
 
         ```python
@@ -565,9 +554,6 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[int] vlan_id: VLAN ID for this subnetwork. If not specified, one is assigned automatically.
         :param pulumi.Input[str] zone: The name of the target Distributed Cloud Edge zone.
         """
@@ -584,7 +570,7 @@ class Subnet(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.subnets)
         * How-to Guides
-            * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
+          * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
 
         ## Example Usage
 
@@ -611,6 +597,7 @@ class Subnet(pulumi.CustomResource):
                 "environment": "dev",
             })
         ```
+
         ### Edgenetwork Subnet With Vlan Id
 
         ```python
@@ -775,9 +762,6 @@ class Subnet(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Current stage of the resource to the device by config push.
         :param pulumi.Input[str] subnet_id: A unique ID that identifies this subnet.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: The time when the subnet was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
@@ -894,9 +878,6 @@ class Subnet(pulumi.CustomResource):
     def subnet_id(self) -> pulumi.Output[str]:
         """
         A unique ID that identifies this subnet.
-
-
-        - - -
         """
         return pulumi.get(self, "subnet_id")
 

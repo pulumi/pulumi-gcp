@@ -300,6 +300,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "cloud_product": "all",
             }])
         ```
+
         ### Folder Access Approval Active Key Version
 
         ```python
@@ -406,6 +407,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "cloud_product": "all",
             }])
         ```
+
         ### Folder Access Approval Active Key Version
 
         ```python

@@ -772,11 +772,9 @@ class Cluster(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters)
         * How-to Guides
-            * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
+          * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
 
-        ## Example Usage
-
-        ### Edgecontainer Cluster
+        ## 
 
         ```python
         import pulumi
@@ -803,7 +801,7 @@ class Cluster(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        ### Edgecontainer Cluster With Maintenance Window
+        ## 
 
         ```python
         import pulumi
@@ -837,6 +835,9 @@ class Cluster(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Example Usage
+
         ### Edgecontainer Local Control Plane Cluster
 
         ```python
@@ -937,11 +938,9 @@ class Cluster(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters)
         * How-to Guides
-            * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
+          * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
 
-        ## Example Usage
-
-        ### Edgecontainer Cluster
+        ## 
 
         ```python
         import pulumi
@@ -968,7 +967,7 @@ class Cluster(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
-        ### Edgecontainer Cluster With Maintenance Window
+        ## 
 
         ```python
         import pulumi
@@ -1002,6 +1001,9 @@ class Cluster(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Example Usage
+
         ### Edgecontainer Local Control Plane Cluster
 
         ```python

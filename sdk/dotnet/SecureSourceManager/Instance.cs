@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
+    ///   * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Secure Source Manager Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -42,7 +40,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
-    /// ### Secure Source Manager Instance Cmek
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -88,7 +86,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
-    /// ### Secure Source Manager Instance Private
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -167,7 +165,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         },
     ///     });
     /// 
-    ///     // ca pool IAM permissions can take time to propagate
     ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
@@ -199,7 +196,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
-    /// ### Secure Source Manager Instance Private Psc Backend
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -278,7 +275,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         },
     ///     });
     /// 
-    ///     // ca pool IAM permissions can take time to propagate
     ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
@@ -443,7 +439,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
-    /// ### Secure Source Manager Instance Private Psc Endpoint
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -522,7 +518,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         },
     ///     });
     /// 
-    ///     // ca pool IAM permissions can take time to propagate
     ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
@@ -698,9 +693,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The name for the Instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -824,9 +816,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     {
         /// <summary>
         /// The name for the Instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -917,9 +906,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// The name for the Instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

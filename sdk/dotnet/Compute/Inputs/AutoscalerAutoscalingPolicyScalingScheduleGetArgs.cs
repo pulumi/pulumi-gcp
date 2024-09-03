@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        /// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

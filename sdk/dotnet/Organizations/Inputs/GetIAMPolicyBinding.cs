@@ -22,13 +22,13 @@ namespace Pulumi.Gcp.Organizations.Inputs
         private List<string>? _members;
 
         /// <summary>
-        /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
         /// Each entry can have one of the following values:
         /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
         /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice@gmail.com&gt;.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app@appspot.gserviceaccount.com&gt;.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins@example.com&gt;.
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         public List<string> Members

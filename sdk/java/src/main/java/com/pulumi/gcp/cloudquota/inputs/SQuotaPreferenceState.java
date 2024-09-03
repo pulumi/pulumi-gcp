@@ -82,14 +82,14 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+     * The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+     * @return The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -357,7 +357,7 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param etag The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+         * @param etag The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class SQuotaPreferenceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param etag The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+         * @param etag The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
          * 
          * @return builder
          * 

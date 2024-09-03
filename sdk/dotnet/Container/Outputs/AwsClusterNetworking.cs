@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<string> ServiceAddressCidrBlocks;
         /// <summary>
         /// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string VpcId;
 

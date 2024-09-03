@@ -19,11 +19,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  *
- * ## Example Usage
- *
- * ### Notebook Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Instance Basic Stopped
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +54,7 @@ import * as utilities from "../utilities";
  *     desiredState: "STOPPED",
  * });
  * ```
- * ### Notebook Instance Basic Container
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Notebook Instance Basic Gpu
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,6 +94,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Notebook Instance Full
  *
  * ```typescript
@@ -265,7 +266,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly installGpuDriver!: pulumi.Output<boolean | undefined>;
     /**
      * The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: <alias@example.com>.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
@@ -286,9 +287,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -365,8 +363,8 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - <https://www.googleapis.com/auth/cloud-platform>
+     * - <https://www.googleapis.com/auth/userinfo.email>
      */
     public readonly serviceAccountScopes!: pulumi.Output<string[]>;
     /**
@@ -570,7 +568,7 @@ export interface InstanceState {
     installGpuDriver?: pulumi.Input<boolean>;
     /**
      * The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: <alias@example.com>.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
@@ -591,9 +589,6 @@ export interface InstanceState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -670,8 +665,8 @@ export interface InstanceState {
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - <https://www.googleapis.com/auth/cloud-platform>
+     * - <https://www.googleapis.com/auth/userinfo.email>
      */
     serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -769,7 +764,7 @@ export interface InstanceArgs {
     installGpuDriver?: pulumi.Input<boolean>;
     /**
      * The list of owners of this instance after creation.
-     * Format: alias@example.com.
+     * Format: <alias@example.com>.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance's service account can use the instance.
@@ -790,9 +785,6 @@ export interface InstanceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**
@@ -857,8 +849,8 @@ export interface InstanceArgs {
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - <https://www.googleapis.com/auth/cloud-platform>
+     * - <https://www.googleapis.com/auth/userinfo.email>
      */
     serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

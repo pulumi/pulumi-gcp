@@ -427,11 +427,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.bitbucketServerConfigs)
         * How-to Guides
-            * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
+          * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
-        ## Example Usage
-
-        ### Cloudbuild Bitbucket Server Config
+        ## 
 
         ```python
         import pulumi
@@ -449,6 +447,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
+
+        ## Example Usage
+
         ### Cloudbuild Bitbucket Server Config Repositories
 
         ```python
@@ -477,7 +478,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Cloudbuild Bitbucket Server Config Peered Network
+        ## 
 
         ```python
         import pulumi
@@ -580,11 +581,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.bitbucketServerConfigs)
         * How-to Guides
-            * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
+          * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 
-        ## Example Usage
-
-        ### Cloudbuild Bitbucket Server Config
+        ## 
 
         ```python
         import pulumi
@@ -602,6 +601,9 @@ class BitbucketServerConfig(pulumi.CustomResource):
             username="test",
             api_key="<api-key>")
         ```
+
+        ## Example Usage
+
         ### Cloudbuild Bitbucket Server Config Repositories
 
         ```python
@@ -630,7 +632,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Cloudbuild Bitbucket Server Config Peered Network
+        ## 
 
         ```python
         import pulumi

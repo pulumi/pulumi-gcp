@@ -14,124 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ### Alloydb Cluster Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("alloydb-cluster"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-cluster"),
-//				Location:  pulumi.String("us-central1"),
-//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: defaultNetwork.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Alloydb Cluster Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("alloydb-cluster-full"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alloydb.NewCluster(ctx, "full", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-cluster-full"),
-//				Location:  pulumi.String("us-central1"),
-//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID(),
-//				},
-//				DatabaseVersion: pulumi.String("POSTGRES_15"),
-//				InitialUser: &alloydb.ClusterInitialUserArgs{
-//					User:     pulumi.String("alloydb-cluster-full"),
-//					Password: pulumi.String("alloydb-cluster-full"),
-//				},
-//				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
-//					Enabled:            pulumi.Bool(true),
-//					RecoveryWindowDays: pulumi.Int(14),
-//				},
-//				AutomatedBackupPolicy: &alloydb.ClusterAutomatedBackupPolicyArgs{
-//					Location:     pulumi.String("us-central1"),
-//					BackupWindow: pulumi.String("1800s"),
-//					Enabled:      pulumi.Bool(true),
-//					WeeklySchedule: &alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs{
-//						DaysOfWeeks: pulumi.StringArray{
-//							pulumi.String("MONDAY"),
-//						},
-//						StartTimes: alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray{
-//							&alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs{
-//								Hours:   pulumi.Int(23),
-//								Minutes: pulumi.Int(0),
-//								Seconds: pulumi.Int(0),
-//								Nanos:   pulumi.Int(0),
-//							},
-//						},
-//					},
-//					QuantityBasedRetention: &alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{
-//						Count: pulumi.Int(1),
-//					},
-//					Labels: pulumi.StringMap{
-//						"test": pulumi.String("alloydb-cluster-full"),
-//					},
-//				},
-//				Labels: pulumi.StringMap{
-//					"test": pulumi.String("alloydb-cluster-full"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Alloydb Cluster Restore
 //
 // ```go
@@ -243,6 +125,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Alloydb Secondary Cluster Basic
 //
 // ```go
@@ -366,7 +249,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -409,7 +292,7 @@ type Cluster struct {
 	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos ClusterEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
@@ -419,8 +302,6 @@ type Cluster struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -450,7 +331,7 @@ type Cluster struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+	// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -510,7 +391,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -553,7 +434,7 @@ type clusterState struct {
 	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos []ClusterEncryptionInfo `pulumi:"encryptionInfos"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag *string `pulumi:"etag"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
@@ -563,8 +444,6 @@ type clusterState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -594,7 +473,7 @@ type clusterState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+	// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -614,7 +493,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -657,7 +536,7 @@ type ClusterState struct {
 	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos ClusterEncryptionInfoArrayInput
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
@@ -667,8 +546,6 @@ type ClusterState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -698,7 +575,7 @@ type ClusterState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+	// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
@@ -722,7 +599,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -752,7 +629,7 @@ type clusterArgs struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag *string `pulumi:"etag"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
@@ -762,8 +639,6 @@ type clusterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -798,7 +673,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -828,7 +703,7 @@ type ClusterArgs struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig ClusterEncryptionConfigPtrInput
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
@@ -838,8 +713,6 @@ type ClusterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// MaintenanceUpdatePolicy defines the policy for system updates.
 	// Structure is documented below.
@@ -959,7 +832,7 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 //
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1044,7 +917,7 @@ func (o ClusterOutput) EncryptionInfos() ClusterEncryptionInfoArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEncryptionInfoArrayOutput { return v.EncryptionInfos }).(ClusterEncryptionInfoArrayOutput)
 }
 
-// For Resource freshness validation (https://google.aip.dev/154)
+// For Resource freshness validation (<https://google.aip.dev/154>)
 func (o ClusterOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
@@ -1063,8 +936,6 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb cluster should reside.
-//
-// ***
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -1121,7 +992,7 @@ func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
 // Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 // This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o ClusterOutput) Reconciling() pulumi.BoolOutput {

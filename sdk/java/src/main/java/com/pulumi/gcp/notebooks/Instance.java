@@ -36,11 +36,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  * 
- * ## Example Usage
- * 
- * ### Notebook Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -81,7 +79,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Instance Basic Stopped
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -123,7 +121,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Instance Basic Container
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -165,7 +163,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Notebook Instance Basic Gpu
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -212,6 +210,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Notebook Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -515,7 +516,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The list of owners of this instance after creation.
-     * Format: alias{@literal @}example.com.
+     * Format: &lt;alias{@literal @}example.com&gt;.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -526,7 +527,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of owners of this instance after creation.
-     * Format: alias{@literal @}example.com.
+     * Format: &lt;alias{@literal @}example.com&gt;.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -576,16 +577,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -820,8 +817,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+     * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
      * 
      */
     @Export(name="serviceAccountScopes", refs={List.class,String.class}, tree="[0,1]")
@@ -830,8 +827,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+     * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
      * 
      */
     public Output<List<String>> serviceAccountScopes() {

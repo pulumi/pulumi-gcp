@@ -1856,7 +1856,7 @@ class ResponsePolicyRuleLocalDataLocalData(dict):
                  rrdatas: Optional[Sequence[str]] = None,
                  ttl: Optional[int] = None):
         """
-        :param str name: For example, www.example.com.
+        :param str name: For example, <http://www.example.com>.
         :param str type: One of valid DNS resource types.
                Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
         :param Sequence[str] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
@@ -1874,7 +1874,7 @@ class ResponsePolicyRuleLocalDataLocalData(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        For example, www.example.com.
+        For example, <http://www.example.com>.
         """
         return pulumi.get(self, "name")
 

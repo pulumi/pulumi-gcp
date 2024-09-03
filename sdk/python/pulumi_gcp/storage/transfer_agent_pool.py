@@ -38,9 +38,6 @@ class TransferAgentPoolArgs:
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
                As expressed by the regular expression: ^(?!goog)a-z?$.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -90,9 +87,6 @@ class TransferAgentPoolArgs:
         * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         * One or more numerals or lowercase ASCII characters.
         As expressed by the regular expression: ^(?!goog)a-z?$.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -135,9 +129,6 @@ class _TransferAgentPoolState:
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
                As expressed by the regular expression: ^(?!goog)a-z?$.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Specifies the state of the AgentPool.
@@ -190,9 +181,6 @@ class _TransferAgentPoolState:
         * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         * One or more numerals or lowercase ASCII characters.
         As expressed by the regular expression: ^(?!goog)a-z?$.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -243,7 +231,7 @@ class TransferAgentPool(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/projects.agentPools)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
+          * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 
         ## Example Usage
 
@@ -304,9 +292,6 @@ class TransferAgentPool(pulumi.CustomResource):
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
                As expressed by the regular expression: ^(?!goog)a-z?$.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -323,7 +308,7 @@ class TransferAgentPool(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/projects.agentPools)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
+          * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
 
         ## Example Usage
 
@@ -437,9 +422,6 @@ class TransferAgentPool(pulumi.CustomResource):
                * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
                * One or more numerals or lowercase ASCII characters.
                As expressed by the regular expression: ^(?!goog)a-z?$.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Specifies the state of the AgentPool.
@@ -484,9 +466,6 @@ class TransferAgentPool(pulumi.CustomResource):
         * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         * One or more numerals or lowercase ASCII characters.
         As expressed by the regular expression: ^(?!goog)a-z?$.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

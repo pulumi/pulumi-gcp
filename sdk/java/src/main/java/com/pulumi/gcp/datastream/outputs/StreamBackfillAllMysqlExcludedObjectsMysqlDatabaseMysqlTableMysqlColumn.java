@@ -25,7 +25,7 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable String column;
     /**
      * @return The MySQL data type. Full data types list can be found here:
-     * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+     * &lt;https://dev.mysql.com/doc/refman/8.0/en/data-types.html&gt;
      * 
      */
     private @Nullable String dataType;
@@ -68,7 +68,7 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
     /**
      * @return The MySQL data type. Full data types list can be found here:
-     * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+     * &lt;https://dev.mysql.com/doc/refman/8.0/en/data-types.html&gt;
      * 
      */
     public Optional<String> dataType() {

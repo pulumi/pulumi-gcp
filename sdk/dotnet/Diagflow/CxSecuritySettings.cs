@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.securitySettings)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dialogflowcx Security Settings Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,6 +39,9 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Dialogflowcx Security Settings Full
     /// 
     /// ```csharp
@@ -178,9 +179,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the security settings, unique within the location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -326,9 +324,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the security settings, unique within the location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -435,9 +430,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the security settings, unique within the location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

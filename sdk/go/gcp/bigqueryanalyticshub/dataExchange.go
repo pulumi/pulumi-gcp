@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 //
-// ## Example Usage
-//
-// ### Bigquery Analyticshub Data Exchange Basic
+// ##
 //
 // ```go
 // package main
@@ -88,8 +86,6 @@ type DataExchange struct {
 	// Description of the data exchange.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation describing the data exchange.
 	Documentation pulumi.StringPtrOutput `pulumi:"documentation"`
@@ -153,8 +149,6 @@ type dataExchangeState struct {
 	// Description of the data exchange.
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation describing the data exchange.
 	Documentation *string `pulumi:"documentation"`
@@ -180,8 +174,6 @@ type DataExchangeState struct {
 	// Description of the data exchange.
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// Documentation describing the data exchange.
 	Documentation pulumi.StringPtrInput
@@ -211,8 +203,6 @@ type dataExchangeArgs struct {
 	// Description of the data exchange.
 	Description *string `pulumi:"description"`
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Documentation describing the data exchange.
 	Documentation *string `pulumi:"documentation"`
@@ -234,8 +224,6 @@ type DataExchangeArgs struct {
 	// Description of the data exchange.
 	Description pulumi.StringPtrInput
 	// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Documentation describing the data exchange.
 	Documentation pulumi.StringPtrInput
@@ -348,8 +336,6 @@ func (o DataExchangeOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-//
-// ***
 func (o DataExchangeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -29,10 +29,6 @@ class RegionNetworkFirewallPolicyAssociationArgs:
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         """
@@ -74,10 +70,6 @@ class RegionNetworkFirewallPolicyAssociationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -124,10 +116,6 @@ class _RegionNetworkFirewallPolicyAssociationState:
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
@@ -174,10 +162,6 @@ class _RegionNetworkFirewallPolicyAssociationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -238,7 +222,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Regional
+        ### regional
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -280,10 +264,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         """
@@ -298,7 +278,7 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Regional
+        ### regional
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -400,10 +380,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
@@ -441,10 +417,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

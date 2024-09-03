@@ -7,130 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Network Security Server Tls Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
- *     name: "my-server-tls-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     allowOpen: false,
- *     serverCertificate: {
- *         certificateProviderInstance: {
- *             pluginInstance: "google_cloud_private_spiffe",
- *         },
- *     },
- *     mtlsPolicy: {
- *         clientValidationCas: [
- *             {
- *                 grpcEndpoint: {
- *                     targetUri: "unix:mypath",
- *                 },
- *             },
- *             {
- *                 grpcEndpoint: {
- *                     targetUri: "unix:abc/mypath",
- *                 },
- *             },
- *             {
- *                 certificateProviderInstance: {
- *                     pluginInstance: "google_cloud_private_spiffe",
- *                 },
- *             },
- *         ],
- *     },
- * });
- * ```
- * ### Network Security Server Tls Policy Advanced
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
- *     name: "my-server-tls-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     location: "global",
- *     allowOpen: false,
- *     mtlsPolicy: {
- *         clientValidationMode: "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
- *     },
- * });
- * ```
- * ### Network Security Server Tls Policy Server Cert
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
- *     name: "my-server-tls-policy",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     location: "global",
- *     allowOpen: false,
- *     serverCertificate: {
- *         grpcEndpoint: {
- *             targetUri: "unix:mypath",
- *         },
- *     },
- * });
- * ```
- * ### Network Security Server Tls Policy Mtls
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const project = gcp.organizations.getProject({});
- * const defaultTrustConfig = new gcp.certificatemanager.TrustConfig("default", {
- *     name: "my-trust-config",
- *     description: "sample trust config description",
- *     location: "global",
- *     trustStores: [{
- *         trustAnchors: [{
- *             pemCertificate: std.file({
- *                 input: "test-fixtures/ca_cert.pem",
- *             }).then(invoke => invoke.result),
- *         }],
- *         intermediateCas: [{
- *             pemCertificate: std.file({
- *                 input: "test-fixtures/ca_cert.pem",
- *             }).then(invoke => invoke.result),
- *         }],
- *     }],
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * const _default = new gcp.networksecurity.ServerTlsPolicy("default", {
- *     name: "my-server-tls-policy",
- *     description: "my description",
- *     location: "global",
- *     allowOpen: false,
- *     mtlsPolicy: {
- *         clientValidationMode: "REJECT_INVALID",
- *         clientValidationTrustConfig: pulumi.all([project, defaultTrustConfig.name]).apply(([project, name]) => `projects/${project.number}/locations/global/trustConfigs/${name}`),
- *     },
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * ServerTlsPolicy can be imported using any of these accepted formats:
@@ -220,9 +96,6 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
     public readonly mtlsPolicy!: pulumi.Output<outputs.networksecurity.ServerTlsPolicyMtlsPolicy | undefined>;
     /**
      * Name of the ServerTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -333,9 +206,6 @@ export interface ServerTlsPolicyState {
     mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy>;
     /**
      * Name of the ServerTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -392,9 +262,6 @@ export interface ServerTlsPolicyArgs {
     mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy>;
     /**
      * Name of the ServerTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

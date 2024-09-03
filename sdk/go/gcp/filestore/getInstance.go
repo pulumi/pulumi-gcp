@@ -14,6 +14,33 @@ import (
 // Get info about a Google Cloud Filestore instance.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myInstance, err := filestore.LookupInstance(ctx, &filestore.LookupInstanceArgs{
+//				Name: "my-filestore-instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("instanceIpAddresses", myInstance.Networks.IpAddresses)
+//			ctx.Export("instanceConnectMode", myInstance.Networks.ConnectMode)
+//			ctx.Export("instanceFileShareName", myInstance.FileShares.Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult
@@ -31,8 +58,6 @@ type LookupInstanceArgs struct {
 	// the provider region or zone is used.
 	Location *string `pulumi:"location"`
 	// The name of a Filestore instance.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -80,8 +105,6 @@ type LookupInstanceOutputArgs struct {
 	// the provider region or zone is used.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The name of a Filestore instance.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

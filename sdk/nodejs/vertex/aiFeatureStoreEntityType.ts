@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
  * ## Example Usage
  *
@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Vertex Ai Featurestore Entitytype With Beta Fields
  *
  * ```typescript
@@ -161,9 +162,6 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-     *
-     *
-     * - - -
      */
     public readonly featurestore!: pulumi.Output<string>;
     /**
@@ -273,9 +271,6 @@ export interface AiFeatureStoreEntityTypeState {
     etag?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-     *
-     *
-     * - - -
      */
     featurestore?: pulumi.Input<string>;
     /**
@@ -324,9 +319,6 @@ export interface AiFeatureStoreEntityTypeArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-     *
-     *
-     * - - -
      */
     featurestore: pulumi.Input<string>;
     /**

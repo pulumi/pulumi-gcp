@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Get a VPN gateway within GCE from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-vpn-gateway = gcp.compute.getVPNGateway({
+ *     name: "vpn-gateway-us-east1",
+ * });
+ * ```
  */
 export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
 
@@ -25,9 +34,6 @@ export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptio
 export interface GetVPNGatewayArgs {
     /**
      * The name of the VPN gateway.
-     *
-     *
-     * - - -
      */
     name: string;
     /**
@@ -73,6 +79,15 @@ export interface GetVPNGatewayResult {
  * Get a VPN gateway within GCE from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-vpn-gateway = gcp.compute.getVPNGateway({
+ *     name: "vpn-gateway-us-east1",
+ * });
+ * ```
  */
 export function getVPNGatewayOutput(args: GetVPNGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVPNGatewayResult> {
     return pulumi.output(args).apply((a: any) => getVPNGateway(a, opts))
@@ -84,9 +99,6 @@ export function getVPNGatewayOutput(args: GetVPNGatewayOutputArgs, opts?: pulumi
 export interface GetVPNGatewayOutputArgs {
     /**
      * The name of the VPN gateway.
-     *
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

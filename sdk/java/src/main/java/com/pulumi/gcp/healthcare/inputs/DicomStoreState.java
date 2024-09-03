@@ -23,8 +23,6 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Import(name="dataset")
     private @Nullable Output<String> dataset;
@@ -32,8 +30,6 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> dataset() {
@@ -58,9 +54,9 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -75,9 +71,9 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User-supplied key-value pairs used to organize DICOM stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of &#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -210,8 +206,6 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -257,9 +249,9 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-supplied key-value pairs used to organize DICOM stores.
          * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-         * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+         * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
          * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-         * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+         * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
          * No more than 64 labels can be associated with a given store.
          * An object containing a list of &#34;key&#34;: value pairs.
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
@@ -278,9 +270,9 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-supplied key-value pairs used to organize DICOM stores.
          * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-         * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+         * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
          * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-         * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+         * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
          * No more than 64 labels can be associated with a given store.
          * An object containing a list of &#34;key&#34;: value pairs.
          * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.

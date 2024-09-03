@@ -33,8 +33,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Save Key In Kubernetes Secret
+        /// ### save key in Kubernetes secret
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,8 +97,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Save Key In Kubernetes Secret
+        /// ### save key in Kubernetes secret
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

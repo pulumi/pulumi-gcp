@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.networks)
  * * How-to Guides
- *     * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
+ *   * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
  * 
  * ## Example Usage
  * 
@@ -199,16 +199,12 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * A unique ID that identifies this network.
      * 
-     * ***
-     * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
      * @return A unique ID that identifies this network.
-     * 
-     * ***
      * 
      */
     public Output<String> networkId() {

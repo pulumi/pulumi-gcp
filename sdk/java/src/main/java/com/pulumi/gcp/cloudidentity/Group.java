@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
+ *   * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project` and set `user_project_override` to true

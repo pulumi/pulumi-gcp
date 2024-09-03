@@ -115,8 +115,6 @@ type OrganizationSecurityPolicyAssociation struct {
 	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The security policy ID of the association.
-	//
-	// ***
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 }
 
@@ -163,8 +161,6 @@ type organizationSecurityPolicyAssociationState struct {
 	// The name for an association.
 	Name *string `pulumi:"name"`
 	// The security policy ID of the association.
-	//
-	// ***
 	PolicyId *string `pulumi:"policyId"`
 }
 
@@ -176,8 +172,6 @@ type OrganizationSecurityPolicyAssociationState struct {
 	// The name for an association.
 	Name pulumi.StringPtrInput
 	// The security policy ID of the association.
-	//
-	// ***
 	PolicyId pulumi.StringPtrInput
 }
 
@@ -191,8 +185,6 @@ type organizationSecurityPolicyAssociationArgs struct {
 	// The name for an association.
 	Name *string `pulumi:"name"`
 	// The security policy ID of the association.
-	//
-	// ***
 	PolicyId string `pulumi:"policyId"`
 }
 
@@ -203,8 +195,6 @@ type OrganizationSecurityPolicyAssociationArgs struct {
 	// The name for an association.
 	Name pulumi.StringPtrInput
 	// The security policy ID of the association.
-	//
-	// ***
 	PolicyId pulumi.StringInput
 }
 
@@ -311,8 +301,6 @@ func (o OrganizationSecurityPolicyAssociationOutput) Name() pulumi.StringOutput 
 }
 
 // The security policy ID of the association.
-//
-// ***
 func (o OrganizationSecurityPolicyAssociationOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyAssociation) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }

@@ -72,8 +72,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
@@ -81,8 +79,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -277,8 +273,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param displayName The descriptive name for this instance as it appears in UIs. Must be
          * unique per project and between 4 and 30 characters in length.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -290,8 +284,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The descriptive name for this instance as it appears in UIs. Must be
          * unique per project and between 4 and 30 characters in length.
-         * 
-         * ***
          * 
          * @return builder
          * 

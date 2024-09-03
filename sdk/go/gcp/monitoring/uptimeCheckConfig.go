@@ -80,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Status Code
 //
 // ```go
@@ -142,6 +143,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Https
 //
 // ```go
@@ -194,7 +196,7 @@ import (
 //	}
 //
 // ```
-// ### Uptime Check Tcp
+// ##
 //
 // ```go
 // package main
@@ -237,6 +239,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Uptime Check Config Synthetic Monitor
 //
 // ```go
@@ -335,7 +338,7 @@ type UptimeCheckConfig struct {
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrOutput `pulumi:"httpCheck"`
 	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// (<https://cloud.google.com/monitoring/api/resources>) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
@@ -357,9 +360,7 @@ type UptimeCheckConfig struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrOutput `pulumi:"tcpCheck"`
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringOutput `pulumi:"uptimeCheckId"`
@@ -415,7 +416,7 @@ type uptimeCheckConfigState struct {
 	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
 	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// (<https://cloud.google.com/monitoring/api/resources>) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
@@ -437,9 +438,7 @@ type uptimeCheckConfigState struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 	Timeout *string `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId *string `pulumi:"uptimeCheckId"`
@@ -460,7 +459,7 @@ type UptimeCheckConfigState struct {
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
 	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// (<https://cloud.google.com/monitoring/api/resources>) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
@@ -482,9 +481,7 @@ type UptimeCheckConfigState struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 	Timeout pulumi.StringPtrInput
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringPtrInput
@@ -509,7 +506,7 @@ type uptimeCheckConfigArgs struct {
 	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
 	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// (<https://cloud.google.com/monitoring/api/resources>) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
@@ -529,9 +526,7 @@ type uptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 	Timeout string `pulumi:"timeout"`
 	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -551,7 +546,7 @@ type UptimeCheckConfigArgs struct {
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
 	// The [monitored resource]
-	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// (<https://cloud.google.com/monitoring/api/resources>) associated with the
 	// configuration. The following monitored resource types are supported for
 	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
@@ -571,9 +566,7 @@ type UptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-	//
-	// ***
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 	Timeout pulumi.StringInput
 	// User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
@@ -690,7 +683,7 @@ func (o UptimeCheckConfigOutput) HttpCheck() UptimeCheckConfigHttpCheckPtrOutput
 }
 
 // The [monitored resource]
-// (https://cloud.google.com/monitoring/api/resources) associated with the
+// (<https://cloud.google.com/monitoring/api/resources>) associated with the
 // configuration. The following monitored resource types are supported for
 // uptime checks:
 func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredResourcePtrOutput {
@@ -736,9 +729,7 @@ func (o UptimeCheckConfigOutput) TcpCheck() UptimeCheckConfigTcpCheckPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigTcpCheckPtrOutput { return v.TcpCheck }).(UptimeCheckConfigTcpCheckPtrOutput)
 }
 
-// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-//
-// ***
+// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
 func (o UptimeCheckConfigOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
 }

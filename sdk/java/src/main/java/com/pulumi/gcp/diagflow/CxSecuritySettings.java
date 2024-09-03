@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.securitySettings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 
- * ## Example Usage
- * 
- * ### Dialogflowcx Security Settings Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -67,6 +65,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Dialogflowcx Security Settings Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -233,16 +234,12 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the security settings, unique within the location.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the security settings, unique within the location.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

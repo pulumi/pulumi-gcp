@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
  * * How-to Guides
- *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  *
- * ## Example Usage
- *
- * ### Vpc Access Connector
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     network: "default",
  * });
  * ```
- * ### Vpc Access Connector Shared Vpc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -145,9 +143,6 @@ export class Connector extends pulumi.CustomResource {
     public readonly minThroughput!: pulumi.Output<number | undefined>;
     /**
      * The name of the resource (Max 25 characters).
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -267,9 +262,6 @@ export interface ConnectorState {
     minThroughput?: pulumi.Input<number>;
     /**
      * The name of the resource (Max 25 characters).
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -337,9 +329,6 @@ export interface ConnectorArgs {
     minThroughput?: pulumi.Input<number>;
     /**
      * The name of the resource (Max 25 characters).
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

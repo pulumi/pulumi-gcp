@@ -104,7 +104,7 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
     /**
      * The schema version of the notification. Only &#34;1.0&#34; is
      * accepted. It represents the JSON schema as defined in
-     * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+     * &lt;https://cloud.google.com/billing/docs/how-to/budgets#notification_format&gt;.
      * 
      */
     @Import(name="schemaVersion")
@@ -113,7 +113,7 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
     /**
      * @return The schema version of the notification. Only &#34;1.0&#34; is
      * accepted. It represents the JSON schema as defined in
-     * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+     * &lt;https://cloud.google.com/billing/docs/how-to/budgets#notification_format&gt;.
      * 
      */
     public Optional<Output<String>> schemaVersion() {
@@ -272,7 +272,7 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
         /**
          * @param schemaVersion The schema version of the notification. Only &#34;1.0&#34; is
          * accepted. It represents the JSON schema as defined in
-         * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+         * &lt;https://cloud.google.com/billing/docs/how-to/budgets#notification_format&gt;.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class BudgetAllUpdatesRuleArgs extends com.pulumi.resources.Resourc
         /**
          * @param schemaVersion The schema version of the notification. Only &#34;1.0&#34; is
          * accepted. It represents the JSON schema as defined in
-         * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+         * &lt;https://cloud.google.com/billing/docs/how-to/budgets#notification_format&gt;.
          * 
          * @return builder
          * 

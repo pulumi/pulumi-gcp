@@ -21,11 +21,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Global Network Endpoint Group
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Global Network Endpoint Group Ip Address
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -120,9 +118,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string> NetworkEndpointType { get; private set; } = null!;
@@ -215,9 +210,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkEndpointType", required: true)]
         public Input<string> NetworkEndpointType { get; set; } = null!;
@@ -266,9 +258,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }

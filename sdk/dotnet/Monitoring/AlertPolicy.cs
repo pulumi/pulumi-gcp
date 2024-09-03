@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+    ///   * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
     /// 
     /// ## Example Usage
     /// 
@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Monitoring Alert Policy Evaluation Missing Data
     /// 
     /// ```csharp
@@ -109,6 +110,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Monitoring Alert Policy Forecast Options
     /// 
     /// ```csharp
@@ -156,6 +158,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Monitoring Alert Policy Promql Condition
     /// 
     /// ```csharp

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LakeMetastore {
     /**
-     * @return Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+     * @return Optional. A relative reference to the Dataproc Metastore (&lt;https://cloud.google.com/dataproc-metastore/docs&gt;) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
      * 
      */
     private @Nullable String service;
 
     private LakeMetastore() {}
     /**
-     * @return Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+     * @return Optional. A relative reference to the Dataproc Metastore (&lt;https://cloud.google.com/dataproc-metastore/docs&gt;) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
      * 
      */
     public Optional<String> service() {

@@ -1352,8 +1352,6 @@ if not MYPY:
         header_required: NotRequired[pulumi.Input[bool]]
         """
         The boolean that indicates whether or not headers are included in the inventory report CSV file.
-
-        - - -
         """
         record_separator: NotRequired[pulumi.Input[str]]
         """
@@ -1371,8 +1369,6 @@ class InsightsReportConfigCsvOptionsArgs:
         """
         :param pulumi.Input[str] delimiter: The delimiter used to separate the fields in the inventory report CSV file.
         :param pulumi.Input[bool] header_required: The boolean that indicates whether or not headers are included in the inventory report CSV file.
-               
-               - - -
         :param pulumi.Input[str] record_separator: The character used to separate the records in the inventory report CSV file.
         """
         if delimiter is not None:
@@ -1399,8 +1395,6 @@ class InsightsReportConfigCsvOptionsArgs:
     def header_required(self) -> Optional[pulumi.Input[bool]]:
         """
         The boolean that indicates whether or not headers are included in the inventory report CSV file.
-
-        - - -
         """
         return pulumi.get(self, "header_required")
 

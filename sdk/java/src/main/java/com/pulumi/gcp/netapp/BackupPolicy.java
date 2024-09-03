@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupPolicies)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
  * 
- * ## Example Usage
- * 
- * ### Netapp Backup Policy Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -237,16 +235,12 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The name of the backup policy. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the backup policy. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -64,8 +64,6 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     /**
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
-     *
-     * - - -
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
@@ -109,8 +107,6 @@ export interface ProjectDefaultNetworkTierState {
     /**
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
-     *
-     * - - -
      */
     networkTier?: pulumi.Input<string>;
     /**
@@ -127,8 +123,6 @@ export interface ProjectDefaultNetworkTierArgs {
     /**
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
-     *
-     * - - -
      */
     networkTier: pulumi.Input<string>;
     /**

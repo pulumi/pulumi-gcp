@@ -28,9 +28,6 @@ class ScopeArgs:
         """
         The set of arguments for constructing a Scope resource.
         :param pulumi.Input[str] scope_id: The client-provided identifier of the scope.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -56,9 +53,6 @@ class ScopeArgs:
     def scope_id(self) -> pulumi.Input[str]:
         """
         The client-provided identifier of the scope.
-
-
-        - - -
         """
         return pulumi.get(self, "scope_id")
 
@@ -146,9 +140,6 @@ class _ScopeState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] scope_id: The client-provided identifier of the scope.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]] states: State of the scope resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
@@ -289,9 +280,6 @@ class _ScopeState:
     def scope_id(self) -> Optional[pulumi.Input[str]]:
         """
         The client-provided identifier of the scope.
-
-
-        - - -
         """
         return pulumi.get(self, "scope_id")
 
@@ -354,7 +342,7 @@ class Scope(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.scopes)
         * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+          * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
 
@@ -416,9 +404,6 @@ class Scope(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope_id: The client-provided identifier of the scope.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -433,7 +418,7 @@ class Scope(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.scopes)
         * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+          * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
 
@@ -572,9 +557,6 @@ class Scope(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] scope_id: The client-provided identifier of the scope.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScopeStateArgs', 'ScopeStateArgsDict']]]] states: State of the scope resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
@@ -676,9 +658,6 @@ class Scope(pulumi.CustomResource):
     def scope_id(self) -> pulumi.Output[str]:
         """
         The client-provided identifier of the scope.
-
-
-        - - -
         """
         return pulumi.get(self, "scope_id")
 

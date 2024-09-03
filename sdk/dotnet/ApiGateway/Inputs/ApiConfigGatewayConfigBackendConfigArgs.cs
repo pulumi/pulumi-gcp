@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ApiGateway.Inputs
     {
         /// <summary>
         /// Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-        /// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+        /// (&lt;https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)&gt;.
         /// </summary>
         [Input("googleServiceAccount", required: true)]
         public Input<string> GoogleServiceAccount { get; set; } = null!;

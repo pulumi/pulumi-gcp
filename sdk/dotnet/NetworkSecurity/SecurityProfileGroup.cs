@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfileGroups)
     /// * How-to Guides
-    ///     * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
-    ///     * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
+    ///   * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
+    ///   * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
     /// 
     /// ## Example Usage
     /// 
@@ -113,9 +113,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the security profile group resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -227,9 +224,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the security profile group resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -315,9 +309,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the security profile group resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

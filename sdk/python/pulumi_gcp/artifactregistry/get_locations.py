@@ -79,7 +79,7 @@ def get_locations(project: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+      * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
     ## Example Usage
 
@@ -90,7 +90,7 @@ def get_locations(project: Optional[str] = None,
     available = gcp.artifactregistry.get_locations()
     ```
 
-    ### Multi-Regional Artifact Registry Deployment
+    ### Multi-regional Artifact Registry deployment
 
     ```python
     import pulumi
@@ -132,7 +132,7 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+      * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
     ## Example Usage
 
@@ -143,7 +143,7 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     available = gcp.artifactregistry.get_locations()
     ```
 
-    ### Multi-Regional Artifact Registry Deployment
+    ### Multi-regional Artifact Registry deployment
 
     ```python
     import pulumi

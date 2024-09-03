@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+    ///   * [Official Documentation](https://cloud.google.com/binary-authorization/)
     /// 
     /// ## Example Usage
     /// 
@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// });
     /// ```
+    /// 
     /// ### Binary Authorization Policy Global Evaluation
     /// 
     /// ```csharp

@@ -32,9 +32,6 @@ class PreventionDiscoveryConfigArgs:
         """
         The set of arguments for constructing a PreventionDiscoveryConfig resource.
         :param pulumi.Input[str] location: Location to create the discovery config in.
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
@@ -69,9 +66,6 @@ class PreventionDiscoveryConfigArgs:
     def location(self) -> pulumi.Input[str]:
         """
         Location to create the discovery config in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -197,9 +191,6 @@ class _PreventionDiscoveryConfigState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input[str] last_run_time: Output only. The timestamp of the last time this config was executed
         :param pulumi.Input[str] location: Location to create the discovery config in.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
         :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource
                Structure is documented below.
@@ -318,9 +309,6 @@ class _PreventionDiscoveryConfigState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location to create the discovery config in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -427,7 +415,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.locations.discoveryConfigs)
         * How-to Guides
-            * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
+          * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
 
         ## Example Usage
 
@@ -456,9 +444,6 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input[str] location: Location to create the discovery config in.
-               
-               
-               - - -
         :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
@@ -482,7 +467,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.locations.discoveryConfigs)
         * How-to Guides
-            * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
+          * [Schedule inspection scan](https://cloud.google.com/dlp/docs/schedule-inspection-scan)
 
         ## Example Usage
 
@@ -592,9 +577,6 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input[str] last_run_time: Output only. The timestamp of the last time this config was executed
         :param pulumi.Input[str] location: Location to create the discovery config in.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
         :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource
                Structure is documented below.
@@ -681,9 +663,6 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         Location to create the discovery config in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

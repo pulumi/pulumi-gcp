@@ -18,7 +18,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
     /**
      * Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     @Import(name="branch")
@@ -26,7 +26,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
     /**
      * @return Regex of branches to match.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<Output<String>> branch() {
@@ -93,7 +93,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
         /**
          * @param branch Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class TriggerRepositoryEventConfigPullRequestArgs extends com.pulum
 
         /**
          * @param branch Regex of branches to match.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 

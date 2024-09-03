@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// in the future.
         /// This field is optional. If this field is not empty, then it must be a
         /// valid Prometheus label name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("alertRule")]
         public Input<string>? AlertRule { get; set; }
@@ -55,7 +53,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// must be valid.
         /// Label values can be templatized by using variables. The only available
         /// variable names are the names of the labels in the PromQL result, including
-        /// "__name__" and "value". "labels" may be empty. This field is intended to be
+        /// "**name**" and "value". "labels" may be empty. This field is intended to be
         /// used for organizing and identifying the AlertPolicy
         /// </summary>
         public InputMap<string> Labels

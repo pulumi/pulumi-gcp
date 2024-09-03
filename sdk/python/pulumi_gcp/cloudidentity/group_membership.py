@@ -249,7 +249,7 @@ class GroupMembership(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+          * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -292,6 +292,7 @@ class GroupMembership(pulumi.CustomResource):
                 "name": "MEMBER",
             }])
         ```
+
         ### Cloud Identity Group Membership User
 
         ```python
@@ -356,7 +357,7 @@ class GroupMembership(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+          * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -399,6 +400,7 @@ class GroupMembership(pulumi.CustomResource):
                 "name": "MEMBER",
             }])
         ```
+
         ### Cloud Identity Group Membership User
 
         ```python

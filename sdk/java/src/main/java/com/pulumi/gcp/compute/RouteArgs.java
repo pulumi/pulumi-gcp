@@ -82,16 +82,12 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The network that this route applies to.
      * 
-     * ***
-     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
      * @return The network that this route applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -133,7 +129,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * &lt;https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule&gt;
      * * regions/region/forwardingRules/forwardingRule
      *   When the beta provider, you can also specify the IP address
      *   of a forwarding rule from the same VPC or any peered VPC.
@@ -152,7 +148,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * &lt;https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule&gt;
      * * regions/region/forwardingRules/forwardingRule
      *   When the beta provider, you can also specify the IP address
      *   of a forwarding rule from the same VPC or any peered VPC.
@@ -413,8 +409,6 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network that this route applies to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -425,8 +419,6 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The network that this route applies to.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -476,7 +468,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
          * rule as a partial or full URL. For example, the following
          * are all valid values:
          * * 10.128.0.56
-         * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * * &lt;https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule&gt;
          * * regions/region/forwardingRules/forwardingRule
          *   When the beta provider, you can also specify the IP address
          *   of a forwarding rule from the same VPC or any peered VPC.
@@ -499,7 +491,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
          * rule as a partial or full URL. For example, the following
          * are all valid values:
          * * 10.128.0.56
-         * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * * &lt;https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule&gt;
          * * regions/region/forwardingRules/forwardingRule
          *   When the beta provider, you can also specify the IP address
          *   of a forwarding rule from the same VPC or any peered VPC.

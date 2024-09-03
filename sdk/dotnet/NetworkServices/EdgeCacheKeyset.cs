@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheKeysets)
     /// * How-to Guides
-    ///     * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
+    ///   * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Services Edge Cache Keyset Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -51,7 +49,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// ### Network Services Edge Cache Keyset Dual Token
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -151,9 +149,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// Name of the resource; provided by the client when the resource is created.
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -269,9 +264,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// Name of the resource; provided by the client when the resource is created.
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -365,9 +357,6 @@ namespace Pulumi.Gcp.NetworkServices
         /// Name of the resource; provided by the client when the resource is created.
         /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         /// and all following characters must be a dash, underscore, letter or digit.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -117,16 +117,12 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
     /**
      * Location to create the discovery config in.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Location to create the discovery config in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -434,8 +430,6 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
         /**
          * @param location Location to create the discovery config in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -446,8 +440,6 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
 
         /**
          * @param location Location to create the discovery config in.
-         * 
-         * ***
          * 
          * @return builder
          * 

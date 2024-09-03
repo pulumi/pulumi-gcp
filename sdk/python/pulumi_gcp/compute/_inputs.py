@@ -1625,7 +1625,7 @@ if not MYPY:
         metric scales number of virtual machines handling requests
         to increase or decrease proportionally to the metric.
         For example, a good metric to use as a utilizationTarget is
-        www.googleapis.com/compute/instance/network/received_bytes_count.
+        <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
         The autoscaler will work to keep this value constant for each
         of the instances.
         """
@@ -1696,7 +1696,7 @@ class AutoscalerAutoscalingPolicyMetricArgs:
                metric scales number of virtual machines handling requests
                to increase or decrease proportionally to the metric.
                For example, a good metric to use as a utilizationTarget is
-               www.googleapis.com/compute/instance/network/received_bytes_count.
+               <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
                The autoscaler will work to keep this value constant for each
                of the instances.
         :param pulumi.Input[str] type: Defines how target utilization value is expressed for a
@@ -1799,7 +1799,7 @@ class AutoscalerAutoscalingPolicyMetricArgs:
         metric scales number of virtual machines handling requests
         to increase or decrease proportionally to the metric.
         For example, a good metric to use as a utilizationTarget is
-        www.googleapis.com/compute/instance/network/received_bytes_count.
+        <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
         The autoscaler will work to keep this value constant for each
         of the instances.
         """
@@ -2084,7 +2084,7 @@ if not MYPY:
         """
         time_zone: NotRequired[pulumi.Input[str]]
         """
-        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
 elif False:
     AutoscalerAutoscalingPolicyScalingScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -2106,7 +2106,7 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
         :param pulumi.Input[str] schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
-        :param pulumi.Input[str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        :param pulumi.Input[str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
         pulumi.set(__self__, "duration_sec", duration_sec)
         pulumi.set(__self__, "min_required_replicas", min_required_replicas)
@@ -2195,7 +2195,7 @@ class AutoscalerAutoscalingPolicyScalingScheduleArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
         return pulumi.get(self, "time_zone")
 
@@ -4479,7 +4479,7 @@ if not MYPY:
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
         """
 elif False:
@@ -4515,7 +4515,7 @@ class BackendServiceLocalityLbPolicyPolicyArgs:
                * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
                Maglev is not as stable as ring hash but has faster table lookup
                build times and host selection times. For more information about
-               Maglev, refer to https://ai.google/research/pubs/pub44824
+               Maglev, refer to <https://ai.google/research/pubs/pub44824>
                Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
         """
         pulumi.set(__self__, "name", name)
@@ -4549,7 +4549,7 @@ class BackendServiceLocalityLbPolicyPolicyArgs:
         * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         Maglev is not as stable as ring hash but has faster table lookup
         build times and host selection times. For more information about
-        Maglev, refer to https://ai.google/research/pubs/pub44824
+        Maglev, refer to <https://ai.google/research/pubs/pub44824>
         Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`.
         """
         return pulumi.get(self, "name")
@@ -5064,7 +5064,6 @@ if not MYPY:
         Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
         Structure is documented below.
 
-
         <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         """
         client_tls_policy: NotRequired[pulumi.Input[str]]
@@ -5093,7 +5092,6 @@ class BackendServiceSecuritySettingsArgs:
                Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
                Structure is documented below.
                
-               
                <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         :param pulumi.Input[str] client_tls_policy: ClientTlsPolicy is a resource that specifies how a client should authenticate
                connections to backends of a service. This resource itself does not affect
@@ -5116,7 +5114,6 @@ class BackendServiceSecuritySettingsArgs:
         The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
         Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
         Structure is documented below.
-
 
         <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         """
@@ -5293,8 +5290,6 @@ if not MYPY:
         state: NotRequired[pulumi.Input[str]]
         """
         Output-only. Status of replication on the secondary disk.
-
-        - - -
         """
 elif False:
     DiskAsyncReplicationSecondaryDiskArgsDict: TypeAlias = Mapping[str, Any]
@@ -5307,8 +5302,6 @@ class DiskAsyncReplicationSecondaryDiskArgs:
         """
         :param pulumi.Input[str] disk: The secondary disk.
         :param pulumi.Input[str] state: Output-only. Status of replication on the secondary disk.
-               
-               - - -
         """
         pulumi.set(__self__, "disk", disk)
         if state is not None:
@@ -5331,8 +5324,6 @@ class DiskAsyncReplicationSecondaryDiskArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Output-only. Status of replication on the secondary disk.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -5349,7 +5340,7 @@ if not MYPY:
         in the cloud console. Your project's Compute Engine System service account
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         """
         kms_key_service_account: NotRequired[pulumi.Input[str]]
         """
@@ -5391,7 +5382,7 @@ class DiskDiskEncryptionKeyArgs:
                in the cloud console. Your project's Compute Engine System service account
                (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-               See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+               See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         :param pulumi.Input[str] kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -5424,7 +5415,7 @@ class DiskDiskEncryptionKeyArgs:
         in the cloud console. Your project's Compute Engine System service account
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -5622,7 +5613,7 @@ if not MYPY:
         in the cloud console. Your project's Compute Engine System service account
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         """
         kms_key_service_account: NotRequired[pulumi.Input[str]]
         """
@@ -5655,7 +5646,7 @@ class DiskSourceImageEncryptionKeyArgs:
                in the cloud console. Your project's Compute Engine System service account
                (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-               See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+               See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         :param pulumi.Input[str] kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -5681,7 +5672,7 @@ class DiskSourceImageEncryptionKeyArgs:
         in the cloud console. Your project's Compute Engine System service account
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -5738,7 +5729,7 @@ if not MYPY:
         in the cloud console. Your project's Compute Engine System service account
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         """
         kms_key_service_account: NotRequired[pulumi.Input[str]]
         """
@@ -5771,7 +5762,7 @@ class DiskSourceSnapshotEncryptionKeyArgs:
                in the cloud console. Your project's Compute Engine System service account
                (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-               See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+               See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         :param pulumi.Input[str] kms_key_service_account: The service account used for the encryption request for the given KMS key.
                If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -5797,7 +5788,7 @@ class DiskSourceSnapshotEncryptionKeyArgs:
         in the cloud console. Your project's Compute Engine System service account
         (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
         `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-        See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        See <https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys>
         """
         return pulumi.get(self, "kms_key_self_link")
 
@@ -8368,7 +8359,7 @@ if not MYPY:
         disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -8376,7 +8367,7 @@ if not MYPY:
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         encoded SHA-256 hash of the [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         """
         kms_key_self_link: NotRequired[pulumi.Input[str]]
         """
@@ -8408,12 +8399,12 @@ class InstanceAttachedDiskArgs:
         :param pulumi.Input[str] device_name: Name with which the attached disk will be accessible
                under `/dev/disk/by-id/google-*`
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         :param pulumi.Input[str] disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is
                stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
                and `disk_encryption_key_raw` may be set.
@@ -8464,7 +8455,7 @@ class InstanceAttachedDiskArgs:
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         """
@@ -8480,7 +8471,7 @@ class InstanceAttachedDiskArgs:
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         encoded SHA-256 hash of the [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
@@ -8533,7 +8524,7 @@ if not MYPY:
         disk_encryption_key_raw: NotRequired[pulumi.Input[str]]
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
         may be set.
@@ -8542,7 +8533,7 @@ if not MYPY:
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         encoded SHA-256 hash of the [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         """
         initialize_params: NotRequired[pulumi.Input['InstanceBootDiskInitializeParamsArgsDict']]
         """
@@ -8587,13 +8578,13 @@ class InstanceBootDiskArgs:
         :param pulumi.Input[str] device_name: Name with which attached disk will be accessible.
                On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
                may be set.
         :param pulumi.Input[str] disk_encryption_key_sha256: The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                encoded SHA-256 hash of the [customer-supplied encryption key]
-               (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+               (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
@@ -8654,7 +8645,7 @@ class InstanceBootDiskArgs:
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
         """
         A 256-bit [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)>,
         encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
         may be set.
@@ -8671,7 +8662,7 @@ class InstanceBootDiskArgs:
         """
         The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
         encoded SHA-256 hash of the [customer-supplied encryption key]
-        (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
+        (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
@@ -8792,7 +8783,7 @@ if not MYPY:
         """
         The URL of the storage pool in which the new disk is created.
         For example:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         """
         type: NotRequired[pulumi.Input[str]]
@@ -8847,7 +8838,7 @@ class InstanceBootDiskInitializeParamsArgs:
                will inherit the size of its base image.
         :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
                For example:
-               * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
@@ -8983,7 +8974,7 @@ class InstanceBootDiskInitializeParamsArgs:
         """
         The URL of the storage pool in which the new disk is created.
         For example:
-        * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
         """
         return pulumi.get(self, "storage_pool")
@@ -13234,8 +13225,6 @@ if not MYPY:
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         , The label key-value pairs that you want to patch onto the instance.
-
-        - - -
         """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -13251,8 +13240,6 @@ class InstanceGroupManagerAllInstancesConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: , The label key-value pairs that you want to patch onto the instance.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
@@ -13265,8 +13252,6 @@ class InstanceGroupManagerAllInstancesConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         , The label key-value pairs that you want to patch onto the instance.
-
-        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -13345,7 +13330,6 @@ if not MYPY:
         default_action_on_failure: NotRequired[pulumi.Input[str]]
         """
         , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-        - - -
         """
         force_update_on_repair: NotRequired[pulumi.Input[str]]
         """
@@ -13361,7 +13345,6 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
                  force_update_on_repair: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-               - - -
         :param pulumi.Input[str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         if default_action_on_failure is not None:
@@ -13374,7 +13357,6 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def default_action_on_failure(self) -> Optional[pulumi.Input[str]]:
         """
         , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-        - - -
         """
         return pulumi.get(self, "default_action_on_failure")
 
@@ -13404,7 +13386,6 @@ if not MYPY:
         port: pulumi.Input[int]
         """
         The port number.
-        - - -
         """
 elif False:
     InstanceGroupManagerNamedPortArgsDict: TypeAlias = Mapping[str, Any]
@@ -13417,7 +13398,6 @@ class InstanceGroupManagerNamedPortArgs:
         """
         :param pulumi.Input[str] name: The name of the port.
         :param pulumi.Input[int] port: The port number.
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
@@ -13439,7 +13419,6 @@ class InstanceGroupManagerNamedPortArgs:
     def port(self) -> pulumi.Input[int]:
         """
         The port number.
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -13489,7 +13468,6 @@ if not MYPY:
         mode: NotRequired[pulumi.Input[str]]
         """
         Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-        - - -
         """
 elif False:
     InstanceGroupManagerStandbyPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -13502,7 +13480,6 @@ class InstanceGroupManagerStandbyPolicyArgs:
         """
         :param pulumi.Input[int] initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
         :param pulumi.Input[str] mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-               - - -
         """
         if initial_delay_sec is not None:
             pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
@@ -13526,7 +13503,6 @@ class InstanceGroupManagerStandbyPolicyArgs:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-        - - -
         """
         return pulumi.get(self, "mode")
 
@@ -13993,7 +13969,6 @@ if not MYPY:
         replacement_method: NotRequired[pulumi.Input[str]]
         """
         , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        - - -
         """
 elif False:
     InstanceGroupManagerUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -14020,7 +13995,6 @@ class InstanceGroupManagerUpdatePolicyArgs:
         :param pulumi.Input[int] min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param pulumi.Input[str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param pulumi.Input[str] replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-               - - -
         """
         pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
@@ -14140,7 +14114,6 @@ class InstanceGroupManagerUpdatePolicyArgs:
     def replacement_method(self) -> Optional[pulumi.Input[str]]:
         """
         , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        - - -
         """
         return pulumi.get(self, "replacement_method")
 
@@ -20353,7 +20326,6 @@ if not MYPY:
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
 
-
         <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         """
         dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -20379,7 +20351,6 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
                
-               
                <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
@@ -20398,7 +20369,6 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
-
 
         <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         """
@@ -20711,8 +20681,6 @@ if not MYPY:
         url: pulumi.Input[str]
         """
         The URL of the instances where this rule should be active.
-
-        - - -
         """
 elif False:
     PacketMirroringMirroredResourcesInstanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -20723,8 +20691,6 @@ class PacketMirroringMirroredResourcesInstanceArgs:
                  url: pulumi.Input[str]):
         """
         :param pulumi.Input[str] url: The URL of the instances where this rule should be active.
-               
-               - - -
         """
         pulumi.set(__self__, "url", url)
 
@@ -20733,8 +20699,6 @@ class PacketMirroringMirroredResourcesInstanceArgs:
     def url(self) -> pulumi.Input[str]:
         """
         The URL of the instances where this rule should be active.
-
-        - - -
         """
         return pulumi.get(self, "url")
 
@@ -21715,7 +21679,7 @@ if not MYPY:
         metric scales number of virtual machines handling requests
         to increase or decrease proportionally to the metric.
         For example, a good metric to use as a utilizationTarget is
-        www.googleapis.com/compute/instance/network/received_bytes_count.
+        <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
         The autoscaler will work to keep this value constant for each
         of the instances.
         """
@@ -21786,7 +21750,7 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
                metric scales number of virtual machines handling requests
                to increase or decrease proportionally to the metric.
                For example, a good metric to use as a utilizationTarget is
-               www.googleapis.com/compute/instance/network/received_bytes_count.
+               <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
                The autoscaler will work to keep this value constant for each
                of the instances.
         :param pulumi.Input[str] type: Defines how target utilization value is expressed for a
@@ -21889,7 +21853,7 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
         metric scales number of virtual machines handling requests
         to increase or decrease proportionally to the metric.
         For example, a good metric to use as a utilizationTarget is
-        www.googleapis.com/compute/instance/network/received_bytes_count.
+        <http://www.googleapis.com/compute/instance/network/received_bytes_count>.
         The autoscaler will work to keep this value constant for each
         of the instances.
         """
@@ -22174,7 +22138,7 @@ if not MYPY:
         """
         time_zone: NotRequired[pulumi.Input[str]]
         """
-        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
 elif False:
     RegionAutoscalerAutoscalingPolicyScalingScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -22196,7 +22160,7 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
         :param pulumi.Input[str] schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
-        :param pulumi.Input[str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        :param pulumi.Input[str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
         pulumi.set(__self__, "duration_sec", duration_sec)
         pulumi.set(__self__, "min_required_replicas", min_required_replicas)
@@ -22285,7 +22249,7 @@ class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
         return pulumi.get(self, "time_zone")
 
@@ -26355,8 +26319,6 @@ if not MYPY:
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         , The label key-value pairs that you want to patch onto the instance.
-
-        - - -
         """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -26372,8 +26334,6 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: , The label key-value pairs that you want to patch onto the instance.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
@@ -26386,8 +26346,6 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         , The label key-value pairs that you want to patch onto the instance.
-
-        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -26466,8 +26424,6 @@ if not MYPY:
         default_action_on_failure: NotRequired[pulumi.Input[str]]
         """
         , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-
-        - - -
         """
         force_update_on_repair: NotRequired[pulumi.Input[str]]
         """
@@ -26483,8 +26439,6 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
                  force_update_on_repair: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-               
-               - - -
         :param pulumi.Input[str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         if default_action_on_failure is not None:
@@ -26497,8 +26451,6 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
     def default_action_on_failure(self) -> Optional[pulumi.Input[str]]:
         """
         , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-
-        - - -
         """
         return pulumi.get(self, "default_action_on_failure")
 
@@ -26528,7 +26480,6 @@ if not MYPY:
         port: pulumi.Input[int]
         """
         The port number.
-        - - -
         """
 elif False:
     RegionInstanceGroupManagerNamedPortArgsDict: TypeAlias = Mapping[str, Any]
@@ -26541,7 +26492,6 @@ class RegionInstanceGroupManagerNamedPortArgs:
         """
         :param pulumi.Input[str] name: The name of the port.
         :param pulumi.Input[int] port: The port number.
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
@@ -26563,7 +26513,6 @@ class RegionInstanceGroupManagerNamedPortArgs:
     def port(self) -> pulumi.Input[int]:
         """
         The port number.
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -26613,7 +26562,6 @@ if not MYPY:
         mode: NotRequired[pulumi.Input[str]]
         """
         Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-        - - -
         """
 elif False:
     RegionInstanceGroupManagerStandbyPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -26626,7 +26574,6 @@ class RegionInstanceGroupManagerStandbyPolicyArgs:
         """
         :param pulumi.Input[int] initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
         :param pulumi.Input[str] mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-               - - -
         """
         if initial_delay_sec is not None:
             pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
@@ -26650,7 +26597,6 @@ class RegionInstanceGroupManagerStandbyPolicyArgs:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-        - - -
         """
         return pulumi.get(self, "mode")
 
@@ -27121,7 +27067,6 @@ if not MYPY:
         replacement_method: NotRequired[pulumi.Input[str]]
         """
         , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        - - -
         """
 elif False:
     RegionInstanceGroupManagerUpdatePolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -27150,7 +27095,6 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
         :param pulumi.Input[int] min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param pulumi.Input[str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param pulumi.Input[str] replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-               - - -
         """
         pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
@@ -27284,7 +27228,6 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
     def replacement_method(self) -> Optional[pulumi.Input[str]]:
         """
         , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        - - -
         """
         return pulumi.get(self, "replacement_method")
 
@@ -39100,7 +39043,7 @@ if not MYPY:
         """
         The minimum CPU platform for the reservation. For example,
         `"Intel Skylake"`. See
-        the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+        the CPU platform availability reference](<https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones>)
         for information on available CPU platforms.
         """
 elif False:
@@ -39122,7 +39065,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
                Structure is documented below.
         :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform for the reservation. For example,
                `"Intel Skylake"`. See
-               the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+               the CPU platform availability reference](<https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones>)
                for information on available CPU platforms.
         """
         pulumi.set(__self__, "machine_type", machine_type)
@@ -39178,7 +39121,7 @@ class ReservationSpecificReservationInstancePropertiesArgs:
         """
         The minimum CPU platform for the reservation. For example,
         `"Intel Skylake"`. See
-        the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+        the CPU platform availability reference](<https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones>)
         for information on available CPU platforms.
         """
         return pulumi.get(self, "min_cpu_platform")
@@ -39255,8 +39198,6 @@ if not MYPY:
         disk_size_gb: pulumi.Input[int]
         """
         The size of the disk in base-2 GB.
-
-        - - -
         """
         interface: NotRequired[pulumi.Input[str]]
         """
@@ -39274,8 +39215,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
                  interface: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] disk_size_gb: The size of the disk in base-2 GB.
-               
-               - - -
         :param pulumi.Input[str] interface: The disk interface to use for attaching this disk.
                Default value is `SCSI`.
                Possible values are: `SCSI`, `NVME`.
@@ -39289,8 +39228,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
     def disk_size_gb(self) -> pulumi.Input[int]:
         """
         The size of the disk in base-2 GB.
-
-        - - -
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -39871,7 +39808,7 @@ if not MYPY:
         locale: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
         """
         message: NotRequired[pulumi.Input[str]]
         """
@@ -39888,7 +39825,7 @@ class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs:
                  message: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] locale: (Output)
-               The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+               The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
         :param pulumi.Input[str] message: (Output)
                The localized error message in the above locale.
         """
@@ -39902,7 +39839,7 @@ class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs:
     def locale(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
         """
         return pulumi.get(self, "locale")
 
@@ -40555,7 +40492,7 @@ if not MYPY:
         locale: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
         """
         message: NotRequired[pulumi.Input[str]]
         """
@@ -40572,7 +40509,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs:
                  message: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] locale: (Output)
-               The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+               The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
         :param pulumi.Input[str] message: (Output)
                The localized error message in the above locale.
         """
@@ -40586,7 +40523,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs:
     def locale(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        The locale used following the specification defined at <https://www.rfc-editor.org/rfc/bcp/bcp47.txt>. Examples are: "en-US", "fr-CH", "es-MX"
         """
         return pulumi.get(self, "locale")
 
@@ -40907,7 +40844,7 @@ if not MYPY:
         time_zone: pulumi.Input[str]
         """
         Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-        from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
         expiration_time: NotRequired[pulumi.Input[str]]
         """
@@ -40940,7 +40877,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
                  vm_stop_schedule: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs']] = None):
         """
         :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-               from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+               from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         :param pulumi.Input[str] expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
         :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs'] vm_start_schedule: Specifies the schedule for starting instances.
@@ -40963,7 +40900,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
     def time_zone(self) -> pulumi.Input[str]:
         """
         Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-        from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        from the tz database: <http://en.wikipedia.org/wiki/Tz_database>.
         """
         return pulumi.get(self, "time_zone")
 
@@ -42551,8 +42488,7 @@ if not MYPY:
         """
         actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgsDict']]]]
         """
-        'CEL expressions to evaluate to modify a route when this term matches.'\\
-        Structure is documented below.
+        'CEL expressions to evaluate to modify a route when this term matches.'Structure is documented below.
         """
         match: NotRequired[pulumi.Input['RouterRoutePolicyTermMatchArgsDict']]
         """
@@ -42570,8 +42506,7 @@ class RouterRoutePolicyTermArgs:
                  match: Optional[pulumi.Input['RouterRoutePolicyTermMatchArgs']] = None):
         """
         :param pulumi.Input[int] priority: The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
-        :param pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]] actions: 'CEL expressions to evaluate to modify a route when this term matches.'\\
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]] actions: 'CEL expressions to evaluate to modify a route when this term matches.'Structure is documented below.
         :param pulumi.Input['RouterRoutePolicyTermMatchArgs'] match: CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.
                Structure is documented below.
         """
@@ -42597,8 +42532,7 @@ class RouterRoutePolicyTermArgs:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermActionArgs']]]]:
         """
-        'CEL expressions to evaluate to modify a route when this term matches.'\\
-        Structure is documented below.
+        'CEL expressions to evaluate to modify a route when this term matches.'Structure is documented below.
         """
         return pulumi.get(self, "actions")
 
@@ -42635,8 +42569,6 @@ if not MYPY:
         """
         String indicating the location of the expression for error
         reporting, e.g. a file name and a position in the file
-
-        - - -
         """
         title: NotRequired[pulumi.Input[str]]
         """
@@ -42659,8 +42591,6 @@ class RouterRoutePolicyTermActionArgs:
         :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] location: String indicating the location of the expression for error
                reporting, e.g. a file name and a position in the file
-               
-               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its
                purpose.
         """
@@ -42703,8 +42633,6 @@ class RouterRoutePolicyTermActionArgs:
         """
         String indicating the location of the expression for error
         reporting, e.g. a file name and a position in the file
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -45609,7 +45537,7 @@ if not MYPY:
         filter_expr: NotRequired[pulumi.Input[str]]
         """
         Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-        https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        <https://cloud.google.com/vpc/docs/flow-logs#filtering> for details on how to format this field.
         The default value is 'true', which evaluates to include everything.
         """
         flow_sampling: NotRequired[pulumi.Input[float]]
@@ -45652,7 +45580,7 @@ class SubnetworkLogConfigArgs:
                Default value is `INTERVAL_5_SEC`.
                Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
         :param pulumi.Input[str] filter_expr: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-               https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+               <https://cloud.google.com/vpc/docs/flow-logs#filtering> for details on how to format this field.
                The default value is 'true', which evaluates to include everything.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled.
                The value of the field must be in [0, 1]. Set the sampling rate of VPC
@@ -45700,7 +45628,7 @@ class SubnetworkLogConfigArgs:
     def filter_expr(self) -> Optional[pulumi.Input[str]]:
         """
         Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-        https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        <https://cloud.google.com/vpc/docs/flow-logs#filtering> for details on how to format this field.
         The default value is 'true', which evaluates to include everything.
         """
         return pulumi.get(self, "filter_expr")
@@ -45836,7 +45764,7 @@ if not MYPY:
         error_service: NotRequired[pulumi.Input[str]]
         """
         The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
         compute/v1/projects/project/global/backendBuckets/myBackendBucket
         global/backendBuckets/myBackendBucket
         If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -45857,7 +45785,7 @@ class URLMapDefaultCustomErrorResponsePolicyArgs:
                If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
                Structure is documented below.
         :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
                compute/v1/projects/project/global/backendBuckets/myBackendBucket
                global/backendBuckets/myBackendBucket
                If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -45889,7 +45817,7 @@ class URLMapDefaultCustomErrorResponsePolicyArgs:
     def error_service(self) -> Optional[pulumi.Input[str]]:
         """
         The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
         compute/v1/projects/project/global/backendBuckets/myBackendBucket
         global/backendBuckets/myBackendBucket
         If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -47868,7 +47796,7 @@ if not MYPY:
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
         A RouteRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
         defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
@@ -47947,7 +47875,7 @@ class URLMapPathMatcherArgs:
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
                A RouteRule for /coming_soon/ is configured for the error code 404.
-               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
                When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
                defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
                Structure is documented below.
@@ -48022,7 +47950,7 @@ class URLMapPathMatcherArgs:
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
         A RouteRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
         defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
@@ -48155,7 +48083,7 @@ if not MYPY:
         error_service: NotRequired[pulumi.Input[str]]
         """
         The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
         compute/v1/projects/project/global/backendBuckets/myBackendBucket
         global/backendBuckets/myBackendBucket
         If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -48176,7 +48104,7 @@ class URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs:
                If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
                Structure is documented below.
         :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
                compute/v1/projects/project/global/backendBuckets/myBackendBucket
                global/backendBuckets/myBackendBucket
                If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -48208,7 +48136,7 @@ class URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs:
     def error_service(self) -> Optional[pulumi.Input[str]]:
         """
         The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
         compute/v1/projects/project/global/backendBuckets/myBackendBucket
         global/backendBuckets/myBackendBucket
         If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -50108,7 +50036,7 @@ if not MYPY:
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
         A PathRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         customErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
         """
@@ -50154,7 +50082,7 @@ class URLMapPathMatcherPathRuleArgs:
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
                A PathRule for /coming_soon/ is configured for the error code 404.
-               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
                customErrorResponsePolicy is supported only for global external Application Load Balancers.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing
@@ -50204,7 +50132,7 @@ class URLMapPathMatcherPathRuleArgs:
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
         A PathRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         customErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
         """
@@ -50273,7 +50201,7 @@ if not MYPY:
         error_service: NotRequired[pulumi.Input[str]]
         """
         The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
         compute/v1/projects/project/global/backendBuckets/myBackendBucket
         global/backendBuckets/myBackendBucket
         If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -50294,7 +50222,7 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs:
                If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
                Structure is documented below.
         :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-               https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+               <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
                compute/v1/projects/project/global/backendBuckets/myBackendBucket
                global/backendBuckets/myBackendBucket
                If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
@@ -50326,7 +50254,7 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs:
     def error_service(self) -> Optional[pulumi.Input[str]]:
         """
         The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-        https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+        <https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket>
         compute/v1/projects/project/global/backendBuckets/myBackendBucket
         global/backendBuckets/myBackendBucket
         If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.

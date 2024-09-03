@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Dataform.Outputs
         public readonly string? DefaultDatabase;
         /// <summary>
         /// Optional. The default BigQuery location to use. Defaults to "US".
-        /// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        /// See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
         /// </summary>
         public readonly string? DefaultLocation;
         /// <summary>

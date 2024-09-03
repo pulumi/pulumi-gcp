@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.lbTrafficExtensions)
     /// * How-to Guides
-    ///     * [Configure a traffic extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_traffic_extension)
-    /// 
-    /// ## Example Usage
+    ///   * [Configure a traffic extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_traffic_extension)
     /// 
     /// ## Import
     /// 

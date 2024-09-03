@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+ *   * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
  *
  * ## Example Usage
  *
@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Alert Policy Evaluation Missing Data
  *
  * ```typescript
@@ -72,6 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Alert Policy Forecast Options
  *
  * ```typescript
@@ -101,6 +103,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Monitoring Alert Policy Promql Condition
  *
  * ```typescript

@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Outputs
         /// match the structure and any object identifiers encoded in
         /// publicKeyPem (i.e. this algorithm must match that of the
         /// public key).
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? SignatureAlgorithm;
 

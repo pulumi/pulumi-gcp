@@ -28,9 +28,6 @@ class HostingChannelArgs:
         """
         The set of arguments for constructing a HostingChannel resource.
         :param pulumi.Input[str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
-               
-               
-               - - -
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
                will not be automatically deleted. This field is present in the output whether it's
@@ -60,9 +57,6 @@ class HostingChannelArgs:
     def channel_id(self) -> pulumi.Input[str]:
         """
         Required. Immutable. A unique ID within the site that identifies the channel.
-
-
-        - - -
         """
         return pulumi.get(self, "channel_id")
 
@@ -153,9 +147,6 @@ class _HostingChannelState:
         """
         Input properties used for looking up and filtering HostingChannel resources.
         :param pulumi.Input[str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
                will not be automatically deleted. This field is present in the output whether it's
@@ -198,9 +189,6 @@ class _HostingChannelState:
     def channel_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. Immutable. A unique ID within the site that identifies the channel.
-
-
-        - - -
         """
         return pulumi.get(self, "channel_id")
 
@@ -342,6 +330,7 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
+
         ### Firebasehosting Channel Full
 
         ```python
@@ -382,9 +371,6 @@ class HostingChannel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
-               
-               
-               - - -
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
@@ -420,6 +406,7 @@ class HostingChannel(pulumi.CustomResource):
             site_id=default.site_id,
             channel_id="channel-basic")
         ```
+
         ### Firebasehosting Channel Full
 
         ```python
@@ -529,9 +516,6 @@ class HostingChannel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
                will not be automatically deleted. This field is present in the output whether it's
@@ -570,9 +554,6 @@ class HostingChannel(pulumi.CustomResource):
     def channel_id(self) -> pulumi.Output[str]:
         """
         Required. Immutable. A unique ID within the site that identifies the channel.
-
-
-        - - -
         """
         return pulumi.get(self, "channel_id")
 

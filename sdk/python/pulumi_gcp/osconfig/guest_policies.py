@@ -411,11 +411,9 @@ class GuestPolicies(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+          * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 
-        ## Example Usage
-
-        ### Os Config Guest Policies Basic
+        ## 
 
         ```python
         import pulumi
@@ -453,7 +451,7 @@ class GuestPolicies(pulumi.CustomResource):
                 "desired_state": "UPDATED",
             }])
         ```
-        ### Os Config Guest Policies Packages
+        ## 
 
         ```python
         import pulumi
@@ -514,7 +512,7 @@ class GuestPolicies(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Os Config Guest Policies Recipes
+        ## 
 
         ```python
         import pulumi
@@ -610,11 +608,9 @@ class GuestPolicies(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+          * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 
-        ## Example Usage
-
-        ### Os Config Guest Policies Basic
+        ## 
 
         ```python
         import pulumi
@@ -652,7 +648,7 @@ class GuestPolicies(pulumi.CustomResource):
                 "desired_state": "UPDATED",
             }])
         ```
-        ### Os Config Guest Policies Packages
+        ## 
 
         ```python
         import pulumi
@@ -713,7 +709,7 @@ class GuestPolicies(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Os Config Guest Policies Recipes
+        ## 
 
         ```python
         import pulumi

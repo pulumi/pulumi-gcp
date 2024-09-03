@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
  * * How-to Guides
- *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+ *   * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
- * ## Example Usage
- *
- * ### Bigquery Reservation Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -124,9 +122,6 @@ export class Reservation extends pulumi.CustomResource {
     public readonly multiRegionAuxiliary!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -222,9 +217,6 @@ export interface ReservationState {
     multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -279,9 +271,6 @@ export interface ReservationArgs {
     multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

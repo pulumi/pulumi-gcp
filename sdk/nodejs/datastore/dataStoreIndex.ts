@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+ *   * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
  *
  * > **Warning:** `datastoreIndex` is deprecated and will be removed in a future major release.
  * Use `firestoreIndex` instead; this resource is deprecated because it only supports the (default) database.
@@ -124,9 +124,6 @@ export class DataStoreIndex extends pulumi.CustomResource {
     public /*out*/ readonly indexId!: pulumi.Output<string>;
     /**
      * The entity kind which the index applies to.
-     *
-     *
-     * - - -
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -190,9 +187,6 @@ export interface DataStoreIndexState {
     indexId?: pulumi.Input<string>;
     /**
      * The entity kind which the index applies to.
-     *
-     *
-     * - - -
      */
     kind?: pulumi.Input<string>;
     /**
@@ -219,9 +213,6 @@ export interface DataStoreIndexArgs {
     ancestor?: pulumi.Input<string>;
     /**
      * The entity kind which the index applies to.
-     *
-     *
-     * - - -
      */
     kind: pulumi.Input<string>;
     /**

@@ -13,16 +13,12 @@ public final class CxEnvironmentVersionConfig {
     /**
      * @return Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
      * 
-     * ***
-     * 
      */
     private String version;
 
     private CxEnvironmentVersionConfig() {}
     /**
      * @return Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-     * 
-     * ***
      * 
      */
     public String version() {

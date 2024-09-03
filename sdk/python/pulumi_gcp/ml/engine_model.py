@@ -39,9 +39,6 @@ class EngineModelArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -111,9 +108,6 @@ class EngineModelArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name specified for the model.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -196,9 +190,6 @@ class _EngineModelState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -286,9 +277,6 @@ class _EngineModelState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name specified for the model.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -384,11 +372,9 @@ class EngineModel(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+          * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 
-        ## Example Usage
-
-        ### Ml Model Basic
+        ## 
 
         ```python
         import pulumi
@@ -399,7 +385,7 @@ class EngineModel(pulumi.CustomResource):
             description="My model",
             regions="us-central1")
         ```
-        ### Ml Model Full
+        ## 
 
         ```python
         import pulumi
@@ -450,9 +436,6 @@ class EngineModel(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -476,11 +459,9 @@ class EngineModel(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+          * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
 
-        ## Example Usage
-
-        ### Ml Model Basic
+        ## 
 
         ```python
         import pulumi
@@ -491,7 +472,7 @@ class EngineModel(pulumi.CustomResource):
             description="My model",
             regions="us-central1")
         ```
-        ### Ml Model Full
+        ## 
 
         ```python
         import pulumi
@@ -612,9 +593,6 @@ class EngineModel(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
-               
-               
-               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -681,9 +659,6 @@ class EngineModel(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name specified for the model.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

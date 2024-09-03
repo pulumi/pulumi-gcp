@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 //
-// ## Example Usage
-//
-// ### Data Fusion Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -49,7 +47,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Full
+// ##
 //
 // ```go
 // package main
@@ -123,7 +121,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Psc
+// ##
 //
 // ```go
 // package main
@@ -186,7 +184,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Cmek
+// ##
 //
 // ```go
 // package main
@@ -248,7 +246,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Enterprise
+// ##
 //
 // ```go
 // package main
@@ -276,7 +274,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Event
+// ##
 //
 // ```go
 // package main
@@ -314,7 +312,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Zone
+// ##
 //
 // ```go
 // package main
@@ -462,8 +460,6 @@ type Instance struct {
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
 	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -598,8 +594,6 @@ type instanceState struct {
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
 	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -697,8 +691,6 @@ type InstanceState struct {
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
 	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringPtrInput
@@ -769,8 +761,6 @@ type instanceArgs struct {
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
 	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-	//
-	// ***
 	Type string `pulumi:"type"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
@@ -836,8 +826,6 @@ type InstanceArgs struct {
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
 	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-	//
-	// ***
 	Type pulumi.StringInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput
@@ -1100,8 +1088,6 @@ func (o InstanceOutput) TenantProjectId() pulumi.StringOutput {
 //     with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 //     pipelines at low cost.
 //     Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-//
-// ***
 func (o InstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

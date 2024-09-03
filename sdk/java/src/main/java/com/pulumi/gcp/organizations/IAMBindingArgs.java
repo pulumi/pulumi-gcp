@@ -26,14 +26,14 @@ public final class IAMBindingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * 
      */
     @Import(name="members", required=true)
     private Output<List<String>> members;
 
     /**
-     * @return A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * @return A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * 
      */
     public Output<List<String>> members() {
@@ -111,7 +111,7 @@ public final class IAMBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * @param members A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class IAMBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * @param members A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class IAMBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * @param members A list of users that the role should apply to. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
          * 
          * @return builder
          * 

@@ -16,12 +16,10 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.backups)
     /// * How-to Guides
-    ///     * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
-    ///     * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
+    ///   * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
+    ///   * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Filestore Backup Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -146,9 +144,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -283,9 +278,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -392,9 +384,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -25,9 +25,6 @@ class EnvKeystoreArgs:
         The set of arguments for constructing a EnvKeystore resource.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the newly created keystore.
         """
         pulumi.set(__self__, "env_id", env_id)
@@ -40,9 +37,6 @@ class EnvKeystoreArgs:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -74,9 +68,6 @@ class _EnvKeystoreState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Aliases in this keystore.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the newly created keystore.
         """
         if aliases is not None:
@@ -104,9 +95,6 @@ class _EnvKeystoreState:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -142,7 +130,7 @@ class EnvKeystore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores/create)
         * How-to Guides
-            * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+          * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Import
 
@@ -166,9 +154,6 @@ class EnvKeystore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the newly created keystore.
         """
         ...
@@ -184,7 +169,7 @@ class EnvKeystore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores/create)
         * How-to Guides
-            * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+          * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Import
 
@@ -258,9 +243,6 @@ class EnvKeystore(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Aliases in this keystore.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the newly created keystore.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -286,9 +268,6 @@ class EnvKeystore(pulumi.CustomResource):
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 

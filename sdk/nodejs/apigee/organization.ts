@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
  * * How-to Guides
- *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+ *   * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  *
  * ## Example Usage
  *
@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [apigeeVpcConnection],
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  *
  * ```typescript
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  *     disableVpcPeering: true,
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Full
  *
  * ```typescript
@@ -110,6 +112,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  *
  * ```typescript
@@ -252,9 +255,6 @@ export class Organization extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The project ID associated with the Apigee organization.
-     *
-     *
-     * - - -
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -414,9 +414,6 @@ export interface OrganizationState {
     name?: pulumi.Input<string>;
     /**
      * The project ID associated with the Apigee organization.
-     *
-     *
-     * - - -
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -504,9 +501,6 @@ export interface OrganizationArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The project ID associated with the Apigee organization.
-     *
-     *
-     * - - -
      */
     projectId: pulumi.Input<string>;
     /**

@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
         /// This can be used on data of type: number, long, string, timestamp.
         /// If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        /// See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        /// See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig? BucketingConfig;
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         /// Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         /// Currently, only string and integer values can be hashed.
-        /// See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        /// See &lt;https://cloud.google.com/dlp/docs/pseudonymization&gt; to learn more.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig? CryptoHashConfig;
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig? CryptoReplaceFfxFpeConfig;
         /// <summary>
-        /// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        /// Shifts dates by random number of days, with option to be consistent for the same context. See &lt;https://cloud.google.com/dlp/docs/concepts-date-shifting&gt; to learn more.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig? DateShiftConfig;
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         /// This can be used on data of type: double, long.
         /// If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        /// See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        /// See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig? FixedSizeBucketingConfig;

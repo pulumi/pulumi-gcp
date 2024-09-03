@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
  * 
- * ## Example Usage
- * 
- * ### Network Peering Routes Config Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -93,7 +91,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Peering Routes Config Gke
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -240,16 +238,12 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
     /**
      * The name of the primary network for the peering.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The name of the primary network for the peering.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

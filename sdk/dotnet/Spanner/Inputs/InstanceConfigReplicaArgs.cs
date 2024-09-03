@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Spanner.Inputs
         /// <summary>
         /// If true, this location is designated as the default leader location where
         /// leader replicas are placed.
-        /// 
-        /// - - -
         /// </summary>
         [Input("defaultLeaderLocation")]
         public Input<bool>? DefaultLeaderLocation { get; set; }

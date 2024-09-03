@@ -40,7 +40,7 @@ public final class CertificateTemplatePredefinedValues {
      */
     private @Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage;
     /**
-     * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */
@@ -79,7 +79,7 @@ public final class CertificateTemplatePredefinedValues {
         return Optional.ofNullable(this.keyUsage);
     }
     /**
-     * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */

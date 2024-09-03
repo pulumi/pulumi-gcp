@@ -174,16 +174,12 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Id of the scope
      * 
-     * ***
-     * 
      */
     @Import(name="scopeId")
     private @Nullable Output<String> scopeId;
 
     /**
      * @return Id of the scope
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> scopeId() {
@@ -499,8 +495,6 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scopeId Id of the scope
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -511,8 +505,6 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scopeId Id of the scope
-         * 
-         * ***
          * 
          * @return builder
          * 

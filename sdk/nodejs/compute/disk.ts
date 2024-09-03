@@ -27,11 +27,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
  * * How-to Guides
- *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+ *   * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  *
- * ## Example Usage
- *
- * ### Disk Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +46,7 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
- * ### Disk Async
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +68,7 @@ import * as utilities from "../utilities";
  *     physicalBlockSizeBytes: 4096,
  * });
  * ```
- * ### Disk Features
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -267,9 +265,6 @@ export class Disk extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -342,8 +337,8 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -389,7 +384,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      */
     public readonly storagePool!: pulumi.Output<string | undefined>;
@@ -619,9 +614,6 @@ export interface DiskState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -694,8 +686,8 @@ export interface DiskState {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -741,7 +733,7 @@ export interface DiskState {
     /**
      * The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      */
     storagePool?: pulumi.Input<string>;
@@ -850,9 +842,6 @@ export interface DiskArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -916,8 +905,8 @@ export interface DiskArgs {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -940,7 +929,7 @@ export interface DiskArgs {
     /**
      * The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      */
     storagePool?: pulumi.Input<string>;

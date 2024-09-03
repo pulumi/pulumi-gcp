@@ -20,11 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
     /// * How-to Guides
-    ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+    ///   * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Autoscaler Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

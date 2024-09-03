@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
  * * How-to Guides
- *     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+ *   * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
  *
- * ## Example Usage
- *
- * ### Iam Workload Identity Pool Provider Aws Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Aws Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +54,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Oidc Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -74,7 +72,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Oidc Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,7 +104,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Saml Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,7 +127,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Saml Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -155,7 +153,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Oidc Upload Key
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -361,9 +359,6 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     public readonly workloadIdentityPoolProviderId!: pulumi.Output<string>;
 
@@ -544,9 +539,6 @@ export interface WorkloadIdentityPoolProviderState {
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolProviderId?: pulumi.Input<string>;
 }
@@ -660,9 +652,6 @@ export interface WorkloadIdentityPoolProviderArgs {
      * The ID for the provider, which becomes the final component of the resource name. This
      * value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     workloadIdentityPoolProviderId: pulumi.Input<string>;
 }

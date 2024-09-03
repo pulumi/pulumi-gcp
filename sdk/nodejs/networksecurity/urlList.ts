@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
  * * How-to Guides
- *     * Use UrlLists
+ *   * [Use UrlLists](https://cloud.google.com/secure-web-proxy/docs/use-url-list)
  *
- * ## Example Usage
- *
- * ### Network Security Url Lists Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,7 +25,7 @@ import * as utilities from "../utilities";
  *     values: ["www.example.com"],
  * });
  * ```
- * ### Network Security Url Lists Advanced
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -109,9 +107,6 @@ export class UrlList extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The location of the url lists.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -192,9 +187,6 @@ export interface UrlListState {
     description?: pulumi.Input<string>;
     /**
      * The location of the url lists.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -229,9 +221,6 @@ export interface UrlListArgs {
     description?: pulumi.Input<string>;
     /**
      * The location of the url lists.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

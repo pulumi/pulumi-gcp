@@ -496,7 +496,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_fir_sec_rule
+        ### basic_fir_sec_rule
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -596,7 +596,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_fir_sec_rule
+        ### basic_fir_sec_rule
         ```python
         import pulumi
         import pulumi_gcp as gcp

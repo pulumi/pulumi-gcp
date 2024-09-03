@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        /// A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
         /// </summary>
         public InputMap<string> Properties
         {

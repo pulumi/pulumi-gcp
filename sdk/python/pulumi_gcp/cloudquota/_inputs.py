@@ -29,7 +29,7 @@ if not MYPY:
         """
         annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
         An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         granted_value: NotRequired[pulumi.Input[str]]
@@ -41,8 +41,6 @@ if not MYPY:
         """
         (Output)
         The origin of the quota preference request.
-
-        - - -
         """
         state_detail: NotRequired[pulumi.Input[str]]
         """
@@ -68,14 +66,12 @@ class SQuotaPreferenceQuotaConfigArgs:
                  trace_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] preferred_value: The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
                An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] granted_value: (Output)
                Granted quota value.
         :param pulumi.Input[str] request_origin: (Output)
                The origin of the quota preference request.
-               
-               - - -
         :param pulumi.Input[str] state_detail: (Output)
                Optional details about the state of this quota preference.
         :param pulumi.Input[str] trace_id: (Output)
@@ -109,7 +105,7 @@ class SQuotaPreferenceQuotaConfigArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
         An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "annotations")
@@ -137,8 +133,6 @@ class SQuotaPreferenceQuotaConfigArgs:
         """
         (Output)
         The origin of the quota preference request.
-
-        - - -
         """
         return pulumi.get(self, "request_origin")
 

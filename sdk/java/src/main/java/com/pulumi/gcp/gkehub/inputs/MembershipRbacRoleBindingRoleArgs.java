@@ -18,8 +18,6 @@ public final class MembershipRbacRoleBindingRoleArgs extends com.pulumi.resource
      * PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
      * 
-     * ***
-     * 
      */
     @Import(name="predefinedRole", required=true)
     private Output<String> predefinedRole;
@@ -27,8 +25,6 @@ public final class MembershipRbacRoleBindingRoleArgs extends com.pulumi.resource
     /**
      * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-     * 
-     * ***
      * 
      */
     public Output<String> predefinedRole() {
@@ -63,8 +59,6 @@ public final class MembershipRbacRoleBindingRoleArgs extends com.pulumi.resource
          * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -76,8 +70,6 @@ public final class MembershipRbacRoleBindingRoleArgs extends com.pulumi.resource
         /**
          * @param predefinedRole PredefinedRole is an ENUM representation of the default Kubernetes Roles
          * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-         * 
-         * ***
          * 
          * @return builder
          * 

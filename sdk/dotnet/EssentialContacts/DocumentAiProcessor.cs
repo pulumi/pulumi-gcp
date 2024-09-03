@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// * [API documentation](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations.processors)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
+    ///   * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Documentai Processor
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -74,16 +72,13 @@ namespace Pulumi.Gcp.EssentialContacts
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        /// The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -160,16 +155,13 @@ namespace Pulumi.Gcp.EssentialContacts
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        /// The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -202,16 +194,13 @@ namespace Pulumi.Gcp.EssentialContacts
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        /// The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// The location of the resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -47,9 +47,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance
                against zonal failures by provisioning it across two zones.
                If provided, it must be a different zone from the one provided in
@@ -89,9 +86,9 @@ class InstanceArgs:
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
                Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to <http://redis.io/topics/config>.
                Please check Memorystore documentation for the list of supported parameters:
-               https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+               <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
@@ -170,9 +167,6 @@ class InstanceArgs:
     def memory_size_gb(self) -> pulumi.Input[int]:
         """
         Redis memory size in GiB.
-
-
-        - - -
         """
         return pulumi.get(self, "memory_size_gb")
 
@@ -377,9 +371,9 @@ class InstanceArgs:
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Redis configuration parameters, according to http://redis.io/topics/config.
+        Redis configuration parameters, according to <http://redis.io/topics/config>.
         Please check Memorystore documentation for the list of supported parameters:
-        https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         """
         return pulumi.get(self, "redis_configs")
 
@@ -573,9 +567,6 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
                Structure is documented below.
@@ -602,9 +593,9 @@ class _InstanceState:
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
                Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to <http://redis.io/topics/config>.
                Please check Memorystore documentation for the list of supported parameters:
-               https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+               <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
@@ -928,9 +919,6 @@ class _InstanceState:
     def memory_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
         Redis memory size in GiB.
-
-
-        - - -
         """
         return pulumi.get(self, "memory_size_gb")
 
@@ -1078,9 +1066,9 @@ class _InstanceState:
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Redis configuration parameters, according to http://redis.io/topics/config.
+        Redis configuration parameters, according to <http://redis.io/topics/config>.
         Please check Memorystore documentation for the list of supported parameters:
-        https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         """
         return pulumi.get(self, "redis_configs")
 
@@ -1241,11 +1229,9 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+          * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
-        ## Example Usage
-
-        ### Redis Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -1255,7 +1241,7 @@ class Instance(pulumi.CustomResource):
             name="memory-cache",
             memory_size_gb=1)
         ```
-        ### Redis Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -1296,7 +1282,7 @@ class Instance(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Redis Instance Full With Persistence Config
+        ## 
 
         ```python
         import pulumi
@@ -1313,6 +1299,9 @@ class Instance(pulumi.CustomResource):
                 "rdb_snapshot_period": "TWELVE_HOURS",
             })
         ```
+
+        ## Example Usage
+
         ### Redis Instance Private Service
 
         ```python
@@ -1350,7 +1339,7 @@ class Instance(pulumi.CustomResource):
             display_name="Test Instance",
             opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
-        ### Redis Instance Mrr
+        ## 
 
         ```python
         import pulumi
@@ -1382,6 +1371,7 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+
         ### Redis Instance Cmek
 
         ```python
@@ -1480,9 +1470,6 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
@@ -1495,9 +1482,9 @@ class Instance(pulumi.CustomResource):
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
                Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to <http://redis.io/topics/config>.
                Please check Memorystore documentation for the list of supported parameters:
-               https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+               <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
@@ -1538,11 +1525,9 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+          * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
-        ## Example Usage
-
-        ### Redis Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -1552,7 +1537,7 @@ class Instance(pulumi.CustomResource):
             name="memory-cache",
             memory_size_gb=1)
         ```
-        ### Redis Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -1593,7 +1578,7 @@ class Instance(pulumi.CustomResource):
                 }],
             })
         ```
-        ### Redis Instance Full With Persistence Config
+        ## 
 
         ```python
         import pulumi
@@ -1610,6 +1595,9 @@ class Instance(pulumi.CustomResource):
                 "rdb_snapshot_period": "TWELVE_HOURS",
             })
         ```
+
+        ## Example Usage
+
         ### Redis Instance Private Service
 
         ```python
@@ -1647,7 +1635,7 @@ class Instance(pulumi.CustomResource):
             display_name="Test Instance",
             opts = pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
-        ### Redis Instance Mrr
+        ## 
 
         ```python
         import pulumi
@@ -1679,6 +1667,7 @@ class Instance(pulumi.CustomResource):
                 "other_key": "other_val",
             })
         ```
+
         ### Redis Instance Cmek
 
         ```python
@@ -1928,9 +1917,6 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] maintenance_version: The self service update maintenance version.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict']]]] nodes: Output only. Info per node.
                Structure is documented below.
@@ -1957,9 +1943,9 @@ class Instance(pulumi.CustomResource):
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
                Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to <http://redis.io/topics/config>.
                Please check Memorystore documentation for the list of supported parameters:
-               https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+               <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
                version will be used. Please check the API documentation linked
                at the top for the latest valid values.
@@ -2188,9 +2174,6 @@ class Instance(pulumi.CustomResource):
     def memory_size_gb(self) -> pulumi.Output[int]:
         """
         Redis memory size in GiB.
-
-
-        - - -
         """
         return pulumi.get(self, "memory_size_gb")
 
@@ -2294,9 +2277,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Redis configuration parameters, according to http://redis.io/topics/config.
+        Redis configuration parameters, according to <http://redis.io/topics/config>.
         Please check Memorystore documentation for the list of supported parameters:
-        https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+        <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
         """
         return pulumi.get(self, "redis_configs")
 

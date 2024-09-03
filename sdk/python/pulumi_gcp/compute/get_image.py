@@ -291,7 +291,7 @@ def get_image(family: Optional[str] = None,
               project: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+    Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
 
     ## Example Usage
@@ -319,11 +319,9 @@ def get_image(family: Optional[str] = None,
            that is part of an image family and is not deprecated. If you specify `filter`, your
            filter must return exactly one image unless you use `most_recent`.
            Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
-           [public base image][pubimg], be sure to specify the correct Image Project.
+           [public base image](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), be sure to specify the correct Image Project.
     """
     __args__ = dict()
     __args__['family'] = family
@@ -366,7 +364,7 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
                      project: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
-    Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+    Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
 
     ## Example Usage
@@ -394,10 +392,8 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
            that is part of an image family and is not deprecated. If you specify `filter`, your
            filter must return exactly one image unless you use `most_recent`.
            Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
-           [public base image][pubimg], be sure to specify the correct Image Project.
+           [public base image](https://cloud.google.com/compute/docs/images#os-compute-support "Google Cloud Public Base Images"), be sure to specify the correct Image Project.
     """
     ...

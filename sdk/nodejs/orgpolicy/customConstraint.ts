@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
- *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *   * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
  *
  * ## Example Usage
  *
@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     resourceTypes: ["container.googleapis.com/NodePool"],
  * });
  * ```
+ *
  * ### Org Policy Custom Constraint Full
  *
  * ```typescript
@@ -131,9 +132,6 @@ export class CustomConstraint extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -230,9 +228,6 @@ export interface CustomConstraintState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -276,9 +271,6 @@ export interface CustomConstraintArgs {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

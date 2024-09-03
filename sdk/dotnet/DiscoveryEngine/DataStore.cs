@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores)
     /// * How-to Guides
-    ///     * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
+    ///   * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Discoveryengine Datastore Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -49,7 +47,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
-    /// ### Discoveryengine Datastore Document Processing Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -144,9 +142,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataStoreId")]
         public Output<string> DataStoreId { get; private set; } = null!;
@@ -283,9 +278,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
@@ -381,9 +373,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the data store.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataStoreId")]
         public Input<string>? DataStoreId { get; set; }

@@ -236,8 +236,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
@@ -248,8 +246,6 @@ public class User extends com.pulumi.resources.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

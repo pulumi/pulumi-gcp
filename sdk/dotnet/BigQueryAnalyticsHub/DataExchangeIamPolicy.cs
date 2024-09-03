@@ -109,8 +109,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// ## This resource supports User Project Overrides.
     /// 
-    /// - 
-    /// 
     /// # IAM policy for Bigquery Analytics Hub DataExchange
     /// Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
     /// 
@@ -245,7 +243,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:bigqueryanalyticshub/dataExchangeIamPolicy:DataExchangeIamPolicy")]
     public partial class DataExchangeIamPolicy : global::Pulumi.CustomResource

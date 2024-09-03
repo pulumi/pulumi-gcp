@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
  *
- * ## Example Usage
- *
- * ### Network Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +21,9 @@ import * as utilities from "../utilities";
  *
  * const vpcNetwork = new gcp.compute.Network("vpc_network", {name: "vpc-network"});
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Network Custom Mtu
  *
  * ```typescript
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  *     mtu: 1460,
  * });
  * ```
+ *
  * ### Network Custom Firewall Enforcement Order
  *
  * ```typescript
@@ -154,9 +156,6 @@ export class Network extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -291,9 +290,6 @@ export interface NetworkState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -377,9 +373,6 @@ export interface NetworkArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

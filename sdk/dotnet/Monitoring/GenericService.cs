@@ -19,13 +19,11 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
     /// * How-to Guides
-    ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-    ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-    ///     * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
+    ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+    ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+    ///   * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Monitoring Service Example
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -87,7 +85,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A well-known service type, defined by its service type and service labels.
         /// Valid values of service types and services labels are described at
-        /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+        /// &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
         /// Structure is documented below.
         /// </summary>
         [Output("basicService")]
@@ -116,9 +114,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// An optional service ID to use. If not given, the server will generate a
         /// service ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -190,7 +185,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A well-known service type, defined by its service type and service labels.
         /// Valid values of service types and services labels are described at
-        /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+        /// &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("basicService")]
@@ -212,9 +207,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// An optional service ID to use. If not given, the server will generate a
         /// service ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -247,7 +239,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A well-known service type, defined by its service type and service labels.
         /// Valid values of service types and services labels are described at
-        /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+        /// &lt;https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("basicService")]
@@ -276,9 +268,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// An optional service ID to use. If not given, the server will generate a
         /// service ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

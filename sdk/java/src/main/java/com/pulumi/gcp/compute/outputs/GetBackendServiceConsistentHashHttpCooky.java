@@ -15,8 +15,6 @@ public final class GetBackendServiceConsistentHashHttpCooky {
     /**
      * @return The name of the Backend Service.
      * 
-     * ***
-     * 
      */
     private String name;
     /**
@@ -33,8 +31,6 @@ public final class GetBackendServiceConsistentHashHttpCooky {
     private GetBackendServiceConsistentHashHttpCooky() {}
     /**
      * @return The name of the Backend Service.
-     * 
-     * ***
      * 
      */
     public String name() {

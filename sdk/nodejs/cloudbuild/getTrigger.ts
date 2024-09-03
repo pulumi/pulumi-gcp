@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+ *   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
  *
  * ## Example Usage
  *
@@ -42,8 +42,6 @@ export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): P
 export interface GetTriggerArgs {
     /**
      * The Cloud Build location for the trigger.
-     *
-     * - - -
      */
     location: string;
     /**
@@ -95,7 +93,7 @@ export interface GetTriggerResult {
  *
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+ *   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
  *
  * ## Example Usage
  *
@@ -120,8 +118,6 @@ export function getTriggerOutput(args: GetTriggerOutputArgs, opts?: pulumi.Invok
 export interface GetTriggerOutputArgs {
     /**
      * The Cloud Build location for the trigger.
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

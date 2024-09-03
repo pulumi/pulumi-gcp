@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.customTargetTypes)
  * * How-to Guides
- *     * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
+ *   * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
  *
- * ## Example Usage
- *
- * ### Clouddeploy Custom Target Type Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,7 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Clouddeploy Custom Target Type Git Skaffold Modules
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +64,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,7 +87,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -167,7 +165,7 @@ export class CustomTargetType extends pulumi.CustomResource {
     }
 
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -206,9 +204,6 @@ export class CustomTargetType extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the source.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -295,7 +290,7 @@ export class CustomTargetType extends pulumi.CustomResource {
  */
 export interface CustomTargetTypeState {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -334,9 +329,6 @@ export interface CustomTargetTypeState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the source.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -368,7 +360,7 @@ export interface CustomTargetTypeState {
  */
 export interface CustomTargetTypeArgs {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -390,9 +382,6 @@ export interface CustomTargetTypeArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the source.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

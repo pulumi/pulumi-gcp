@@ -15,13 +15,13 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
  * * How-to Guides
- *     * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+ *   * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  *
  * > **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
  *
  * ## Example Usage
  *
- * ### With Top Level Instance Template (`Google` Provider)
+ * ### with top level instance template (google provider)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With Multiple Versions
+ * ### with multiple versions
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With Standby Policy (`Google-Beta` Provider)
+ * ### with standby policy (google-beta provider)
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -230,8 +230,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     public readonly namedPorts!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerNamedPort[] | undefined>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     public readonly params!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerParams | undefined>;
     /**
@@ -241,8 +239,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -476,8 +472,6 @@ export interface RegionInstanceGroupManagerState {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
     /**
@@ -487,8 +481,6 @@ export interface RegionInstanceGroupManagerState {
     project?: pulumi.Input<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -624,8 +616,6 @@ export interface RegionInstanceGroupManagerArgs {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
     /**
@@ -635,8 +625,6 @@ export interface RegionInstanceGroupManagerArgs {
     project?: pulumi.Input<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class GuestPoliciesRecipeArtifactGcsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        /// Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
         /// this value would be my-bucket.
         /// </summary>
         [Input("bucket")]
@@ -21,13 +21,13 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-        /// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+        /// &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
         /// </summary>
         [Input("generation")]
         public Input<int>? Generation { get; set; }
 
         /// <summary>
-        /// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+        /// Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
         /// this value would be foo/bar.
         /// </summary>
         [Input("object")]

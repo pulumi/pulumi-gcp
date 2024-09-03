@@ -21,9 +21,7 @@ import javax.annotation.Nullable;
  * Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
  * as identified by the dns_name field with the longest matching suffix.
  * 
- * ## Example Usage
- * 
- * ### Dns Response Policy Rule Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -187,16 +185,12 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
      * Identifies the response policy addressed by this request.
      * 
-     * ***
-     * 
      */
     @Export(name="responsePolicy", refs={String.class}, tree="[0]")
     private Output<String> responsePolicy;
 
     /**
      * @return Identifies the response policy addressed by this request.
-     * 
-     * ***
      * 
      */
     public Output<String> responsePolicy() {

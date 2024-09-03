@@ -26,9 +26,6 @@ class OrganizationSecurityPolicyAssociationArgs:
         The set of arguments for constructing a OrganizationSecurityPolicyAssociation resource.
         :param pulumi.Input[str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[str] policy_id: The security policy ID of the association.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for an association.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
@@ -53,9 +50,6 @@ class OrganizationSecurityPolicyAssociationArgs:
     def policy_id(self) -> pulumi.Input[str]:
         """
         The security policy ID of the association.
-
-
-        - - -
         """
         return pulumi.get(self, "policy_id")
 
@@ -89,9 +83,6 @@ class _OrganizationSecurityPolicyAssociationState:
         :param pulumi.Input[str] display_name: The display name of the security policy of the association.
         :param pulumi.Input[str] name: The name for an association.
         :param pulumi.Input[str] policy_id: The security policy ID of the association.
-               
-               
-               - - -
         """
         if attachment_id is not None:
             pulumi.set(__self__, "attachment_id", attachment_id)
@@ -143,9 +134,6 @@ class _OrganizationSecurityPolicyAssociationState:
     def policy_id(self) -> Optional[pulumi.Input[str]]:
         """
         The security policy ID of the association.
-
-
-        - - -
         """
         return pulumi.get(self, "policy_id")
 
@@ -170,7 +158,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
         * How-to Guides
-            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+          * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 
         ## Example Usage
 
@@ -232,9 +220,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[str] name: The name for an association.
         :param pulumi.Input[str] policy_id: The security policy ID of the association.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -249,7 +234,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
         * How-to Guides
-            * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+          * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 
         ## Example Usage
 
@@ -366,9 +351,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the security policy of the association.
         :param pulumi.Input[str] name: The name for an association.
         :param pulumi.Input[str] policy_id: The security policy ID of the association.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -409,9 +391,6 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
     def policy_id(self) -> pulumi.Output[str]:
         """
         The security policy ID of the association.
-
-
-        - - -
         """
         return pulumi.get(self, "policy_id")
 

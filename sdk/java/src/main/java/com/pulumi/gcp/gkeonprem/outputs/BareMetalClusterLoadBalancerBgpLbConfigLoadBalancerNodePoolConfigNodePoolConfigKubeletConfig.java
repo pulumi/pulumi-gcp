@@ -35,7 +35,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
      * @return Prevents the Kubelet from pulling multiple images at a time.
      * We recommend *not* changing the default value on nodes that run docker
      * daemon with version  &lt; 1.9 or an Another Union File System (Aufs) storage
-     * backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+     * backend. Issue &lt;https://github.com/kubernetes/kubernetes/issues/10959&gt; has
      * more details.
      * 
      */
@@ -69,7 +69,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
      * @return Prevents the Kubelet from pulling multiple images at a time.
      * We recommend *not* changing the default value on nodes that run docker
      * daemon with version  &lt; 1.9 or an Another Union File System (Aufs) storage
-     * backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+     * backend. Issue &lt;https://github.com/kubernetes/kubernetes/issues/10959&gt; has
      * more details.
      * 
      */

@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Schedule;
         /// <summary>
-        /// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        /// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
         /// </summary>
         public readonly string? TimeZone;
 

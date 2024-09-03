@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
  * ## google\_compute\_machine\_image\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -125,6 +126,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.MachineImageIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -206,6 +208,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.MachineImageIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -290,8 +293,6 @@ import javax.annotation.Nullable;
  * 
  * ## This resource supports User Project Overrides.
  * 
- * - 
- * 
  * # IAM policy for Compute Engine MachineImage
  * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
  * 
@@ -308,6 +309,7 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ * 
  * ## google\_compute\_machine\_image\_iam\_policy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -404,6 +406,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.MachineImageIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -485,6 +488,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.compute.MachineImageIamMember
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -601,7 +605,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:compute/machineImageIamPolicy:MachineImageIamPolicy")

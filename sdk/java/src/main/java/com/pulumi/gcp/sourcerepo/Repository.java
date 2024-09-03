@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/source-repositories/)
+ *   * [Official Documentation](https://cloud.google.com/source-repositories/)
  * 
- * ## Example Usage
- * 
- * ### Sourcerepo Repository Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -62,7 +60,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Sourcerepo Repository Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,8 +139,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -150,8 +146,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * @return Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

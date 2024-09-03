@@ -34,9 +34,6 @@ class ApiConfigArgs:
         """
         The set of arguments for constructing a ApiConfig resource.
         :param pulumi.Input[str] api: The API to attach the config to.
-               
-               
-               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -50,7 +47,7 @@ class ApiConfigArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConfigOpenapiDocumentArgs']]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
@@ -83,9 +80,6 @@ class ApiConfigArgs:
     def api(self) -> pulumi.Input[str]:
         """
         The API to attach the config to.
-
-
-        - - -
         """
         return pulumi.get(self, "api")
 
@@ -176,7 +170,7 @@ class ApiConfigArgs:
     @pulumi.getter(name="managedServiceConfigs")
     def managed_service_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]]:
         """
-        Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
         If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         Structure is documented below.
         """
@@ -233,9 +227,6 @@ class _ApiConfigState:
         """
         Input properties used for looking up and filtering ApiConfig resources.
         :param pulumi.Input[str] api: The API to attach the config to.
-               
-               
-               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -250,7 +241,7 @@ class _ApiConfigState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the API Config.
@@ -260,7 +251,7 @@ class _ApiConfigState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
         """
         if api is not None:
             pulumi.set(__self__, "api", api)
@@ -296,9 +287,6 @@ class _ApiConfigState:
     def api(self) -> Optional[pulumi.Input[str]]:
         """
         The API to attach the config to.
-
-
-        - - -
         """
         return pulumi.get(self, "api")
 
@@ -401,7 +389,7 @@ class _ApiConfigState:
     @pulumi.getter(name="managedServiceConfigs")
     def managed_service_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiConfigManagedServiceConfigArgs']]]]:
         """
-        Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
         If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         Structure is documented below.
         """
@@ -466,7 +454,7 @@ class _ApiConfigState:
     @pulumi.getter(name="serviceConfigId")
     def service_config_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
         """
         return pulumi.get(self, "service_config_id")
 
@@ -498,9 +486,7 @@ class ApiConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
-
-        ## Example Usage
+          * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Import
 
@@ -529,9 +515,6 @@ class ApiConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.
-               
-               
-               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -545,7 +528,7 @@ class ApiConfig(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConfigManagedServiceConfigArgs', 'ApiConfigManagedServiceConfigArgsDict']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConfigManagedServiceConfigArgs', 'ApiConfigManagedServiceConfigArgsDict']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConfigOpenapiDocumentArgs', 'ApiConfigOpenapiDocumentArgsDict']]]] openapi_documents: OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
@@ -566,9 +549,7 @@ class ApiConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
-
-        ## Example Usage
+          * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 
         ## Import
 
@@ -678,9 +659,6 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.
-               
-               
-               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -695,7 +673,7 @@ class ApiConfig(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConfigManagedServiceConfigArgs', 'ApiConfigManagedServiceConfigArgsDict']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConfigManagedServiceConfigArgs', 'ApiConfigManagedServiceConfigArgsDict']]]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
                If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the API Config.
@@ -705,7 +683,7 @@ class ApiConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        :param pulumi.Input[str] service_config_id: The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -732,9 +710,6 @@ class ApiConfig(pulumi.CustomResource):
     def api(self) -> pulumi.Output[str]:
         """
         The API to attach the config to.
-
-
-        - - -
         """
         return pulumi.get(self, "api")
 
@@ -805,7 +780,7 @@ class ApiConfig(pulumi.CustomResource):
     @pulumi.getter(name="managedServiceConfigs")
     def managed_service_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ApiConfigManagedServiceConfig']]]:
         """
-        Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+        Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
         If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         Structure is documented below.
         """
@@ -850,7 +825,7 @@ class ApiConfig(pulumi.CustomResource):
     @pulumi.getter(name="serviceConfigId")
     def service_config_id(self) -> pulumi.Output[str]:
         """
-        The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+        The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
         """
         return pulumi.get(self, "service_config_id")
 

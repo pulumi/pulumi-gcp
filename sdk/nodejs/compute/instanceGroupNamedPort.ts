@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
  *
- * ## Example Usage
- *
- * ### Instance Group Named Port Gke
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,9 +118,6 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
 
     /**
      * The name of the instance group.
-     *
-     *
-     * - - -
      */
     public readonly group!: pulumi.Output<string>;
     /**
@@ -187,9 +182,6 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
 export interface InstanceGroupNamedPortState {
     /**
      * The name of the instance group.
-     *
-     *
-     * - - -
      */
     group?: pulumi.Input<string>;
     /**
@@ -218,9 +210,6 @@ export interface InstanceGroupNamedPortState {
 export interface InstanceGroupNamedPortArgs {
     /**
      * The name of the instance group.
-     *
-     *
-     * - - -
      */
     group: pulumi.Input<string>;
     /**

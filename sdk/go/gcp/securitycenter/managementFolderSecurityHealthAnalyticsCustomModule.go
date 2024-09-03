@@ -75,6 +75,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Scc Management Folder Security Health Analytics Custom Module Full
 //
 // ```go
@@ -178,8 +179,6 @@ type ManagementFolderSecurityHealthAnalyticsCustomModule struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState pulumi.StringPtrOutput `pulumi:"enablementState"`
 	// Numerical ID of the parent folder.
-	//
-	// ***
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringOutput `pulumi:"lastEditor"`
@@ -244,8 +243,6 @@ type managementFolderSecurityHealthAnalyticsCustomModuleState struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState *string `pulumi:"enablementState"`
 	// Numerical ID of the parent folder.
-	//
-	// ***
 	Folder *string `pulumi:"folder"`
 	// The editor that last updated the custom module.
 	LastEditor *string `pulumi:"lastEditor"`
@@ -278,8 +275,6 @@ type ManagementFolderSecurityHealthAnalyticsCustomModuleState struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState pulumi.StringPtrInput
 	// Numerical ID of the parent folder.
-	//
-	// ***
 	Folder pulumi.StringPtrInput
 	// The editor that last updated the custom module.
 	LastEditor pulumi.StringPtrInput
@@ -312,8 +307,6 @@ type managementFolderSecurityHealthAnalyticsCustomModuleArgs struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState *string `pulumi:"enablementState"`
 	// Numerical ID of the parent folder.
-	//
-	// ***
 	Folder string `pulumi:"folder"`
 	// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
 	Location *string `pulumi:"location"`
@@ -334,8 +327,6 @@ type ManagementFolderSecurityHealthAnalyticsCustomModuleArgs struct {
 	// Possible values are: `ENABLED`, `DISABLED`.
 	EnablementState pulumi.StringPtrInput
 	// Numerical ID of the parent folder.
-	//
-	// ***
 	Folder pulumi.StringInput
 	// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
 	Location pulumi.StringPtrInput
@@ -465,8 +456,6 @@ func (o ManagementFolderSecurityHealthAnalyticsCustomModuleOutput) EnablementSta
 }
 
 // Numerical ID of the parent folder.
-//
-// ***
 func (o ManagementFolderSecurityHealthAnalyticsCustomModuleOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementFolderSecurityHealthAnalyticsCustomModule) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }

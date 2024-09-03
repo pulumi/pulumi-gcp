@@ -38,8 +38,6 @@ if not MYPY:
         port: pulumi.Input[int]
         """
         Port of the remote application endpoint.
-
-        - - -
         """
 elif False:
     AppConnectionApplicationEndpointArgsDict: TypeAlias = Mapping[str, Any]
@@ -52,8 +50,6 @@ class AppConnectionApplicationEndpointArgs:
         """
         :param pulumi.Input[str] host: Hostname or IP address of the remote application endpoint.
         :param pulumi.Input[int] port: Port of the remote application endpoint.
-               
-               - - -
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -75,8 +71,6 @@ class AppConnectionApplicationEndpointArgs:
     def port(self) -> pulumi.Input[int]:
         """
         Port of the remote application endpoint.
-
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -99,7 +93,7 @@ if not MYPY:
         type: NotRequired[pulumi.Input[str]]
         """
         The type of hosting used by the gateway. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+        <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
         for a list of possible values.
         """
         uri: NotRequired[pulumi.Input[str]]
@@ -122,7 +116,7 @@ class AppConnectionGatewayArgs:
         :param pulumi.Input[int] ingress_port: (Output)
                Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         :param pulumi.Input[str] type: The type of hosting used by the gateway. Refer to
-               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+               <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
                for a list of possible values.
         :param pulumi.Input[str] uri: (Output)
                Server-defined URI for this resource.
@@ -165,7 +159,7 @@ class AppConnectionGatewayArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of hosting used by the gateway. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+        <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
         for a list of possible values.
         """
         return pulumi.get(self, "type")
@@ -227,8 +221,6 @@ if not MYPY:
         email: pulumi.Input[str]
         """
         Email address of the service account.
-
-        - - -
         """
 elif False:
     AppConnectorPrincipalInfoServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
@@ -239,8 +231,6 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
                  email: pulumi.Input[str]):
         """
         :param pulumi.Input[str] email: Email address of the service account.
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
 
@@ -249,8 +239,6 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
     def email(self) -> pulumi.Input[str]:
         """
         Email address of the service account.
-
-        - - -
         """
         return pulumi.get(self, "email")
 

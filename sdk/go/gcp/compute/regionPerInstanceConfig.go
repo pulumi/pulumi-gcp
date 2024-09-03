@@ -191,8 +191,6 @@ type RegionPerInstanceConfig struct {
 	// Region where the containing instance group manager is located
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
-	//
-	// ***
 	RegionInstanceGroupManager pulumi.StringOutput `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove the underlying instance.
 	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -261,8 +259,6 @@ type regionPerInstanceConfigState struct {
 	// Region where the containing instance group manager is located
 	Region *string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
-	//
-	// ***
 	RegionInstanceGroupManager *string `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove the underlying instance.
 	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -299,8 +295,6 @@ type RegionPerInstanceConfigState struct {
 	// Region where the containing instance group manager is located
 	Region pulumi.StringPtrInput
 	// The region instance group manager this instance config is part of.
-	//
-	// ***
 	RegionInstanceGroupManager pulumi.StringPtrInput
 	// When true, deleting this config will immediately remove the underlying instance.
 	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -341,8 +335,6 @@ type regionPerInstanceConfigArgs struct {
 	// Region where the containing instance group manager is located
 	Region *string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
-	//
-	// ***
 	RegionInstanceGroupManager string `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove the underlying instance.
 	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -380,8 +372,6 @@ type RegionPerInstanceConfigArgs struct {
 	// Region where the containing instance group manager is located
 	Region pulumi.StringPtrInput
 	// The region instance group manager this instance config is part of.
-	//
-	// ***
 	RegionInstanceGroupManager pulumi.StringInput
 	// When true, deleting this config will immediately remove the underlying instance.
 	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
@@ -524,8 +514,6 @@ func (o RegionPerInstanceConfigOutput) Region() pulumi.StringOutput {
 }
 
 // The region instance group manager this instance config is part of.
-//
-// ***
 func (o RegionPerInstanceConfigOutput) RegionInstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionPerInstanceConfig) pulumi.StringOutput { return v.RegionInstanceGroupManager }).(pulumi.StringOutput)
 }

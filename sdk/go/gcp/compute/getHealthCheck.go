@@ -14,6 +14,30 @@ import (
 // Get information about a HealthCheck.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupHealthCheck(ctx, &compute.LookupHealthCheckArgs{
+//				Name: "my-hc",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupHealthCheck(ctx *pulumi.Context, args *LookupHealthCheckArgs, opts ...pulumi.InvokeOption) (*LookupHealthCheckResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHealthCheckResult
@@ -27,8 +51,6 @@ func LookupHealthCheck(ctx *pulumi.Context, args *LookupHealthCheckArgs, opts ..
 // A collection of arguments for invoking getHealthCheck.
 type LookupHealthCheckArgs struct {
 	// Name of the resource.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -75,8 +97,6 @@ func LookupHealthCheckOutput(ctx *pulumi.Context, args LookupHealthCheckOutputAr
 // A collection of arguments for invoking getHealthCheck.
 type LookupHealthCheckOutputArgs struct {
 	// Name of the resource.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

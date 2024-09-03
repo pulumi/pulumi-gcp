@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.Compute
     /// UrlMaps are used to route requests to a backend service based on rules
     /// that you define for the host and path of an incoming URL.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Url Map Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -115,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Url Map Default Route Action
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -368,7 +366,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Url Map L7 Ilb Path
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -549,7 +547,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Url Map L7 Ilb Path Partial
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -670,7 +668,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Url Map L7 Ilb Route
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -819,7 +817,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Url Map L7 Ilb Route Partial
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -923,7 +921,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Url Map Path Template Match
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1148,9 +1149,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1295,9 +1293,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1429,9 +1424,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

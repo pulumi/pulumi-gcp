@@ -16,7 +16,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pul
     public static final AiFeatureOnlineStoreFeatureviewSyncConfigArgs Empty = new AiFeatureOnlineStoreFeatureviewSyncConfigArgs();
 
     /**
-     * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+     * Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
      * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
      * 
      */
@@ -24,7 +24,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pul
     private @Nullable Output<String> cron;
 
     /**
-     * @return Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+     * @return Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
      * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
      * 
      */
@@ -57,7 +57,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pul
         }
 
         /**
-         * @param cron Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+         * @param cron Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
          * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class AiFeatureOnlineStoreFeatureviewSyncConfigArgs extends com.pul
         }
 
         /**
-         * @param cron Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+         * @param cron Cron schedule (&lt;https://en.wikipedia.org/wiki/Cron&gt;) to launch scheduled runs.
          * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: &#34;CRON_TZ=${IANA_TIME_ZONE}&#34; or &#34;TZ=${IANA_TIME_ZONE}&#34;.
          * 
          * @return builder

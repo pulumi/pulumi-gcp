@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
- *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *   * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
  *
  * ## Example Usage
  *
@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Org Policy Policy Folder
  *
  * ```typescript
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Org Policy Policy Organization
  *
  * ```typescript
@@ -74,6 +76,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Org Policy Policy Project
  *
  * ```typescript
@@ -109,6 +112,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Org Policy Policy Dry Run Spec
  *
  * ```typescript
@@ -198,9 +202,6 @@ export class Policy extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The parent of the resource.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -262,9 +263,6 @@ export interface PolicyState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -289,9 +287,6 @@ export interface PolicyArgs {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

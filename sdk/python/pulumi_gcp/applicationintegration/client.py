@@ -31,9 +31,6 @@ class ClientArgs:
         """
         The set of arguments for constructing a Client resource.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input['ClientCloudKmsConfigArgs'] cloud_kms_config: Cloud KMS config for AuthModule to encrypt/decrypt credentials.
                Structure is documented below.
         :param pulumi.Input[bool] create_sample_integrations: Indicates if sample integrations should be created along with provisioning.
@@ -74,9 +71,6 @@ class ClientArgs:
     def location(self) -> pulumi.Input[str]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -187,9 +181,6 @@ class _ClientState:
                
                > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
@@ -265,9 +256,6 @@ class _ClientState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -337,12 +325,10 @@ class Client(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.clients)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
-            * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
+          * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+          * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
 
-        ## Example Usage
-
-        ### Integrations Client Basic
+        ## 
 
         ```python
         import pulumi
@@ -350,7 +336,7 @@ class Client(pulumi.CustomResource):
 
         example = gcp.applicationintegration.Client("example", location="us-central1")
         ```
-        ### Integrations Client Full
+        ## 
 
         ```python
         import pulumi
@@ -415,9 +401,6 @@ class Client(pulumi.CustomResource):
                
                > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
@@ -439,12 +422,10 @@ class Client(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.clients)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
-            * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
+          * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+          * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
 
-        ## Example Usage
-
-        ### Integrations Client Basic
+        ## 
 
         ```python
         import pulumi
@@ -452,7 +433,7 @@ class Client(pulumi.CustomResource):
 
         example = gcp.applicationintegration.Client("example", location="us-central1")
         ```
-        ### Integrations Client Full
+        ## 
 
         ```python
         import pulumi
@@ -579,9 +560,6 @@ class Client(pulumi.CustomResource):
                
                > **Warning:** `create_sample_workflows` is deprecated and will be removed in a future major release. Use `create_sample_integrations` instead.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] provision_gmek: (Optional, Deprecated)
@@ -637,9 +615,6 @@ class Client(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

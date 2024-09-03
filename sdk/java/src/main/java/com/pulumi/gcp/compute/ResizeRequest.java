@@ -29,11 +29,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
  * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+ *   * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
  * 
- * ## Example Usage
- * 
- * ### Compute Mig Resize Request
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -203,8 +201,6 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
      * 
-     * ***
-     * 
      */
     @Export(name="instanceGroupManager", refs={String.class}, tree="[0]")
     private Output<String> instanceGroupManager;
@@ -213,8 +209,6 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
      * @return The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroupManager() {

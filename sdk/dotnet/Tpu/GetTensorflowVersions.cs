@@ -29,8 +29,7 @@ namespace Pulumi.Gcp.Tpu
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Configure Basic TPU Node With Available Version
+        /// ### Configure Basic TPU Node with available version
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -75,8 +74,7 @@ namespace Pulumi.Gcp.Tpu
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Configure Basic TPU Node With Available Version
+        /// ### Configure Basic TPU Node with available version
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

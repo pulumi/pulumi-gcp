@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters.nodePools)
  * * How-to Guides
- *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+ *   * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  * 
  * ## Example Usage
  * 
@@ -99,6 +99,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Edgecontainer Node Pool With Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -193,6 +194,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Edgecontainer Local Control Plane Node Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -300,16 +302,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
      * @return The name of the target Distributed Cloud Edge Cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> cluster() {

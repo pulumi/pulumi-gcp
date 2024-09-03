@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.VpcAccess.Inputs
     {
         /// <summary>
         /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        /// &lt;https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName}&gt; the correct input for this field would be {subnetName}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

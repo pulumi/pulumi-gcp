@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
-// ## Example Usage
-//
-// ### Vertex Ai Dataset
+// ##
 //
 // ```go
 // package main
@@ -74,8 +72,6 @@ type AiDataset struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-	//
-	// ***
 	MetadataSchemaUri pulumi.StringOutput `pulumi:"metadataSchemaUri"`
 	// The resource name of the Dataset. This value is set by Google.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -147,8 +143,6 @@ type aiDatasetState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-	//
-	// ***
 	MetadataSchemaUri *string `pulumi:"metadataSchemaUri"`
 	// The resource name of the Dataset. This value is set by Google.
 	Name *string `pulumi:"name"`
@@ -180,8 +174,6 @@ type AiDatasetState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-	//
-	// ***
 	MetadataSchemaUri pulumi.StringPtrInput
 	// The resource name of the Dataset. This value is set by Google.
 	Name pulumi.StringPtrInput
@@ -213,8 +205,6 @@ type aiDatasetArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-	//
-	// ***
 	MetadataSchemaUri string `pulumi:"metadataSchemaUri"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -236,8 +226,6 @@ type AiDatasetArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-	//
-	// ***
 	MetadataSchemaUri pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -363,8 +351,6 @@ func (o AiDatasetOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
-//
-// ***
 func (o AiDatasetOutput) MetadataSchemaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringOutput { return v.MetadataSchemaUri }).(pulumi.StringOutput)
 }

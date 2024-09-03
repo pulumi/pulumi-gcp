@@ -20,8 +20,6 @@ import (
 // * How-to Guides
 //   - [Configure a traffic extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_traffic_extension)
 //
-// ## Example Usage
-//
 // ## Import
 //
 // LbTrafficExtension can be imported using any of these accepted formats:

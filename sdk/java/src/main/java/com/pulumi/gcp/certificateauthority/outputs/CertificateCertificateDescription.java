@@ -25,7 +25,7 @@ public final class CertificateCertificateDescription {
     private @Nullable List<String> aiaIssuingCertificateUrls;
     /**
      * @return (Output)
-     * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
      * Structure is documented below.
      * 
      */
@@ -39,7 +39,7 @@ public final class CertificateCertificateDescription {
     private @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints;
     /**
      * @return (Output)
-     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
      * 
      */
     private @Nullable List<String> crlDistributionPoints;
@@ -59,7 +59,7 @@ public final class CertificateCertificateDescription {
     private @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions;
     /**
      * @return (Output)
-     * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
      * Structure is documented below.
      * 
      */
@@ -83,7 +83,7 @@ public final class CertificateCertificateDescription {
     }
     /**
      * @return (Output)
-     * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
      * Structure is documented below.
      * 
      */
@@ -101,7 +101,7 @@ public final class CertificateCertificateDescription {
     }
     /**
      * @return (Output)
-     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
      * 
      */
     public List<String> crlDistributionPoints() {
@@ -127,7 +127,7 @@ public final class CertificateCertificateDescription {
     }
     /**
      * @return (Output)
-     * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
      * Structure is documented below.
      * 
      */

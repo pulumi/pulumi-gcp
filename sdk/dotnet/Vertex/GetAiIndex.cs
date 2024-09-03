@@ -41,8 +41,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region of the index.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
@@ -69,8 +67,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region of the index.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataflow.Outputs
         public readonly bool? EnableStreamingEngine;
         /// <summary>
         /// Configuration for VM IPs.
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration&gt;
         /// Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         /// </summary>
         public readonly string? IpConfiguration;
@@ -70,11 +70,11 @@ namespace Pulumi.Gcp.Dataflow.Outputs
         /// </summary>
         public readonly string? TempLocation;
         /// <summary>
-        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        /// The Compute Engine region (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
         /// </summary>
         public readonly string? WorkerRegion;
         /// <summary>
-        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        /// The Compute Engine zone (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         /// </summary>
         public readonly string? WorkerZone;
         /// <summary>

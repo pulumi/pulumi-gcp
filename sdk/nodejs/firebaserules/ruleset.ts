@@ -9,9 +9,10 @@ import * as utilities from "../utilities";
 /**
  * For more information, see:
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
+ *
  * ## Example Usage
  *
- * ### Basic_ruleset
+ * ### basicRuleset
  * Creates a basic Firestore ruleset
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +30,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * ### Minimal_ruleset
+ *
+ * ### minimalRuleset
  * Creates a minimal Firestore ruleset
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

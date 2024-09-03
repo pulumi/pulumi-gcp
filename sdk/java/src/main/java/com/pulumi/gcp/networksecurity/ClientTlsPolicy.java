@@ -19,102 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Network Security Client Tls Policy Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networksecurity.ClientTlsPolicy;
- * import com.pulumi.gcp.networksecurity.ClientTlsPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()
- *             .name("my-client-tls-policy")
- *             .labels(Map.of("foo", "bar"))
- *             .description("my description")
- *             .sni("secure.example.com")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Security Client Tls Policy Advanced
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networksecurity.ClientTlsPolicy;
- * import com.pulumi.gcp.networksecurity.ClientTlsPolicyArgs;
- * import com.pulumi.gcp.networksecurity.inputs.ClientTlsPolicyClientCertificateArgs;
- * import com.pulumi.gcp.networksecurity.inputs.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs;
- * import com.pulumi.gcp.networksecurity.inputs.ClientTlsPolicyServerValidationCaArgs;
- * import com.pulumi.gcp.networksecurity.inputs.ClientTlsPolicyServerValidationCaGrpcEndpointArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new ClientTlsPolicy("default", ClientTlsPolicyArgs.builder()
- *             .name("my-client-tls-policy")
- *             .labels(Map.of("foo", "bar"))
- *             .description("my description")
- *             .clientCertificate(ClientTlsPolicyClientCertificateArgs.builder()
- *                 .certificateProviderInstance(ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs.builder()
- *                     .pluginInstance("google_cloud_private_spiffe")
- *                     .build())
- *                 .build())
- *             .serverValidationCas(            
- *                 ClientTlsPolicyServerValidationCaArgs.builder()
- *                     .grpcEndpoint(ClientTlsPolicyServerValidationCaGrpcEndpointArgs.builder()
- *                         .targetUri("unix:mypath")
- *                         .build())
- *                     .build(),
- *                 ClientTlsPolicyServerValidationCaArgs.builder()
- *                     .grpcEndpoint(ClientTlsPolicyServerValidationCaGrpcEndpointArgs.builder()
- *                         .targetUri("unix:mypath1")
- *                         .build())
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ClientTlsPolicy can be imported using any of these accepted formats:
@@ -237,16 +141,12 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Name of the ClientTlsPolicy resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the ClientTlsPolicy resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

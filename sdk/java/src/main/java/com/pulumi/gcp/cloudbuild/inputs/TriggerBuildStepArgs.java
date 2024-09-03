@@ -179,7 +179,7 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
      * run directly. If not, the host will attempt to pull the image first, using
      * the builder service account&#39;s credentials if necessary.
      * The Docker daemon&#39;s cache will already have the latest versions of all of
-     * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+     * the officially supported build steps (see &lt;https://github.com/GoogleCloudPlatform/cloud-builders&gt;
      * for images and examples).
      * The Docker daemon will also have cached many of the layers for some popular
      * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
@@ -198,7 +198,7 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
      * run directly. If not, the host will attempt to pull the image first, using
      * the builder service account&#39;s credentials if necessary.
      * The Docker daemon&#39;s cache will already have the latest versions of all of
-     * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+     * the officially supported build steps (see &lt;https://github.com/GoogleCloudPlatform/cloud-builders&gt;
      * for images and examples).
      * The Docker daemon will also have cached many of the layers for some popular
      * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
@@ -615,7 +615,7 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
          * run directly. If not, the host will attempt to pull the image first, using
          * the builder service account&#39;s credentials if necessary.
          * The Docker daemon&#39;s cache will already have the latest versions of all of
-         * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+         * the officially supported build steps (see &lt;https://github.com/GoogleCloudPlatform/cloud-builders&gt;
          * for images and examples).
          * The Docker daemon will also have cached many of the layers for some popular
          * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
@@ -638,7 +638,7 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
          * run directly. If not, the host will attempt to pull the image first, using
          * the builder service account&#39;s credentials if necessary.
          * The Docker daemon&#39;s cache will already have the latest versions of all of
-         * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+         * the officially supported build steps (see &lt;https://github.com/GoogleCloudPlatform/cloud-builders&gt;
          * for images and examples).
          * The Docker daemon will also have cached many of the layers for some popular
          * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time

@@ -327,8 +327,6 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      * 
-     * ***
-     * 
      */
     @Import(name="source")
     private @Nullable Output<AssetOrArchive> source;
@@ -336,8 +334,6 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A path to the data you want to upload. Must be defined
      * if `content` is not.
-     * 
-     * ***
      * 
      */
     public Optional<Output<AssetOrArchive>> source() {
@@ -846,8 +842,6 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
          * @param source A path to the data you want to upload. Must be defined
          * if `content` is not.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -859,8 +853,6 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param source A path to the data you want to upload. Must be defined
          * if `content` is not.
-         * 
-         * ***
          * 
          * @return builder
          * 

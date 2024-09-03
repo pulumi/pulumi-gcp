@@ -1924,8 +1924,6 @@ func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConne
 
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet string `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Datastream will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -1945,8 +1943,6 @@ type PrivateConnectionVpcPeeringConfigInput interface {
 
 type PrivateConnectionVpcPeeringConfigArgs struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Datastream will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -2031,8 +2027,6 @@ func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringCo
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -2068,8 +2062,6 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcP
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
 		if v == nil {
@@ -2675,7 +2667,7 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn str
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The MySQL data type. Full data types list can be found here:
-	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -2705,7 +2697,7 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The MySQL data type. Full data types list can be found here:
-	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -2784,7 +2776,7 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 }
 
 // The MySQL data type. Full data types list can be found here:
-// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
 		return v.DataType
@@ -3207,7 +3199,7 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn s
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The Oracle data type. Full data types list can be found here:
-	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column encoding.
@@ -3247,7 +3239,7 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnAr
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The Oracle data type. Full data types list can be found here:
-	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column encoding.
@@ -3331,7 +3323,7 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 }
 
 // The Oracle data type. Full data types list can be found here:
-// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
 		return v.DataType
@@ -3783,7 +3775,7 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePo
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The PostgreSQL data type. Full data types list can be found here:
-	// https://www.postgresql.org/docs/current/datatype.html
+	// <https://www.postgresql.org/docs/current/datatype.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -3817,7 +3809,7 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePo
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The PostgreSQL data type. Full data types list can be found here:
-	// https://www.postgresql.org/docs/current/datatype.html
+	// <https://www.postgresql.org/docs/current/datatype.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -3895,7 +3887,7 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 }
 
 // The PostgreSQL data type. Full data types list can be found here:
-// https://www.postgresql.org/docs/current/datatype.html
+// <https://www.postgresql.org/docs/current/datatype.html>
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
 		return v.DataType
@@ -4336,7 +4328,7 @@ type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn struct {
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -4373,7 +4365,7 @@ type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs struct {
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -4452,7 +4444,7 @@ func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Column
 }
 
 // The SQL Server data type. Full data types list can be found here:
-// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
 }
@@ -5602,12 +5594,10 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-	//
-	// ***
+	// See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
 	Location string `pulumi:"location"`
 }
 
@@ -5629,12 +5619,10 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-	//
-	// ***
+	// See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
 	Location pulumi.StringInput `pulumi:"location"`
 }
 
@@ -5726,9 +5714,7 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-//
-// ***
+// See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		return v.KmsKeyName
@@ -5736,7 +5722,7 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 }
 
 // The geographic location where the dataset should reside.
-// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+// See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) string {
 		return v.Location
@@ -5781,9 +5767,7 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-//
-// ***
+// See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		if v == nil {
@@ -5794,7 +5778,7 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 }
 
 // The geographic location where the dataset should reside.
-// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+// See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		if v == nil {
@@ -7127,7 +7111,7 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The MySQL data type. Full data types list can be found here:
-	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -7157,7 +7141,7 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The MySQL data type. Full data types list can be found here:
-	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -7236,7 +7220,7 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 }
 
 // The MySQL data type. Full data types list can be found here:
-// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
 		return v.DataType
@@ -7665,7 +7649,7 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The MySQL data type. Full data types list can be found here:
-	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -7695,7 +7679,7 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The MySQL data type. Full data types list can be found here:
-	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+	// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -7774,7 +7758,7 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 }
 
 // The MySQL data type. Full data types list can be found here:
-// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+// <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
 		return v.DataType
@@ -8575,7 +8559,7 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOr
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The Oracle data type. Full data types list can be found here:
-	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column encoding.
@@ -8615,7 +8599,7 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOr
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The Oracle data type. Full data types list can be found here:
-	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column encoding.
@@ -8699,7 +8683,7 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 // The Oracle data type. Full data types list can be found here:
-// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
 		return v.DataType
@@ -9153,7 +9137,7 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOr
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The Oracle data type. Full data types list can be found here:
-	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column encoding.
@@ -9193,7 +9177,7 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOr
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The Oracle data type. Full data types list can be found here:
-	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+	// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column encoding.
@@ -9277,7 +9261,7 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 // The Oracle data type. Full data types list can be found here:
-// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+// <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
 		return v.DataType
@@ -10086,7 +10070,7 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostg
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The PostgreSQL data type. Full data types list can be found here:
-	// https://www.postgresql.org/docs/current/datatype.html
+	// <https://www.postgresql.org/docs/current/datatype.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -10120,7 +10104,7 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostg
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The PostgreSQL data type. Full data types list can be found here:
-	// https://www.postgresql.org/docs/current/datatype.html
+	// <https://www.postgresql.org/docs/current/datatype.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -10198,7 +10182,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 }
 
 // The PostgreSQL data type. Full data types list can be found here:
-// https://www.postgresql.org/docs/current/datatype.html
+// <https://www.postgresql.org/docs/current/datatype.html>
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
 		return v.DataType
@@ -10641,7 +10625,7 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostg
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The PostgreSQL data type. Full data types list can be found here:
-	// https://www.postgresql.org/docs/current/datatype.html
+	// <https://www.postgresql.org/docs/current/datatype.html>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -10675,7 +10659,7 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostg
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The PostgreSQL data type. Full data types list can be found here:
-	// https://www.postgresql.org/docs/current/datatype.html
+	// <https://www.postgresql.org/docs/current/datatype.html>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -10753,7 +10737,7 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 }
 
 // The PostgreSQL data type. Full data types list can be found here:
-// https://www.postgresql.org/docs/current/datatype.html
+// <https://www.postgresql.org/docs/current/datatype.html>
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
 		return v.DataType
@@ -11400,7 +11384,7 @@ type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn stru
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -11437,7 +11421,7 @@ type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs 
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -11518,7 +11502,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOu
 }
 
 // The SQL Server data type. Full data types list can be found here:
-// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *string {
 		return v.DataType
@@ -11958,7 +11942,7 @@ type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn stru
 	// Column name.
 	Column *string `pulumi:"column"`
 	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -11995,7 +11979,7 @@ type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs 
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
 	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -12076,7 +12060,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOu
 }
 
 // The SQL Server data type. Full data types list can be found here:
-// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+// <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
 func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *string {
 		return v.DataType

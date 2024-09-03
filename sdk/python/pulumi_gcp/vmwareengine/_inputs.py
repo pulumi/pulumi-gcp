@@ -131,8 +131,6 @@ if not MYPY:
         external_address: NotRequired[pulumi.Input[str]]
         """
         The name of an `ExternalAddress` resource.
-
-        - - -
         """
         ip_address_range: NotRequired[pulumi.Input[str]]
         """
@@ -148,8 +146,6 @@ class ExternalAccessRuleDestinationIpRangeArgs:
                  ip_address_range: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] external_address: The name of an `ExternalAddress` resource.
-               
-               - - -
         :param pulumi.Input[str] ip_address_range: An IP address range in the CIDR format.
         """
         if external_address is not None:
@@ -162,8 +158,6 @@ class ExternalAccessRuleDestinationIpRangeArgs:
     def external_address(self) -> Optional[pulumi.Input[str]]:
         """
         The name of an `ExternalAddress` resource.
-
-        - - -
         """
         return pulumi.get(self, "external_address")
 
@@ -511,7 +505,7 @@ if not MYPY:
         * Begins with an alphabetical character
         * Ends with a non-hyphen character
         * Not formatted as a UUID
-        * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
         """
         node_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgsDict']]]]
         """
@@ -539,7 +533,7 @@ class PrivateCloudManagementClusterArgs:
                * Begins with an alphabetical character
                * Ends with a non-hyphen character
                * Not formatted as a UUID
-               * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+               * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -561,7 +555,7 @@ class PrivateCloudManagementClusterArgs:
         * Begins with an alphabetical character
         * Ends with a non-hyphen character
         * Not formatted as a UUID
-        * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
         """
         return pulumi.get(self, "cluster_id")
 
@@ -685,8 +679,6 @@ if not MYPY:
         secondary_location: NotRequired[pulumi.Input[str]]
         """
         Additional zone for a higher level of availability and load balancing.
-
-        - - -
         """
 elif False:
     PrivateCloudManagementClusterStretchedClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -699,8 +691,6 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
         """
         :param pulumi.Input[str] preferred_location: Zone that will remain operational when connection between the two zones is lost.
         :param pulumi.Input[str] secondary_location: Additional zone for a higher level of availability and load balancing.
-               
-               - - -
         """
         if preferred_location is not None:
             pulumi.set(__self__, "preferred_location", preferred_location)
@@ -724,8 +714,6 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
     def secondary_location(self) -> Optional[pulumi.Input[str]]:
         """
         Additional zone for a higher level of availability and load balancing.
-
-        - - -
         """
         return pulumi.get(self, "secondary_location")
 

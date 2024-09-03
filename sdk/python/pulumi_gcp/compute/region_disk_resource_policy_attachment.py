@@ -26,9 +26,6 @@ class RegionDiskResourcePolicyAttachmentArgs:
         """
         The set of arguments for constructing a RegionDiskResourcePolicyAttachment resource.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -48,9 +45,6 @@ class RegionDiskResourcePolicyAttachmentArgs:
     def disk(self) -> pulumi.Input[str]:
         """
         The name of the regional disk in which the resource policies are attached to.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -107,9 +101,6 @@ class _RegionDiskResourcePolicyAttachmentState:
         """
         Input properties used for looking up and filtering RegionDiskResourcePolicyAttachment resources.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -130,9 +121,6 @@ class _RegionDiskResourcePolicyAttachmentState:
     def disk(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the regional disk in which the resource policies are attached to.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -275,9 +263,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -429,9 +414,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
                creation. Do not specify the self link.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -453,9 +435,6 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
     def disk(self) -> pulumi.Output[str]:
         """
         The name of the regional disk in which the resource policies are attached to.
-
-
-        - - -
         """
         return pulumi.get(self, "disk")
 

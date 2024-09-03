@@ -42,11 +42,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
  * * How-to Guides
- *     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+ *   * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
  * 
- * ## Example Usage
- * 
- * ### Region Disk Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -105,7 +103,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Disk Async
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -159,7 +157,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Disk Features
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -552,16 +550,12 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
      * URLs of the zones where the disk should be replicated to.
      * 
-     * ***
-     * 
      */
     @Export(name="replicaZones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> replicaZones;
 
     /**
      * @return URLs of the zones where the disk should be replicated to.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> replicaZones() {
@@ -634,8 +628,8 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -648,8 +642,8 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
      * @return The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}

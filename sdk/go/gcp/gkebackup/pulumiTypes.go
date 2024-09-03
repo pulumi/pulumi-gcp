@@ -2701,7 +2701,7 @@ type RestorePlanRestoreConfig struct {
 	// being restored already exist in the target cluster.
 	// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
 	// if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
 	// for more information on each policy option.
 	// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
 	ClusterResourceConflictPolicy *string `pulumi:"clusterResourceConflictPolicy"`
@@ -2716,7 +2716,7 @@ type RestorePlanRestoreConfig struct {
 	// being restored already exist in the target cluster.
 	// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
 	// for more information on each mode.
 	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 	NamespacedResourceRestoreMode *string `pulumi:"namespacedResourceRestoreMode"`
@@ -2746,7 +2746,7 @@ type RestorePlanRestoreConfig struct {
 	// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 	// If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 	// for more information on each policy option.
 	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 	VolumeDataRestorePolicy *string `pulumi:"volumeDataRestorePolicy"`
@@ -2776,7 +2776,7 @@ type RestorePlanRestoreConfigArgs struct {
 	// being restored already exist in the target cluster.
 	// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
 	// if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
 	// for more information on each policy option.
 	// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
 	ClusterResourceConflictPolicy pulumi.StringPtrInput `pulumi:"clusterResourceConflictPolicy"`
@@ -2791,7 +2791,7 @@ type RestorePlanRestoreConfigArgs struct {
 	// being restored already exist in the target cluster.
 	// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
 	// for more information on each mode.
 	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 	NamespacedResourceRestoreMode pulumi.StringPtrInput `pulumi:"namespacedResourceRestoreMode"`
@@ -2821,7 +2821,7 @@ type RestorePlanRestoreConfigArgs struct {
 	// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 	// If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 	// for more information on each policy option.
 	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 	VolumeDataRestorePolicy pulumi.StringPtrInput `pulumi:"volumeDataRestorePolicy"`
@@ -2919,7 +2919,7 @@ func (o RestorePlanRestoreConfigOutput) AllNamespaces() pulumi.BoolPtrOutput {
 // being restored already exist in the target cluster.
 // This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
 // if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
 // for more information on each policy option.
 // Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
 func (o RestorePlanRestoreConfigOutput) ClusterResourceConflictPolicy() pulumi.StringPtrOutput {
@@ -2947,7 +2947,7 @@ func (o RestorePlanRestoreConfigOutput) ExcludedNamespaces() RestorePlanRestoreC
 // being restored already exist in the target cluster.
 // This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 // if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
 // for more information on each mode.
 // Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 func (o RestorePlanRestoreConfigOutput) NamespacedResourceRestoreMode() pulumi.StringPtrOutput {
@@ -3001,7 +3001,7 @@ func (o RestorePlanRestoreConfigOutput) TransformationRules() RestorePlanRestore
 // This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 // if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 // If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 // for more information on each policy option.
 // Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 func (o RestorePlanRestoreConfigOutput) VolumeDataRestorePolicy() pulumi.StringPtrOutput {
@@ -3057,7 +3057,7 @@ func (o RestorePlanRestoreConfigPtrOutput) AllNamespaces() pulumi.BoolPtrOutput 
 // being restored already exist in the target cluster.
 // This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
 // if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy>
 // for more information on each policy option.
 // Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
 func (o RestorePlanRestoreConfigPtrOutput) ClusterResourceConflictPolicy() pulumi.StringPtrOutput {
@@ -3096,7 +3096,7 @@ func (o RestorePlanRestoreConfigPtrOutput) ExcludedNamespaces() RestorePlanResto
 // being restored already exist in the target cluster.
 // This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 // if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode>
 // for more information on each mode.
 // Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
 func (o RestorePlanRestoreConfigPtrOutput) NamespacedResourceRestoreMode() pulumi.StringPtrOutput {
@@ -3174,7 +3174,7 @@ func (o RestorePlanRestoreConfigPtrOutput) TransformationRules() RestorePlanRest
 // This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
 // if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
 // If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 // for more information on each policy option.
 // Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 func (o RestorePlanRestoreConfigPtrOutput) VolumeDataRestorePolicy() pulumi.StringPtrOutput {
@@ -4088,8 +4088,6 @@ type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring struct {
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// Kind of a Kubernetes resource, e.g.
 	// "CustomResourceDefinition", "StorageClass", etc.
-	//
-	// ***
 	ResourceKind *string `pulumi:"resourceKind"`
 }
 
@@ -4111,8 +4109,6 @@ type RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs struct
 	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
 	// Kind of a Kubernetes resource, e.g.
 	// "CustomResourceDefinition", "StorageClass", etc.
-	//
-	// ***
 	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
 }
 
@@ -4153,8 +4149,6 @@ func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) 
 
 // Kind of a Kubernetes resource, e.g.
 // "CustomResourceDefinition", "StorageClass", etc.
-//
-// ***
 func (o RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringOutput) ResourceKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiring) *string {
 		return v.ResourceKind
@@ -5257,7 +5251,7 @@ func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOu
 
 type RestorePlanRestoreConfigVolumeDataRestorePolicyBinding struct {
 	// Specifies the mechanism to be used to restore this volume data.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 	// for more information on each policy option.
 	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 	Policy string `pulumi:"policy"`
@@ -5280,7 +5274,7 @@ type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingInput interface {
 
 type RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs struct {
 	// Specifies the mechanism to be used to restore this volume data.
-	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 	// for more information on each policy option.
 	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 	Policy pulumi.StringInput `pulumi:"policy"`
@@ -5342,7 +5336,7 @@ func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) ToRestoreP
 }
 
 // Specifies the mechanism to be used to restore this volume data.
-// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+// See <https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy>
 // for more information on each policy option.
 // Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
 func (o RestorePlanRestoreConfigVolumeDataRestorePolicyBindingOutput) Policy() pulumi.StringOutput {

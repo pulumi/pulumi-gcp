@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
         public readonly string? PreferredLocation;
         /// <summary>
         /// Additional zone for a higher level of availability and load balancing.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? SecondaryLocation;
 

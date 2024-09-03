@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
         /// * Begins with an alphabetical character
         /// * Ends with a non-hyphen character
         /// * Not formatted as a UUID
-        /// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        /// * Complies with RFC 1034 (&lt;https://datatracker.ietf.org/doc/html/rfc1034&gt;) (section 3.5)
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;

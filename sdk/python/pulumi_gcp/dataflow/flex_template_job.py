@@ -47,8 +47,6 @@ class FlexTemplateJobArgs:
         The set of arguments for constructing a FlexTemplateJob resource.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
@@ -136,8 +134,6 @@ class FlexTemplateJobArgs:
         """
         The GCS path to the Dataflow job Flex
         Template.
-
-        - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
 
@@ -467,8 +463,6 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
-               
-               - - -
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
@@ -593,8 +587,6 @@ class _FlexTemplateJobState:
         """
         The GCS path to the Dataflow job Flex
         Template.
-
-        - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
 
@@ -1028,8 +1020,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
-               
-               - - -
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
@@ -1271,8 +1261,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
-               
-               - - -
         :param pulumi.Input[bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
@@ -1365,8 +1353,6 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         The GCS path to the Dataflow job Flex
         Template.
-
-        - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
 

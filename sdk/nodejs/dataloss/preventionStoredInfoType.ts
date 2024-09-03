@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.storedInfoTypes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
  *
  * ## Example Usage
  *
@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Stored Info Type Dictionary
  *
  * ```typescript
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Stored Info Type Large Custom Dictionary
  *
  * ```typescript
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Dlp Stored Info Type With Id
  *
  * ```typescript
@@ -175,9 +178,6 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -264,9 +264,6 @@ export interface PreventionStoredInfoTypeState {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -310,9 +307,6 @@ export interface PreventionStoredInfoTypeArgs {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

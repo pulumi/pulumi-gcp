@@ -94,7 +94,7 @@ def get_v2_runtime_versions(project: Optional[str] = None,
     available = gcp.tpu.get_v2_runtime_versions()
     ```
 
-    ### Configure Basic TPU VM With Available Version
+    ### Configure Basic TPU VM with available version
 
     ```python
     import pulumi
@@ -142,7 +142,7 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
     available = gcp.tpu.get_v2_runtime_versions()
     ```
 
-    ### Configure Basic TPU VM With Available Version
+    ### Configure Basic TPU VM with available version
 
     ```python
     import pulumi

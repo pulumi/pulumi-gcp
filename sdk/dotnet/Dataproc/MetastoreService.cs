@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+    ///   * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dataproc Metastore Service Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,6 +51,9 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Dataproc Metastore Service Cmek Example
     /// 
     /// ```csharp
@@ -92,6 +93,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Metastore Service Private Service Connect
     /// 
     /// ```csharp
@@ -139,6 +141,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Metastore Service Private Service Connect Custom Routes
     /// 
     /// ```csharp
@@ -187,7 +190,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Dpms2
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -214,7 +217,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Dpms2 Scaling Factor
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -241,7 +244,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Scheduled Backup
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -287,7 +290,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -321,7 +324,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -356,7 +359,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -390,7 +393,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
-    /// ### Dataproc Metastore Service Autoscaling No Limit Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -586,9 +589,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -789,9 +789,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -982,9 +979,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

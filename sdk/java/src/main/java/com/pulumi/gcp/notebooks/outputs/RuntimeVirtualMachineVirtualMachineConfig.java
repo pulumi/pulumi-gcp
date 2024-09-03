@@ -46,9 +46,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     private @Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig;
     /**
      * @return (Output)
-     * The Compute Engine guest attributes. (see [Project and instance
-     * guest attributes](https://cloud.google.com/compute/docs/
-     * storing-retrieving-metadata#guest_attributes)).
+     * The Compute Engine guest attributes. (see Project and instance
+     * guest attributes).
      * 
      */
     private @Nullable Map<String,String> guestAttributes;
@@ -65,7 +64,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     /**
      * @return The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (&lt;https://www.ietf.org/rfc/rfc1035.txt)&gt;. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -79,9 +78,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     private String machineType;
     /**
      * @return The Compute Engine metadata entries to add to virtual machine.
-     * (see [Project and instance metadata](https://cloud.google.com
-     * /compute/docs/storing-retrieving-metadata#project_and_instance
-     * _metadata)).
+     * (see Project and instance metadata).
      * 
      */
     private @Nullable Map<String,String> metadata;
@@ -134,7 +131,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     private @Nullable String subnet;
     /**
      * @return The Compute Engine tags to add to runtime (see [Tagging instances]
-     * (https://cloud.google.com/compute/docs/
+     * (&lt;https://cloud.google.com/compute/docs/&gt;
      * label-or-tag-resources#tags)).
      * 
      */
@@ -181,9 +178,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     }
     /**
      * @return (Output)
-     * The Compute Engine guest attributes. (see [Project and instance
-     * guest attributes](https://cloud.google.com/compute/docs/
-     * storing-retrieving-metadata#guest_attributes)).
+     * The Compute Engine guest attributes. (see Project and instance
+     * guest attributes).
      * 
      */
     public Map<String,String> guestAttributes() {
@@ -204,7 +200,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     /**
      * @return The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035]
-     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * (&lt;https://www.ietf.org/rfc/rfc1035.txt)&gt;. Label **values** may be
      * empty, but, if present, must contain 1 to 63 characters, and must
      * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
      * more than 32 labels can be associated with a cluster.
@@ -222,9 +218,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     }
     /**
      * @return The Compute Engine metadata entries to add to virtual machine.
-     * (see [Project and instance metadata](https://cloud.google.com
-     * /compute/docs/storing-retrieving-metadata#project_and_instance
-     * _metadata)).
+     * (see Project and instance metadata).
      * 
      */
     public Map<String,String> metadata() {
@@ -289,7 +283,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     }
     /**
      * @return The Compute Engine tags to add to runtime (see [Tagging instances]
-     * (https://cloud.google.com/compute/docs/
+     * (&lt;https://cloud.google.com/compute/docs/&gt;
      * label-or-tag-resources#tags)).
      * 
      */

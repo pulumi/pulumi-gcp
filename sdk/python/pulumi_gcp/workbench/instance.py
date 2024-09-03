@@ -33,9 +33,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -76,9 +73,6 @@ class InstanceArgs:
     def location(self) -> pulumi.Input[str]:
         """
         Part of `parent`. See documentation of `projectsId`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -237,9 +231,6 @@ class _InstanceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -439,9 +430,6 @@ class _InstanceState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Part of `parent`. See documentation of `projectsId`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -557,9 +545,7 @@ class Instance(pulumi.CustomResource):
         """
         A Workbench instance.
 
-        ## Example Usage
-
-        ### Workbench Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -569,7 +555,7 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
-        ### Workbench Instance Basic Container
+        ## 
 
         ```python
         import pulumi
@@ -585,7 +571,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
-        ### Workbench Instance Basic Gpu
+        ## 
 
         ```python
         import pulumi
@@ -606,6 +592,9 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Example Usage
+
         ### Workbench Instance Labels Stopped
 
         ```python
@@ -634,6 +623,7 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
+
         ### Workbench Instance Full
 
         ```python
@@ -748,9 +738,6 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -764,9 +751,7 @@ class Instance(pulumi.CustomResource):
         """
         A Workbench instance.
 
-        ## Example Usage
-
-        ### Workbench Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -776,7 +761,7 @@ class Instance(pulumi.CustomResource):
             name="workbench-instance",
             location="us-west1-a")
         ```
-        ### Workbench Instance Basic Container
+        ## 
 
         ```python
         import pulumi
@@ -792,7 +777,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
-        ### Workbench Instance Basic Gpu
+        ## 
 
         ```python
         import pulumi
@@ -813,6 +798,9 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
+
+        ## Example Usage
+
         ### Workbench Instance Labels Stopped
 
         ```python
@@ -841,6 +829,7 @@ class Instance(pulumi.CustomResource):
             },
             desired_state="STOPPED")
         ```
+
         ### Workbench Instance Full
 
         ```python
@@ -1053,9 +1042,6 @@ class Instance(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1197,9 +1183,6 @@ class Instance(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         Part of `parent`. See documentation of `projectsId`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

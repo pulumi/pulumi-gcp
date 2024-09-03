@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/instanceSettings)
  * * How-to Guides
- *     * [Update Instance Settings](https://cloud.google.com/compute/docs/metadata/setting-custom-metadata#set-custom-project-zonal-metadata)
+ *   * [Update Instance Settings](https://cloud.google.com/compute/docs/metadata/setting-custom-metadata#set-custom-project-zonal-metadata)
  *
- * ## Example Usage
- *
- * ### Instance Settings Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -102,9 +100,6 @@ export class InstanceSettings extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -161,9 +156,6 @@ export interface InstanceSettingsState {
     project?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }
@@ -184,9 +176,6 @@ export interface InstanceSettingsArgs {
     project?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     zone: pulumi.Input<string>;
 }

@@ -16,22 +16,26 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_region_ssl_certificate" "my_cert" {
-        ///   name = "my-cert"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "certificate" {
-        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCert = Gcp.Compute.GetRegionSslCertificate.Invoke(new()
+        ///     {
+        ///         Name = "my-cert",
+        ///     });
         /// 
-        /// output "certificate_id" {
-        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate_id
-        /// }
-        /// 
-        /// output "self_link" {
-        ///   value = data.google_compute_region_ssl_certificate.my_cert.self_link
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificate"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.Certificate),
+        ///         ["certificateId"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.CertificateId),
+        ///         ["selfLink"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.SelfLink),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetRegionSslCertificateResult> InvokeAsync(GetRegionSslCertificateArgs args, InvokeOptions? options = null)
@@ -42,22 +46,26 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_region_ssl_certificate" "my_cert" {
-        ///   name = "my-cert"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "certificate" {
-        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCert = Gcp.Compute.GetRegionSslCertificate.Invoke(new()
+        ///     {
+        ///         Name = "my-cert",
+        ///     });
         /// 
-        /// output "certificate_id" {
-        ///   value = data.google_compute_region_ssl_certificate.my_cert.certificate_id
-        /// }
-        /// 
-        /// output "self_link" {
-        ///   value = data.google_compute_region_ssl_certificate.my_cert.self_link
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["certificate"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.Certificate),
+        ///         ["certificateId"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.CertificateId),
+        ///         ["selfLink"] = myCert.Apply(getRegionSslCertificateResult =&gt; getRegionSslCertificateResult.SelfLink),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetRegionSslCertificateResult> Invoke(GetRegionSslCertificateInvokeArgs args, InvokeOptions? options = null)
@@ -69,8 +77,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the certificate.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -99,8 +105,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the certificate.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

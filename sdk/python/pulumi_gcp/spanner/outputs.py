@@ -379,8 +379,6 @@ class InstanceConfigReplica(dict):
         """
         :param bool default_leader_location: If true, this location is designated as the default leader location where
                leader replicas are placed.
-               
-               - - -
         :param str location: The location of the serving resources, e.g. "us-central1".
         :param str type: Indicates the type of replica.  See the [replica types
                documentation](https://cloud.google.com/spanner/docs/replication#replica_types)
@@ -400,8 +398,6 @@ class InstanceConfigReplica(dict):
         """
         If true, this location is designated as the default leader location where
         leader replicas are placed.
-
-        - - -
         """
         return pulumi.get(self, "default_leader_location")
 

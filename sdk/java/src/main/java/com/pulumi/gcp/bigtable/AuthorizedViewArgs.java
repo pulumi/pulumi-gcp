@@ -74,16 +74,12 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="subsetView")
     private @Nullable Output<AuthorizedViewSubsetViewArgs> subsetView;
 
     /**
      * @return An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<AuthorizedViewSubsetViewArgs>> subsetView() {
@@ -211,8 +207,6 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param subsetView An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param subsetView An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

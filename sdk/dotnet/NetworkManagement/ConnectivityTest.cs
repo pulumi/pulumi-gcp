@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// * [API documentation](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
+    ///   * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Management Connectivity Test Instances
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -111,7 +109,7 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
-    /// ### Network Management Connectivity Test Addresses
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

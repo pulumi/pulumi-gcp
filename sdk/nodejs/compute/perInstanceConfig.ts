@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
  *
  * ## Example Usage
  *
@@ -148,9 +148,6 @@ export class PerInstanceConfig extends pulumi.CustomResource {
 
     /**
      * The instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     public readonly instanceGroupManager!: pulumi.Output<string>;
     /**
@@ -249,9 +246,6 @@ export class PerInstanceConfig extends pulumi.CustomResource {
 export interface PerInstanceConfigState {
     /**
      * The instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     instanceGroupManager?: pulumi.Input<string>;
     /**
@@ -309,9 +303,6 @@ export interface PerInstanceConfigState {
 export interface PerInstanceConfigArgs {
     /**
      * The instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     instanceGroupManager: pulumi.Input<string>;
     /**

@@ -24,12 +24,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
  * * How-to Guides
- *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
- *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+ *   * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+ *   * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
  * 
- * ## Example Usage
- * 
- * ### Vpn Tunnel Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -476,8 +474,6 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * ***
-     * 
      */
     @Export(name="sharedSecret", refs={String.class}, tree="[0]")
     private Output<String> sharedSecret;
@@ -486,8 +482,6 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * @return Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     * 
-     * ***
      * 
      */
     public Output<String> sharedSecret() {

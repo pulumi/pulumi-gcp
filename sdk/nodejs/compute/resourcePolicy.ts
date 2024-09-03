@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
  *
- * ## Example Usage
- *
- * ### Resource Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +32,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Resource Policy Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -64,7 +62,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Resource Policy Placement Policy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,7 +77,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Resource Policy Placement Policy Max Distance
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,7 +93,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Resource Policy Instance Schedule Policy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -116,7 +114,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Resource Policy Snapshot Schedule Chain Name
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -148,7 +146,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Resource Policy Consistency Group
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -248,9 +246,6 @@ export class ResourcePolicy extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following characters
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -342,9 +337,6 @@ export interface ResourcePolicyState {
      * first character must be a lowercase letter, and all following characters
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -398,9 +390,6 @@ export interface ResourcePolicyArgs {
      * first character must be a lowercase letter, and all following characters
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

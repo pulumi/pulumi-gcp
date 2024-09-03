@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
+    ///   * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
     /// 
     /// ## Example Usage
     /// 
@@ -78,6 +78,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Uptime Check Config Status Code
     /// 
     /// ```csharp
@@ -142,6 +143,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Uptime Check Config Https
     /// 
     /// ```csharp
@@ -193,7 +195,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
-    /// ### Uptime Check Tcp
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -230,6 +232,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// 
     /// ### Uptime Check Config Synthetic Monitor
     /// 
     /// ```csharp
@@ -339,7 +342,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The [monitored resource]
-        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
         /// configuration. The following monitored resource types are supported for
         /// uptime checks:
         /// </summary>
@@ -393,10 +396,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigTcpCheck?> TcpCheck { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-        /// 
-        /// 
-        /// - - -
+        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         /// </summary>
         [Output("timeout")]
         public Output<string> Timeout { get; private set; } = null!;
@@ -494,7 +494,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The [monitored resource]
-        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
         /// configuration. The following monitored resource types are supported for
         /// uptime checks:
         /// </summary>
@@ -548,10 +548,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigTcpCheckArgs>? TcpCheck { get; set; }
 
         /// <summary>
-        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-        /// 
-        /// 
-        /// - - -
+        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         /// </summary>
         [Input("timeout", required: true)]
         public Input<string> Timeout { get; set; } = null!;
@@ -611,7 +608,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The [monitored resource]
-        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// (&lt;https://cloud.google.com/monitoring/api/resources&gt;) associated with the
         /// configuration. The following monitored resource types are supported for
         /// uptime checks:
         /// </summary>
@@ -671,10 +668,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigTcpCheckGetArgs>? TcpCheck { get; set; }
 
         /// <summary>
-        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
-        /// 
-        /// 
-        /// - - -
+        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). [See the accepted formats](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }

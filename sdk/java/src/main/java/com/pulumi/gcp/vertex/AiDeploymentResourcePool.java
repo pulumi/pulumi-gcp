@@ -23,9 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.deploymentResourcePools)
  * 
- * ## Example Usage
- * 
- * ### Vertex Ai Deployment Resource Pool
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -142,16 +140,12 @@ public class AiDeploymentResourcePool extends com.pulumi.resources.CustomResourc
     /**
      * The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ *   * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  *
- * ## Example Usage
- *
- * ### Bigquery Analyticshub Data Exchange Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -97,9 +95,6 @@ export class DataExchange extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -197,9 +192,6 @@ export interface DataExchangeState {
     description?: pulumi.Input<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -248,9 +240,6 @@ export interface DataExchangeArgs {
     description?: pulumi.Input<string>;
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

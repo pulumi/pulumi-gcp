@@ -50,16 +50,12 @@ public final class TunnelDestGroupArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Unique tunnel destination group name.
      * 
-     * ***
-     * 
      */
     @Import(name="groupName", required=true)
     private Output<String> groupName;
 
     /**
      * @return Unique tunnel destination group name.
-     * 
-     * ***
      * 
      */
     public Output<String> groupName() {
@@ -191,8 +187,6 @@ public final class TunnelDestGroupArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param groupName Unique tunnel destination group name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -203,8 +197,6 @@ public final class TunnelDestGroupArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param groupName Unique tunnel destination group name.
-         * 
-         * ***
          * 
          * @return builder
          * 

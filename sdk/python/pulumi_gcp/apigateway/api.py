@@ -27,15 +27,12 @@ class ApiArgs:
         """
         The set of arguments for constructing a Api resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -55,9 +52,6 @@ class ApiArgs:
     def api_id(self) -> pulumi.Input[str]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-
-
-        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -96,7 +90,7 @@ class ApiArgs:
     @pulumi.getter(name="managedService")
     def managed_service(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
         If not specified, a new Service will automatically be created in the same project as this API.
         """
         return pulumi.get(self, "managed_service")
@@ -134,9 +128,6 @@ class _ApiState:
         """
         Input properties used for looking up and filtering Api resources.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -144,7 +135,7 @@ class _ApiState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] name: The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -176,9 +167,6 @@ class _ApiState:
     def api_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-
-
-        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -241,7 +229,7 @@ class _ApiState:
     @pulumi.getter(name="managedService")
     def managed_service(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
         If not specified, a new Service will automatically be created in the same project as this API.
         """
         return pulumi.get(self, "managed_service")
@@ -307,11 +295,9 @@ class Api(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+          * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
-        ## Example Usage
-
-        ### Apigateway Api Basic
+        ## 
 
         ```python
         import pulumi
@@ -347,15 +333,12 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -373,11 +356,9 @@ class Api(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+          * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 
-        ## Example Usage
-
-        ### Apigateway Api Basic
+        ## 
 
         ```python
         import pulumi
@@ -479,9 +460,6 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-               
-               
-               - - -
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -489,7 +467,7 @@ class Api(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] name: The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -517,9 +495,6 @@ class Api(pulumi.CustomResource):
     def api_id(self) -> pulumi.Output[str]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-
-
-        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -562,7 +537,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="managedService")
     def managed_service(self) -> pulumi.Output[str]:
         """
-        Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
         If not specified, a new Service will automatically be created in the same project as this API.
         """
         return pulumi.get(self, "managed_service")

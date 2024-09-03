@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_forwarding_rule" "my-forwarding-rule" {
-        ///   name = "forwarding-rule-us-east1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
+        ///     {
+        ///         Name = "forwarding-rule-us-east1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_forwarding_rule" "my-forwarding-rule" {
-        ///   name = "forwarding-rule-us-east1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
+        ///     {
+        ///         Name = "forwarding-rule-us-east1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
@@ -45,9 +65,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the forwarding rule.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -76,9 +93,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the forwarding rule.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

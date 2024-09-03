@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
     /// * How-to Guides
-    ///     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+    ///   * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
     /// 
     /// ## Example Usage
     /// 
@@ -73,9 +73,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The location for the KeyRing.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -142,9 +139,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The location for the KeyRing.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -173,9 +167,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The location for the KeyRing.
         /// A full list of valid locations can be found by running `gcloud kms locations list`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -14,14 +14,14 @@ import javax.annotation.Nullable;
 public final class PipelineWorkload {
     /**
      * @return Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest&gt;
      * Structure is documented below.
      * 
      */
     private @Nullable PipelineWorkloadDataflowFlexTemplateRequest dataflowFlexTemplateRequest;
     /**
      * @return Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest&gt;
      * Structure is documented below.
      * 
      */
@@ -30,7 +30,7 @@ public final class PipelineWorkload {
     private PipelineWorkload() {}
     /**
      * @return Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest&gt;
      * Structure is documented below.
      * 
      */
@@ -39,7 +39,7 @@ public final class PipelineWorkload {
     }
     /**
      * @return Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest&gt;
      * Structure is documented below.
      * 
      */

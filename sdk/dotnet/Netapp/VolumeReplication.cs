@@ -10,82 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Netapp
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Netapp Volume Replication Create
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
-    ///     {
-    ///         Name = "test-network",
-    ///     });
-    /// 
-    ///     var sourcePool = new Gcp.Netapp.StoragePool("source_pool", new()
-    ///     {
-    ///         Name = "source-pool",
-    ///         Location = "us-central1",
-    ///         ServiceLevel = "PREMIUM",
-    ///         CapacityGib = "2048",
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///     });
-    /// 
-    ///     var destinationPool = new Gcp.Netapp.StoragePool("destination_pool", new()
-    ///     {
-    ///         Name = "destination-pool",
-    ///         Location = "us-west2",
-    ///         ServiceLevel = "PREMIUM",
-    ///         CapacityGib = "2048",
-    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
-    ///     });
-    /// 
-    ///     var sourceVolume = new Gcp.Netapp.Volume("source_volume", new()
-    ///     {
-    ///         Location = sourcePool.Location,
-    ///         Name = "source-volume",
-    ///         CapacityGib = "100",
-    ///         ShareName = "source-volume",
-    ///         StoragePool = sourcePool.Name,
-    ///         Protocols = new[]
-    ///         {
-    ///             "NFSV3",
-    ///         },
-    ///         DeletionPolicy = "FORCE",
-    ///     });
-    /// 
-    ///     var testReplication = new Gcp.Netapp.VolumeReplication("test_replication", new()
-    ///     {
-    ///         Location = sourceVolume.Location,
-    ///         VolumeName = sourceVolume.Name,
-    ///         Name = "test-replication",
-    ///         ReplicationSchedule = "EVERY_10_MINUTES",
-    ///         Description = "This is a replication resource",
-    ///         DestinationVolumeParameters = new Gcp.Netapp.Inputs.VolumeReplicationDestinationVolumeParametersArgs
-    ///         {
-    ///             StoragePool = destinationPool.Id,
-    ///             VolumeId = "destination-volume",
-    ///             ShareName = "source-volume",
-    ///             Description = "This is a replicated volume",
-    ///         },
-    ///         DeleteDestinationVolume = true,
-    ///         WaitForMirror = true,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             sourceVolume,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// VolumeReplication can be imported using any of these accepted formats:
@@ -190,9 +114,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the replication. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -368,9 +289,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the replication. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -508,9 +426,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the replication. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

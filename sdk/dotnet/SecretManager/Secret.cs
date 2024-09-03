@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Secret Config Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Secret With Annotations
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -89,7 +87,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Secret With Version Destroy Ttl
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -111,7 +109,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Secret With Automatic Cmek
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

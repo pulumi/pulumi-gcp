@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
+    ///   * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
     /// 
     /// &gt; **Warning:** This resource creates a Firestore Document on a project that already has
     /// a Firestore database. If you haven't already created it, you may
@@ -96,6 +96,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Document Nested Document
     /// 
     /// ```csharp
@@ -216,9 +217,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The client-assigned document ID to use for this document during creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("documentId")]
         public Output<string> DocumentId { get; private set; } = null!;
@@ -315,9 +313,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The client-assigned document ID to use for this document during creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("documentId", required: true)]
         public Input<string> DocumentId { get; set; } = null!;
@@ -363,9 +358,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The client-assigned document ID to use for this document during creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("documentId")]
         public Input<string>? DocumentId { get; set; }

@@ -59,6 +59,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Check Service Config Enforced
 //
 // ```go
@@ -97,6 +98,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase App Check Service Config Unenforced
 //
 // ```go
@@ -173,8 +175,6 @@ type AppCheckServiceConfig struct {
 	// firebasedatabase.googleapis.com (Firebase Realtime Database)
 	// firestore.googleapis.com (Cloud Firestore)
 	// identitytoolkit.googleapis.com (Authentication)
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 }
 
@@ -222,8 +222,6 @@ type appCheckServiceConfigState struct {
 	// firebasedatabase.googleapis.com (Firebase Realtime Database)
 	// firestore.googleapis.com (Cloud Firestore)
 	// identitytoolkit.googleapis.com (Authentication)
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 }
 
@@ -239,8 +237,6 @@ type AppCheckServiceConfigState struct {
 	// firebasedatabase.googleapis.com (Firebase Realtime Database)
 	// firestore.googleapis.com (Cloud Firestore)
 	// identitytoolkit.googleapis.com (Authentication)
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 }
 
@@ -258,8 +254,6 @@ type appCheckServiceConfigArgs struct {
 	// firebasedatabase.googleapis.com (Firebase Realtime Database)
 	// firestore.googleapis.com (Cloud Firestore)
 	// identitytoolkit.googleapis.com (Authentication)
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 }
 
@@ -274,8 +268,6 @@ type AppCheckServiceConfigArgs struct {
 	// firebasedatabase.googleapis.com (Firebase Realtime Database)
 	// firestore.googleapis.com (Cloud Firestore)
 	// identitytoolkit.googleapis.com (Authentication)
-	//
-	// ***
 	ServiceId pulumi.StringInput
 }
 
@@ -386,8 +378,6 @@ func (o AppCheckServiceConfigOutput) Project() pulumi.StringOutput {
 // firebasedatabase.googleapis.com (Firebase Realtime Database)
 // firestore.googleapis.com (Cloud Firestore)
 // identitytoolkit.googleapis.com (Authentication)
-//
-// ***
 func (o AppCheckServiceConfigOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckServiceConfig) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

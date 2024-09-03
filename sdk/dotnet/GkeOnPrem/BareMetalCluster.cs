@@ -133,6 +133,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkeonprem Bare Metal Cluster Manuallb
     /// 
     /// ```csharp
@@ -240,6 +241,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkeonprem Bare Metal Cluster Bgplb
     /// 
     /// ```csharp

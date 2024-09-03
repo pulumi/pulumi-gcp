@@ -24,9 +24,7 @@ import (
 // * How-to Guides
 //   - [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
 //
-// ## Example Usage
-//
-// ### Compute Mig Resize Request
+// ##
 //
 // ```go
 // package main
@@ -159,8 +157,6 @@ type ResizeRequest struct {
 	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
 	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
 	// *compute.instanceGroupManagers.update
-	//
-	// ***
 	InstanceGroupManager pulumi.StringOutput `pulumi:"instanceGroupManager"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -227,8 +223,6 @@ type resizeRequestState struct {
 	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
 	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
 	// *compute.instanceGroupManagers.update
-	//
-	// ***
 	InstanceGroupManager *string `pulumi:"instanceGroupManager"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
@@ -257,8 +251,6 @@ type ResizeRequestState struct {
 	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
 	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
 	// *compute.instanceGroupManagers.update
-	//
-	// ***
 	InstanceGroupManager pulumi.StringPtrInput
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
@@ -289,8 +281,6 @@ type resizeRequestArgs struct {
 	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
 	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
 	// *compute.instanceGroupManagers.update
-	//
-	// ***
 	InstanceGroupManager string `pulumi:"instanceGroupManager"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name *string `pulumi:"name"`
@@ -313,8 +303,6 @@ type ResizeRequestArgs struct {
 	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
 	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
 	// *compute.instanceGroupManagers.update
-	//
-	// ***
 	InstanceGroupManager pulumi.StringInput
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
 	Name pulumi.StringPtrInput
@@ -430,8 +418,6 @@ func (o ResizeRequestOutput) Description() pulumi.StringPtrOutput {
 // The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
 // Authorization requires the following IAM permission on the specified resource instanceGroupManager:
 // *compute.instanceGroupManagers.update
-//
-// ***
 func (o ResizeRequestOutput) InstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.InstanceGroupManager }).(pulumi.StringOutput)
 }

@@ -26,8 +26,6 @@ namespace Pulumi.Gcp.Billing.Inputs
         /// negative. If units is negative, nanos must be negative or
         /// zero. For example $-1.75 is represented as units=-1 and
         /// nanos=-750,000,000.
-        /// 
-        /// - - -
         /// </summary>
         [Input("nanos")]
         public Input<int>? Nanos { get; set; }

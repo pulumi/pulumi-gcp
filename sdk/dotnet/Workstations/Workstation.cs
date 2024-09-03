@@ -10,87 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Workstations
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Workstation Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstation-cluster",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstation-cluster",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = @default.Name,
-    ///     });
-    /// 
-    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "workstation-cluster",
-    ///         Network = @default.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
-    ///     {
-    ///         WorkstationConfigId = "workstation-config",
-    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
-    ///         Location = "us-central1",
-    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
-    ///         {
-    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
-    ///             {
-    ///                 MachineType = "e2-standard-4",
-    ///                 BootDiskSizeGb = 35,
-    ///                 DisablePublicIpAddresses = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultWorkstation = new Gcp.Workstations.Workstation("default", new()
-    ///     {
-    ///         WorkstationId = "work-station",
-    ///         WorkstationConfigId = defaultWorkstationConfig.WorkstationConfigId,
-    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
-    ///         Location = "us-central1",
-    ///         Labels = 
-    ///         {
-    ///             { "label", "key" },
-    ///         },
-    ///         Env = 
-    ///         {
-    ///             { "name", "foo" },
-    ///         },
-    ///         Annotations = 
-    ///         {
-    ///             { "label-one", "value-one" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Workstation can be imported using any of these accepted formats:
@@ -171,9 +90,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The location where the workstation parent resources reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -327,9 +243,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The location where the workstation parent resources reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -453,9 +366,6 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The location where the workstation parent resources reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

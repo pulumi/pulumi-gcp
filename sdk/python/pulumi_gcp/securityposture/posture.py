@@ -142,7 +142,7 @@ class _PostureState:
         Input properties used for looking up and filtering Posture resources.
         :param pulumi.Input[str] create_time: Time the Posture was created in UTC.
         :param pulumi.Input[str] description: Description of the posture.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] name: Name of the posture.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
@@ -209,7 +209,7 @@ class _PostureState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -350,7 +350,7 @@ class Posture(pulumi.CustomResource):
         To get more information about Posture, see:
 
         * How-to Guides
-            * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+          * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
 
         ## Example Usage
 
@@ -502,7 +502,7 @@ class Posture(pulumi.CustomResource):
         To get more information about Posture, see:
 
         * How-to Guides
-            * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+          * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
 
         ## Example Usage
 
@@ -710,7 +710,7 @@ class Posture(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Posture was created in UTC.
         :param pulumi.Input[str] description: Description of the posture.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[str] location: Location of the resource, eg: global.
         :param pulumi.Input[str] name: Name of the posture.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
@@ -762,7 +762,7 @@ class Posture(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 

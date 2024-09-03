@@ -31,12 +31,9 @@ class MembershipArgs:
         """
         The set of arguments for constructing a Membership resource.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
-               https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+               <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
                Structure is documented below.
         :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
@@ -74,9 +71,6 @@ class MembershipArgs:
     def membership_id(self) -> pulumi.Input[str]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 
@@ -90,7 +84,7 @@ class MembershipArgs:
         """
         Authority encodes how Google will recognize identities from this Membership.
         See the workload identity documentation for more details:
-        https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
         Structure is documented below.
         """
         return pulumi.get(self, "authority")
@@ -186,7 +180,7 @@ class _MembershipState:
         Input properties used for looking up and filtering Membership resources.
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
-               https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+               <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
                Structure is documented below.
         :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
@@ -201,9 +195,6 @@ class _MembershipState:
         :param pulumi.Input[str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The unique identifier of the membership.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -240,7 +231,7 @@ class _MembershipState:
         """
         Authority encodes how Google will recognize identities from this Membership.
         See the workload identity documentation for more details:
-        https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
         Structure is documented below.
         """
         return pulumi.get(self, "authority")
@@ -322,9 +313,6 @@ class _MembershipState:
     def membership_id(self) -> Optional[pulumi.Input[str]]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 
@@ -391,7 +379,7 @@ class Membership(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
         * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+          * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
 
@@ -417,7 +405,7 @@ class Membership(pulumi.CustomResource):
                 },
             })
         ```
-        ### Gkehub Membership Basic
+        ## 
 
         ```python
         import pulumi
@@ -441,6 +429,7 @@ class Membership(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+
         ### Gkehub Membership Issuer
 
         ```python
@@ -497,7 +486,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
-               https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+               <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
                Structure is documented below.
         :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
@@ -511,9 +500,6 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -530,7 +516,7 @@ class Membership(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
         * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+          * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
 
@@ -556,7 +542,7 @@ class Membership(pulumi.CustomResource):
                 },
             })
         ```
-        ### Gkehub Membership Basic
+        ## 
 
         ```python
         import pulumi
@@ -580,6 +566,7 @@ class Membership(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+
         ### Gkehub Membership Issuer
 
         ```python
@@ -706,7 +693,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MembershipAuthorityArgs', 'MembershipAuthorityArgsDict']] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
-               https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+               <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
                Structure is documented below.
         :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
@@ -721,9 +708,6 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The unique identifier of the membership.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -752,7 +736,7 @@ class Membership(pulumi.CustomResource):
         """
         Authority encodes how Google will recognize identities from this Membership.
         See the workload identity documentation for more details:
-        https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
         Structure is documented below.
         """
         return pulumi.get(self, "authority")
@@ -810,9 +794,6 @@ class Membership(pulumi.CustomResource):
     def membership_id(self) -> pulumi.Output[str]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 

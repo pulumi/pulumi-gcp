@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/networkconnectivity/rest/v1/projects.locations.networkConnectionPolicies)
     /// * How-to Guides
-    ///     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
+    ///   * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Connectivity Policy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -132,15 +130,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the ServiceConnectionPolicy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+        /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -266,15 +261,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the ServiceConnectionPolicy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+        /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -371,15 +363,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the ServiceConnectionPolicy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+        /// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: &lt;https://google.aip.dev/122#fields-representing-resource-names&gt;
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

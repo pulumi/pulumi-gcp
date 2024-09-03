@@ -37,7 +37,7 @@ import (
 //
 // ```
 //
-// ### Configure Basic TPU Node With Available Version
+// ### Configure Basic TPU Node with available version
 //
 // ```go
 // package main

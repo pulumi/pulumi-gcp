@@ -22,7 +22,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     public static final ServiceTemplateVolumeArgs Empty = new ServiceTemplateVolumeArgs();
 
     /**
-     * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
      * Structure is documented below.
      * 
      */
@@ -30,7 +30,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     private @Nullable Output<ServiceTemplateVolumeCloudSqlInstanceArgs> cloudSqlInstance;
 
     /**
-     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
      * Structure is documented below.
      * 
      */
@@ -105,7 +105,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
      * Structure is documented below.
      * 
      */
@@ -113,7 +113,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     private @Nullable Output<ServiceTemplateVolumeSecretArgs> secret;
 
     /**
-     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * @return Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
      * Structure is documented below.
      * 
      */
@@ -151,7 +151,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param cloudSqlInstance For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * @param cloudSqlInstance For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
          * Structure is documented below.
          * 
          * @return builder
@@ -163,7 +163,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param cloudSqlInstance For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * @param cloudSqlInstance For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
          * Structure is documented below.
          * 
          * @return builder
@@ -264,7 +264,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param secret Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * @param secret Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -276,7 +276,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param secret Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * @param secret Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
          * Structure is documented below.
          * 
          * @return builder

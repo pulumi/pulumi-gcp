@@ -36,16 +36,12 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -199,7 +195,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
      * 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
      * The supported units are a subset of The Unified Code for Units of Measure standard.
      * More info can be found in the API documentation
-     * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+     * (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
      * 
      */
     @Import(name="unit")
@@ -222,7 +218,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
      * 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
      * The supported units are a subset of The Unified Code for Units of Measure standard.
      * More info can be found in the API documentation
-     * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+     * (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
      * 
      */
     public Optional<Output<String>> unit() {
@@ -305,8 +301,6 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         /**
          * @param displayName A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -317,8 +311,6 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param displayName A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -543,7 +535,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
          * 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
          * The supported units are a subset of The Unified Code for Units of Measure standard.
          * More info can be found in the API documentation
-         * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+         * (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
          * 
          * @return builder
          * 
@@ -570,7 +562,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
          * 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
          * The supported units are a subset of The Unified Code for Units of Measure standard.
          * More info can be found in the API documentation
-         * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+         * (&lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)&gt;.
          * 
          * @return builder
          * 

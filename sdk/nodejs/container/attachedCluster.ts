@@ -13,12 +13,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest)
  * * How-to Guides
- *     * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
- *     * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+ *   * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
+ *   * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
  *
- * ## Example Usage
- *
- * ### Container Attached Cluster Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +42,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Container Attached Cluster Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -109,7 +107,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Container Attached Cluster Ignore Errors
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

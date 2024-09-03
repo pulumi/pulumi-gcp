@@ -89,8 +89,6 @@ if not MYPY:
         dest_range: NotRequired[pulumi.Input[str]]
         """
         The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-
-        - - -
         """
         ip_protocol: NotRequired[pulumi.Input[str]]
         """
@@ -114,8 +112,6 @@ class PolicyBasedRouteFilterArgs:
         :param pulumi.Input[str] protocol_version: Internet protocol versions this policy-based route applies to.
                Possible values are: `IPV4`.
         :param pulumi.Input[str] dest_range: The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-               
-               - - -
         :param pulumi.Input[str] ip_protocol: The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
         :param pulumi.Input[str] src_range: The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
         """
@@ -145,8 +141,6 @@ class PolicyBasedRouteFilterArgs:
     def dest_range(self) -> Optional[pulumi.Input[str]]:
         """
         The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-
-        - - -
         """
         return pulumi.get(self, "dest_range")
 

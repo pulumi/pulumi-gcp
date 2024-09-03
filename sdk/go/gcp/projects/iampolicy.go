@@ -24,19 +24,17 @@ import (
 // > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
-//
-//	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
+// IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 //
 // ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
-//
-//	using this resource. Deleting a `projects.IAMPolicy` removes access
-//	from anyone without organization-level access to the project. Proceed with caution.
-//	It's not recommended to use `projects.IAMPolicy` with your provider project
-//	to avoid locking yourself out, and it should generally only be used with projects
-//	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-//	applying the change.
+// using this resource. Deleting a `projects.IAMPolicy` removes access
+// from anyone without organization-level access to the project. Proceed with caution.
+// It's not recommended to use `projects.IAMPolicy` with your provider project
+// to avoid locking yourself out, and it should generally only be used with projects
+// fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+// applying the change.
 //
 // ```go
 // package main
@@ -290,13 +288,12 @@ import (
 // ## projects.IAMPolicy
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
-//
-//	using this resource. Deleting a `projects.IAMPolicy` removes access
-//	from anyone without organization-level access to the project. Proceed with caution.
-//	It's not recommended to use `projects.IAMPolicy` with your provider project
-//	to avoid locking yourself out, and it should generally only be used with projects
-//	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
-//	applying the change.
+// using this resource. Deleting a `projects.IAMPolicy` removes access
+// from anyone without organization-level access to the project. Proceed with caution.
+// It's not recommended to use `projects.IAMPolicy` with your provider project
+// to avoid locking yourself out, and it should generally only be used with projects
+// fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+// applying the change.
 //
 // ```go
 // package main

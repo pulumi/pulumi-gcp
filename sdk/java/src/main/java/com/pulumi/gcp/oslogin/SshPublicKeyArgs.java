@@ -64,16 +64,12 @@ public final class SshPublicKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The user email.
      * 
-     * ***
-     * 
      */
     @Import(name="user", required=true)
     private Output<String> user;
 
     /**
      * @return The user email.
-     * 
-     * ***
      * 
      */
     public Output<String> user() {
@@ -173,8 +169,6 @@ public final class SshPublicKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param user The user email.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -185,8 +179,6 @@ public final class SshPublicKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param user The user email.
-         * 
-         * ***
          * 
          * @return builder
          * 

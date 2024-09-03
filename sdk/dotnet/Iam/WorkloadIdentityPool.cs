@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
     /// * How-to Guides
-    ///     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+    ///   * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Iam Workload Identity Pool Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,7 +36,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -138,9 +136,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID to use for the pool, which becomes the final component of the resource name. This
         /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workloadIdentityPoolId")]
         public Output<string> WorkloadIdentityPoolId { get; private set; } = null!;
@@ -222,9 +217,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID to use for the pool, which becomes the final component of the resource name. This
         /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
@@ -289,9 +281,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID to use for the pool, which becomes the final component of the resource name. This
         /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolId")]
         public Input<string>? WorkloadIdentityPoolId { get; set; }

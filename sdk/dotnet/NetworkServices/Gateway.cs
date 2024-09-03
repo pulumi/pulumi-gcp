@@ -19,9 +19,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Services Gateway Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// ### Network Services Gateway Advanced
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -72,7 +70,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// ### Network Services Gateway Secure Web Proxy
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -176,7 +174,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// ### Network Services Gateway Multiple Swp Same Network
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -403,9 +401,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Gateway resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -605,9 +600,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Gateway resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -773,9 +765,6 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Short name of the Gateway resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

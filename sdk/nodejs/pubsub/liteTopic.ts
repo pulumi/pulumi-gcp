@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
  * * How-to Guides
- *     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
+ *   * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
  *
- * ## Example Usage
- *
- * ### Pubsub Lite Topic Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -108,9 +106,6 @@ export class LiteTopic extends pulumi.CustomResource {
 
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -183,9 +178,6 @@ export class LiteTopic extends pulumi.CustomResource {
 export interface LiteTopicState {
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -224,9 +216,6 @@ export interface LiteTopicState {
 export interface LiteTopicArgs {
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

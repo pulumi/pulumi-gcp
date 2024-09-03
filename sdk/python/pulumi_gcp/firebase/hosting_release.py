@@ -27,9 +27,6 @@ class HostingReleaseArgs:
         """
         The set of arguments for constructing a HostingRelease resource.
         :param pulumi.Input[str] site_id: Required. The ID of the site to which the release belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] channel_id: The ID of the channel to which the release belongs. If not provided, the release will
                belong to the default "live" channel
         :param pulumi.Input[str] message: The deploy description when the release was created. The value can be up to 512 characters.
@@ -59,9 +56,6 @@ class HostingReleaseArgs:
     def site_id(self) -> pulumi.Input[str]:
         """
         Required. The ID of the site to which the release belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "site_id")
 
@@ -147,9 +141,6 @@ class _HostingReleaseState:
                sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID
         :param pulumi.Input[str] release_id: The unique identifier for the Release.
         :param pulumi.Input[str] site_id: Required. The ID of the site to which the release belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the release; indicates what happened to the content of the site. There is no need to specify
                `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
@@ -232,9 +223,6 @@ class _HostingReleaseState:
     def site_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The ID of the site to which the release belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "site_id")
 
@@ -312,6 +300,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
+
         ### Firebasehosting Release In Channel
 
         ```python
@@ -339,6 +328,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
+
         ### Firebasehosting Release Disable
 
         ```python
@@ -390,9 +380,6 @@ class HostingRelease(pulumi.CustomResource):
                belong to the default "live" channel
         :param pulumi.Input[str] message: The deploy description when the release was created. The value can be up to 512 characters.
         :param pulumi.Input[str] site_id: Required. The ID of the site to which the release belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the release; indicates what happened to the content of the site. There is no need to specify
                `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
@@ -436,6 +423,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release")
         ```
+
         ### Firebasehosting Release In Channel
 
         ```python
@@ -463,6 +451,7 @@ class HostingRelease(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Test release in channel")
         ```
+
         ### Firebasehosting Release Disable
 
         ```python
@@ -578,9 +567,6 @@ class HostingRelease(pulumi.CustomResource):
                sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID
         :param pulumi.Input[str] release_id: The unique identifier for the Release.
         :param pulumi.Input[str] site_id: Required. The ID of the site to which the release belongs.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the release; indicates what happened to the content of the site. There is no need to specify
                `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
@@ -645,9 +631,6 @@ class HostingRelease(pulumi.CustomResource):
     def site_id(self) -> pulumi.Output[str]:
         """
         Required. The ID of the site to which the release belongs.
-
-
-        - - -
         """
         return pulumi.get(self, "site_id")
 

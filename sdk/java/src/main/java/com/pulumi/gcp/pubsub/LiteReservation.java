@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.reservations)
  * * How-to Guides
- *     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
+ *   * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
  * 
- * ## Example Usage
- * 
- * ### Pubsub Lite Reservation Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -103,16 +101,12 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
     /**
      * Name of the reservation.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the reservation.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

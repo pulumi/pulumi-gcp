@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools)
  * * How-to Guides
- *     * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
+ *   * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
  * 
  * &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for
  * your billing/quota project. The account team notifies you when the project is granted access.
@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Iam Workforce Pool Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -231,16 +232,12 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

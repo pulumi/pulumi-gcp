@@ -249,7 +249,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
     def __init__(__self__, *,
                  code: Optional[str] = None):
         """
-        :param str code: Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        :param str code: Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -258,7 +258,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
     @pulumi.getter
     def code(self) -> Optional[str]:
         """
-        Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
         """
         return pulumi.get(self, "code")
 
@@ -285,7 +285,7 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferences(dict):
     def __init__(__self__, *,
                  preferred_regions: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] preferred_regions: A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        :param Sequence[str] preferred_regions: A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
         """
         if preferred_regions is not None:
             pulumi.set(__self__, "preferred_regions", preferred_regions)
@@ -294,7 +294,7 @@ class PreferenceSetVirtualMachinePreferencesRegionPreferences(dict):
     @pulumi.getter(name="preferredRegions")
     def preferred_regions(self) -> Optional[Sequence[str]]:
         """
-        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+        A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
         """
         return pulumi.get(self, "preferred_regions")
 
@@ -401,7 +401,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType(dict)
     def __init__(__self__, *,
                  node_name: Optional[str] = None):
         """
-        :param str node_name: Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        :param str node_name: Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
         """
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
@@ -410,7 +410,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType(dict)
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
         """
-        Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
         """
         return pulumi.get(self, "node_name")
 
