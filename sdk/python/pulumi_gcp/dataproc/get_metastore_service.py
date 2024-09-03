@@ -284,6 +284,14 @@ def get_metastore_service(location: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.dataproc.get_metastore_service(service_id="foo-bar",
+        location="global")
+    ```
+
 
     :param str location: The location where the metastore service resides.
            
@@ -337,6 +345,14 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
     Get a Dataproc Metastore service from Google Cloud by its id and location.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.dataproc.get_metastore_service(service_id="foo-bar",
+        location="global")
+    ```
 
 
     :param str location: The location where the metastore service resides.

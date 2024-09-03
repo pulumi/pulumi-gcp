@@ -249,9 +249,78 @@ import (
 // data source, which will retrieve the latest image on every `pulumi apply`, and will update
 // the template to use that specific image:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Region:      pulumi.String("us-central1"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String(myImage.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // To have instances update to the latest on every scaling event or instance re-creation,
 // use the family as the image for the disk, and it will use GCP's default behavior, setting
 // the image for the template to the family:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
+//				NamePrefix:  pulumi.String("instance-template-"),
+//				MachineType: pulumi.String("e2-medium"),
+//				Region:      pulumi.String("us-central1"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

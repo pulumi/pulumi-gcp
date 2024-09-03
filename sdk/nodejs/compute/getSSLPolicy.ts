@@ -9,6 +9,15 @@ import * as utilities from "../utilities";
  *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-ssl-policy = gcp.compute.getSSLPolicy({
+ *     name: "production-ssl-policy",
+ * });
+ * ```
  */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
 
@@ -83,6 +92,15 @@ export interface GetSSLPolicyResult {
  *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-ssl-policy = gcp.compute.getSSLPolicy({
+ *     name: "production-ssl-policy",
+ * });
+ * ```
  */
 export function getSSLPolicyOutput(args: GetSSLPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSSLPolicyResult> {
     return pulumi.output(args).apply((a: any) => getSSLPolicy(a, opts))

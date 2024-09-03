@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_ha_vpn_gateway" "gateway" {
-        ///   name = "foobar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var gateway = Gcp.Compute.GetHcVpnGateway.Invoke(new()
+        ///     {
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetHcVpnGatewayResult> InvokeAsync(GetHcVpnGatewayArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_ha_vpn_gateway" "gateway" {
-        ///   name = "foobar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var gateway = Gcp.Compute.GetHcVpnGateway.Invoke(new()
+        ///     {
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetHcVpnGatewayResult> Invoke(GetHcVpnGatewayInvokeArgs args, InvokeOptions? options = null)

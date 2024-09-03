@@ -144,7 +144,7 @@ def get_secret_version(project: Optional[str] = None,
                        version: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretVersionResult:
     """
-    Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+    Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the secretmanager_get_secret_version_access datasource.
 
     ## Example Usage
 
@@ -188,7 +188,7 @@ def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               version: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
     """
-    Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+    Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the secretmanager_get_secret_version_access datasource.
 
     ## Example Usage
 

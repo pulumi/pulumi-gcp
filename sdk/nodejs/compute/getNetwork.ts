@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Get a network within GCE from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-network = gcp.compute.getNetwork({
+ *     name: "default-us-east1",
+ * });
+ * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
 
@@ -71,6 +80,15 @@ export interface GetNetworkResult {
  * Get a network within GCE from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-network = gcp.compute.getNetwork({
+ *     name: "default-us-east1",
+ * });
+ * ```
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))

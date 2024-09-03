@@ -120,6 +120,13 @@ def get_workload_identity_pool(project: Optional[str] = None,
     > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool(workload_identity_pool_id="foo-pool")
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -153,6 +160,13 @@ def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[st
     Get a IAM workload identity pool from Google Cloud by its id.
     > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool(workload_identity_pool_id="foo-pool")
+    ```
 
 
     :param str project: The project in which the resource belongs. If it

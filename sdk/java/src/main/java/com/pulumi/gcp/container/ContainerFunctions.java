@@ -928,6 +928,44 @@ public final class ContainerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .location("us-east1-a")
+     *             .build());
+     * 
+     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
+     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
+     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
         return getCluster(args, InvokeOptions.Empty);
@@ -936,6 +974,44 @@ public final class ContainerFunctions {
      * Get info about a GKE cluster from its name and location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .location("us-east1-a")
+     *             .build());
+     * 
+     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
+     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
+     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -946,6 +1022,44 @@ public final class ContainerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .location("us-east1-a")
+     *             .build());
+     * 
+     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
+     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
+     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:container/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -954,6 +1068,44 @@ public final class ContainerFunctions {
      * Get info about a GKE cluster from its name and location.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .location("us-east1-a")
+     *             .build());
+     * 
+     *         ctx.export("endpoint", myCluster.applyValue(getClusterResult -> getClusterResult.endpoint()));
+     *         ctx.export("instanceGroupUrls", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()[0].instanceGroupUrls()));
+     *         ctx.export("nodeConfig", myCluster.applyValue(getClusterResult -> getClusterResult.nodeConfigs()));
+     *         ctx.export("nodePools", myCluster.applyValue(getClusterResult -> getClusterResult.nodePools()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {

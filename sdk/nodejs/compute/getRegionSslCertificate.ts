@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * Get info about a Region Google Compute SSL Certificate from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCert = gcp.compute.getRegionSslCertificate({
+ *     name: "my-cert",
+ * });
+ * export const certificate = myCert.then(myCert => myCert.certificate);
+ * export const certificateId = myCert.then(myCert => myCert.certificateId);
+ * export const selfLink = myCert.then(myCert => myCert.selfLink);
+ * ```
  */
 export function getRegionSslCertificate(args: GetRegionSslCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionSslCertificateResult> {
 
@@ -65,6 +77,18 @@ export interface GetRegionSslCertificateResult {
  * Get info about a Region Google Compute SSL Certificate from its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCert = gcp.compute.getRegionSslCertificate({
+ *     name: "my-cert",
+ * });
+ * export const certificate = myCert.then(myCert => myCert.certificate);
+ * export const certificateId = myCert.then(myCert => myCert.certificateId);
+ * export const selfLink = myCert.then(myCert => myCert.selfLink);
+ * ```
  */
 export function getRegionSslCertificateOutput(args: GetRegionSslCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionSslCertificateResult> {
     return pulumi.output(args).apply((a: any) => getRegionSslCertificate(a, opts))

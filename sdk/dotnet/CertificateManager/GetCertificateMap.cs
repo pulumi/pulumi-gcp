@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_certificate_manager_certificate_map" "default" {
-        ///  name = "cert-map"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificateMap.Invoke(new()
+        ///     {
+        ///         Name = "cert-map",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetCertificateMapResult> InvokeAsync(GetCertificateMapArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.CertificateManager
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_certificate_manager_certificate_map" "default" {
-        ///  name = "cert-map"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificateMap.Invoke(new()
+        ///     {
+        ///         Name = "cert-map",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetCertificateMapResult> Invoke(GetCertificateMapInvokeArgs args, InvokeOptions? options = null)

@@ -16,22 +16,26 @@ namespace Pulumi.Gcp.Filestore
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_filestore_instance" "my_instance" {
-        ///   name = "my-filestore-instance"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "instance_ip_addresses" {
-        ///   value = data.google_filestore_instance.my_instance.networks.ip_addresses
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Gcp.Filestore.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-filestore-instance",
+        ///     });
         /// 
-        /// output "instance_connect_mode" {
-        ///   value = data.google_filestore_instance.my_instance.networks.connect_mode
-        /// }
-        /// 
-        /// output "instance_file_share_name" {
-        ///   value = data.google_filestore_instance.my_instance.file_shares.name
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceIpAddresses"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.Networks?.IpAddresses),
+        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.Networks?.ConnectMode),
+        ///         ["instanceFileShareName"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.FileShares?.Name),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
@@ -42,22 +46,26 @@ namespace Pulumi.Gcp.Filestore
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_filestore_instance" "my_instance" {
-        ///   name = "my-filestore-instance"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "instance_ip_addresses" {
-        ///   value = data.google_filestore_instance.my_instance.networks.ip_addresses
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Gcp.Filestore.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-filestore-instance",
+        ///     });
         /// 
-        /// output "instance_connect_mode" {
-        ///   value = data.google_filestore_instance.my_instance.networks.connect_mode
-        /// }
-        /// 
-        /// output "instance_file_share_name" {
-        ///   value = data.google_filestore_instance.my_instance.file_shares.name
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceIpAddresses"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.Networks?.IpAddresses),
+        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.Networks?.ConnectMode),
+        ///         ["instanceFileShareName"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.FileShares?.Name),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)

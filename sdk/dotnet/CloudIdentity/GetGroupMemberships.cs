@@ -25,10 +25,20 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_group_memberships" "members" {
-        ///   group = "groups/123eab45c6defghi"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
+        ///     {
+        ///         Group = "groups/123eab45c6defghi",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetGroupMembershipsResult> InvokeAsync(GetGroupMembershipsArgs args, InvokeOptions? options = null)
@@ -48,10 +58,20 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_group_memberships" "members" {
-        ///   group = "groups/123eab45c6defghi"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
+        ///     {
+        ///         Group = "groups/123eab45c6defghi",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetGroupMembershipsResult> Invoke(GetGroupMembershipsInvokeArgs args, InvokeOptions? options = null)

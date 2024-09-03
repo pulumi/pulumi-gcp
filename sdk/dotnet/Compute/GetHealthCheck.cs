@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_health_check" "health_check" {
-        ///   name = "my-hc"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var healthCheck = Gcp.Compute.GetHealthCheck.Invoke(new()
+        ///     {
+        ///         Name = "my-hc",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetHealthCheckResult> InvokeAsync(GetHealthCheckArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_health_check" "health_check" {
-        ///   name = "my-hc"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var healthCheck = Gcp.Compute.GetHealthCheck.Invoke(new()
+        ///     {
+        ///         Name = "my-hc",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOptions? options = null)

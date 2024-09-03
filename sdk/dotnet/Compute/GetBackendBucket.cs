@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_backend_bucket" "my-backend-bucket" {
-        ///   name = "my-backend"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
+        ///     {
+        ///         Name = "my-backend",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetBackendBucketResult> InvokeAsync(GetBackendBucketArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_backend_bucket" "my-backend-bucket" {
-        ///   name = "my-backend"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
+        ///     {
+        ///         Name = "my-backend",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetBackendBucketResult> Invoke(GetBackendBucketInvokeArgs args, InvokeOptions? options = null)
