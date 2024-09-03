@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataproc/docs)
+ *   * [Official Documentation](https://cloud.google.com/dataproc/docs)
  *
  * !> **Warning:** Due to limitations of the API, all arguments except
  * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Using A GPU Accelerator
+ * ### Using a GPU accelerator
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -168,8 +168,6 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The name of the cluster, unique within the project and
      * zone.
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -258,8 +256,6 @@ export interface ClusterState {
     /**
      * The name of the cluster, unique within the project and
      * zone.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -302,8 +298,6 @@ export interface ClusterArgs {
     /**
      * The name of the cluster, unique within the project and
      * zone.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

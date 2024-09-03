@@ -53,9 +53,6 @@ class InstanceArgs:
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance.
                If accelerators are enabled it is possible a permadiff will be created with the Options field.
                Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
@@ -141,9 +138,6 @@ class InstanceArgs:
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
         Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -475,9 +469,6 @@ class _InstanceState:
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
@@ -908,9 +899,6 @@ class _InstanceState:
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
         Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -987,11 +975,9 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
-        ## Example Usage
-
-        ### Data Fusion Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -1002,7 +988,7 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        ### Data Fusion Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -1042,7 +1028,7 @@ class Instance(pulumi.CustomResource):
                 "state": "ENABLED",
             }])
         ```
-        ### Data Fusion Instance Psc
+        ## 
 
         ```python
         import pulumi
@@ -1074,7 +1060,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
-        ### Data Fusion Instance Cmek
+        ## 
 
         ```python
         import pulumi
@@ -1100,7 +1086,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
-        ### Data Fusion Instance Enterprise
+        ## 
 
         ```python
         import pulumi
@@ -1112,7 +1098,7 @@ class Instance(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        ### Data Fusion Instance Event
+        ## 
 
         ```python
         import pulumi
@@ -1128,7 +1114,7 @@ class Instance(pulumi.CustomResource):
                 "topic": event_topic.id,
             })
         ```
-        ### Data Fusion Instance Zone
+        ## 
 
         ```python
         import pulumi
@@ -1213,9 +1199,6 @@ class Instance(pulumi.CustomResource):
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-               
-               
-               - - -
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
@@ -1232,11 +1215,9 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
-        ## Example Usage
-
-        ### Data Fusion Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -1247,7 +1228,7 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        ### Data Fusion Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -1287,7 +1268,7 @@ class Instance(pulumi.CustomResource):
                 "state": "ENABLED",
             }])
         ```
-        ### Data Fusion Instance Psc
+        ## 
 
         ```python
         import pulumi
@@ -1319,7 +1300,7 @@ class Instance(pulumi.CustomResource):
                 },
             })
         ```
-        ### Data Fusion Instance Cmek
+        ## 
 
         ```python
         import pulumi
@@ -1345,7 +1326,7 @@ class Instance(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
-        ### Data Fusion Instance Enterprise
+        ## 
 
         ```python
         import pulumi
@@ -1357,7 +1338,7 @@ class Instance(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        ### Data Fusion Instance Event
+        ## 
 
         ```python
         import pulumi
@@ -1373,7 +1354,7 @@ class Instance(pulumi.CustomResource):
                 "topic": event_topic.id,
             })
         ```
-        ### Data Fusion Instance Zone
+        ## 
 
         ```python
         import pulumi
@@ -1600,9 +1581,6 @@ class Instance(pulumi.CustomResource):
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
                Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
@@ -1896,9 +1874,6 @@ class Instance(pulumi.CustomResource):
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
         Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 

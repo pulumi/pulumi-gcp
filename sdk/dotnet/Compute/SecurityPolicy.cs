@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With ReCAPTCHA Configuration Options
+    /// ### With reCAPTCHA configuration options
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With Header Actions
+    /// ### With header actions
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With EnforceOnKey Value As Empty String
+    /// ### With enforceOnKey value as empty string
     /// A scenario example that won't cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
     /// 
     /// ```csharp
@@ -297,8 +297,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -410,8 +408,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -491,8 +487,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -16,14 +16,14 @@ public final class LakeMetastoreArgs extends com.pulumi.resources.ResourceArgs {
     public static final LakeMetastoreArgs Empty = new LakeMetastoreArgs();
 
     /**
-     * Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+     * Optional. A relative reference to the Dataproc Metastore (&lt;https://cloud.google.com/dataproc-metastore/docs&gt;) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+     * @return Optional. A relative reference to the Dataproc Metastore (&lt;https://cloud.google.com/dataproc-metastore/docs&gt;) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
      * 
      */
     public Optional<Output<String>> service() {
@@ -55,7 +55,7 @@ public final class LakeMetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+         * @param service Optional. A relative reference to the Dataproc Metastore (&lt;https://cloud.google.com/dataproc-metastore/docs&gt;) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class LakeMetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+         * @param service Optional. A relative reference to the Dataproc Metastore (&lt;https://cloud.google.com/dataproc-metastore/docs&gt;) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
          * 
          * @return builder
          * 

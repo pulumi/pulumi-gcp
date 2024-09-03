@@ -34,9 +34,7 @@ import (
 // * How-to Guides
 //   - [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 //
-// ## Example Usage
-//
-// ### Region Disk Basic
+// ##
 //
 // ```go
 // package main
@@ -87,7 +85,7 @@ import (
 //	}
 //
 // ```
-// ### Region Disk Async
+// ##
 //
 // ```go
 // package main
@@ -135,7 +133,7 @@ import (
 //	}
 //
 // ```
-// ### Region Disk Features
+// ##
 //
 // ```go
 // package main
@@ -282,8 +280,6 @@ type RegionDisk struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -304,8 +300,8 @@ type RegionDisk struct {
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -441,8 +437,6 @@ type regionDiskState struct {
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -463,8 +457,8 @@ type regionDiskState struct {
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -563,8 +557,6 @@ type RegionDiskState struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -585,8 +577,8 @@ type RegionDiskState struct {
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -675,8 +667,6 @@ type regionDiskArgs struct {
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Size of the persistent disk, specified in GB. You can specify this
 	// field when creating a persistent disk using the sourceImage or
@@ -695,8 +685,8 @@ type regionDiskArgs struct {
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -768,8 +758,6 @@ type RegionDiskArgs struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayInput
 	// Size of the persistent disk, specified in GB. You can specify this
 	// field when creating a persistent disk using the sourceImage or
@@ -788,8 +776,8 @@ type RegionDiskArgs struct {
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -1011,8 +999,6 @@ func (o RegionDiskOutput) Region() pulumi.StringOutput {
 }
 
 // URLs of the zones where the disk should be replicated to.
-//
-// ***
 func (o RegionDiskOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringArrayOutput { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
@@ -1045,8 +1031,8 @@ func (o RegionDiskOutput) Snapshot() pulumi.StringPtrOutput {
 
 // The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 // For example, the following are valid values:
-// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 // * projects/{project}/zones/{zone}/disks/{disk}
 // * projects/{project}/regions/{region}/disks/{disk}
 // * zones/{zone}/disks/{disk}

@@ -28,11 +28,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
  * 
- * ## Example Usage
- * 
- * ### Os Config Guest Policies Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -106,7 +104,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Os Config Guest Policies Packages
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -193,7 +191,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Os Config Guest Policies Recipes
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

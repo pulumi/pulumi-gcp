@@ -394,7 +394,7 @@ if not MYPY:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         send_for_bulk_import: NotRequired[pulumi.Input[bool]]
@@ -414,7 +414,7 @@ class DicomStoreNotificationConfigArgs:
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+               project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         :param pulumi.Input[bool] send_for_bulk_import: Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
         """
@@ -430,7 +430,7 @@ class DicomStoreNotificationConfigArgs:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
@@ -619,7 +619,7 @@ if not MYPY:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         send_full_resource: NotRequired[pulumi.Input[bool]]
@@ -652,7 +652,7 @@ class FhirStoreNotificationConfigArgs:
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+               project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         :param pulumi.Input[bool] send_full_resource: Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
                Note that setting this to true does not guarantee that all resources will be sent in the format of
@@ -679,7 +679,7 @@ class FhirStoreNotificationConfigArgs:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
@@ -735,7 +735,7 @@ if not MYPY:
         resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Supply a FHIR resource type (such as "Patient" or "Observation"). See
-        https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+        <https://www.hl7.org/fhir/valueset-resource-types.html> for a list of all FHIR resource types. The server treats
         an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
 elif False:
@@ -754,7 +754,7 @@ class FhirStoreStreamConfigArgs:
                See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Supply a FHIR resource type (such as "Patient" or "Observation"). See
-               https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+               <https://www.hl7.org/fhir/valueset-resource-types.html> for a list of all FHIR resource types. The server treats
                an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         pulumi.set(__self__, "bigquery_destination", bigquery_destination)
@@ -783,7 +783,7 @@ class FhirStoreStreamConfigArgs:
     def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Supply a FHIR resource type (such as "Patient" or "Observation"). See
-        https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+        <https://www.hl7.org/fhir/valueset-resource-types.html> for a list of all FHIR resource types. The server treats
         an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         return pulumi.get(self, "resource_types")
@@ -864,7 +864,7 @@ if not MYPY:
         """
         Specifies the output schema type.
         * ANALYTICS: Analytics schema defined by the FHIR community.
-        See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+        See <https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md>.
         * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
         * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
         Default value is `ANALYTICS`.
@@ -888,7 +888,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] schema_type: Specifies the output schema type.
                * ANALYTICS: Analytics schema defined by the FHIR community.
-               See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+               See <https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md>.
                * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
                * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
                Default value is `ANALYTICS`.
@@ -934,7 +934,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         """
         Specifies the output schema type.
         * ANALYTICS: Analytics schema defined by the FHIR community.
-        See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+        See <https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md>.
         * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
         * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
         Default value is `ANALYTICS`.
@@ -1103,7 +1103,7 @@ if not MYPY:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
 elif False:
@@ -1118,7 +1118,7 @@ class Hl7StoreNotificationConfigArgs:
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+               project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -1131,7 +1131,7 @@ class Hl7StoreNotificationConfigArgs:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         """
         return pulumi.get(self, "pubsub_topic")
@@ -1149,14 +1149,14 @@ if not MYPY:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
         """
         filter: NotRequired[pulumi.Input[str]]
         """
         Restricts notifications sent for messages matching a filter. If this is empty, all messages
-        are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        are matched. Syntax: <https://cloud.google.com/appengine/docs/standard/python/search/query_strings>
         Fields/functions available for filtering are:
         * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
         * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
@@ -1178,11 +1178,11 @@ class Hl7StoreNotificationConfigsArgs:
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
                It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-               project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+               project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
                If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
         :param pulumi.Input[str] filter: Restricts notifications sent for messages matching a filter. If this is empty, all messages
-               are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+               are matched. Syntax: <https://cloud.google.com/appengine/docs/standard/python/search/query_strings>
                Fields/functions available for filtering are:
                * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
                * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
@@ -1203,7 +1203,7 @@ class Hl7StoreNotificationConfigsArgs:
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        project. <service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com> must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
         """
@@ -1218,7 +1218,7 @@ class Hl7StoreNotificationConfigsArgs:
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
         Restricts notifications sent for messages matching a filter. If this is empty, all messages
-        are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        are matched. Syntax: <https://cloud.google.com/appengine/docs/standard/python/search/query_strings>
         Fields/functions available for filtering are:
         * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
         * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".

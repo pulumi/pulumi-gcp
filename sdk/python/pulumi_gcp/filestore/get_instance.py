@@ -194,13 +194,21 @@ def get_instance(location: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
 
-    :param str location: The name of the location of the instance. This 
+    my_instance = gcp.filestore.get_instance(name="my-filestore-instance")
+    pulumi.export("instanceIpAddresses", my_instance.networks.ip_addresses)
+    pulumi.export("instanceConnectMode", my_instance.networks.connect_mode)
+    pulumi.export("instanceFileShareName", my_instance.file_shares.name)
+    ```
+
+
+    :param str location: The name of the location of the instance. This
            can be a region for ENTERPRISE tier instances. If it is not provided,
            the provider region or zone is used.
     :param str name: The name of a Filestore instance.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -240,13 +248,21 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
 
-    :param str location: The name of the location of the instance. This 
+    my_instance = gcp.filestore.get_instance(name="my-filestore-instance")
+    pulumi.export("instanceIpAddresses", my_instance.networks.ip_addresses)
+    pulumi.export("instanceConnectMode", my_instance.networks.connect_mode)
+    pulumi.export("instanceFileShareName", my_instance.file_shares.name)
+    ```
+
+
+    :param str location: The name of the location of the instance. This
            can be a region for ENTERPRISE tier instances. If it is not provided,
            the provider region or zone is used.
     :param str name: The name of a Filestore instance.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

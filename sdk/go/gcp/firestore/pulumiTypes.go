@@ -274,8 +274,8 @@ func (o BackupScheduleWeeklyRecurrencePtrOutput) Day() pulumi.StringPtrOutput {
 
 type DatabaseCmekConfig struct {
 	// (Output)
-	// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-	// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+	// Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+	// During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
 	// multiple in-use key versions.
 	// The expected format is
 	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -286,11 +286,11 @@ type DatabaseCmekConfig struct {
 	// Only keys in the same location as this database are allowed to be used
 	// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
 	// multi-region us. For Firestore's eur3 multi-region, this corresponds to
-	// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+	// Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
 	// This value should be the KMS key resource ID in the format of
 	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
 	// How to retrive this resource ID is listed at
-	// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+	// <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -307,8 +307,8 @@ type DatabaseCmekConfigInput interface {
 
 type DatabaseCmekConfigArgs struct {
 	// (Output)
-	// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-	// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+	// Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+	// During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
 	// multiple in-use key versions.
 	// The expected format is
 	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -319,11 +319,11 @@ type DatabaseCmekConfigArgs struct {
 	// Only keys in the same location as this database are allowed to be used
 	// for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
 	// multi-region us. For Firestore's eur3 multi-region, this corresponds to
-	// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+	// Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
 	// This value should be the KMS key resource ID in the format of
 	// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
 	// How to retrive this resource ID is listed at
-	// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+	// <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -405,8 +405,8 @@ func (o DatabaseCmekConfigOutput) ToDatabaseCmekConfigPtrOutputWithContext(ctx c
 }
 
 // (Output)
-// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+// Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+// During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
 // multiple in-use key versions.
 // The expected format is
 // `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -420,11 +420,11 @@ func (o DatabaseCmekConfigOutput) ActiveKeyVersions() pulumi.StringArrayOutput {
 // Only keys in the same location as this database are allowed to be used
 // for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
 // multi-region us. For Firestore's eur3 multi-region, this corresponds to
-// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+// Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
 // This value should be the KMS key resource ID in the format of
 // `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
 // How to retrive this resource ID is listed at
-// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+// <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
 func (o DatabaseCmekConfigOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseCmekConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -454,8 +454,8 @@ func (o DatabaseCmekConfigPtrOutput) Elem() DatabaseCmekConfigOutput {
 }
 
 // (Output)
-// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-// During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+// Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+// During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
 // multiple in-use key versions.
 // The expected format is
 // `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -474,11 +474,11 @@ func (o DatabaseCmekConfigPtrOutput) ActiveKeyVersions() pulumi.StringArrayOutpu
 // Only keys in the same location as this database are allowed to be used
 // for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
 // multi-region us. For Firestore's eur3 multi-region, this corresponds to
-// Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+// Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
 // This value should be the KMS key resource ID in the format of
 // `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
 // How to retrive this resource ID is listed at
-// https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+// <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
 func (o DatabaseCmekConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCmekConfig) *string {
 		if v == nil {
@@ -1056,8 +1056,6 @@ type IndexFieldVectorConfig struct {
 	// with the same dimension.
 	Dimension *int `pulumi:"dimension"`
 	// Indicates the vector index is a flat index.
-	//
-	// ***
 	Flat *IndexFieldVectorConfigFlat `pulumi:"flat"`
 }
 
@@ -1077,8 +1075,6 @@ type IndexFieldVectorConfigArgs struct {
 	// with the same dimension.
 	Dimension pulumi.IntPtrInput `pulumi:"dimension"`
 	// Indicates the vector index is a flat index.
-	//
-	// ***
 	Flat IndexFieldVectorConfigFlatPtrInput `pulumi:"flat"`
 }
 
@@ -1166,8 +1162,6 @@ func (o IndexFieldVectorConfigOutput) Dimension() pulumi.IntPtrOutput {
 }
 
 // Indicates the vector index is a flat index.
-//
-// ***
 func (o IndexFieldVectorConfigOutput) Flat() IndexFieldVectorConfigFlatPtrOutput {
 	return o.ApplyT(func(v IndexFieldVectorConfig) *IndexFieldVectorConfigFlat { return v.Flat }).(IndexFieldVectorConfigFlatPtrOutput)
 }
@@ -1208,8 +1202,6 @@ func (o IndexFieldVectorConfigPtrOutput) Dimension() pulumi.IntPtrOutput {
 }
 
 // Indicates the vector index is a flat index.
-//
-// ***
 func (o IndexFieldVectorConfigPtrOutput) Flat() IndexFieldVectorConfigFlatPtrOutput {
 	return o.ApplyT(func(v *IndexFieldVectorConfig) *IndexFieldVectorConfigFlat {
 		if v == nil {

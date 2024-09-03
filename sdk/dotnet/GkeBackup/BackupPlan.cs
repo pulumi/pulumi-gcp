@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+    ///   * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
     /// 
     /// ## Example Usage
     /// 
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
-    /// ### Gkebackup Backupplan Autopilot
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Backupplan Cmek
     /// 
     /// ```csharp
@@ -182,6 +183,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Backupplan Full
     /// 
     /// ```csharp
@@ -252,6 +254,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Backupplan Permissive
     /// 
     /// ```csharp
@@ -323,6 +326,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Backupplan Rpo Daily Window
     /// 
     /// ```csharp
@@ -411,6 +415,7 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkebackup Backupplan Rpo Weekly Window
     /// 
     /// ```csharp
@@ -612,9 +617,6 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Backup Plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -775,9 +777,6 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Backup Plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -891,9 +890,6 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Backup Plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

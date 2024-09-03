@@ -189,16 +189,12 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Import(name="params")
     private @Nullable Output<InstanceGroupManagerParamsArgs> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Optional<Output<InstanceGroupManagerParamsArgs>> params() {
@@ -426,8 +422,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      * The zone that instances in this group should be created
      * in.
      * 
-     * ***
-     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
@@ -435,8 +429,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * @return The zone that instances in this group should be created
      * in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> zone() {
@@ -707,8 +699,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -719,8 +709,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1082,8 +1070,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          * @param zone The zone that instances in this group should be created
          * in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1095,8 +1081,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param zone The zone that instances in this group should be created
          * in.
-         * 
-         * ***
          * 
          * @return builder
          * 

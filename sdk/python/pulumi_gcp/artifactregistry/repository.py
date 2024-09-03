@@ -41,9 +41,6 @@ class RepositoryArgs:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
@@ -118,9 +115,6 @@ class RepositoryArgs:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -350,9 +344,6 @@ class _RepositoryState:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -512,9 +503,6 @@ class _RepositoryState:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -715,11 +703,9 @@ class Repository(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+          * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
-        ## Example Usage
-
-        ### Artifact Registry Repository Basic
+        ## 
 
         ```python
         import pulumi
@@ -731,7 +717,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
-        ### Artifact Registry Repository Docker
+        ## 
 
         ```python
         import pulumi
@@ -746,7 +732,7 @@ class Repository(pulumi.CustomResource):
                 "immutable_tags": True,
             })
         ```
-        ### Artifact Registry Repository Cmek
+        ## 
 
         ```python
         import pulumi
@@ -765,7 +751,7 @@ class Repository(pulumi.CustomResource):
             kms_key_name="kms-key",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
-        ### Artifact Registry Repository Virtual
+        ## 
 
         ```python
         import pulumi
@@ -802,7 +788,7 @@ class Repository(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Artifact Registry Repository Remote
+        ## 
 
         ```python
         import pulumi
@@ -821,7 +807,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Apt
+        ## 
 
         ```python
         import pulumi
@@ -843,7 +829,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Yum
+        ## 
 
         ```python
         import pulumi
@@ -865,7 +851,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Cleanup
+        ## 
 
         ```python
         import pulumi
@@ -916,7 +902,7 @@ class Repository(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Artifact Registry Repository Remote Dockerhub Auth
+        ## 
 
         ```python
         import pulumi
@@ -955,7 +941,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Docker Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -996,7 +982,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Maven Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1037,7 +1023,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Npm Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1078,7 +1064,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Python Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1166,9 +1152,6 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1211,11 +1194,9 @@ class Repository(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+          * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
-        ## Example Usage
-
-        ### Artifact Registry Repository Basic
+        ## 
 
         ```python
         import pulumi
@@ -1227,7 +1208,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
-        ### Artifact Registry Repository Docker
+        ## 
 
         ```python
         import pulumi
@@ -1242,7 +1223,7 @@ class Repository(pulumi.CustomResource):
                 "immutable_tags": True,
             })
         ```
-        ### Artifact Registry Repository Cmek
+        ## 
 
         ```python
         import pulumi
@@ -1261,7 +1242,7 @@ class Repository(pulumi.CustomResource):
             kms_key_name="kms-key",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
         ```
-        ### Artifact Registry Repository Virtual
+        ## 
 
         ```python
         import pulumi
@@ -1298,7 +1279,7 @@ class Repository(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Artifact Registry Repository Remote
+        ## 
 
         ```python
         import pulumi
@@ -1317,7 +1298,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Apt
+        ## 
 
         ```python
         import pulumi
@@ -1339,7 +1320,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Yum
+        ## 
 
         ```python
         import pulumi
@@ -1361,7 +1342,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Cleanup
+        ## 
 
         ```python
         import pulumi
@@ -1412,7 +1393,7 @@ class Repository(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Artifact Registry Repository Remote Dockerhub Auth
+        ## 
 
         ```python
         import pulumi
@@ -1451,7 +1432,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Docker Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1492,7 +1473,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Maven Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1533,7 +1514,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Npm Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1574,7 +1555,7 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
-        ### Artifact Registry Repository Remote Python Custom With Auth
+        ## 
 
         ```python
         import pulumi
@@ -1761,9 +1742,6 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1885,9 +1863,6 @@ class Repository(pulumi.CustomResource):
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 

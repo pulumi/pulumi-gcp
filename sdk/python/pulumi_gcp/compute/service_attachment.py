@@ -40,9 +40,6 @@ class ServiceAttachmentArgs:
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
@@ -109,9 +106,6 @@ class ServiceAttachmentArgs:
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
         destination servers.
-
-
-        - - -
         """
         return pulumi.get(self, "enable_proxy_protocol")
 
@@ -292,9 +286,6 @@ class _ServiceAttachmentState:
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -432,9 +423,6 @@ class _ServiceAttachmentState:
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
         destination servers.
-
-
-        - - -
         """
         return pulumi.get(self, "enable_proxy_protocol")
 
@@ -573,11 +561,9 @@ class ServiceAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/beta/serviceAttachments)
         * How-to Guides
-            * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+          * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 
-        ## Example Usage
-
-        ### Service Attachment Basic
+        ## 
 
         ```python
         import pulumi
@@ -638,7 +624,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        ### Service Attachment Explicit Projects
+        ## 
 
         ```python
         import pulumi
@@ -707,7 +693,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        ### Service Attachment Explicit Networks
+        ## 
 
         ```python
         import pulumi
@@ -780,7 +766,7 @@ class ServiceAttachment(pulumi.CustomResource):
             subnetwork=psc_ilb_consumer_subnetwork.id,
             ip_address=psc_ilb_consumer_address.id)
         ```
-        ### Service Attachment Reconcile Connections
+        ## 
 
         ```python
         import pulumi
@@ -886,9 +872,6 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -917,11 +900,9 @@ class ServiceAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/beta/serviceAttachments)
         * How-to Guides
-            * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+          * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
 
-        ## Example Usage
-
-        ### Service Attachment Basic
+        ## 
 
         ```python
         import pulumi
@@ -982,7 +963,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        ### Service Attachment Explicit Projects
+        ## 
 
         ```python
         import pulumi
@@ -1051,7 +1032,7 @@ class ServiceAttachment(pulumi.CustomResource):
             network="default",
             ip_address=psc_ilb_consumer_address.id)
         ```
-        ### Service Attachment Explicit Networks
+        ## 
 
         ```python
         import pulumi
@@ -1124,7 +1105,7 @@ class ServiceAttachment(pulumi.CustomResource):
             subnetwork=psc_ilb_consumer_subnetwork.id,
             ip_address=psc_ilb_consumer_address.id)
         ```
-        ### Service Attachment Reconcile Connections
+        ## 
 
         ```python
         import pulumi
@@ -1322,9 +1303,6 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-               
-               
-               - - -
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
                updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -1428,9 +1406,6 @@ class ServiceAttachment(pulumi.CustomResource):
         If true, enable the proxy protocol which is for supplying client TCP/IP
         address data in TCP connections that traverse proxies on their way to
         destination servers.
-
-
-        - - -
         """
         return pulumi.get(self, "enable_proxy_protocol")
 

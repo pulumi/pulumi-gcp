@@ -12,9 +12,7 @@ namespace Pulumi.Gcp.Workbench
     /// <summary>
     /// A Workbench instance.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Workbench Instance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -32,7 +30,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// ### Workbench Instance Basic Container
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +56,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// ### Workbench Instance Basic Gpu
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -93,6 +91,9 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Workbench Instance Labels Stopped
     /// 
     /// ```csharp
@@ -137,6 +138,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
+    /// 
     /// ### Workbench Instance Full
     /// 
     /// ```csharp
@@ -366,9 +368,6 @@ namespace Pulumi.Gcp.Workbench
 
         /// <summary>
         /// Part of `parent`. See documentation of `projectsId`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -528,9 +527,6 @@ namespace Pulumi.Gcp.Workbench
 
         /// <summary>
         /// Part of `parent`. See documentation of `projectsId`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -662,9 +658,6 @@ namespace Pulumi.Gcp.Workbench
 
         /// <summary>
         /// Part of `parent`. See documentation of `projectsId`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

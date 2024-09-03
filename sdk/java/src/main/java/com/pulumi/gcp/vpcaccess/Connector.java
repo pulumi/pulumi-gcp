@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
  * * How-to Guides
- *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  * 
- * ## Example Usage
- * 
- * ### Vpc Access Connector
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -64,7 +62,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vpc Access Connector Shared Vpc
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -261,16 +259,12 @@ public class Connector extends com.pulumi.resources.CustomResource {
     /**
      * The name of the resource (Max 25 characters).
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the resource (Max 25 characters).
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

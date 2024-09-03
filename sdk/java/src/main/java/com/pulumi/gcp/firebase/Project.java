@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
  * * How-to Guides
- *     * Official Documentation
+ *   * Official Documentation
  * 
  * &gt; **Note:** This resource should usually be used with a provider configuration
  * with `user_project_override = true` unless you wish for your quota

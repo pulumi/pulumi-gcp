@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
  * * How-to Guides
- *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+ *   * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
  * 
- * ## Example Usage
- * 
- * ### Dns Policy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -198,16 +196,12 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * User assigned name for this policy.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return User assigned name for this policy.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Apigee.Outputs
         public readonly string? CountryCode;
         /// <summary>
         /// Email address. Max 255 characters.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Email;
         /// <summary>

@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
     /// * How-to Guides
-    ///     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
+    ///   * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Service Directory Namespace Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,9 +105,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
@@ -207,9 +202,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
@@ -280,9 +272,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

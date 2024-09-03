@@ -17,64 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Network Services Service Binding Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.servicedirectory.Namespace;
- * import com.pulumi.gcp.servicedirectory.NamespaceArgs;
- * import com.pulumi.gcp.servicedirectory.Service;
- * import com.pulumi.gcp.servicedirectory.ServiceArgs;
- * import com.pulumi.gcp.networkservices.ServiceBinding;
- * import com.pulumi.gcp.networkservices.ServiceBindingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Namespace("default", NamespaceArgs.builder()
- *             .namespaceId("my-namespace")
- *             .location("us-central1")
- *             .build());
- * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()
- *             .serviceId("my-service")
- *             .namespace(default_.id())
- *             .metadata(Map.ofEntries(
- *                 Map.entry("stage", "prod"),
- *                 Map.entry("region", "us-central1")
- *             ))
- *             .build());
- * 
- *         var defaultServiceBinding = new ServiceBinding("defaultServiceBinding", ServiceBindingArgs.builder()
- *             .name("my-service-binding")
- *             .labels(Map.of("foo", "bar"))
- *             .description("my description")
- *             .service(defaultService.id())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ServiceBinding can be imported using any of these accepted formats:
@@ -165,16 +107,12 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
     /**
      * Name of the ServiceBinding resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the ServiceBinding resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

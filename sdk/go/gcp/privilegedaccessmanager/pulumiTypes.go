@@ -628,7 +628,7 @@ func (o EntitlementApprovalWorkflowManualApprovalsStepArrayOutput) Index(i pulum
 }
 
 type EntitlementApprovalWorkflowManualApprovalsStepApprovers struct {
-	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
 	Principals []string `pulumi:"principals"`
 }
 
@@ -644,7 +644,7 @@ type EntitlementApprovalWorkflowManualApprovalsStepApproversInput interface {
 }
 
 type EntitlementApprovalWorkflowManualApprovalsStepApproversArgs struct {
-	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
 	Principals pulumi.StringArrayInput `pulumi:"principals"`
 }
 
@@ -674,7 +674,7 @@ func (o EntitlementApprovalWorkflowManualApprovalsStepApproversOutput) ToEntitle
 	return o
 }
 
-// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
 func (o EntitlementApprovalWorkflowManualApprovalsStepApproversOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EntitlementApprovalWorkflowManualApprovalsStepApprovers) []string { return v.Principals }).(pulumi.StringArrayOutput)
 }
@@ -777,7 +777,7 @@ func (o EntitlementEligibleUserArrayOutput) Index(i pulumi.IntInput) Entitlement
 }
 
 type EntitlementPrivilegedAccess struct {
-	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
 	// Structure is documented below.
 	GcpIamAccess EntitlementPrivilegedAccessGcpIamAccess `pulumi:"gcpIamAccess"`
 }
@@ -794,7 +794,7 @@ type EntitlementPrivilegedAccessInput interface {
 }
 
 type EntitlementPrivilegedAccessArgs struct {
-	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
 	// Structure is documented below.
 	GcpIamAccess EntitlementPrivilegedAccessGcpIamAccessInput `pulumi:"gcpIamAccess"`
 }
@@ -876,7 +876,7 @@ func (o EntitlementPrivilegedAccessOutput) ToEntitlementPrivilegedAccessPtrOutpu
 	}).(EntitlementPrivilegedAccessPtrOutput)
 }
 
-// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+// GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
 // Structure is documented below.
 func (o EntitlementPrivilegedAccessOutput) GcpIamAccess() EntitlementPrivilegedAccessGcpIamAccessOutput {
 	return o.ApplyT(func(v EntitlementPrivilegedAccess) EntitlementPrivilegedAccessGcpIamAccess { return v.GcpIamAccess }).(EntitlementPrivilegedAccessGcpIamAccessOutput)
@@ -906,7 +906,7 @@ func (o EntitlementPrivilegedAccessPtrOutput) Elem() EntitlementPrivilegedAccess
 	}).(EntitlementPrivilegedAccessOutput)
 }
 
-// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+// GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
 // Structure is documented below.
 func (o EntitlementPrivilegedAccessPtrOutput) GcpIamAccess() EntitlementPrivilegedAccessGcpIamAccessPtrOutput {
 	return o.ApplyT(func(v *EntitlementPrivilegedAccess) *EntitlementPrivilegedAccessGcpIamAccess {
@@ -1100,9 +1100,9 @@ func (o EntitlementPrivilegedAccessGcpIamAccessPtrOutput) RoleBindings() Entitle
 
 type EntitlementPrivilegedAccessGcpIamAccessRoleBinding struct {
 	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+	// <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
 	ConditionExpression *string `pulumi:"conditionExpression"`
-	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+	// IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
 	Role string `pulumi:"role"`
 }
 
@@ -1119,9 +1119,9 @@ type EntitlementPrivilegedAccessGcpIamAccessRoleBindingInput interface {
 
 type EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs struct {
 	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+	// <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
 	ConditionExpression pulumi.StringPtrInput `pulumi:"conditionExpression"`
-	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+	// IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -1177,12 +1177,12 @@ func (o EntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ToEntitlementP
 }
 
 // The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+// <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
 func (o EntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ConditionExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntitlementPrivilegedAccessGcpIamAccessRoleBinding) *string { return v.ConditionExpression }).(pulumi.StringPtrOutput)
 }
 
-// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+// IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
 func (o EntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v EntitlementPrivilegedAccessGcpIamAccessRoleBinding) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1211,8 +1211,6 @@ type EntitlementRequesterJustificationConfig struct {
 	// The justification is not mandatory but can be provided in any of the supported formats.
 	NotMandatory *EntitlementRequesterJustificationConfigNotMandatory `pulumi:"notMandatory"`
 	// The requester has to provide a justification in the form of free flowing text.
-	//
-	// ***
 	Unstructured *EntitlementRequesterJustificationConfigUnstructured `pulumi:"unstructured"`
 }
 
@@ -1231,8 +1229,6 @@ type EntitlementRequesterJustificationConfigArgs struct {
 	// The justification is not mandatory but can be provided in any of the supported formats.
 	NotMandatory EntitlementRequesterJustificationConfigNotMandatoryPtrInput `pulumi:"notMandatory"`
 	// The requester has to provide a justification in the form of free flowing text.
-	//
-	// ***
 	Unstructured EntitlementRequesterJustificationConfigUnstructuredPtrInput `pulumi:"unstructured"`
 }
 
@@ -1321,8 +1317,6 @@ func (o EntitlementRequesterJustificationConfigOutput) NotMandatory() Entitlemen
 }
 
 // The requester has to provide a justification in the form of free flowing text.
-//
-// ***
 func (o EntitlementRequesterJustificationConfigOutput) Unstructured() EntitlementRequesterJustificationConfigUnstructuredPtrOutput {
 	return o.ApplyT(func(v EntitlementRequesterJustificationConfig) *EntitlementRequesterJustificationConfigUnstructured {
 		return v.Unstructured
@@ -1364,8 +1358,6 @@ func (o EntitlementRequesterJustificationConfigPtrOutput) NotMandatory() Entitle
 }
 
 // The requester has to provide a justification in the form of free flowing text.
-//
-// ***
 func (o EntitlementRequesterJustificationConfigPtrOutput) Unstructured() EntitlementRequesterJustificationConfigUnstructuredPtrOutput {
 	return o.ApplyT(func(v *EntitlementRequesterJustificationConfig) *EntitlementRequesterJustificationConfigUnstructured {
 		if v == nil {

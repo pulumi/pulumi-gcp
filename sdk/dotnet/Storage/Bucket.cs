@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Example Usage
     /// 
-    /// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+    /// ### creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
-    /// ### Life Cycle Settings For Storage Bucket Objects
+    /// ### Life cycle settings for storage bucket objects
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
-    /// ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+    /// ### Life cycle settings for storage bucket objects with no_age enabled
     /// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
     /// 
     /// ```csharp
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
-    /// ### Enabling Public Access Prevention
+    /// ### Enabling public access prevention
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -268,8 +268,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -499,8 +497,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -675,8 +671,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -92,7 +92,7 @@ public final class OccurenceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
+     * &lt;https://gcr.io/project/image{@literal @}sha256:123abc&gt; for a Docker image.
      * 
      */
     @Import(name="resourceUri", required=true)
@@ -101,7 +101,7 @@ public final class OccurenceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
+     * &lt;https://gcr.io/project/image{@literal @}sha256:123abc&gt; for a Docker image.
      * 
      */
     public Output<String> resourceUri() {
@@ -231,7 +231,7 @@ public final class OccurenceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resourceUri Required. Immutable. A URI that represents the resource for which
          * the occurrence applies. For example,
-         * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
+         * &lt;https://gcr.io/project/image{@literal @}sha256:123abc&gt; for a Docker image.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class OccurenceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resourceUri Required. Immutable. A URI that represents the resource for which
          * the occurrence applies. For example,
-         * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
+         * &lt;https://gcr.io/project/image{@literal @}sha256:123abc&gt; for a Docker image.
          * 
          * @return builder
          * 

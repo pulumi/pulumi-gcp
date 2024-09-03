@@ -25,9 +25,7 @@ import javax.annotation.Nullable;
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
  * 
- * ## Example Usage
- * 
- * ### Region Url Map Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -123,7 +121,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Url Map Default Route Action
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -325,7 +323,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Url Map L7 Ilb Path
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -462,7 +460,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Url Map L7 Ilb Path Partial
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -567,7 +565,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Url Map L7 Ilb Route
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -683,7 +681,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Url Map L7 Ilb Route Partial
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -774,7 +772,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Url Map Path Template Match
+ * 
+ * ## Example Usage
+ * 
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1074,8 +1075,6 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1088,8 +1087,6 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

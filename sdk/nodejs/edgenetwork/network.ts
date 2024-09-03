@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.networks)
  * * How-to Guides
- *     * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
+ *   * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
  *
  * ## Example Usage
  *
@@ -126,9 +126,6 @@ export class Network extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * A unique ID that identifies this network.
-     *
-     *
-     * - - -
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
@@ -230,9 +227,6 @@ export interface NetworkState {
     name?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this network.
-     *
-     *
-     * - - -
      */
     networkId?: pulumi.Input<string>;
     /**
@@ -274,9 +268,6 @@ export interface NetworkArgs {
     mtu?: pulumi.Input<number>;
     /**
      * A unique ID that identifies this network.
-     *
-     *
-     * - - -
      */
     networkId: pulumi.Input<string>;
     /**

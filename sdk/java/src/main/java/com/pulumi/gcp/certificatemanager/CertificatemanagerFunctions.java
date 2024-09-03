@@ -19,6 +19,39 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificateMap(GetCertificateMapArgs.builder()
+     *             .name("cert-map")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetCertificateMapResult> getCertificateMap(GetCertificateMapArgs args) {
         return getCertificateMap(args, InvokeOptions.Empty);
@@ -27,6 +60,39 @@ public final class CertificatemanagerFunctions {
      * Get info about a Google Certificate Manager Certificate Map resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificateMap(GetCertificateMapArgs.builder()
+     *             .name("cert-map")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateMapResult> getCertificateMapPlain(GetCertificateMapPlainArgs args) {
@@ -37,6 +103,39 @@ public final class CertificatemanagerFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificateMap(GetCertificateMapArgs.builder()
+     *             .name("cert-map")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetCertificateMapResult> getCertificateMap(GetCertificateMapArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:certificatemanager/getCertificateMap:getCertificateMap", TypeShape.of(GetCertificateMapResult.class), args, Utilities.withVersion(options));
@@ -45,6 +144,39 @@ public final class CertificatemanagerFunctions {
      * Get info about a Google Certificate Manager Certificate Map resource.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificateMap(GetCertificateMapArgs.builder()
+     *             .name("cert-map")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateMapResult> getCertificateMapPlain(GetCertificateMapPlainArgs args, InvokeOptions options) {

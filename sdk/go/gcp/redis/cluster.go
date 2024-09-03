@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
 //
-// ## Example Usage
-//
-// ### Redis Cluster Ha
+// ##
 //
 // ```go
 // package main
@@ -99,7 +97,7 @@ import (
 //	}
 //
 // ```
-// ### Redis Cluster Ha Single Zone
+// ##
 //
 // ```go
 // package main

@@ -21,9 +21,7 @@ import javax.annotation.Nullable;
  * A Response Policy is a collection of selectors that apply to queries
  * made against one or more Virtual Private Cloud networks.
  * 
- * ## Example Usage
- * 
- * ### Dns Response Policy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -227,16 +225,12 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
      * 
-     * ***
-     * 
      */
     @Export(name="responsePolicyName", refs={String.class}, tree="[0]")
     private Output<String> responsePolicyName;
 
     /**
      * @return The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     * 
-     * ***
      * 
      */
     public Output<String> responsePolicyName() {

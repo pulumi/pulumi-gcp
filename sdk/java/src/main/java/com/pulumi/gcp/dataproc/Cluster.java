@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataproc/docs)
+ *   * [Official Documentation](https://cloud.google.com/dataproc/docs)
  * 
  * !&gt; **Warning:** Due to limitations of the API, all arguments except
  * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Using A GPU Accelerator
+ * ### Using a GPU accelerator
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -277,8 +277,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster, unique within the project and
      * zone.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -286,8 +284,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cluster, unique within the project and
      * zone.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

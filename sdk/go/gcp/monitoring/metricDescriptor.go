@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 //
-// ## Example Usage
-//
-// ### Monitoring Metric Descriptor Basic
+// ##
 //
 // ```go
 // package main
@@ -64,7 +62,7 @@ import (
 //	}
 //
 // ```
-// ### Monitoring Metric Descriptor Alert
+// ##
 //
 // ```go
 // package main
@@ -133,8 +131,6 @@ type MetricDescriptor struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -173,7 +169,7 @@ type MetricDescriptor struct {
 	// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
 	// The supported units are a subset of The Unified Code for Units of Measure standard.
 	// More info can be found in the API documentation
-	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+	// (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
@@ -228,8 +224,6 @@ type metricDescriptorState struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description *string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -268,7 +262,7 @@ type metricDescriptorState struct {
 	// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
 	// The supported units are a subset of The Unified Code for Units of Measure standard.
 	// More info can be found in the API documentation
-	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+	// (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
@@ -279,8 +273,6 @@ type MetricDescriptorState struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringPtrInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -319,7 +311,7 @@ type MetricDescriptorState struct {
 	// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
 	// The supported units are a subset of The Unified Code for Units of Measure standard.
 	// More info can be found in the API documentation
-	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+	// (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
@@ -334,8 +326,6 @@ type metricDescriptorArgs struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -370,7 +360,7 @@ type metricDescriptorArgs struct {
 	// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
 	// The supported units are a subset of The Unified Code for Units of Measure standard.
 	// More info can be found in the API documentation
-	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+	// (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
@@ -382,8 +372,6 @@ type MetricDescriptorArgs struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -418,7 +406,7 @@ type MetricDescriptorArgs struct {
 	// 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
 	// The supported units are a subset of The Unified Code for Units of Measure standard.
 	// More info can be found in the API documentation
-	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+	// (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
@@ -518,8 +506,6 @@ func (o MetricDescriptorOutput) Description() pulumi.StringOutput {
 }
 
 // A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-//
-// ***
 func (o MetricDescriptorOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -585,7 +571,7 @@ func (o MetricDescriptorOutput) Type() pulumi.StringOutput {
 // 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).
 // The supported units are a subset of The Unified Code for Units of Measure standard.
 // More info can be found in the API documentation
-// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
+// (<https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)>.
 func (o MetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringPtrOutput { return v.Unit }).(pulumi.StringPtrOutput)
 }

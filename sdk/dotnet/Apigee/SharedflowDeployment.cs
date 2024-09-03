@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
     /// * How-to Guides
-    ///     * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
+    ///   * [sharedflows.revisions.deployments](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.sharedflows.revisions.deployments)
     /// 
     /// ## Import
     /// 
@@ -53,9 +53,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Revision of the Sharedflow to be deployed.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("revision")]
         public Output<string> Revision { get; private set; } = null!;
@@ -132,9 +129,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Revision of the Sharedflow to be deployed.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("revision", required: true)]
         public Input<string> Revision { get; set; } = null!;
@@ -173,9 +167,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Revision of the Sharedflow to be deployed.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("revision")]
         public Input<string>? Revision { get; set; }

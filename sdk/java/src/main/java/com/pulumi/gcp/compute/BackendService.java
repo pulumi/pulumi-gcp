@@ -38,14 +38,12 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * 
  * &gt; **Warning:** All arguments including the following potentially sensitive
  * values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
  * 
- * ## Example Usage
- * 
- * ### Backend Service Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -89,7 +87,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service External Iap
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -130,7 +128,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Cache Simple
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -179,7 +177,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Cache Include Http Headers
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -225,7 +223,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Cache Include Named Cookies
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -276,7 +274,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Cache
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -330,7 +328,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Cache Bypass Cache On Request Headers
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -391,7 +389,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Traffic Director Round Robin
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -438,7 +436,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Traffic Director Ring Hash
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -506,7 +504,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service Network Endpoint
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -565,7 +563,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Backend Service External Managed
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1001,7 +999,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      *   reported weights. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
@@ -1052,7 +1050,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      *   reported weights. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
@@ -1110,8 +1108,6 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1124,8 +1120,6 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

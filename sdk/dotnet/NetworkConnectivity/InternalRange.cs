@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.internalRanges)
     /// * How-to Guides
-    ///     * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
+    ///   * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Connectivity Internal Ranges Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Internal Ranges Automatic Reservation
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -83,7 +81,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Internal Ranges External Ranges
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -114,7 +112,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Internal Ranges Reserve With Overlap
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -237,9 +235,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// The type of peering set for this internal range.
         /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("peering")]
         public Output<string> Peering { get; private set; } = null!;
@@ -393,9 +388,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// The type of peering set for this internal range.
         /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("peering", required: true)]
         public Input<string> Peering { get; set; } = null!;
@@ -513,9 +505,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// The type of peering set for this internal range.
         /// Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("peering")]
         public Input<string>? Peering { get; set; }

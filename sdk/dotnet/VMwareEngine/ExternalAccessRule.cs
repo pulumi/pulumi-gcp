@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine External Access Rule Full
     /// 
     /// ```csharp
@@ -233,7 +234,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the network policy.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         /// </summary>
         [Output("parent")]
@@ -378,7 +379,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the network policy.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         /// </summary>
         [Input("parent", required: true)]
@@ -485,7 +486,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the network policy.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
         /// </summary>
         [Input("parent")]

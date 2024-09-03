@@ -5,65 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Workstation Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.Network("default", {
- *     name: "workstation-cluster",
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
- *     name: "workstation-cluster",
- *     ipCidrRange: "10.0.0.0/24",
- *     region: "us-central1",
- *     network: _default.name,
- * });
- * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
- *     workstationClusterId: "workstation-cluster",
- *     network: _default.id,
- *     subnetwork: defaultSubnetwork.id,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
- *     workstationConfigId: "workstation-config",
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     host: {
- *         gceInstance: {
- *             machineType: "e2-standard-4",
- *             bootDiskSizeGb: 35,
- *             disablePublicIpAddresses: true,
- *         },
- *     },
- * });
- * const defaultWorkstation = new gcp.workstations.Workstation("default", {
- *     workstationId: "work-station",
- *     workstationConfigId: defaultWorkstationConfig.workstationConfigId,
- *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
- *     location: "us-central1",
- *     labels: {
- *         label: "key",
- *     },
- *     env: {
- *         name: "foo",
- *     },
- *     annotations: {
- *         "label-one": "value-one",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Workstation can be imported using any of these accepted formats:
@@ -153,9 +94,6 @@ export class Workstation extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the workstation parent resources reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -303,9 +241,6 @@ export interface WorkstationState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the workstation parent resources reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -370,9 +305,6 @@ export interface WorkstationArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the workstation parent resources reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

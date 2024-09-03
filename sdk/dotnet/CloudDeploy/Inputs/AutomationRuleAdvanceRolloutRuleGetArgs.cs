@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
         /// <summary>
         /// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> SourcePhases
         {

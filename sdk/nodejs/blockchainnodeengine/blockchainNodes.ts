@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/blockchain-node-engine/docs/reference/rest/v1/projects.locations.blockchainNodes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
+ *   * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
  *
- * ## Example Usage
- *
- * ### Blockchain Nodes Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Blockchain Nodes Geth Details
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -133,9 +131,6 @@ export class BlockchainNodes extends pulumi.CustomResource {
 
     /**
      * ID of the requesting object.
-     *
-     *
-     * - - -
      */
     public readonly blockchainNodeId!: pulumi.Output<string>;
     /**
@@ -250,9 +245,6 @@ export class BlockchainNodes extends pulumi.CustomResource {
 export interface BlockchainNodesState {
     /**
      * ID of the requesting object.
-     *
-     *
-     * - - -
      */
     blockchainNodeId?: pulumi.Input<string>;
     /**
@@ -315,9 +307,6 @@ export interface BlockchainNodesState {
 export interface BlockchainNodesArgs {
     /**
      * ID of the requesting object.
-     *
-     *
-     * - - -
      */
     blockchainNodeId: pulumi.Input<string>;
     /**

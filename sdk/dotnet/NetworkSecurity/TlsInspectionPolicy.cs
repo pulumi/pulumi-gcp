@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.tlsInspectionPolicies)
     /// * How-to Guides
-    ///     * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
+    ///   * [Use TlsInspectionPolicy](https://cloud.google.com/secure-web-proxy/docs/tls-inspection-overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Security Tls Inspection Policy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -134,7 +132,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
-    /// ### Network Security Tls Inspection Policy Custom
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -378,9 +376,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -502,9 +497,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -588,9 +580,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

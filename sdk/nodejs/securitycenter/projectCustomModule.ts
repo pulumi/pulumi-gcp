@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/projects.securityHealthAnalyticsSettings.customModules)
  * * How-to Guides
- *     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+ *   * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
  *
  * ## Example Usage
  *
@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Scc Project Custom Module Full
  *
  * ```typescript

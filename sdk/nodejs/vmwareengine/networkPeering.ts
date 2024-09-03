@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     importCustomRoutesWithPublicIp: false,
  * });
  * ```
+ *
  * ### Vmware Engine Network Peering Standard
  *
  * ```typescript
@@ -142,9 +143,6 @@ export class NetworkPeering extends pulumi.CustomResource {
     public readonly importCustomRoutesWithPublicIp!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Network Peering.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -288,9 +286,6 @@ export interface NetworkPeeringState {
     importCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
      * The ID of the Network Peering.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -367,9 +362,6 @@ export interface NetworkPeeringArgs {
     importCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
     /**
      * The ID of the Network Peering.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

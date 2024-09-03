@@ -19,16 +19,12 @@ public final class MonitoredProjectArgs extends com.pulumi.resources.ResourceArg
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
      * 
-     * ***
-     * 
      */
     @Import(name="metricsScope", required=true)
     private Output<String> metricsScope;
 
     /**
      * @return Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-     * 
-     * ***
      * 
      */
     public Output<String> metricsScope() {
@@ -78,8 +74,6 @@ public final class MonitoredProjectArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param metricsScope Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -90,8 +84,6 @@ public final class MonitoredProjectArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param metricsScope Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-         * 
-         * ***
          * 
          * @return builder
          * 

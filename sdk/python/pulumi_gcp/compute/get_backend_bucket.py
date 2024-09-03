@@ -157,10 +157,15 @@ def get_backend_bucket(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_backend_bucket = gcp.compute.get_backend_bucket(name="my-backend")
+    ```
+
 
     :param str name: Name of the resource.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -194,10 +199,15 @@ def get_backend_bucket_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_backend_bucket = gcp.compute.get_backend_bucket(name="my-backend")
+    ```
+
 
     :param str name: Name of the resource.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

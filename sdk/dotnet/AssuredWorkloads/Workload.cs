@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_workload
+    /// ### basic_workload
     /// A basic test of a assuredworkloads api
     /// ```csharp
     /// using System.Collections.Generic;
@@ -63,7 +63,8 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// 
     /// });
     /// ```
-    /// ### Sovereign_controls_workload
+    /// 
+    /// ### sovereign_controls_workload
     /// A Sovereign Controls test of the assuredworkloads api
     /// ```csharp
     /// using System.Collections.Generic;
@@ -221,10 +222,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// The organization for the resource
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -381,10 +378,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// The organization for the resource
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -556,10 +549,6 @@ namespace Pulumi.Gcp.AssuredWorkloads
 
         /// <summary>
         /// The organization for the resource
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

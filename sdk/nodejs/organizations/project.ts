@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
  * * How-to Guides
- *     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+ *   * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
  *
  * ## Example Usage
  *

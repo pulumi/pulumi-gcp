@@ -17,8 +17,8 @@ namespace Pulumi.Gcp.ServiceUsage
     /// To get more information about ConsumerQuotaOverride, see:
     /// 
     /// * How-to Guides
-    ///     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
-    ///     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+    ///   * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+    ///   * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
     /// 
     /// ## Example Usage
     /// 
@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Region Consumer Quota Override
     /// 
     /// ```csharp
@@ -98,6 +99,7 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// });
     /// ```
+    /// 
     /// ### Consumer Quota Override Custom Dimension
     /// 
     /// ```csharp
@@ -183,9 +185,6 @@ namespace Pulumi.Gcp.ServiceUsage
         /// The limit on the metric, e.g. `/project/region`.
         /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("limit")]
         public Output<string> Limit { get; private set; } = null!;
@@ -290,9 +289,6 @@ namespace Pulumi.Gcp.ServiceUsage
         /// The limit on the metric, e.g. `/project/region`.
         /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("limit", required: true)]
         public Input<string> Limit { get; set; } = null!;
@@ -353,9 +349,6 @@ namespace Pulumi.Gcp.ServiceUsage
         /// The limit on the metric, e.g. `/project/region`.
         /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("limit")]
         public Input<string>? Limit { get; set; }

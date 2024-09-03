@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+ *   * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
  *
- * ## Example Usage
- *
- * ### Datastream Connection Profile Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,7 +31,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Datastream Connection Profile Postgresql Private Connection
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -109,7 +107,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Datastream Connection Profile Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -134,6 +132,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Datastream Connection Profile Postgres
  *
  * ```typescript
@@ -194,6 +195,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Datastream Connection Profile Sql Server
  *
  * ```typescript
@@ -342,9 +344,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location this connection profile is located in.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -495,9 +494,6 @@ export interface ConnectionProfileState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location this connection profile is located in.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -579,9 +575,6 @@ export interface ConnectionProfileArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location this connection profile is located in.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

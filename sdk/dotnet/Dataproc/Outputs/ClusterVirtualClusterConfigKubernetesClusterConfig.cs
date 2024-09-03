@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig GkeClusterConfig;
         /// <summary>
-        /// A namespace within the Kubernetes cluster to deploy into. 
+        /// A namespace within the Kubernetes cluster to deploy into.
         /// If this namespace does not exist, it is created.
         /// If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
         /// If not specified, the name of the Dataproc Cluster is used.

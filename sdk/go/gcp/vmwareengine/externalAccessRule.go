@@ -83,6 +83,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine External Access Rule Full
 //
 // ```go
@@ -211,7 +212,7 @@ type ExternalAccessRule struct {
 	// The ID of the external access rule.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the network policy.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// External access rule priority, which determines the external access rule to use when multiple rules apply.
@@ -306,7 +307,7 @@ type externalAccessRuleState struct {
 	// The ID of the external access rule.
 	Name *string `pulumi:"name"`
 	// The resource name of the network policy.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
 	Parent *string `pulumi:"parent"`
 	// External access rule priority, which determines the external access rule to use when multiple rules apply.
@@ -348,7 +349,7 @@ type ExternalAccessRuleState struct {
 	// The ID of the external access rule.
 	Name pulumi.StringPtrInput
 	// The resource name of the network policy.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
 	Parent pulumi.StringPtrInput
 	// External access rule priority, which determines the external access rule to use when multiple rules apply.
@@ -390,7 +391,7 @@ type externalAccessRuleArgs struct {
 	// The ID of the external access rule.
 	Name *string `pulumi:"name"`
 	// The resource name of the network policy.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
 	Parent string `pulumi:"parent"`
 	// External access rule priority, which determines the external access rule to use when multiple rules apply.
@@ -421,7 +422,7 @@ type ExternalAccessRuleArgs struct {
 	// The ID of the external access rule.
 	Name pulumi.StringPtrInput
 	// The resource name of the network policy.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
 	Parent pulumi.StringInput
 	// External access rule priority, which determines the external access rule to use when multiple rules apply.
@@ -564,7 +565,7 @@ func (o ExternalAccessRuleOutput) Name() pulumi.StringOutput {
 }
 
 // The resource name of the network policy.
-// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 // For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
 func (o ExternalAccessRuleOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalAccessRule) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)

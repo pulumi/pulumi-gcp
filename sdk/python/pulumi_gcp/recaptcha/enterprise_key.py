@@ -32,10 +32,6 @@ class EnterpriseKeyArgs:
         """
         The set of arguments for constructing a EnterpriseKey resource.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
-               
-               
-               
-               - - -
         :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -68,10 +64,6 @@ class EnterpriseKeyArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         Human-readable display name of this key. Modifiable by user.
-
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -187,10 +179,6 @@ class _EnterpriseKeyState:
         :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
-               
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -258,10 +246,6 @@ class _EnterpriseKeyState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         Human-readable display name of this key. Modifiable by user.
-
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -400,7 +384,7 @@ class EnterpriseKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Android_key
+        ### android_key
         A basic test of recaptcha enterprise key that can be used by Android apps
         ```python
         import pulumi
@@ -420,7 +404,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Ios_key
+
+        ### ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
         ```python
         import pulumi
@@ -440,7 +425,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Minimal_key
+
+        ### minimal_key
         A minimal test of recaptcha enterprise key
         ```python
         import pulumi
@@ -455,7 +441,8 @@ class EnterpriseKey(pulumi.CustomResource):
             },
             labels={})
         ```
-        ### Waf_key
+
+        ### waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
         ```python
         import pulumi
@@ -482,7 +469,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Web_key
+
+        ### web_key
         A basic test of recaptcha enterprise key that can be used by websites
         ```python
         import pulumi
@@ -505,7 +493,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Web_score_key
+
+        ### web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
         ```python
         import pulumi
@@ -556,10 +545,6 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
-               
-               
-               
-               - - -
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -581,7 +566,7 @@ class EnterpriseKey(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Android_key
+        ### android_key
         A basic test of recaptcha enterprise key that can be used by Android apps
         ```python
         import pulumi
@@ -601,7 +586,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Ios_key
+
+        ### ios_key
         A basic test of recaptcha enterprise key that can be used by iOS apps
         ```python
         import pulumi
@@ -621,7 +607,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Minimal_key
+
+        ### minimal_key
         A minimal test of recaptcha enterprise key
         ```python
         import pulumi
@@ -636,7 +623,8 @@ class EnterpriseKey(pulumi.CustomResource):
             },
             labels={})
         ```
-        ### Waf_key
+
+        ### waf_key
         A basic test of recaptcha enterprise key that includes WAF settings
         ```python
         import pulumi
@@ -663,7 +651,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Web_key
+
+        ### web_key
         A basic test of recaptcha enterprise key that can be used by websites
         ```python
         import pulumi
@@ -686,7 +675,8 @@ class EnterpriseKey(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Web_score_key
+
+        ### web_score_key
         A basic test of recaptcha enterprise key with score integration type that can be used by websites
         ```python
         import pulumi
@@ -813,10 +803,6 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
-               
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -869,10 +855,6 @@ class EnterpriseKey(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         Human-readable display name of this key. Modifiable by user.
-
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

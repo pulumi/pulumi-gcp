@@ -12,9 +12,7 @@ import * as utilities from "../utilities";
  * Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
  * as identified by the dnsName field with the longest matching suffix.
  *
- * ## Example Usage
- *
- * ### Dns Response Policy Rule Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -127,9 +125,6 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     public readonly responsePolicy!: pulumi.Output<string>;
     /**
@@ -204,9 +199,6 @@ export interface ResponsePolicyRuleState {
     project?: pulumi.Input<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     responsePolicy?: pulumi.Input<string>;
     /**
@@ -240,9 +232,6 @@ export interface ResponsePolicyRuleArgs {
     project?: pulumi.Input<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     responsePolicy: pulumi.Input<string>;
     /**

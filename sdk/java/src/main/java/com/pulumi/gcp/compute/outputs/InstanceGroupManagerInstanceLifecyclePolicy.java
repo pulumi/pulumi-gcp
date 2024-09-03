@@ -13,7 +13,6 @@ import javax.annotation.Nullable;
 public final class InstanceGroupManagerInstanceLifecyclePolicy {
     /**
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-     * ***
      * 
      */
     private @Nullable String defaultActionOnFailure;
@@ -26,7 +25,6 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
     private InstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-     * ***
      * 
      */
     public Optional<String> defaultActionOnFailure() {

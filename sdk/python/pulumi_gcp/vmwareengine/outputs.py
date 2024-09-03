@@ -140,8 +140,6 @@ class ExternalAccessRuleDestinationIpRange(dict):
                  ip_address_range: Optional[str] = None):
         """
         :param str external_address: The name of an `ExternalAddress` resource.
-               
-               - - -
         :param str ip_address_range: An IP address range in the CIDR format.
         """
         if external_address is not None:
@@ -154,8 +152,6 @@ class ExternalAccessRuleDestinationIpRange(dict):
     def external_address(self) -> Optional[str]:
         """
         The name of an `ExternalAddress` resource.
-
-        - - -
         """
         return pulumi.get(self, "external_address")
 
@@ -428,7 +424,7 @@ class PrivateCloudManagementCluster(dict):
                * Begins with an alphabetical character
                * Ends with a non-hyphen character
                * Not formatted as a UUID
-               * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+               * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
         :param Sequence['PrivateCloudManagementClusterNodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
@@ -450,7 +446,7 @@ class PrivateCloudManagementCluster(dict):
         * Begins with an alphabetical character
         * Ends with a non-hyphen character
         * Not formatted as a UUID
-        * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        * Complies with RFC 1034 (<https://datatracker.ietf.org/doc/html/rfc1034>) (section 3.5)
         """
         return pulumi.get(self, "cluster_id")
 
@@ -569,8 +565,6 @@ class PrivateCloudManagementClusterStretchedClusterConfig(dict):
         """
         :param str preferred_location: Zone that will remain operational when connection between the two zones is lost.
         :param str secondary_location: Additional zone for a higher level of availability and load balancing.
-               
-               - - -
         """
         if preferred_location is not None:
             pulumi.set(__self__, "preferred_location", preferred_location)
@@ -590,8 +584,6 @@ class PrivateCloudManagementClusterStretchedClusterConfig(dict):
     def secondary_location(self) -> Optional[str]:
         """
         Additional zone for a higher level of availability and load balancing.
-
-        - - -
         """
         return pulumi.get(self, "secondary_location")
 

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.users/create)
  * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ *   * [AlloyDB](https://cloud.google.com/alloydb/docs/)
  *
  * ## Example Usage
  *
@@ -60,6 +60,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ *
  * ### Alloydb User Iam
  *
  * ```typescript
@@ -181,9 +182,6 @@ export class User extends pulumi.CustomResource {
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     *
-     *
-     * - - -
      */
     public readonly userType!: pulumi.Output<string>;
 
@@ -257,9 +255,6 @@ export interface UserState {
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     *
-     *
-     * - - -
      */
     userType?: pulumi.Input<string>;
 }
@@ -288,9 +283,6 @@ export interface UserArgs {
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     *
-     *
-     * - - -
      */
     userType: pulumi.Input<string>;
 }

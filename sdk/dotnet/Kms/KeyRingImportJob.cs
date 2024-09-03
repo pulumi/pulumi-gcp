@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.importJobs)
     /// * How-to Guides
-    ///     * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
+    ///   * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
     /// 
     /// ## Example Usage
     /// 
@@ -60,9 +60,6 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("importJobId")]
         public Output<string> ImportJobId { get; private set; } = null!;
@@ -156,9 +153,6 @@ namespace Pulumi.Gcp.Kms
     {
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("importJobId", required: true)]
         public Input<string> ImportJobId { get; set; } = null!;
@@ -217,9 +211,6 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("importJobId")]
         public Input<string>? ImportJobId { get; set; }

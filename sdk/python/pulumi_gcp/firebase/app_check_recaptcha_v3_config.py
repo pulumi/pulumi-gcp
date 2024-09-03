@@ -27,9 +27,6 @@ class AppCheckRecaptchaV3ConfigArgs:
         The set of arguments for constructing a AppCheckRecaptchaV3Config resource.
         :param pulumi.Input[str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[str] site_secret: The site secret used to identify your service for reCAPTCHA v3 verification.
                For security reasons, this field will never be populated in any response.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -52,9 +49,6 @@ class AppCheckRecaptchaV3ConfigArgs:
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -117,9 +111,6 @@ class _AppCheckRecaptchaV3ConfigState:
         Input properties used for looking up and filtering AppCheckRecaptchaV3Config resources.
         :param pulumi.Input[str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[str] name: The relative resource name of the reCAPTCHA V3 configuration object
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -150,9 +141,6 @@ class _AppCheckRecaptchaV3ConfigState:
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 
@@ -243,7 +231,7 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
 
         * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.recaptchaV3Config)
         * How-to Guides
-            * [Official Documentation](https://firebase.google.com/docs/app-check)
+          * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
 
@@ -297,9 +285,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] site_secret: The site secret used to identify your service for reCAPTCHA v3 verification.
@@ -322,7 +307,7 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
 
         * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.recaptchaV3Config)
         * How-to Guides
-            * [Official Documentation](https://firebase.google.com/docs/app-check)
+          * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
 
@@ -437,9 +422,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of an
                [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-               
-               
-               - - -
         :param pulumi.Input[str] name: The relative resource name of the reCAPTCHA V3 configuration object
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -469,9 +451,6 @@ class AppCheckRecaptchaV3Config(pulumi.CustomResource):
         """
         The ID of an
         [Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id).
-
-
-        - - -
         """
         return pulumi.get(self, "app_id")
 

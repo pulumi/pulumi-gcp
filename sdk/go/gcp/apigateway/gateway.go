@@ -20,8 +20,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 //
-// ## Example Usage
-//
 // ## Import
 //
 // Gateway can be imported using any of these accepted formats:
@@ -65,8 +63,6 @@ type Gateway struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-	//
-	// ***
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -137,8 +133,6 @@ type gatewayState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-	//
-	// ***
 	GatewayId *string `pulumi:"gatewayId"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -169,8 +163,6 @@ type GatewayState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-	//
-	// ***
 	GatewayId pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	//
@@ -201,8 +193,6 @@ type gatewayArgs struct {
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-	//
-	// ***
 	GatewayId string `pulumi:"gatewayId"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -225,8 +215,6 @@ type GatewayArgs struct {
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-	//
-	// ***
 	GatewayId pulumi.StringInput
 	// Resource labels to represent user-provided metadata.
 	//
@@ -350,8 +338,6 @@ func (o GatewayOutput) EffectiveLabels() pulumi.StringMapOutput {
 }
 
 // Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-//
-// ***
 func (o GatewayOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
 }

@@ -98,7 +98,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Config Management With OCI
+ * 
+ * ### Config Management with OCI
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -285,7 +286,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Config Management With Regional Membership
+ * ### Config Management with Regional Membership
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -364,7 +365,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Policy Controller With Minimal Configuration
+ * ### Policy Controller with minimal configuration
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -436,7 +437,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Policy Controller With Custom Configurations
+ * ### Policy Controller with custom configurations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

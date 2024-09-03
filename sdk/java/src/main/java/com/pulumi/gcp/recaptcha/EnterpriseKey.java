@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Android_key
+ * ### android_key
  * A basic test of recaptcha enterprise key that can be used by Android apps
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -71,7 +71,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Ios_key
+ * 
+ * ### ios_key
  * A basic test of recaptcha enterprise key that can be used by iOS apps
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,7 +117,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Minimal_key
+ * 
+ * ### minimal_key
  * A minimal test of recaptcha enterprise key
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -157,7 +159,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Waf_key
+ * 
+ * ### waf_key
  * A basic test of recaptcha enterprise key that includes WAF settings
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -210,7 +213,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Web_key
+ * 
+ * ### web_key
  * A basic test of recaptcha enterprise key that can be used by websites
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -258,7 +262,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Web_score_key
+ * 
+ * ### web_score_key
  * A basic test of recaptcha enterprise key with score integration type that can be used by websites
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -364,16 +369,12 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
     /**
      * Human-readable display name of this key. Modifiable by user.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of this key. Modifiable by user.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

@@ -17,14 +17,14 @@ public final class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs e
     public static final PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs Empty = new PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs();
 
     /**
-     * A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+     * A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
      * 
      */
     @Import(name="preferredRegions")
     private @Nullable Output<List<String>> preferredRegions;
 
     /**
-     * @return A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+     * @return A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
      * 
      */
     public Optional<Output<List<String>>> preferredRegions() {
@@ -56,7 +56,7 @@ public final class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs e
         }
 
         /**
-         * @param preferredRegions A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+         * @param preferredRegions A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs e
         }
 
         /**
-         * @param preferredRegions A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+         * @param preferredRegions A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs e
         }
 
         /**
-         * @param preferredRegions A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+         * @param preferredRegions A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
          * 
          * @return builder
          * 

@@ -578,7 +578,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Global
+        ### global
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -696,7 +696,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Global
+        ### global
         ```python
         import pulumi
         import pulumi_gcp as gcp

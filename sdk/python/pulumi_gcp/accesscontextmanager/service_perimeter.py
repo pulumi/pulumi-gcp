@@ -39,9 +39,6 @@ class ServicePerimeterArgs:
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
                bridge. Regular Service Perimeter contains resources, access levels,
                and restricted services. Every resource can be in at most
@@ -137,9 +134,6 @@ class ServicePerimeterArgs:
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -247,9 +241,6 @@ class _ServicePerimeterState:
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -342,9 +333,6 @@ class _ServicePerimeterState:
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -497,7 +485,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
-            * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+          * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -543,6 +531,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
         ```python
@@ -651,6 +640,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Dry-Run
 
         ```python
@@ -692,9 +682,6 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -754,7 +741,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
-            * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+          * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -800,6 +787,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Secure Data Exchange
 
         ```python
@@ -908,6 +896,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Access Context Manager Service Perimeter Dry-Run
 
         ```python
@@ -1021,9 +1010,6 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-               
-               
-               - - -
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
@@ -1103,9 +1089,6 @@ class ServicePerimeter(pulumi.CustomResource):
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
         Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

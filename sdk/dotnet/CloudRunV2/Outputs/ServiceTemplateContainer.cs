@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class ServiceTemplateContainer
     {
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
@@ -31,11 +31,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateContainerEnv> Envs;
         /// <summary>
-        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerLivenessProbe? LivenessProbe;
@@ -50,12 +50,12 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateContainerPort> Ports;
         /// <summary>
-        /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerResources? Resources;
         /// <summary>
-        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerStartupProbe? StartupProbe;

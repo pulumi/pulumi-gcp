@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
     /// * How-to Guides
-    ///     * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+    ///   * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Job Query
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -73,7 +71,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Job Query Table Reference
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -127,7 +125,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Job Load
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -184,6 +182,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Bigquery Job Load Geojson
     /// 
     /// ```csharp
@@ -266,7 +267,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Job Load Parquet
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -347,6 +348,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Job Copy
     /// 
     /// ```csharp
@@ -508,7 +510,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Job Extract
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

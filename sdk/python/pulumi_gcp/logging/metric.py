@@ -33,11 +33,8 @@ class MetricArgs:
                  value_extractor: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Metric resource.
-        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        :param pulumi.Input[str] filter: An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
                is used to match log entries.
-               
-               
-               - - -
         :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
@@ -66,7 +63,7 @@ class MetricArgs:
                record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
                REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
                the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-               (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+               (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
@@ -94,11 +91,8 @@ class MetricArgs:
     @pulumi.getter
     def filter(self) -> pulumi.Input[str]:
         """
-        An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
         is used to match log entries.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -226,7 +220,7 @@ class MetricArgs:
         record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
         REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
         the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-        (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
         log entry field. The value of the field is converted to a string before applying the regex. It is an
         error to specify a regex that does not include exactly one capture group.
         """
@@ -260,11 +254,8 @@ class _MetricState:
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
-        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        :param pulumi.Input[str] filter: An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
                is used to match log entries.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -285,7 +276,7 @@ class _MetricState:
                record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
                REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
                the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-               (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+               (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
@@ -366,11 +357,8 @@ class _MetricState:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
         is used to match log entries.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -446,7 +434,7 @@ class _MetricState:
         record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
         REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
         the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-        (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
         log entry field. The value of the field is converted to a string before applying the regex. It is an
         error to specify a regex that does not include exactly one capture group.
         """
@@ -482,11 +470,9 @@ class Metric(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+          * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
-        ## Example Usage
-
-        ### Logging Metric Basic
+        ## 
 
         ```python
         import pulumi
@@ -526,7 +512,7 @@ class Metric(pulumi.CustomResource):
                 },
             })
         ```
-        ### Logging Metric Counter Basic
+        ## 
 
         ```python
         import pulumi
@@ -540,7 +526,7 @@ class Metric(pulumi.CustomResource):
                 "value_type": "INT64",
             })
         ```
-        ### Logging Metric Counter Labels
+        ## 
 
         ```python
         import pulumi
@@ -562,6 +548,9 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
+
+        ## Example Usage
+
         ### Logging Metric Logging Bucket
 
         ```python
@@ -577,7 +566,7 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.id)
         ```
-        ### Logging Metric Disabled
+        ## 
 
         ```python
         import pulumi
@@ -621,11 +610,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
-        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        :param pulumi.Input[str] filter: An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
                is used to match log entries.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -646,7 +632,7 @@ class Metric(pulumi.CustomResource):
                record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
                REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
                the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-               (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+               (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
@@ -665,11 +651,9 @@ class Metric(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+          * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
-        ## Example Usage
-
-        ### Logging Metric Basic
+        ## 
 
         ```python
         import pulumi
@@ -709,7 +693,7 @@ class Metric(pulumi.CustomResource):
                 },
             })
         ```
-        ### Logging Metric Counter Basic
+        ## 
 
         ```python
         import pulumi
@@ -723,7 +707,7 @@ class Metric(pulumi.CustomResource):
                 "value_type": "INT64",
             })
         ```
-        ### Logging Metric Counter Labels
+        ## 
 
         ```python
         import pulumi
@@ -745,6 +729,9 @@ class Metric(pulumi.CustomResource):
                 "mass": "EXTRACT(jsonPayload.request)",
             })
         ```
+
+        ## Example Usage
+
         ### Logging Metric Logging Bucket
 
         ```python
@@ -760,7 +747,7 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric.id)
         ```
-        ### Logging Metric Disabled
+        ## 
 
         ```python
         import pulumi
@@ -875,11 +862,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
-        :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        :param pulumi.Input[str] filter: An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
                is used to match log entries.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -900,7 +884,7 @@ class Metric(pulumi.CustomResource):
                record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
                REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
                the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-               (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+               (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
@@ -960,11 +944,8 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter
     def filter(self) -> pulumi.Output[str]:
         """
-        An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+        An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
         is used to match log entries.
-
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -1020,7 +1001,7 @@ class Metric(pulumi.CustomResource):
         record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
         REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
         the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-        (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+        (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
         log entry field. The value of the field is converted to a string before applying the regex. It is an
         error to specify a regex that does not include exactly one capture group.
         """

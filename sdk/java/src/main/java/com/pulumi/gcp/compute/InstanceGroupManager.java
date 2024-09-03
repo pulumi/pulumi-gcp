@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### With Top Level Instance Template (`Google` Provider)
+ * ### with top level instance template (google provider)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With Multiple Versions (`Google-Beta` Provider)
+ * ### with multiple versions (google-beta provider)
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With Standby Policy (`Google-Beta` Provider)
+ * ### with standby policy (google-beta provider)
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -444,16 +444,12 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Export(name="params", refs={InstanceGroupManagerParams.class}, tree="[0]")
     private Output</* @Nullable */ InstanceGroupManagerParams> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Output<Optional<InstanceGroupManagerParams>> params() {
@@ -695,8 +691,6 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      * The zone that instances in this group should be created
      * in.
      * 
-     * ***
-     * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
@@ -704,8 +698,6 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * @return The zone that instances in this group should be created
      * in.
-     * 
-     * ***
      * 
      */
     public Output<String> zone() {

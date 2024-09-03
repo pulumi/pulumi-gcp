@@ -49,7 +49,7 @@ type PostureDeployment struct {
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
 	// It denotes the desired posture revisionId to be deployed.
 	DesiredPostureRevisionId pulumi.StringOutput `pulumi:"desiredPostureRevisionId"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// This is a output only optional field which will be filled in case where
 	// PostureDeployment enters a failure state like UPDATE_FAILED or
@@ -63,8 +63,6 @@ type PostureDeployment struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId pulumi.StringOutput `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -145,7 +143,7 @@ type postureDeploymentState struct {
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
 	// It denotes the desired posture revisionId to be deployed.
 	DesiredPostureRevisionId *string `pulumi:"desiredPostureRevisionId"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag *string `pulumi:"etag"`
 	// This is a output only optional field which will be filled in case where
 	// PostureDeployment enters a failure state like UPDATE_FAILED or
@@ -159,8 +157,6 @@ type postureDeploymentState struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent *string `pulumi:"parent"`
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId *string `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -194,7 +190,7 @@ type PostureDeploymentState struct {
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
 	// It denotes the desired posture revisionId to be deployed.
 	DesiredPostureRevisionId pulumi.StringPtrInput
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrInput
 	// This is a output only optional field which will be filled in case where
 	// PostureDeployment enters a failure state like UPDATE_FAILED or
@@ -208,8 +204,6 @@ type PostureDeploymentState struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringPtrInput
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId pulumi.StringPtrInput
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -242,8 +236,6 @@ type postureDeploymentArgs struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent string `pulumi:"parent"`
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId string `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -266,8 +258,6 @@ type PostureDeploymentArgs struct {
 	// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
 	Parent pulumi.StringInput
 	// ID of the posture deployment.
-	//
-	// ***
 	PostureDeploymentId pulumi.StringInput
 	// Relative name of the posture which needs to be deployed. It should be in the format:
 	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
@@ -392,7 +382,7 @@ func (o PostureDeploymentOutput) DesiredPostureRevisionId() pulumi.StringOutput 
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.DesiredPostureRevisionId }).(pulumi.StringOutput)
 }
 
-// For Resource freshness validation (https://google.aip.dev/154)
+// For Resource freshness validation (<https://google.aip.dev/154>)
 func (o PostureDeploymentOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -421,8 +411,6 @@ func (o PostureDeploymentOutput) Parent() pulumi.StringOutput {
 }
 
 // ID of the posture deployment.
-//
-// ***
 func (o PostureDeploymentOutput) PostureDeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.PostureDeploymentId }).(pulumi.StringOutput)
 }

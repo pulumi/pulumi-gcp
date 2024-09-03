@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebase Android App Custom Api Key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -243,8 +244,6 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
      * 
-     * ***
-     * 
      */
     @Export(name="packageName", refs={String.class}, tree="[0]")
     private Output<String> packageName;
@@ -252,8 +251,6 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
     /**
      * @return The canonical package name of the Android app as would appear in the Google Play
      * Developer Console.
-     * 
-     * ***
      * 
      */
     public Output<String> packageName() {

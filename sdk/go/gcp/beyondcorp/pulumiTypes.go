@@ -17,8 +17,6 @@ type AppConnectionApplicationEndpoint struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host string `pulumi:"host"`
 	// Port of the remote application endpoint.
-	//
-	// ***
 	Port int `pulumi:"port"`
 }
 
@@ -37,8 +35,6 @@ type AppConnectionApplicationEndpointArgs struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host pulumi.StringInput `pulumi:"host"`
 	// Port of the remote application endpoint.
-	//
-	// ***
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -125,8 +121,6 @@ func (o AppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
 }
 
 // Port of the remote application endpoint.
-//
-// ***
 func (o AppConnectionApplicationEndpointOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v AppConnectionApplicationEndpoint) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -166,8 +160,6 @@ func (o AppConnectionApplicationEndpointPtrOutput) Host() pulumi.StringPtrOutput
 }
 
 // Port of the remote application endpoint.
-//
-// ***
 func (o AppConnectionApplicationEndpointPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConnectionApplicationEndpoint) *int {
 		if v == nil {
@@ -184,7 +176,7 @@ type AppConnectionGateway struct {
 	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort *int `pulumi:"ingressPort"`
 	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+	// <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
 	// for a list of possible values.
 	Type *string `pulumi:"type"`
 	// (Output)
@@ -210,7 +202,7 @@ type AppConnectionGatewayArgs struct {
 	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort pulumi.IntPtrInput `pulumi:"ingressPort"`
 	// The type of hosting used by the gateway. Refer to
-	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+	// <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
 	// for a list of possible values.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// (Output)
@@ -307,7 +299,7 @@ func (o AppConnectionGatewayOutput) IngressPort() pulumi.IntPtrOutput {
 }
 
 // The type of hosting used by the gateway. Refer to
-// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+// <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
 // for a list of possible values.
 func (o AppConnectionGatewayOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppConnectionGateway) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -365,7 +357,7 @@ func (o AppConnectionGatewayPtrOutput) IngressPort() pulumi.IntPtrOutput {
 }
 
 // The type of hosting used by the gateway. Refer to
-// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+// <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
 // for a list of possible values.
 func (o AppConnectionGatewayPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnectionGateway) *string {
@@ -530,8 +522,6 @@ func (o AppConnectorPrincipalInfoPtrOutput) ServiceAccount() AppConnectorPrincip
 
 type AppConnectorPrincipalInfoServiceAccount struct {
 	// Email address of the service account.
-	//
-	// ***
 	Email string `pulumi:"email"`
 }
 
@@ -548,8 +538,6 @@ type AppConnectorPrincipalInfoServiceAccountInput interface {
 
 type AppConnectorPrincipalInfoServiceAccountArgs struct {
 	// Email address of the service account.
-	//
-	// ***
 	Email pulumi.StringInput `pulumi:"email"`
 }
 
@@ -631,8 +619,6 @@ func (o AppConnectorPrincipalInfoServiceAccountOutput) ToAppConnectorPrincipalIn
 }
 
 // Email address of the service account.
-//
-// ***
 func (o AppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v AppConnectorPrincipalInfoServiceAccount) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -662,8 +648,6 @@ func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Elem() AppConnectorPri
 }
 
 // Email address of the service account.
-//
-// ***
 func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnectorPrincipalInfoServiceAccount) *string {
 		if v == nil {

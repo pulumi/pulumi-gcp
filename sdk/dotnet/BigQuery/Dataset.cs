@@ -12,49 +12,6 @@ namespace Pulumi.Gcp.BigQuery
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ### Bigquery Dataset Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
-    ///     {
-    ///         AccountId = "bqowner",
-    ///     });
-    /// 
-    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
-    ///     {
-    ///         DatasetId = "example_dataset",
-    ///         FriendlyName = "test",
-    ///         Description = "This is a test description",
-    ///         Location = "EU",
-    ///         DefaultTableExpirationMs = 3600000,
-    ///         Labels = 
-    ///         {
-    ///             { "env", "default" },
-    ///         },
-    ///         Accesses = new[]
-    ///         {
-    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///             {
-    ///                 Role = "OWNER",
-    ///                 UserByEmail = bqowner.Email,
-    ///             },
-    ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
-    ///             {
-    ///                 Role = "READER",
-    ///                 Domain = "hashicorp.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Bigquery Dataset Cmek
     /// 
     /// ```csharp
@@ -92,7 +49,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Dataset Authorized Dataset
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -176,6 +133,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Authorized Routine
     /// 
     /// ```csharp
@@ -254,6 +212,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset External Reference Aws
     /// 
     /// ```csharp
@@ -325,9 +284,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -579,9 +535,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -777,9 +730,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }

@@ -19,16 +19,12 @@ public final class BucketACLState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the bucket it applies to.
      * 
-     * ***
-     * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
      * @return The name of the bucket it applies to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -110,8 +106,6 @@ public final class BucketACLState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bucket The name of the bucket it applies to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -122,8 +116,6 @@ public final class BucketACLState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bucket The name of the bucket it applies to.
-         * 
-         * ***
          * 
          * @return builder
          * 

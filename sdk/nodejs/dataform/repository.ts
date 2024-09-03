@@ -147,9 +147,6 @@ export class Repository extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The repository's name.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -259,9 +256,6 @@ export interface RepositoryState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The repository's name.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -321,9 +315,6 @@ export interface RepositoryArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The repository's name.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

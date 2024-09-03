@@ -28,9 +28,6 @@ class CryptoKeyVersionArgs:
         The set of arguments for constructing a CryptoKeyVersion resource.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
@@ -48,9 +45,6 @@ class CryptoKeyVersionArgs:
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 
@@ -104,9 +98,6 @@ class _CryptoKeyVersionState:
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
@@ -164,9 +155,6 @@ class _CryptoKeyVersionState:
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 
@@ -255,7 +243,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
         * How-to Guides
-            * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
+          * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
 
         ## Example Usage
 
@@ -291,9 +279,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
@@ -314,7 +299,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
         * How-to Guides
-            * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
+          * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
 
         ## Example Usage
 
@@ -414,9 +399,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
@@ -463,9 +445,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 

@@ -24,9 +24,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
-// ## Example Usage
-//
-// ### Notebook Runtime Basic
+// ##
 //
 // ```go
 // package main
@@ -67,7 +65,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Runtime Basic Gpu
+// ##
 //
 // ```go
 // package main
@@ -115,7 +113,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Runtime Basic Container
+// ##
 //
 // ```go
 // package main
@@ -166,7 +164,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Runtime Kernels
+// ##
 //
 // ```go
 // package main
@@ -218,7 +216,7 @@ import (
 //	}
 //
 // ```
-// ### Notebook Runtime Script
+// ##
 //
 // ```go
 // package main
@@ -303,7 +301,7 @@ type Runtime struct {
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -312,8 +310,6 @@ type Runtime struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -386,7 +382,7 @@ type runtimeState struct {
 	HealthState *string `pulumi:"healthState"`
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -395,8 +391,6 @@ type runtimeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -432,7 +426,7 @@ type RuntimeState struct {
 	HealthState pulumi.StringPtrInput
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -441,8 +435,6 @@ type RuntimeState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -476,7 +468,7 @@ type runtimeArgs struct {
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -485,8 +477,6 @@ type runtimeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name specified for the Notebook runtime.
 	Name *string `pulumi:"name"`
@@ -508,7 +498,7 @@ type RuntimeArgs struct {
 	AccessConfig RuntimeAccessConfigPtrInput
 	// The labels to associate with this runtime. Label **keys** must
 	// contain 1 to 63 characters, and must conform to [RFC 1035]
-	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 	// empty, but, if present, must contain 1 to 63 characters, and must
 	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 	// more than 32 labels can be associated with a cluster.
@@ -517,8 +507,6 @@ type RuntimeArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name specified for the Notebook runtime.
 	Name pulumi.StringPtrInput
@@ -640,7 +628,7 @@ func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 
 // The labels to associate with this runtime. Label **keys** must
 // contain 1 to 63 characters, and must conform to [RFC 1035]
-// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// (<https://www.ietf.org/rfc/rfc1035.txt)>. Label **values** may be
 // empty, but, if present, must contain 1 to 63 characters, and must
 // conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
 // more than 32 labels can be associated with a cluster.
@@ -652,8 +640,6 @@ func (o RuntimeOutput) Labels() pulumi.StringMapOutput {
 }
 
 // A reference to the zone where the machine resides.
-//
-// ***
 func (o RuntimeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

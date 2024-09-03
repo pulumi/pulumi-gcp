@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+        ///   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     //by name 
+        ///     //by name
         ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
         ///     {
         ///         Name = "my-snapshot",
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+        ///   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     //by name 
+        ///     //by name
         ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
         ///     {
         ///         Name = "my-snapshot",
@@ -97,9 +97,7 @@ namespace Pulumi.Gcp.Compute
         public string? Filter { get; set; }
 
         /// <summary>
-        /// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
-        /// 
-        /// - - -
+        /// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
@@ -135,9 +133,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
-        /// 
-        /// - - -
+        /// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }

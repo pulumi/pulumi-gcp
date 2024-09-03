@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 //
-// ## Example Usage
-//
-// ### Bigquery Reservation Basic
+// ##
 //
 // ```go
 // package main
@@ -105,8 +103,6 @@ type Reservation struct {
 	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary pulumi.BoolPtrOutput `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -172,8 +168,6 @@ type reservationState struct {
 	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -207,8 +201,6 @@ type ReservationState struct {
 	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -246,8 +238,6 @@ type reservationArgs struct {
 	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -282,8 +272,6 @@ type ReservationArgs struct {
 	// Deprecated: `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -421,8 +409,6 @@ func (o ReservationOutput) MultiRegionAuxiliary() pulumi.BoolPtrOutput {
 }
 
 // The name of the reservation. This field must only contain alphanumeric characters or dash.
-//
-// ***
 func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

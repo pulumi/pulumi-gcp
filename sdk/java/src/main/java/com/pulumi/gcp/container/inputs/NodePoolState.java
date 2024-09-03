@@ -44,16 +44,12 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      * 
-     * ***
-     * 
      */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
     /**
      * @return The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> cluster() {
@@ -105,16 +101,12 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location (region or zone) of the cluster.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location (region or zone) of the cluster.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -461,8 +453,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cluster The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -473,8 +463,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cluster The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -550,8 +538,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location (region or zone) of the cluster.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -562,8 +548,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location (region or zone) of the cluster.
-         * 
-         * ***
          * 
          * @return builder
          * 

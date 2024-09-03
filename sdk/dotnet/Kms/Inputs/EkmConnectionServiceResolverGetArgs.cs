@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Kms.Inputs
     public sealed class EkmConnectionServiceResolverGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        /// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see &lt;https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest&gt;.
         /// </summary>
         [Input("endpointFilter")]
         public Input<string>? EndpointFilter { get; set; }

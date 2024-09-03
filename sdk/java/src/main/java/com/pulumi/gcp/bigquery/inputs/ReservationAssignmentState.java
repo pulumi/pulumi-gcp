@@ -95,16 +95,12 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
     /**
      * The reservation for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="reservation")
     private @Nullable Output<String> reservation;
 
     /**
      * @return The reservation for the resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> reservation() {
@@ -268,8 +264,6 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
         /**
          * @param reservation The reservation for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -280,8 +274,6 @@ public final class ReservationAssignmentState extends com.pulumi.resources.Resou
 
         /**
          * @param reservation The reservation for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

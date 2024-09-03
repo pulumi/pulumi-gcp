@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_global_forwarding_rule" "my-forwarding-rule" {
-        ///   name = "forwarding-rule-global"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rule = Gcp.Compute.GetGlobalForwardingRule.Invoke(new()
+        ///     {
+        ///         Name = "forwarding-rule-global",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetGlobalForwardingRuleResult> InvokeAsync(GetGlobalForwardingRuleArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_global_forwarding_rule" "my-forwarding-rule" {
-        ///   name = "forwarding-rule-global"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rule = Gcp.Compute.GetGlobalForwardingRule.Invoke(new()
+        ///     {
+        ///         Name = "forwarding-rule-global",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetGlobalForwardingRuleResult> Invoke(GetGlobalForwardingRuleInvokeArgs args, InvokeOptions? options = null)
@@ -45,8 +65,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the global forwarding rule.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -68,8 +86,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the global forwarding rule.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -29,12 +29,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/looker/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
- *     * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
+ *   * [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
+ *   * [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
  * 
- * ## Example Usage
- * 
- * ### Looker Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +73,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Looker Instance Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -154,6 +152,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Looker Instance Enterprise Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -279,7 +280,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Looker Instance Custom Domain
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -555,16 +556,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the instance or a fully qualified identifier for the instance.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

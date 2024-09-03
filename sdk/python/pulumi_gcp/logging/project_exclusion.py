@@ -223,7 +223,7 @@ class ProjectExclusion(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.exclusions)
         * How-to Guides
-            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+          * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 
         > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
 
@@ -274,7 +274,7 @@ class ProjectExclusion(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.exclusions)
         * How-to Guides
-            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+          * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 
         > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.ProjectSink`
 

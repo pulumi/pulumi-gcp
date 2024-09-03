@@ -28,11 +28,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/images)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/images)
  *
- * ## Example Usage
- *
- * ### Image Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Image Guest Os
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +64,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Image Basic Storage Location
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -200,9 +198,6 @@ export class Image extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -252,7 +247,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
-     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
      */
     public readonly storageLocations!: pulumi.Output<string[]>;
 
@@ -390,9 +385,6 @@ export interface ImageState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -442,7 +434,7 @@ export interface ImageState {
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
-     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
      */
     storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -500,9 +492,6 @@ export interface ImageArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -543,7 +532,7 @@ export interface ImageArgs {
     /**
      * Cloud Storage bucket storage location of the image
      * (regional or multi-regional).
-     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * Reference link: <https://cloud.google.com/compute/docs/reference/rest/v1/images>
      */
     storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
 }

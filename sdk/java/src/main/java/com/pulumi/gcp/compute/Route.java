@@ -44,11 +44,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
  * * How-to Guides
- *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+ *   * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  * 
- * ## Example Usage
- * 
- * ### Route Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -92,7 +90,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Route Ilb
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -178,7 +176,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Route Ilb Vip
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -387,16 +385,12 @@ public class Route extends com.pulumi.resources.CustomResource {
     /**
      * The network that this route applies to.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The network that this route applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -436,7 +430,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * &lt;https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule&gt;
      * * regions/region/forwardingRules/forwardingRule
      *   When the beta provider, you can also specify the IP address
      *   of a forwarding rule from the same VPC or any peered VPC.
@@ -455,7 +449,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * &lt;https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule&gt;
      * * regions/region/forwardingRules/forwardingRule
      *   When the beta provider, you can also specify the IP address
      *   of a forwarding rule from the same VPC or any peered VPC.

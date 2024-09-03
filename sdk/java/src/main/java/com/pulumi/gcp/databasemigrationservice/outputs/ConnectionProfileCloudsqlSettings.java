@@ -55,7 +55,7 @@ public final class ConnectionProfileCloudsqlSettings {
     private @Nullable Map<String,String> databaseFlags;
     /**
      * @return The database engine type and version.
-     * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+     * Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
      * 
      */
     private @Nullable String databaseVersion;
@@ -95,7 +95,7 @@ public final class ConnectionProfileCloudsqlSettings {
     private @Nullable String storageAutoResizeLimit;
     /**
      * @return The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-     * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+     * For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
      * 
      */
     private @Nullable String tier;
@@ -165,7 +165,7 @@ public final class ConnectionProfileCloudsqlSettings {
     }
     /**
      * @return The database engine type and version.
-     * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+     * Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
      * 
      */
     public Optional<String> databaseVersion() {
@@ -219,7 +219,7 @@ public final class ConnectionProfileCloudsqlSettings {
     }
     /**
      * @return The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-     * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+     * For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
      * 
      */
     public Optional<String> tier() {

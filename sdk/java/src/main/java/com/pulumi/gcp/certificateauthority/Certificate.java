@@ -186,6 +186,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Privateca Certificate With Template
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -366,6 +367,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Privateca Certificate Csr
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -464,6 +466,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Privateca Certificate No Authority
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -605,6 +608,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Privateca Certificate Custom Ski
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -938,8 +942,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -947,8 +949,6 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * @return Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

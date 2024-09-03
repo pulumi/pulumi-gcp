@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With ReCAPTCHA Configuration Options
+ * ### With reCAPTCHA configuration options
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With Header Actions
+ * ### With header actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -214,7 +214,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With EnforceOnKey Value As Empty String
+ * ### With enforceOnKey value as empty string
  * A scenario example that won&#39;t cause any conflict between `enforce_on_key` and `enforce_on_key_configs`, because `enforce_on_key` was specified as an empty string:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -372,16 +372,12 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The name of the security policy.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the security policy.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

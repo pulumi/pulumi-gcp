@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly string? QueryParameter;
         /// <summary>
-        /// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        /// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
         /// </summary>
         public readonly string? RegexMatch;
 

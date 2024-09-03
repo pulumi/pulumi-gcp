@@ -24,8 +24,6 @@ func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...p
 // A collection of arguments for invoking getAndroidApp.
 type LookupAndroidAppArgs struct {
 	// The appId of name of the Firebase androidApp.
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -74,8 +72,6 @@ func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs
 // A collection of arguments for invoking getAndroidApp.
 type LookupAndroidAppOutputArgs struct {
 	// The appId of name of the Firebase androidApp.
-	//
-	// ***
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -365,11 +365,15 @@ def get_forwarding_rule(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_forwarding_rule(name="forwarding-rule-us-east1")
+    ```
+
 
     :param str name: The name of the forwarding rule.
-           
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
@@ -430,11 +434,15 @@ def get_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_forwarding_rule(name="forwarding-rule-us-east1")
+    ```
+
 
     :param str name: The name of the forwarding rule.
-           
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it

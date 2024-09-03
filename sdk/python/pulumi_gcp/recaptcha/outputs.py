@@ -197,7 +197,7 @@ class EnterpriseKeyWafSettings(dict):
                  waf_feature: str,
                  waf_service: str):
         """
-        :param str waf_feature: Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        :param str waf_feature: Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
         :param str waf_service: The WAF service that uses this key. Possible values: CA, FASTLY
         """
         pulumi.set(__self__, "waf_feature", waf_feature)
@@ -207,7 +207,7 @@ class EnterpriseKeyWafSettings(dict):
     @pulumi.getter(name="wafFeature")
     def waf_feature(self) -> str:
         """
-        Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        Supported WAF features. For more information, see <https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features>. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
         """
         return pulumi.get(self, "waf_feature")
 

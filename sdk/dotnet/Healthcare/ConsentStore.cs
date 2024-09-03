@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
     /// * How-to Guides
-    ///     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+    ///   * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Healthcare Consent Store Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// ### Healthcare Consent Store Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -74,7 +72,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// ### Healthcare Consent Store Iam
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -131,9 +129,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -241,9 +236,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -301,9 +293,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }

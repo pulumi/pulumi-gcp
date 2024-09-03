@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Organization Access Approval Active Key Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

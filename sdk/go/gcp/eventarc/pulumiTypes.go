@@ -250,7 +250,7 @@ type TriggerDestinationCloudRunService struct {
 	Path *string `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region *string `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
 	Service string `pulumi:"service"`
 }
 
@@ -270,7 +270,7 @@ type TriggerDestinationCloudRunServiceArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -361,7 +361,7 @@ func (o TriggerDestinationCloudRunServiceOutput) Region() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
 func (o TriggerDestinationCloudRunServiceOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -410,7 +410,7 @@ func (o TriggerDestinationCloudRunServicePtrOutput) Region() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// Required. The name of the Cloud Run service being addressed. See <https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services>. Only services located in the same project of the trigger object can be addressed.
 func (o TriggerDestinationCloudRunServicePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationCloudRunService) *string {
 		if v == nil {
@@ -912,9 +912,7 @@ type TriggerMatchingCriteria struct {
 	Attribute string `pulumi:"attribute"`
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator *string `pulumi:"operator"`
-	// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-	//
-	// ***
+	// Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
 	Value string `pulumi:"value"`
 }
 
@@ -934,9 +932,7 @@ type TriggerMatchingCriteriaArgs struct {
 	Attribute pulumi.StringInput `pulumi:"attribute"`
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-	//
-	// ***
+	// Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1001,9 +997,7 @@ func (o TriggerMatchingCriteriaOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerMatchingCriteria) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-//
-// ***
+// Required. The value for the attribute. See <https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud> for available values.
 func (o TriggerMatchingCriteriaOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerMatchingCriteria) string { return v.Value }).(pulumi.StringOutput)
 }

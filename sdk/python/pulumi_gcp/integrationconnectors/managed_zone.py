@@ -37,9 +37,6 @@ class ManagedZoneArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of Managed Zone needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -123,9 +120,6 @@ class ManagedZoneArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of Managed Zone needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -172,9 +166,6 @@ class _ManagedZoneState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of Managed Zone needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -274,9 +265,6 @@ class _ManagedZoneState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of Managed Zone needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -367,7 +355,7 @@ class ManagedZone(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.global.managedZones)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/integration-connectors/docs)
+          * [Official Documentation](https://cloud.google.com/integration-connectors/docs)
 
         ## Example Usage
 
@@ -456,9 +444,6 @@ class ManagedZone(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of Managed Zone needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] target_project: The name of the Target Project.
@@ -477,7 +462,7 @@ class ManagedZone(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.global.managedZones)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/integration-connectors/docs)
+          * [Official Documentation](https://cloud.google.com/integration-connectors/docs)
 
         ## Example Usage
 
@@ -644,9 +629,6 @@ class ManagedZone(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of Managed Zone needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -720,9 +702,6 @@ class ManagedZone(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of Managed Zone needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

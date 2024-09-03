@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
  * 
  * ## Example Usage
  * 
@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Bigquery Row Limit
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -166,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Bigquery Row Limit Percentage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -237,6 +239,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Job Notification Emails
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -297,6 +300,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Deidentify
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -414,6 +418,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Hybrid
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -482,6 +487,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Inspect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -602,6 +608,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Publish To Stackdriver
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -662,6 +669,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger With Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -730,6 +738,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Multiple Actions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -803,6 +812,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -874,6 +884,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Job Trigger Timespan Config Big Query
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

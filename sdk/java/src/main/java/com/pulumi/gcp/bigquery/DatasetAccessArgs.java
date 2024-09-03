@@ -41,8 +41,6 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
@@ -51,8 +49,6 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
      * @return A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> datasetId() {
@@ -200,7 +196,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * An email address of a user to grant access to. For example:
-     * fred{@literal @}example.com
+     * &lt;fred{@literal @}example.com&gt;
      * 
      */
     @Import(name="userByEmail")
@@ -208,7 +204,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred{@literal @}example.com
+     * &lt;fred{@literal @}example.com&gt;
      * 
      */
     public Optional<Output<String>> userByEmail() {
@@ -302,8 +298,6 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
          * must contain only letters (a-z, A-Z), numbers (0-9), or
          * underscores (_). The maximum length is 1,024 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -316,8 +310,6 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
          * @param datasetId A unique ID for this dataset, without the project name. The ID
          * must contain only letters (a-z, A-Z), numbers (0-9), or
          * underscores (_). The maximum length is 1,024 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -509,7 +501,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param userByEmail An email address of a user to grant access to. For example:
-         * fred{@literal @}example.com
+         * &lt;fred{@literal @}example.com&gt;
          * 
          * @return builder
          * 
@@ -521,7 +513,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param userByEmail An email address of a user to grant access to. For example:
-         * fred{@literal @}example.com
+         * &lt;fred{@literal @}example.com&gt;
          * 
          * @return builder
          * 

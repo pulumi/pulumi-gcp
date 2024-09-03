@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
     /// 
     /// &gt; **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
     /// certificate is complex.  Ensure that you understand the lifecycle of a
@@ -36,9 +36,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// In conclusion: Be extremely cautious.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Managed Ssl Certificate Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Node group roles. 
+        /// Node group roles.
         /// One of `"DRIVER"`.
         /// </summary>
         public InputList<string> Roles

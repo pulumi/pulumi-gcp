@@ -56,6 +56,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Database
 //
 // ```go
@@ -89,6 +90,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Cmek Database
 //
 // ```go
@@ -160,6 +162,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Default Database In Datastore Mode
 //
 // ```go
@@ -188,6 +191,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Database In Datastore Mode
 //
 // ```go
@@ -221,6 +225,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Cmek Database In Datastore Mode
 //
 // ```go
@@ -343,12 +348,12 @@ type Database struct {
 	// up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Output only. The keyPrefix for this database.
-	// This keyPrefix is used, in combination with the project id ("~") to construct the application id
+	// This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
+	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v</del>foo).
 	KeyPrefix pulumi.StringOutput `pulumi:"keyPrefix"`
 	// The location of the database. Available locations are listed at
-	// https://cloud.google.com/firestore/docs/locations.
+	// <https://cloud.google.com/firestore/docs/locations>.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
@@ -369,11 +374,9 @@ type Database struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The type of the database.
-	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
+	// See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Output only. The system-generated UUID4 for this Database.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -446,12 +449,12 @@ type databaseState struct {
 	// up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Output only. The keyPrefix for this database.
-	// This keyPrefix is used, in combination with the project id ("~") to construct the application id
+	// This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
+	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v</del>foo).
 	KeyPrefix *string `pulumi:"keyPrefix"`
 	// The location of the database. Available locations are listed at
-	// https://cloud.google.com/firestore/docs/locations.
+	// <https://cloud.google.com/firestore/docs/locations>.
 	LocationId *string `pulumi:"locationId"`
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
@@ -472,11 +475,9 @@ type databaseState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The type of the database.
-	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
+	// See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 	// Output only. The system-generated UUID4 for this Database.
 	Uid *string `pulumi:"uid"`
@@ -514,12 +515,12 @@ type DatabaseState struct {
 	// up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Output only. The keyPrefix for this database.
-	// This keyPrefix is used, in combination with the project id ("~") to construct the application id
+	// This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
+	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v</del>foo).
 	KeyPrefix pulumi.StringPtrInput
 	// The location of the database. Available locations are listed at
-	// https://cloud.google.com/firestore/docs/locations.
+	// <https://cloud.google.com/firestore/docs/locations>.
 	LocationId pulumi.StringPtrInput
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
@@ -540,11 +541,9 @@ type DatabaseState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The type of the database.
-	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
+	// See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 	// Output only. The system-generated UUID4 for this Database.
 	Uid pulumi.StringPtrInput
@@ -576,7 +575,7 @@ type databaseArgs struct {
 	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
 	DeletionPolicy        *string `pulumi:"deletionPolicy"`
 	// The location of the database. Available locations are listed at
-	// https://cloud.google.com/firestore/docs/locations.
+	// <https://cloud.google.com/firestore/docs/locations>.
 	LocationId string `pulumi:"locationId"`
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
@@ -597,11 +596,9 @@ type databaseArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The type of the database.
-	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
+	// See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -621,7 +618,7 @@ type DatabaseArgs struct {
 	DeleteProtectionState pulumi.StringPtrInput
 	DeletionPolicy        pulumi.StringPtrInput
 	// The location of the database. Available locations are listed at
-	// https://cloud.google.com/firestore/docs/locations.
+	// <https://cloud.google.com/firestore/docs/locations>.
 	LocationId pulumi.StringInput
 	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
@@ -642,11 +639,9 @@ type DatabaseArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The type of the database.
-	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
+	// See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
 	// for information about how to choose.
 	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-	//
-	// ***
 	Type pulumi.StringInput
 }
 
@@ -785,15 +780,15 @@ func (o DatabaseOutput) Etag() pulumi.StringOutput {
 }
 
 // Output only. The keyPrefix for this database.
-// This keyPrefix is used, in combination with the project id ("~") to construct the application id
+// This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
 // that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
+// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v</del>foo).
 func (o DatabaseOutput) KeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.KeyPrefix }).(pulumi.StringOutput)
 }
 
 // The location of the database. Available locations are listed at
-// https://cloud.google.com/firestore/docs/locations.
+// <https://cloud.google.com/firestore/docs/locations>.
 func (o DatabaseOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.LocationId }).(pulumi.StringOutput)
 }
@@ -826,11 +821,9 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 }
 
 // The type of the database.
-// See https://cloud.google.com/datastore/docs/firestore-or-datastore
+// See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
 // for information about how to choose.
 // Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-//
-// ***
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

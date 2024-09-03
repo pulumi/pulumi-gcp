@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/logging/docs/apis)
 //
-// ## Example Usage
-//
-// ### Logging Metric Basic
+// ##
 //
 // ```go
 // package main
@@ -80,7 +78,7 @@ import (
 //	}
 //
 // ```
-// ### Logging Metric Counter Basic
+// ##
 //
 // ```go
 // package main
@@ -110,7 +108,7 @@ import (
 //	}
 //
 // ```
-// ### Logging Metric Counter Labels
+// ##
 //
 // ```go
 // package main
@@ -150,6 +148,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Logging Metric Logging Bucket
 //
 // ```go
@@ -185,7 +186,7 @@ import (
 //	}
 //
 // ```
-// ### Logging Metric Disabled
+// ##
 //
 // ```go
 // package main
@@ -249,10 +250,8 @@ type Metric struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If set to True, then this metric is disabled and it does not generate any points.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter pulumi.StringOutput `pulumi:"filter"`
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -278,7 +277,7 @@ type Metric struct {
 	// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
 	// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
 	// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-	// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+	// (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
 	// log entry field. The value of the field is converted to a string before applying the regex. It is an
 	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor pulumi.StringPtrOutput `pulumi:"valueExtractor"`
@@ -329,10 +328,8 @@ type metricState struct {
 	Description *string `pulumi:"description"`
 	// If set to True, then this metric is disabled and it does not generate any points.
 	Disabled *bool `pulumi:"disabled"`
-	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter *string `pulumi:"filter"`
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -358,7 +355,7 @@ type metricState struct {
 	// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
 	// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
 	// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-	// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+	// (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
 	// log entry field. The value of the field is converted to a string before applying the regex. It is an
 	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor *string `pulumi:"valueExtractor"`
@@ -377,10 +374,8 @@ type MetricState struct {
 	Description pulumi.StringPtrInput
 	// If set to True, then this metric is disabled and it does not generate any points.
 	Disabled pulumi.BoolPtrInput
-	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter pulumi.StringPtrInput
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -406,7 +401,7 @@ type MetricState struct {
 	// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
 	// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
 	// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-	// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+	// (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
 	// log entry field. The value of the field is converted to a string before applying the regex. It is an
 	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor pulumi.StringPtrInput
@@ -429,10 +424,8 @@ type metricArgs struct {
 	Description *string `pulumi:"description"`
 	// If set to True, then this metric is disabled and it does not generate any points.
 	Disabled *bool `pulumi:"disabled"`
-	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -458,7 +451,7 @@ type metricArgs struct {
 	// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
 	// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
 	// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-	// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+	// (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
 	// log entry field. The value of the field is converted to a string before applying the regex. It is an
 	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor *string `pulumi:"valueExtractor"`
@@ -478,10 +471,8 @@ type MetricArgs struct {
 	Description pulumi.StringPtrInput
 	// If set to True, then this metric is disabled and it does not generate any points.
 	Disabled pulumi.BoolPtrInput
-	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
 	// is used to match log entries.
-	//
-	// ***
 	Filter pulumi.StringInput
 	// A map from a label key string to an extractor expression which is used to extract data from a log
 	// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
@@ -507,7 +498,7 @@ type MetricArgs struct {
 	// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
 	// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
 	// the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-	// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+	// (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
 	// log entry field. The value of the field is converted to a string before applying the regex. It is an
 	// error to specify a regex that does not include exactly one capture group.
 	ValueExtractor pulumi.StringPtrInput
@@ -624,10 +615,8 @@ func (o MetricOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Metric) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+// An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
 // is used to match log entries.
-//
-// ***
 func (o MetricOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
@@ -668,7 +657,7 @@ func (o MetricOutput) Project() pulumi.StringOutput {
 // record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
 // REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
 // the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+// (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
 // log entry field. The value of the field is converted to a string before applying the regex. It is an
 // error to specify a regex that does not include exactly one capture group.
 func (o MetricOutput) ValueExtractor() pulumi.StringPtrOutput {

@@ -275,8 +275,6 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
                match the structure and any object identifiers encoded in
                publicKeyPem (i.e. this algorithm must match that of the
                public key).
-               
-               - - -
         """
         if public_key_pem is not None:
             pulumi.set(__self__, "public_key_pem", public_key_pem)
@@ -301,8 +299,6 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
         match the structure and any object identifiers encoded in
         publicKeyPem (i.e. this algorithm must match that of the
         public key).
-
-        - - -
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -523,8 +519,6 @@ class PolicyDefaultAdmissionRule(dict):
         """
         :param str enforcement_mode: The action when a pod creation is denied by the admission rule.
                Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-               
-               - - -
         :param str evaluation_mode: How this admission rule will be evaluated.
                Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         :param Sequence[str] require_attestations_bies: The resource names of the attestors that must attest to a
@@ -547,8 +541,6 @@ class PolicyDefaultAdmissionRule(dict):
         """
         The action when a pod creation is denied by the admission rule.
         Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-
-        - - -
         """
         return pulumi.get(self, "enforcement_mode")
 

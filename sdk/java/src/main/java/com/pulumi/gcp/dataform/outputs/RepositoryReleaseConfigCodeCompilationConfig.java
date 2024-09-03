@@ -29,7 +29,7 @@ public final class RepositoryReleaseConfigCodeCompilationConfig {
     private @Nullable String defaultDatabase;
     /**
      * @return Optional. The default BigQuery location to use. Defaults to &#34;US&#34;.
-     * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+     * See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
      * 
      */
     private @Nullable String defaultLocation;
@@ -80,7 +80,7 @@ public final class RepositoryReleaseConfigCodeCompilationConfig {
     }
     /**
      * @return Optional. The default BigQuery location to use. Defaults to &#34;US&#34;.
-     * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+     * See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
      * 
      */
     public Optional<String> defaultLocation() {

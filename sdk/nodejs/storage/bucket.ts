@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+ * ### creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Life Cycle Settings For Storage Bucket Objects
+ * ### Life cycle settings for storage bucket objects
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+ * ### Life cycle settings for storage bucket objects with noAge enabled
  * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `noAge` flag to `true` to prevent this and avoid any potentially unintended interactions.
  *
  * ```typescript
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Enabling Public Access Prevention
+ * ### Enabling public access prevention
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -217,8 +217,6 @@ export class Bucket extends pulumi.CustomResource {
     public readonly lifecycleRules!: pulumi.Output<outputs.storage.BucketLifecycleRule[] | undefined>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -413,8 +411,6 @@ export interface BucketState {
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -529,8 +525,6 @@ export interface BucketArgs {
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

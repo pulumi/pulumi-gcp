@@ -39,7 +39,7 @@ class URLMapArgs:
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
                A RouteRule for /coming_soon/ is configured for the error code 404.
-               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
                When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
                defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
                Structure is documented below.
@@ -68,9 +68,6 @@ class URLMapArgs:
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -112,7 +109,7 @@ class URLMapArgs:
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
         A RouteRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
         defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
@@ -218,9 +215,6 @@ class URLMapArgs:
         `a-z?` which means the first character must be a lowercase
         letter, and all following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -296,7 +290,7 @@ class _URLMapState:
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
                A RouteRule for /coming_soon/ is configured for the error code 404.
-               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
                When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
                defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
                Structure is documented below.
@@ -328,9 +322,6 @@ class _URLMapState:
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -393,7 +384,7 @@ class _URLMapState:
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
         A RouteRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
         defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
@@ -524,9 +515,6 @@ class _URLMapState:
         `a-z?` which means the first character must be a lowercase
         letter, and all following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -613,9 +601,7 @@ class URLMap(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
 
-        ## Example Usage
-
-        ### Url Map Bucket And Service
+        ## 
 
         ```python
         import pulumi
@@ -683,7 +669,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Route
+        ## 
 
         ```python
         import pulumi
@@ -763,7 +749,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Route Partial
+        ## 
 
         ```python
         import pulumi
@@ -814,7 +800,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Path
+        ## 
 
         ```python
         import pulumi
@@ -917,7 +903,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Path Partial
+        ## 
 
         ```python
         import pulumi
@@ -986,7 +972,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Header Based Routing
+        ## 
 
         ```python
         import pulumi
@@ -1054,7 +1040,7 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
-        ### Url Map Parameter Based Routing
+        ## 
 
         ```python
         import pulumi
@@ -1122,7 +1108,7 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
-        ### Url Map Path Template Match
+        ## 
 
         ```python
         import pulumi
@@ -1188,7 +1174,7 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
-        ### Url Map Custom Error Response Policy
+        ## 
 
         ```python
         import pulumi
@@ -1296,7 +1282,7 @@ class URLMap(pulumi.CustomResource):
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
                A RouteRule for /coming_soon/ is configured for the error code 404.
-               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
                When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
                defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
                Structure is documented below.
@@ -1325,9 +1311,6 @@ class URLMap(pulumi.CustomResource):
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1351,9 +1334,7 @@ class URLMap(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
 
-        ## Example Usage
-
-        ### Url Map Bucket And Service
+        ## 
 
         ```python
         import pulumi
@@ -1421,7 +1402,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Route
+        ## 
 
         ```python
         import pulumi
@@ -1501,7 +1482,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Route Partial
+        ## 
 
         ```python
         import pulumi
@@ -1552,7 +1533,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Path
+        ## 
 
         ```python
         import pulumi
@@ -1655,7 +1636,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Traffic Director Path Partial
+        ## 
 
         ```python
         import pulumi
@@ -1724,7 +1705,7 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Url Map Header Based Routing
+        ## 
 
         ```python
         import pulumi
@@ -1792,7 +1773,7 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
-        ### Url Map Parameter Based Routing
+        ## 
 
         ```python
         import pulumi
@@ -1860,7 +1841,7 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
-        ### Url Map Path Template Match
+        ## 
 
         ```python
         import pulumi
@@ -1926,7 +1907,7 @@ class URLMap(pulumi.CustomResource):
                 ],
             }])
         ```
-        ### Url Map Custom Error Response Policy
+        ## 
 
         ```python
         import pulumi
@@ -2115,7 +2096,7 @@ class URLMap(pulumi.CustomResource):
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
                A RouteRule for /coming_soon/ is configured for the error code 404.
-               If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+               If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
                When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
                defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
                Structure is documented below.
@@ -2147,9 +2128,6 @@ class URLMap(pulumi.CustomResource):
                `a-z?` which means the first character must be a lowercase
                letter, and all following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['URLMapPathMatcherArgs', 'URLMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -2198,7 +2176,7 @@ class URLMap(pulumi.CustomResource):
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
         A RouteRule for /coming_soon/ is configured for the error code 404.
-        If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        If the request is for <http://www.myotherdomain.com> and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request <http://www.example.com/current_events/>, the pathMatcher's policy takes effect. If however, the request for <http://www.example.com/coming_soon/> encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.
         defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.
         Structure is documented below.
@@ -2293,9 +2271,6 @@ class URLMap(pulumi.CustomResource):
         `a-z?` which means the first character must be a lowercase
         letter, and all following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -16,22 +16,26 @@ namespace Pulumi.Gcp.Redis
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_redis_instance" "my_instance" {
-        ///   name = "my-redis-instance"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "instance_memory_size_gb" {
-        ///   value = data.google_redis_instance.my_instance.memory_size_gb
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Gcp.Redis.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-redis-instance",
+        ///     });
         /// 
-        /// output "instance_connect_mode" {
-        ///   value = data.google_redis_instance.my_instance.connect_mode
-        /// }
-        /// 
-        /// output "instance_authorized_network" {
-        ///   value = data.google_redis_instance.my_instance.authorized_network
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceMemorySizeGb"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.MemorySizeGb),
+        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.ConnectMode),
+        ///         ["instanceAuthorizedNetwork"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.AuthorizedNetwork),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
@@ -42,22 +46,26 @@ namespace Pulumi.Gcp.Redis
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_redis_instance" "my_instance" {
-        ///   name = "my-redis-instance"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "instance_memory_size_gb" {
-        ///   value = data.google_redis_instance.my_instance.memory_size_gb
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Gcp.Redis.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-redis-instance",
+        ///     });
         /// 
-        /// output "instance_connect_mode" {
-        ///   value = data.google_redis_instance.my_instance.connect_mode
-        /// }
-        /// 
-        /// output "instance_authorized_network" {
-        ///   value = data.google_redis_instance.my_instance.authorized_network
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceMemorySizeGb"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.MemorySizeGb),
+        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.ConnectMode),
+        ///         ["instanceAuthorizedNetwork"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.AuthorizedNetwork),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
@@ -69,8 +77,6 @@ namespace Pulumi.Gcp.Redis
     {
         /// <summary>
         /// The name of a Redis instance.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -99,8 +105,6 @@ namespace Pulumi.Gcp.Redis
     {
         /// <summary>
         /// The name of a Redis instance.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

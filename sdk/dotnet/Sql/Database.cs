@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.Sql
     /// Represents a SQL database inside the Cloud SQL instance, hosted in
     /// Google's cloud.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Sql Database Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -25,7 +23,6 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "my-database-instance",
@@ -46,7 +43,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
-    /// ### Sql Database Deletion Policy
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -56,7 +53,6 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "my-database-instance",
@@ -150,9 +146,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -255,9 +248,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -316,9 +306,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

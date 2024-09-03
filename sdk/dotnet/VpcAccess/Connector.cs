@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
     /// * How-to Guides
-    ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+    ///   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vpc Access Connector
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,7 +37,7 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     /// });
     /// ```
-    /// ### Vpc Access Connector Shared Vpc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,9 +152,6 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The name of the resource (Max 25 characters).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -290,9 +285,6 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The name of the resource (Max 25 characters).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -388,9 +380,6 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The name of the resource (Max 25 characters).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

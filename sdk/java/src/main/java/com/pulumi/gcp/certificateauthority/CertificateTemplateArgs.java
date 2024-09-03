@@ -74,16 +74,12 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -275,8 +271,6 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         /**
          * @param location The location for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -287,8 +281,6 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param location The location for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

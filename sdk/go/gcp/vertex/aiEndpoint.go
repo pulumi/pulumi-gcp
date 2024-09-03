@@ -150,13 +150,11 @@ type AiEndpoint struct {
 	EncryptionSpec AiEndpointEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob pulumi.StringOutput `pulumi:"modelDeploymentMonitoringJob"`
@@ -234,13 +232,11 @@ type aiEndpointState struct {
 	EncryptionSpec *AiEndpointEncryptionSpec `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag *string `pulumi:"etag"`
-	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob *string `pulumi:"modelDeploymentMonitoringJob"`
@@ -278,13 +274,11 @@ type AiEndpointState struct {
 	EncryptionSpec AiEndpointEncryptionSpecPtrInput
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringPtrInput
-	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob pulumi.StringPtrInput
@@ -316,13 +310,11 @@ type aiEndpointArgs struct {
 	// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiEndpointEncryptionSpec `pulumi:"encryptionSpec"`
-	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name *string `pulumi:"name"`
@@ -344,13 +336,11 @@ type AiEndpointArgs struct {
 	// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiEndpointEncryptionSpecPtrInput
-	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+	// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name pulumi.StringPtrInput
@@ -488,7 +478,7 @@ func (o AiEndpointOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiEndpointOutput) Labels() pulumi.StringMapOutput {
@@ -496,8 +486,6 @@ func (o AiEndpointOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location for the resource
-//
-// ***
 func (o AiEndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

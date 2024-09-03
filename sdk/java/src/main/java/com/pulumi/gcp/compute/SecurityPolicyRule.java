@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/securityPolicies/addRule)
  * * How-to Guides
- *     * [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
+ *   * [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
  * 
- * ## Example Usage
- * 
- * ### Security Policy Rule Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -84,6 +82,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Security Policy Rule Default Rule
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -156,7 +157,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Security Policy Rule Multiple Rules
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -395,16 +396,12 @@ public class SecurityPolicyRule extends com.pulumi.resources.CustomResource {
     /**
      * The name of the security policy this rule belongs to.
      * 
-     * ***
-     * 
      */
     @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output<String> securityPolicy;
 
     /**
      * @return The name of the security policy this rule belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> securityPolicy() {

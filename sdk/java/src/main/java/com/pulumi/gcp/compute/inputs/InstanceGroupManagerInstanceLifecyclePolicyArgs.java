@@ -17,7 +17,6 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
 
     /**
      * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-     * ***
      * 
      */
     @Import(name="defaultActionOnFailure")
@@ -25,7 +24,6 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
 
     /**
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-     * ***
      * 
      */
     public Optional<Output<String>> defaultActionOnFailure() {
@@ -74,7 +72,6 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
 
         /**
          * @param defaultActionOnFailure , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-         * ***
          * 
          * @return builder
          * 
@@ -86,7 +83,6 @@ public final class InstanceGroupManagerInstanceLifecyclePolicyArgs extends com.p
 
         /**
          * @param defaultActionOnFailure , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-         * ***
          * 
          * @return builder
          * 

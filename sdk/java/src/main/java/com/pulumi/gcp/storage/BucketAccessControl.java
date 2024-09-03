@@ -36,11 +36,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
  * 
- * ## Example Usage
- * 
- * ### Storage Bucket Access Control Public Bucket
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -152,13 +150,11 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
-     * The group example{@literal @}googlegroups.com would be
-     * group-example{@literal @}googlegroups.com.
+     * The user &lt;liz{@literal @}example.com&gt; would be &lt;user-liz{@literal @}example.com&gt;.
+     * The group &lt;example{@literal @}googlegroups.com&gt; would be
+     * &lt;group-example{@literal @}googlegroups.com&gt;.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     * 
-     * ***
      * 
      */
     @Export(name="entity", refs={String.class}, tree="[0]")
@@ -175,13 +171,11 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
-     * The group example{@literal @}googlegroups.com would be
-     * group-example{@literal @}googlegroups.com.
+     * The user &lt;liz{@literal @}example.com&gt; would be &lt;user-liz{@literal @}example.com&gt;.
+     * The group &lt;example{@literal @}googlegroups.com&gt; would be
+     * &lt;group-example{@literal @}googlegroups.com&gt;.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     * 
-     * ***
      * 
      */
     public Output<String> entity() {

@@ -542,7 +542,7 @@ class EkmConnectionServiceResolver(dict):
         :param Sequence['EkmConnectionServiceResolverServerCertificateArgs'] server_certificates: Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
                Structure is documented below.
         :param str service_directory_service: Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
-        :param str endpoint_filter: Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        :param str endpoint_filter: Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see <https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest>.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "server_certificates", server_certificates)
@@ -579,7 +579,7 @@ class EkmConnectionServiceResolver(dict):
     @pulumi.getter(name="endpointFilter")
     def endpoint_filter(self) -> Optional[str]:
         """
-        Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
+        Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see <https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest>.
         """
         return pulumi.get(self, "endpoint_filter")
 
@@ -643,8 +643,6 @@ class EkmConnectionServiceResolverServerCertificate(dict):
                Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true.
         :param Sequence[str] subject_alternative_dns_names: (Output)
                Output only. The subject Alternative DNS names. Only present if parsed is true.
-               
-               - - -
         """
         pulumi.set(__self__, "raw_der", raw_der)
         if issuer is not None:
@@ -743,8 +741,6 @@ class EkmConnectionServiceResolverServerCertificate(dict):
         """
         (Output)
         Output only. The subject Alternative DNS names. Only present if parsed is true.
-
-        - - -
         """
         return pulumi.get(self, "subject_alternative_dns_names")
 

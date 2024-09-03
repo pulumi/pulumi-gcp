@@ -204,8 +204,6 @@ if not MYPY:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         title: NotRequired[pulumi.Input[str]]
         """
@@ -228,8 +226,6 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
-               
-               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -272,8 +268,6 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -492,8 +486,6 @@ if not MYPY:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         title: NotRequired[pulumi.Input[str]]
         """
@@ -516,8 +508,6 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
-               
-               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -560,8 +550,6 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -894,7 +882,7 @@ if not MYPY:
         """
         The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
         filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-        groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        groups should be mail enabled and security enabled. See <https://learn.microsoft.com/en-us/graph/search-query-parameter> for more details.
         """
 elif False:
     WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict: TypeAlias = Mapping[str, Any]
@@ -906,7 +894,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
         """
         :param pulumi.Input[str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
                filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-               groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+               groups should be mail enabled and security enabled. See <https://learn.microsoft.com/en-us/graph/search-query-parameter> for more details.
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -917,7 +905,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
         """
         The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the
         filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
-        groups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        groups should be mail enabled and security enabled. See <https://learn.microsoft.com/en-us/graph/search-query-parameter> for more details.
         """
         return pulumi.get(self, "filter")
 

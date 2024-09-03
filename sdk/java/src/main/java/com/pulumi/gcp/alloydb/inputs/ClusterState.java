@@ -33,7 +33,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -44,7 +44,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -267,14 +267,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * @return For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     public Optional<Output<String>> etag() {
@@ -320,16 +320,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the alloydb cluster should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -485,7 +481,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
      * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
@@ -494,7 +490,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * @return Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
      * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
@@ -640,7 +636,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -655,7 +651,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -988,7 +984,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * @param etag For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
          * 
          * @return builder
          * 
@@ -999,7 +995,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * @param etag For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
          * 
          * @return builder
          * 
@@ -1059,8 +1055,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the alloydb cluster should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1071,8 +1065,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the alloydb cluster should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1289,7 +1281,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+         * @param reconciling Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
          * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
          * This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
@@ -1302,7 +1294,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+         * @param reconciling Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;.
          * Set to true if the current state of Cluster does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them.
          * This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 

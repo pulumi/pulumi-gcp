@@ -133,16 +133,12 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the topic.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the topic.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -358,8 +354,6 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of the topic.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -370,8 +364,6 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the topic.
-         * 
-         * ***
          * 
          * @return builder
          * 

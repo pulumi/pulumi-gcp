@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
     /// * How-to Guides
-    ///     * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+    ///   * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Discoveryengine Schema Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -120,9 +118,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the schema.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("schemaId")]
         public Output<string> SchemaId { get; private set; } = null!;
@@ -201,9 +196,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the schema.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("schemaId", required: true)]
         public Input<string> SchemaId { get; set; } = null!;
@@ -253,9 +245,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The unique id of the schema.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("schemaId")]
         public Input<string>? SchemaId { get; set; }

@@ -49,14 +49,14 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * @return For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     public Optional<Output<String>> etag() {
@@ -282,7 +282,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * @param etag For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class PostureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * @param etag For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
          * 
          * @return builder
          * 

@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
+ *   * [Official Documentation](https://cloud.google.com/spanner/)
  * 
- * ## Example Usage
- * 
- * ### Spanner Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -68,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Spanner Instance Processing Units
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -105,7 +103,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Spanner Instance With Autoscaling
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -154,7 +152,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Spanner Instance Multi Regional
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -269,8 +267,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
@@ -278,8 +274,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

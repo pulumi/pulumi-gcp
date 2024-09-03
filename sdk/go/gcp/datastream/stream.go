@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
 //
-// ## Example Usage
-//
-// ### Datastream Stream Full
+// ##
 //
 // ```go
 // package main
@@ -279,6 +277,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Datastream Stream Postgresql
 //
 // ```go
@@ -403,6 +404,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Datastream Stream Oracle
 //
 // ```go
@@ -527,6 +529,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Datastream Stream Sql Server
 //
 // ```go
@@ -657,7 +660,7 @@ import (
 //	}
 //
 // ```
-// ### Datastream Stream Postgresql Bigquery Dataset Id
+// ##
 //
 // ```go
 // package main
@@ -790,7 +793,7 @@ import (
 //	}
 //
 // ```
-// ### Datastream Stream Bigquery
+// ##
 //
 // ```go
 // package main
@@ -938,7 +941,7 @@ import (
 //	}
 //
 // ```
-// ### Datastream Stream Bigquery Append Only
+// ##
 //
 // ```go
 // package main

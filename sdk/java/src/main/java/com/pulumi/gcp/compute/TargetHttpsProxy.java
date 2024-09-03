@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  * 
- * ## Example Usage
- * 
- * ### Target Https Proxy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -118,7 +116,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Target Https Proxy Http Keep Alive Timeout
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -209,7 +207,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Target Https Proxy Mtls
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -339,7 +337,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Target Https Proxy Certificate Manager Certificate
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -747,8 +745,6 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      * 
-     * ***
-     * 
      */
     @Export(name="urlMap", refs={String.class}, tree="[0]")
     private Output<String> urlMap;
@@ -756,8 +752,6 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
     /**
      * @return A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
-     * 
-     * ***
      * 
      */
     public Output<String> urlMap() {

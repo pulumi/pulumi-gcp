@@ -71,8 +71,6 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
-     * ***
-     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
@@ -83,8 +81,6 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -210,8 +206,6 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -226,8 +220,6 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
          * * `projects/{{project}}/locations/{{location}}`
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 

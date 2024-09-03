@@ -30,9 +30,6 @@ class NamespaceArgs:
                `gcloud beta service-directory locations list`.
         :param pulumi.Input[str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels associated with this Namespace. No more than 64 user
                labels can be associated with a given resource. Label keys and values can
                be no longer than 63 characters.
@@ -69,9 +66,6 @@ class NamespaceArgs:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "namespace_id")
 
@@ -136,9 +130,6 @@ class _NamespaceState:
                in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -221,9 +212,6 @@ class _NamespaceState:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "namespace_id")
 
@@ -276,11 +264,9 @@ class Namespace(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
         * How-to Guides
-            * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
+          * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
-        ## Example Usage
-
-        ### Service Directory Namespace Basic
+        ## 
 
         ```python
         import pulumi
@@ -332,9 +318,6 @@ class Namespace(pulumi.CustomResource):
                `gcloud beta service-directory locations list`.
         :param pulumi.Input[str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -352,11 +335,9 @@ class Namespace(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
         * How-to Guides
-            * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
+          * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
-        ## Example Usage
-
-        ### Service Directory Namespace Basic
+        ## 
 
         ```python
         import pulumi
@@ -474,9 +455,6 @@ class Namespace(pulumi.CustomResource):
                in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -541,9 +519,6 @@ class Namespace(pulumi.CustomResource):
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "namespace_id")
 

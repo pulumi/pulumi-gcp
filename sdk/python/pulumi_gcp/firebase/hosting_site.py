@@ -210,6 +210,7 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-no-app")
         ```
+
         ### Firebasehosting Site Full
 
         ```python
@@ -284,6 +285,7 @@ class HostingSite(pulumi.CustomResource):
             project="my-project-name",
             site_id="site-no-app")
         ```
+
         ### Firebasehosting Site Full
 
         ```python

@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Customdomain Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -104,6 +105,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebasehosting Customdomain Cloud Run
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -280,16 +282,12 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the `CustomDomain`, which is the domain name you&#39;d like to use with Firebase Hosting.
      * 
-     * ***
-     * 
      */
     @Export(name="customDomain", refs={String.class}, tree="[0]")
     private Output<String> customDomain;
 
     /**
      * @return The ID of the `CustomDomain`, which is the domain name you&#39;d like to use with Firebase Hosting.
-     * 
-     * ***
      * 
      */
     public Output<String> customDomain() {

@@ -66,8 +66,6 @@ type GetProjectServiceArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the Google Platform project service.
-	//
-	// ***
 	Service string `pulumi:"service"`
 }
 
@@ -101,8 +99,6 @@ type GetProjectServiceOutputArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The name of the Google Platform project service.
-	//
-	// ***
 	Service pulumi.StringInput `pulumi:"service"`
 }
 

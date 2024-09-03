@@ -19,16 +19,12 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
     /**
      * Location of the target resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Location of the target resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -94,8 +90,6 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
         /**
          * @param location Location of the target resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -106,8 +100,6 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param location Location of the target resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

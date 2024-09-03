@@ -209,7 +209,6 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     /**
      * The config setting for metastore service with the cluster.
      * Structure defined below.
-     * ***
      * 
      */
     @Import(name="metastoreConfig")
@@ -218,7 +217,6 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
     /**
      * @return The config setting for metastore service with the cluster.
      * Structure defined below.
-     * ***
      * 
      */
     public Optional<Output<ClusterClusterConfigMetastoreConfigArgs>> metastoreConfig() {
@@ -644,7 +642,6 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param metastoreConfig The config setting for metastore service with the cluster.
          * Structure defined below.
-         * ***
          * 
          * @return builder
          * 
@@ -657,7 +654,6 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param metastoreConfig The config setting for metastore service with the cluster.
          * Structure defined below.
-         * ***
          * 
          * @return builder
          * 

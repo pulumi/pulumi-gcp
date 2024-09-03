@@ -260,8 +260,8 @@ if not MYPY:
         region_code: pulumi.Input[str]
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -297,8 +297,6 @@ if not MYPY:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
 elif False:
     RegistrationContactSettingsAdminContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -315,8 +313,8 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-               ensure the value is correct. See https://cldr.unicode.org/ and
-               https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+               ensure the value is correct. See <https://cldr.unicode.org/> and
+               <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Unstructured address lines describing the lower levels of an address.
                Because values in addressLines do not have type information and may sometimes contain multiple values in a single
                field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
@@ -334,8 +332,6 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -356,8 +352,8 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
     def region_code(self) -> pulumi.Input[str]:
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 
@@ -441,8 +437,6 @@ class RegistrationContactSettingsAdminContactPostalAddressArgs:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -548,8 +542,8 @@ if not MYPY:
         region_code: pulumi.Input[str]
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -585,8 +579,6 @@ if not MYPY:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
 elif False:
     RegistrationContactSettingsRegistrantContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -603,8 +595,8 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-               ensure the value is correct. See https://cldr.unicode.org/ and
-               https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+               ensure the value is correct. See <https://cldr.unicode.org/> and
+               <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Unstructured address lines describing the lower levels of an address.
                Because values in addressLines do not have type information and may sometimes contain multiple values in a single
                field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
@@ -622,8 +614,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -644,8 +634,8 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
     def region_code(self) -> pulumi.Input[str]:
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 
@@ -729,8 +719,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddressArgs:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -836,8 +824,8 @@ if not MYPY:
         region_code: pulumi.Input[str]
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         address_lines: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -873,8 +861,6 @@ if not MYPY:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
 elif False:
     RegistrationContactSettingsTechnicalContactPostalAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -891,8 +877,8 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-               ensure the value is correct. See https://cldr.unicode.org/ and
-               https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+               ensure the value is correct. See <https://cldr.unicode.org/> and
+               <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Unstructured address lines describing the lower levels of an address.
                Because values in addressLines do not have type information and may sometimes contain multiple values in a single
                field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
@@ -910,8 +896,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -932,8 +916,8 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
     def region_code(self) -> pulumi.Input[str]:
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 
@@ -1017,8 +1001,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 

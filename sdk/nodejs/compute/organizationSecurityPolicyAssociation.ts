@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
  * * How-to Guides
- *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
+ *   * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
  *
  * ## Example Usage
  *
@@ -114,9 +114,6 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
     public readonly name!: pulumi.Output<string>;
     /**
      * The security policy ID of the association.
-     *
-     *
-     * - - -
      */
     public readonly policyId!: pulumi.Output<string>;
 
@@ -173,9 +170,6 @@ export interface OrganizationSecurityPolicyAssociationState {
     name?: pulumi.Input<string>;
     /**
      * The security policy ID of the association.
-     *
-     *
-     * - - -
      */
     policyId?: pulumi.Input<string>;
 }
@@ -194,9 +188,6 @@ export interface OrganizationSecurityPolicyAssociationArgs {
     name?: pulumi.Input<string>;
     /**
      * The security policy ID of the association.
-     *
-     *
-     * - - -
      */
     policyId: pulumi.Input<string>;
 }

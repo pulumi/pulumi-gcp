@@ -24,9 +24,7 @@ import javax.annotation.Nullable;
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
  * 
- * ## Example Usage
- * 
- * ### Identity Platform Tenant Inbound Saml Config Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

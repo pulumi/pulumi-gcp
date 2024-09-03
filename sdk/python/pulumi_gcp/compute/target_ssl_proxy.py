@@ -30,9 +30,6 @@ class TargetSSLProxyArgs:
         """
         The set of arguments for constructing a TargetSSLProxy resource.
         :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -78,9 +75,6 @@ class TargetSSLProxyArgs:
     def backend_service(self) -> pulumi.Input[str]:
         """
         A reference to the BackendService resource.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_service")
 
@@ -206,9 +200,6 @@ class _TargetSSLProxyState:
         """
         Input properties used for looking up and filtering TargetSSLProxy resources.
         :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -264,9 +255,6 @@ class _TargetSSLProxyState:
     def backend_service(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the BackendService resource.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_service")
 
@@ -434,11 +422,9 @@ class TargetSSLProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
         * How-to Guides
-            * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+          * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
-        ## Example Usage
-
-        ### Target Ssl Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -493,9 +479,6 @@ class TargetSSLProxy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -535,11 +518,9 @@ class TargetSSLProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
         * How-to Guides
-            * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+          * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
-        ## Example Usage
-
-        ### Target Ssl Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -665,9 +646,6 @@ class TargetSSLProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_service: A reference to the BackendService resource.
-               
-               
-               - - -
         :param pulumi.Input[str] certificate_map: A reference to the CertificateMap resource uri that identifies a certificate map
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
@@ -717,9 +695,6 @@ class TargetSSLProxy(pulumi.CustomResource):
     def backend_service(self) -> pulumi.Output[str]:
         """
         A reference to the BackendService resource.
-
-
-        - - -
         """
         return pulumi.get(self, "backend_service")
 

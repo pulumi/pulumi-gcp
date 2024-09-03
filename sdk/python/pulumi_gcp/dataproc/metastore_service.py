@@ -43,9 +43,6 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -125,9 +122,6 @@ class MetastoreServiceArgs:
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -421,9 +415,6 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -738,9 +729,6 @@ class _MetastoreServiceState:
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -841,11 +829,9 @@ class MetastoreService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+          * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 
-        ## Example Usage
-
-        ### Dataproc Metastore Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -867,6 +853,9 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+
+        ## Example Usage
+
         ### Dataproc Metastore Service Cmek Example
 
         ```python
@@ -890,6 +879,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             })
         ```
+
         ### Dataproc Metastore Service Private Service Connect
 
         ```python
@@ -917,6 +907,7 @@ class MetastoreService(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Dataproc Metastore Service Private Service Connect Custom Routes
 
         ```python
@@ -945,7 +936,7 @@ class MetastoreService(pulumi.CustomResource):
                 "custom_routes_enabled": True,
             })
         ```
-        ### Dataproc Metastore Service Dpms2
+        ## 
 
         ```python
         import pulumi
@@ -962,7 +953,7 @@ class MetastoreService(pulumi.CustomResource):
                 "instance_size": "EXTRA_SMALL",
             })
         ```
-        ### Dataproc Metastore Service Dpms2 Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -979,7 +970,7 @@ class MetastoreService(pulumi.CustomResource):
                 "scaling_factor": 2,
             })
         ```
-        ### Dataproc Metastore Service Scheduled Backup
+        ## 
 
         ```python
         import pulumi
@@ -1010,7 +1001,7 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1032,7 +1023,7 @@ class MetastoreService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1055,7 +1046,7 @@ class MetastoreService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1077,7 +1068,7 @@ class MetastoreService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Dataproc Metastore Service Autoscaling No Limit Config
+        ## 
 
         ```python
         import pulumi
@@ -1159,9 +1150,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
@@ -1180,11 +1168,9 @@ class MetastoreService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+          * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 
-        ## Example Usage
-
-        ### Dataproc Metastore Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -1206,6 +1192,9 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
+
+        ## Example Usage
+
         ### Dataproc Metastore Service Cmek Example
 
         ```python
@@ -1229,6 +1218,7 @@ class MetastoreService(pulumi.CustomResource):
                 "version": "3.1.2",
             })
         ```
+
         ### Dataproc Metastore Service Private Service Connect
 
         ```python
@@ -1256,6 +1246,7 @@ class MetastoreService(pulumi.CustomResource):
                 }],
             })
         ```
+
         ### Dataproc Metastore Service Private Service Connect Custom Routes
 
         ```python
@@ -1284,7 +1275,7 @@ class MetastoreService(pulumi.CustomResource):
                 "custom_routes_enabled": True,
             })
         ```
-        ### Dataproc Metastore Service Dpms2
+        ## 
 
         ```python
         import pulumi
@@ -1301,7 +1292,7 @@ class MetastoreService(pulumi.CustomResource):
                 "instance_size": "EXTRA_SMALL",
             })
         ```
-        ### Dataproc Metastore Service Dpms2 Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1318,7 +1309,7 @@ class MetastoreService(pulumi.CustomResource):
                 "scaling_factor": 2,
             })
         ```
-        ### Dataproc Metastore Service Scheduled Backup
+        ## 
 
         ```python
         import pulumi
@@ -1349,7 +1340,7 @@ class MetastoreService(pulumi.CustomResource):
                 "env": "test",
             })
         ```
-        ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1371,7 +1362,7 @@ class MetastoreService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1394,7 +1385,7 @@ class MetastoreService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+        ## 
 
         ```python
         import pulumi
@@ -1416,7 +1407,7 @@ class MetastoreService(pulumi.CustomResource):
                 },
             })
         ```
-        ### Dataproc Metastore Service Autoscaling No Limit Config
+        ## 
 
         ```python
         import pulumi
@@ -1614,9 +1605,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input[Union['MetastoreServiceTelemetryConfigArgs', 'MetastoreServiceTelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -1835,9 +1823,6 @@ class MetastoreService(pulumi.CustomResource):
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

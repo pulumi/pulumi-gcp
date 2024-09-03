@@ -115,11 +115,9 @@ type ExternalAddress struct {
 	// The internal IP address of a workload VM.
 	InternalIp pulumi.StringOutput `pulumi:"internalIp"`
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the private cloud to create a new external address in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// State of the resource.
@@ -179,11 +177,9 @@ type externalAddressState struct {
 	// The internal IP address of a workload VM.
 	InternalIp *string `pulumi:"internalIp"`
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The resource name of the private cloud to create a new external address in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent *string `pulumi:"parent"`
 	// State of the resource.
@@ -208,11 +204,9 @@ type ExternalAddressState struct {
 	// The internal IP address of a workload VM.
 	InternalIp pulumi.StringPtrInput
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The resource name of the private cloud to create a new external address in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent pulumi.StringPtrInput
 	// State of the resource.
@@ -235,11 +229,9 @@ type externalAddressArgs struct {
 	// The internal IP address of a workload VM.
 	InternalIp string `pulumi:"internalIp"`
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The resource name of the private cloud to create a new external address in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent string `pulumi:"parent"`
 }
@@ -251,11 +243,9 @@ type ExternalAddressArgs struct {
 	// The internal IP address of a workload VM.
 	InternalIp pulumi.StringInput
 	// The ID of the external IP Address.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The resource name of the private cloud to create a new external address in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent pulumi.StringInput
 }
@@ -370,14 +360,12 @@ func (o ExternalAddressOutput) InternalIp() pulumi.StringOutput {
 }
 
 // The ID of the external IP Address.
-//
-// ***
 func (o ExternalAddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The resource name of the private cloud to create a new external address in.
-// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 // For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 func (o ExternalAddressOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalAddress) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)

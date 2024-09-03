@@ -16,12 +16,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
     /// * How-to Guides
-    ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-    ///     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+    ///   * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+    ///   * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vpn Tunnel Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -278,9 +276,6 @@ namespace Pulumi.Gcp.Compute
         /// Shared secret used to set the secure session between the Cloud VPN
         /// gateway and the peer VPN gateway.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("sharedSecret")]
         public Output<string> SharedSecret { get; private set; } = null!;
@@ -493,9 +488,6 @@ namespace Pulumi.Gcp.Compute
         /// Shared secret used to set the secure session between the Cloud VPN
         /// gateway and the peer VPN gateway.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public Input<string>? SharedSecret
         {
@@ -717,9 +709,6 @@ namespace Pulumi.Gcp.Compute
         /// Shared secret used to set the secure session between the Cloud VPN
         /// gateway and the peer VPN gateway.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public Input<string>? SharedSecret
         {

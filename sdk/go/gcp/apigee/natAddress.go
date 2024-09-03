@@ -13,7 +13,7 @@ import (
 )
 
 // Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
-// Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
+// Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See <https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate>
 //
 // To get more information about NatAddress, see:
 //
@@ -161,8 +161,6 @@ type NatAddress struct {
 
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The allocated NAT IP address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -207,8 +205,6 @@ func GetNatAddress(ctx *pulumi.Context,
 type natAddressState struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId *string `pulumi:"instanceId"`
 	// The allocated NAT IP address.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -221,8 +217,6 @@ type natAddressState struct {
 type NatAddressState struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId pulumi.StringPtrInput
 	// The allocated NAT IP address.
 	IpAddress pulumi.StringPtrInput
@@ -239,8 +233,6 @@ func (NatAddressState) ElementType() reflect.Type {
 type natAddressArgs struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId string `pulumi:"instanceId"`
 	// Resource ID of the NAT address.
 	Name *string `pulumi:"name"`
@@ -250,8 +242,6 @@ type natAddressArgs struct {
 type NatAddressArgs struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-	//
-	// ***
 	InstanceId pulumi.StringInput
 	// Resource ID of the NAT address.
 	Name pulumi.StringPtrInput
@@ -346,8 +336,6 @@ func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) Nat
 
 // The Apigee instance associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-//
-// ***
 func (o NatAddressOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

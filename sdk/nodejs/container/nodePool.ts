@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Using A Separately Managed Node Pool (Recommended)
+ * ### using a separately managed node pool (recommended)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+ * ### 2 node pools, 1 separately managed + the default node pool
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -132,8 +132,6 @@ export class NodePool extends pulumi.CustomResource {
     public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-     *
-     * - - -
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -152,8 +150,6 @@ export class NodePool extends pulumi.CustomResource {
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
      * The location (region or zone) of the cluster.
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -316,8 +312,6 @@ export interface NodePoolState {
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-     *
-     * - - -
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -336,8 +330,6 @@ export interface NodePoolState {
     instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The location (region or zone) of the cluster.
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -437,8 +429,6 @@ export interface NodePoolArgs {
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-     *
-     * - - -
      */
     cluster: pulumi.Input<string>;
     /**
@@ -453,8 +443,6 @@ export interface NodePoolArgs {
     initialNodeCount?: pulumi.Input<number>;
     /**
      * The location (region or zone) of the cluster.
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**

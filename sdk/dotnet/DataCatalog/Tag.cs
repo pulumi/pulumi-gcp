@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+    ///   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Data Catalog Entry Tag Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -117,7 +115,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
-    /// ### Data Catalog Entry Group Tag
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -220,7 +218,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
-    /// ### Data Catalog Entry Tag Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Basic_lake
+ * ### basicLake
  * A basic example of a dataplex lake
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -122,10 +122,6 @@ export class Lake extends pulumi.CustomResource {
     public /*out*/ readonly metastoreStatuses!: pulumi.Output<outputs.dataplex.LakeMetastoreStatus[]>;
     /**
      * The name of the lake.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -256,10 +252,6 @@ export interface LakeState {
     metastoreStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.LakeMetastoreStatus>[]>;
     /**
      * The name of the lake.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -317,10 +309,6 @@ export interface LakeArgs {
     metastore?: pulumi.Input<inputs.dataplex.LakeMetastore>;
     /**
      * The name of the lake.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

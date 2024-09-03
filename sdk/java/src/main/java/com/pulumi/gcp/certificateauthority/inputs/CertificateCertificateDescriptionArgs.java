@@ -41,7 +41,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     /**
      * (Output)
-     * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
      * Structure is documented below.
      * 
      */
@@ -50,7 +50,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     /**
      * @return (Output)
-     * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
      * Structure is documented below.
      * 
      */
@@ -79,7 +79,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     /**
      * (Output)
-     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
      * 
      */
     @Import(name="crlDistributionPoints")
@@ -87,7 +87,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     /**
      * @return (Output)
-     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
      * 
      */
     public Optional<Output<List<String>>> crlDistributionPoints() {
@@ -134,7 +134,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     /**
      * (Output)
-     * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
      * Structure is documented below.
      * 
      */
@@ -143,7 +143,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     /**
      * @return (Output)
-     * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
      * Structure is documented below.
      * 
      */
@@ -237,7 +237,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param authorityKeyIds (Output)
-         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -250,7 +250,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param authorityKeyIds (Output)
-         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -262,7 +262,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param authorityKeyIds (Output)
-         * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -311,7 +311,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param crlDistributionPoints (Output)
-         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param crlDistributionPoints (Output)
-         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param crlDistributionPoints (Output)
-         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param subjectKeyIds (Output)
-         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -432,7 +432,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param subjectKeyIds (Output)
-         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -444,7 +444,7 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
         /**
          * @param subjectKeyIds (Output)
-         * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
          * Structure is documented below.
          * 
          * @return builder

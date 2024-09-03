@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
  *
- * ## Example Usage
- *
- * ### Secret Config Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +38,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Secret With Annotations
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Secret With Version Destroy Ttl
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -77,7 +75,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Secret With Automatic Cmek
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

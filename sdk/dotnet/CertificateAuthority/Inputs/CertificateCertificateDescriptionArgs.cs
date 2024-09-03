@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// (Output)
-        /// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+        /// Identifies the subjectKeyId of the parent certificate, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.1&gt;
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdArgs> AuthorityKeyIds
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// (Output)
-        /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.13&gt;
         /// </summary>
         public InputList<string> CrlDistributionPoints
         {
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// (Output)
-        /// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+        /// Provides a means of identifiying certificates that contain a particular public key, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.2&gt;.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdArgs> SubjectKeyIds

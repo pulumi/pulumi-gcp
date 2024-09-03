@@ -1166,8 +1166,6 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
         :param str common_name: Common name of the organization. Maximum length is 64 characters.
         :param str country_code: Two-letter country code. Example, IN for India, US for United States of America.
         :param str email: Email address. Max 255 characters.
-               
-               - - -
         :param str locality: City or town name. Maximum length is 128 characters.
         :param str org: Organization name. Maximum length is 64 characters.
         :param str org_unit: Organization team name. Maximum length is 64 characters.
@@ -1209,8 +1207,6 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
     def email(self) -> Optional[str]:
         """
         Email address. Max 255 characters.
-
-        - - -
         """
         return pulumi.get(self, "email")
 
@@ -1440,7 +1436,7 @@ class TargetServerSSlInfo(dict):
                  trust_store: Optional[str] = None):
         """
         :param bool enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
-        :param Sequence[str] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        :param Sequence[str] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         :param bool client_auth_enabled: Enables two-way TLS.
         :param 'TargetServerSSlInfoCommonNameArgs' common_name: The TLS Common Name of the certificate.
                Structure is documented below.
@@ -1480,7 +1476,7 @@ class TargetServerSSlInfo(dict):
     @pulumi.getter
     def ciphers(self) -> Optional[Sequence[str]]:
         """
-        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         """
         return pulumi.get(self, "ciphers")
 

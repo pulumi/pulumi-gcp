@@ -36,10 +36,7 @@ class BackupArgs:
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -104,9 +101,6 @@ class BackupArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the alloydb backup should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -118,7 +112,7 @@ class BackupArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -240,7 +234,7 @@ class _BackupState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -259,7 +253,7 @@ class _BackupState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BackupEncryptionInfoArgs']]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[Sequence[pulumi.Input['BackupExpiryQuantityArgs']]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
                Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
                Structure is documented below.
@@ -270,15 +264,12 @@ class _BackupState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] size_bytes: Output only. The size of the backup in bytes.
         :param pulumi.Input[str] state: Output only. The current state of the backup.
@@ -345,7 +336,7 @@ class _BackupState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -494,7 +485,7 @@ class _BackupState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -549,9 +540,6 @@ class _BackupState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the alloydb backup should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -601,7 +589,7 @@ class _BackupState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
         This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
@@ -696,7 +684,7 @@ class Backup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
         * How-to Guides
-            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+          * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
 
@@ -734,6 +722,7 @@ class Backup(pulumi.CustomResource):
             cluster_name=default_cluster.name,
             opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
+
         ### Alloydb Backup Full
 
         ```python
@@ -800,7 +789,7 @@ class Backup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -816,9 +805,6 @@ class Backup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The backup type, which suggests the trigger for the backup.
@@ -837,7 +823,7 @@ class Backup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
         * How-to Guides
-            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+          * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
         ## Example Usage
 
@@ -875,6 +861,7 @@ class Backup(pulumi.CustomResource):
             cluster_name=default_cluster.name,
             opts = pulumi.ResourceOptions(depends_on=[default_instance]))
         ```
+
         ### Alloydb Backup Full
 
         ```python
@@ -1050,7 +1037,7 @@ class Backup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1069,7 +1056,7 @@ class Backup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackupEncryptionInfoArgs', 'BackupEncryptionInfoArgsDict']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
                Structure is documented below.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackupExpiryQuantityArgs', 'BackupExpiryQuantityArgsDict']]]] expiry_quantities: Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
                Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
                Structure is documented below.
@@ -1080,15 +1067,12 @@ class Backup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] size_bytes: Output only. The size of the backup in bytes.
         :param pulumi.Input[str] state: Output only. The current state of the backup.
@@ -1134,7 +1118,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1235,7 +1219,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -1274,9 +1258,6 @@ class Backup(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb backup should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1310,7 +1291,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
         This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")

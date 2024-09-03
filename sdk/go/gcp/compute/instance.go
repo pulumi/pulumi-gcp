@@ -206,8 +206,6 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
@@ -391,8 +389,6 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
@@ -533,8 +529,6 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
 	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
@@ -667,8 +661,6 @@ type instanceArgs struct {
 	Name *string `pulumi:"name"`
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
@@ -792,8 +784,6 @@ type InstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
 	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
@@ -1086,8 +1076,6 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 
 // Networks to attach to the instance. This can
 // be specified multiple times. Structure is documented below.
-//
-// ***
 func (o InstanceOutput) NetworkInterfaces() InstanceNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(InstanceNetworkInterfaceArrayOutput)
 }

@@ -57,8 +57,6 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// <summary>
         /// (Output)
         /// Output only. The subject Alternative DNS names. Only present if parsed is true.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> SubjectAlternativeDnsNames;
 

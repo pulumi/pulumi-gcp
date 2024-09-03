@@ -43,7 +43,7 @@ import (
 //
 // ```
 //
-// ### Multi-Regional Artifact Registry Deployment
+// ### Multi-regional Artifact Registry deployment
 //
 // ```go
 // package main

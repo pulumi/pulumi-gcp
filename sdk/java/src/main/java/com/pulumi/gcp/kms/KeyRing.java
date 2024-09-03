@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
  * * How-to Guides
- *     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+ *   * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
  * 
  * ## Example Usage
  * 
@@ -95,8 +95,6 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
      * The location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -104,8 +102,6 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
     /**
      * @return The location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

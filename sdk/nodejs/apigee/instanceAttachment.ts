@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.attachments/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Example Usage
  *
@@ -68,9 +68,6 @@ export class InstanceAttachment extends pulumi.CustomResource {
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -122,9 +119,6 @@ export interface InstanceAttachmentState {
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -144,9 +138,6 @@ export interface InstanceAttachmentArgs {
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
 }

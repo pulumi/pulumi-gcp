@@ -46,10 +46,7 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -69,7 +66,7 @@ class ClusterArgs:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
@@ -156,9 +153,6 @@ class ClusterArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -170,7 +164,7 @@ class ClusterArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -278,7 +272,7 @@ class ClusterArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -459,7 +453,7 @@ class _ClusterState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -488,16 +482,13 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input['ClusterMaintenanceUpdatePolicyArgs'] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
@@ -516,7 +507,7 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -600,7 +591,7 @@ class _ClusterState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -781,7 +772,7 @@ class _ClusterState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -821,9 +812,6 @@ class _ClusterState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -942,7 +930,7 @@ class _ClusterState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
         Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
         This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
@@ -1046,68 +1034,6 @@ class Cluster(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Alloydb Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default", name="alloydb-cluster")
-        default = gcp.alloydb.Cluster("default",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network_config={
-                "network": default_network.id,
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Alloydb Cluster Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default", name="alloydb-cluster-full")
-        full = gcp.alloydb.Cluster("full",
-            cluster_id="alloydb-cluster-full",
-            location="us-central1",
-            network_config={
-                "network": default.id,
-            },
-            database_version="POSTGRES_15",
-            initial_user={
-                "user": "alloydb-cluster-full",
-                "password": "alloydb-cluster-full",
-            },
-            continuous_backup_config={
-                "enabled": True,
-                "recovery_window_days": 14,
-            },
-            automated_backup_policy={
-                "location": "us-central1",
-                "backup_window": "1800s",
-                "enabled": True,
-                "weekly_schedule": {
-                    "days_of_weeks": ["MONDAY"],
-                    "start_times": [{
-                        "hours": 23,
-                        "minutes": 0,
-                        "seconds": 0,
-                        "nanos": 0,
-                    }],
-                },
-                "quantity_based_retention": {
-                    "count": 1,
-                },
-                "labels": {
-                    "test": "alloydb-cluster-full",
-                },
-            },
-            labels={
-                "test": "alloydb-cluster-full",
-            })
-        project = gcp.organizations.get_project()
-        ```
         ### Alloydb Cluster Restore
 
         ```python
@@ -1164,6 +1090,7 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Alloydb Secondary Cluster Basic
 
         ```python
@@ -1240,7 +1167,7 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1261,16 +1188,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[str] network: (Optional, Deprecated)
@@ -1300,68 +1224,6 @@ class Cluster(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Alloydb Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default", name="alloydb-cluster")
-        default = gcp.alloydb.Cluster("default",
-            cluster_id="alloydb-cluster",
-            location="us-central1",
-            network_config={
-                "network": default_network.id,
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Alloydb Cluster Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default", name="alloydb-cluster-full")
-        full = gcp.alloydb.Cluster("full",
-            cluster_id="alloydb-cluster-full",
-            location="us-central1",
-            network_config={
-                "network": default.id,
-            },
-            database_version="POSTGRES_15",
-            initial_user={
-                "user": "alloydb-cluster-full",
-                "password": "alloydb-cluster-full",
-            },
-            continuous_backup_config={
-                "enabled": True,
-                "recovery_window_days": 14,
-            },
-            automated_backup_policy={
-                "location": "us-central1",
-                "backup_window": "1800s",
-                "enabled": True,
-                "weekly_schedule": {
-                    "days_of_weeks": ["MONDAY"],
-                    "start_times": [{
-                        "hours": 23,
-                        "minutes": 0,
-                        "seconds": 0,
-                        "nanos": 0,
-                    }],
-                },
-                "quantity_based_retention": {
-                    "count": 1,
-                },
-                "labels": {
-                    "test": "alloydb-cluster-full",
-                },
-            },
-            labels={
-                "test": "alloydb-cluster-full",
-            })
-        project = gcp.organizations.get_project()
-        ```
         ### Alloydb Cluster Restore
 
         ```python
@@ -1418,6 +1280,7 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+
         ### Alloydb Secondary Cluster Basic
 
         ```python
@@ -1624,7 +1487,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1653,16 +1516,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterEncryptionInfoArgs', 'ClusterEncryptionInfoArgsDict']]]] encryption_infos: (Output)
                Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[Union['ClusterInitialUserArgs', 'ClusterInitialUserArgsDict']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Union['ClusterMaintenanceUpdatePolicyArgs', 'ClusterMaintenanceUpdatePolicyArgsDict']] maintenance_update_policy: MaintenanceUpdatePolicy defines the policy for system updates.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMigrationSourceArgs', 'ClusterMigrationSourceArgsDict']]]] migration_sources: Cluster created via DMS migration.
@@ -1681,7 +1541,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        :param pulumi.Input[bool] reconciling: Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -1735,7 +1595,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1860,7 +1720,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[Optional[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -1888,9 +1748,6 @@ class Cluster(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1973,7 +1830,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+        Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
         Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
         This can happen due to user-triggered updates or system actions like failover or maintenance.
         """

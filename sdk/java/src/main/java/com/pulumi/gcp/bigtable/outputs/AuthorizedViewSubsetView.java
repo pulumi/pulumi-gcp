@@ -15,8 +15,6 @@ public final class AuthorizedViewSubsetView {
     /**
      * @return A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     private @Nullable List<AuthorizedViewSubsetViewFamilySubset> familySubsets;
     /**
@@ -28,8 +26,6 @@ public final class AuthorizedViewSubsetView {
     private AuthorizedViewSubsetView() {}
     /**
      * @return A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public List<AuthorizedViewSubsetViewFamilySubset> familySubsets() {

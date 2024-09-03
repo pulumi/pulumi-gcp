@@ -43,16 +43,12 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
     /**
      * The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
      * 
-     * ***
-     * 
      */
     @Import(name="optionalComponents")
     private @Nullable Output<List<String>> optionalComponents;
 
     /**
      * @return The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> optionalComponents() {
@@ -156,8 +152,6 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
         /**
          * @param optionalComponents The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -169,8 +163,6 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
         /**
          * @param optionalComponents The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -180,8 +172,6 @@ public final class ClusterClusterConfigSoftwareConfigArgs extends com.pulumi.res
 
         /**
          * @param optionalComponents The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
-         * 
-         * ***
          * 
          * @return builder
          * 

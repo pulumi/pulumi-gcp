@@ -20,12 +20,12 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly string? EnterpriseConfigResourceName;
         /// <summary>
         /// Name of the repository. For example: The name for
-        /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+        /// &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is "cloud-builders".
         /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Owner of the repository. For example: The owner for
-        /// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+        /// &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is "googlecloudplatform".
         /// </summary>
         public readonly string? Owner;
         /// <summary>

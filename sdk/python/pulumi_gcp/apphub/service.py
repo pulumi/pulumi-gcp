@@ -35,9 +35,6 @@ class ServiceArgs:
         :param pulumi.Input[str] discovered_service: Immutable. The resource name of the original discovered service.
         :param pulumi.Input[str] location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input[str] service_id: The Service identifier.
-               
-               
-               - - -
         :param pulumi.Input['ServiceAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[str] description: User-defined description of a Service.
@@ -99,9 +96,6 @@ class ServiceArgs:
     def service_id(self) -> pulumi.Input[str]:
         """
         The Service identifier.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -193,9 +187,6 @@ class _ServiceState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: The Service identifier.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyArgs']]] service_properties: Properties of an underlying cloud resource that can comprise a Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceServiceReferenceArgs']]] service_references: Reference to an underlying networking resource that can comprise a Service.
@@ -352,9 +343,6 @@ class _ServiceState:
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
         The Service identifier.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -522,6 +510,7 @@ class Service(pulumi.CustomResource):
             service_id=forwarding_rule.name,
             discovered_service=catalog_service.name)
         ```
+
         ### Apphub Service Full
 
         ```python
@@ -658,9 +647,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: The Service identifier.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -750,6 +736,7 @@ class Service(pulumi.CustomResource):
             service_id=forwarding_rule.name,
             discovered_service=catalog_service.name)
         ```
+
         ### Apphub Service Full
 
         ```python
@@ -974,9 +961,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: The Service identifier.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServicePropertyArgs', 'ServiceServicePropertyArgsDict']]]] service_properties: Properties of an underlying cloud resource that can comprise a Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceServiceReferenceArgs', 'ServiceServiceReferenceArgsDict']]]] service_references: Reference to an underlying networking resource that can comprise a Service.
@@ -1087,9 +1071,6 @@ class Service(pulumi.CustomResource):
     def service_id(self) -> pulumi.Output[str]:
         """
         The Service identifier.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

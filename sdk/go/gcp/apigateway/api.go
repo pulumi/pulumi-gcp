@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
 //
-// ## Example Usage
-//
-// ### Apigateway Api Basic
+// ##
 //
 // ```go
 // package main
@@ -75,8 +73,6 @@ type Api struct {
 	pulumi.CustomResourceState
 
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-	//
-	// ***
 	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -89,7 +85,7 @@ type Api struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+	// Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringOutput `pulumi:"managedService"`
 	// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
@@ -141,8 +137,6 @@ func GetApi(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-	//
-	// ***
 	ApiId *string `pulumi:"apiId"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
@@ -155,7 +149,7 @@ type apiState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+	// Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService *string `pulumi:"managedService"`
 	// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
@@ -170,8 +164,6 @@ type apiState struct {
 
 type ApiState struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-	//
-	// ***
 	ApiId pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
@@ -184,7 +176,7 @@ type ApiState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+	// Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringPtrInput
 	// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
@@ -203,8 +195,6 @@ func (ApiState) ElementType() reflect.Type {
 
 type apiArgs struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-	//
-	// ***
 	ApiId string `pulumi:"apiId"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
@@ -213,7 +203,7 @@ type apiArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+	// Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService *string `pulumi:"managedService"`
 	// The ID of the project in which the resource belongs.
@@ -224,8 +214,6 @@ type apiArgs struct {
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-	//
-	// ***
 	ApiId pulumi.StringInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
@@ -234,7 +222,7 @@ type ApiArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+	// Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -330,8 +318,6 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 }
 
 // Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-//
-// ***
 func (o ApiOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
 }
@@ -359,7 +345,7 @@ func (o ApiOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+// Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
 // If not specified, a new Service will automatically be created in the same project as this API.
 func (o ApiOutput) ManagedService() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ManagedService }).(pulumi.StringOutput)

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
     /// * How-to Guides
-    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    ///   * [AlloyDB](https://cloud.google.com/alloydb/docs/)
     /// 
     /// ## Example Usage
     /// 
@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// 
     /// ### Alloydb Backup Full
     /// 
     /// ```csharp
@@ -199,7 +200,7 @@ namespace Pulumi.Gcp.Alloydb
     public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -276,7 +277,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.BackupEncryptionInfo>> EncryptionInfos { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -307,9 +308,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb backup should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -335,7 +333,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        /// Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;, if true, indicates that the service is actively updating the resource.
         /// This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Output("reconciling")]
@@ -428,7 +426,7 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -488,9 +486,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb backup should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -521,7 +516,7 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+        /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
         /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -622,7 +617,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -665,9 +660,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb backup should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -703,7 +695,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+        /// Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;, if true, indicates that the service is actively updating the resource.
         /// This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Input("reconciling")]

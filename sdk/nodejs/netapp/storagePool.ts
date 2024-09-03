@@ -5,51 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Storage Pool Create
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // Create a network or use datasource to reference existing network
- * const peeringNetwork = new gcp.compute.Network("peering_network", {name: "test-network"});
- * // Reserve a CIDR for NetApp Volumes to use
- * // When using shared-VPCs, this resource needs to be created in host project
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: "test-address",
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 16,
- *     network: peeringNetwork.id,
- * });
- * // Create a Private Service Access connection
- * // When using shared-VPCs, this resource needs to be created in host project
- * const _default = new gcp.servicenetworking.Connection("default", {
- *     network: peeringNetwork.id,
- *     service: "netapp.servicenetworking.goog",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * // Modify the PSA Connection to allow import/export of custom routes
- * // When using shared-VPCs, this resource needs to be created in host project
- * const routeUpdates = new gcp.compute.NetworkPeeringRoutesConfig("route_updates", {
- *     peering: _default.peering,
- *     network: peeringNetwork.name,
- *     importCustomRoutes: true,
- *     exportCustomRoutes: true,
- * });
- * // Create a storage pool
- * // Create this resource in the project which is expected to own the volumes
- * const testPool = new gcp.netapp.StoragePool("test_pool", {
- *     name: "test-pool",
- *     location: "us-central1",
- *     serviceLevel: "PREMIUM",
- *     capacityGib: "2048",
- *     network: peeringNetwork.id,
- * });
- * ```
- *
  * ## Import
  *
  * storagePool can be imported using any of these accepted formats:
@@ -146,9 +101,6 @@ export class StoragePool extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -309,9 +261,6 @@ export interface StoragePoolState {
     location?: pulumi.Input<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -394,9 +343,6 @@ export interface StoragePoolArgs {
     location: pulumi.Input<string>;
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

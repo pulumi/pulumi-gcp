@@ -272,8 +272,6 @@ type RulesetSourceFile struct {
 	// Fingerprint (e.g. github sha) associated with the `File`.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// File name.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -294,8 +292,6 @@ type RulesetSourceFileArgs struct {
 	// Fingerprint (e.g. github sha) associated with the `File`.
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
 	// File name.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -361,8 +357,6 @@ func (o RulesetSourceFileOutput) Fingerprint() pulumi.StringPtrOutput {
 }
 
 // File name.
-//
-// ***
 func (o RulesetSourceFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RulesetSourceFile) string { return v.Name }).(pulumi.StringOutput)
 }

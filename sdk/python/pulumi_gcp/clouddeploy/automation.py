@@ -571,7 +571,7 @@ class Automation(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.deliveryPipelines.automations)
         * How-to Guides
-            * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
+          * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
 
         ## Example Usage
 
@@ -608,6 +608,7 @@ class Automation(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Clouddeploy Automation Full
 
         ```python
@@ -731,7 +732,7 @@ class Automation(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.deliveryPipelines.automations)
         * How-to Guides
-            * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
+          * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
 
         ## Example Usage
 
@@ -768,6 +769,7 @@ class Automation(pulumi.CustomResource):
                 },
             }])
         ```
+
         ### Clouddeploy Automation Full
 
         ```python

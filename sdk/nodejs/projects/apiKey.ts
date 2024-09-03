@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Android_key
+ * ### androidKey
  * A basic example of a android api keys key
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +40,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Basic_key
+ *
+ * ### basicKey
  * A basic example of a api keys key
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +67,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Ios_key
+ *
+ * ### iosKey
  * A basic example of a ios api keys key
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -92,7 +94,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Minimal_key
+ *
+ * ### minimalKey
  * A minimal example of a api keys key
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -109,7 +112,8 @@ import * as utilities from "../utilities";
  *     project: basic.name,
  * });
  * ```
- * ### Server_key
+ *
+ * ### serverKey
  * A basic example of a server api keys key
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

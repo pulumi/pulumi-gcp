@@ -13,16 +13,12 @@ public final class ProjectFeedFeedOutputConfigPubsubDestination {
     /**
      * @return Destination on Cloud Pubsub topic.
      * 
-     * ***
-     * 
      */
     private String topic;
 
     private ProjectFeedFeedOutputConfigPubsubDestination() {}
     /**
      * @return Destination on Cloud Pubsub topic.
-     * 
-     * ***
      * 
      */
     public String topic() {

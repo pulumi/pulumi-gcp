@@ -20,8 +20,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
 //
-// ## Example Usage
-//
 // ## Import
 //
 // ApiConfig can be imported using any of these accepted formats:
@@ -49,8 +47,6 @@ type ApiConfig struct {
 	pulumi.CustomResourceState
 
 	// The API to attach the config to.
-	//
-	// ***
 	Api pulumi.StringOutput `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringOutput `pulumi:"apiConfigId"`
@@ -73,7 +69,7 @@ type ApiConfig struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	// Structure is documented below.
 	ManagedServiceConfigs ApiConfigManagedServiceConfigArrayOutput `pulumi:"managedServiceConfigs"`
@@ -88,7 +84,7 @@ type ApiConfig struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	// The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
 	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
 }
 
@@ -131,8 +127,6 @@ func GetApiConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ApiConfig resources.
 type apiConfigState struct {
 	// The API to attach the config to.
-	//
-	// ***
 	Api *string `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId *string `pulumi:"apiConfigId"`
@@ -155,7 +149,7 @@ type apiConfigState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	// Structure is documented below.
 	ManagedServiceConfigs []ApiConfigManagedServiceConfig `pulumi:"managedServiceConfigs"`
@@ -170,14 +164,12 @@ type apiConfigState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	// The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
 	ServiceConfigId *string `pulumi:"serviceConfigId"`
 }
 
 type ApiConfigState struct {
 	// The API to attach the config to.
-	//
-	// ***
 	Api pulumi.StringPtrInput
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringPtrInput
@@ -200,7 +192,7 @@ type ApiConfigState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	// Structure is documented below.
 	ManagedServiceConfigs ApiConfigManagedServiceConfigArrayInput
@@ -215,7 +207,7 @@ type ApiConfigState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	// The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
 	ServiceConfigId pulumi.StringPtrInput
 }
 
@@ -225,8 +217,6 @@ func (ApiConfigState) ElementType() reflect.Type {
 
 type apiConfigArgs struct {
 	// The API to attach the config to.
-	//
-	// ***
 	Api string `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId *string `pulumi:"apiConfigId"`
@@ -247,7 +237,7 @@ type apiConfigArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	// Structure is documented below.
 	ManagedServiceConfigs []ApiConfigManagedServiceConfig `pulumi:"managedServiceConfigs"`
@@ -262,8 +252,6 @@ type apiConfigArgs struct {
 // The set of arguments for constructing a ApiConfig resource.
 type ApiConfigArgs struct {
 	// The API to attach the config to.
-	//
-	// ***
 	Api pulumi.StringInput
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringPtrInput
@@ -284,7 +272,7 @@ type ApiConfigArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
 	// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	// Structure is documented below.
 	ManagedServiceConfigs ApiConfigManagedServiceConfigArrayInput
@@ -384,8 +372,6 @@ func (o ApiConfigOutput) ToApiConfigOutputWithContext(ctx context.Context) ApiCo
 }
 
 // The API to attach the config to.
-//
-// ***
 func (o ApiConfigOutput) Api() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.Api }).(pulumi.StringOutput)
 }
@@ -432,7 +418,7 @@ func (o ApiConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
+// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See <https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview> for the expected file contents.
 // If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 // Structure is documented below.
 func (o ApiConfigOutput) ManagedServiceConfigs() ApiConfigManagedServiceConfigArrayOutput {
@@ -462,7 +448,7 @@ func (o ApiConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
+// The ID of the associated Service Config (<https://cloud.google.com/service-infrastructure/docs/glossary#config)>.
 func (o ApiConfigOutput) ServiceConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.ServiceConfigId }).(pulumi.StringOutput)
 }

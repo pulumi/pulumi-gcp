@@ -34,9 +34,6 @@ class CustomConstraintArgs:
         :param pulumi.Input[str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
         :param pulumi.Input[str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[str] display_name: A human-friendly name for the constraint.
@@ -96,9 +93,6 @@ class CustomConstraintArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -177,9 +171,6 @@ class _CustomConstraintState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
         :param pulumi.Input[str] update_time: Output only. The timestamp representing when the constraint was last updated.
         """
@@ -280,9 +271,6 @@ class _CustomConstraintState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -336,8 +324,8 @@ class CustomConstraint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
-            * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+          * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
 
         ## Example Usage
 
@@ -358,6 +346,7 @@ class CustomConstraint(pulumi.CustomResource):
             ],
             resource_types=["container.googleapis.com/NodePool"])
         ```
+
         ### Org Policy Custom Constraint Full
 
         ```python
@@ -408,9 +397,6 @@ class CustomConstraint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
         """
         ...
@@ -426,8 +412,8 @@ class CustomConstraint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
-            * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+          * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
 
         ## Example Usage
 
@@ -448,6 +434,7 @@ class CustomConstraint(pulumi.CustomResource):
             ],
             resource_types=["container.googleapis.com/NodePool"])
         ```
+
         ### Org Policy Custom Constraint Full
 
         ```python
@@ -573,9 +560,6 @@ class CustomConstraint(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[str] name: Immutable. The name of the custom constraint. This is unique within the organization.
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
         :param pulumi.Input[str] update_time: Output only. The timestamp representing when the constraint was last updated.
         """
@@ -648,9 +632,6 @@ class CustomConstraint(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

@@ -17,14 +17,12 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
     /// * How-to Guides
-    ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+    ///   * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
     /// 
     /// &gt; **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
     /// by using the `gcp.projects.ServiceIdentity` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Pubsub Subscription Push
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +58,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Pull
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,7 +97,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Dead Letter
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -132,7 +130,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Push Bq
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -209,7 +207,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Push Bq Table Schema
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -287,7 +285,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Push Bq Service Account
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -372,7 +370,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Push Cloudstorage
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -427,7 +425,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Push Cloudstorage Avro
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -486,7 +484,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Push Cloudstorage Service Account
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -621,7 +619,7 @@ namespace Pulumi.Gcp.PubSub
         /// is disabled.
         /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
-        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        /// &lt;service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
         /// permission to Acknowledge() messages on this subscription.
         /// Structure is documented below.
         /// </summary>
@@ -748,9 +746,6 @@ namespace Pulumi.Gcp.PubSub
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
         /// the topic is in the same project as the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
@@ -850,7 +845,7 @@ namespace Pulumi.Gcp.PubSub
         /// is disabled.
         /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
-        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        /// &lt;service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
         /// permission to Acknowledge() messages on this subscription.
         /// Structure is documented below.
         /// </summary>
@@ -970,9 +965,6 @@ namespace Pulumi.Gcp.PubSub
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
         /// the topic is in the same project as the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
@@ -1029,7 +1021,7 @@ namespace Pulumi.Gcp.PubSub
         /// is disabled.
         /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
-        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        /// &lt;service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com&gt;) must have
         /// permission to Acknowledge() messages on this subscription.
         /// Structure is documented below.
         /// </summary>
@@ -1182,9 +1174,6 @@ namespace Pulumi.Gcp.PubSub
         /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         /// (as in the id property of a google_pubsub_topic), or just a topic name if
         /// the topic is in the same project as the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

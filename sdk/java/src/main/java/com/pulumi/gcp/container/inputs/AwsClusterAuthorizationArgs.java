@@ -19,14 +19,14 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
     public static final AwsClusterAuthorizationArgs Empty = new AwsClusterAuthorizationArgs();
 
     /**
-     * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     @Import(name="adminGroups")
     private @Nullable Output<List<AwsClusterAuthorizationAdminGroupArgs>> adminGroups;
 
     /**
-     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * @return Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     public Optional<Output<List<AwsClusterAuthorizationAdminGroupArgs>>> adminGroups() {
@@ -34,14 +34,14 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     @Import(name="adminUsers", required=true)
     private Output<List<AwsClusterAuthorizationAdminUserArgs>> adminUsers;
 
     /**
-     * @return Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * @return Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     public Output<List<AwsClusterAuthorizationAdminUserArgs>> adminUsers() {
@@ -74,7 +74,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * @param adminGroups Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param adminUsers Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * @param adminUsers Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param adminUsers Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * @param adminUsers Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class AwsClusterAuthorizationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param adminUsers Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+         * @param adminUsers Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
          * 
          * @return builder
          * 

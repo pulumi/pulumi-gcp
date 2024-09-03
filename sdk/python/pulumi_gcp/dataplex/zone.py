@@ -490,7 +490,7 @@ class Zone(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_zone
+        ### basic_zone
         A basic example of a dataplex zone
         ```python
         import pulumi
@@ -572,7 +572,7 @@ class Zone(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_zone
+        ### basic_zone
         A basic example of a dataplex zone
         ```python
         import pulumi

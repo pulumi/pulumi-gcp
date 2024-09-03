@@ -18,8 +18,8 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
     /// * How-to Guides
-    ///     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
-    ///     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+    ///   * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+    ///   * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project_id` and set `user_project_override` to true
@@ -120,9 +120,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
         /// Format: organizations/{organization_id}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -135,7 +132,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -245,9 +242,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
         /// Format: organizations/{organization_id}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -333,9 +327,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// The name of the parent this firewall endpoint belongs to.
         /// Format: organizations/{organization_id}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -358,7 +349,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         }
 
         /// <summary>
-        /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        /// Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }

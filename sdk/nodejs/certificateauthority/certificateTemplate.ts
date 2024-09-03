@@ -13,13 +13,11 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
  * * How-to Guides
- *     * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
- *     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
- *     * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+ *   * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+ *   * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+ *   * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
  *
- * ## Example Usage
- *
- * ### Privateca Template Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -182,9 +180,6 @@ export class CertificateTemplate extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -301,9 +296,6 @@ export interface CertificateTemplateState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -361,9 +353,6 @@ export interface CertificateTemplateArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

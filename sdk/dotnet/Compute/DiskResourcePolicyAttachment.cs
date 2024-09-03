@@ -104,9 +104,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the disk in which the resource policies are attached to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("disk")]
         public Output<string> Disk { get; private set; } = null!;
@@ -179,9 +176,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the disk in which the resource policies are attached to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
@@ -216,9 +210,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the disk in which the resource policies are attached to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("disk")]
         public Input<string>? Disk { get; set; }

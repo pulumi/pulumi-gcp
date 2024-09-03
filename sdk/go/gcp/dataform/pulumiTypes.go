@@ -22,7 +22,7 @@ type RepositoryGitRemoteSettings struct {
 	// Structure is documented below.
 	SshAuthenticationConfig *RepositoryGitRemoteSettingsSshAuthenticationConfig `pulumi:"sshAuthenticationConfig"`
 	// (Output)
-	// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+	// Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
 	TokenStatus *string `pulumi:"tokenStatus"`
 	// The Git remote's URL.
 	Url string `pulumi:"url"`
@@ -48,7 +48,7 @@ type RepositoryGitRemoteSettingsArgs struct {
 	// Structure is documented below.
 	SshAuthenticationConfig RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput `pulumi:"sshAuthenticationConfig"`
 	// (Output)
-	// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+	// Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
 	TokenStatus pulumi.StringPtrInput `pulumi:"tokenStatus"`
 	// The Git remote's URL.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -150,7 +150,7 @@ func (o RepositoryGitRemoteSettingsOutput) SshAuthenticationConfig() RepositoryG
 }
 
 // (Output)
-// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+// Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
 func (o RepositoryGitRemoteSettingsOutput) TokenStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryGitRemoteSettings) *string { return v.TokenStatus }).(pulumi.StringPtrOutput)
 }
@@ -216,7 +216,7 @@ func (o RepositoryGitRemoteSettingsPtrOutput) SshAuthenticationConfig() Reposito
 }
 
 // (Output)
-// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+// Indicates the status of the Git access token. <https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus>
 func (o RepositoryGitRemoteSettingsPtrOutput) TokenStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryGitRemoteSettings) *string {
 		if v == nil {
@@ -728,7 +728,7 @@ type RepositoryReleaseConfigCodeCompilationConfig struct {
 	// Optional. The default database (Google Cloud project ID).
 	DefaultDatabase *string `pulumi:"defaultDatabase"`
 	// Optional. The default BigQuery location to use. Defaults to "US".
-	// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+	// See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
 	DefaultLocation *string `pulumi:"defaultLocation"`
 	// Optional. The default schema (BigQuery dataset ID).
 	DefaultSchema *string `pulumi:"defaultSchema"`
@@ -761,7 +761,7 @@ type RepositoryReleaseConfigCodeCompilationConfigArgs struct {
 	// Optional. The default database (Google Cloud project ID).
 	DefaultDatabase pulumi.StringPtrInput `pulumi:"defaultDatabase"`
 	// Optional. The default BigQuery location to use. Defaults to "US".
-	// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+	// See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
 	DefaultLocation pulumi.StringPtrInput `pulumi:"defaultLocation"`
 	// Optional. The default schema (BigQuery dataset ID).
 	DefaultSchema pulumi.StringPtrInput `pulumi:"defaultSchema"`
@@ -868,7 +868,7 @@ func (o RepositoryReleaseConfigCodeCompilationConfigOutput) DefaultDatabase() pu
 }
 
 // Optional. The default BigQuery location to use. Defaults to "US".
-// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+// See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
 func (o RepositoryReleaseConfigCodeCompilationConfigOutput) DefaultLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.DefaultLocation }).(pulumi.StringPtrOutput)
 }
@@ -950,7 +950,7 @@ func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) DefaultDatabase()
 }
 
 // Optional. The default BigQuery location to use. Defaults to "US".
-// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+// See the BigQuery docs for a full list of locations: <https://cloud.google.com/bigquery/docs/locations>.
 func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) DefaultLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
 		if v == nil {

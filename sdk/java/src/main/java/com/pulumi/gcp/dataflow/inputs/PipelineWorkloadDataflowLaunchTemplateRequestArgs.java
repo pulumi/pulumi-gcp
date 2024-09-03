@@ -35,7 +35,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestArgs extends com
 
     /**
      * The parameters of the template to launch. This should be part of the body of the POST request.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters&gt;
      * Structure is documented below.
      * 
      */
@@ -44,7 +44,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestArgs extends com
 
     /**
      * @return The parameters of the template to launch. This should be part of the body of the POST request.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters&gt;
      * Structure is documented below.
      * 
      */
@@ -148,7 +148,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestArgs extends com
 
         /**
          * @param launchParameters The parameters of the template to launch. This should be part of the body of the POST request.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -161,7 +161,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestArgs extends com
 
         /**
          * @param launchParameters The parameters of the template to launch. This should be part of the body of the POST request.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters&gt;
          * Structure is documented below.
          * 
          * @return builder

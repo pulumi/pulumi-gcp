@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// ## Example Usage
     /// 
-    /// ### Android_key
+    /// ### android_key
     /// A basic example of a android api keys key
     /// ```csharp
     /// using System.Collections.Generic;
@@ -65,7 +65,8 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// });
     /// ```
-    /// ### Basic_key
+    /// 
+    /// ### basic_key
     /// A basic example of a api keys key
     /// ```csharp
     /// using System.Collections.Generic;
@@ -112,7 +113,8 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// });
     /// ```
-    /// ### Ios_key
+    /// 
+    /// ### ios_key
     /// A basic example of a ios api keys key
     /// ```csharp
     /// using System.Collections.Generic;
@@ -159,7 +161,8 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// });
     /// ```
-    /// ### Minimal_key
+    /// 
+    /// ### minimal_key
     /// A minimal example of a api keys key
     /// ```csharp
     /// using System.Collections.Generic;
@@ -185,7 +188,8 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// });
     /// ```
-    /// ### Server_key
+    /// 
+    /// ### server_key
     /// A basic example of a server api keys key
     /// ```csharp
     /// using System.Collections.Generic;

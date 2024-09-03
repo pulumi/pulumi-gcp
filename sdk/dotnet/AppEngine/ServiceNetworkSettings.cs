@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### App Engine Service Network Settings
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

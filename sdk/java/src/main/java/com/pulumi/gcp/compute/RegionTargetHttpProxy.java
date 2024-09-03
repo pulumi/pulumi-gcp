@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  * 
- * ## Example Usage
- * 
- * ### Region Target Http Proxy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -107,7 +105,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Target Http Proxy Https Redirect
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -307,8 +305,6 @@ public class RegionTargetHttpProxy extends com.pulumi.resources.CustomResource {
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
      * 
-     * ***
-     * 
      */
     @Export(name="urlMap", refs={String.class}, tree="[0]")
     private Output<String> urlMap;
@@ -316,8 +312,6 @@ public class RegionTargetHttpProxy extends com.pulumi.resources.CustomResource {
     /**
      * @return A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
-     * 
-     * ***
      * 
      */
     public Output<String> urlMap() {

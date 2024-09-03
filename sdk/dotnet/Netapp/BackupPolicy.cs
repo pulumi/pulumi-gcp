@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupPolicies)
     /// * How-to Guides
-    ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
+    ///   * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups#about_backup_policies)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Netapp Backup Policy Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -137,9 +135,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the backup policy. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -269,9 +264,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the backup policy. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -373,9 +365,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the backup policy. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

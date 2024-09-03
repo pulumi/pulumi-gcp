@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.iap_tunnel.locations.destGroups)
     /// * How-to Guides
-    ///     * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
+    ///   * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Iap Destgroup
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,9 +101,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Unique tunnel destination group name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -201,9 +196,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Unique tunnel destination group name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
@@ -255,9 +247,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Unique tunnel destination group name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }

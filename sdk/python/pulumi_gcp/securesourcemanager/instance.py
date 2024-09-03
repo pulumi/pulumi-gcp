@@ -30,9 +30,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[str] location: The location for the Instance.
         :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
@@ -60,9 +57,6 @@ class InstanceArgs:
     def instance_id(self) -> pulumi.Input[str]:
         """
         The name for the Instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -160,9 +154,6 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
@@ -251,9 +242,6 @@ class _InstanceState:
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
         The name for the Instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -407,11 +395,9 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
+          * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
 
-        ## Example Usage
-
-        ### Secure Source Manager Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -424,7 +410,7 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ### Secure Source Manager Instance Cmek
+        ## 
 
         ```python
         import pulumi
@@ -447,7 +433,7 @@ class Instance(pulumi.CustomResource):
             kms_key=crypto_key.id,
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
-        ### Secure Source Manager Instance Private
+        ## 
 
         ```python
         import pulumi
@@ -499,7 +485,6 @@ class Instance(pulumi.CustomResource):
             ca_pool=ca_pool.id,
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
         wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
@@ -514,7 +499,7 @@ class Instance(pulumi.CustomResource):
                     wait120_seconds,
                 ]))
         ```
-        ### Secure Source Manager Instance Private Psc Backend
+        ## 
 
         ```python
         import pulumi
@@ -566,7 +551,6 @@ class Instance(pulumi.CustomResource):
             ca_pool=ca_pool.id,
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
         wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -658,7 +642,7 @@ class Instance(pulumi.CustomResource):
             managed_zone=private_zone.name,
             rrdatas=[fw_rule_target_proxy.ip_address])
         ```
-        ### Secure Source Manager Instance Private Psc Endpoint
+        ## 
 
         ```python
         import pulumi
@@ -710,7 +694,6 @@ class Instance(pulumi.CustomResource):
             ca_pool=ca_pool.id,
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
         wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -810,9 +793,6 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
@@ -837,11 +817,9 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
+          * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
 
-        ## Example Usage
-
-        ### Secure Source Manager Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -854,7 +832,7 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ### Secure Source Manager Instance Cmek
+        ## 
 
         ```python
         import pulumi
@@ -877,7 +855,7 @@ class Instance(pulumi.CustomResource):
             kms_key=crypto_key.id,
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
-        ### Secure Source Manager Instance Private
+        ## 
 
         ```python
         import pulumi
@@ -929,7 +907,6 @@ class Instance(pulumi.CustomResource):
             ca_pool=ca_pool.id,
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
         wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         default = gcp.securesourcemanager.Instance("default",
@@ -944,7 +921,7 @@ class Instance(pulumi.CustomResource):
                     wait120_seconds,
                 ]))
         ```
-        ### Secure Source Manager Instance Private Psc Backend
+        ## 
 
         ```python
         import pulumi
@@ -996,7 +973,6 @@ class Instance(pulumi.CustomResource):
             ca_pool=ca_pool.id,
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
         wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -1088,7 +1064,7 @@ class Instance(pulumi.CustomResource):
             managed_zone=private_zone.name,
             rrdatas=[fw_rule_target_proxy.ip_address])
         ```
-        ### Secure Source Manager Instance Private Psc Endpoint
+        ## 
 
         ```python
         import pulumi
@@ -1140,7 +1116,6 @@ class Instance(pulumi.CustomResource):
             ca_pool=ca_pool.id,
             role="roles/privateca.certificateRequester",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"])
-        # ca pool IAM permissions can take time to propagate
         wait120_seconds = time.index.Sleep("wait_120_seconds", create_duration=120s,
         opts = pulumi.ResourceOptions(depends_on=[ca_pool_binding]))
         # See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
@@ -1323,9 +1298,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceHostConfigArgs', 'InstanceHostConfigArgsDict']]]] host_configs: A list of hostnames for this instance.
                Structure is documented below.
         :param pulumi.Input[str] instance_id: The name for the Instance.
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
@@ -1393,9 +1365,6 @@ class Instance(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[str]:
         """
         The name for the Instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

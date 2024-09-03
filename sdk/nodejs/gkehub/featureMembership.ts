@@ -51,7 +51,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Config Management With OCI
+ *
+ * ### Config Management with OCI
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -144,7 +145,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Config Management With Regional Membership
+ * ### Config Management with Regional Membership
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -187,7 +188,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Policy Controller With Minimal Configuration
+ * ### Policy Controller with minimal configuration
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -222,7 +223,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Policy Controller With Custom Configurations
+ * ### Policy Controller with custom configurations
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

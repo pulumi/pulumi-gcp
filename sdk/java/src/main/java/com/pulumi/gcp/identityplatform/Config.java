@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/identity-platform/docs/reference/rest/v2/Config)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
+ *   * [Official Documentation](https://cloud.google.com/identity-platform/docs)
  * 
  * ## Example Usage
  * 

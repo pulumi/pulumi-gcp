@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ## Example Usage
         /// 
-        /// ### Exporting An Email
+        /// ### exporting an email
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ## Example Usage
         /// 
-        /// ### Exporting An Email
+        /// ### exporting an email
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

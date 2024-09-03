@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Network Policy Full
     /// 
     /// ```csharp
@@ -150,7 +151,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the location (region) to create the new network policy in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-central1
         /// </summary>
         [Output("location")]
@@ -158,9 +159,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Network Policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -278,7 +276,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the location (region) to create the new network policy in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-central1
         /// </summary>
         [Input("location", required: true)]
@@ -286,9 +284,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Network Policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -355,7 +350,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the location (region) to create the new network policy in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-central1
         /// </summary>
         [Input("location")]
@@ -363,9 +358,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Network Policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

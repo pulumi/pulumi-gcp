@@ -60,7 +60,7 @@ type GetSinkArgs struct {
 	//
 	// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
 	// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-	// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+	// - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
 	// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
 	Id string `pulumi:"id"`
 }
@@ -106,7 +106,7 @@ type GetSinkOutputArgs struct {
 	//
 	// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
 	// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-	// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+	// - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
 	// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
 	Id pulumi.StringInput `pulumi:"id"`
 }

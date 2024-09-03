@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
- * ## Example Usage
- *
- * ### Dialogflowcx Agent Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -210,9 +208,6 @@ export class CxAgent extends pulumi.CustomResource {
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     *
-     *
-     * - - -
      */
     public readonly timeZone!: pulumi.Output<string>;
 
@@ -364,9 +359,6 @@ export interface CxAgentState {
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     *
-     *
-     * - - -
      */
     timeZone?: pulumi.Input<string>;
 }
@@ -444,9 +436,6 @@ export interface CxAgentArgs {
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     *
-     *
-     * - - -
      */
     timeZone: pulumi.Input<string>;
 }

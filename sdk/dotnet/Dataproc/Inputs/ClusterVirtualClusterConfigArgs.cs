@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration of auxiliary services used by this cluster. 
+        /// Configuration of auxiliary services used by this cluster.
         /// Structure defined below.
         /// </summary>
         [Input("auxiliaryServicesConfig")]
@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The configuration for running the Dataproc cluster on Kubernetes.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         [Input("kubernetesClusterConfig")]
         public Input<Inputs.ClusterVirtualClusterConfigKubernetesClusterConfigArgs>? KubernetesClusterConfig { get; set; }

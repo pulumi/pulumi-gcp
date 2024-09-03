@@ -29,8 +29,7 @@ namespace Pulumi.Gcp.Tpu
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Configure Basic TPU VM With Available Type
+        /// ### Configure Basic TPU VM with available type
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -76,8 +75,7 @@ namespace Pulumi.Gcp.Tpu
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Configure Basic TPU VM With Available Type
+        /// ### Configure Basic TPU VM with available type
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

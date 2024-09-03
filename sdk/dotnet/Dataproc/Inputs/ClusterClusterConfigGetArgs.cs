@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupGetArgs>? _auxiliaryNodeGroups;
 
         /// <summary>
-        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
         /// Structure defined below.
         /// </summary>
         public InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupGetArgs> AuxiliaryNodeGroups
@@ -100,7 +100,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The config setting for metastore service with the cluster.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         [Input("metastoreConfig")]
         public Input<Inputs.ClusterClusterConfigMetastoreConfigGetArgs>? MetastoreConfig { get; set; }

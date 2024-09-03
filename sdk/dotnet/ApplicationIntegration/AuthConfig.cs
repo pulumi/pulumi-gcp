@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
     /// * How-to Guides
-    ///     * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
-    ///     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+    ///   * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+    ///   * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
     /// 
     /// ## Example Usage
     /// 
@@ -149,9 +149,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
 
         /// <summary>
         /// Location in which client needs to be provisioned.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -296,9 +293,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
 
         /// <summary>
         /// Location in which client needs to be provisioned.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -411,9 +405,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
 
         /// <summary>
         /// Location in which client needs to be provisioned.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

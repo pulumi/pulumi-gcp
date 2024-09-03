@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
     /// * How-to Guides
-    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    ///   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
     /// 
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
-    /// ### Gkehub Membership Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Gkehub Membership Issuer
     /// 
     /// ```csharp
@@ -166,7 +167,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Authority encodes how Google will recognize identities from this Membership.
         /// See the workload identity documentation for more details:
-        /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        /// &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
         /// Structure is documented below.
         /// </summary>
         [Output("authority")]
@@ -211,9 +212,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The client-provided identifier of the membership.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("membershipId")]
         public Output<string> MembershipId { get; private set; } = null!;
@@ -292,7 +290,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Authority encodes how Google will recognize identities from this Membership.
         /// See the workload identity documentation for more details:
-        /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        /// &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("authority")]
@@ -337,9 +335,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The client-provided identifier of the membership.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
@@ -362,7 +357,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// Authority encodes how Google will recognize identities from this Membership.
         /// See the workload identity documentation for more details:
-        /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        /// &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("authority")]
@@ -423,9 +418,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The client-provided identifier of the membership.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("membershipId")]
         public Input<string>? MembershipId { get; set; }

@@ -20,10 +20,6 @@ public final class GetAppEngineServiceArgs extends com.pulumi.resources.InvokeAr
      * The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
      * 
-     * ***
-     * 
-     * Other optional fields include:
-     * 
      */
     @Import(name="moduleId", required=true)
     private Output<String> moduleId;
@@ -31,10 +27,6 @@ public final class GetAppEngineServiceArgs extends com.pulumi.resources.InvokeAr
     /**
      * @return The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-     * 
-     * ***
-     * 
-     * Other optional fields include:
      * 
      */
     public Output<String> moduleId() {
@@ -87,10 +79,6 @@ public final class GetAppEngineServiceArgs extends com.pulumi.resources.InvokeAr
          * @param moduleId The ID of the App Engine module underlying this
          * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
          * 
-         * ***
-         * 
-         * Other optional fields include:
-         * 
          * @return builder
          * 
          */
@@ -102,10 +90,6 @@ public final class GetAppEngineServiceArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param moduleId The ID of the App Engine module underlying this
          * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-         * 
-         * ***
-         * 
-         * Other optional fields include:
          * 
          * @return builder
          * 

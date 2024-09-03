@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
  * * How-to Guides
- *     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+ *   * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
  *
  * ## Example Usage
  *
@@ -95,9 +95,6 @@ export class Client extends pulumi.CustomResource {
      * Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     *
-     *
-     * - - -
      */
     public readonly brand!: pulumi.Output<string>;
     /**
@@ -159,9 +156,6 @@ export interface ClientState {
      * Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     *
-     *
-     * - - -
      */
     brand?: pulumi.Input<string>;
     /**
@@ -187,9 +181,6 @@ export interface ClientArgs {
      * Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     *
-     *
-     * - - -
      */
     brand: pulumi.Input<string>;
     /**

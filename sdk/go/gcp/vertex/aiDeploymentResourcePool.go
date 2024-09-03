@@ -18,9 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.deploymentResourcePools)
 //
-// ## Example Usage
-//
-// ### Vertex Ai Deployment Resource Pool
+// ##
 //
 // ```go
 // package main
@@ -100,8 +98,6 @@ type AiDeploymentResourcePool struct {
 	// Structure is documented below.
 	DedicatedResources AiDeploymentResourcePoolDedicatedResourcesPtrOutput `pulumi:"dedicatedResources"`
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -146,8 +142,6 @@ type aiDeploymentResourcePoolState struct {
 	// Structure is documented below.
 	DedicatedResources *AiDeploymentResourcePoolDedicatedResources `pulumi:"dedicatedResources"`
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -163,8 +157,6 @@ type AiDeploymentResourcePoolState struct {
 	// Structure is documented below.
 	DedicatedResources AiDeploymentResourcePoolDedicatedResourcesPtrInput
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -182,8 +174,6 @@ type aiDeploymentResourcePoolArgs struct {
 	// Structure is documented below.
 	DedicatedResources *AiDeploymentResourcePoolDedicatedResources `pulumi:"dedicatedResources"`
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -198,8 +188,6 @@ type AiDeploymentResourcePoolArgs struct {
 	// Structure is documented below.
 	DedicatedResources AiDeploymentResourcePoolDedicatedResourcesPtrInput
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -309,8 +297,6 @@ func (o AiDeploymentResourcePoolOutput) DedicatedResources() AiDeploymentResourc
 }
 
 // The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
-//
-// ***
 func (o AiDeploymentResourcePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDeploymentResourcePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

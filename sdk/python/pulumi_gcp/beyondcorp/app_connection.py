@@ -391,11 +391,9 @@ class AppConnection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appconnections)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+          * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
-        ## Example Usage
-
-        ### Beyondcorp App Connection Basic
+        ## 
 
         ```python
         import pulumi
@@ -420,7 +418,7 @@ class AppConnection(pulumi.CustomResource):
             },
             connectors=[app_connector.id])
         ```
-        ### Beyondcorp App Connection Full
+        ## 
 
         ```python
         import pulumi
@@ -519,11 +517,9 @@ class AppConnection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appconnections)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+          * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
-        ## Example Usage
-
-        ### Beyondcorp App Connection Basic
+        ## 
 
         ```python
         import pulumi
@@ -548,7 +544,7 @@ class AppConnection(pulumi.CustomResource):
             },
             connectors=[app_connector.id])
         ```
-        ### Beyondcorp App Connection Full
+        ## 
 
         ```python
         import pulumi

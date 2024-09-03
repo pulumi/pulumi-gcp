@@ -62,9 +62,6 @@ class ActiveDirectoryArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[bool] ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param pulumi.Input[str] name: The resource name of the Active Directory pool. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[bool] nfs_users_with_ldap: Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
                This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
         :param pulumi.Input[str] organizational_unit: Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
@@ -299,9 +296,6 @@ class ActiveDirectoryArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the Active Directory pool. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -423,9 +417,6 @@ class _ActiveDirectoryState:
         :param pulumi.Input[bool] ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param pulumi.Input[str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[str] name: The resource name of the Active Directory pool. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] net_bios_prefix: NetBIOS name prefix of the server to be created.
                A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
                `\\\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\\SHARE_NAME`
@@ -673,9 +664,6 @@ class _ActiveDirectoryState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the Active Directory pool. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -854,11 +842,9 @@ class ActiveDirectory(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.activeDirectories)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
+          * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
 
-        ## Example Usage
-
-        ### Netapp Active Directory Full
+        ## 
 
         ```python
         import pulumi
@@ -940,9 +926,6 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[bool] ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param pulumi.Input[str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[str] name: The resource name of the Active Directory pool. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] net_bios_prefix: NetBIOS name prefix of the server to be created.
                A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
                `\\\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\\SHARE_NAME`
@@ -970,11 +953,9 @@ class ActiveDirectory(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.activeDirectories)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
+          * [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
 
-        ## Example Usage
-
-        ### Netapp Active Directory Full
+        ## 
 
         ```python
         import pulumi
@@ -1184,9 +1165,6 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[bool] ldap_signing: Specifies whether or not the LDAP traffic needs to be signed.
         :param pulumi.Input[str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[str] name: The resource name of the Active Directory pool. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] net_bios_prefix: NetBIOS name prefix of the server to be created.
                A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
                `\\\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\\SHARE_NAME`
@@ -1357,9 +1335,6 @@ class ActiveDirectory(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the Active Directory pool. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

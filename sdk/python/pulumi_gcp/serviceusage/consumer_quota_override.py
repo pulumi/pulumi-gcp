@@ -31,9 +31,6 @@ class ConsumerQuotaOverrideArgs:
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
                > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
                E.g. use `/project/user` instead of `1/{project}/{user}`.
-               
-               
-               - - -
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[str] service: The service that the metrics belong to, e.g. `compute.googleapis.com`.
@@ -61,9 +58,6 @@ class ConsumerQuotaOverrideArgs:
         The limit on the metric, e.g. `/project/region`.
         > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         E.g. use `/project/user` instead of `1/{project}/{user}`.
-
-
-        - - -
         """
         return pulumi.get(self, "limit")
 
@@ -165,9 +159,6 @@ class _ConsumerQuotaOverrideState:
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
                > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
                E.g. use `/project/user` instead of `1/{project}/{user}`.
-               
-               
-               - - -
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] name: The server-generated name of the quota override.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
@@ -224,9 +215,6 @@ class _ConsumerQuotaOverrideState:
         The limit on the metric, e.g. `/project/region`.
         > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         E.g. use `/project/user` instead of `1/{project}/{user}`.
-
-
-        - - -
         """
         return pulumi.get(self, "limit")
 
@@ -317,8 +305,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         To get more information about ConsumerQuotaOverride, see:
 
         * How-to Guides
-            * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
-            * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+          * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+          * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
         ## Example Usage
 
@@ -341,6 +329,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="95",
             force=True)
         ```
+
         ### Region Consumer Quota Override
 
         ```python
@@ -363,6 +352,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="8",
             force=True)
         ```
+
         ### Consumer Quota Override Custom Dimension
 
         ```python
@@ -418,9 +408,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
                > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
                E.g. use `/project/user` instead of `1/{project}/{user}`.
-               
-               
-               - - -
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -441,8 +428,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         To get more information about ConsumerQuotaOverride, see:
 
         * How-to Guides
-            * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
-            * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+          * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+          * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
         ## Example Usage
 
@@ -465,6 +452,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="95",
             force=True)
         ```
+
         ### Region Consumer Quota Override
 
         ```python
@@ -487,6 +475,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             override_value="8",
             force=True)
         ```
+
         ### Consumer Quota Override Custom Dimension
 
         ```python
@@ -612,9 +601,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         :param pulumi.Input[str] limit: The limit on the metric, e.g. `/project/region`.
                > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
                E.g. use `/project/user` instead of `1/{project}/{user}`.
-               
-               
-               - - -
         :param pulumi.Input[str] metric: The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         :param pulumi.Input[str] name: The server-generated name of the quota override.
         :param pulumi.Input[str] override_value: The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
@@ -660,9 +646,6 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         The limit on the metric, e.g. `/project/region`.
         > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         E.g. use `/project/user` instead of `1/{project}/{user}`.
-
-
-        - - -
         """
         return pulumi.get(self, "limit")
 

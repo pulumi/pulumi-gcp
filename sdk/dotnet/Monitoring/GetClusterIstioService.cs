@@ -19,18 +19,16 @@ namespace Pulumi.Gcp.Monitoring
         /// An Cluster Istio monitoring service is automatically created by GCP to monitor
         /// Cluster Istio services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         /// * How-to Guides
-        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// ## Example Usage
         /// 
         /// ### Monitoring Cluster Istio Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,18 +61,16 @@ namespace Pulumi.Gcp.Monitoring
         /// An Cluster Istio monitoring service is automatically created by GCP to monitor
         /// Cluster Istio services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         /// * How-to Guides
-        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// ## Example Usage
         /// 
         /// ### Monitoring Cluster Istio Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -104,14 +100,14 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetClusterIstioServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Kubernetes cluster in which this Istio service 
+        /// The name of the Kubernetes cluster in which this Istio service
         /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
         /// </summary>
         [Input("clusterName", required: true)]
         public string ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// The location of the Kubernetes cluster in which this Istio service 
+        /// The location of the Kubernetes cluster in which this Istio service
         /// is defined. Corresponds to the location resource label in k8s_cluster resources.
         /// </summary>
         [Input("location", required: true)]
@@ -127,10 +123,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The name of the Istio service underlying this service.
         /// Corresponds to the destination_service_name metric label in Istio metrics.
-        /// 
-        /// - - -
-        /// 
-        /// Other optional fields include:
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -151,14 +143,14 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetClusterIstioServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Kubernetes cluster in which this Istio service 
+        /// The name of the Kubernetes cluster in which this Istio service
         /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
         /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// The location of the Kubernetes cluster in which this Istio service 
+        /// The location of the Kubernetes cluster in which this Istio service
         /// is defined. Corresponds to the location resource label in k8s_cluster resources.
         /// </summary>
         [Input("location", required: true)]
@@ -174,10 +166,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The name of the Istio service underlying this service.
         /// Corresponds to the destination_service_name metric label in Istio metrics.
-        /// 
-        /// - - -
-        /// 
-        /// Other optional fields include:
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

@@ -33,8 +33,6 @@ type ConnectivityTestDestination struct {
 	//    that you provide is from the service project. In this case, the
 	//    network that the IP address resides in is defined in the host
 	//    project.
-	//
-	// ***
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -69,8 +67,6 @@ type ConnectivityTestDestinationArgs struct {
 	//    that you provide is from the service project. In this case, the
 	//    network that the IP address resides in is defined in the host
 	//    project.
-	//
-	// ***
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -182,8 +178,6 @@ func (o ConnectivityTestDestinationOutput) Port() pulumi.IntPtrOutput {
 //     that you provide is from the service project. In this case, the
 //     network that the IP address resides in is defined in the host
 //     project.
-//
-// ***
 func (o ConnectivityTestDestinationOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -263,8 +257,6 @@ func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 //     that you provide is from the service project. In this case, the
 //     network that the IP address resides in is defined in the host
 //     project.
-//
-// ***
 func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {

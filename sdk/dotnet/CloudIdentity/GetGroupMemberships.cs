@@ -14,21 +14,30 @@ namespace Pulumi.Gcp.CloudIdentity
         /// <summary>
         /// Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
         /// 
-        /// https://cloud.google.com/identity/docs/concepts/overview#memberships
+        /// &lt;https://cloud.google.com/identity/docs/concepts/overview#memberships&gt;
         /// 
         /// To get more information about GroupMembership, see:
         /// 
         /// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
-        /// 
+        ///   * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_group_memberships" "members" {
-        ///   group = "groups/123eab45c6defghi"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
+        ///     {
+        ///         Group = "groups/123eab45c6defghi",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetGroupMembershipsResult> InvokeAsync(GetGroupMembershipsArgs args, InvokeOptions? options = null)
@@ -37,21 +46,30 @@ namespace Pulumi.Gcp.CloudIdentity
         /// <summary>
         /// Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
         /// 
-        /// https://cloud.google.com/identity/docs/concepts/overview#memberships
+        /// &lt;https://cloud.google.com/identity/docs/concepts/overview#memberships&gt;
         /// 
         /// To get more information about GroupMembership, see:
         /// 
         /// * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
-        /// 
+        ///   * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_group_memberships" "members" {
-        ///   group = "groups/123eab45c6defghi"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var members = Gcp.CloudIdentity.GetGroupMemberships.Invoke(new()
+        ///     {
+        ///         Group = "groups/123eab45c6defghi",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetGroupMembershipsResult> Invoke(GetGroupMembershipsInvokeArgs args, InvokeOptions? options = null)

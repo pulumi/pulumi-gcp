@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Iap
         /// <summary>
         /// Retrieves the current IAM policy data for webtypeappengine
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Retrieves the current IAM policy data for webtypeappengine
-        /// 
         /// 
         /// ## example
         /// 

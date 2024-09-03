@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.references/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Import
  *
@@ -66,9 +66,6 @@ export class EnvReferences extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envId!: pulumi.Output<string>;
     /**
@@ -135,9 +132,6 @@ export interface EnvReferencesState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId?: pulumi.Input<string>;
     /**
@@ -165,9 +159,6 @@ export interface EnvReferencesArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId: pulumi.Input<string>;
     /**

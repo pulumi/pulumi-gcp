@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.GkeBackup.Outputs
         /// <summary>
         /// Kind of a Kubernetes resource, e.g.
         /// "CustomResourceDefinition", "StorageClass", etc.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? ResourceKind;
 

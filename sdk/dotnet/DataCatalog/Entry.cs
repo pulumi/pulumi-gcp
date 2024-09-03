@@ -21,11 +21,9 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+    ///   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Data Catalog Entry Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -50,7 +48,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
-    /// ### Data Catalog Entry Fileset
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -81,7 +79,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
-    /// ### Data Catalog Entry Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -164,7 +162,7 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-        /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
         /// Structure is documented below.
         /// </summary>
         [Output("bigqueryDateShardedSpecs")]
@@ -198,9 +196,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// The id of the entry to create.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entryId")]
         public Output<string> EntryId { get; private set; } = null!;
@@ -240,7 +235,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         /// attached to it. See
-        /// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        /// &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
         /// for what fields this schema can contain.
         /// </summary>
         [Output("schema")]
@@ -339,9 +334,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// The id of the entry to create.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
@@ -367,7 +359,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         /// attached to it. See
-        /// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        /// &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
         /// for what fields this schema can contain.
         /// </summary>
         [Input("schema")]
@@ -412,7 +404,7 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-        /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs> BigqueryDateShardedSpecs
@@ -455,9 +447,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// The id of the entry to create.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryId")]
         public Input<string>? EntryId { get; set; }
@@ -497,7 +486,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         /// attached to it. See
-        /// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        /// &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
         /// for what fields this schema can contain.
         /// </summary>
         [Input("schema")]

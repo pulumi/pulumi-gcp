@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
 //
-// ## Example Usage
-//
-// ### Kms Config Create
+// ##
 //
 // ```go
 // package main
@@ -111,8 +109,6 @@ type Kmsconfig struct {
 	// Name of the policy location. CMEK policies apply to the whole region.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the CMEK policy.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -182,8 +178,6 @@ type kmsconfigState struct {
 	// Name of the policy location. CMEK policies apply to the whole region.
 	Location *string `pulumi:"location"`
 	// Name of the CMEK policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -213,8 +207,6 @@ type KmsconfigState struct {
 	// Name of the policy location. CMEK policies apply to the whole region.
 	Location pulumi.StringPtrInput
 	// Name of the CMEK policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -243,8 +235,6 @@ type kmsconfigArgs struct {
 	// Name of the policy location. CMEK policies apply to the whole region.
 	Location string `pulumi:"location"`
 	// Name of the CMEK policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -265,8 +255,6 @@ type KmsconfigArgs struct {
 	// Name of the policy location. CMEK policies apply to the whole region.
 	Location pulumi.StringInput
 	// Name of the CMEK policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -395,8 +383,6 @@ func (o KmsconfigOutput) Location() pulumi.StringOutput {
 }
 
 // Name of the CMEK policy.
-//
-// ***
 func (o KmsconfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kmsconfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

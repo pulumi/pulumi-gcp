@@ -23,9 +23,7 @@ import javax.annotation.Nullable;
 /**
  * A Workbench instance.
  * 
- * ## Example Usage
- * 
- * ### Workbench Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -60,7 +58,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Workbench Instance Basic Container
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -103,7 +101,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Workbench Instance Basic Gpu
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -151,6 +149,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Workbench Instance Labels Stopped
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -202,6 +203,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Workbench Instance Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -521,16 +523,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Part of `parent`. See documentation of `projectsId`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Part of `parent`. See documentation of `projectsId`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

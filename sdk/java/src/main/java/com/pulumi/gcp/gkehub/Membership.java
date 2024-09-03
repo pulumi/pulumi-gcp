@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/anthos/multicluster-management/reference/rest/v1/projects.locations.memberships)
  * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
  * 
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Gkehub Membership Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -135,6 +135,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkehub Membership Issuer
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -226,7 +227,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
     /**
      * Authority encodes how Google will recognize identities from this Membership.
      * See the workload identity documentation for more details:
-     * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+     * &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
      * Structure is documented below.
      * 
      */
@@ -236,7 +237,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
     /**
      * @return Authority encodes how Google will recognize identities from this Membership.
      * See the workload identity documentation for more details:
-     * https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+     * &lt;https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity&gt;
      * Structure is documented below.
      * 
      */
@@ -334,16 +335,12 @@ public class Membership extends com.pulumi.resources.CustomResource {
     /**
      * The client-provided identifier of the membership.
      * 
-     * ***
-     * 
      */
     @Export(name="membershipId", refs={String.class}, tree="[0]")
     private Output<String> membershipId;
 
     /**
      * @return The client-provided identifier of the membership.
-     * 
-     * ***
      * 
      */
     public Output<String> membershipId() {

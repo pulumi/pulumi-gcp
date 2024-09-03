@@ -256,8 +256,6 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      * 
-     * ***
-     * 
      */
     @Import(name="timeZone", required=true)
     private Output<String> timeZone;
@@ -265,8 +263,6 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     * 
-     * ***
      * 
      */
     public Output<String> timeZone() {
@@ -639,8 +635,6 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
          * @param timeZone The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
          * Europe/Paris.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -652,8 +646,6 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param timeZone The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
          * Europe/Paris.
-         * 
-         * ***
          * 
          * @return builder
          * 

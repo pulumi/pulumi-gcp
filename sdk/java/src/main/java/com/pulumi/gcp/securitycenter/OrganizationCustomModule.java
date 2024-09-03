@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.securityHealthAnalyticsSettings.customModules)
  * * How-to Guides
- *     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+ *   * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
  * 
  * ## Example Usage
  * 
@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Scc Organization Custom Module Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

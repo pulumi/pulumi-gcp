@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// List IP addresses in a project. For more information see
-        /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and 
+        /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
         /// [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
         /// 
         /// ## Example Usage
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// List IP addresses in a project. For more information see
-        /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and 
+        /// the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
         /// [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
         /// 
         /// ## Example Usage

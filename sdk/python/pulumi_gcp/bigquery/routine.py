@@ -41,15 +41,12 @@ class RoutineArgs:
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
-        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
                Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
@@ -123,9 +120,6 @@ class RoutineArgs:
         """
         The body of the routine. For functions, this is the expression in the AS clause.
         If language=SQL, it is the substring inside (but excluding) the parentheses.
-
-
-        - - -
         """
         return pulumi.get(self, "definition_body")
 
@@ -175,7 +169,7 @@ class RoutineArgs:
     @pulumi.getter(name="dataGovernanceType")
     def data_governance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
         Possible values are: `DATA_MASKING`.
         """
         return pulumi.get(self, "data_governance_type")
@@ -336,14 +330,11 @@ class _RoutineState:
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.
-        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
                Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -441,7 +432,7 @@ class _RoutineState:
     @pulumi.getter(name="dataGovernanceType")
     def data_governance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
         Possible values are: `DATA_MASKING`.
         """
         return pulumi.get(self, "data_governance_type")
@@ -468,9 +459,6 @@ class _RoutineState:
         """
         The body of the routine. For functions, this is the expression in the AS clause.
         If language=SQL, it is the substring inside (but excluding) the parentheses.
-
-
-        - - -
         """
         return pulumi.get(self, "definition_body")
 
@@ -670,11 +658,9 @@ class Routine(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
         * How-to Guides
-            * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
+          * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
-        ## Example Usage
-
-        ### Bigquery Routine Basic
+        ## 
 
         ```python
         import pulumi
@@ -688,7 +674,7 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
-        ### Bigquery Routine Json
+        ## 
 
         ```python
         import pulumi
@@ -713,7 +699,7 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
-        ### Bigquery Routine Tvf
+        ## 
 
         ```python
         import pulumi
@@ -743,7 +729,7 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
-        ### Bigquery Routine Pyspark
+        ## 
 
         ```python
         import pulumi
@@ -762,18 +748,18 @@ class Routine(pulumi.CustomResource):
             definition_body=\"\"\"from pyspark.sql import SparkSession
 
         spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
-            
+
         # Load data from BigQuery.
         words = spark.read.format("bigquery") \\
           .option("table", "bigquery-public-data:samples.shakespeare") \\
           .load()
         words.createOrReplaceTempView("words")
-            
+
         # Perform word count.
         word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
         word_count.show()
         word_count.printSchema()
-            
+
         # Saving the data to BigQuery
         word_count.write.format("bigquery") \\
           .option("writeMethod", "direct") \\
@@ -784,7 +770,7 @@ class Routine(pulumi.CustomResource):
                 "runtime_version": "2.1",
             })
         ```
-        ### Bigquery Routine Pyspark Mainfile
+        ## 
 
         ```python
         import pulumi
@@ -810,7 +796,7 @@ class Routine(pulumi.CustomResource):
                 "archive_uris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
             })
         ```
-        ### Bigquery Routine Spark Jar
+        ## 
 
         ```python
         import pulumi
@@ -839,7 +825,7 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Routine Data Governance Type
+        ## 
 
         ```python
         import pulumi
@@ -859,6 +845,9 @@ class Routine(pulumi.CustomResource):
             }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
+
+        ## Example Usage
+
         ### Bigquery Routine Remote Function
 
         ```python
@@ -914,14 +903,11 @@ class Routine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RoutineArgumentArgs', 'RoutineArgumentArgsDict']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
-        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
                Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -965,11 +951,9 @@ class Routine(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
         * How-to Guides
-            * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
+          * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
-        ## Example Usage
-
-        ### Bigquery Routine Basic
+        ## 
 
         ```python
         import pulumi
@@ -983,7 +967,7 @@ class Routine(pulumi.CustomResource):
             language="SQL",
             definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
         ```
-        ### Bigquery Routine Json
+        ## 
 
         ```python
         import pulumi
@@ -1008,7 +992,7 @@ class Routine(pulumi.CustomResource):
             ],
             return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}")
         ```
-        ### Bigquery Routine Tvf
+        ## 
 
         ```python
         import pulumi
@@ -1038,7 +1022,7 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
-        ### Bigquery Routine Pyspark
+        ## 
 
         ```python
         import pulumi
@@ -1057,18 +1041,18 @@ class Routine(pulumi.CustomResource):
             definition_body=\"\"\"from pyspark.sql import SparkSession
 
         spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
-            
+
         # Load data from BigQuery.
         words = spark.read.format("bigquery") \\
           .option("table", "bigquery-public-data:samples.shakespeare") \\
           .load()
         words.createOrReplaceTempView("words")
-            
+
         # Perform word count.
         word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
         word_count.show()
         word_count.printSchema()
-            
+
         # Saving the data to BigQuery
         word_count.write.format("bigquery") \\
           .option("writeMethod", "direct") \\
@@ -1079,7 +1063,7 @@ class Routine(pulumi.CustomResource):
                 "runtime_version": "2.1",
             })
         ```
-        ### Bigquery Routine Pyspark Mainfile
+        ## 
 
         ```python
         import pulumi
@@ -1105,7 +1089,7 @@ class Routine(pulumi.CustomResource):
                 "archive_uris": ["gs://test-bucket/distribute_in_executor.tar.gz"],
             })
         ```
-        ### Bigquery Routine Spark Jar
+        ## 
 
         ```python
         import pulumi
@@ -1134,7 +1118,7 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Routine Data Governance Type
+        ## 
 
         ```python
         import pulumi
@@ -1154,6 +1138,9 @@ class Routine(pulumi.CustomResource):
             }],
             return_type="{\\"typeKind\\" :  \\"STRING\\"}")
         ```
+
+        ## Example Usage
+
         ### Bigquery Routine Remote Function
 
         ```python
@@ -1307,14 +1294,11 @@ class Routine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.
-        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        :param pulumi.Input[str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
                Possible values are: `DATA_MASKING`.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
-               
-               
-               - - -
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -1392,7 +1376,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="dataGovernanceType")
     def data_governance_type(self) -> pulumi.Output[Optional[str]]:
         """
-        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
         Possible values are: `DATA_MASKING`.
         """
         return pulumi.get(self, "data_governance_type")
@@ -1411,9 +1395,6 @@ class Routine(pulumi.CustomResource):
         """
         The body of the routine. For functions, this is the expression in the AS clause.
         If language=SQL, it is the substring inside (but excluding) the parentheses.
-
-
-        - - -
         """
         return pulumi.get(self, "definition_body")
 

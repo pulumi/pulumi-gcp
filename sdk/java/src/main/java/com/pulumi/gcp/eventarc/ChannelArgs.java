@@ -49,16 +49,12 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. The resource name of the channel. Must be unique within the location on the project.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Required. The resource name of the channel. Must be unique within the location on the project.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -168,8 +164,6 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Required. The resource name of the channel. Must be unique within the location on the project.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -180,8 +174,6 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Required. The resource name of the channel. Must be unique within the location on the project.
-         * 
-         * ***
          * 
          * @return builder
          * 

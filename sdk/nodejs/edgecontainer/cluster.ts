@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters)
  * * How-to Guides
- *     * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
+ *   * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
  *
- * ## Example Usage
- *
- * ### Edgecontainer Cluster
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Edgecontainer Cluster With Maintenance Window
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,6 +78,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Edgecontainer Local Control Plane Cluster
  *
  * ```typescript

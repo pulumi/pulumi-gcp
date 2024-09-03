@@ -129,8 +129,6 @@ type AutomationRuleAdvanceRolloutRule struct {
 	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
 	Id string `pulumi:"id"`
 	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-	//
-	// ***
 	SourcePhases []string `pulumi:"sourcePhases"`
 	// Optional. How long to wait after a rollout is finished.
 	Wait *string `pulumi:"wait"`
@@ -151,8 +149,6 @@ type AutomationRuleAdvanceRolloutRuleArgs struct {
 	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-	//
-	// ***
 	SourcePhases pulumi.StringArrayInput `pulumi:"sourcePhases"`
 	// Optional. How long to wait after a rollout is finished.
 	Wait pulumi.StringPtrInput `pulumi:"wait"`
@@ -241,8 +237,6 @@ func (o AutomationRuleAdvanceRolloutRuleOutput) Id() pulumi.StringOutput {
 }
 
 // Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-//
-// ***
 func (o AutomationRuleAdvanceRolloutRuleOutput) SourcePhases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AutomationRuleAdvanceRolloutRule) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
 }
@@ -287,8 +281,6 @@ func (o AutomationRuleAdvanceRolloutRulePtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 // Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-//
-// ***
 func (o AutomationRuleAdvanceRolloutRulePtrOutput) SourcePhases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutomationRuleAdvanceRolloutRule) []string {
 		if v == nil {
@@ -4018,8 +4010,6 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles []string `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
-	//
-	// ***
 	Verify *bool `pulumi:"verify"`
 }
 
@@ -4046,8 +4036,6 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
-	//
-	// ***
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
 }
 
@@ -4138,8 +4126,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 }
 
 // Whether to run verify tests after the deployment.
-//
-// ***
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *bool {
 		return v.Verify

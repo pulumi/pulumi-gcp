@@ -53,9 +53,6 @@ class RouterPeerArgs:
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
                Each BGP interface may use a different value.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
-               
-               
-               - - -
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
                Default value is `DEFAULT`.
@@ -207,9 +204,6 @@ class RouterPeerArgs:
     def router(self) -> pulumi.Input[str]:
         """
         The name of the Cloud Router in which this BgpPeer will be configured.
-
-
-        - - -
         """
         return pulumi.get(self, "router")
 
@@ -652,9 +646,6 @@ class _RouterPeerState:
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
-               
-               
-               - - -
         :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
@@ -1073,9 +1064,6 @@ class _RouterPeerState:
     def router(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Cloud Router in which this BgpPeer will be configured.
-
-
-        - - -
         """
         return pulumi.get(self, "router")
 
@@ -1141,7 +1129,7 @@ class RouterPeer(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         * How-to Guides
-            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+          * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
 
@@ -1159,6 +1147,7 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1")
         ```
+
         ### Router Peer Disabled
 
         ```python
@@ -1175,6 +1164,7 @@ class RouterPeer(pulumi.CustomResource):
             interface="interface-1",
             enable=False)
         ```
+
         ### Router Peer Bfd
 
         ```python
@@ -1196,7 +1186,7 @@ class RouterPeer(pulumi.CustomResource):
                 "session_initialization_mode": "ACTIVE",
             })
         ```
-        ### Router Peer Router Appliance
+        ## 
 
         ```python
         import pulumi
@@ -1281,7 +1271,7 @@ class RouterPeer(pulumi.CustomResource):
             peer_ip_address=addr_peer.address)
         ```
 
-        ### Router Peer Md5 Authentication Key
+        ### Router Peer md5 authentication key
 
         ```python
         import pulumi
@@ -1301,7 +1291,7 @@ class RouterPeer(pulumi.CustomResource):
             })
         ```
 
-        ### Router Peer Export And Import Policies
+        ### Router peer export and import policies
 
         ```python
         import pulumi
@@ -1510,9 +1500,6 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
-               
-               
-               - - -
         :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
@@ -1534,7 +1521,7 @@ class RouterPeer(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         * How-to Guides
-            * [Google Cloud Router](https://cloud.google.com/router/docs/)
+          * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
 
@@ -1552,6 +1539,7 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1")
         ```
+
         ### Router Peer Disabled
 
         ```python
@@ -1568,6 +1556,7 @@ class RouterPeer(pulumi.CustomResource):
             interface="interface-1",
             enable=False)
         ```
+
         ### Router Peer Bfd
 
         ```python
@@ -1589,7 +1578,7 @@ class RouterPeer(pulumi.CustomResource):
                 "session_initialization_mode": "ACTIVE",
             })
         ```
-        ### Router Peer Router Appliance
+        ## 
 
         ```python
         import pulumi
@@ -1674,7 +1663,7 @@ class RouterPeer(pulumi.CustomResource):
             peer_ip_address=addr_peer.address)
         ```
 
-        ### Router Peer Md5 Authentication Key
+        ### Router Peer md5 authentication key
 
         ```python
         import pulumi
@@ -1694,7 +1683,7 @@ class RouterPeer(pulumi.CustomResource):
             })
         ```
 
-        ### Router Peer Export And Import Policies
+        ### Router peer export and import policies
 
         ```python
         import pulumi
@@ -2037,9 +2026,6 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where the router and BgpPeer reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
-               
-               
-               - - -
         :param pulumi.Input[str] router_appliance_instance: The URI of the VM instance that is used as third-party router appliances
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
@@ -2336,9 +2322,6 @@ class RouterPeer(pulumi.CustomResource):
     def router(self) -> pulumi.Output[str]:
         """
         The name of the Cloud Router in which this BgpPeer will be configured.
-
-
-        - - -
         """
         return pulumi.get(self, "router")
 

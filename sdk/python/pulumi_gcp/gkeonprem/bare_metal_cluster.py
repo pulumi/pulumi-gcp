@@ -1061,6 +1061,7 @@ class BareMetalCluster(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkeonprem Bare Metal Cluster Manuallb
 
         ```python
@@ -1129,6 +1130,7 @@ class BareMetalCluster(pulumi.CustomResource):
                 "policy": "SERIAL",
             })
         ```
+
         ### Gkeonprem Bare Metal Cluster Bgplb
 
         ```python
@@ -1412,6 +1414,7 @@ class BareMetalCluster(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkeonprem Bare Metal Cluster Manuallb
 
         ```python
@@ -1480,6 +1483,7 @@ class BareMetalCluster(pulumi.CustomResource):
                 "policy": "SERIAL",
             })
         ```
+
         ### Gkeonprem Bare Metal Cluster Bgplb
 
         ```python

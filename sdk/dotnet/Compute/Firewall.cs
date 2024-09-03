@@ -27,11 +27,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
+    ///   * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Firewall Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -75,6 +73,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Firewall With Target Tags
     /// 
     /// ```csharp
@@ -229,9 +230,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name or self_link of the network to attach this firewall to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -469,9 +467,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name or self_link of the network to attach this firewall to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -701,9 +696,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name or self_link of the network to attach this firewall to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

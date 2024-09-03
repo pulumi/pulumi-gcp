@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.reservations)
     /// * How-to Guides
-    ///     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
+    ///   * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Pubsub Lite Reservation Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -77,9 +75,6 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Name of the reservation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -153,9 +148,6 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Name of the reservation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -191,9 +183,6 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Name of the reservation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

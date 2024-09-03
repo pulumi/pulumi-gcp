@@ -242,8 +242,6 @@ def get_repository(location: Optional[str] = None,
 
 
     :param str location: The location of the artifact registry repository. eg us-central1
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str repository_id: The last part of the repository name.
@@ -300,8 +298,6 @@ def get_repository_output(location: Optional[pulumi.Input[str]] = None,
 
 
     :param str location: The location of the artifact registry repository. eg us-central1
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str repository_id: The last part of the repository name.

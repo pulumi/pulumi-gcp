@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/source-repositories/)
+ *   * [Official Documentation](https://cloud.google.com/source-repositories/)
  *
- * ## Example Usage
- *
- * ### Sourcerepo Repository Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const my_repo = new gcp.sourcerepo.Repository("my-repo", {name: "my/repository"});
  * ```
- * ### Sourcerepo Repository Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -95,9 +93,6 @@ export class Repository extends pulumi.CustomResource {
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -158,9 +153,6 @@ export interface RepositoryState {
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -191,9 +183,6 @@ export interface RepositoryArgs {
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

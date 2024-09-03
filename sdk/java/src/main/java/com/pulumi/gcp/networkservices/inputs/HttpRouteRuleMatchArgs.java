@@ -99,14 +99,14 @@ public final class HttpRouteRuleMatchArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     @Import(name="regexMatch")
     private @Nullable Output<String> regexMatch;
 
     /**
-     * @return The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * @return The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<Output<String>> regexMatch() {
@@ -274,7 +274,7 @@ public final class HttpRouteRuleMatchArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param regexMatch The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         * @param regexMatch The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class HttpRouteRuleMatchArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param regexMatch The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         * @param regexMatch The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 

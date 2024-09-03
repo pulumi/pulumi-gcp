@@ -38,11 +38,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
  * 
- * ## Example Usage
- * 
- * ### Firewall Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -96,6 +94,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Firewall With Target Tags
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -364,16 +365,12 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * The name or self_link of the network to attach this firewall to.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The name or self_link of the network to attach this firewall to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

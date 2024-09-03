@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         public readonly string? Column;
         /// <summary>
         /// The Oracle data type. Full data types list can be found here:
-        /// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        /// &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
         /// </summary>
         public readonly string? DataType;
         /// <summary>

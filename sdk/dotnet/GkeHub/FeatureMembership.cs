@@ -73,7 +73,8 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
-    /// ### Config Management With OCI
+    /// 
+    /// ### Config Management with OCI
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -209,7 +210,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ### Config Management With Regional Membership
+    /// ### Config Management with Regional Membership
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -271,7 +272,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ### Policy Controller With Minimal Configuration
+    /// ### Policy Controller with minimal configuration
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -323,7 +324,7 @@ namespace Pulumi.Gcp.GkeHub
     /// });
     /// ```
     /// 
-    /// ### Policy Controller With Custom Configurations
+    /// ### Policy Controller with custom configurations
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

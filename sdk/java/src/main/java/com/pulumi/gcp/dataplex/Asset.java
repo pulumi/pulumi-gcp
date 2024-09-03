@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic_asset
+ * ### basic_asset
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code

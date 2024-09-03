@@ -60,11 +60,11 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     /**
      * The id of the OS policy with the following restrictions:
      * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the assignment.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the assignment.
      * 
      */
     @Import(name="id", required=true)
@@ -73,11 +73,11 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     /**
      * @return The id of the OS policy with the following restrictions:
      * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the assignment.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the assignment.
      * 
      */
     public Output<String> id() {
@@ -209,11 +209,11 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         /**
          * @param id The id of the OS policy with the following restrictions:
          * 
-         * *   Must contain only lowercase letters, numbers, and hyphens.
-         * *   Must start with a letter.
-         * *   Must be between 1-63 characters.
-         * *   Must end with a number or a letter.
-         * *   Must be unique within the assignment.
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the assignment.
          * 
          * @return builder
          * 
@@ -226,11 +226,11 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         /**
          * @param id The id of the OS policy with the following restrictions:
          * 
-         * *   Must contain only lowercase letters, numbers, and hyphens.
-         * *   Must start with a letter.
-         * *   Must be between 1-63 characters.
-         * *   Must end with a number or a letter.
-         * *   Must be unique within the assignment.
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the assignment.
          * 
          * @return builder
          * 

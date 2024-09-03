@@ -37,7 +37,7 @@ public final class WorkflowTemplateJobPrestoJob {
      */
     private @Nullable String outputFormat;
     /**
-     * @return A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * @return A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     private @Nullable Map<String,String> properties;
@@ -82,7 +82,7 @@ public final class WorkflowTemplateJobPrestoJob {
         return Optional.ofNullable(this.outputFormat);
     }
     /**
-     * @return A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * @return A mapping of property names to values. Used to set Presto (&lt;https://prestodb.io/docs/current/sql/set-session.html&gt;) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     public Map<String,String> properties() {

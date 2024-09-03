@@ -118,13 +118,13 @@ if not MYPY:
         dataflow_flex_template_request: NotRequired[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgsDict']]
         """
         Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest>
         Structure is documented below.
         """
         dataflow_launch_template_request: NotRequired[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgsDict']]
         """
         Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest>
         Structure is documented below.
         """
 elif False:
@@ -137,10 +137,10 @@ class PipelineWorkloadArgs:
                  dataflow_launch_template_request: Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']] = None):
         """
         :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs'] dataflow_flex_template_request: Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest>
                Structure is documented below.
         :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs'] dataflow_launch_template_request: Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest>
                Structure is documented below.
         """
         if dataflow_flex_template_request is not None:
@@ -153,7 +153,7 @@ class PipelineWorkloadArgs:
     def dataflow_flex_template_request(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestArgs']]:
         """
         Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest>
         Structure is documented below.
         """
         return pulumi.get(self, "dataflow_flex_template_request")
@@ -167,7 +167,7 @@ class PipelineWorkloadArgs:
     def dataflow_launch_template_request(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestArgs']]:
         """
         Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest>
         Structure is documented below.
         """
         return pulumi.get(self, "dataflow_launch_template_request")
@@ -182,7 +182,7 @@ if not MYPY:
         launch_parameter: pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgsDict']
         """
         Parameter to launch a job from a Flex Template.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter>
         Structure is documented below.
         """
         location: pulumi.Input[str]
@@ -209,7 +209,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs'] launch_parameter: Parameter to launch a job from a Flex Template.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter>
                Structure is documented below.
         :param pulumi.Input[str] location: The regional endpoint to which to direct the request. For example, us-central1, us-west1.
         :param pulumi.Input[str] project_id: The ID of the Cloud Platform project that the job belongs to.
@@ -226,7 +226,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestArgs:
     def launch_parameter(self) -> pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs']:
         """
         Parameter to launch a job from a Flex Template.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter>
         Structure is documented below.
         """
         return pulumi.get(self, "launch_parameter")
@@ -285,7 +285,7 @@ if not MYPY:
         environment: NotRequired[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgsDict']]
         """
         The runtime environment for the Flex Template job.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment>
         Structure is documented below.
         """
         launch_options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
@@ -324,7 +324,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
         :param pulumi.Input[str] job_name: The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
         :param pulumi.Input[str] container_spec_gcs_path: Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
         :param pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs'] environment: The runtime environment for the Flex Template job.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment>
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] launch_options: Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
                'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
@@ -377,7 +377,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs:
     def environment(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs']]:
         """
         The runtime environment for the Flex Template job.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment>
         Structure is documented below.
         """
         return pulumi.get(self, "environment")
@@ -456,14 +456,14 @@ if not MYPY:
         """
         flexrs_goal: NotRequired[pulumi.Input[str]]
         """
-        Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+        Set FlexRS goal for the job. <https://cloud.google.com/dataflow/docs/guides/flexrs>
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal>
         Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
         """
         ip_configuration: NotRequired[pulumi.Input[str]]
         """
         Configuration for VM IPs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
         Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         """
         kms_key_name: NotRequired[pulumi.Input[str]]
@@ -500,11 +500,11 @@ if not MYPY:
         """
         worker_region: NotRequired[pulumi.Input[str]]
         """
-        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
         """
         worker_zone: NotRequired[pulumi.Input[str]]
         """
-        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         """
         zone: NotRequired[pulumi.Input[str]]
         """
@@ -538,11 +538,11 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
                'Example: { "name": "wrench", "mass": "1kg", "count": "3" }.'
                'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
         :param pulumi.Input[bool] enable_streaming_engine: Whether to enable Streaming Engine for the job.
-        :param pulumi.Input[str] flexrs_goal: Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+        :param pulumi.Input[str] flexrs_goal: Set FlexRS goal for the job. <https://cloud.google.com/dataflow/docs/guides/flexrs>
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal>
                Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
         :param pulumi.Input[str] ip_configuration: Configuration for VM IPs.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
                Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         :param pulumi.Input[str] kms_key_name: 'Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/'
         :param pulumi.Input[str] machine_type: The machine type to use for the job. Defaults to the value from the template if not specified.
@@ -552,8 +552,8 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
         :param pulumi.Input[str] service_account_email: The email address of the service account to run the job as.
         :param pulumi.Input[str] subnetwork: Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[str] worker_region: The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
-        :param pulumi.Input[str] worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        :param pulumi.Input[str] worker_region: The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        :param pulumi.Input[str] worker_zone: The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         :param pulumi.Input[str] zone: The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
         """
         if additional_experiments is not None:
@@ -631,8 +631,8 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
     @pulumi.getter(name="flexrsGoal")
     def flexrs_goal(self) -> Optional[pulumi.Input[str]]:
         """
-        Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+        Set FlexRS goal for the job. <https://cloud.google.com/dataflow/docs/guides/flexrs>
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal>
         Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
         """
         return pulumi.get(self, "flexrs_goal")
@@ -646,7 +646,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
     def ip_configuration(self) -> Optional[pulumi.Input[str]]:
         """
         Configuration for VM IPs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
         Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         """
         return pulumi.get(self, "ip_configuration")
@@ -755,7 +755,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
     @pulumi.getter(name="workerRegion")
     def worker_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
         """
         return pulumi.get(self, "worker_region")
 
@@ -767,7 +767,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs:
     @pulumi.getter(name="workerZone")
     def worker_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         """
         return pulumi.get(self, "worker_zone")
 
@@ -801,7 +801,7 @@ if not MYPY:
         launch_parameters: NotRequired[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict']]
         """
         The parameters of the template to launch. This should be part of the body of the POST request.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters>
         Structure is documented below.
         """
         location: NotRequired[pulumi.Input[str]]
@@ -827,7 +827,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
         :param pulumi.Input[str] project_id: The ID of the Cloud Platform project that the job belongs to.
         :param pulumi.Input[str] gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
         :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs'] launch_parameters: The parameters of the template to launch. This should be part of the body of the POST request.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters>
                Structure is documented below.
         :param pulumi.Input[str] location: The regional endpoint to which to direct the request.
         :param pulumi.Input[bool] validate_only: (Optional)
@@ -871,7 +871,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
     def launch_parameters(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs']]:
         """
         The parameters of the template to launch. This should be part of the body of the POST request.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters>
         Structure is documented below.
         """
         return pulumi.get(self, "launch_parameters")
@@ -914,7 +914,7 @@ if not MYPY:
         environment: NotRequired[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict']]
         """
         The runtime environment for the job.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment>
         Structure is documented below.
         """
         parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
@@ -945,7 +945,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
         """
         :param pulumi.Input[str] job_name: The job name to use for the created job.
         :param pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs'] environment: The runtime environment for the job.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment>
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
                'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
@@ -980,7 +980,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs:
     def environment(self) -> Optional[pulumi.Input['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs']]:
         """
         The runtime environment for the job.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment>
         Structure is documented below.
         """
         return pulumi.get(self, "environment")
@@ -1051,7 +1051,7 @@ if not MYPY:
         ip_configuration: NotRequired[pulumi.Input[str]]
         """
         Configuration for VM IPs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
         Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         """
         kms_key_name: NotRequired[pulumi.Input[str]]
@@ -1088,11 +1088,11 @@ if not MYPY:
         """
         worker_region: NotRequired[pulumi.Input[str]]
         """
-        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
         """
         worker_zone: NotRequired[pulumi.Input[str]]
         """
-        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         """
         zone: NotRequired[pulumi.Input[str]]
         """
@@ -1128,7 +1128,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentAr
         :param pulumi.Input[bool] bypass_temp_dir_validation: Whether to bypass the safety checks for the job's temporary directory. Use with caution.
         :param pulumi.Input[bool] enable_streaming_engine: Whether to enable Streaming Engine for the job.
         :param pulumi.Input[str] ip_configuration: Configuration for VM IPs.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
                Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         :param pulumi.Input[str] kms_key_name: 'Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/'
         :param pulumi.Input[str] machine_type: The machine type to use for the job. Defaults to the value from the template if not specified.
@@ -1138,8 +1138,8 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentAr
         :param pulumi.Input[str] service_account_email: The email address of the service account to run the job as.
         :param pulumi.Input[str] subnetwork: Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-        :param pulumi.Input[str] worker_region: The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
-        :param pulumi.Input[str] worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        :param pulumi.Input[str] worker_region: The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        :param pulumi.Input[str] worker_zone: The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         :param pulumi.Input[str] zone: The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
         """
         if additional_experiments is not None:
@@ -1230,7 +1230,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentAr
     def ip_configuration(self) -> Optional[pulumi.Input[str]]:
         """
         Configuration for VM IPs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration>
         Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
         """
         return pulumi.get(self, "ip_configuration")
@@ -1339,7 +1339,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentAr
     @pulumi.getter(name="workerRegion")
     def worker_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+        The Compute Engine region (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
         """
         return pulumi.get(self, "worker_region")
 
@@ -1351,7 +1351,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentAr
     @pulumi.getter(name="workerZone")
     def worker_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+        The Compute Engine zone (<https://cloud.google.com/compute/docs/regions-zones/regions-zones>) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
         """
         return pulumi.get(self, "worker_zone")
 

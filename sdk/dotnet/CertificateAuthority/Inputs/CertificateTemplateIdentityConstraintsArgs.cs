@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         public Input<bool> AllowSubjectPassthrough { get; set; } = null!;
 
         /// <summary>
-        /// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        /// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see &lt;https://cloud.google.com/certificate-authority-service/docs/using-cel&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("celExpression")]

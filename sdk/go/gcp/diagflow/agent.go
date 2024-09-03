@@ -23,9 +23,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
-// ## Example Usage
-//
-// ### Dialogflow Agent Full
+// ##
 //
 // ```go
 // package main
@@ -130,8 +128,6 @@ type Agent struct {
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
@@ -225,8 +221,6 @@ type agentState struct {
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -282,8 +276,6 @@ type AgentState struct {
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -340,8 +332,6 @@ type agentArgs struct {
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone string `pulumi:"timeZone"`
 }
 
@@ -395,8 +385,6 @@ type AgentArgs struct {
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
-	//
-	// ***
 	TimeZone pulumi.StringInput
 }
 
@@ -574,8 +562,6 @@ func (o AgentOutput) Tier() pulumi.StringPtrOutput {
 
 // The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 // Europe/Paris.
-//
-// ***
 func (o AgentOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }

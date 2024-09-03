@@ -38,16 +38,12 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
-     * ***
-     * 
      */
     @Import(name="constraint", required=true)
     private Output<String> constraint;
 
     /**
      * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     * 
-     * ***
      * 
      */
     public Output<String> constraint() {
@@ -90,8 +86,6 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
      * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
      * 
-     * ***
-     * 
      */
     @Import(name="restorePolicy")
     private @Nullable Output<OrganizationPolicyRestorePolicyArgs> restorePolicy;
@@ -101,8 +95,6 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
      * 
      * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
-     * 
-     * ***
      * 
      */
     public Optional<Output<OrganizationPolicyRestorePolicyArgs>> restorePolicy() {
@@ -177,8 +169,6 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
         /**
          * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -189,8 +179,6 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -247,8 +235,6 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
          * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
          * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -262,8 +248,6 @@ public final class OrganizationPolicyArgs extends com.pulumi.resources.ResourceA
          * 
          * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
          * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
-         * 
-         * ***
          * 
          * @return builder
          * 

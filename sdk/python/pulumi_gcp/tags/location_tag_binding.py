@@ -27,8 +27,6 @@ class LocationTagBindingArgs:
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
         :param pulumi.Input[str] location: Location of the target resource.
-               
-               - - -
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "tag_value", tag_value)
@@ -64,8 +62,6 @@ class LocationTagBindingArgs:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location of the target resource.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -84,8 +80,6 @@ class _LocationTagBindingState:
         """
         Input properties used for looking up and filtering LocationTagBinding resources.
         :param pulumi.Input[str] location: Location of the target resource.
-               
-               - - -
         :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
@@ -104,8 +98,6 @@ class _LocationTagBindingState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location of the target resource.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -166,7 +158,7 @@ class LocationTagBinding(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -235,8 +227,6 @@ class LocationTagBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Location of the target resource.
-               
-               - - -
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
         """
@@ -253,7 +243,7 @@ class LocationTagBinding(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -376,8 +366,6 @@ class LocationTagBinding(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Location of the target resource.
-               
-               - - -
         :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
@@ -397,8 +385,6 @@ class LocationTagBinding(pulumi.CustomResource):
     def location(self) -> pulumi.Output[Optional[str]]:
         """
         Location of the target resource.
-
-        - - -
         """
         return pulumi.get(self, "location")
 

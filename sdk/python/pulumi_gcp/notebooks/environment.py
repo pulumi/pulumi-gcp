@@ -32,9 +32,6 @@ class EnvironmentArgs:
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input['EnvironmentContainerImageArgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] description: A brief description of this environment.
@@ -69,9 +66,6 @@ class EnvironmentArgs:
     def location(self) -> pulumi.Input[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -189,9 +183,6 @@ class _EnvironmentState:
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name specified for the Environment instance.
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
@@ -274,9 +265,6 @@ class _EnvironmentState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -358,11 +346,9 @@ class Environment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+          * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
-        ## Example Usage
-
-        ### Notebook Environment Basic
+        ## 
 
         ```python
         import pulumi
@@ -407,9 +393,6 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name specified for the Environment instance.
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
@@ -432,11 +415,9 @@ class Environment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
+          * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
-        ## Example Usage
-
-        ### Notebook Environment Basic
+        ## 
 
         ```python
         import pulumi
@@ -549,9 +530,6 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name specified for the Environment instance.
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
@@ -614,9 +592,6 @@ class Environment(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

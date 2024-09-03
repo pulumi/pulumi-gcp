@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.deidentifyTemplates)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
+ *   * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
  * 
  * ## Example Usage
  * 
@@ -148,6 +148,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dlp Deidentify Template Image Transformations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

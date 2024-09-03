@@ -26,7 +26,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
      */
     private String name;
     /**
-     * @return The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
      * 
      */
     private String networkTier;
@@ -64,7 +64,7 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
         return this.name;
     }
     /**
-     * @return The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
      * 
      */
     public String networkTier() {

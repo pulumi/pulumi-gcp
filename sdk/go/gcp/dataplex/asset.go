@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic_asset
+// ### basicAsset
 // ```go
 // package main
 //

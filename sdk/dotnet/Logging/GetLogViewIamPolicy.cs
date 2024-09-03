@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// Retrieves the current IAM policy data for logview
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -41,7 +40,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// Retrieves the current IAM policy data for logview
-        /// 
         /// 
         /// ## example
         /// 

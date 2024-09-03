@@ -57,6 +57,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Network Policy Full
 //
 // ```go
@@ -146,12 +147,10 @@ type NetworkPolicy struct {
 	// Structure is documented below.
 	InternetAccess NetworkPolicyInternetAccessOutput `pulumi:"internetAccess"`
 	// The resource name of the location (region) to create the new network policy in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -228,12 +227,10 @@ type networkPolicyState struct {
 	// Structure is documented below.
 	InternetAccess *NetworkPolicyInternetAccess `pulumi:"internetAccess"`
 	// The resource name of the location (region) to create the new network policy in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-central1
 	Location *string `pulumi:"location"`
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -272,12 +269,10 @@ type NetworkPolicyState struct {
 	// Structure is documented below.
 	InternetAccess NetworkPolicyInternetAccessPtrInput
 	// The resource name of the location (region) to create the new network policy in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-central1
 	Location pulumi.StringPtrInput
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -316,12 +311,10 @@ type networkPolicyArgs struct {
 	// Structure is documented below.
 	InternetAccess *NetworkPolicyInternetAccess `pulumi:"internetAccess"`
 	// The resource name of the location (region) to create the new network policy in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-central1
 	Location string `pulumi:"location"`
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -348,12 +341,10 @@ type NetworkPolicyArgs struct {
 	// Structure is documented below.
 	InternetAccess NetworkPolicyInternetAccessPtrInput
 	// The resource name of the location (region) to create the new network policy in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-central1
 	Location pulumi.StringInput
 	// The ID of the Network Policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -484,15 +475,13 @@ func (o NetworkPolicyOutput) InternetAccess() NetworkPolicyInternetAccessOutput 
 }
 
 // The resource name of the location (region) to create the new network policy in.
-// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 // For example: projects/my-project/locations/us-central1
 func (o NetworkPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The ID of the Network Policy.
-//
-// ***
 func (o NetworkPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

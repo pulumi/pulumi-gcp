@@ -13,10 +13,9 @@ import (
 )
 
 // Cloud Firestore indexes enable simple and complex queries against documents in a database.
-//
-//	Both Firestore Native and Datastore Mode indexes are supported.
-//	This resource manages composite indexes and not single field indexes.
-//	To manage single field indexes, use the `firestore.Field` resource instead.
+// Both Firestore Native and Datastore Mode indexes are supported.
+// This resource manages composite indexes and not single field indexes.
+// To manage single field indexes, use the `firestore.Field` resource instead.
 //
 // To get more information about Index, see:
 //
@@ -81,6 +80,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Datastore Mode
 //
 // ```go
@@ -131,6 +131,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Index Vector
 //
 // ```go

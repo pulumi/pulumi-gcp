@@ -14,9 +14,7 @@ import * as utilities from "../utilities";
  * You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
  * the Cloud Console prior to creating tenants.
  *
- * ## Example Usage
- *
- * ### Identity Platform Tenant Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -92,9 +90,6 @@ export class Tenant extends pulumi.CustomResource {
     public readonly disableAuth!: pulumi.Output<boolean | undefined>;
     /**
      * Human friendly display name of the tenant.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -163,9 +158,6 @@ export interface TenantState {
     disableAuth?: pulumi.Input<boolean>;
     /**
      * Human friendly display name of the tenant.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -199,9 +191,6 @@ export interface TenantArgs {
     disableAuth?: pulumi.Input<boolean>;
     /**
      * Human friendly display name of the tenant.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

@@ -43,7 +43,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? MostDisruptiveAllowedAction;
         /// <summary>
         /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        /// - - -
         /// </summary>
         public readonly string? ReplacementMethod;
         /// <summary>

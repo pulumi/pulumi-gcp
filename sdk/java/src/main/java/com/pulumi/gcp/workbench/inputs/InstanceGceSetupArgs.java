@@ -115,7 +115,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Optional. Flag to enable ip forwarding or not, default false/off.
-     * https://cloud.google.com/vpc/docs/using-routes#canipforward
+     * &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
      * 
      */
     @Import(name="enableIpForwarding")
@@ -123,7 +123,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Optional. Flag to enable ip forwarding or not, default false/off.
-     * https://cloud.google.com/vpc/docs/using-routes#canipforward
+     * &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
      * 
      */
     public Optional<Output<Boolean>> enableIpForwarding() {
@@ -131,14 +131,14 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+     * Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+     * @return Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -419,7 +419,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param enableIpForwarding Optional. Flag to enable ip forwarding or not, default false/off.
-         * https://cloud.google.com/vpc/docs/using-routes#canipforward
+         * &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param enableIpForwarding Optional. Flag to enable ip forwarding or not, default false/off.
-         * https://cloud.google.com/vpc/docs/using-routes#canipforward
+         * &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param machineType Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+         * @param machineType Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param machineType Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+         * @param machineType Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
          * 
          * @return builder
          * 

@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.SubnetworkIAMBinding
     /// 
     /// ```csharp
@@ -158,6 +159,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.SubnetworkIAMMember
     /// 
     /// ```csharp
@@ -209,8 +211,6 @@ namespace Pulumi.Gcp.Compute
     /// ```
     /// 
     /// ## This resource supports User Project Overrides.
-    /// 
-    /// - 
     /// 
     /// # IAM policy for Compute Engine Subnetwork
     /// Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
@@ -306,6 +306,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.SubnetworkIAMBinding
     /// 
     /// ```csharp
@@ -361,6 +362,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.compute.SubnetworkIAMMember
     /// 
     /// ```csharp
@@ -447,7 +449,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy")]
     public partial class SubnetworkIAMPolicy : global::Pulumi.CustomResource

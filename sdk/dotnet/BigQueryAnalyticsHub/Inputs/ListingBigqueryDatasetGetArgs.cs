@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     {
         /// <summary>
         /// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;

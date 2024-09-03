@@ -672,9 +672,10 @@ class AzureCluster(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_azure_cluster
+        ### basic_azure_cluster
         A basic example of a containerazure azure cluster
         ```python
         import pulumi
@@ -719,7 +720,8 @@ class AzureCluster(pulumi.CustomResource):
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         ```
-        ### Beta_basic_enum_azure_cluster
+
+        ### beta_basic_enum_azure_cluster
         A basic example of a containerazure azure cluster with lowercase enums (beta)
         ```python
         import pulumi
@@ -830,9 +832,10 @@ class AzureCluster(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_azure_cluster
+        ### basic_azure_cluster
         A basic example of a containerazure azure cluster
         ```python
         import pulumi
@@ -877,7 +880,8 @@ class AzureCluster(pulumi.CustomResource):
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
             project="my-project-name")
         ```
-        ### Beta_basic_enum_azure_cluster
+
+        ### beta_basic_enum_azure_cluster
         A basic example of a containerazure azure cluster with lowercase enums (beta)
         ```python
         import pulumi

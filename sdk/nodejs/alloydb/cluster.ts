@@ -9,70 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ### Alloydb Cluster Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("default", {name: "alloydb-cluster"});
- * const _default = new gcp.alloydb.Cluster("default", {
- *     clusterId: "alloydb-cluster",
- *     location: "us-central1",
- *     networkConfig: {
- *         network: defaultNetwork.id,
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
- * ### Alloydb Cluster Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.Network("default", {name: "alloydb-cluster-full"});
- * const full = new gcp.alloydb.Cluster("full", {
- *     clusterId: "alloydb-cluster-full",
- *     location: "us-central1",
- *     networkConfig: {
- *         network: _default.id,
- *     },
- *     databaseVersion: "POSTGRES_15",
- *     initialUser: {
- *         user: "alloydb-cluster-full",
- *         password: "alloydb-cluster-full",
- *     },
- *     continuousBackupConfig: {
- *         enabled: true,
- *         recoveryWindowDays: 14,
- *     },
- *     automatedBackupPolicy: {
- *         location: "us-central1",
- *         backupWindow: "1800s",
- *         enabled: true,
- *         weeklySchedule: {
- *             daysOfWeeks: ["MONDAY"],
- *             startTimes: [{
- *                 hours: 23,
- *                 minutes: 0,
- *                 seconds: 0,
- *                 nanos: 0,
- *             }],
- *         },
- *         quantityBasedRetention: {
- *             count: 1,
- *         },
- *         labels: {
- *             test: "alloydb-cluster-full",
- *         },
- *     },
- *     labels: {
- *         test: "alloydb-cluster-full",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
  * ### Alloydb Cluster Restore
  *
  * ```typescript
@@ -140,6 +76,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Alloydb Secondary Cluster Basic
  *
  * ```typescript
@@ -250,7 +187,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -319,7 +256,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.ClusterEncryptionInfo[]>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     public readonly etag!: pulumi.Output<string | undefined>;
     /**
@@ -335,9 +272,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -385,7 +319,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
      * Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
@@ -512,7 +446,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -581,7 +515,7 @@ export interface ClusterState {
      */
     encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterEncryptionInfo>[]>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     etag?: pulumi.Input<string>;
     /**
@@ -597,9 +531,6 @@ export interface ClusterState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -647,7 +578,7 @@ export interface ClusterState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+     * Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>.
      * Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
@@ -682,7 +613,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -730,7 +661,7 @@ export interface ClusterArgs {
      */
     encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     etag?: pulumi.Input<string>;
     /**
@@ -746,9 +677,6 @@ export interface ClusterArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -156,9 +156,10 @@ class Ruleset(pulumi.CustomResource):
         """
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
+
         ## Example Usage
 
-        ### Basic_ruleset
+        ### basic_ruleset
         Creates a basic Firestore ruleset
         ```python
         import pulumi
@@ -175,7 +176,8 @@ class Ruleset(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
-        ### Minimal_ruleset
+
+        ### minimal_ruleset
         Creates a minimal Firestore ruleset
         ```python
         import pulumi
@@ -229,9 +231,10 @@ class Ruleset(pulumi.CustomResource):
         """
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
+
         ## Example Usage
 
-        ### Basic_ruleset
+        ### basic_ruleset
         Creates a basic Firestore ruleset
         ```python
         import pulumi
@@ -248,7 +251,8 @@ class Ruleset(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
-        ### Minimal_ruleset
+
+        ### minimal_ruleset
         Creates a minimal Firestore ruleset
         ```python
         import pulumi

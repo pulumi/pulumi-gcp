@@ -17,93 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Workstation Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.Subnetwork;
- * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.workstations.WorkstationCluster;
- * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
- * import com.pulumi.gcp.workstations.WorkstationConfig;
- * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
- * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
- * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
- * import com.pulumi.gcp.workstations.Workstation;
- * import com.pulumi.gcp.workstations.WorkstationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Network("default", NetworkArgs.builder()
- *             .name("workstation-cluster")
- *             .autoCreateSubnetworks(false)
- *             .build());
- * 
- *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
- *             .name("workstation-cluster")
- *             .ipCidrRange("10.0.0.0/24")
- *             .region("us-central1")
- *             .network(default_.name())
- *             .build());
- * 
- *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
- *             .workstationClusterId("workstation-cluster")
- *             .network(default_.id())
- *             .subnetwork(defaultSubnetwork.id())
- *             .location("us-central1")
- *             .labels(Map.of("label", "key"))
- *             .annotations(Map.of("label-one", "value-one"))
- *             .build());
- * 
- *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
- *             .workstationConfigId("workstation-config")
- *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
- *             .location("us-central1")
- *             .host(WorkstationConfigHostArgs.builder()
- *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
- *                     .machineType("e2-standard-4")
- *                     .bootDiskSizeGb(35)
- *                     .disablePublicIpAddresses(true)
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var defaultWorkstation = new Workstation("defaultWorkstation", WorkstationArgs.builder()
- *             .workstationId("work-station")
- *             .workstationConfigId(defaultWorkstationConfig.workstationConfigId())
- *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
- *             .location("us-central1")
- *             .labels(Map.of("label", "key"))
- *             .env(Map.of("name", "foo"))
- *             .annotations(Map.of("label-one", "value-one"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Workstation can be imported using any of these accepted formats:
@@ -250,16 +163,12 @@ public class Workstation extends com.pulumi.resources.CustomResource {
     /**
      * The location where the workstation parent resources reside.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location where the workstation parent resources reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.endpointAttachments)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
+    ///   * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Integration Connectors Endpoint Attachment
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -119,9 +117,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Endpoint Attachment needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -238,9 +233,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Endpoint Attachment needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -329,9 +321,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Endpoint Attachment needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

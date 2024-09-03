@@ -18,8 +18,6 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabe
     /**
      * @return Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
      * 
-     * ***
-     * 
      */
     private String labelValue;
 
@@ -33,8 +31,6 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabe
     }
     /**
      * @return Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-     * 
-     * ***
      * 
      */
     public String labelValue() {

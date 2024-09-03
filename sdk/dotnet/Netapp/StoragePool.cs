@@ -10,71 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Netapp
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Storage Pool Create
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a network or use datasource to reference existing network
-    ///     var peeringNetwork = new Gcp.Compute.Network("peering_network", new()
-    ///     {
-    ///         Name = "test-network",
-    ///     });
-    /// 
-    ///     // Reserve a CIDR for NetApp Volumes to use
-    ///     // When using shared-VPCs, this resource needs to be created in host project
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
-    ///     {
-    ///         Name = "test-address",
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 16,
-    ///         Network = peeringNetwork.Id,
-    ///     });
-    /// 
-    ///     // Create a Private Service Access connection
-    ///     // When using shared-VPCs, this resource needs to be created in host project
-    ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
-    ///     {
-    ///         Network = peeringNetwork.Id,
-    ///         Service = "netapp.servicenetworking.goog",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     // Modify the PSA Connection to allow import/export of custom routes
-    ///     // When using shared-VPCs, this resource needs to be created in host project
-    ///     var routeUpdates = new Gcp.Compute.NetworkPeeringRoutesConfig("route_updates", new()
-    ///     {
-    ///         Peering = @default.Peering,
-    ///         Network = peeringNetwork.Name,
-    ///         ImportCustomRoutes = true,
-    ///         ExportCustomRoutes = true,
-    ///     });
-    /// 
-    ///     // Create a storage pool
-    ///     // Create this resource in the project which is expected to own the volumes
-    ///     var testPool = new Gcp.Netapp.StoragePool("test_pool", new()
-    ///     {
-    ///         Name = "test-pool",
-    ///         Location = "us-central1",
-    ///         ServiceLevel = "PREMIUM",
-    ///         CapacityGib = "2048",
-    ///         Network = peeringNetwork.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// storagePool can be imported using any of these accepted formats:
@@ -164,9 +99,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The resource name of the storage pool. Needs to be unique per location/region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -332,9 +264,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The resource name of the storage pool. Needs to be unique per location/region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -460,9 +389,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The resource name of the storage pool. Needs to be unique per location/region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
     /// * How-to Guides
-    ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+    ///   * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -91,9 +91,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("perimeterName")]
         public Output<string> PerimeterName { get; private set; } = null!;
@@ -154,9 +151,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("perimeterName", required: true)]
         public Input<string> PerimeterName { get; set; } = null!;
@@ -179,9 +173,6 @@ namespace Pulumi.Gcp.AccessContextManager
     {
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("perimeterName")]
         public Input<string>? PerimeterName { get; set; }

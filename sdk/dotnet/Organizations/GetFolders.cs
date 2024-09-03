@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ## Example Usage
         /// 
-        /// ### Searching For Folders At The Root Of An Org
+        /// ### searching for folders at the root of an org
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ## Example Usage
         /// 
-        /// ### Searching For Folders At The Root Of An Org
+        /// ### searching for folders at the root of an org
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

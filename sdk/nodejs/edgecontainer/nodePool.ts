@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters.nodePools)
  * * How-to Guides
- *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+ *   * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  *
  * ## Example Usage
  *
@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Edgecontainer Node Pool With Cmek
  *
  * ```typescript
@@ -101,6 +102,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKey],
  * });
  * ```
+ *
  * ### Edgecontainer Local Control Plane Node Pool
  *
  * ```typescript
@@ -196,9 +198,6 @@ export class NodePool extends pulumi.CustomResource {
 
     /**
      * The name of the target Distributed Cloud Edge Cluster.
-     *
-     *
-     * - - -
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -337,9 +336,6 @@ export class NodePool extends pulumi.CustomResource {
 export interface NodePoolState {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
-     *
-     *
-     * - - -
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -414,9 +410,6 @@ export interface NodePoolState {
 export interface NodePoolArgs {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
-     *
-     *
-     * - - -
      */
     cluster: pulumi.Input<string>;
     /**

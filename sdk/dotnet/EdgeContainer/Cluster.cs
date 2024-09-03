@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters)
     /// * How-to Guides
-    ///     * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
+    ///   * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Edgecontainer Cluster
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -67,7 +65,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
-    /// ### Edgecontainer Cluster With Maintenance Window
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -124,6 +122,9 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Edgecontainer Local Control Plane Cluster
     /// 
     /// ```csharp

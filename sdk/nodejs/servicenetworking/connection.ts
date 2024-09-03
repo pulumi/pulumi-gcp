@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
  *
- * ## Example Usage
+ * ## Example usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

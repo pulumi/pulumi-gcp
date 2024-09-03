@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Logging
     /// <summary>
     /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
     /// * How-to Guides
-    ///     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+    ///   * [Exporting Logs](https://cloud.google.com/logging/docs/export)
     /// 
     /// &gt; **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
     /// [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to

@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic_fir_sec_rule
+// ### basicFirSecRule
 // ```go
 // package main
 //

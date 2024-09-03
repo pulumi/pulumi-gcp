@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project` and set `user_project_override` to true
@@ -29,9 +29,7 @@ import javax.annotation.Nullable;
  * Your account must have the `serviceusage.services.use` permission on the
  * `billing_project` you defined.
  * 
- * ## Example Usage
- * 
- * ### Essential Contact
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -147,16 +145,12 @@ public class Contact extends com.pulumi.resources.CustomResource {
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

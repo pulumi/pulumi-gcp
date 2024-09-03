@@ -16,9 +16,7 @@ import javax.annotation.Nullable;
 /**
  * The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
  * 
- * ## Example Usage
- * 
- * ### Documentai Default Version
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -80,16 +78,12 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
     /**
      * The processor to set the version on.
      * 
-     * ***
-     * 
      */
     @Export(name="processor", refs={String.class}, tree="[0]")
     private Output<String> processor;
 
     /**
      * @return The processor to set the version on.
-     * 
-     * ***
      * 
      */
     public Output<String> processor() {

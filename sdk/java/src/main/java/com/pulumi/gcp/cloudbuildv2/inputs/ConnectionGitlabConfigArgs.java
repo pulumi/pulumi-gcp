@@ -37,14 +37,14 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+     * The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
      * 
      */
     @Import(name="hostUri")
     private @Nullable Output<String> hostUri;
 
     /**
-     * @return The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+     * @return The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
      * 
      */
     public Optional<Output<String>> hostUri() {
@@ -186,7 +186,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param hostUri The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+         * @param hostUri The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param hostUri The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+         * @param hostUri The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
          * 
          * @return builder
          * 

@@ -561,7 +561,7 @@ class ConnectionCloudSpanner(dict):
                  use_serverless_analytics: Optional[bool] = None):
         """
         :param str database: Cloud Spanner database in the form `project/instance/database'.
-        :param str database_role: Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        :param str database_role: Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
         :param int max_parallelism: Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
         :param bool use_data_boost: If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
         :param bool use_parallelism: If parallelism should be used when reading from Cloud Spanner.
@@ -594,7 +594,7 @@ class ConnectionCloudSpanner(dict):
     @pulumi.getter(name="databaseRole")
     def database_role(self) -> Optional[str]:
         """
-        Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+        Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
         """
         return pulumi.get(self, "database_role")
 
@@ -1168,7 +1168,7 @@ class DatasetAccess(dict):
                * `projectWriters`: Writers of the enclosing project.
                * `allAuthenticatedUsers`: All authenticated BigQuery users.
         :param str user_by_email: An email address of a user to grant access to. For example:
-               fred@example.com
+               <fred@example.com>
         :param 'DatasetAccessViewArgs' view: A view from a different dataset to grant access to. Queries
                executed against that view will have read access to tables in
                this dataset. The role field is not required when this field is
@@ -1272,7 +1272,7 @@ class DatasetAccess(dict):
     def user_by_email(self) -> Optional[str]:
         """
         An email address of a user to grant access to. For example:
-        fred@example.com
+        <fred@example.com>
         """
         return pulumi.get(self, "user_by_email")
 
@@ -2332,8 +2332,6 @@ class JobExtractSourceModel(dict):
         """
         :param str dataset_id: The ID of the dataset containing this model.
         :param str model_id: The ID of the model.
-               
-               - - -
         :param str project_id: The ID of the project containing this model.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -2353,8 +2351,6 @@ class JobExtractSourceModel(dict):
     def model_id(self) -> str:
         """
         The ID of the model.
-
-        - - -
         """
         return pulumi.get(self, "model_id")
 

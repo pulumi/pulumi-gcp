@@ -35,7 +35,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigArgs extends com.pulumi.r
 
     /**
      * Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-     * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
      * Structure is documented below.
      * 
      */
@@ -44,7 +44,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigArgs extends com.pulumi.r
 
     /**
      * @return Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-     * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
      * Structure is documented below.
      * 
      */
@@ -102,7 +102,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigArgs extends com.pulumi.r
 
         /**
          * @param treeAhConfig Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-         * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -115,7 +115,7 @@ public final class AiIndexMetadataConfigAlgorithmConfigArgs extends com.pulumi.r
 
         /**
          * @param treeAhConfig Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-         * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
          * Structure is documented below.
          * 
          * @return builder

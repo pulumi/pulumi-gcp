@@ -33,9 +33,6 @@ class ServiceBindingArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -93,9 +90,6 @@ class ServiceBindingArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServiceBinding resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -138,9 +132,6 @@ class _ServiceBindingState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -223,9 +214,6 @@ class _ServiceBindingState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServiceBinding resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -297,33 +285,6 @@ class ServiceBinding(pulumi.CustomResource):
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Services Service Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.servicedirectory.Namespace("default",
-            namespace_id="my-namespace",
-            location="us-central1")
-        default_service = gcp.servicedirectory.Service("default",
-            service_id="my-service",
-            namespace=default.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            })
-        default_service_binding = gcp.networkservices.ServiceBinding("default",
-            name="my-service-binding",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            service=default_service.id)
-        ```
-
         ## Import
 
         ServiceBinding can be imported using any of these accepted formats:
@@ -355,9 +316,6 @@ class ServiceBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The full Service Directory Service name of the format
@@ -370,33 +328,6 @@ class ServiceBinding(pulumi.CustomResource):
                  args: ServiceBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Services Service Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.servicedirectory.Namespace("default",
-            namespace_id="my-namespace",
-            location="us-central1")
-        default_service = gcp.servicedirectory.Service("default",
-            service_id="my-service",
-            namespace=default.id,
-            metadata={
-                "stage": "prod",
-                "region": "us-central1",
-            })
-        default_service_binding = gcp.networkservices.ServiceBinding("default",
-            name="my-service-binding",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            service=default_service.id)
-        ```
-
         ## Import
 
         ServiceBinding can be imported using any of these accepted formats:
@@ -496,9 +427,6 @@ class ServiceBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -561,9 +489,6 @@ class ServiceBinding(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ServiceBinding resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

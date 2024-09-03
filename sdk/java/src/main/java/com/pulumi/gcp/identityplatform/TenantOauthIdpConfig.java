@@ -22,9 +22,7 @@ import javax.annotation.Nullable;
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
  * 
- * ## Example Usage
- * 
- * ### Identity Platform Tenant Oauth Idp Config Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -101,16 +99,12 @@ public class TenantOauthIdpConfig extends com.pulumi.resources.CustomResource {
     /**
      * The client id of an OAuth client.
      * 
-     * ***
-     * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
      * @return The client id of an OAuth client.
-     * 
-     * ***
      * 
      */
     public Output<String> clientId() {

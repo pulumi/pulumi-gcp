@@ -49,16 +49,12 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name for an association.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -136,8 +132,6 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
         /**
          * @param name The name for an association.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -148,8 +142,6 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
 
         /**
          * @param name The name for an association.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -169,8 +169,6 @@ type GroupGroupKey struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -199,8 +197,6 @@ type GroupGroupKeyArgs struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -297,8 +293,6 @@ func (o GroupGroupKeyOutput) Id() pulumi.StringOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
-//
-// ***
 func (o GroupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -348,8 +342,6 @@ func (o GroupGroupKeyPtrOutput) Id() pulumi.StringPtrOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
-//
-// ***
 func (o GroupGroupKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupGroupKey) *string {
 		if v == nil {
@@ -871,8 +863,6 @@ type GroupMembershipRoleExpiryDetail struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	//
-	// ***
 	ExpireTime string `pulumi:"expireTime"`
 }
 
@@ -892,8 +882,6 @@ type GroupMembershipRoleExpiryDetailArgs struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-	//
-	// ***
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 }
 
@@ -978,8 +966,6 @@ func (o GroupMembershipRoleExpiryDetailOutput) ToGroupMembershipRoleExpiryDetail
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
 // Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-//
-// ***
 func (o GroupMembershipRoleExpiryDetailOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupMembershipRoleExpiryDetail) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -1012,8 +998,6 @@ func (o GroupMembershipRoleExpiryDetailPtrOutput) Elem() GroupMembershipRoleExpi
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
 // Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-//
-// ***
 func (o GroupMembershipRoleExpiryDetailPtrOutput) ExpireTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupMembershipRoleExpiryDetail) *string {
 		if v == nil {

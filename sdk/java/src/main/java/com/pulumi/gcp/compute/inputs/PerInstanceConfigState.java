@@ -20,16 +20,12 @@ public final class PerInstanceConfigState extends com.pulumi.resources.ResourceA
     /**
      * The instance group manager this instance config is part of.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceGroupManager")
     private @Nullable Output<String> instanceGroupManager;
 
     /**
      * @return The instance group manager this instance config is part of.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instanceGroupManager() {
@@ -221,8 +217,6 @@ public final class PerInstanceConfigState extends com.pulumi.resources.ResourceA
         /**
          * @param instanceGroupManager The instance group manager this instance config is part of.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -233,8 +227,6 @@ public final class PerInstanceConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param instanceGroupManager The instance group manager this instance config is part of.
-         * 
-         * ***
          * 
          * @return builder
          * 

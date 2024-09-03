@@ -19,9 +19,7 @@ import (
 // * How-to Guides
 //   - [Creating a Feature Group](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-featuregroup)
 //
-// ## Example Usage
-//
-// ### Vertex Ai Feature Group
+// ##
 //
 // ```go
 // package main

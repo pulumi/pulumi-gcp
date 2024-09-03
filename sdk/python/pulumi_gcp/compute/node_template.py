@@ -426,11 +426,9 @@ class NodeTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
         * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+          * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        ## Example Usage
-
-        ### Node Template Basic
+        ## 
 
         ```python
         import pulumi
@@ -441,7 +439,7 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         ```
-        ### Node Template Server Binding
+        ## 
 
         ```python
         import pulumi
@@ -529,11 +527,9 @@ class NodeTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
         * How-to Guides
-            * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+          * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        ## Example Usage
-
-        ### Node Template Basic
+        ## 
 
         ```python
         import pulumi
@@ -544,7 +540,7 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type="n1-node-96-624")
         ```
-        ### Node Template Server Binding
+        ## 
 
         ```python
         import pulumi

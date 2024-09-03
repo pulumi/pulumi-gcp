@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+    ///   * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Datapolicy Data Policy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -58,7 +56,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     /// 
     /// });
     /// ```
-    /// ### Bigquery Datapolicy Data Policy Routine
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -169,9 +167,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// The enrollment level of the service.
         /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataPolicyType")]
         public Output<string> DataPolicyType { get; private set; } = null!;
@@ -263,9 +258,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// The enrollment level of the service.
         /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataPolicyType", required: true)]
         public Input<string> DataPolicyType { get; set; } = null!;
@@ -313,9 +305,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// The enrollment level of the service.
         /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataPolicyType")]
         public Input<string>? DataPolicyType { get; set; }

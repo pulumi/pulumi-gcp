@@ -75,7 +75,7 @@ public final class AutoscalerAutoscalingPolicyMetric {
      * metric scales number of virtual machines handling requests
      * to increase or decrease proportionally to the metric.
      * For example, a good metric to use as a utilizationTarget is
-     * www.googleapis.com/compute/instance/network/received_bytes_count.
+     * &lt;http://www.googleapis.com/compute/instance/network/received_bytes_count&gt;.
      * The autoscaler will work to keep this value constant for each
      * of the instances.
      * 
@@ -158,7 +158,7 @@ public final class AutoscalerAutoscalingPolicyMetric {
      * metric scales number of virtual machines handling requests
      * to increase or decrease proportionally to the metric.
      * For example, a good metric to use as a utilizationTarget is
-     * www.googleapis.com/compute/instance/network/received_bytes_count.
+     * &lt;http://www.googleapis.com/compute/instance/network/received_bytes_count&gt;.
      * The autoscaler will work to keep this value constant for each
      * of the instances.
      * 

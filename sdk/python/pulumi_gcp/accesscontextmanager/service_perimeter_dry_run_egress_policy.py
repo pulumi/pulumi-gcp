@@ -27,9 +27,6 @@ class ServicePerimeterDryRunEgressPolicyArgs:
         """
         The set of arguments for constructing a ServicePerimeterDryRunEgressPolicy resource.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -47,9 +44,6 @@ class ServicePerimeterDryRunEgressPolicyArgs:
     def perimeter(self) -> pulumi.Input[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 
@@ -99,9 +93,6 @@ class _ServicePerimeterDryRunEgressPolicyState:
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         """
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
@@ -142,9 +133,6 @@ class _ServicePerimeterDryRunEgressPolicyState:
     def perimeter(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 
@@ -190,9 +178,6 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -278,9 +263,6 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
                cause this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -315,9 +297,6 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
     def perimeter(self) -> pulumi.Output[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 

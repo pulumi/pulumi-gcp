@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// 
     /// * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/functions/docs)
+    ///   * [Official Documentation](https://cloud.google.com/functions/docs)
     /// 
     /// &gt; **Warning:** As of November 1, 2019, newly created Functions are
     /// private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
@@ -240,13 +240,13 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
         /// </summary>
         [Output("kmsKeyName")]
         public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -293,8 +293,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// The runtime in which the function is going to run.
         /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-        /// 
-        /// - - -
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -519,7 +517,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -528,7 +526,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -572,8 +570,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// The runtime in which the function is going to run.
         /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-        /// 
-        /// - - -
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -770,7 +766,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+        /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in &lt;https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key&gt;
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
@@ -779,7 +775,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -839,8 +835,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// The runtime in which the function is going to run.
         /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-        /// 
-        /// - - -
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

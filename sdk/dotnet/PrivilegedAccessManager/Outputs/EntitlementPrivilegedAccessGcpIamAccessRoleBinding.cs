@@ -15,11 +15,11 @@ namespace Pulumi.Gcp.PrivilegedAccessManager.Outputs
     {
         /// <summary>
         /// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-        /// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        /// &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
         /// </summary>
         public readonly string? ConditionExpression;
         /// <summary>
-        /// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        /// IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
         /// </summary>
         public readonly string Role;
 

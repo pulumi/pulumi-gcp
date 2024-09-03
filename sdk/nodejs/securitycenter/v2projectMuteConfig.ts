@@ -113,9 +113,6 @@ export class V2ProjectMuteConfig extends pulumi.CustomResource {
     public /*out*/ readonly mostRecentEditor!: pulumi.Output<string>;
     /**
      * Unique identifier provided by the client within the parent scope.
-     *
-     *
-     * - - -
      */
     public readonly muteConfigId!: pulumi.Output<string>;
     /**
@@ -224,9 +221,6 @@ export interface V2ProjectMuteConfigState {
     mostRecentEditor?: pulumi.Input<string>;
     /**
      * Unique identifier provided by the client within the parent scope.
-     *
-     *
-     * - - -
      */
     muteConfigId?: pulumi.Input<string>;
     /**
@@ -275,9 +269,6 @@ export interface V2ProjectMuteConfigArgs {
     location?: pulumi.Input<string>;
     /**
      * Unique identifier provided by the client within the parent scope.
-     *
-     *
-     * - - -
      */
     muteConfigId: pulumi.Input<string>;
     /**

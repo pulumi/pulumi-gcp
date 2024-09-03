@@ -7,97 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Tpu V2 Vm Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.tpu.getV2RuntimeVersions({});
- * const tpu = new gcp.tpu.V2Vm("tpu", {
- *     name: "test-tpu",
- *     zone: "us-central1-c",
- *     runtimeVersion: "tpu-vm-tf-2.13.0",
- * });
- * ```
- * ### Tpu V2 Vm Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
- *
- * const available = gcp.tpu.getV2RuntimeVersions({});
- * const availableGetV2AcceleratorTypes = gcp.tpu.getV2AcceleratorTypes({});
- * const network = new gcp.compute.Network("network", {
- *     name: "tpu-net",
- *     autoCreateSubnetworks: false,
- * });
- * const subnet = new gcp.compute.Subnetwork("subnet", {
- *     name: "tpu-subnet",
- *     ipCidrRange: "10.0.0.0/16",
- *     region: "us-central1",
- *     network: network.id,
- * });
- * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "tpu-sa",
- *     displayName: "Test TPU VM",
- * });
- * const disk = new gcp.compute.Disk("disk", {
- *     name: "tpu-disk",
- *     image: "debian-cloud/debian-11",
- *     size: 10,
- *     type: "pd-ssd",
- *     zone: "us-central1-c",
- * });
- * // Wait after service account creation to limit eventual consistency errors.
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
- *     dependsOn: [sa],
- * });
- * const tpu = new gcp.tpu.V2Vm("tpu", {
- *     name: "test-tpu",
- *     zone: "us-central1-c",
- *     description: "Text description of the TPU.",
- *     runtimeVersion: "tpu-vm-tf-2.13.0",
- *     acceleratorConfig: {
- *         type: "V2",
- *         topology: "2x2",
- *     },
- *     cidrBlock: "10.0.0.0/29",
- *     networkConfig: {
- *         canIpForward: true,
- *         enableExternalIps: true,
- *         network: network.id,
- *         subnetwork: subnet.id,
- *     },
- *     schedulingConfig: {
- *         preemptible: true,
- *     },
- *     shieldedInstanceConfig: {
- *         enableSecureBoot: true,
- *     },
- *     serviceAccount: {
- *         email: sa.email,
- *         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *     },
- *     dataDisks: [{
- *         sourceDisk: disk.id,
- *         mode: "READ_ONLY",
- *     }],
- *     labels: {
- *         foo: "bar",
- *     },
- *     metadata: {
- *         foo: "bar",
- *     },
- *     tags: ["foo"],
- * }, {
- *     dependsOn: [wait60Seconds],
- * });
- * ```
- *
  * ## Import
  *
  * Vm can be imported using any of these accepted formats:
@@ -246,9 +155,6 @@ export class V2Vm extends pulumi.CustomResource {
     public /*out*/ readonly queuedResource!: pulumi.Output<string>;
     /**
      * Runtime version for the TPU.
-     *
-     *
-     * - - -
      */
     public readonly runtimeVersion!: pulumi.Output<string>;
     /**
@@ -457,9 +363,6 @@ export interface V2VmState {
     queuedResource?: pulumi.Input<string>;
     /**
      * Runtime version for the TPU.
-     *
-     *
-     * - - -
      */
     runtimeVersion?: pulumi.Input<string>;
     /**
@@ -556,9 +459,6 @@ export interface V2VmArgs {
     project?: pulumi.Input<string>;
     /**
      * Runtime version for the TPU.
-     *
-     *
-     * - - -
      */
     runtimeVersion: pulumi.Input<string>;
     /**

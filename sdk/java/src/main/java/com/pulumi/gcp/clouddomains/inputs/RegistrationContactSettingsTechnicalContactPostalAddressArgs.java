@@ -116,8 +116,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
      * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
      * 
-     * ***
-     * 
      */
     @Import(name="recipients")
     private @Nullable Output<List<String>> recipients;
@@ -126,8 +124,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
      * @return The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
      * it might contain &#34;care of&#34; information.
      * 
-     * ***
-     * 
      */
     public Optional<Output<List<String>>> recipients() {
         return Optional.ofNullable(this.recipients);
@@ -135,8 +131,8 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
 
     /**
      * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-     * ensure the value is correct. See https://cldr.unicode.org/ and
-     * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: &#34;CH&#34; for Switzerland.
+     * ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+     * &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: &#34;CH&#34; for Switzerland.
      * 
      */
     @Import(name="regionCode", required=true)
@@ -144,8 +140,8 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
 
     /**
      * @return Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-     * ensure the value is correct. See https://cldr.unicode.org/ and
-     * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: &#34;CH&#34; for Switzerland.
+     * ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+     * &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: &#34;CH&#34; for Switzerland.
      * 
      */
     public Output<String> regionCode() {
@@ -326,8 +322,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
          * @param recipients The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain &#34;care of&#34; information.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -340,8 +334,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
          * @param recipients The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain &#34;care of&#34; information.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -353,8 +345,6 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
          * @param recipients The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
          * it might contain &#34;care of&#34; information.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -364,8 +354,8 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
 
         /**
          * @param regionCode Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-         * ensure the value is correct. See https://cldr.unicode.org/ and
-         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: &#34;CH&#34; for Switzerland.
+         * ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+         * &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: &#34;CH&#34; for Switzerland.
          * 
          * @return builder
          * 
@@ -377,8 +367,8 @@ public final class RegistrationContactSettingsTechnicalContactPostalAddressArgs 
 
         /**
          * @param regionCode Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-         * ensure the value is correct. See https://cldr.unicode.org/ and
-         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: &#34;CH&#34; for Switzerland.
+         * ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+         * &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: &#34;CH&#34; for Switzerland.
          * 
          * @return builder
          * 

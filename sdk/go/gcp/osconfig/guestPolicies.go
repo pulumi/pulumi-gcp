@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
 //
-// ## Example Usage
-//
-// ### Os Config Guest Policies Basic
+// ##
 //
 // ```go
 // package main
@@ -94,7 +92,7 @@ import (
 //	}
 //
 // ```
-// ### Os Config Guest Policies Packages
+// ##
 //
 // ```go
 // package main
@@ -173,7 +171,7 @@ import (
 //	}
 //
 // ```
-// ### Os Config Guest Policies Recipes
+// ##
 //
 // ```go
 // package main

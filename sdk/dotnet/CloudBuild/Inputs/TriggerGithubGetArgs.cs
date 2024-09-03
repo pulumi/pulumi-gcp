@@ -21,14 +21,14 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
         /// <summary>
         /// Name of the repository. For example: The name for
-        /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+        /// &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is "cloud-builders".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Owner of the repository. For example: The owner for
-        /// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+        /// &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is "googlecloudplatform".
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

@@ -49,16 +49,12 @@ public final class AssetResourceSpecArgs extends com.pulumi.resources.ResourceAr
     /**
      * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
      * 
-     * ***
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
      * @return Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -136,8 +132,6 @@ public final class AssetResourceSpecArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param type Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -148,8 +142,6 @@ public final class AssetResourceSpecArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -288,7 +288,7 @@ if not MYPY:
     class EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict(TypedDict):
         principals: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
         """
 elif False:
     EntitlementApprovalWorkflowManualApprovalsStepApproversArgsDict: TypeAlias = Mapping[str, Any]
@@ -298,7 +298,7 @@ class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs:
     def __init__(__self__, *,
                  principals: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] principals: Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
         """
         pulumi.set(__self__, "principals", principals)
 
@@ -306,7 +306,7 @@ class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs:
     @pulumi.getter
     def principals(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
         """
         return pulumi.get(self, "principals")
 
@@ -350,7 +350,7 @@ if not MYPY:
     class EntitlementPrivilegedAccessArgsDict(TypedDict):
         gcp_iam_access: pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgsDict']
         """
-        GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
         Structure is documented below.
         """
 elif False:
@@ -361,7 +361,7 @@ class EntitlementPrivilegedAccessArgs:
     def __init__(__self__, *,
                  gcp_iam_access: pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgs']):
         """
-        :param pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgs'] gcp_iam_access: GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        :param pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgs'] gcp_iam_access: GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
                Structure is documented below.
         """
         pulumi.set(__self__, "gcp_iam_access", gcp_iam_access)
@@ -370,7 +370,7 @@ class EntitlementPrivilegedAccessArgs:
     @pulumi.getter(name="gcpIamAccess")
     def gcp_iam_access(self) -> pulumi.Input['EntitlementPrivilegedAccessGcpIamAccessArgs']:
         """
-        GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
         Structure is documented below.
         """
         return pulumi.get(self, "gcp_iam_access")
@@ -456,12 +456,12 @@ if not MYPY:
     class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict(TypedDict):
         role: pulumi.Input[str]
         """
-        IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
         """
         condition_expression: NotRequired[pulumi.Input[str]]
         """
         The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-        https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
         """
 elif False:
     EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgsDict: TypeAlias = Mapping[str, Any]
@@ -472,9 +472,9 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
                  role: pulumi.Input[str],
                  condition_expression: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] role: IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        :param pulumi.Input[str] role: IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
         :param pulumi.Input[str] condition_expression: The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-               https://cloud.google.com/iam/docs/conditions-overview#attributes.
+               <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
         """
         pulumi.set(__self__, "role", role)
         if condition_expression is not None:
@@ -484,7 +484,7 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
         """
         return pulumi.get(self, "role")
 
@@ -497,7 +497,7 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
     def condition_expression(self) -> Optional[pulumi.Input[str]]:
         """
         The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-        https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
         """
         return pulumi.get(self, "condition_expression")
 
@@ -515,8 +515,6 @@ if not MYPY:
         unstructured: NotRequired[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgsDict']]
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
 elif False:
     EntitlementRequesterJustificationConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -529,8 +527,6 @@ class EntitlementRequesterJustificationConfigArgs:
         """
         :param pulumi.Input['EntitlementRequesterJustificationConfigNotMandatoryArgs'] not_mandatory: The justification is not mandatory but can be provided in any of the supported formats.
         :param pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgs'] unstructured: The requester has to provide a justification in the form of free flowing text.
-               
-               - - -
         """
         if not_mandatory is not None:
             pulumi.set(__self__, "not_mandatory", not_mandatory)
@@ -554,8 +550,6 @@ class EntitlementRequesterJustificationConfigArgs:
     def unstructured(self) -> Optional[pulumi.Input['EntitlementRequesterJustificationConfigUnstructuredArgs']]:
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
         return pulumi.get(self, "unstructured")
 

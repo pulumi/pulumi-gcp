@@ -11,12 +11,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.backups)
  * * How-to Guides
- *     * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
- *     * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
+ *   * [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
+ *   * [Official Documentation](https://cloud.google.com/filestore/docs/backups)
  *
- * ## Example Usage
- *
- * ### Filestore Backup Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -134,9 +132,6 @@ export class Backup extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -281,9 +276,6 @@ export interface BackupState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -345,9 +337,6 @@ export interface BackupArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

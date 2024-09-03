@@ -97,7 +97,7 @@ class TableArgs:
                parent organization or project resource for this tag key. Tag value is
                expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
-        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
                using "AS REPLICA" DDL like:
@@ -409,7 +409,7 @@ class TableArgs:
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> Optional[pulumi.Input['TableTableConstraintsArgs']]:
         """
-        Defines the primary key and foreign keys. 
+        Defines the primary key and foreign keys.
         Structure is documented below.
         """
         return pulumi.get(self, "table_constraints")
@@ -573,7 +573,7 @@ class _TableState:
                expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1034,7 +1034,7 @@ class _TableState:
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> Optional[pulumi.Input['TableTableConstraintsArgs']]:
         """
-        Defines the primary key and foreign keys. 
+        Defines the primary key and foreign keys.
         Structure is documented below.
         """
         return pulumi.get(self, "table_constraints")
@@ -1275,7 +1275,7 @@ class Table(pulumi.CustomResource):
                parent organization or project resource for this tag key. Tag value is
                expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
-        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1589,7 +1589,7 @@ class Table(pulumi.CustomResource):
                expected to be the short name, for example "Production".
         :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1911,7 +1911,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> pulumi.Output[Optional['outputs.TableTableConstraints']]:
         """
-        Defines the primary key and foreign keys. 
+        Defines the primary key and foreign keys.
         Structure is documented below.
         """
         return pulumi.get(self, "table_constraints")

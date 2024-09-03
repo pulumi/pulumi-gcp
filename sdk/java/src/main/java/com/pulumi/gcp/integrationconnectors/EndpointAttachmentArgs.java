@@ -87,16 +87,12 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
     /**
      * Name of Endpoint Attachment needs to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of Endpoint Attachment needs to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -258,8 +254,6 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         /**
          * @param name Name of Endpoint Attachment needs to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -270,8 +264,6 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param name Name of Endpoint Attachment needs to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 

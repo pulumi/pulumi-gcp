@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances/create)
     /// * How-to Guides
-    ///     * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
+    ///   * [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
     /// 
     /// ## Example Usage
     /// 
@@ -78,6 +78,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Instance Cidr Range
     /// 
     /// ```csharp
@@ -137,6 +138,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Instance Ip Range
     /// 
     /// ```csharp
@@ -196,6 +198,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// 
     /// ### Apigee Instance Full
     /// 
     /// ```csharp
@@ -369,9 +372,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee Organization associated with the Apigee instance,
         /// in the format `organizations/{{org_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -504,9 +504,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee Organization associated with the Apigee instance,
         /// in the format `organizations/{{org_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -593,9 +590,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee Organization associated with the Apigee instance,
         /// in the format `organizations/{{org_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

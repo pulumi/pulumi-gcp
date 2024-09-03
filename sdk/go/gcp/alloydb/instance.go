@@ -92,6 +92,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Alloydb Secondary Instance Basic
 //
 // ```go
@@ -250,11 +251,9 @@ type Instance struct {
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+	// The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrOutput `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   pulumi.StringOutput `pulumi:"instanceId"`
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -371,11 +370,9 @@ type instanceState struct {
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+	// The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   *string `pulumi:"instanceId"`
 	InstanceType *string `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -449,11 +446,9 @@ type InstanceState struct {
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+	// The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   pulumi.StringPtrInput
 	InstanceType pulumi.StringPtrInput
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -526,11 +521,9 @@ type instanceArgs struct {
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// User-settable and human-readable display name for the Instance.
 	DisplayName *string `pulumi:"displayName"`
-	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+	// The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   string `pulumi:"instanceId"`
 	InstanceType string `pulumi:"instanceType"`
 	// User-defined labels for the alloydb instance.
@@ -581,11 +574,9 @@ type InstanceArgs struct {
 	DatabaseFlags pulumi.StringMapInput
 	// User-settable and human-readable display name for the Instance.
 	DisplayName pulumi.StringPtrInput
-	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+	// The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
-	//
-	// ***
 	InstanceId   pulumi.StringInput
 	InstanceType pulumi.StringInput
 	// User-defined labels for the alloydb instance.
@@ -753,14 +744,12 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+// The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 func (o InstanceOutput) GceZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GceZone }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the alloydb instance.
-//
-// ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

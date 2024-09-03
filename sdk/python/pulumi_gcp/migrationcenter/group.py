@@ -28,9 +28,6 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] group_id: Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[str] location: The location of the group.
         :param pulumi.Input[str] description: Optional. The description of the group.
         :param pulumi.Input[str] display_name: Optional. User-friendly display name.
@@ -56,9 +53,6 @@ class GroupArgs:
     def group_id(self) -> pulumi.Input[str]:
         """
         Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-
-
-        - - -
         """
         return pulumi.get(self, "group_id")
 
@@ -151,9 +145,6 @@ class _GroupState:
         :param pulumi.Input[str] display_name: Optional. User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] group_id: Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -241,9 +232,6 @@ class _GroupState:
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-
-
-        - - -
         """
         return pulumi.get(self, "group_id")
 
@@ -343,9 +331,7 @@ class Group(pulumi.CustomResource):
         """
         A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have something in common, while allowing users to add annotations to the group.
 
-        ## Example Usage
-
-        ### Migration Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -390,9 +376,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. The description of the group.
         :param pulumi.Input[str] display_name: Optional. User-friendly display name.
         :param pulumi.Input[str] group_id: Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -409,9 +392,7 @@ class Group(pulumi.CustomResource):
         """
         A resource that represents an asset group. The purpose of an asset group is to bundle a set of assets that have something in common, while allowing users to add annotations to the group.
 
-        ## Example Usage
-
-        ### Migration Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -531,9 +512,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User-friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] group_id: Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -599,9 +577,6 @@ class Group(pulumi.CustomResource):
     def group_id(self) -> pulumi.Output[str]:
         """
         Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `a-z?`.
-
-
-        - - -
         """
         return pulumi.get(self, "group_id")
 

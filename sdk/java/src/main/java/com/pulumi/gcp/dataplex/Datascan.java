@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+ *   * [Official Documentation](https://cloud.google.com/dataplex/docs)
  * 
  * ## Example Usage
  * 
@@ -82,6 +82,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataplex Datascan Full Profile
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -168,6 +169,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataplex Datascan Basic Quality
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -227,6 +229,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataplex Datascan Full Quality
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -71,16 +71,12 @@ public final class VolumeSnapshotArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The name of the snapshot.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the snapshot.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -220,8 +216,6 @@ public final class VolumeSnapshotArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param name The name of the snapshot.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -232,8 +226,6 @@ public final class VolumeSnapshotArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param name The name of the snapshot.
-         * 
-         * ***
          * 
          * @return builder
          * 

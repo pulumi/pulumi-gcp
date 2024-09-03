@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
     /// * How-to Guides
-    ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+    ///   * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Global Address Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,7 +36,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Global Address Private Services Connect
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -159,9 +157,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -317,9 +312,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -447,9 +439,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

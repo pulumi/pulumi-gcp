@@ -136,16 +136,12 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the reservation. This field must only contain alphanumeric characters or dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -371,8 +367,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the reservation. This field must only contain alphanumeric characters or dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -383,8 +377,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the reservation. This field must only contain alphanumeric characters or dash.
-         * 
-         * ***
          * 
          * @return builder
          * 

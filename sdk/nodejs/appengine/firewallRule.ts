@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
+ *   * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
  *
  * ## Example Usage
  *
@@ -95,9 +95,6 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-     *
-     *
-     * - - -
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -166,9 +163,6 @@ export interface FirewallRuleState {
     /**
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-     *
-     *
-     * - - -
      */
     action?: pulumi.Input<string>;
     /**
@@ -201,9 +195,6 @@ export interface FirewallRuleArgs {
     /**
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-     *
-     *
-     * - - -
      */
     action: pulumi.Input<string>;
     /**

@@ -21,11 +21,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
  * * How-to Guides
- *     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+ *   * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
  * 
- * ## Example Usage
- * 
- * ### Healthcare Dataset Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -61,7 +59,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Healthcare Dataset Cmek
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -178,16 +176,12 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * The location for the Dataset.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the Dataset.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

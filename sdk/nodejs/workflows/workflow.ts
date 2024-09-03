@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/workflows/docs/reference/rest/v1/projects.locations.workflows)
  * * How-to Guides
- *     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
+ *   * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
  *
- * ## Example Usage
- *
- * ### Workflow Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

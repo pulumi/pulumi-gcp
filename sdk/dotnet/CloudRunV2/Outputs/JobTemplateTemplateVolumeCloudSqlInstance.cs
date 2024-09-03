@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class JobTemplateTemplateVolumeCloudSqlInstance
     {
         /// <summary>
-        /// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        /// The Cloud SQL instance connection names, as can be found in &lt;https://console.cloud.google.com/sql/instances&gt;. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         /// </summary>
         public readonly ImmutableArray<string> Instances;
 

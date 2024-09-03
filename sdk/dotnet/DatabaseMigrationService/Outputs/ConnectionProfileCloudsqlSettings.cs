@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         public readonly ImmutableDictionary<string, string>? DatabaseFlags;
         /// <summary>
         /// The database engine type and version.
-        /// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+        /// Currently supported values located at &lt;https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion&gt;
         /// </summary>
         public readonly string? DatabaseVersion;
         /// <summary>
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         public readonly string? StorageAutoResizeLimit;
         /// <summary>
         /// The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-        /// For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+        /// For more information, see &lt;https://cloud.google.com/sql/docs/mysql/instance-settings&gt;
         /// </summary>
         public readonly string? Tier;
         /// <summary>

@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_tags_tag_values" "environment_tag_values"{
-        ///   parent = "tagKeys/56789"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagValues = Gcp.Tags.GetTagValues.Invoke(new()
+        ///     {
+        ///         Parent = "tagKeys/56789",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetTagValuesResult> InvokeAsync(GetTagValuesArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_tags_tag_values" "environment_tag_values"{
-        ///   parent = "tagKeys/56789"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagValues = Gcp.Tags.GetTagValues.Invoke(new()
+        ///     {
+        ///         Parent = "tagKeys/56789",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetTagValuesResult> Invoke(GetTagValuesInvokeArgs args, InvokeOptions? options = null)

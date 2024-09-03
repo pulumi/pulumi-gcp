@@ -15,9 +15,6 @@ namespace Pulumi.Gcp.BigTable.Outputs
     {
         /// <summary>
         /// Number of version before applying the GC policy.
-        /// 
-        /// -----
-        /// `gc_rules` include 2 fields:
         /// </summary>
         public readonly int Number;
 

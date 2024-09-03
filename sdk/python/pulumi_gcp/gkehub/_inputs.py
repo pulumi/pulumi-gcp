@@ -4581,8 +4581,6 @@ if not MYPY:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-
-        - - -
         """
 elif False:
     MembershipRbacRoleBindingRoleArgsDict: TypeAlias = Mapping[str, Any]
@@ -4594,8 +4592,6 @@ class MembershipRbacRoleBindingRoleArgs:
         """
         :param pulumi.Input[str] predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-               
-               - - -
         """
         pulumi.set(__self__, "predefined_role", predefined_role)
 
@@ -4605,8 +4601,6 @@ class MembershipRbacRoleBindingRoleArgs:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 
@@ -4785,8 +4779,6 @@ if not MYPY:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-
-        - - -
         """
 elif False:
     ScopeRbacRoleBindingRoleArgsDict: TypeAlias = Mapping[str, Any]
@@ -4798,8 +4790,6 @@ class ScopeRbacRoleBindingRoleArgs:
         """
         :param pulumi.Input[str] predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-               
-               - - -
         """
         if predefined_role is not None:
             pulumi.set(__self__, "predefined_role", predefined_role)
@@ -4810,8 +4800,6 @@ class ScopeRbacRoleBindingRoleArgs:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 

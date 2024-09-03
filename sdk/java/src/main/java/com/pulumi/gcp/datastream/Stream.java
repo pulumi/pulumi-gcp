@@ -28,11 +28,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.streams)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
+ *   * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
  * 
- * ## Example Usage
- * 
- * ### Datastream Stream Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -280,6 +278,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Datastream Stream Postgresql
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -405,6 +406,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Datastream Stream Oracle
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -531,6 +533,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Datastream Stream Sql Server
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -675,7 +678,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Datastream Stream Postgresql Bigquery Dataset Id
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -822,7 +825,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Datastream Stream Bigquery
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -982,7 +985,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Datastream Stream Bigquery Append Only
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

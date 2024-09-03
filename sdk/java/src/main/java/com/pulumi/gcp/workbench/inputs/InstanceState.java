@@ -209,16 +209,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Part of `parent`. See documentation of `projectsId`.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return Part of `parent`. See documentation of `projectsId`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -660,8 +656,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Part of `parent`. See documentation of `projectsId`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -672,8 +666,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Part of `parent`. See documentation of `projectsId`.
-         * 
-         * ***
          * 
          * @return builder
          * 

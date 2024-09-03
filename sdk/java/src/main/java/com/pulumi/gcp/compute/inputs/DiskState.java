@@ -360,8 +360,6 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -374,8 +372,6 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -582,8 +578,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -596,8 +592,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -718,7 +714,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      * 
      */
@@ -728,7 +724,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      * 
      */
@@ -1305,8 +1301,6 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1323,8 +1317,6 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1602,8 +1594,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
          * For example, the following are valid values:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
          * * projects/{project}/zones/{zone}/disks/{disk}
          * * projects/{project}/regions/{region}/disks/{disk}
          * * zones/{zone}/disks/{disk}
@@ -1620,8 +1612,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sourceDisk The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
          * For example, the following are valid values:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-         * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}&gt;
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}&gt;
          * * projects/{project}/zones/{zone}/disks/{disk}
          * * projects/{project}/regions/{region}/disks/{disk}
          * * zones/{zone}/disks/{disk}
@@ -1774,7 +1766,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storagePool The URL of the storage pool in which the new disk is created.
          * For example:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
          * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
          * 
          * @return builder
@@ -1788,7 +1780,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storagePool The URL of the storage pool in which the new disk is created.
          * For example:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
          * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
          * 
          * @return builder

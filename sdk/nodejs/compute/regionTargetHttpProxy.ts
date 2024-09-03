@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
- * ## Example Usage
- *
- * ### Region Target Http Proxy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,7 +58,7 @@ import * as utilities from "../utilities";
  *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
- * ### Region Target Http Proxy Https Redirect
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -178,9 +176,6 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     public readonly urlMap!: pulumi.Output<string>;
 
@@ -267,9 +262,6 @@ export interface RegionTargetHttpProxyState {
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     urlMap?: pulumi.Input<string>;
 }
@@ -305,9 +297,6 @@ export interface RegionTargetHttpProxyArgs {
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
-     *
-     *
-     * - - -
      */
     urlMap: pulumi.Input<string>;
 }

@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
+ *   * [Official Documentation](https://cloud.google.com/spanner/)
  *
- * ## Example Usage
- *
- * ### Spanner Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,7 +31,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Spanner Instance Processing Units
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +46,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Spanner Instance With Autoscaling
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +70,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Spanner Instance Multi Regional
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -160,9 +158,6 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -283,9 +278,6 @@ export interface InstanceState {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -354,9 +346,6 @@ export interface InstanceArgs {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy.Outputs
     public sealed class DataPolicyDataMaskingPolicy
     {
         /// <summary>
-        /// The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
+        /// The available masking rules. Learn more here: &lt;https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options&gt;.
         /// Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
         /// </summary>
         public readonly string? PredefinedExpression;

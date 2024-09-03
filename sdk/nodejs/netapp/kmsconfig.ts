@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.kmsConfigs)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/cmek/cmek-overview)
  *
- * ## Example Usage
- *
- * ### Kms Config Create
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -121,9 +119,6 @@ export class Kmsconfig extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of the CMEK policy.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -224,9 +219,6 @@ export interface KmsconfigState {
     location?: pulumi.Input<string>;
     /**
      * Name of the CMEK policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -270,9 +262,6 @@ export interface KmsconfigArgs {
     location: pulumi.Input<string>;
     /**
      * Name of the CMEK policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

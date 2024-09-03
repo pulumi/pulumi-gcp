@@ -197,6 +197,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate With Template
     /// 
     /// ```csharp
@@ -393,6 +394,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Csr
     /// 
     /// ```csharp
@@ -477,6 +479,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate No Authority
     /// 
     /// ```csharp
@@ -607,6 +610,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
     /// ### Privateca Certificate Custom Ski
     /// 
     /// ```csharp
@@ -841,9 +845,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// Location of the Certificate. A full list of valid locations can be found by
         /// running `gcloud privateca locations list`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -1010,9 +1011,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// Location of the Certificate. A full list of valid locations can be found by
         /// running `gcloud privateca locations list`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -1144,9 +1142,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// Location of the Certificate. A full list of valid locations can be found by
         /// running `gcloud privateca locations list`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

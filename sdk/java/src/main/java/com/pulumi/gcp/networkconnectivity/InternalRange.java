@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.internalRanges)
  * * How-to Guides
- *     * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
+ *   * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
  * 
- * ## Example Usage
- * 
- * ### Network Connectivity Internal Ranges Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +73,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Connectivity Internal Ranges Automatic Reservation
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -121,7 +119,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Connectivity Internal Ranges External Ranges
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -167,7 +165,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Connectivity Internal Ranges Reserve With Overlap
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -364,8 +362,6 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
      * 
-     * ***
-     * 
      */
     @Export(name="peering", refs={String.class}, tree="[0]")
     private Output<String> peering;
@@ -373,8 +369,6 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     * 
-     * ***
      * 
      */
     public Output<String> peering() {

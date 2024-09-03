@@ -24,9 +24,6 @@ class ServicePerimeterResourceArgs:
         """
         The set of arguments for constructing a ServicePerimeterResource resource.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -39,9 +36,6 @@ class ServicePerimeterResourceArgs:
     def perimeter_name(self) -> pulumi.Input[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter_name")
 
@@ -72,9 +66,6 @@ class _ServicePerimeterResourceState:
         """
         Input properties used for looking up and filtering ServicePerimeterResource resources.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -89,9 +80,6 @@ class _ServicePerimeterResourceState:
     def perimeter_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter_name")
 
@@ -137,7 +125,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
-            * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+          * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -183,9 +171,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -211,7 +196,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
-            * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+          * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -306,9 +291,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
@@ -326,9 +308,6 @@ class ServicePerimeterResource(pulumi.CustomResource):
     def perimeter_name(self) -> pulumi.Output[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter_name")
 

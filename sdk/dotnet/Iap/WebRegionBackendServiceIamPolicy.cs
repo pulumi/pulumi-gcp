@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.iap.WebRegionBackendServiceIamBinding
     /// 
     /// ```csharp
@@ -158,6 +159,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.iap.WebRegionBackendServiceIamMember
     /// 
     /// ```csharp
@@ -209,8 +211,6 @@ namespace Pulumi.Gcp.Iap
     /// ```
     /// 
     /// ## This resource supports User Project Overrides.
-    /// 
-    /// - 
     /// 
     /// # IAM policy for Identity-Aware Proxy WebRegionBackendService
     /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionBackendService. Each of these resources serves a different use case:
@@ -306,6 +306,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.iap.WebRegionBackendServiceIamBinding
     /// 
     /// ```csharp
@@ -361,6 +362,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// });
     /// ```
+    /// 
     /// ## gcp.iap.WebRegionBackendServiceIamMember
     /// 
     /// ```csharp
@@ -447,7 +449,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy")]
     public partial class WebRegionBackendServiceIamPolicy : global::Pulumi.CustomResource

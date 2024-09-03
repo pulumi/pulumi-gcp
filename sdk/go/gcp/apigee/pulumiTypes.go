@@ -2542,8 +2542,6 @@ type KeystoresAliasesSelfSignedCertSubject struct {
 	// Two-letter country code. Example, IN for India, US for United States of America.
 	CountryCode *string `pulumi:"countryCode"`
 	// Email address. Max 255 characters.
-	//
-	// ***
 	Email *string `pulumi:"email"`
 	// City or town name. Maximum length is 128 characters.
 	Locality *string `pulumi:"locality"`
@@ -2572,8 +2570,6 @@ type KeystoresAliasesSelfSignedCertSubjectArgs struct {
 	// Two-letter country code. Example, IN for India, US for United States of America.
 	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
 	// Email address. Max 255 characters.
-	//
-	// ***
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// City or town name. Maximum length is 128 characters.
 	Locality pulumi.StringPtrInput `pulumi:"locality"`
@@ -2673,8 +2669,6 @@ func (o KeystoresAliasesSelfSignedCertSubjectOutput) CountryCode() pulumi.String
 }
 
 // Email address. Max 255 characters.
-//
-// ***
 func (o KeystoresAliasesSelfSignedCertSubjectOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -2744,8 +2738,6 @@ func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) CountryCode() pulumi.Str
 }
 
 // Email address. Max 255 characters.
-//
-// ***
 func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
 		if v == nil {
@@ -3297,7 +3289,7 @@ func (o SharedflowMetaDataArrayOutput) Index(i pulumi.IntInput) SharedflowMetaDa
 }
 
 type TargetServerSSlInfo struct {
-	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 	Ciphers []string `pulumi:"ciphers"`
 	// Enables two-way TLS.
 	ClientAuthEnabled *bool `pulumi:"clientAuthEnabled"`
@@ -3330,7 +3322,7 @@ type TargetServerSSlInfoInput interface {
 }
 
 type TargetServerSSlInfoArgs struct {
-	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
 	// Enables two-way TLS.
 	ClientAuthEnabled pulumi.BoolPtrInput `pulumi:"clientAuthEnabled"`
@@ -3428,7 +3420,7 @@ func (o TargetServerSSlInfoOutput) ToTargetServerSSlInfoPtrOutputWithContext(ctx
 	}).(TargetServerSSlInfoPtrOutput)
 }
 
-// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 func (o TargetServerSSlInfoOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetServerSSlInfo) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
 }
@@ -3498,7 +3490,7 @@ func (o TargetServerSSlInfoPtrOutput) Elem() TargetServerSSlInfoOutput {
 	}).(TargetServerSSlInfoOutput)
 }
 
-// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: <http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites>. For configurable proxies, it must follow the configuration specified in: <https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration>. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 func (o TargetServerSSlInfoPtrOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetServerSSlInfo) []string {
 		if v == nil {

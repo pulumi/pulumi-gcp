@@ -16,12 +16,10 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.clients)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
-    ///     * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
+    ///   * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+    ///   * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Integrations Client Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -38,7 +36,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     /// });
     /// ```
-    /// ### Integrations Client Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -143,9 +141,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
 
         /// <summary>
         /// Location in which client needs to be provisioned.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -242,9 +237,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
 
         /// <summary>
         /// Location in which client needs to be provisioned.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -303,9 +295,6 @@ namespace Pulumi.Gcp.ApplicationIntegration
 
         /// <summary>
         /// Location in which client needs to be provisioned.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -26,13 +26,11 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
  * * How-to Guides
- *     * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
- *     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
- *     * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
+ *   * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
+ *   * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+ *   * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
  * 
- * ## Example Usage
- * 
- * ### Privateca Template Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -250,16 +248,12 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

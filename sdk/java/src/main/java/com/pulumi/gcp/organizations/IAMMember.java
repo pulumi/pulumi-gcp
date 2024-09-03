@@ -30,16 +30,16 @@ import javax.annotation.Nullable;
  * ## gcp.organizations.IAMPolicy
  * 
  * !&gt; **Warning:** New organizations have several default policies which will,
- *    without extreme caution, be **overwritten** by use of this resource.
- *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
- *    resources. This resource makes it easy to remove your own access to
- *    an organization, which will require a call to Google Support to have
- *    fixed, and can take multiple days to resolve.
+ * without extreme caution, be **overwritten** by use of this resource.
+ * The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ * resources. This resource makes it easy to remove your own access to
+ * an organization, which will require a call to Google Support to have
+ * fixed, and can take multiple days to resolve.
  * 
- *    In general, this resource should only be used with organizations
- *    fully managed by this provider.I f you do use this resource,
- *    the best way to be sure that you are not making dangerous changes is to start
- *    by **importing** your existing policy, and examining the diff very closely.
+ * In general, this resource should only be used with organizations
+ * fully managed by this provider.I f you do use this resource,
+ * the best way to be sure that you are not making dangerous changes is to start
+ * by **importing** your existing policy, and examining the diff very closely.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -610,9 +610,9 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -622,9 +622,9 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     /**
      * @return Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */

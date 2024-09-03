@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
 //
-// ## Example Usage
-//
-// ### Dataproc Metastore Service Basic
+// ##
 //
 // ```go
 // package main
@@ -60,6 +58,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Dataproc Metastore Service Cmek Example
 //
 // ```go
@@ -108,6 +109,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Metastore Service Private Service Connect
 //
 // ```go
@@ -162,6 +164,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataproc Metastore Service Private Service Connect Custom Routes
 //
 // ```go
@@ -217,7 +220,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Dpms2
+// ##
 //
 // ```go
 // package main
@@ -250,7 +253,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Dpms2 Scaling Factor
+// ##
 //
 // ```go
 // package main
@@ -283,7 +286,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Scheduled Backup
+// ##
 //
 // ```go
 // package main
@@ -339,7 +342,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+// ##
 //
 // ```go
 // package main
@@ -377,7 +380,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+// ##
 //
 // ```go
 // package main
@@ -416,7 +419,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+// ##
 //
 // ```go
 // package main
@@ -454,7 +457,7 @@ import (
 //	}
 //
 // ```
-// ### Dataproc Metastore Service Autoscaling No Limit Config
+// ##
 //
 // ```go
 // package main
@@ -577,8 +580,6 @@ type MetastoreService struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -693,8 +694,6 @@ type metastoreServiceState struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State *string `pulumi:"state"`
@@ -772,8 +771,6 @@ type MetastoreServiceState struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// The current state of the metastore service.
 	State pulumi.StringPtrInput
@@ -844,8 +841,6 @@ type metastoreServiceArgs struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
@@ -907,8 +902,6 @@ type MetastoreServiceArgs struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
@@ -1123,8 +1116,6 @@ func (o MetastoreServiceOutput) ScheduledBackup() MetastoreServiceScheduledBacku
 // The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 // and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 // 3 and 63 characters.
-//
-// ***
 func (o MetastoreServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

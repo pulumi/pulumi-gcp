@@ -19,18 +19,16 @@ namespace Pulumi.Gcp.Monitoring
         /// A monitoring Istio Canonical Service is automatically created by GCP to monitor
         /// Istio Canonical Services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         /// * How-to Guides
-        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// ## Example Usage
         /// 
         /// ### Monitoring Istio Canonical Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -62,18 +60,16 @@ namespace Pulumi.Gcp.Monitoring
         /// A monitoring Istio Canonical Service is automatically created by GCP to monitor
         /// Istio Canonical Services.
         /// 
-        /// 
         /// To get more information about Service, see:
         /// 
         /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         /// * How-to Guides
-        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        ///   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// ## Example Usage
         /// 
         /// ### Monitoring Istio Canonical Service
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -104,10 +100,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The name of the canonical service underlying this service.
         /// Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
-        /// 
-        /// - - -
-        /// 
-        /// Other optional fields include:
         /// </summary>
         [Input("canonicalService", required: true)]
         public string CanonicalService { get; set; } = null!;
@@ -144,10 +136,6 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The name of the canonical service underlying this service.
         /// Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
-        /// 
-        /// - - -
-        /// 
-        /// Other optional fields include:
         /// </summary>
         [Input("canonicalService", required: true)]
         public Input<string> CanonicalService { get; set; } = null!;

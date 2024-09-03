@@ -25,9 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
- * 
- * ## Example Usage
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  * 
  * ## Import
  * 
@@ -180,8 +178,6 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * ***
-     * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output<String> privateKey;
@@ -189,8 +185,6 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     * 
-     * ***
      * 
      */
     public Output<String> privateKey() {

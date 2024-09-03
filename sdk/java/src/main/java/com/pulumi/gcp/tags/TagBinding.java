@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  * 
  * ## Example Usage
  * 
@@ -136,16 +136,12 @@ public class TagBinding extends com.pulumi.resources.CustomResource {
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
      * 
-     * ***
-     * 
      */
     @Export(name="tagValue", refs={String.class}, tree="[0]")
     private Output<String> tagValue;
 
     /**
      * @return The TagValue of the TagBinding. Must be of the form tagValues/456.
-     * 
-     * ***
      * 
      */
     public Output<String> tagValue() {

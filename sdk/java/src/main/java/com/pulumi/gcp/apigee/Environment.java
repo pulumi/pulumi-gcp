@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Example Usage
  * 
@@ -245,8 +245,6 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
@@ -254,8 +252,6 @@ public class Environment extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> orgId() {

@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage
- *
- * ### Data Catalog Entry Tag Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +81,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Data Catalog Entry Group Tag
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -153,7 +151,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Data Catalog Entry Tag Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

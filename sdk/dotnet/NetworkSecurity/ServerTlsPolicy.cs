@@ -10,199 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Network Security Server Tls Policy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
-    ///     {
-    ///         Name = "my-server-tls-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         AllowOpen = false,
-    ///         ServerCertificate = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyServerCertificateArgs
-    ///         {
-    ///             CertificateProviderInstance = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs
-    ///             {
-    ///                 PluginInstance = "google_cloud_private_spiffe",
-    ///             },
-    ///         },
-    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
-    ///         {
-    ///             ClientValidationCas = new[]
-    ///             {
-    ///                 new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyClientValidationCaArgs
-    ///                 {
-    ///                     GrpcEndpoint = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs
-    ///                     {
-    ///                         TargetUri = "unix:mypath",
-    ///                     },
-    ///                 },
-    ///                 new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyClientValidationCaArgs
-    ///                 {
-    ///                     GrpcEndpoint = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs
-    ///                     {
-    ///                         TargetUri = "unix:abc/mypath",
-    ///                     },
-    ///                 },
-    ///                 new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyClientValidationCaArgs
-    ///                 {
-    ///                     CertificateProviderInstance = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs
-    ///                     {
-    ///                         PluginInstance = "google_cloud_private_spiffe",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Server Tls Policy Advanced
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
-    ///     {
-    ///         Name = "my-server-tls-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         Location = "global",
-    ///         AllowOpen = false,
-    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
-    ///         {
-    ///             ClientValidationMode = "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Server Tls Policy Server Cert
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
-    ///     {
-    ///         Name = "my-server-tls-policy",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Description = "my description",
-    ///         Location = "global",
-    ///         AllowOpen = false,
-    ///         ServerCertificate = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyServerCertificateArgs
-    ///         {
-    ///             GrpcEndpoint = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyServerCertificateGrpcEndpointArgs
-    ///             {
-    ///                 TargetUri = "unix:mypath",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Network Security Server Tls Policy Mtls
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var defaultTrustConfig = new Gcp.CertificateManager.TrustConfig("default", new()
-    ///     {
-    ///         Name = "my-trust-config",
-    ///         Description = "sample trust config description",
-    ///         Location = "global",
-    ///         TrustStores = new[]
-    ///         {
-    ///             new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreArgs
-    ///             {
-    ///                 TrustAnchors = new[]
-    ///                 {
-    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreTrustAnchorArgs
-    ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
-    ///                         {
-    ///                             Input = "test-fixtures/ca_cert.pem",
-    ///                         }).Apply(invoke =&gt; invoke.Result),
-    ///                     },
-    ///                 },
-    ///                 IntermediateCas = new[]
-    ///                 {
-    ///                     new Gcp.CertificateManager.Inputs.TrustConfigTrustStoreIntermediateCaArgs
-    ///                     {
-    ///                         PemCertificate = Std.File.Invoke(new()
-    ///                         {
-    ///                             Input = "test-fixtures/ca_cert.pem",
-    ///                         }).Apply(invoke =&gt; invoke.Result),
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    ///     var @default = new Gcp.NetworkSecurity.ServerTlsPolicy("default", new()
-    ///     {
-    ///         Name = "my-server-tls-policy",
-    ///         Description = "my description",
-    ///         Location = "global",
-    ///         AllowOpen = false,
-    ///         MtlsPolicy = new Gcp.NetworkSecurity.Inputs.ServerTlsPolicyMtlsPolicyArgs
-    ///         {
-    ///             ClientValidationMode = "REJECT_INVALID",
-    ///             ClientValidationTrustConfig = Output.Tuple(project, defaultTrustConfig.Name).Apply(values =&gt;
-    ///             {
-    ///                 var project = values.Item1;
-    ///                 var name = values.Item2;
-    ///                 return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/global/trustConfigs/{name}";
-    ///             }),
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ServerTlsPolicy can be imported using any of these accepted formats:
@@ -281,9 +88,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the ServerTlsPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -411,9 +215,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the ServerTlsPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -507,9 +308,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Name of the ServerTlsPolicy resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

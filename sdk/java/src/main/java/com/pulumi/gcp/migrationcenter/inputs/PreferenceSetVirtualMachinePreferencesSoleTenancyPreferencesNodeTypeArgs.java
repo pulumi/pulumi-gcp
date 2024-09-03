@@ -16,14 +16,14 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesN
     public static final PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs Empty = new PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs();
 
     /**
-     * Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+     * Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+     * @return Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -55,7 +55,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesN
         }
 
         /**
-         * @param nodeName Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+         * @param nodeName Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesN
         }
 
         /**
-         * @param nodeName Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+         * @param nodeName Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
          * 
          * @return builder
          * 

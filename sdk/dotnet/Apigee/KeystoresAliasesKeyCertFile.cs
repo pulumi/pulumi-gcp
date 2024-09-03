@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
     /// * How-to Guides
-    ///     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+    ///   * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
     /// 
     /// ## Import
     /// 
@@ -47,9 +47,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Cert content
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cert")]
         public Output<string> Cert { get; private set; } = null!;
@@ -156,9 +153,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Cert content
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
@@ -236,9 +230,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Cert content
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }

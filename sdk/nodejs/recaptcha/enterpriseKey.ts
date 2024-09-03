@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Android_key
+ * ### androidKey
  * A basic test of recaptcha enterprise key that can be used by Android apps
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +32,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Ios_key
+ *
+ * ### iosKey
  * A basic test of recaptcha enterprise key that can be used by iOS apps
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,7 +54,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Minimal_key
+ *
+ * ### minimalKey
  * A minimal test of recaptcha enterprise key
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +71,8 @@ import * as utilities from "../utilities";
  *     labels: {},
  * });
  * ```
- * ### Waf_key
+ *
+ * ### wafKey
  * A basic test of recaptcha enterprise key that includes WAF settings
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -97,7 +100,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Web_key
+ *
+ * ### webKey
  * A basic test of recaptcha enterprise key that can be used by websites
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -121,7 +125,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Web_score_key
+ *
+ * ### webScoreKey
  * A basic test of recaptcha enterprise key with score integration type that can be used by websites
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -207,10 +212,6 @@ export class EnterpriseKey extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
-     *
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -317,10 +318,6 @@ export interface EnterpriseKeyState {
     createTime?: pulumi.Input<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
-     *
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -374,10 +371,6 @@ export interface EnterpriseKeyArgs {
     androidSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyAndroidSettings>;
     /**
      * Human-readable display name of this key. Modifiable by user.
-     *
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

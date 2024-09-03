@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/publicAdvertisedPrefixes)
  * * How-to Guides
- *     * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
+ *   * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
  *
  * ## Example Usage
  *
@@ -91,9 +91,6 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     public readonly dnsVerificationIp!: pulumi.Output<string>;
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-     *
-     *
-     * - - -
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -174,9 +171,6 @@ export interface PublicAdvertisedPrefixState {
     dnsVerificationIp?: pulumi.Input<string>;
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-     *
-     *
-     * - - -
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -217,9 +211,6 @@ export interface PublicAdvertisedPrefixArgs {
     dnsVerificationIp: pulumi.Input<string>;
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-     *
-     *
-     * - - -
      */
     ipCidrRange: pulumi.Input<string>;
     /**

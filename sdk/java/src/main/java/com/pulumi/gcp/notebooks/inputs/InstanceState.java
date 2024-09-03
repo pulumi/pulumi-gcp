@@ -236,7 +236,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of owners of this instance after creation.
-     * Format: alias{@literal @}example.com.
+     * Format: &lt;alias{@literal @}example.com&gt;.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -247,7 +247,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of owners of this instance after creation.
-     * Format: alias{@literal @}example.com.
+     * Format: &lt;alias{@literal @}example.com&gt;.
      * Currently supports one owner only.
      * If not specified, all of the service account users of
      * your VM instance&#39;s service account can use the instance.
@@ -300,16 +300,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the zone where the machine resides.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -559,8 +555,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+     * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
      * 
      */
     @Import(name="serviceAccountScopes")
@@ -569,8 +565,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. The URIs of service account scopes to be included in Compute Engine instances.
      * If not specified, the following scopes are defined:
-     * - https://www.googleapis.com/auth/cloud-platform
-     * - https://www.googleapis.com/auth/userinfo.email
+     * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+     * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
      * 
      */
     public Optional<Output<List<String>>> serviceAccountScopes() {
@@ -1019,7 +1015,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceOwners The list of owners of this instance after creation.
-         * Format: alias{@literal @}example.com.
+         * Format: &lt;alias{@literal @}example.com&gt;.
          * Currently supports one owner only.
          * If not specified, all of the service account users of
          * your VM instance&#39;s service account can use the instance.
@@ -1034,7 +1030,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceOwners The list of owners of this instance after creation.
-         * Format: alias{@literal @}example.com.
+         * Format: &lt;alias{@literal @}example.com&gt;.
          * Currently supports one owner only.
          * If not specified, all of the service account users of
          * your VM instance&#39;s service account can use the instance.
@@ -1048,7 +1044,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceOwners The list of owners of this instance after creation.
-         * Format: alias{@literal @}example.com.
+         * Format: &lt;alias{@literal @}example.com&gt;.
          * Currently supports one owner only.
          * If not specified, all of the service account users of
          * your VM instance&#39;s service account can use the instance.
@@ -1115,8 +1111,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location A reference to the zone where the machine resides.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1127,8 +1121,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location A reference to the zone where the machine resides.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1464,8 +1456,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceAccountScopes Optional. The URIs of service account scopes to be included in Compute Engine instances.
          * If not specified, the following scopes are defined:
-         * - https://www.googleapis.com/auth/cloud-platform
-         * - https://www.googleapis.com/auth/userinfo.email
+         * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+         * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
          * 
          * @return builder
          * 
@@ -1478,8 +1470,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceAccountScopes Optional. The URIs of service account scopes to be included in Compute Engine instances.
          * If not specified, the following scopes are defined:
-         * - https://www.googleapis.com/auth/cloud-platform
-         * - https://www.googleapis.com/auth/userinfo.email
+         * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+         * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
          * 
          * @return builder
          * 
@@ -1491,8 +1483,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceAccountScopes Optional. The URIs of service account scopes to be included in Compute Engine instances.
          * If not specified, the following scopes are defined:
-         * - https://www.googleapis.com/auth/cloud-platform
-         * - https://www.googleapis.com/auth/userinfo.email
+         * - &lt;https://www.googleapis.com/auth/cloud-platform&gt;
+         * - &lt;https://www.googleapis.com/auth/userinfo.email&gt;
          * 
          * @return builder
          * 

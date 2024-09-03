@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.connections)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/integration-connectors/docs/createconnection)
+ *   * [Official Documentation](https://cloud.google.com/integration-connectors/docs/createconnection)
  * 
  * ## Example Usage
  * 
@@ -90,6 +90,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Integration Connectors Connection Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -674,16 +675,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Name of Connection needs to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of Connection needs to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

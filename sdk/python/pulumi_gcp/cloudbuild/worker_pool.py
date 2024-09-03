@@ -36,9 +36,6 @@ class WorkerPoolArgs:
                configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
-               
-               
-               - - -
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -100,9 +97,6 @@ class WorkerPoolArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         User-defined name of the `WorkerPool`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -173,9 +167,6 @@ class _WorkerPoolState:
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
-               
-               
-               - - -
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
@@ -286,9 +277,6 @@ class _WorkerPoolState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         User-defined name of the `WorkerPool`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -472,9 +460,6 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
-               
-               
-               - - -
         :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -651,9 +636,6 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
-               
-               
-               - - -
         :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
@@ -732,9 +714,6 @@ class WorkerPool(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         User-defined name of the `WorkerPool`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

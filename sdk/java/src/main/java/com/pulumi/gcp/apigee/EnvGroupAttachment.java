@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.envgroups.attachments/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Example Usage
  * 
@@ -49,8 +49,6 @@ public class EnvGroupAttachment extends com.pulumi.resources.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="envgroupId", refs={String.class}, tree="[0]")
     private Output<String> envgroupId;
@@ -58,8 +56,6 @@ public class EnvGroupAttachment extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envgroupId() {

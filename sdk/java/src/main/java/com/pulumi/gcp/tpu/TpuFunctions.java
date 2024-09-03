@@ -56,7 +56,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU Node With Available Version
+     * ### Configure Basic TPU Node with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -139,7 +139,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU Node With Available Version
+     * ### Configure Basic TPU Node with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -222,7 +222,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU Node With Available Version
+     * ### Configure Basic TPU Node with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -305,7 +305,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU Node With Available Version
+     * ### Configure Basic TPU Node with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -388,7 +388,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU Node With Available Version
+     * ### Configure Basic TPU Node with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -471,7 +471,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU Node With Available Version
+     * ### Configure Basic TPU Node with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -554,7 +554,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Type
+     * ### Configure Basic TPU VM with available type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -639,7 +639,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Type
+     * ### Configure Basic TPU VM with available type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -724,7 +724,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Type
+     * ### Configure Basic TPU VM with available type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -809,7 +809,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Type
+     * ### Configure Basic TPU VM with available type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -894,7 +894,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Type
+     * ### Configure Basic TPU VM with available type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -979,7 +979,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Type
+     * ### Configure Basic TPU VM with available type
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1064,7 +1064,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Version
+     * ### Configure Basic TPU VM with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1145,7 +1145,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Version
+     * ### Configure Basic TPU VM with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1226,7 +1226,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Version
+     * ### Configure Basic TPU VM with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1307,7 +1307,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Version
+     * ### Configure Basic TPU VM with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1388,7 +1388,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Version
+     * ### Configure Basic TPU VM with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1469,7 +1469,7 @@ public final class TpuFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Configure Basic TPU VM With Available Version
+     * ### Configure Basic TPU VM with available version
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

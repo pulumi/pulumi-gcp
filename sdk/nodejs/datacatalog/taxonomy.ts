@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage
- *
- * ### Data Catalog Taxonomy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,9 +84,6 @@ export class Taxonomy extends pulumi.CustomResource {
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -164,9 +159,6 @@ export interface TaxonomyState {
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -207,9 +199,6 @@ export interface TaxonomyArgs {
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

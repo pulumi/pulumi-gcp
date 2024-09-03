@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
     /// * How-to Guides
-    ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+    ///   * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// ## Example Usage
     /// 
@@ -130,9 +130,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// The AccessPolicy this ServicePerimeter lives in.
         /// Format: accessPolicies/{policy_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -193,9 +190,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// The AccessPolicy this ServicePerimeter lives in.
         /// Format: accessPolicies/{policy_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -224,9 +218,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// The AccessPolicy this ServicePerimeter lives in.
         /// Format: accessPolicies/{policy_id}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

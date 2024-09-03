@@ -21,11 +21,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations.processors)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
  * 
- * ## Example Usage
- * 
- * ### Documentai Processor
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -104,14 +102,14 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
-     * @return The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * @return The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
      * 
      */
     public Output<Optional<String>> kmsKeyName() {
@@ -120,16 +118,12 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
     /**
      * The location of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

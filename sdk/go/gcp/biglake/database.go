@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_databases)
 //
-// ## Example Usage
-//
-// ### Biglake Database
+// ##
 //
 // ```go
 // package main

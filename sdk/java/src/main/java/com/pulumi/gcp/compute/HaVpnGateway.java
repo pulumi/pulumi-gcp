@@ -25,12 +25,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
  * * How-to Guides
- *     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
- *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+ *   * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+ *   * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  * 
- * ## Example Usage
- * 
- * ### Ha Vpn Gateway Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +71,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Ha Vpn Gateway Ipv6
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -117,6 +115,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -316,16 +317,12 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
     /**
      * The network this VPN gateway is accepting traffic for.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The network this VPN gateway is accepting traffic for.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

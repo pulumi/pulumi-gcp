@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
  * * How-to Guides
- *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+ *   * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
  * 
- * ## Example Usage
- * 
- * ### Target Tcp Proxy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -116,16 +114,12 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the BackendService resource.
      * 
-     * ***
-     * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
-     * 
-     * ***
      * 
      */
     public Output<String> backendService() {

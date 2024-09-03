@@ -31,14 +31,14 @@ public final class DocumentAiProcessorState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
      * 
      */
     @Import(name="kmsKeyName")
     private @Nullable Output<String> kmsKeyName;
 
     /**
-     * @return The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * @return The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -48,16 +48,12 @@ public final class DocumentAiProcessorState extends com.pulumi.resources.Resourc
     /**
      * The location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -162,7 +158,7 @@ public final class DocumentAiProcessorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kmsKeyName The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+         * @param kmsKeyName The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
          * 
          * @return builder
          * 
@@ -173,7 +169,7 @@ public final class DocumentAiProcessorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kmsKeyName The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+         * @param kmsKeyName The KMS key used for encryption/decryption in CMEK scenarios. See &lt;https://cloud.google.com/security-key-management&gt;.
          * 
          * @return builder
          * 
@@ -185,8 +181,6 @@ public final class DocumentAiProcessorState extends com.pulumi.resources.Resourc
         /**
          * @param location The location of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -197,8 +191,6 @@ public final class DocumentAiProcessorState extends com.pulumi.resources.Resourc
 
         /**
          * @param location The location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

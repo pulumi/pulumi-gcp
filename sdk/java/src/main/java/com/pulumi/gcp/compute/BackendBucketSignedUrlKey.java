@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
  * * How-to Guides
- *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ *   * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  * 
  * ## Example Usage
  * 
@@ -94,16 +94,12 @@ public class BackendBucketSignedUrlKey extends com.pulumi.resources.CustomResour
     /**
      * The backend bucket this signed URL key belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="backendBucket", refs={String.class}, tree="[0]")
     private Output<String> backendBucket;
 
     /**
      * @return The backend bucket this signed URL key belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> backendBucket() {

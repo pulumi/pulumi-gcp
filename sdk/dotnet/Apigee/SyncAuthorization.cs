@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations#getsyncauthorization)
     /// * How-to Guides
-    ///     * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
+    ///   * [Enable Synchronizer access](https://cloud.google.com/apigee/docs/hybrid/v1.8/synchronizer-access#enable-synchronizer-access)
     /// 
     /// ## Example Usage
     /// 
@@ -127,9 +127,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -197,9 +194,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -236,9 +230,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

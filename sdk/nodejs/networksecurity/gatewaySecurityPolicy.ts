@@ -11,9 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
  *
- * ## Example Usage
- *
- * ### Network Security Gateway Security Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +23,7 @@ import * as utilities from "../utilities";
  *     description: "my description",
  * });
  * ```
- * ### Network Security Gateway Security Policy Tls Inspection Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -186,9 +184,6 @@ export class GatewaySecurityPolicy extends pulumi.CustomResource {
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -270,9 +265,6 @@ export interface GatewaySecurityPolicyState {
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -312,9 +304,6 @@ export interface GatewaySecurityPolicyArgs {
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

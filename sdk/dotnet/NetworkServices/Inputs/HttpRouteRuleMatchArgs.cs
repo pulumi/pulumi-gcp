@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         }
 
         /// <summary>
-        /// The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        /// The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
         /// </summary>
         [Input("regexMatch")]
         public Input<string>? RegexMatch { get; set; }

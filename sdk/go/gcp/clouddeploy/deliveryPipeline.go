@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Canary_delivery_pipeline
+// ### canaryDeliveryPipeline
 // Creates a basic Cloud Deploy delivery pipeline
 // ```go
 // package main
@@ -75,7 +75,8 @@ import (
 //	}
 //
 // ```
-// ### Canary_service_networking_delivery_pipeline
+//
+// ### canaryServiceNetworkingDeliveryPipeline
 // Creates a basic Cloud Deploy delivery pipeline
 // ```go
 // package main
@@ -134,7 +135,8 @@ import (
 //	}
 //
 // ```
-// ### Canaryrun_delivery_pipeline
+//
+// ### canaryrunDeliveryPipeline
 // Creates a basic Cloud Deploy delivery pipeline
 // ```go
 // package main
@@ -193,7 +195,8 @@ import (
 //	}
 //
 // ```
-// ### Delivery_pipeline
+//
+// ### deliveryPipeline
 // Creates a basic Cloud Deploy delivery pipeline
 // ```go
 // package main
@@ -252,7 +255,8 @@ import (
 //	}
 //
 // ```
-// ### Verify_delivery_pipeline
+//
+// ### verifyDeliveryPipeline
 // tests creating and updating a delivery pipeline with deployment verification strategy
 // ```go
 // package main

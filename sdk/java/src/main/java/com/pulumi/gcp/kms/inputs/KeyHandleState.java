@@ -38,8 +38,6 @@ public final class KeyHandleState extends com.pulumi.resources.ResourceArgs {
      * The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
@@ -47,8 +45,6 @@ public final class KeyHandleState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The location for the KeyHandle.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -161,8 +157,6 @@ public final class KeyHandleState extends com.pulumi.resources.ResourceArgs {
          * @param location The location for the KeyHandle.
          * A full list of valid locations can be found by running `gcloud kms locations list`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -174,8 +168,6 @@ public final class KeyHandleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the KeyHandle.
          * A full list of valid locations can be found by running `gcloud kms locations list`.
-         * 
-         * ***
          * 
          * @return builder
          * 

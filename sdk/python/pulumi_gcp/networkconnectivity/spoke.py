@@ -35,9 +35,6 @@ class SpokeArgs:
         The set of arguments for constructing a Spoke resource.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -90,9 +87,6 @@ class SpokeArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -241,9 +235,6 @@ class _SpokeState:
         :param pulumi.Input['SpokeLinkedVpnTunnelsArgs'] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -405,9 +396,6 @@ class _SpokeState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -513,11 +501,9 @@ class Spoke(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+          * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
 
-        ## Example Usage
-
-        ### Network Connectivity Spoke Linked Vpc Network Basic
+        ## 
 
         ```python
         import pulumi
@@ -548,7 +534,7 @@ class Spoke(pulumi.CustomResource):
                 "uri": network.self_link,
             })
         ```
-        ### Network Connectivity Spoke Router Appliance Basic
+        ## 
 
         ```python
         import pulumi
@@ -642,9 +628,6 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -662,11 +645,9 @@ class Spoke(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+          * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
 
-        ## Example Usage
-
-        ### Network Connectivity Spoke Linked Vpc Network Basic
+        ## 
 
         ```python
         import pulumi
@@ -697,7 +678,7 @@ class Spoke(pulumi.CustomResource):
                 "uri": network.self_link,
             })
         ```
-        ### Network Connectivity Spoke Router Appliance Basic
+        ## 
 
         ```python
         import pulumi
@@ -880,9 +861,6 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -997,9 +975,6 @@ class Spoke(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

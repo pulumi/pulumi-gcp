@@ -201,8 +201,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      * 
-     * ***
-     * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
@@ -211,8 +209,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
      * @return The machine type to create.
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -908,8 +904,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          * 
          * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -922,8 +916,6 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          * @param machineType The machine type to create.
          * 
          * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -69,7 +69,7 @@ import (
 //	}
 //
 // ```
-// ### Gkehub Membership Basic
+// ##
 //
 // ```go
 // package main
@@ -118,6 +118,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Gkehub Membership Issuer
 //
 // ```go
@@ -199,7 +200,7 @@ type Membership struct {
 
 	// Authority encodes how Google will recognize identities from this Membership.
 	// See the workload identity documentation for more details:
-	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+	// <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrOutput `pulumi:"authority"`
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
@@ -222,8 +223,6 @@ type Membership struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -275,7 +274,7 @@ func GetMembership(ctx *pulumi.Context,
 type membershipState struct {
 	// Authority encodes how Google will recognize identities from this Membership.
 	// See the workload identity documentation for more details:
-	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+	// <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
@@ -298,8 +297,6 @@ type membershipState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId *string `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name *string `pulumi:"name"`
@@ -314,7 +311,7 @@ type membershipState struct {
 type MembershipState struct {
 	// Authority encodes how Google will recognize identities from this Membership.
 	// See the workload identity documentation for more details:
-	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+	// <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
@@ -337,8 +334,6 @@ type MembershipState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringPtrInput
 	// The unique identifier of the membership.
 	Name pulumi.StringPtrInput
@@ -357,7 +352,7 @@ func (MembershipState) ElementType() reflect.Type {
 type membershipArgs struct {
 	// Authority encodes how Google will recognize identities from this Membership.
 	// See the workload identity documentation for more details:
-	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+	// <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
@@ -378,8 +373,6 @@ type membershipArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -390,7 +383,7 @@ type membershipArgs struct {
 type MembershipArgs struct {
 	// Authority encodes how Google will recognize identities from this Membership.
 	// See the workload identity documentation for more details:
-	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+	// <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
@@ -411,8 +404,6 @@ type MembershipArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -508,7 +499,7 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 
 // Authority encodes how Google will recognize identities from this Membership.
 // See the workload identity documentation for more details:
-// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+// <https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity>
 // Structure is documented below.
 func (o MembershipOutput) Authority() MembershipAuthorityPtrOutput {
 	return o.ApplyT(func(v *Membership) MembershipAuthorityPtrOutput { return v.Authority }).(MembershipAuthorityPtrOutput)
@@ -549,8 +540,6 @@ func (o MembershipOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The client-provided identifier of the membership.
-//
-// ***
 func (o MembershipOutput) MembershipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.MembershipId }).(pulumi.StringOutput)
 }

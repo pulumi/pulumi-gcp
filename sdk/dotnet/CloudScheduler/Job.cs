@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/scheduler/)
+    ///   * [Official Documentation](https://cloud.google.com/scheduler/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Scheduler Job Pubsub
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,7 +52,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
-    /// ### Scheduler Job Http
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -93,7 +91,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
-    /// ### Scheduler Job Paused
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -133,7 +131,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
-    /// ### Scheduler Job App Engine
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -172,6 +170,9 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Scheduler Job Oauth
     /// 
     /// ```csharp
@@ -204,7 +205,7 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// });
     /// ```
-    /// ### Scheduler Job Oidc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -310,9 +311,6 @@ namespace Pulumi.Gcp.CloudScheduler
 
         /// <summary>
         /// The name of the job.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -459,9 +457,6 @@ namespace Pulumi.Gcp.CloudScheduler
 
         /// <summary>
         /// The name of the job.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -564,9 +559,6 @@ namespace Pulumi.Gcp.CloudScheduler
 
         /// <summary>
         /// The name of the job.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="nested_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
         /// </summary>
         public readonly Outputs.BackendServiceSecuritySettingsAwsV4Authentication? AwsV4Authentication;

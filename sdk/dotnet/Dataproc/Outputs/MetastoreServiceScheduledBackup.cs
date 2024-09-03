@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string BackupLocation;
         /// <summary>
-        /// The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+        /// The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
         /// </summary>
         public readonly string? CronSchedule;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+        /// Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
         /// </summary>
         public readonly string? TimeZone;
 

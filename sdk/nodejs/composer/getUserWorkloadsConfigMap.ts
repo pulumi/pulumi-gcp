@@ -74,7 +74,7 @@ export interface GetUserWorkloadsConfigMapArgs {
 export interface GetUserWorkloadsConfigMapResult {
     /**
      * The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
      */
     readonly data: {[key: string]: string};
     readonly environment: string;

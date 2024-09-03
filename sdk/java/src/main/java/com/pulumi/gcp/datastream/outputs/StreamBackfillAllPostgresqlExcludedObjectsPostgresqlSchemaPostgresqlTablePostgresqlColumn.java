@@ -20,7 +20,7 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
     private @Nullable String column;
     /**
      * @return The PostgreSQL data type. Full data types list can be found here:
-     * https://www.postgresql.org/docs/current/datatype.html
+     * &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
      * 
      */
     private @Nullable String dataType;
@@ -68,7 +68,7 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
     }
     /**
      * @return The PostgreSQL data type. Full data types list can be found here:
-     * https://www.postgresql.org/docs/current/datatype.html
+     * &lt;https://www.postgresql.org/docs/current/datatype.html&gt;
      * 
      */
     public Optional<String> dataType() {

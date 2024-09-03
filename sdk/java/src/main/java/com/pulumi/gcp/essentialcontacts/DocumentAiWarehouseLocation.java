@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/document-warehouse/docs/reference/rest/v1/projects.locations)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
  * 
  * ## Example Usage
  * 
@@ -149,16 +149,12 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

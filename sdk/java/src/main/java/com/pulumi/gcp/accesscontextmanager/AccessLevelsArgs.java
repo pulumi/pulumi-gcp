@@ -39,8 +39,6 @@ public final class AccessLevelsArgs extends com.pulumi.resources.ResourceArgs {
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      * 
-     * ***
-     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
@@ -48,8 +46,6 @@ public final class AccessLevelsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -119,8 +115,6 @@ public final class AccessLevelsArgs extends com.pulumi.resources.ResourceArgs {
          * @param parent The AccessPolicy this AccessLevel lives in.
          * Format: accessPolicies/{policy_id}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -132,8 +126,6 @@ public final class AccessLevelsArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parent The AccessPolicy this AccessLevel lives in.
          * Format: accessPolicies/{policy_id}
-         * 
-         * ***
          * 
          * @return builder
          * 

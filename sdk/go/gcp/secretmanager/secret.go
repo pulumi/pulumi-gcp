@@ -18,9 +18,7 @@ import (
 //
 // * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 //
-// ## Example Usage
-//
-// ### Secret Config Basic
+// ##
 //
 // ```go
 // package main
@@ -60,7 +58,7 @@ import (
 //	}
 //
 // ```
-// ### Secret With Annotations
+// ##
 //
 // ```go
 // package main
@@ -98,7 +96,7 @@ import (
 //	}
 //
 // ```
-// ### Secret With Version Destroy Ttl
+// ##
 //
 // ```go
 // package main
@@ -127,7 +125,7 @@ import (
 //	}
 //
 // ```
-// ### Secret With Automatic Cmek
+// ##
 //
 // ```go
 // package main

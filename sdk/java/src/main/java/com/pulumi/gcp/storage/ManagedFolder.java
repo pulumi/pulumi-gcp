@@ -32,11 +32,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/managedFolder)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/managed-folders)
  * 
- * ## Example Usage
- * 
- * ### Storage Managed Folder Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -168,8 +166,6 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
      * The name of the managed folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -177,8 +173,6 @@ public class ManagedFolder extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the managed folder expressed as a path. Must include
      * trailing &#39;/&#39;. For example, `example_dir/example_dir2/`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -1024,8 +1024,6 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
                in the future.
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
-               
-               - - -
         :param str duration: Alerts are considered firing once their PromQL expression evaluated
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
@@ -1039,7 +1037,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
                must be valid.
                Label values can be templatized by using variables. The only available
                variable names are the names of the labels in the PromQL result, including
-               "__name__" and "value". "labels" may be empty. This field is intended to be
+               "**name**" and "value". "labels" may be empty. This field is intended to be
                used for organizing and identifying the AlertPolicy
         :param str rule_group: The rule group name of this alert in the corresponding Prometheus
                configuration file.
@@ -1084,8 +1082,6 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         in the future.
         This field is optional. If this field is not empty, then it must be a
         valid Prometheus label name.
-
-        - - -
         """
         return pulumi.get(self, "alert_rule")
 
@@ -1120,7 +1116,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         must be valid.
         Label values can be templatized by using variables. The only available
         variable names are the names of the labels in the PromQL result, including
-        "__name__" and "value". "labels" may be empty. This field is intended to be
+        "**name**" and "value". "labels" may be empty. This field is intended to be
         used for organizing and identifying the AlertPolicy
         """
         return pulumi.get(self, "labels")
@@ -2216,7 +2212,7 @@ class CustomServiceTelemetry(dict):
         """
         :param str resource_name: The full name of the resource that defines this service.
                Formatted as described in
-               https://cloud.google.com/apis/design/resource_names.
+               <https://cloud.google.com/apis/design/resource_names>.
         """
         if resource_name is not None:
             pulumi.set(__self__, "resource_name", resource_name)
@@ -2227,7 +2223,7 @@ class CustomServiceTelemetry(dict):
         """
         The full name of the resource that defines this service.
         Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
+        <https://cloud.google.com/apis/design/resource_names>.
         """
         return pulumi.get(self, "resource_name")
 
@@ -2310,7 +2306,7 @@ class GenericServiceTelemetry(dict):
         """
         :param str resource_name: The full name of the resource that defines this service.
                Formatted as described in
-               https://cloud.google.com/apis/design/resource_names.
+               <https://cloud.google.com/apis/design/resource_names>.
         """
         if resource_name is not None:
             pulumi.set(__self__, "resource_name", resource_name)
@@ -2321,7 +2317,7 @@ class GenericServiceTelemetry(dict):
         """
         The full name of the resource that defines this service.
         Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
+        <https://cloud.google.com/apis/design/resource_names>.
         """
         return pulumi.get(self, "resource_name")
 
@@ -3935,7 +3931,7 @@ class UptimeCheckConfigHttpCheck(dict):
         :param str body: The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         :param str content_type: The content type to use for the check.
                Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
-        :param str custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        :param str custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
         :param Mapping[str, str] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
         :param str path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
@@ -4018,7 +4014,7 @@ class UptimeCheckConfigHttpCheck(dict):
     @pulumi.getter(name="customContentType")
     def custom_content_type(self) -> Optional[str]:
         """
-        A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
         """
         return pulumi.get(self, "custom_content_type")
 
@@ -4344,7 +4340,6 @@ class UptimeCheckConfigSyntheticMonitor(dict):
         :param 'UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args' cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
                Structure is documented below.
                
-               
                <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
         pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
@@ -4355,7 +4350,6 @@ class UptimeCheckConfigSyntheticMonitor(dict):
         """
         Target a Synthetic Monitor GCFv2 Instance
         Structure is documented below.
-
 
         <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
@@ -4471,7 +4465,7 @@ class GetAppEngineServiceTelemetryResult(dict):
         """
         :param str resource_name: The full name of the resource that defines this service.
                Formatted as described in
-               https://cloud.google.com/apis/design/resource_names.
+               <https://cloud.google.com/apis/design/resource_names>.
         """
         pulumi.set(__self__, "resource_name", resource_name)
 
@@ -4481,7 +4475,7 @@ class GetAppEngineServiceTelemetryResult(dict):
         """
         The full name of the resource that defines this service.
         Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
+        <https://cloud.google.com/apis/design/resource_names>.
         """
         return pulumi.get(self, "resource_name")
 
@@ -4493,7 +4487,7 @@ class GetClusterIstioServiceTelemetryResult(dict):
         """
         :param str resource_name: The full name of the resource that defines this service.
                Formatted as described in
-               https://cloud.google.com/apis/design/resource_names.
+               <https://cloud.google.com/apis/design/resource_names>.
         """
         pulumi.set(__self__, "resource_name", resource_name)
 
@@ -4503,7 +4497,7 @@ class GetClusterIstioServiceTelemetryResult(dict):
         """
         The full name of the resource that defines this service.
         Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
+        <https://cloud.google.com/apis/design/resource_names>.
         """
         return pulumi.get(self, "resource_name")
 
@@ -4515,7 +4509,7 @@ class GetIstioCanonicalServiceTelemetryResult(dict):
         """
         :param str resource_name: The full name of the resource that defines this service.
                Formatted as described in
-               https://cloud.google.com/apis/design/resource_names.
+               <https://cloud.google.com/apis/design/resource_names>.
         """
         pulumi.set(__self__, "resource_name", resource_name)
 
@@ -4525,7 +4519,7 @@ class GetIstioCanonicalServiceTelemetryResult(dict):
         """
         The full name of the resource that defines this service.
         Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
+        <https://cloud.google.com/apis/design/resource_names>.
         """
         return pulumi.get(self, "resource_name")
 
@@ -4537,7 +4531,7 @@ class GetMeshIstioServiceTelemetryResult(dict):
         """
         :param str resource_name: The full name of the resource that defines this service.
                Formatted as described in
-               https://cloud.google.com/apis/design/resource_names.
+               <https://cloud.google.com/apis/design/resource_names>.
         """
         pulumi.set(__self__, "resource_name", resource_name)
 
@@ -4547,7 +4541,7 @@ class GetMeshIstioServiceTelemetryResult(dict):
         """
         The full name of the resource that defines this service.
         Formatted as described in
-        https://cloud.google.com/apis/design/resource_names.
+        <https://cloud.google.com/apis/design/resource_names>.
         """
         return pulumi.get(self, "resource_name")
 

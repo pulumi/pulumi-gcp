@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Full
     /// 
     /// ```csharp
@@ -159,6 +160,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Scheduler Auth
     /// 
     /// ```csharp
@@ -257,6 +259,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Basic Gcs
     /// 
     /// ```csharp
@@ -406,6 +409,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Basic Auditlogs
     /// 
     /// ```csharp
@@ -557,6 +561,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Basic Builder
     /// 
     /// ```csharp
@@ -660,6 +665,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Secret Env
     /// 
     /// ```csharp
@@ -755,6 +761,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Secret Volume
     /// 
     /// ```csharp
@@ -849,6 +856,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Private Workerpool
     /// 
     /// ```csharp
@@ -916,6 +924,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Cmek Docs
     /// 
     /// ```csharp
@@ -1038,6 +1047,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Abiu
     /// 
     /// ```csharp
@@ -1125,6 +1135,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudfunctions2 Abiu On Deploy
     /// 
     /// ```csharp
@@ -1292,9 +1303,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 
         /// <summary>
         /// The location of this cloud function.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -1442,9 +1450,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 
         /// <summary>
         /// The location of this cloud function.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -1546,9 +1551,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 
         /// <summary>
         /// The location of this cloud function.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

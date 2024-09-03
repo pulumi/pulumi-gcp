@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetTcpProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
  * 
- * ## Example Usage
- * 
- * ### Region Target Tcp Proxy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -126,16 +124,12 @@ public class RegionTargetTcpProxy extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the BackendService resource.
      * 
-     * ***
-     * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
-     * 
-     * ***
      * 
      */
     public Output<String> backendService() {

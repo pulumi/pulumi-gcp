@@ -102,6 +102,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -207,6 +208,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Scheduler Auth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -329,6 +331,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Basic Gcs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -474,6 +477,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Basic Auditlogs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -623,6 +627,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Basic Builder
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -740,6 +745,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Secret Env
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -846,6 +852,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Secret Volume
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -951,6 +958,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Private Workerpool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1039,6 +1047,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Cmek Docs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1170,6 +1179,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Abiu
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1274,6 +1284,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudfunctions2 Abiu On Deploy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1523,16 +1534,12 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * The location of this cloud function.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of this cloud function.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
-// ## Example Usage
-//
-// ### Vertex Ai Featurestore Entitytype Feature
+// ##
 //
 // ```go
 // package main
@@ -75,7 +73,7 @@ import (
 //	}
 //
 // ```
-// ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+// ##
 //
 // ```go
 // package main
@@ -162,8 +160,6 @@ type AiFeatureStoreEntityTypeFeature struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-	//
-	// ***
 	Entitytype pulumi.StringOutput `pulumi:"entitytype"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -181,7 +177,7 @@ type AiFeatureStoreEntityTypeFeature struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+	// Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -233,8 +229,6 @@ type aiFeatureStoreEntityTypeFeatureState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-	//
-	// ***
 	Entitytype *string `pulumi:"entitytype"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
@@ -252,7 +246,7 @@ type aiFeatureStoreEntityTypeFeatureState struct {
 	Region *string `pulumi:"region"`
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+	// Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -264,8 +258,6 @@ type AiFeatureStoreEntityTypeFeatureState struct {
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-	//
-	// ***
 	Entitytype pulumi.StringPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
@@ -283,7 +275,7 @@ type AiFeatureStoreEntityTypeFeatureState struct {
 	Region pulumi.StringPtrInput
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
-	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+	// Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
 	ValueType pulumi.StringPtrInput
 }
 
@@ -295,8 +287,6 @@ type aiFeatureStoreEntityTypeFeatureArgs struct {
 	// Description of the feature.
 	Description *string `pulumi:"description"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-	//
-	// ***
 	Entitytype string `pulumi:"entitytype"`
 	// A set of key/value label pairs to assign to the feature.
 	//
@@ -305,7 +295,7 @@ type aiFeatureStoreEntityTypeFeatureArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name *string `pulumi:"name"`
-	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+	// Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -314,8 +304,6 @@ type AiFeatureStoreEntityTypeFeatureArgs struct {
 	// Description of the feature.
 	Description pulumi.StringPtrInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-	//
-	// ***
 	Entitytype pulumi.StringInput
 	// A set of key/value label pairs to assign to the feature.
 	//
@@ -324,7 +312,7 @@ type AiFeatureStoreEntityTypeFeatureArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name pulumi.StringPtrInput
-	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+	// Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
 	ValueType pulumi.StringInput
 }
 
@@ -431,8 +419,6 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) EffectiveLabels() pulumi.StringMa
 }
 
 // The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-//
-// ***
 func (o AiFeatureStoreEntityTypeFeatureOutput) Entitytype() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringOutput { return v.Entitytype }).(pulumi.StringOutput)
 }
@@ -471,7 +457,7 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) UpdateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+// Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
 func (o AiFeatureStoreEntityTypeFeatureOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }

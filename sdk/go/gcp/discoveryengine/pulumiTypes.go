@@ -162,8 +162,6 @@ type ChatEngineChatEngineConfigAgentCreationConfig struct {
 	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
 	DefaultLanguageCode string `pulumi:"defaultLanguageCode"`
 	// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone string `pulumi:"timeZone"`
@@ -186,8 +184,6 @@ type ChatEngineChatEngineConfigAgentCreationConfigArgs struct {
 	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
 	DefaultLanguageCode pulumi.StringInput `pulumi:"defaultLanguageCode"`
 	// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringInput `pulumi:"timeZone"`
@@ -281,8 +277,6 @@ func (o ChatEngineChatEngineConfigAgentCreationConfigOutput) DefaultLanguageCode
 }
 
 // Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-//
-// ***
 func (o ChatEngineChatEngineConfigAgentCreationConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChatEngineChatEngineConfigAgentCreationConfig) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -337,8 +331,6 @@ func (o ChatEngineChatEngineConfigAgentCreationConfigPtrOutput) DefaultLanguageC
 }
 
 // Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-//
-// ***
 func (o ChatEngineChatEngineConfigAgentCreationConfigPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ChatEngineChatEngineConfigAgentCreationConfig) *string {
 		if v == nil {
@@ -1734,8 +1726,6 @@ func (o SearchEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput 
 type SearchEngineSearchEngineConfig struct {
 	// The add-on that this search engine enables.
 	// Each value may be one of: `SEARCH_ADD_ON_LLM`.
-	//
-	// ***
 	SearchAddOns []string `pulumi:"searchAddOns"`
 	// The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
 	// Default value is `SEARCH_TIER_STANDARD`.
@@ -1757,8 +1747,6 @@ type SearchEngineSearchEngineConfigInput interface {
 type SearchEngineSearchEngineConfigArgs struct {
 	// The add-on that this search engine enables.
 	// Each value may be one of: `SEARCH_ADD_ON_LLM`.
-	//
-	// ***
 	SearchAddOns pulumi.StringArrayInput `pulumi:"searchAddOns"`
 	// The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
 	// Default value is `SEARCH_TIER_STANDARD`.
@@ -1845,8 +1833,6 @@ func (o SearchEngineSearchEngineConfigOutput) ToSearchEngineSearchEngineConfigPt
 
 // The add-on that this search engine enables.
 // Each value may be one of: `SEARCH_ADD_ON_LLM`.
-//
-// ***
 func (o SearchEngineSearchEngineConfigOutput) SearchAddOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SearchEngineSearchEngineConfig) []string { return v.SearchAddOns }).(pulumi.StringArrayOutput)
 }
@@ -1884,8 +1870,6 @@ func (o SearchEngineSearchEngineConfigPtrOutput) Elem() SearchEngineSearchEngine
 
 // The add-on that this search engine enables.
 // Each value may be one of: `SEARCH_ADD_ON_LLM`.
-//
-// ***
 func (o SearchEngineSearchEngineConfigPtrOutput) SearchAddOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SearchEngineSearchEngineConfig) []string {
 		if v == nil {

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/spanner/)
+ *   * [Official Documentation](https://cloud.google.com/spanner/)
  * 
  * &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
  * (and run `pulumi up` to write the field to state) in order to destroy an instance.
@@ -32,9 +32,7 @@ import javax.annotation.Nullable;
  * On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
  * on databases in order to prevent accidental data loss.
  * 
- * ## Example Usage
- * 
- * ### Spanner Database Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -195,16 +193,12 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * The instance to create the database on.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
      * @return The instance to create the database on.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

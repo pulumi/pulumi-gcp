@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
  *
  * ## Example Usage
  *
@@ -190,9 +190,6 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The region instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     public readonly regionInstanceGroupManager!: pulumi.Output<string>;
     /**
@@ -291,9 +288,6 @@ export interface RegionPerInstanceConfigState {
     region?: pulumi.Input<string>;
     /**
      * The region instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     regionInstanceGroupManager?: pulumi.Input<string>;
     /**
@@ -351,9 +345,6 @@ export interface RegionPerInstanceConfigArgs {
     region?: pulumi.Input<string>;
     /**
      * The region instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     regionInstanceGroupManager: pulumi.Input<string>;
     /**

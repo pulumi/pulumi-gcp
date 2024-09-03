@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
  * * How-to Guides
- *     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
+ *   * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
  *
- * ## Example Usage
- *
- * ### Service Directory Service Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -106,9 +104,6 @@ export class Service extends pulumi.CustomResource {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
 
@@ -170,9 +165,6 @@ export interface ServiceState {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
 }
@@ -195,9 +187,6 @@ export interface ServiceArgs {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

@@ -95,16 +95,12 @@ public final class ManagementFolderSecurityHealthAnalyticsCustomModuleState exte
     /**
      * Numerical ID of the parent folder.
      * 
-     * ***
-     * 
      */
     @Import(name="folder")
     private @Nullable Output<String> folder;
 
     /**
      * @return Numerical ID of the parent folder.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> folder() {
@@ -312,8 +308,6 @@ public final class ManagementFolderSecurityHealthAnalyticsCustomModuleState exte
         /**
          * @param folder Numerical ID of the parent folder.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -324,8 +318,6 @@ public final class ManagementFolderSecurityHealthAnalyticsCustomModuleState exte
 
         /**
          * @param folder Numerical ID of the parent folder.
-         * 
-         * ***
          * 
          * @return builder
          * 

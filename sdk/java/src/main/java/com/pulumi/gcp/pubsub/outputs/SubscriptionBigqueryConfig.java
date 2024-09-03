@@ -23,7 +23,7 @@ public final class SubscriptionBigqueryConfig {
     /**
      * @return The service account to use to write to BigQuery. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
      * 
      */
     private @Nullable String serviceAccountEmail;
@@ -64,7 +64,7 @@ public final class SubscriptionBigqueryConfig {
     /**
      * @return The service account to use to write to BigQuery. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
      * 
      */
     public Optional<String> serviceAccountEmail() {

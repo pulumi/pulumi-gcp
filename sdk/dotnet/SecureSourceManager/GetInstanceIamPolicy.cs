@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// <summary>
         /// Retrieves the current IAM policy data for instance
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.SecureSourceManager
 
         /// <summary>
         /// Retrieves the current IAM policy data for instance
-        /// 
         /// 
         /// ## example
         /// 

@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
  * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ *   * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  * 
- * ## Example Usage
- * 
- * ### Node Template Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -66,7 +64,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Node Template Server Binding
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

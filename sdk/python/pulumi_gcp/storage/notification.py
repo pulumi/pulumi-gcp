@@ -33,8 +33,6 @@ class NotificationArgs:
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         :param pulumi.Input[str] object_name_prefix: Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
@@ -81,8 +79,6 @@ class NotificationArgs:
         topic name, assumed to belong to the default GCP provider project, or the project-level name,
         i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         you will need to use the project-level name.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -151,8 +147,6 @@ class _NotificationState:
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
-               
-               - - -
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -263,8 +257,6 @@ class _NotificationState:
         topic name, assumed to belong to the default GCP provider project, or the project-level name,
         i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         you will need to use the project-level name.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -287,7 +279,7 @@ class Notification(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-         For more information see
+        For more information see
         [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
@@ -357,8 +349,6 @@ class Notification(pulumi.CustomResource):
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
-               
-               - - -
         """
         ...
     @overload
@@ -368,7 +358,7 @@ class Notification(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-         For more information see
+        For more information see
         [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
         and
         [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
@@ -507,8 +497,6 @@ class Notification(pulumi.CustomResource):
                topic name, assumed to belong to the default GCP provider project, or the project-level name,
                i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
                you will need to use the project-level name.
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -588,8 +576,6 @@ class Notification(pulumi.CustomResource):
         topic name, assumed to belong to the default GCP provider project, or the project-level name,
         i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
         you will need to use the project-level name.
-
-        - - -
         """
         return pulumi.get(self, "topic")
 

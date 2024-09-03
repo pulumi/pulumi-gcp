@@ -58,6 +58,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Full Profile
 //
 // ```go
@@ -132,6 +133,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Basic Quality
 //
 // ```go
@@ -179,6 +181,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dataplex Datascan Full Quality
 //
 // ```go

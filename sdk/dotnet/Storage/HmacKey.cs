@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
+    ///   * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Storage Hmac Key
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -32,7 +30,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new service account
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
     ///         AccountId = "my-svc-acc",
@@ -96,9 +93,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The email address of the key's associated service account.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string> ServiceAccountEmail { get; private set; } = null!;
@@ -182,9 +176,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The email address of the key's associated service account.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceAccountEmail", required: true)]
         public Input<string> ServiceAccountEmail { get; set; } = null!;
@@ -237,9 +228,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The email address of the key's associated service account.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }

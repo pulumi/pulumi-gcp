@@ -417,7 +417,7 @@ class AiFeatureStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
 
@@ -441,6 +441,7 @@ class AiFeatureStore(pulumi.CustomResource):
             },
             force_destroy=True)
         ```
+
         ### Vertex Ai Featurestore With Beta Fields
 
         ```python
@@ -462,6 +463,7 @@ class AiFeatureStore(pulumi.CustomResource):
             online_storage_ttl_days=30,
             force_destroy=True)
         ```
+
         ### Vertex Ai Featurestore Scaling
 
         ```python
@@ -546,7 +548,7 @@ class AiFeatureStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
 
@@ -570,6 +572,7 @@ class AiFeatureStore(pulumi.CustomResource):
             },
             force_destroy=True)
         ```
+
         ### Vertex Ai Featurestore With Beta Fields
 
         ```python
@@ -591,6 +594,7 @@ class AiFeatureStore(pulumi.CustomResource):
             online_storage_ttl_days=30,
             force_destroy=True)
         ```
+
         ### Vertex Ai Featurestore Scaling
 
         ```python

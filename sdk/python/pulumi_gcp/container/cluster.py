@@ -210,8 +210,6 @@ class ClusterArgs:
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -244,7 +242,7 @@ class ClusterArgs:
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-               to say "these are the _only_ node pools associated with this cluster", use the
+               to say "these are the *only* node pools associated with this cluster", use the
                container.NodePool resource instead of this property.
         :param pulumi.Input[str] node_version: The Kubernetes version on the nodes. Must either be unset
                or set to the same value as `min_master_version` on create. Defaults to the default
@@ -1020,8 +1018,6 @@ class ClusterArgs:
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1142,7 +1138,7 @@ class ClusterArgs:
         See container.NodePool for schema.
         **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-        to say "these are the _only_ node pools associated with this cluster", use the
+        to say "these are the *only* node pools associated with this cluster", use the
         container.NodePool resource instead of this property.
         """
         return pulumi.get(self, "node_pools")
@@ -1616,8 +1612,6 @@ class _ClusterState:
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -1650,7 +1644,7 @@ class _ClusterState:
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-               to say "these are the _only_ node pools associated with this cluster", use the
+               to say "these are the *only* node pools associated with this cluster", use the
                container.NodePool resource instead of this property.
         :param pulumi.Input[str] node_version: The Kubernetes version on the nodes. Must either be unset
                or set to the same value as `min_master_version` on create. Defaults to the default
@@ -2486,8 +2480,6 @@ class _ClusterState:
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2608,7 +2600,7 @@ class _ClusterState:
         See container.NodePool for schema.
         **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-        to say "these are the _only_ node pools associated with this cluster", use the
+        to say "these are the *only* node pools associated with this cluster", use the
         container.NodePool resource instead of this property.
         """
         return pulumi.get(self, "node_pools")
@@ -3008,10 +3000,10 @@ class Cluster(pulumi.CustomResource):
         Manages a Google Kubernetes Engine (GKE) cluster.
 
         To get more information about GKE clusters, see:
-          * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
-          * How-to guides
-            * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
-            * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+        * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
+        * How-to guides
+          * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
+          * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
 
         > On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
         and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -3021,7 +3013,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### With A Separately Managed Node Pool (Recommended)
+        ### with a separately managed node pool (recommended)
 
         ```python
         import pulumi
@@ -3052,7 +3044,7 @@ class Cluster(pulumi.CustomResource):
         This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
         `container.Cluster` resource cannot be removed without re-creating the cluster.
 
-        ### With The Default Node Pool
+        ### with the default node pool
 
         ```python
         import pulumi
@@ -3078,7 +3070,7 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
-        ### Autopilot
+        ### autopilot
 
         ```python
         import pulumi
@@ -3244,8 +3236,6 @@ class Cluster(pulumi.CustomResource):
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -3278,7 +3268,7 @@ class Cluster(pulumi.CustomResource):
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-               to say "these are the _only_ node pools associated with this cluster", use the
+               to say "these are the *only* node pools associated with this cluster", use the
                container.NodePool resource instead of this property.
         :param pulumi.Input[str] node_version: The Kubernetes version on the nodes. Must either be unset
                or set to the same value as `min_master_version` on create. Defaults to the default
@@ -3342,10 +3332,10 @@ class Cluster(pulumi.CustomResource):
         Manages a Google Kubernetes Engine (GKE) cluster.
 
         To get more information about GKE clusters, see:
-          * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
-          * How-to guides
-            * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
-            * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+        * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
+        * How-to guides
+          * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
+          * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
 
         > On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
         and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -3355,7 +3345,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### With A Separately Managed Node Pool (Recommended)
+        ### with a separately managed node pool (recommended)
 
         ```python
         import pulumi
@@ -3386,7 +3376,7 @@ class Cluster(pulumi.CustomResource):
         This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
         `container.Cluster` resource cannot be removed without re-creating the cluster.
 
-        ### With The Default Node Pool
+        ### with the default node pool
 
         ```python
         import pulumi
@@ -3412,7 +3402,7 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
-        ### Autopilot
+        ### autopilot
 
         ```python
         import pulumi
@@ -3846,8 +3836,6 @@ class Cluster(pulumi.CustomResource):
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -3880,7 +3868,7 @@ class Cluster(pulumi.CustomResource):
                See container.NodePool for schema.
                **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
                cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-               to say "these are the _only_ node pools associated with this cluster", use the
+               to say "these are the *only* node pools associated with this cluster", use the
                container.NodePool resource instead of this property.
         :param pulumi.Input[str] node_version: The Kubernetes version on the nodes. Must either be unset
                or set to the same value as `min_master_version` on create. Defaults to the default
@@ -4464,8 +4452,6 @@ class Cluster(pulumi.CustomResource):
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -4554,7 +4540,7 @@ class Cluster(pulumi.CustomResource):
         See container.NodePool for schema.
         **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-        to say "these are the _only_ node pools associated with this cluster", use the
+        to say "these are the *only* node pools associated with this cluster", use the
         container.NodePool resource instead of this property.
         """
         return pulumi.get(self, "node_pools")

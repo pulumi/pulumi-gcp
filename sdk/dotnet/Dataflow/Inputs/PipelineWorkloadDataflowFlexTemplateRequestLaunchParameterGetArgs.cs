@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Dataflow.Inputs
 
         /// <summary>
         /// The runtime environment for the Flex Template job.
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("environment")]

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_lake
+    /// ### basic_lake
     /// A basic example of a dataplex lake
     /// ```csharp
     /// using System.Collections.Generic;
@@ -126,10 +126,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The name of the lake.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -262,10 +258,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The name of the lake.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -371,10 +363,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// The name of the lake.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

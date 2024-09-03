@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
  * * How-to Guides
- *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
+ *   * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
  * 
- * ## Example Usage
- * 
- * ### Target Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -91,7 +89,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Target Instance Custom Network
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -158,7 +156,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Target Instance With Security Policy
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -344,8 +342,6 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * the provider-default zone and the project will default to the
      * provider-level project.
      * 
-     * ***
-     * 
      */
     @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
@@ -357,8 +353,6 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
-     * 
-     * ***
      * 
      */
     public Output<String> instance() {

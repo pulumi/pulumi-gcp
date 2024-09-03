@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
  * * How-to Guides
- *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+ *   * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
  *
- * ## Example Usage
- *
- * ### Dns Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -135,9 +133,6 @@ export class Policy extends pulumi.CustomResource {
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
      * User assigned name for this policy.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -215,9 +210,6 @@ export interface PolicyState {
     enableLogging?: pulumi.Input<boolean>;
     /**
      * User assigned name for this policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -261,9 +253,6 @@ export interface PolicyArgs {
     enableLogging?: pulumi.Input<boolean>;
     /**
      * User assigned name for this policy.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

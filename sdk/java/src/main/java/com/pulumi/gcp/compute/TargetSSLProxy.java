@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
  * * How-to Guides
- *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+ *   * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
  * 
- * ## Example Usage
- * 
- * ### Target Ssl Proxy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -128,16 +126,12 @@ public class TargetSSLProxy extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the BackendService resource.
      * 
-     * ***
-     * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
-     * 
-     * ***
      * 
      */
     public Output<String> backendService() {

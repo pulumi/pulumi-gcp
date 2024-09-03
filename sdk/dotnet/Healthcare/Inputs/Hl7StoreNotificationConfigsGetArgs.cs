@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Healthcare.Inputs
     {
         /// <summary>
         /// Restricts notifications sent for messages matching a filter. If this is empty, all messages
-        /// are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        /// are matched. Syntax: &lt;https://cloud.google.com/appengine/docs/standard/python/search/query_strings&gt;
         /// Fields/functions available for filtering are:
         /// * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
         /// * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date &lt; "2017-01-02".
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         /// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         /// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
         /// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
-        /// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
+        /// project. &lt;service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com&gt; must have publisher permissions on the given
         /// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
         /// If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
         /// </summary>

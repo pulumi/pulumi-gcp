@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
     {
         /// <summary>
         /// (Output)
-        /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

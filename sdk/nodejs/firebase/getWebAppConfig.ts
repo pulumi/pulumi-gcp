@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/)
+ *   * [Official Documentation](https://firebase.google.com/)
  */
 export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppConfigResult> {
 
@@ -33,8 +33,6 @@ export interface GetWebAppConfigArgs {
     project?: string;
     /**
      * the id of the firebase web app
-     *
-     * - - -
      */
     webAppId: string;
 }
@@ -91,7 +89,7 @@ export interface GetWebAppConfigResult {
  *
  * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/)
+ *   * [Official Documentation](https://firebase.google.com/)
  */
 export function getWebAppConfigOutput(args: GetWebAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppConfigResult> {
     return pulumi.output(args).apply((a: any) => getWebAppConfig(a, opts))
@@ -108,8 +106,6 @@ export interface GetWebAppConfigOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * the id of the firebase web app
-     *
-     * - - -
      */
     webAppId: pulumi.Input<string>;
 }

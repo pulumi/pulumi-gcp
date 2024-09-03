@@ -112,16 +112,12 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The DNS record set type.
      * 
-     * ***
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
      * @return The DNS record set type.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -287,8 +283,6 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The DNS record set type.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -299,8 +293,6 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The DNS record set type.
-         * 
-         * ***
          * 
          * @return builder
          * 

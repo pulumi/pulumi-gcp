@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
- * ## Example Usage
- *
- * ### Vertex Ai Feature Online Store
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +36,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Vertex Ai Featureonlinestore With Optimized
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,7 +58,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -188,9 +186,6 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -320,9 +315,6 @@ export interface AiFeatureOnlineStoreState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -388,9 +380,6 @@ export interface AiFeatureOnlineStoreArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -68,7 +68,7 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Save Key In Kubernetes Secret
+     * ### save key in Kubernetes secret
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -161,7 +161,7 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Save Key In Kubernetes Secret
+     * ### save key in Kubernetes secret
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -254,7 +254,7 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Save Key In Kubernetes Secret
+     * ### save key in Kubernetes secret
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -347,7 +347,7 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Save Key In Kubernetes Secret
+     * ### save key in Kubernetes secret
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
@@ -809,10 +809,10 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+     * ### ServiceAccount JSON credential file.
+     * `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -847,12 +847,12 @@ public final class ServiceaccountFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
-     *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+     * `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * Note: to use the following, you must grant `target_service_account` the
+     * `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -901,7 +901,7 @@ public final class ServiceaccountFunctions {
      * 
      * ### Invoking Cloud Run Endpoint
      * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -956,10 +956,10 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+     * ### ServiceAccount JSON credential file.
+     * `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -994,12 +994,12 @@ public final class ServiceaccountFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
-     *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+     * `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * Note: to use the following, you must grant `target_service_account` the
+     * `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1048,7 +1048,7 @@ public final class ServiceaccountFunctions {
      * 
      * ### Invoking Cloud Run Endpoint
      * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1103,10 +1103,10 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+     * ### ServiceAccount JSON credential file.
+     * `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1141,12 +1141,12 @@ public final class ServiceaccountFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
-     *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+     * `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * Note: to use the following, you must grant `target_service_account` the
+     * `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1195,7 +1195,7 @@ public final class ServiceaccountFunctions {
      * 
      * ### Invoking Cloud Run Endpoint
      * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1250,10 +1250,10 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * ### ServiceAccount JSON Credential File.
-     *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+     * ### ServiceAccount JSON credential file.
+     * `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1288,12 +1288,12 @@ public final class ServiceaccountFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
-     *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+     * `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
-     *   Note: to use the following, you must grant `target_service_account` the
-     *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * Note: to use the following, you must grant `target_service_account` the
+     * `roles/iam.serviceAccountTokenCreator` role on itself.
      * 
-     *   &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
      * {@code
      * package generated_program;
@@ -1342,7 +1342,7 @@ public final class ServiceaccountFunctions {
      * 
      * ### Invoking Cloud Run Endpoint
      * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1394,7 +1394,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1446,7 +1446,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1498,7 +1498,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1550,7 +1550,7 @@ public final class ServiceaccountFunctions {
      * 
      * ## Example Usage
      * 
-     * Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+     * Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

@@ -31,11 +31,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/images)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/images)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Image Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -56,7 +54,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Image Guest Os
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -88,7 +86,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Image Basic Storage Location
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -230,9 +228,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -298,7 +293,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Cloud Storage bucket storage location of the image
         /// (regional or multi-regional).
-        /// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        /// Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
         /// </summary>
         [Output("storageLocations")]
         public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
@@ -435,9 +430,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -493,7 +485,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Cloud Storage bucket storage location of the image
         /// (regional or multi-regional).
-        /// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        /// Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
         /// </summary>
         public InputList<string> StorageLocations
         {
@@ -626,9 +618,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -707,7 +696,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Cloud Storage bucket storage location of the image
         /// (regional or multi-regional).
-        /// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        /// Reference link: &lt;https://cloud.google.com/compute/docs/reference/rest/v1/images&gt;
         /// </summary>
         public InputList<string> StorageLocations
         {

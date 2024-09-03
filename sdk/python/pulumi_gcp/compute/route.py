@@ -37,9 +37,6 @@ class RouteArgs:
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to.
                Only IPv4 is supported.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property
                when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -63,7 +60,7 @@ class RouteArgs:
                rule as a partial or full URL. For example, the following
                are all valid values:
                * 10.128.0.56
-               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
                * regions/region/forwardingRules/forwardingRule
                When the beta provider, you can also specify the IP address
                of a forwarding rule from the same VPC or any peered VPC.
@@ -133,9 +130,6 @@ class RouteArgs:
     def network(self) -> pulumi.Input[str]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -203,7 +197,7 @@ class RouteArgs:
         rule as a partial or full URL. For example, the following
         are all valid values:
         * 10.128.0.56
-        * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
         * regions/region/forwardingRules/forwardingRule
         When the beta provider, you can also specify the IP address
         of a forwarding rule from the same VPC or any peered VPC.
@@ -346,9 +340,6 @@ class _RouteState:
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -363,7 +354,7 @@ class _RouteState:
                rule as a partial or full URL. For example, the following
                are all valid values:
                * 10.128.0.56
-               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
                * regions/region/forwardingRules/forwardingRule
                When the beta provider, you can also specify the IP address
                of a forwarding rule from the same VPC or any peered VPC.
@@ -472,9 +463,6 @@ class _RouteState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -511,7 +499,7 @@ class _RouteState:
         rule as a partial or full URL. For example, the following
         are all valid values:
         * 10.128.0.56
-        * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
         * regions/region/forwardingRules/forwardingRule
         When the beta provider, you can also specify the IP address
         of a forwarding rule from the same VPC or any peered VPC.
@@ -693,11 +681,9 @@ class Route(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
         * How-to Guides
-            * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+          * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
-        ## Example Usage
-
-        ### Route Basic
+        ## 
 
         ```python
         import pulumi
@@ -711,7 +697,7 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
-        ### Route Ilb
+        ## 
 
         ```python
         import pulumi
@@ -751,7 +737,7 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
-        ### Route Ilb Vip
+        ## 
 
         ```python
         import pulumi
@@ -854,9 +840,6 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -871,7 +854,7 @@ class Route(pulumi.CustomResource):
                rule as a partial or full URL. For example, the following
                are all valid values:
                * 10.128.0.56
-               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
                * regions/region/forwardingRules/forwardingRule
                When the beta provider, you can also specify the IP address
                of a forwarding rule from the same VPC or any peered VPC.
@@ -932,11 +915,9 @@ class Route(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
         * How-to Guides
-            * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+          * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
-        ## Example Usage
-
-        ### Route Basic
+        ## 
 
         ```python
         import pulumi
@@ -950,7 +931,7 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
-        ### Route Ilb
+        ## 
 
         ```python
         import pulumi
@@ -990,7 +971,7 @@ class Route(pulumi.CustomResource):
             next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
-        ### Route Ilb Vip
+        ## 
 
         ```python
         import pulumi
@@ -1179,9 +1160,6 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -1196,7 +1174,7 @@ class Route(pulumi.CustomResource):
                rule as a partial or full URL. For example, the following
                are all valid values:
                * 10.128.0.56
-               * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+               * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
                * regions/region/forwardingRules/forwardingRule
                When the beta provider, you can also specify the IP address
                of a forwarding rule from the same VPC or any peered VPC.
@@ -1283,9 +1261,6 @@ class Route(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1314,7 +1289,7 @@ class Route(pulumi.CustomResource):
         rule as a partial or full URL. For example, the following
         are all valid values:
         * 10.128.0.56
-        * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
         * regions/region/forwardingRules/forwardingRule
         When the beta provider, you can also specify the IP address
         of a forwarding rule from the same VPC or any peered VPC.

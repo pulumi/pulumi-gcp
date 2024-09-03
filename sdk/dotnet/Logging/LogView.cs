@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+    ///   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
     /// 
@@ -66,9 +66,6 @@ namespace Pulumi.Gcp.Logging
     {
         /// <summary>
         /// The bucket of the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -163,9 +160,6 @@ namespace Pulumi.Gcp.Logging
     {
         /// <summary>
         /// The bucket of the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -210,9 +204,6 @@ namespace Pulumi.Gcp.Logging
     {
         /// <summary>
         /// The bucket of the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

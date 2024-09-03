@@ -291,16 +291,12 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the disk used to create this snapshot.
      * 
-     * ***
-     * 
      */
     @Import(name="sourceDisk")
     private @Nullable Output<String> sourceDisk;
 
     /**
      * @return A reference to the disk used to create this snapshot.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> sourceDisk() {
@@ -787,8 +783,6 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sourceDisk A reference to the disk used to create this snapshot.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -799,8 +793,6 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceDisk A reference to the disk used to create this snapshot.
-         * 
-         * ***
          * 
          * @return builder
          * 

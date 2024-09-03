@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v2/policies)
  * * How-to Guides
- *     * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
+ *   * [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
  *
  * ## Example Usage
  *

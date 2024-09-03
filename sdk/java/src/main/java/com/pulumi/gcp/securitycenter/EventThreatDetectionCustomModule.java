@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.eventThreatDetectionSettings.customModules)
  * * How-to Guides
- *     * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
+ *   * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
  * 
  * ## Example Usage
  * 
@@ -132,16 +132,12 @@ public class EventThreatDetectionCustomModule extends com.pulumi.resources.Custo
     /**
      * Numerical ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
      * @return Numerical ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {

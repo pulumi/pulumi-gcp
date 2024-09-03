@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// <summary>
         /// The full name of the resource that defines this service.
         /// Formatted as described in
-        /// https://cloud.google.com/apis/design/resource_names.
+        /// &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// </summary>
         public readonly string ResourceName;
 

@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.endpointAttachments)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
+ *   * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
  *
- * ## Example Usage
- *
- * ### Integration Connectors Endpoint Attachment
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -117,9 +115,6 @@ export class EndpointAttachment extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of Endpoint Attachment needs to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -231,9 +226,6 @@ export interface EndpointAttachmentState {
     location?: pulumi.Input<string>;
     /**
      * Name of Endpoint Attachment needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -281,9 +273,6 @@ export interface EndpointAttachmentArgs {
     location: pulumi.Input<string>;
     /**
      * Name of Endpoint Attachment needs to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

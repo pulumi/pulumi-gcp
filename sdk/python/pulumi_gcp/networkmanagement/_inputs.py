@@ -54,8 +54,6 @@ if not MYPY:
         that you provide is from the service project. In this case, the
         network that the IP address resides in is defined in the host
         project.
-
-        - - -
         """
 elif False:
     ConnectivityTestDestinationArgsDict: TypeAlias = Mapping[str, Any]
@@ -84,8 +82,6 @@ class ConnectivityTestDestinationArgs:
                that you provide is from the service project. In this case, the
                network that the IP address resides in is defined in the host
                project.
-               
-               - - -
         """
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
@@ -161,8 +157,6 @@ class ConnectivityTestDestinationArgs:
         that you provide is from the service project. In this case, the
         network that the IP address resides in is defined in the host
         project.
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 

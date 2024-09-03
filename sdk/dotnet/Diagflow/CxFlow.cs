@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dialogflowcx Flow Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -132,7 +130,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
-    /// ### Dialogflowcx Flow Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -647,9 +645,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the flow.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -789,9 +784,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the flow.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -904,9 +896,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The human-readable name of the flow.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

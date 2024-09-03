@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/locations.buckets.links)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+    ///   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
     /// 
@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// 
     /// ### Logging Linked Dataset All Params
     /// 
     /// ```csharp
@@ -109,9 +110,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The bucket to which the linked dataset is attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -224,9 +222,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The bucket to which the linked dataset is attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -280,9 +275,6 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The bucket to which the linked dataset is attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

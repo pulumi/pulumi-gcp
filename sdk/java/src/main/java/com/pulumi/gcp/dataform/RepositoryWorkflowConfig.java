@@ -18,141 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Dataform Repository Workflow Config
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.sourcerepo.Repository;
- * import com.pulumi.gcp.sourcerepo.RepositoryArgs;
- * import com.pulumi.gcp.secretmanager.Secret;
- * import com.pulumi.gcp.secretmanager.SecretArgs;
- * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
- * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
- * import com.pulumi.gcp.dataform.Repository;
- * import com.pulumi.gcp.dataform.RepositoryArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
- * import com.pulumi.gcp.dataform.RepositoryReleaseConfig;
- * import com.pulumi.gcp.dataform.RepositoryReleaseConfigArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryReleaseConfigCodeCompilationConfigArgs;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.dataform.RepositoryWorkflowConfig;
- * import com.pulumi.gcp.dataform.RepositoryWorkflowConfigArgs;
- * import com.pulumi.gcp.dataform.inputs.RepositoryWorkflowConfigInvocationConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var gitRepository = new Repository("gitRepository", RepositoryArgs.builder()
- *             .name("my/repository")
- *             .build());
- * 
- *         var secret = new Secret("secret", SecretArgs.builder()
- *             .secretId("my_secret")
- *             .replication(SecretReplicationArgs.builder()
- *                 .auto()
- *                 .build())
- *             .build());
- * 
- *         var secretVersion = new SecretVersion("secretVersion", SecretVersionArgs.builder()
- *             .secret(secret.id())
- *             .secretData("secret-data")
- *             .build());
- * 
- *         var repository = new Repository("repository", RepositoryArgs.builder()
- *             .name("dataform_repository")
- *             .region("us-central1")
- *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
- *                 .url(gitRepository.url())
- *                 .defaultBranch("main")
- *                 .authenticationTokenSecretVersion(secretVersion.id())
- *                 .build())
- *             .workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs.builder()
- *                 .defaultDatabase("database")
- *                 .schemaSuffix("_suffix")
- *                 .tablePrefix("prefix_")
- *                 .build())
- *             .build());
- * 
- *         var releaseConfig = new RepositoryReleaseConfig("releaseConfig", RepositoryReleaseConfigArgs.builder()
- *             .project(repository.project())
- *             .region(repository.region())
- *             .repository(repository.name())
- *             .name("my_release")
- *             .gitCommitish("main")
- *             .cronSchedule("0 7 * * *")
- *             .timeZone("America/New_York")
- *             .codeCompilationConfig(RepositoryReleaseConfigCodeCompilationConfigArgs.builder()
- *                 .defaultDatabase("gcp-example-project")
- *                 .defaultSchema("example-dataset")
- *                 .defaultLocation("us-central1")
- *                 .assertionSchema("example-assertion-dataset")
- *                 .databaseSuffix("")
- *                 .schemaSuffix("")
- *                 .tablePrefix("")
- *                 .vars(Map.of("var1", "value"))
- *                 .build())
- *             .build());
- * 
- *         var dataformSa = new Account("dataformSa", AccountArgs.builder()
- *             .accountId("dataform-sa")
- *             .displayName("Dataform Service Account")
- *             .build());
- * 
- *         var workflow = new RepositoryWorkflowConfig("workflow", RepositoryWorkflowConfigArgs.builder()
- *             .project(repository.project())
- *             .region(repository.region())
- *             .repository(repository.name())
- *             .name("my_workflow")
- *             .releaseConfig(releaseConfig.id())
- *             .invocationConfig(RepositoryWorkflowConfigInvocationConfigArgs.builder()
- *                 .includedTargets(                
- *                     RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs.builder()
- *                         .database("gcp-example-project")
- *                         .schema("example-dataset")
- *                         .name("target_1")
- *                         .build(),
- *                     RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs.builder()
- *                         .database("gcp-example-project")
- *                         .schema("example-dataset")
- *                         .name("target_2")
- *                         .build())
- *                 .includedTags("tag_1")
- *                 .transitiveDependenciesIncluded(true)
- *                 .transitiveDependentsIncluded(true)
- *                 .fullyRefreshIncrementalTablesEnabled(false)
- *                 .serviceAccount(dataformSa.email())
- *                 .build())
- *             .cronSchedule("0 7 * * *")
- *             .timeZone("America/New_York")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * RepositoryWorkflowConfig can be imported using any of these accepted formats:
@@ -279,16 +144,12 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      * 
-     * ***
-     * 
      */
     @Export(name="releaseConfig", refs={String.class}, tree="[0]")
     private Output<String> releaseConfig;
 
     /**
      * @return The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
-     * 
-     * ***
      * 
      */
     public Output<String> releaseConfig() {
@@ -309,14 +170,14 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.repository);
     }
     /**
-     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
      * 
      */
     @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeZone;
 
     /**
-     * @return Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+     * @return Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;. If left unspecified, the default is UTC.
      * 
      */
     public Output<Optional<String>> timeZone() {

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Outputs
         /// </summary>
         public readonly Outputs.ConnectionGitlabConfigAuthorizerCredential AuthorizerCredential;
         /// <summary>
-        /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
         /// </summary>
         public readonly string? HostUri;
         /// <summary>

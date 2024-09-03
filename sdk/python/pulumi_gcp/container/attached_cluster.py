@@ -765,12 +765,10 @@ class AttachedCluster(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest)
         * How-to Guides
-            * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
-            * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+          * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
+          * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
-        ## Example Usage
-
-        ### Container Attached Cluster Basic
+        ## 
 
         ```python
         import pulumi
@@ -793,7 +791,7 @@ class AttachedCluster(pulumi.CustomResource):
                 "project": f"projects/{project.number}",
             })
         ```
-        ### Container Attached Cluster Full
+        ## 
 
         ```python
         import pulumi
@@ -853,7 +851,7 @@ class AttachedCluster(pulumi.CustomResource):
                 },
             })
         ```
-        ### Container Attached Cluster Ignore Errors
+        ## 
 
         ```python
         import pulumi
@@ -949,12 +947,10 @@ class AttachedCluster(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest)
         * How-to Guides
-            * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
-            * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
+          * [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
+          * [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 
-        ## Example Usage
-
-        ### Container Attached Cluster Basic
+        ## 
 
         ```python
         import pulumi
@@ -977,7 +973,7 @@ class AttachedCluster(pulumi.CustomResource):
                 "project": f"projects/{project.number}",
             })
         ```
-        ### Container Attached Cluster Full
+        ## 
 
         ```python
         import pulumi
@@ -1037,7 +1033,7 @@ class AttachedCluster(pulumi.CustomResource):
                 },
             })
         ```
-        ### Container Attached Cluster Ignore Errors
+        ## 
 
         ```python
         import pulumi

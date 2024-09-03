@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic_lake
+ * ### basic_lake
  * A basic example of a dataplex lake
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -226,16 +226,12 @@ public class Lake extends com.pulumi.resources.CustomResource {
     /**
      * The name of the lake.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the lake.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

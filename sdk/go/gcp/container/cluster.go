@@ -14,8 +14,8 @@ import (
 // Manages a Google Kubernetes Engine (GKE) cluster.
 //
 // To get more information about GKE clusters, see:
-//   - [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
-//   - How-to guides
+// * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
+// * How-to guides
 //   - [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
 //   - [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
 //
@@ -27,7 +27,7 @@ import (
 //
 // ## Example Usage
 //
-// ### With A Separately Managed Node Pool (Recommended)
+// ### with a separately managed node pool (recommended)
 //
 // ```go
 // package main
@@ -85,7 +85,7 @@ import (
 // This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
 // `container.Cluster` resource cannot be removed without re-creating the cluster.
 //
-// ### With The Default Node Pool
+// ### with the default node pool
 //
 // ```go
 // package main
@@ -134,7 +134,7 @@ import (
 //
 // ```
 //
-// ### Autopilot
+// ### autopilot
 //
 // ```go
 // package main
@@ -371,8 +371,6 @@ type Cluster struct {
 	MonitoringService pulumi.StringOutput `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -413,7 +411,7 @@ type Cluster struct {
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-	// to say "these are the _only_ node pools associated with this cluster", use the
+	// to say "these are the *only* node pools associated with this cluster", use the
 	// container.NodePool resource instead of this property.
 	NodePools ClusterNodePoolArrayOutput `pulumi:"nodePools"`
 	// The Kubernetes version on the nodes. Must either be unset
@@ -697,8 +695,6 @@ type clusterState struct {
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -739,7 +735,7 @@ type clusterState struct {
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-	// to say "these are the _only_ node pools associated with this cluster", use the
+	// to say "these are the *only* node pools associated with this cluster", use the
 	// container.NodePool resource instead of this property.
 	NodePools []ClusterNodePool `pulumi:"nodePools"`
 	// The Kubernetes version on the nodes. Must either be unset
@@ -994,8 +990,6 @@ type ClusterState struct {
 	MonitoringService pulumi.StringPtrInput
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -1036,7 +1030,7 @@ type ClusterState struct {
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-	// to say "these are the _only_ node pools associated with this cluster", use the
+	// to say "these are the *only* node pools associated with this cluster", use the
 	// container.NodePool resource instead of this property.
 	NodePools ClusterNodePoolArrayInput
 	// The Kubernetes version on the nodes. Must either be unset
@@ -1287,8 +1281,6 @@ type clusterArgs struct {
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -1329,7 +1321,7 @@ type clusterArgs struct {
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-	// to say "these are the _only_ node pools associated with this cluster", use the
+	// to say "these are the *only* node pools associated with this cluster", use the
 	// container.NodePool resource instead of this property.
 	NodePools []ClusterNodePool `pulumi:"nodePools"`
 	// The Kubernetes version on the nodes. Must either be unset
@@ -1565,8 +1557,6 @@ type ClusterArgs struct {
 	MonitoringService pulumi.StringPtrInput
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -1607,7 +1597,7 @@ type ClusterArgs struct {
 	// See container.NodePool for schema.
 	// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 	// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-	// to say "these are the _only_ node pools associated with this cluster", use the
+	// to say "these are the *only* node pools associated with this cluster", use the
 	// container.NodePool resource instead of this property.
 	NodePools ClusterNodePoolArrayInput
 	// The Kubernetes version on the nodes. Must either be unset
@@ -2071,8 +2061,6 @@ func (o ClusterOutput) MonitoringService() pulumi.StringOutput {
 
 // The name of the cluster, unique within the project and
 // location.
-//
-// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -2137,7 +2125,7 @@ func (o ClusterOutput) NodePoolDefaults() ClusterNodePoolDefaultsOutput {
 // See container.NodePool for schema.
 // **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
 // cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-// to say "these are the _only_ node pools associated with this cluster", use the
+// to say "these are the *only* node pools associated with this cluster", use the
 // container.NodePool resource instead of this property.
 func (o ClusterOutput) NodePools() ClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodePoolArrayOutput { return v.NodePools }).(ClusterNodePoolArrayOutput)

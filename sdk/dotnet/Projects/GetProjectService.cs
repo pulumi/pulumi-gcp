@@ -20,12 +20,11 @@ namespace Pulumi.Gcp.Projects
         /// This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
         /// to use.
         /// 
-        /// 
         /// To get more information about `gcp.projects.Service`, see:
         /// 
         /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
         /// * How-to Guides
-        ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+        ///   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
         /// 
         /// ## Example Usage
         /// 
@@ -57,12 +56,11 @@ namespace Pulumi.Gcp.Projects
         /// This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
         /// to use.
         /// 
-        /// 
         /// To get more information about `gcp.projects.Service`, see:
         /// 
         /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
         /// * How-to Guides
-        ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+        ///   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
         /// 
         /// ## Example Usage
         /// 
@@ -98,8 +96,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The name of the Google Platform project service.
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public string Service { get; set; } = null!;
@@ -121,8 +117,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The name of the Google Platform project service.
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;

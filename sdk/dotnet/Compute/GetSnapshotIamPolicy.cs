@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Retrieves the current IAM policy data for snapshot
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Retrieves the current IAM policy data for snapshot
-        /// 
         /// 
         /// ## example
         /// 

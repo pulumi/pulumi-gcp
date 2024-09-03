@@ -60,9 +60,6 @@ class RegionUrlMapArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -180,9 +177,6 @@ class RegionUrlMapArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -294,9 +288,6 @@ class _RegionUrlMapState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -460,9 +451,6 @@ class _RegionUrlMapState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -556,9 +544,7 @@ class RegionUrlMap(pulumi.CustomResource):
         UrlMaps are used to route requests to a backend service based on rules
         that you define for the host and path of an incoming URL.
 
-        ## Example Usage
-
-        ### Region Url Map Basic
+        ## 
 
         ```python
         import pulumi
@@ -616,7 +602,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map Default Route Action
+        ## 
 
         ```python
         import pulumi
@@ -774,7 +760,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Path
+        ## 
 
         ```python
         import pulumi
@@ -875,7 +861,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Path Partial
+        ## 
 
         ```python
         import pulumi
@@ -944,7 +930,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Route
+        ## 
 
         ```python
         import pulumi
@@ -1023,7 +1009,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Route Partial
+        ## 
 
         ```python
         import pulumi
@@ -1077,7 +1063,10 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map Path Template Match
+
+        ## Example Usage
+
+        ## 
 
         ```python
         import pulumi
@@ -1211,9 +1200,6 @@ class RegionUrlMap(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1234,9 +1220,7 @@ class RegionUrlMap(pulumi.CustomResource):
         UrlMaps are used to route requests to a backend service based on rules
         that you define for the host and path of an incoming URL.
 
-        ## Example Usage
-
-        ### Region Url Map Basic
+        ## 
 
         ```python
         import pulumi
@@ -1294,7 +1278,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map Default Route Action
+        ## 
 
         ```python
         import pulumi
@@ -1452,7 +1436,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Path
+        ## 
 
         ```python
         import pulumi
@@ -1553,7 +1537,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Path Partial
+        ## 
 
         ```python
         import pulumi
@@ -1622,7 +1606,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Route
+        ## 
 
         ```python
         import pulumi
@@ -1701,7 +1685,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map L7 Ilb Route Partial
+        ## 
 
         ```python
         import pulumi
@@ -1755,7 +1739,10 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ### Region Url Map Path Template Match
+
+        ## Example Usage
+
+        ## 
 
         ```python
         import pulumi
@@ -1970,9 +1957,6 @@ class RegionUrlMap(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionUrlMapPathMatcherArgs', 'RegionUrlMapPathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -2095,9 +2079,6 @@ class RegionUrlMap(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

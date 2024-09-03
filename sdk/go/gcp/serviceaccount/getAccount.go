@@ -40,7 +40,7 @@ import (
 //
 // ```
 //
-// ### Save Key In Kubernetes Secret
+// ### save key in Kubernetes secret
 // ```go
 // package main
 //

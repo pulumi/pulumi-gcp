@@ -92,7 +92,6 @@ public final class ClusterClusterConfig {
     /**
      * @return The config setting for metastore service with the cluster.
      * Structure defined below.
-     * ***
      * 
      */
     private @Nullable ClusterClusterConfigMetastoreConfig metastoreConfig;
@@ -228,7 +227,6 @@ public final class ClusterClusterConfig {
     /**
      * @return The config setting for metastore service with the cluster.
      * Structure defined below.
-     * ***
      * 
      */
     public Optional<ClusterClusterConfigMetastoreConfig> metastoreConfig() {

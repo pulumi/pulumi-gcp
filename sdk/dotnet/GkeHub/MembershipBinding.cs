@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships.bindings)
     /// * How-to Guides
-    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    ///   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
     /// 
@@ -143,9 +143,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Location of the membership
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -276,9 +273,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Location of the membership
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -362,9 +356,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Location of the membership
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

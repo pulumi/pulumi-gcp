@@ -39,7 +39,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
     /**
      * The service account to use to write to BigQuery. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
      * 
      */
     @Import(name="serviceAccountEmail")
@@ -48,7 +48,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
     /**
      * @return The service account to use to write to BigQuery. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -178,7 +178,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
         /**
          * @param serviceAccountEmail The service account to use to write to BigQuery. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
-         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class SubscriptionBigqueryConfigArgs extends com.pulumi.resources.R
         /**
          * @param serviceAccountEmail The service account to use to write to BigQuery. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
-         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
          * 
          * @return builder
          * 

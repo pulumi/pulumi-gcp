@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores)
  * * How-to Guides
- *     * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
+ *   * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
  * 
- * ## Example Usage
- * 
- * ### Discoveryengine Datastore Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -71,7 +69,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Discoveryengine Datastore Document Processing Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -204,16 +202,12 @@ public class DataStore extends com.pulumi.resources.CustomResource {
     /**
      * The unique id of the data store.
      * 
-     * ***
-     * 
      */
     @Export(name="dataStoreId", refs={String.class}, tree="[0]")
     private Output<String> dataStoreId;
 
     /**
      * @return The unique id of the data store.
-     * 
-     * ***
      * 
      */
     public Output<String> dataStoreId() {

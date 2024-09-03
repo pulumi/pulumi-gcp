@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? LocalSsdInterface;
         /// <summary>
-        /// The amount of local SSD disks that will be attached to each master cluster node. 
+        /// The amount of local SSD disks that will be attached to each master cluster node.
         /// Defaults to 0.
         /// </summary>
         public readonly int? NumLocalSsds;

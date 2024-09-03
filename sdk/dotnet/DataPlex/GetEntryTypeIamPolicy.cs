@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.DataPlex
         /// <summary>
         /// Retrieves the current IAM policy data for entrytype
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Retrieves the current IAM policy data for entrytype
-        /// 
         /// 
         /// ## example
         /// 

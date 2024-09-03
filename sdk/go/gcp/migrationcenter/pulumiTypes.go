@@ -594,7 +594,7 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePre
 }
 
 type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries struct {
-	// Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+	// Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
 	Code *string `pulumi:"code"`
 }
 
@@ -610,7 +610,7 @@ type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefer
 }
 
 type PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs struct {
-	// Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+	// Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
 	Code pulumi.StringPtrInput `pulumi:"code"`
 }
 
@@ -665,7 +665,7 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePre
 	return o
 }
 
-// Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+// Code to identify a Compute Engine machine series. Consult <https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison> for more details on the available series.
 func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries) *string {
 		return v.Code
@@ -693,7 +693,7 @@ func (o PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePre
 }
 
 type PreferenceSetVirtualMachinePreferencesRegionPreferences struct {
-	// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+	// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
 	PreferredRegions []string `pulumi:"preferredRegions"`
 }
 
@@ -709,7 +709,7 @@ type PreferenceSetVirtualMachinePreferencesRegionPreferencesInput interface {
 }
 
 type PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs struct {
-	// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+	// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
 	PreferredRegions pulumi.StringArrayInput `pulumi:"preferredRegions"`
 }
 
@@ -790,7 +790,7 @@ func (o PreferenceSetVirtualMachinePreferencesRegionPreferencesOutput) ToPrefere
 	}).(PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrOutput)
 }
 
-// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
 func (o PreferenceSetVirtualMachinePreferencesRegionPreferencesOutput) PreferredRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesRegionPreferences) []string { return v.PreferredRegions }).(pulumi.StringArrayOutput)
 }
@@ -819,7 +819,7 @@ func (o PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrOutput) Elem()
 	}).(PreferenceSetVirtualMachinePreferencesRegionPreferencesOutput)
 }
 
-// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+// A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See <https://cloud.google.com/compute/docs/regions-zones> for available regions.
 func (o PreferenceSetVirtualMachinePreferencesRegionPreferencesPtrOutput) PreferredRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PreferenceSetVirtualMachinePreferencesRegionPreferences) []string {
 		if v == nil {
@@ -1034,7 +1034,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesPtrOutput) N
 }
 
 type PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType struct {
-	// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	// Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
 	NodeName *string `pulumi:"nodeName"`
 }
 
@@ -1050,7 +1050,7 @@ type PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeInput i
 }
 
 type PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs struct {
-	// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+	// Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 }
 
@@ -1105,7 +1105,7 @@ func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeOutp
 	return o
 }
 
-// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+// Name of the Sole Tenant node. Consult <https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes>
 func (o PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType) *string {
 		return v.NodeName

@@ -24,8 +24,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     private @Nullable String alertRule;
     /**
@@ -50,7 +48,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * must be valid.
      * Label values can be templatized by using variables. The only available
      * variable names are the names of the labels in the PromQL result, including
-     * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
+     * &#34;**name**&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
      * used for organizing and identifying the AlertPolicy
      * 
      */
@@ -86,8 +84,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     public Optional<String> alertRule() {
         return Optional.ofNullable(this.alertRule);
@@ -118,7 +114,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * must be valid.
      * Label values can be templatized by using variables. The only available
      * variable names are the names of the labels in the PromQL result, including
-     * &#34;__name__&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
+     * &#34;**name**&#34; and &#34;value&#34;. &#34;labels&#34; may be empty. This field is intended to be
      * used for organizing and identifying the AlertPolicy
      * 
      */

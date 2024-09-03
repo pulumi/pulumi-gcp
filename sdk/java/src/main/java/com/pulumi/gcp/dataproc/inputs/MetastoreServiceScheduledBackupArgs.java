@@ -33,14 +33,14 @@ public final class MetastoreServiceScheduledBackupArgs extends com.pulumi.resour
     }
 
     /**
-     * The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+     * The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
      * 
      */
     @Import(name="cronSchedule")
     private @Nullable Output<String> cronSchedule;
 
     /**
-     * @return The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+     * @return The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
      * 
      */
     public Optional<Output<String>> cronSchedule() {
@@ -63,14 +63,14 @@ public final class MetastoreServiceScheduledBackupArgs extends com.pulumi.resour
     }
 
     /**
-     * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+     * Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+     * @return Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -126,7 +126,7 @@ public final class MetastoreServiceScheduledBackupArgs extends com.pulumi.resour
         }
 
         /**
-         * @param cronSchedule The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+         * @param cronSchedule The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class MetastoreServiceScheduledBackupArgs extends com.pulumi.resour
         }
 
         /**
-         * @param cronSchedule The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+         * @param cronSchedule The scheduled interval in Cron format, see &lt;https://en.wikipedia.org/wiki/Cron&gt; The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class MetastoreServiceScheduledBackupArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeZone Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+         * @param timeZone Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class MetastoreServiceScheduledBackupArgs extends com.pulumi.resour
         }
 
         /**
-         * @param timeZone Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+         * @param timeZone Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (&lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)&gt;, e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
          * 
          * @return builder
          * 

@@ -25,9 +25,6 @@ class BrandArgs:
         """
         The set of arguments for constructing a Brand resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-               
-               
-               - - -
         :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen. Can be either a
                user or group email. When a user email is specified, the caller must
                be the user with the associated email address. When a group email is
@@ -46,9 +43,6 @@ class BrandArgs:
     def application_title(self) -> pulumi.Input[str]:
         """
         Application name displayed on OAuth consent screen.
-
-
-        - - -
         """
         return pulumi.get(self, "application_title")
 
@@ -97,9 +91,6 @@ class _BrandState:
         """
         Input properties used for looking up and filtering Brand resources.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
                NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
                NOTE: The brand identification corresponds to the project number as only one
@@ -129,9 +120,6 @@ class _BrandState:
     def application_title(self) -> Optional[pulumi.Input[str]]:
         """
         Application name displayed on OAuth consent screen.
-
-
-        - - -
         """
         return pulumi.get(self, "application_title")
 
@@ -254,9 +242,6 @@ class Brand(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] support_email: Support email displayed on the OAuth consent screen. Can be either a
@@ -376,9 +361,6 @@ class Brand(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
                NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
                NOTE: The brand identification corresponds to the project number as only one
@@ -408,9 +390,6 @@ class Brand(pulumi.CustomResource):
     def application_title(self) -> pulumi.Output[str]:
         """
         Application name displayed on OAuth consent screen.
-
-
-        - - -
         """
         return pulumi.get(self, "application_title")
 

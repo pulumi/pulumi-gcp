@@ -354,7 +354,7 @@ class Key(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Creating A New Key
+        ### creating a new Key
 
         ```python
         import pulumi
@@ -368,7 +368,7 @@ class Key(pulumi.CustomResource):
             public_key_type="TYPE_X509_PEM_FILE")
         ```
 
-        ### Creating And Regularly Rotating A Key
+        ### creating and regularly rotating a key
 
         ```python
         import pulumi
@@ -387,7 +387,7 @@ class Key(pulumi.CustomResource):
             })
         ```
 
-        ### Save Key In Kubernetes Secret - DEPRECATED
+        ### save key in Kubernetes secret - DEPRECATED
 
         ```python
         import pulumi
@@ -440,7 +440,7 @@ class Key(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Creating A New Key
+        ### creating a new Key
 
         ```python
         import pulumi
@@ -454,7 +454,7 @@ class Key(pulumi.CustomResource):
             public_key_type="TYPE_X509_PEM_FILE")
         ```
 
-        ### Creating And Regularly Rotating A Key
+        ### creating and regularly rotating a key
 
         ```python
         import pulumi
@@ -473,7 +473,7 @@ class Key(pulumi.CustomResource):
             })
         ```
 
-        ### Save Key In Kubernetes Secret - DEPRECATED
+        ### save key in Kubernetes secret - DEPRECATED
 
         ```python
         import pulumi

@@ -87,8 +87,6 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
      * 
-     * ***
-     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
@@ -96,8 +94,6 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -226,8 +222,6 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
          * @param parent The name of the parent this firewall endpoint belongs to.
          * Format: organizations/{organization_id}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -239,8 +233,6 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
          * Format: organizations/{organization_id}.
-         * 
-         * ***
          * 
          * @return builder
          * 

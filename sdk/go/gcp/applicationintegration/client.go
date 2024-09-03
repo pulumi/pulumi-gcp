@@ -21,9 +21,7 @@ import (
 //   - [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
 //   - [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
 //
-// ## Example Usage
-//
-// ### Integrations Client Basic
+// ##
 //
 // ```go
 // package main
@@ -48,7 +46,7 @@ import (
 //	}
 //
 // ```
-// ### Integrations Client Full
+// ##
 //
 // ```go
 // package main
@@ -157,8 +155,6 @@ type Client struct {
 	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
 	CreateSampleWorkflows pulumi.BoolPtrOutput `pulumi:"createSampleWorkflows"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -220,8 +216,6 @@ type clientState struct {
 	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
 	CreateSampleWorkflows *bool `pulumi:"createSampleWorkflows"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -251,8 +245,6 @@ type ClientState struct {
 	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
 	CreateSampleWorkflows pulumi.BoolPtrInput
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -286,8 +278,6 @@ type clientArgs struct {
 	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
 	CreateSampleWorkflows *bool `pulumi:"createSampleWorkflows"`
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -318,8 +308,6 @@ type ClientArgs struct {
 	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
 	CreateSampleWorkflows pulumi.BoolPtrInput
 	// Location in which client needs to be provisioned.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -444,8 +432,6 @@ func (o ClientOutput) CreateSampleWorkflows() pulumi.BoolPtrOutput {
 }
 
 // Location in which client needs to be provisioned.
-//
-// ***
 func (o ClientOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

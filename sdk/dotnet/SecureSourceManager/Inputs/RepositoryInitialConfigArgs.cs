@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.SecureSourceManager.Inputs
 
         /// <summary>
         /// List of gitignore template names user can choose from.
-        /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        /// Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
         /// </summary>
         public InputList<string> Gitignores
         {
@@ -33,14 +33,14 @@ namespace Pulumi.Gcp.SecureSourceManager.Inputs
 
         /// <summary>
         /// License template name user can choose from.
-        /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        /// Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
         /// </summary>
         [Input("license")]
         public Input<string>? License { get; set; }
 
         /// <summary>
         /// README template name.
-        /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        /// Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
         /// </summary>
         [Input("readme")]
         public Input<string>? Readme { get; set; }

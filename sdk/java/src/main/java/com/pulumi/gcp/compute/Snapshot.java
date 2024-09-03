@@ -37,11 +37,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  * 
- * ## Example Usage
- * 
- * ### Snapshot Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -96,7 +94,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Snapshot Chainname
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -437,16 +435,12 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the disk used to create this snapshot.
      * 
-     * ***
-     * 
      */
     @Export(name="sourceDisk", refs={String.class}, tree="[0]")
     private Output<String> sourceDisk;
 
     /**
      * @return A reference to the disk used to create this snapshot.
-     * 
-     * ***
      * 
      */
     public Output<String> sourceDisk() {

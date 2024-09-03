@@ -432,17 +432,17 @@ if not MYPY:
         gitignores: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         List of gitignore template names user can choose from.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
         license: NotRequired[pulumi.Input[str]]
         """
         License template name user can choose from.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
         readme: NotRequired[pulumi.Input[str]]
         """
         README template name.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
 elif False:
     RepositoryInitialConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -457,11 +457,11 @@ class RepositoryInitialConfigArgs:
         """
         :param pulumi.Input[str] default_branch: Default branch name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gitignores: List of gitignore template names user can choose from.
-               Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+               Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         :param pulumi.Input[str] license: License template name user can choose from.
-               Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+               Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         :param pulumi.Input[str] readme: README template name.
-               Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+               Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
         if default_branch is not None:
             pulumi.set(__self__, "default_branch", default_branch)
@@ -489,7 +489,7 @@ class RepositoryInitialConfigArgs:
     def gitignores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of gitignore template names user can choose from.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
         return pulumi.get(self, "gitignores")
 
@@ -502,7 +502,7 @@ class RepositoryInitialConfigArgs:
     def license(self) -> Optional[pulumi.Input[str]]:
         """
         License template name user can choose from.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
         return pulumi.get(self, "license")
 
@@ -515,7 +515,7 @@ class RepositoryInitialConfigArgs:
     def readme(self) -> Optional[pulumi.Input[str]]:
         """
         README template name.
-        Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
         """
         return pulumi.get(self, "readme")
 

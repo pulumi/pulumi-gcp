@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
  * * How-to Guides
- *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  *
  * ## Example Usage
  *
@@ -48,8 +48,6 @@ export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions
 export interface GetConnectorArgs {
     /**
      * Name of the resource.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -94,7 +92,7 @@ export interface GetConnectorResult {
  *
  * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
  * * How-to Guides
- *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *   * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  *
  * ## Example Usage
  *
@@ -123,8 +121,6 @@ export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.I
 export interface GetConnectorOutputArgs {
     /**
      * Name of the resource.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

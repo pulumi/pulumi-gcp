@@ -38,7 +38,7 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+               More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
                force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
@@ -109,7 +109,7 @@ class ServiceArgs:
         Name must be unique within a Google Cloud project and region.
         Is required when creating resources. Name is primarily intended
         for creation idempotence and configuration definition. Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         """
         return pulumi.get(self, "name")
 
@@ -180,7 +180,7 @@ class _ServiceState:
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+               More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
         :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
@@ -256,7 +256,7 @@ class _ServiceState:
         Name must be unique within a Google Cloud project and region.
         Is required when creating resources. Name is primarily intended
         for creation idempotence and configuration definition. Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         """
         return pulumi.get(self, "name")
 
@@ -339,7 +339,7 @@ class Service(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/run/docs/)
+          * [Official Documentation](https://cloud.google.com/run/docs/)
 
         > **Warning:** We recommend using the `cloudrunv2.Service` resource which offers a better
         developer experience and broader support of Cloud Run features.
@@ -413,7 +413,7 @@ class Service(pulumi.CustomResource):
                 "latest_revision": True,
             }])
         ```
-        ### Cloud Run Service Sql
+        ## 
 
         ```python
         import pulumi
@@ -446,6 +446,7 @@ class Service(pulumi.CustomResource):
             },
             autogenerate_revision_name=True)
         ```
+
         ### Cloud Run Service Noauth
 
         ```python
@@ -472,6 +473,7 @@ class Service(pulumi.CustomResource):
             service=default.name,
             policy_data=noauth.policy_data)
         ```
+
         ### Cloud Run Service Probes
 
         ```python
@@ -507,6 +509,7 @@ class Service(pulumi.CustomResource):
                 "latest_revision": True,
             }])
         ```
+
         ### Cloud Run Service Multicontainer
 
         ```python
@@ -606,7 +609,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+               More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
                and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
                force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
@@ -631,7 +634,7 @@ class Service(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/run/docs/)
+          * [Official Documentation](https://cloud.google.com/run/docs/)
 
         > **Warning:** We recommend using the `cloudrunv2.Service` resource which offers a better
         developer experience and broader support of Cloud Run features.
@@ -705,7 +708,7 @@ class Service(pulumi.CustomResource):
                 "latest_revision": True,
             }])
         ```
-        ### Cloud Run Service Sql
+        ## 
 
         ```python
         import pulumi
@@ -738,6 +741,7 @@ class Service(pulumi.CustomResource):
             },
             autogenerate_revision_name=True)
         ```
+
         ### Cloud Run Service Noauth
 
         ```python
@@ -764,6 +768,7 @@ class Service(pulumi.CustomResource):
             service=default.name,
             policy_data=noauth.policy_data)
         ```
+
         ### Cloud Run Service Probes
 
         ```python
@@ -799,6 +804,7 @@ class Service(pulumi.CustomResource):
                 "latest_revision": True,
             }])
         ```
+
         ### Cloud Run Service Multicontainer
 
         ```python
@@ -962,7 +968,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+               More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceStatusArgs', 'ServiceStatusArgsDict']]]] statuses: (Output)
                Status of the condition, one of True, False, Unknown.
         :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: template holds the latest specification for the Revision to be stamped out. The template references the container image,
@@ -1023,7 +1029,7 @@ class Service(pulumi.CustomResource):
         Name must be unique within a Google Cloud project and region.
         Is required when creating resources. Name is primarily intended
         for creation idempotence and configuration definition. Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
         """
         return pulumi.get(self, "name")
 

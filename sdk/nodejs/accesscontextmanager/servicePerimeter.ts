@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
  * * How-to Guides
- *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+ *   * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Access Context Manager Service Perimeter Secure Data Exchange
  *
  * ```typescript
@@ -182,6 +183,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Access Context Manager Service Perimeter Dry-Run
  *
  * ```typescript
@@ -259,9 +261,6 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -388,9 +387,6 @@ export interface ServicePerimeterState {
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -467,9 +463,6 @@ export interface ServicePerimeterArgs {
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

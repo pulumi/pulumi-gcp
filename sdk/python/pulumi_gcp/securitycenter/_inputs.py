@@ -571,8 +571,6 @@ if not MYPY:
         resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The resource types to run the detector on.
-
-        - - -
         """
 elif False:
     FolderCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -583,8 +581,6 @@ class FolderCustomModuleCustomConfigResourceSelectorArgs:
                  resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -593,8 +589,6 @@ class FolderCustomModuleCustomConfigResourceSelectorArgs:
     def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 
@@ -617,7 +611,7 @@ if not MYPY:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -626,8 +620,6 @@ if not MYPY:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
 elif False:
     FolderNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -647,7 +639,7 @@ class FolderNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
                The supported value types are:
                * string literals in quotes.
@@ -656,8 +648,6 @@ class FolderNotificationConfigStreamingConfigArgs:
                See
                [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
                for information on how to write a filter.
-               
-               - - -
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -675,7 +665,7 @@ class FolderNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -684,8 +674,6 @@ class FolderNotificationConfigStreamingConfigArgs:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -2270,7 +2258,7 @@ if not MYPY:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -2279,8 +2267,6 @@ if not MYPY:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
 elif False:
     NotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2300,7 +2286,7 @@ class NotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
                The supported value types are:
                * string literals in quotes.
@@ -2309,8 +2295,6 @@ class NotificationConfigStreamingConfigArgs:
                See
                [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
                for information on how to write a filter.
-               
-               - - -
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -2328,7 +2312,7 @@ class NotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -2337,8 +2321,6 @@ class NotificationConfigStreamingConfigArgs:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -2803,8 +2785,6 @@ if not MYPY:
         resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The resource types to run the detector on.
-
-        - - -
         """
 elif False:
     OrganizationCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -2815,8 +2795,6 @@ class OrganizationCustomModuleCustomConfigResourceSelectorArgs:
                  resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -2825,8 +2803,6 @@ class OrganizationCustomModuleCustomConfigResourceSelectorArgs:
     def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 
@@ -3291,8 +3267,6 @@ if not MYPY:
         resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
         The resource types to run the detector on.
-
-        - - -
         """
 elif False:
     ProjectCustomModuleCustomConfigResourceSelectorArgsDict: TypeAlias = Mapping[str, Any]
@@ -3303,8 +3277,6 @@ class ProjectCustomModuleCustomConfigResourceSelectorArgs:
                  resource_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: The resource types to run the detector on.
-               
-               - - -
         """
         pulumi.set(__self__, "resource_types", resource_types)
 
@@ -3313,8 +3285,6 @@ class ProjectCustomModuleCustomConfigResourceSelectorArgs:
     def resource_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The resource types to run the detector on.
-
-        - - -
         """
         return pulumi.get(self, "resource_types")
 
@@ -3337,7 +3307,7 @@ if not MYPY:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3346,8 +3316,6 @@ if not MYPY:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
 elif False:
     ProjectNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3367,7 +3335,7 @@ class ProjectNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
                The supported value types are:
                * string literals in quotes.
@@ -3376,8 +3344,6 @@ class ProjectNotificationConfigStreamingConfigArgs:
                See
                [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
                for information on how to write a filter.
-               
-               - - -
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3395,7 +3361,7 @@ class ProjectNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3404,8 +3370,6 @@ class ProjectNotificationConfigStreamingConfigArgs:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -3540,7 +3504,7 @@ if not MYPY:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3549,8 +3513,6 @@ if not MYPY:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
 elif False:
     V2FolderNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3570,7 +3532,7 @@ class V2FolderNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
                The supported value types are:
                * string literals in quotes.
@@ -3579,8 +3541,6 @@ class V2FolderNotificationConfigStreamingConfigArgs:
                See
                [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
                for information on how to write a filter.
-               
-               - - -
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3598,7 +3558,7 @@ class V2FolderNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3607,8 +3567,6 @@ class V2FolderNotificationConfigStreamingConfigArgs:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -3631,7 +3589,7 @@ if not MYPY:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3640,8 +3598,6 @@ if not MYPY:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
 elif False:
     V2OrganizationNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3661,7 +3617,7 @@ class V2OrganizationNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
                The supported value types are:
                * string literals in quotes.
@@ -3670,8 +3626,6 @@ class V2OrganizationNotificationConfigStreamingConfigArgs:
                See
                [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
                for information on how to write a filter.
-               
-               - - -
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3689,7 +3643,7 @@ class V2OrganizationNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3698,8 +3652,6 @@ class V2OrganizationNotificationConfigStreamingConfigArgs:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -3816,7 +3768,7 @@ if not MYPY:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3825,8 +3777,6 @@ if not MYPY:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
 elif False:
     V2ProjectNotificationConfigStreamingConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3846,7 +3796,7 @@ class V2ProjectNotificationConfigStreamingConfigArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
                The supported value types are:
                * string literals in quotes.
@@ -3855,8 +3805,6 @@ class V2ProjectNotificationConfigStreamingConfigArgs:
                See
                [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
                for information on how to write a filter.
-               
-               - - -
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -3874,7 +3822,7 @@ class V2ProjectNotificationConfigStreamingConfigArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
         The supported value types are:
         * string literals in quotes.
@@ -3883,8 +3831,6 @@ class V2ProjectNotificationConfigStreamingConfigArgs:
         See
         [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
         for information on how to write a filter.
-
-        - - -
         """
         return pulumi.get(self, "filter")
 

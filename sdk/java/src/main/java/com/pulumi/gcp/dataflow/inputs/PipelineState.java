@@ -155,7 +155,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec&gt;
      * Structure is documented below.
      * 
      */
@@ -164,7 +164,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec&gt;
      * Structure is documented below.
      * 
      */
@@ -189,10 +189,8 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state&gt;
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-     * 
-     * ***
      * 
      */
     @Import(name="state")
@@ -200,10 +198,8 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state&gt;
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> state() {
@@ -212,7 +208,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype&gt;
      * Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
      * 
      */
@@ -221,7 +217,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype&gt;
      * Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
      * 
      */
@@ -231,7 +227,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Workload information for creating new jobs.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload&gt;
      * Structure is documented below.
      * 
      */
@@ -240,7 +236,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Workload information for creating new jobs.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload&gt;
      * Structure is documented below.
      * 
      */
@@ -468,7 +464,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scheduleInfo Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -481,7 +477,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scheduleInfo Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -514,10 +510,8 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param state The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state&gt;
          * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -529,10 +523,8 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param state The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state&gt;
          * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -543,7 +535,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype&gt;
          * Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
          * 
          * @return builder
@@ -556,7 +548,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype&gt;
          * Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
          * 
          * @return builder
@@ -568,7 +560,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param workload Workload information for creating new jobs.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -581,7 +573,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param workload Workload information for creating new jobs.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload&gt;
          * Structure is documented below.
          * 
          * @return builder

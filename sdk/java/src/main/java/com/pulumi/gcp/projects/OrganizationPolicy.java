@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy)
  * * How-to Guides
- *     * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ *   * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
  * 
  * ## Example Usage
  * 
@@ -242,16 +242,12 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
-     * ***
-     * 
      */
     @Export(name="constraint", refs={String.class}, tree="[0]")
     private Output<String> constraint;
 
     /**
      * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     * 
-     * ***
      * 
      */
     public Output<String> constraint() {
@@ -305,8 +301,6 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
      * 
-     * ***
-     * 
      */
     @Export(name="restorePolicy", refs={OrganizationPolicyRestorePolicy.class}, tree="[0]")
     private Output</* @Nullable */ OrganizationPolicyRestorePolicy> restorePolicy;
@@ -316,8 +310,6 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
-     * 
-     * ***
      * 
      */
     public Output<Optional<OrganizationPolicyRestorePolicy>> restorePolicy() {

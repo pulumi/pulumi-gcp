@@ -112,7 +112,7 @@ type GetAccountAccessTokenArgs struct {
 	Lifetime *string `pulumi:"lifetime"`
 	// The scopes the new credential should have (e.g. `["cloud-platform"]`)
 	Scopes []string `pulumi:"scopes"`
-	// The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+	// The service account *to* impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
 	TargetServiceAccount string `pulumi:"targetServiceAccount"`
 }
 
@@ -149,7 +149,7 @@ type GetAccountAccessTokenOutputArgs struct {
 	Lifetime pulumi.StringPtrInput `pulumi:"lifetime"`
 	// The scopes the new credential should have (e.g. `["cloud-platform"]`)
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
+	// The service account *to* impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
 	TargetServiceAccount pulumi.StringInput `pulumi:"targetServiceAccount"`
 }
 

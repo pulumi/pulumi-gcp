@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Global
+// ### global
 // ```go
 // package main
 //

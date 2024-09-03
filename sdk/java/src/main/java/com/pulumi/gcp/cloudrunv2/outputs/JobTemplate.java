@@ -25,8 +25,8 @@ public final class JobTemplate {
     private @Nullable Map<String,String> annotations;
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter,
-     * or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-     * https://cloud.google.com/run/docs/configuring/labels.
+     * or break down billing charges by team, component, environment, state, etc. For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or
+     * &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
      * All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
      * 
@@ -38,7 +38,7 @@ public final class JobTemplate {
      */
     private @Nullable Integer parallelism;
     /**
-     * @return Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     * @return Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: &lt;https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/&gt;
      * 
      */
     private @Nullable Integer taskCount;
@@ -62,8 +62,8 @@ public final class JobTemplate {
     }
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter,
-     * or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-     * https://cloud.google.com/run/docs/configuring/labels.
+     * or break down billing charges by team, component, environment, state, etc. For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or
+     * &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
      * All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
      * 
@@ -79,7 +79,7 @@ public final class JobTemplate {
         return Optional.ofNullable(this.parallelism);
     }
     /**
-     * @return Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+     * @return Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: &lt;https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/&gt;
      * 
      */
     public Optional<Integer> taskCount() {

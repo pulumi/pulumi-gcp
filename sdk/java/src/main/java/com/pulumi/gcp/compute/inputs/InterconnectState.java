@@ -98,8 +98,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
      * 
-     * ***
-     * 
      */
     @Import(name="customerName")
     private @Nullable Output<String> customerName;
@@ -107,8 +105,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> customerName() {
@@ -771,8 +767,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * @param customerName Customer name, to put in the Letter of Authorization as the party authorized to request a
          * crossconnect.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -784,8 +778,6 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customerName Customer name, to put in the Letter of Authorization as the party authorized to request a
          * crossconnect.
-         * 
-         * ***
          * 
          * @return builder
          * 

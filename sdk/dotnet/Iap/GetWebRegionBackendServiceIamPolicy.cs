@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Iap
         /// <summary>
         /// Retrieves the current IAM policy data for webregionbackendservice
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Retrieves the current IAM policy data for webregionbackendservice
-        /// 
         /// 
         /// ## example
         /// 

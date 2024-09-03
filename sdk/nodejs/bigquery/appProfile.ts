@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
  *
- * ## Example Usage
- *
- * ### Bigtable App Profile Anycluster
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +50,7 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * ### Bigtable App Profile Singlecluster
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +76,7 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * ### Bigtable App Profile Multicluster
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -119,7 +117,7 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * ### Bigtable App Profile Priority
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -203,9 +201,6 @@ export class AppProfile extends pulumi.CustomResource {
 
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     public readonly appProfileId!: pulumi.Output<string>;
     /**
@@ -308,9 +303,6 @@ export class AppProfile extends pulumi.CustomResource {
 export interface AppProfileState {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     appProfileId?: pulumi.Input<string>;
     /**
@@ -368,9 +360,6 @@ export interface AppProfileState {
 export interface AppProfileArgs {
     /**
      * The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-     *
-     *
-     * - - -
      */
     appProfileId: pulumi.Input<string>;
     /**

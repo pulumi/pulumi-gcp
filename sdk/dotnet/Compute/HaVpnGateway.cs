@@ -18,12 +18,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
     /// * How-to Guides
-    ///     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
-    ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+    ///   * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+    ///   * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Ha Vpn Gateway Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -48,7 +46,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Ha Vpn Gateway Ipv6
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -74,6 +72,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Compute Ha Vpn Gateway Encrypted Interconnect
     /// 
     /// ```csharp
@@ -230,9 +231,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -346,9 +344,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -424,9 +419,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

@@ -35,9 +35,6 @@ class EntryArgs:
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -51,7 +48,7 @@ class EntryArgs:
                this field is optional and defaults to an empty string.
         :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
                attached to it. See
-               https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+               <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -101,9 +98,6 @@ class EntryArgs:
     def entry_id(self) -> pulumi.Input[str]:
         """
         The id of the entry to create.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_id")
 
@@ -172,7 +166,7 @@ class EntryArgs:
         """
         Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         attached to it. See
-        https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
         for what fields this schema can contain.
         """
         return pulumi.get(self, "schema")
@@ -246,7 +240,7 @@ class _EntryState:
         """
         Input properties used for looking up and filtering Entry resources.
         :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-               Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+               Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
                Structure is documented below.
@@ -255,9 +249,6 @@ class _EntryState:
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input['EntryGcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[str] integrated_system: This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
@@ -272,7 +263,7 @@ class _EntryState:
                Note that this Entry and its child resources may not actually be stored in the location in this name.
         :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
                attached to it. See
-               https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+               <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -320,7 +311,7 @@ class _EntryState:
     def bigquery_date_sharded_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]]:
         """
         Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-        Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_date_sharded_specs")
@@ -384,9 +375,6 @@ class _EntryState:
     def entry_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the entry to create.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_id")
 
@@ -456,7 +444,7 @@ class _EntryState:
         """
         Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         attached to it. See
-        https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
         for what fields this schema can contain.
         """
         return pulumi.get(self, "schema")
@@ -538,11 +526,9 @@ class Entry(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Entry Basic
+        ## 
 
         ```python
         import pulumi
@@ -555,7 +541,7 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
-        ### Data Catalog Entry Fileset
+        ## 
 
         ```python
         import pulumi
@@ -570,7 +556,7 @@ class Entry(pulumi.CustomResource):
                 "file_patterns": ["gs://fake_bucket/dir/*"],
             })
         ```
-        ### Data Catalog Entry Full
+        ## 
 
         ```python
         import pulumi
@@ -643,9 +629,6 @@ class Entry(pulumi.CustomResource):
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to.
@@ -656,7 +639,7 @@ class Entry(pulumi.CustomResource):
                this field is optional and defaults to an empty string.
         :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
                attached to it. See
-               https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+               <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -688,11 +671,9 @@ class Entry(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Entry Basic
+        ## 
 
         ```python
         import pulumi
@@ -705,7 +686,7 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
-        ### Data Catalog Entry Fileset
+        ## 
 
         ```python
         import pulumi
@@ -720,7 +701,7 @@ class Entry(pulumi.CustomResource):
                 "file_patterns": ["gs://fake_bucket/dir/*"],
             })
         ```
-        ### Data Catalog Entry Full
+        ## 
 
         ```python
         import pulumi
@@ -870,7 +851,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryDateShardedSpecArgs', 'EntryBigqueryDateShardedSpecArgsDict']]]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-               Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+               Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryBigqueryTableSpecArgs', 'EntryBigqueryTableSpecArgsDict']]]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
                Structure is documented below.
@@ -879,9 +860,6 @@ class Entry(pulumi.CustomResource):
                for example, "Analytics Data - Jan 2011".
         :param pulumi.Input[str] entry_group: The name of the entry group this entry is in.
         :param pulumi.Input[str] entry_id: The id of the entry to create.
-               
-               
-               - - -
         :param pulumi.Input[Union['EntryGcsFilesetSpecArgs', 'EntryGcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
                Structure is documented below.
         :param pulumi.Input[str] integrated_system: This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
@@ -896,7 +874,7 @@ class Entry(pulumi.CustomResource):
                Note that this Entry and its child resources may not actually be stored in the location in this name.
         :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
                attached to it. See
-               https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+               <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
@@ -935,7 +913,7 @@ class Entry(pulumi.CustomResource):
     def bigquery_date_sharded_specs(self) -> pulumi.Output[Sequence['outputs.EntryBigqueryDateShardedSpec']]:
         """
         Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-        Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
         Structure is documented below.
         """
         return pulumi.get(self, "bigquery_date_sharded_specs")
@@ -979,9 +957,6 @@ class Entry(pulumi.CustomResource):
     def entry_id(self) -> pulumi.Output[str]:
         """
         The id of the entry to create.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_id")
 
@@ -1031,7 +1006,7 @@ class Entry(pulumi.CustomResource):
         """
         Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
         attached to it. See
-        https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+        <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
         for what fields this schema can contain.
         """
         return pulumi.get(self, "schema")

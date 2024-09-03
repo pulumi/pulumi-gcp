@@ -12,8 +12,8 @@ import * as utilities from "../utilities";
  * To get more information about ConsumerQuotaOverride, see:
  *
  * * How-to Guides
- *     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
- *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+ *   * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota)
+ *   * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  *
  * ## Example Usage
  *
@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
+ *
  * ### Region Consumer Quota Override
  *
  * ```typescript
@@ -70,6 +71,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
+ *
  * ### Consumer Quota Override Custom Dimension
  *
  * ```typescript
@@ -164,9 +166,6 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
      * The limit on the metric, e.g. `/project/region`.
      * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
-     *
-     *
-     * - - -
      */
     public readonly limit!: pulumi.Output<string>;
     /**
@@ -257,9 +256,6 @@ export interface ConsumerQuotaOverrideState {
      * The limit on the metric, e.g. `/project/region`.
      * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
-     *
-     *
-     * - - -
      */
     limit?: pulumi.Input<string>;
     /**
@@ -302,9 +298,6 @@ export interface ConsumerQuotaOverrideArgs {
      * The limit on the metric, e.g. `/project/region`.
      * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
-     *
-     *
-     * - - -
      */
     limit: pulumi.Input<string>;
     /**

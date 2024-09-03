@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
  *
@@ -98,9 +98,6 @@ export class TagBinding extends pulumi.CustomResource {
     public readonly parent!: pulumi.Output<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
-     *
-     *
-     * - - -
      */
     public readonly tagValue!: pulumi.Output<string>;
 
@@ -151,9 +148,6 @@ export interface TagBindingState {
     parent?: pulumi.Input<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
-     *
-     *
-     * - - -
      */
     tagValue?: pulumi.Input<string>;
 }
@@ -168,9 +162,6 @@ export interface TagBindingArgs {
     parent: pulumi.Input<string>;
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
-     *
-     *
-     * - - -
      */
     tagValue: pulumi.Input<string>;
 }

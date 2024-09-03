@@ -25,6 +25,42 @@ public final class CertificateauthorityFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAuthorityResult> getAuthority() {
         return getAuthority(GetAuthorityArgs.Empty, InvokeOptions.Empty);
@@ -33,6 +69,42 @@ public final class CertificateauthorityFunctions {
      * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAuthorityResult> getAuthorityPlain() {
@@ -43,6 +115,42 @@ public final class CertificateauthorityFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAuthorityResult> getAuthority(GetAuthorityArgs args) {
         return getAuthority(args, InvokeOptions.Empty);
@@ -51,6 +159,42 @@ public final class CertificateauthorityFunctions {
      * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAuthorityResult> getAuthorityPlain(GetAuthorityPlainArgs args) {
@@ -61,6 +205,42 @@ public final class CertificateauthorityFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAuthorityResult> getAuthority(GetAuthorityArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:certificateauthority/getAuthority:getAuthority", TypeShape.of(GetAuthorityResult.class), args, Utilities.withVersion(options));
@@ -69,6 +249,42 @@ public final class CertificateauthorityFunctions {
      * Get info about a Google CAS Certificate Authority.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAuthorityResult> getAuthorityPlain(GetAuthorityPlainArgs args, InvokeOptions options) {

@@ -62,14 +62,12 @@ class SQuotaPreferenceQuotaConfig(dict):
                  trace_id: Optional[str] = None):
         """
         :param str preferred_value: The preferred value. Must be greater than or equal to -1. If set to -1, it means the value is "unlimited".
-        :param Mapping[str, str] annotations: The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        :param Mapping[str, str] annotations: The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
                An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param str granted_value: (Output)
                Granted quota value.
         :param str request_origin: (Output)
                The origin of the quota preference request.
-               
-               - - -
         :param str state_detail: (Output)
                Optional details about the state of this quota preference.
         :param str trace_id: (Output)
@@ -99,7 +97,7 @@ class SQuotaPreferenceQuotaConfig(dict):
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
         """
-        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See <https://google.aip.dev/128#annotations>.
         An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         """
         return pulumi.get(self, "annotations")
@@ -119,8 +117,6 @@ class SQuotaPreferenceQuotaConfig(dict):
         """
         (Output)
         The origin of the quota preference request.
-
-        - - -
         """
         return pulumi.get(self, "request_origin")
 

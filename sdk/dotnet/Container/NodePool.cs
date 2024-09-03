@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Example Usage
     /// 
-    /// ### Using A Separately Managed Node Pool (Recommended)
+    /// ### using a separately managed node pool (recommended)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Container
     /// });
     /// ```
     /// 
-    /// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+    /// ### 2 node pools, 1 separately managed + the default node pool
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -153,8 +153,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-        /// 
-        /// - - -
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -179,8 +177,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The location (region or zone) of the cluster.
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -354,8 +350,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-        /// 
-        /// - - -
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -374,8 +368,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The location (region or zone) of the cluster.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -508,8 +500,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-        /// 
-        /// - - -
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -540,8 +530,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The location (region or zone) of the cluster.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

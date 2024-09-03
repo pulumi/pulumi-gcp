@@ -21,7 +21,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
     /**
      * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     @Import(name="branchName")
@@ -30,7 +30,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
     /**
      * @return Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<Output<String>> branchName() {
@@ -136,7 +136,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
     /**
      * Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     @Import(name="tagName")
@@ -145,7 +145,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
     /**
      * @return Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
      * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<Output<String>> tagName() {
@@ -186,7 +186,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
         /**
          * @param branchName Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
         /**
          * @param branchName Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
         /**
          * @param tagName Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
         /**
          * @param tagName Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
          * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 

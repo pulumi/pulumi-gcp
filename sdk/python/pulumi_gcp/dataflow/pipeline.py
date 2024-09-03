@@ -34,13 +34,10 @@ class PipelineArgs:
         """
         The set of arguments for constructing a Pipeline resource.
         :param pulumi.Input[str] state: The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
                Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         :param pulumi.Input[str] display_name: The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
         :param pulumi.Input[str] name: "The pipeline name. For example': 'projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID."
@@ -53,11 +50,11 @@ class PipelineArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input['PipelineScheduleInfoArgs'] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
                Structure is documented below.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         :param pulumi.Input['PipelineWorkloadArgs'] workload: Workload information for creating new jobs.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
                Structure is documented below.
         """
         pulumi.set(__self__, "state", state)
@@ -84,11 +81,8 @@ class PipelineArgs:
     def state(self) -> pulumi.Input[str]:
         """
         The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
         Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -101,7 +95,7 @@ class PipelineArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
         Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         """
         return pulumi.get(self, "type")
@@ -180,7 +174,7 @@ class PipelineArgs:
     def schedule_info(self) -> Optional[pulumi.Input['PipelineScheduleInfoArgs']]:
         """
         Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
         Structure is documented below.
         """
         return pulumi.get(self, "schedule_info")
@@ -206,7 +200,7 @@ class PipelineArgs:
     def workload(self) -> Optional[pulumi.Input['PipelineWorkloadArgs']]:
         """
         Workload information for creating new jobs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
         Structure is documented below.
         """
         return pulumi.get(self, "workload")
@@ -250,20 +244,17 @@ class _PipelineState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input['PipelineScheduleInfoArgs'] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
                Structure is documented below.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         :param pulumi.Input[str] state: The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
                Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         :param pulumi.Input['PipelineWorkloadArgs'] workload: Workload information for creating new jobs.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
                Structure is documented below.
         """
         if create_time is not None:
@@ -401,7 +392,7 @@ class _PipelineState:
     def schedule_info(self) -> Optional[pulumi.Input['PipelineScheduleInfoArgs']]:
         """
         Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
         Structure is documented below.
         """
         return pulumi.get(self, "schedule_info")
@@ -427,11 +418,8 @@ class _PipelineState:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
         Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -444,7 +432,7 @@ class _PipelineState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
         Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         """
         return pulumi.get(self, "type")
@@ -458,7 +446,7 @@ class _PipelineState:
     def workload(self) -> Optional[pulumi.Input['PipelineWorkloadArgs']]:
         """
         Workload information for creating new jobs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
         Structure is documented below.
         """
         return pulumi.get(self, "workload")
@@ -491,11 +479,9 @@ class Pipeline(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataflow)
+          * [Official Documentation](https://cloud.google.com/dataflow)
 
-        ## Example Usage
-
-        ### Data Pipeline Pipeline
+        ## 
 
         ```python
         import pulumi
@@ -591,20 +577,17 @@ class Pipeline(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
                Structure is documented below.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         :param pulumi.Input[str] state: The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
                Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']] workload: Workload information for creating new jobs.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
                Structure is documented below.
         """
         ...
@@ -620,11 +603,9 @@ class Pipeline(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataflow)
+          * [Official Documentation](https://cloud.google.com/dataflow)
 
-        ## Example Usage
-
-        ### Data Pipeline Pipeline
+        ## 
 
         ```python
         import pulumi
@@ -804,20 +785,17 @@ class Pipeline(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
         :param pulumi.Input[Union['PipelineScheduleInfoArgs', 'PipelineScheduleInfoArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
                Structure is documented below.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         :param pulumi.Input[str] state: The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
                Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
                Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         :param pulumi.Input[Union['PipelineWorkloadArgs', 'PipelineWorkloadArgsDict']] workload: Workload information for creating new jobs.
-               https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+               <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -915,7 +893,7 @@ class Pipeline(pulumi.CustomResource):
     def schedule_info(self) -> pulumi.Output[Optional['outputs.PipelineScheduleInfo']]:
         """
         Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#schedulespec>
         Structure is documented below.
         """
         return pulumi.get(self, "schedule_info")
@@ -933,11 +911,8 @@ class Pipeline(pulumi.CustomResource):
     def state(self) -> pulumi.Output[str]:
         """
         The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state>
         Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -946,7 +921,7 @@ class Pipeline(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#pipelinetype>
         Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
         """
         return pulumi.get(self, "type")
@@ -956,7 +931,7 @@ class Pipeline(pulumi.CustomResource):
     def workload(self) -> pulumi.Output[Optional['outputs.PipelineWorkload']]:
         """
         Workload information for creating new jobs.
-        https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload
+        <https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#workload>
         Structure is documented below.
         """
         return pulumi.get(self, "workload")

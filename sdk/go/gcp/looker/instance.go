@@ -20,9 +20,7 @@ import (
 //   - [Configure a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-setup)
 //   - [Create a Looker (Google Cloud core) instance](https://cloud.google.com/looker/docs/looker-core-instance-create)
 //
-// ## Example Usage
-//
-// ### Looker Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -53,7 +51,7 @@ import (
 //	}
 //
 // ```
-// ### Looker Instance Full
+// ##
 //
 // ```go
 // package main
@@ -117,6 +115,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Looker Instance Enterprise Full
 //
 // ```go
@@ -233,7 +234,7 @@ import (
 //	}
 //
 // ```
-// ### Looker Instance Custom Domain
+// ##
 //
 // ```go
 // package main
@@ -338,8 +339,6 @@ type Instance struct {
 	// Structure is documented below.
 	MaintenanceWindow InstanceMaintenanceWindowPtrOutput `pulumi:"maintenanceWindow"`
 	// The ID of the instance or a fully qualified identifier for the instance.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
@@ -447,8 +446,6 @@ type instanceState struct {
 	// Structure is documented below.
 	MaintenanceWindow *InstanceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The ID of the instance or a fully qualified identifier for the instance.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
@@ -527,8 +524,6 @@ type InstanceState struct {
 	// Structure is documented below.
 	MaintenanceWindow InstanceMaintenanceWindowPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
@@ -598,8 +593,6 @@ type instanceArgs struct {
 	// Structure is documented below.
 	MaintenanceWindow *InstanceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The ID of the instance or a fully qualified identifier for the instance.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
@@ -663,8 +656,6 @@ type InstanceArgs struct {
 	// Structure is documented below.
 	MaintenanceWindow InstanceMaintenanceWindowPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
@@ -862,8 +853,6 @@ func (o InstanceOutput) MaintenanceWindow() InstanceMaintenanceWindowPtrOutput {
 }
 
 // The ID of the instance or a fully qualified identifier for the instance.
-//
-// ***
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

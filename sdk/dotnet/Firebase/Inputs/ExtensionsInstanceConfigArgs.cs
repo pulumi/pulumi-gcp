@@ -76,8 +76,6 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// with actual values. These strings include: ${param:FOO},
         /// ${function:myFunc.url},
         /// ${function:myFunc.name}, and ${function:myFunc.location}
-        /// 
-        /// - - -
         /// </summary>
         [Input("populatedPostinstallContent")]
         public Input<string>? PopulatedPostinstallContent { get; set; }
@@ -89,7 +87,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// Params whose values are only available at deployment time.
         /// Unlike other params, these will not be set as environment variables on
         /// functions. See a full list of system parameters at
-        /// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
+        /// &lt;https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters&gt;
         /// </summary>
         public InputMap<string> SystemParams
         {

@@ -275,8 +275,6 @@ type ClusterPscConfig struct {
 	// Required. The consumer network where the network address of
 	// the discovery endpoint will be reserved, in the form of
 	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
 	Network string `pulumi:"network"`
 }
 
@@ -295,8 +293,6 @@ type ClusterPscConfigArgs struct {
 	// Required. The consumer network where the network address of
 	// the discovery endpoint will be reserved, in the form of
 	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
 	Network pulumi.StringInput `pulumi:"network"`
 }
 
@@ -354,8 +350,6 @@ func (o ClusterPscConfigOutput) ToClusterPscConfigOutputWithContext(ctx context.
 // Required. The consumer network where the network address of
 // the discovery endpoint will be reserved, in the form of
 // projects/{network_project_id_or_number}/global/networks/{network_id}.
-//
-// ***
 func (o ClusterPscConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterPscConfig) string { return v.Network }).(pulumi.StringOutput)
 }

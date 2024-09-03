@@ -21,9 +21,7 @@ import (
 //   - [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 //   - [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
 //
-// ## Example Usage
-//
-// ### Vpn Tunnel Basic
+// ##
 //
 // ```go
 // package main
@@ -212,8 +210,6 @@ type VPNTunnel struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	SharedSecret pulumi.StringOutput `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringOutput `pulumi:"sharedSecretHash"`
@@ -335,8 +331,6 @@ type vpntunnelState struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// Hash of the shared secret.
 	SharedSecretHash *string `pulumi:"sharedSecretHash"`
@@ -417,8 +411,6 @@ type VPNTunnelState struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	SharedSecret pulumi.StringPtrInput
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringPtrInput
@@ -489,8 +481,6 @@ type vpntunnelArgs struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	SharedSecret string `pulumi:"sharedSecret"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -554,8 +544,6 @@ type VPNTunnelArgs struct {
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	SharedSecret pulumi.StringInput
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -775,8 +763,6 @@ func (o VPNTunnelOutput) SelfLink() pulumi.StringOutput {
 // Shared secret used to set the secure session between the Cloud VPN
 // gateway and the peer VPN gateway.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-//
-// ***
 func (o VPNTunnelOutput) SharedSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.SharedSecret }).(pulumi.StringOutput)
 }

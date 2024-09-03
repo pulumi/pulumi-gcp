@@ -45,8 +45,6 @@ type SharedflowDeployment struct {
 	// The Apigee Organization associated with the Sharedflow
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision pulumi.StringOutput `pulumi:"revision"`
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
@@ -101,8 +99,6 @@ type sharedflowDeploymentState struct {
 	// The Apigee Organization associated with the Sharedflow
 	OrgId *string `pulumi:"orgId"`
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision *string `pulumi:"revision"`
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -116,8 +112,6 @@ type SharedflowDeploymentState struct {
 	// The Apigee Organization associated with the Sharedflow
 	OrgId pulumi.StringPtrInput
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision pulumi.StringPtrInput
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount pulumi.StringPtrInput
@@ -135,8 +129,6 @@ type sharedflowDeploymentArgs struct {
 	// The Apigee Organization associated with the Sharedflow
 	OrgId string `pulumi:"orgId"`
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision string `pulumi:"revision"`
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -151,8 +143,6 @@ type SharedflowDeploymentArgs struct {
 	// The Apigee Organization associated with the Sharedflow
 	OrgId pulumi.StringInput
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision pulumi.StringInput
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount pulumi.StringPtrInput
@@ -258,8 +248,6 @@ func (o SharedflowDeploymentOutput) OrgId() pulumi.StringOutput {
 }
 
 // Revision of the Sharedflow to be deployed.
-//
-// ***
 func (o SharedflowDeploymentOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedflowDeployment) pulumi.StringOutput { return v.Revision }).(pulumi.StringOutput)
 }

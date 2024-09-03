@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Searching For Folders At The Root Of An Org
+ * ### searching for folders at the root of an org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,7 @@ export interface GetFoldersResult {
  *
  * ## Example Usage
  *
- * ### Searching For Folders At The Root Of An Org
+ * ### searching for folders at the root of an org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

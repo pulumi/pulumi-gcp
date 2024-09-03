@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.global.policyBasedRoutes)
     /// * How-to Guides
-    ///     * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
+    ///   * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Connectivity Policy Based Route Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -49,7 +47,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Policy Based Route Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -65,9 +63,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     // This example substitutes an arbitrary internal IP for an internal network
-    ///     // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
-    ///     // to set one up.
     ///     var ilb = new Gcp.Compute.GlobalAddress("ilb", new()
     ///     {
     ///         Name = "my-ilb",

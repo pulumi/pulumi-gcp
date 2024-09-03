@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
  * * How-to Guides
- *     * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+ *   * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
  *
- * ## Example Usage
- *
- * ### Discoveryengine Schema Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -118,9 +116,6 @@ export class Schema extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The unique id of the schema.
-     *
-     *
-     * - - -
      */
     public readonly schemaId!: pulumi.Output<string>;
 
@@ -197,9 +192,6 @@ export interface SchemaState {
     project?: pulumi.Input<string>;
     /**
      * The unique id of the schema.
-     *
-     *
-     * - - -
      */
     schemaId?: pulumi.Input<string>;
 }
@@ -228,9 +220,6 @@ export interface SchemaArgs {
     project?: pulumi.Input<string>;
     /**
      * The unique id of the schema.
-     *
-     *
-     * - - -
      */
     schemaId: pulumi.Input<string>;
 }

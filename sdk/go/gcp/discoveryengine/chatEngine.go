@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Vertex AI Conversation](https://cloud.google.com/dialogflow/cx/docs/concept/generative)
 //
-// ## Example Usage
-//
-// ### Discoveryengine Chat Engine Basic
+// ##
 //
 // ```go
 // package main

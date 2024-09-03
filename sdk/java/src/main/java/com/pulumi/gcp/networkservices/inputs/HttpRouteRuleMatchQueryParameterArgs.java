@@ -62,14 +62,14 @@ public final class HttpRouteRuleMatchQueryParameterArgs extends com.pulumi.resou
     }
 
     /**
-     * The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     @Import(name="regexMatch")
     private @Nullable Output<String> regexMatch;
 
     /**
-     * @return The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+     * @return The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
      * 
      */
     public Optional<Output<String>> regexMatch() {
@@ -167,7 +167,7 @@ public final class HttpRouteRuleMatchQueryParameterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param regexMatch The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         * @param regexMatch The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class HttpRouteRuleMatchQueryParameterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param regexMatch The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         * @param regexMatch The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see &lt;https://github.com/google/re2/wiki/Syntax&gt;
          * 
          * @return builder
          * 

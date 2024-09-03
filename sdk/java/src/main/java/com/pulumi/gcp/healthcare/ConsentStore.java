@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
  * * How-to Guides
- *     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+ *   * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
  * 
- * ## Example Usage
- * 
- * ### Healthcare Consent Store Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -70,7 +68,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Healthcare Consent Store Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -115,7 +113,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Healthcare Consent Store Iam
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -193,8 +191,6 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
@@ -202,8 +198,6 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {

@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// &gt; **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Services Edge Cache Service Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -110,7 +108,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// ### Network Services Edge Cache Service Advanced
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -422,7 +420,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
-    /// ### Network Services Edge Cache Service Dual Token
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

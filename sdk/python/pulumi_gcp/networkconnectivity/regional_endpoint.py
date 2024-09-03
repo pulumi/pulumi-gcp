@@ -34,9 +34,6 @@ class RegionalEndpointArgs:
         :param pulumi.Input[str] access_type: The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule configuration to enable global access.
                Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] location: The location of the RegionalEndpoint.
-               
-               
-               - - -
         :param pulumi.Input[str] target_google_api: The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: \\"cloudkms.us-central1.p.rep.googleapis.com\\".
         :param pulumi.Input[str] address: The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in `projects/{project}/regions/{region}/addresses/{address_name}`
                > **Note:** This field accepts both a reference to a Compute Address resource, which is the resource name of which format is given in the description, and IP literal value. If the user chooses to input a reserved address value; they need to make sure that the reserved address is in IPv4 version, its purpose is GCE_ENDPOINT, its type is INTERNAL and its status is RESERVED. If the user chooses to input an IP literal, they need to make sure that it's a valid IPv4 address (x.x.x.x) within the subnetwork.
@@ -87,9 +84,6 @@ class RegionalEndpointArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the RegionalEndpoint.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -231,9 +225,6 @@ class _RegionalEndpointState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the RegionalEndpoint.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the RegionalEndpoint.
         :param pulumi.Input[str] network: The name of the VPC network for this private regional endpoint. Format: `projects/{project}/global/networks/{network}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -358,9 +349,6 @@ class _RegionalEndpointState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the RegionalEndpoint.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -490,11 +478,9 @@ class RegionalEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.regionalEndpoints)
         * How-to Guides
-            * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
+          * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
 
-        ## Example Usage
-
-        ### Network Connectivity Regional Endpoint Regional Access
+        ## 
 
         ```python
         import pulumi
@@ -521,7 +507,7 @@ class RegionalEndpoint(pulumi.CustomResource):
                 "env": "default",
             })
         ```
-        ### Network Connectivity Regional Endpoint Global Access
+        ## 
 
         ```python
         import pulumi
@@ -581,9 +567,6 @@ class RegionalEndpoint(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the RegionalEndpoint.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the RegionalEndpoint.
         :param pulumi.Input[str] network: The name of the VPC network for this private regional endpoint. Format: `projects/{project}/global/networks/{network}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -604,11 +587,9 @@ class RegionalEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.regionalEndpoints)
         * How-to Guides
-            * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
+          * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
 
-        ## Example Usage
-
-        ### Network Connectivity Regional Endpoint Regional Access
+        ## 
 
         ```python
         import pulumi
@@ -635,7 +616,7 @@ class RegionalEndpoint(pulumi.CustomResource):
                 "env": "default",
             })
         ```
-        ### Network Connectivity Regional Endpoint Global Access
+        ## 
 
         ```python
         import pulumi
@@ -784,9 +765,6 @@ class RegionalEndpoint(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the RegionalEndpoint.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the RegionalEndpoint.
         :param pulumi.Input[str] network: The name of the VPC network for this private regional endpoint. Format: `projects/{project}/global/networks/{network}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -877,9 +855,6 @@ class RegionalEndpoint(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the RegionalEndpoint.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

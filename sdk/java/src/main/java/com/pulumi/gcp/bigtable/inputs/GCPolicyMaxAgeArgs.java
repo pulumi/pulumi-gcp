@@ -42,16 +42,12 @@ public final class GCPolicyMaxAgeArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
      * 
-     * ***
-     * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
      * @return Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> duration() {
@@ -115,8 +111,6 @@ public final class GCPolicyMaxAgeArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param duration Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -127,8 +121,6 @@ public final class GCPolicyMaxAgeArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param duration Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
-         * 
-         * ***
          * 
          * @return builder
          * 

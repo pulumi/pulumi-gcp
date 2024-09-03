@@ -157,9 +157,6 @@ def get_apple_app(app_id: Optional[str] = None,
     Use this data source to access information about an existing resource.
 
     :param str app_id: The app_id of name of the Firebase iosApp.
-           
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
@@ -190,9 +187,6 @@ def get_apple_app_output(app_id: Optional[pulumi.Input[str]] = None,
     Use this data source to access information about an existing resource.
 
     :param str app_id: The app_id of name of the Firebase iosApp.
-           
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """

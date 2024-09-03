@@ -71,6 +71,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Org Policy Policy Folder
 //
 // ```go
@@ -117,6 +118,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Org Policy Policy Organization
 //
 // ```go
@@ -146,6 +148,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Org Policy Policy Project
 //
 // ```go
@@ -210,6 +213,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Org Policy Policy Dry Run Spec
 //
 // ```go
@@ -296,8 +300,6 @@ type Policy struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the resource.
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Basic information about the Organization Policy.
 	// Structure is documented below.
@@ -345,8 +347,6 @@ type policyState struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// Basic information about the Organization Policy.
 	// Structure is documented below.
@@ -362,8 +362,6 @@ type PolicyState struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// Basic information about the Organization Policy.
 	// Structure is documented below.
@@ -381,8 +379,6 @@ type policyArgs struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// Basic information about the Organization Policy.
 	// Structure is documented below.
@@ -397,8 +393,6 @@ type PolicyArgs struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
-	//
-	// ***
 	Parent pulumi.StringInput
 	// Basic information about the Organization Policy.
 	// Structure is documented below.
@@ -509,8 +503,6 @@ func (o PolicyOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the resource.
-//
-// ***
 func (o PolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -10,70 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ParallelStore
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Parallelstore Instance Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var network = new Gcp.Compute.Network("network", new()
-    ///     {
-    ///         Name = "network",
-    ///         AutoCreateSubnetworks = true,
-    ///         Mtu = 8896,
-    ///     });
-    /// 
-    ///     // Create an IP address
-    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
-    ///     {
-    ///         Name = "address",
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 24,
-    ///         Network = network.Id,
-    ///     });
-    /// 
-    ///     // Create a private connection
-    ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
-    ///     {
-    ///         Network = network.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             privateIpAlloc.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var instance = new Gcp.ParallelStore.Instance("instance", new()
-    ///     {
-    ///         InstanceId = "instance",
-    ///         Location = "us-central1-a",
-    ///         Description = "test instance",
-    ///         CapacityGib = "12000",
-    ///         Network = network.Name,
-    ///         FileStripeLevel = "FILE_STRIPE_LEVEL_MIN",
-    ///         DirectoryStripeLevel = "DIRECTORY_STRIPE_LEVEL_MIN",
-    ///         Labels = 
-    ///         {
-    ///             { "test", "value" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             @default,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Instance can be imported using any of these accepted formats:
@@ -180,9 +116,6 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the customer project/ location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -199,13 +132,13 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Label values must be between 0 and 63 characters long and must conform
         /// to the regular expression `[a-z0-9_-]{0,63}`.
         /// * No more than 64 labels can be associated with a given resource.
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.
+        /// See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
         /// If you plan to use labels in your own code, please note that additional
         /// characters may be allowed in the future. Therefore, you are advised to use
         /// an internal label representation, such as JSON, which doesn't rely upon
         /// specific characters being disallowed.  For example, representing labels
-        /// as the string:  name + "_" + value  would prove problematic if we were to
-        /// allow "_" in a future release.
+        /// as the string:  name + "*" + value  would prove problematic if we were to
+        /// allow "*" in a future release.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -371,9 +304,6 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the customer project/ location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -393,13 +323,13 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Label values must be between 0 and 63 characters long and must conform
         /// to the regular expression `[a-z0-9_-]{0,63}`.
         /// * No more than 64 labels can be associated with a given resource.
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.
+        /// See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
         /// If you plan to use labels in your own code, please note that additional
         /// characters may be allowed in the future. Therefore, you are advised to use
         /// an internal label representation, such as JSON, which doesn't rely upon
         /// specific characters being disallowed.  For example, representing labels
-        /// as the string:  name + "_" + value  would prove problematic if we were to
-        /// allow "_" in a future release.
+        /// as the string:  name + "*" + value  would prove problematic if we were to
+        /// allow "*" in a future release.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -542,9 +472,6 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Must be between 1-63 characters.
         /// * Must end with a number or a letter.
         /// * Must be unique within the customer project/ location
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -564,13 +491,13 @@ namespace Pulumi.Gcp.ParallelStore
         /// * Label values must be between 0 and 63 characters long and must conform
         /// to the regular expression `[a-z0-9_-]{0,63}`.
         /// * No more than 64 labels can be associated with a given resource.
-        /// See https://goo.gl/xmQnxf for more information on and examples of labels.
+        /// See &lt;https://goo.gl/xmQnxf&gt; for more information on and examples of labels.
         /// If you plan to use labels in your own code, please note that additional
         /// characters may be allowed in the future. Therefore, you are advised to use
         /// an internal label representation, such as JSON, which doesn't rely upon
         /// specific characters being disallowed.  For example, representing labels
-        /// as the string:  name + "_" + value  would prove problematic if we were to
-        /// allow "_" in a future release.
+        /// as the string:  name + "*" + value  would prove problematic if we were to
+        /// allow "*" in a future release.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>

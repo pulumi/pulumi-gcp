@@ -81,16 +81,12 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A unique ID that identifies this network.
      * 
-     * ***
-     * 
      */
     @Import(name="networkId", required=true)
     private Output<String> networkId;
 
     /**
      * @return A unique ID that identifies this network.
-     * 
-     * ***
      * 
      */
     public Output<String> networkId() {
@@ -246,8 +242,6 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param networkId A unique ID that identifies this network.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -258,8 +252,6 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkId A unique ID that identifies this network.
-         * 
-         * ***
          * 
          * @return builder
          * 

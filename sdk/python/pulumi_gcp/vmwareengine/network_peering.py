@@ -44,9 +44,6 @@ class NetworkPeeringArgs:
         :param pulumi.Input[bool] import_custom_routes: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[bool] import_custom_routes_with_public_ip: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[str] name: The ID of the Network Peering.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -173,9 +170,6 @@ class NetworkPeeringArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Network Peering.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -227,9 +221,6 @@ class _NetworkPeeringState:
         :param pulumi.Input[bool] import_custom_routes: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[bool] import_custom_routes_with_public_ip: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[str] name: The ID of the Network Peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[str] peer_network_type: The type of the network to peer with the VMware Engine network.
@@ -362,9 +353,6 @@ class _NetworkPeeringState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Network Peering.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -541,6 +529,7 @@ class NetworkPeering(pulumi.CustomResource):
             export_custom_routes_with_public_ip=False,
             import_custom_routes_with_public_ip=False)
         ```
+
         ### Vmware Engine Network Peering Standard
 
         ```python
@@ -592,9 +581,6 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[bool] import_custom_routes: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[bool] import_custom_routes_with_public_ip: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[str] name: The ID of the Network Peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[str] peer_network_type: The type of the network to peer with the VMware Engine network.
@@ -645,6 +631,7 @@ class NetworkPeering(pulumi.CustomResource):
             export_custom_routes_with_public_ip=False,
             import_custom_routes_with_public_ip=False)
         ```
+
         ### Vmware Engine Network Peering Standard
 
         ```python
@@ -786,9 +773,6 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[bool] import_custom_routes: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[bool] import_custom_routes_with_public_ip: True if custom routes are imported from the peered network; false otherwise.
         :param pulumi.Input[str] name: The ID of the Network Peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peer_network: The relative resource name of the network to peer with a standard VMware Engine network.
                The provided network can be a consumer VPC network or another standard VMware Engine network.
         :param pulumi.Input[str] peer_network_type: The type of the network to peer with the VMware Engine network.
@@ -886,9 +870,6 @@ class NetworkPeering(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The ID of the Network Peering.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

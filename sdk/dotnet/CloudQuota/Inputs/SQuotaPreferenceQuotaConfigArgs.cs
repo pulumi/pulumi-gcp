@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudQuota.Inputs
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See https://google.aip.dev/128#annotations.
+        /// The annotations map for clients to store small amounts of arbitrary data. Do not put PII or other sensitive information here. See &lt;https://google.aip.dev/128#annotations&gt;.
         /// An object containing a list of "key: value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         /// </summary>
         public InputMap<string> Annotations
@@ -41,8 +41,6 @@ namespace Pulumi.Gcp.CloudQuota.Inputs
         /// <summary>
         /// (Output)
         /// The origin of the quota preference request.
-        /// 
-        /// - - -
         /// </summary>
         [Input("requestOrigin")]
         public Input<string>? RequestOrigin { get; set; }

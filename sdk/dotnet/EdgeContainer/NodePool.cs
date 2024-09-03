@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.clusters.nodePools)
     /// * How-to Guides
-    ///     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+    ///   * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
+    /// 
     /// ### Edgecontainer Node Pool With Cmek
     /// 
     /// ```csharp
@@ -156,6 +157,7 @@ namespace Pulumi.Gcp.EdgeContainer
     /// 
     /// });
     /// ```
+    /// 
     /// ### Edgecontainer Local Control Plane Node Pool
     /// 
     /// ```csharp
@@ -251,9 +253,6 @@ namespace Pulumi.Gcp.EdgeContainer
     {
         /// <summary>
         /// The name of the target Distributed Cloud Edge Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -403,9 +402,6 @@ namespace Pulumi.Gcp.EdgeContainer
     {
         /// <summary>
         /// The name of the target Distributed Cloud Edge Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -487,9 +483,6 @@ namespace Pulumi.Gcp.EdgeContainer
     {
         /// <summary>
         /// The name of the target Distributed Cloud Edge Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }

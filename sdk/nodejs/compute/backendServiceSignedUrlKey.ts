@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
  * * How-to Guides
- *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ *   * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  *
  * ## Example Usage
  *
@@ -104,9 +104,6 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
 
     /**
      * The backend service this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
@@ -168,9 +165,6 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
 export interface BackendServiceSignedUrlKeyState {
     /**
      * The backend service this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -196,9 +190,6 @@ export interface BackendServiceSignedUrlKeyState {
 export interface BackendServiceSignedUrlKeyArgs {
     /**
      * The backend service this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     backendService: pulumi.Input<string>;
     /**

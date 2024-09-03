@@ -27,11 +27,8 @@ class UserWorkloadsConfigMapArgs:
         """
         The set of arguments for constructing a UserWorkloadsConfigMap resource.
         :param pulumi.Input[str] environment: Environment where the Kubernetes ConfigMap will be stored and used.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-               For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+               For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         :param pulumi.Input[str] name: Name of the Kubernetes ConfigMap.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -52,9 +49,6 @@ class UserWorkloadsConfigMapArgs:
     def environment(self) -> pulumi.Input[str]:
         """
         Environment where the Kubernetes ConfigMap will be stored and used.
-
-
-        - - -
         """
         return pulumi.get(self, "environment")
 
@@ -67,7 +61,7 @@ class UserWorkloadsConfigMapArgs:
     def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         """
         return pulumi.get(self, "data")
 
@@ -124,11 +118,8 @@ class _UserWorkloadsConfigMapState:
         """
         Input properties used for looking up and filtering UserWorkloadsConfigMap resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-               For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+               For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         :param pulumi.Input[str] environment: Environment where the Kubernetes ConfigMap will be stored and used.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the Kubernetes ConfigMap.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -150,7 +141,7 @@ class _UserWorkloadsConfigMapState:
     def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         """
         return pulumi.get(self, "data")
 
@@ -163,9 +154,6 @@ class _UserWorkloadsConfigMapState:
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
         Environment where the Kubernetes ConfigMap will be stored and used.
-
-
-        - - -
         """
         return pulumi.get(self, "environment")
 
@@ -223,31 +211,6 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Composer User Workloads Config Map Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        environment = gcp.composer.Environment("environment",
-            name="test-environment",
-            region="us-central1",
-            config={
-                "software_config": {
-                    "image_version": "composer-3-airflow-2",
-                },
-            })
-        config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
-            name="test-config-map",
-            region="us-central1",
-            environment=environment.name,
-            data={
-                "api_host": "apihost:443",
-            })
-        ```
-
         ## Import
 
         UserWorkloadsConfigMap can be imported using any of these accepted formats:
@@ -281,11 +244,8 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-               For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+               For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         :param pulumi.Input[str] environment: Environment where the Kubernetes ConfigMap will be stored and used.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the Kubernetes ConfigMap.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -298,31 +258,6 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
                  args: UserWorkloadsConfigMapArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Composer User Workloads Config Map Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        environment = gcp.composer.Environment("environment",
-            name="test-environment",
-            region="us-central1",
-            config={
-                "software_config": {
-                    "image_version": "composer-3-airflow-2",
-                },
-            })
-        config_map = gcp.composer.UserWorkloadsConfigMap("config_map",
-            name="test-config-map",
-            region="us-central1",
-            environment=environment.name,
-            data={
-                "api_host": "apihost:443",
-            })
-        ```
-
         ## Import
 
         UserWorkloadsConfigMap can be imported using any of these accepted formats:
@@ -412,11 +347,8 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-               For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+               For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         :param pulumi.Input[str] environment: Environment where the Kubernetes ConfigMap will be stored and used.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the Kubernetes ConfigMap.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -438,7 +370,7 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
     def data(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         """
         return pulumi.get(self, "data")
 
@@ -447,9 +379,6 @@ class UserWorkloadsConfigMap(pulumi.CustomResource):
     def environment(self) -> pulumi.Output[str]:
         """
         Environment where the Kubernetes ConfigMap will be stored and used.
-
-
-        - - -
         """
         return pulumi.get(self, "environment")
 

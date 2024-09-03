@@ -21,19 +21,17 @@ import * as utilities from "../utilities";
  * labels are required.
  *
  * A list of supported channels per project the `list` endpoint can be
- * accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
+ * accessed programmatically or through the api explorer at  <https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list> .
  * This provides the channel type and all of the required labels that must be passed.
  *
  * To get more information about NotificationChannel, see:
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
  * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  *
- * ## Example Usage
- *
- * ### Notification Channel Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +46,9 @@ import * as utilities from "../utilities";
  *     forceDelete: false,
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Notification Channel Sensitive
  *
  * ```typescript
@@ -157,10 +158,7 @@ export class NotificationChannel extends pulumi.CustomResource {
      */
     public readonly sensitiveLabels!: pulumi.Output<outputs.monitoring.NotificationChannelSensitiveLabels | undefined>;
     /**
-     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-     *
-     *
-     * - - -
+     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See <https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list> to get the list of valid values such as "email", "slack", etc...
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -273,10 +271,7 @@ export interface NotificationChannelState {
      */
     sensitiveLabels?: pulumi.Input<inputs.monitoring.NotificationChannelSensitiveLabels>;
     /**
-     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-     *
-     *
-     * - - -
+     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See <https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list> to get the list of valid values such as "email", "slack", etc...
      */
     type?: pulumi.Input<string>;
     /**
@@ -338,10 +333,7 @@ export interface NotificationChannelArgs {
      */
     sensitiveLabels?: pulumi.Input<inputs.monitoring.NotificationChannelSensitiveLabels>;
     /**
-     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
-     *
-     *
-     * - - -
+     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See <https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list> to get the list of valid values such as "email", "slack", etc...
      */
     type: pulumi.Input<string>;
     /**

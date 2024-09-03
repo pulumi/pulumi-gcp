@@ -87,7 +87,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
     }
 
     /**
-     * Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
     private @Nullable Output<List<CertificateTemplatePredefinedValuesPolicyIdArgs>> policyIds;
 
     /**
-     * @return Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * @return Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */
@@ -243,7 +243,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
         }
 
         /**
-         * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -255,7 +255,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
         }
 
         /**
-         * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -266,7 +266,7 @@ public final class CertificateTemplatePredefinedValuesArgs extends com.pulumi.re
         }
 
         /**
-         * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * @param policyIds Optional. Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
          * Structure is documented below.
          * 
          * @return builder

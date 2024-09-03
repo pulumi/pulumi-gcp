@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.MigrationCenter.Inputs
     public sealed class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        /// Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

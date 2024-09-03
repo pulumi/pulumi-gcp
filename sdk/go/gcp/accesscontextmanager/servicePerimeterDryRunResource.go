@@ -105,8 +105,6 @@ type ServicePerimeterDryRunResource struct {
 	pulumi.CustomResourceState
 
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName pulumi.StringOutput `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -151,8 +149,6 @@ func GetServicePerimeterDryRunResource(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServicePerimeterDryRunResource resources.
 type servicePerimeterDryRunResourceState struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName *string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -162,8 +158,6 @@ type servicePerimeterDryRunResourceState struct {
 
 type ServicePerimeterDryRunResourceState struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -177,8 +171,6 @@ func (ServicePerimeterDryRunResourceState) ElementType() reflect.Type {
 
 type servicePerimeterDryRunResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -189,8 +181,6 @@ type servicePerimeterDryRunResourceArgs struct {
 // The set of arguments for constructing a ServicePerimeterDryRunResource resource.
 type ServicePerimeterDryRunResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	PerimeterName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -286,8 +276,6 @@ func (o ServicePerimeterDryRunResourceOutput) ToServicePerimeterDryRunResourceOu
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o ServicePerimeterDryRunResourceOutput) PerimeterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunResource) pulumi.StringOutput { return v.PerimeterName }).(pulumi.StringOutput)
 }

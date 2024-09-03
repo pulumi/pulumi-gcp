@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? ContentType;
         /// <summary>
-        /// A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        /// A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
         /// </summary>
         public readonly string? CustomContentType;
         /// <summary>

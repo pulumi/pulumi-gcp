@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
  * * How-to Guides
- *     * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
+ *   * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
  *
  * ## Example Usage
  *
@@ -110,9 +110,6 @@ export class ReservationAssignment extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The reservation for the resource
-     *
-     *
-     * - - -
      */
     public readonly reservation!: pulumi.Output<string>;
     /**
@@ -192,9 +189,6 @@ export interface ReservationAssignmentState {
     project?: pulumi.Input<string>;
     /**
      * The reservation for the resource
-     *
-     *
-     * - - -
      */
     reservation?: pulumi.Input<string>;
     /**
@@ -227,9 +221,6 @@ export interface ReservationAssignmentArgs {
     project?: pulumi.Input<string>;
     /**
      * The reservation for the resource
-     *
-     *
-     * - - -
      */
     reservation: pulumi.Input<string>;
 }

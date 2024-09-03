@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/scheduler/)
+ *   * [Official Documentation](https://cloud.google.com/scheduler/)
  * 
- * ## Example Usage
- * 
- * ### Scheduler Job Pubsub
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -80,7 +78,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Scheduler Job Http
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -131,7 +129,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Scheduler Job Paused
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -183,7 +181,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Scheduler Job App Engine
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -239,6 +237,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Scheduler Job Oauth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -290,7 +291,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Scheduler Job Oidc
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -462,16 +463,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * The name of the job.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the job.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

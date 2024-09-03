@@ -16,11 +16,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes.snapshots)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
  *
- * ## Example Usage
- *
- * ### Volume Snapshot Create
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -126,9 +124,6 @@ export class VolumeSnapshot extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The name of the snapshot.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -222,9 +217,6 @@ export interface VolumeSnapshotState {
     location?: pulumi.Input<string>;
     /**
      * The name of the snapshot.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -268,9 +260,6 @@ export interface VolumeSnapshotArgs {
     location: pulumi.Input<string>;
     /**
      * The name of the snapshot.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

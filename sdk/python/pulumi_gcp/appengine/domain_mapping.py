@@ -28,9 +28,6 @@ class DomainMappingArgs:
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
@@ -53,9 +50,6 @@ class DomainMappingArgs:
     def domain_name(self) -> pulumi.Input[str]:
         """
         Relative name of the domain serving the application. Example: example.com.
-
-
-        - - -
         """
         return pulumi.get(self, "domain_name")
 
@@ -117,9 +111,6 @@ class _DomainMappingState:
         """
         Input properties used for looking up and filtering DomainMapping resources.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
@@ -151,9 +142,6 @@ class _DomainMappingState:
     def domain_name(self) -> Optional[pulumi.Input[str]]:
         """
         Relative name of the domain serving the application. Example: example.com.
-
-
-        - - -
         """
         return pulumi.get(self, "domain_name")
 
@@ -246,11 +234,9 @@ class DomainMapping(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+          * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
-        ## Example Usage
-
-        ### App Engine Domain Mapping Basic
+        ## 
 
         ```python
         import pulumi
@@ -290,9 +276,6 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
@@ -315,11 +298,9 @@ class DomainMapping(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+          * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
-        ## Example Usage
-
-        ### App Engine Domain Mapping Basic
+        ## 
 
         ```python
         import pulumi
@@ -416,9 +397,6 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
@@ -449,9 +427,6 @@ class DomainMapping(pulumi.CustomResource):
     def domain_name(self) -> pulumi.Output[str]:
         """
         Relative name of the domain serving the application. Example: example.com.
-
-
-        - - -
         """
         return pulumi.get(self, "domain_name")
 

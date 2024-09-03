@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.connections)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/integration-connectors/docs/createconnection)
+    ///   * [Official Documentation](https://cloud.google.com/integration-connectors/docs/createconnection)
     /// 
     /// ## Example Usage
     /// 
@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// });
     /// ```
+    /// 
     /// ### Integration Connectors Connection Advanced
     /// 
     /// ```csharp
@@ -530,9 +531,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Connection needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -751,9 +749,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Connection needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -955,9 +950,6 @@ namespace Pulumi.Gcp.IntegrationConnectors
 
         /// <summary>
         /// Name of Connection needs to be created.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

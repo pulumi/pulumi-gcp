@@ -30,11 +30,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+ *   * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  * 
- * ## Example Usage
- * 
- * ### Redis Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -69,7 +67,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Redis Instance Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,7 +139,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Redis Instance Full With Persistence Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -184,6 +182,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Redis Instance Private Service
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -261,7 +262,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Redis Instance Mrr
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -323,6 +324,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Redis Instance Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -707,16 +709,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Redis memory size in GiB.
      * 
-     * ***
-     * 
      */
     @Export(name="memorySizeGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> memorySizeGb;
 
     /**
      * @return Redis memory size in GiB.
-     * 
-     * ***
      * 
      */
     public Output<Integer> memorySizeGb() {
@@ -895,18 +893,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.readReplicasMode;
     }
     /**
-     * Redis configuration parameters, according to http://redis.io/topics/config.
+     * Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
      * 
      */
     @Export(name="redisConfigs", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> redisConfigs;
 
     /**
-     * @return Redis configuration parameters, according to http://redis.io/topics/config.
+     * @return Redis configuration parameters, according to &lt;http://redis.io/topics/config&gt;.
      * Please check Memorystore documentation for the list of supported parameters:
-     * https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+     * &lt;https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs&gt;
      * 
      */
     public Output<Optional<Map<String,String>>> redisConfigs() {

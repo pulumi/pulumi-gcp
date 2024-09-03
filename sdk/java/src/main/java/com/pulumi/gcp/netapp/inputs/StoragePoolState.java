@@ -168,16 +168,12 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The resource name of the storage pool. Needs to be unique per location/region.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -561,8 +557,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The resource name of the storage pool. Needs to be unique per location/region.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -573,8 +567,6 @@ public final class StoragePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The resource name of the storage pool. Needs to be unique per location/region.
-         * 
-         * ***
          * 
          * @return builder
          * 

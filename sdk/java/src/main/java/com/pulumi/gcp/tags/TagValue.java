@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  * 
  * ## Example Usage
  * 
@@ -167,8 +167,6 @@ public class TagValue extends com.pulumi.resources.CustomResource {
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
-     * ***
-     * 
      */
     @Export(name="shortName", refs={String.class}, tree="[0]")
     private Output<String> shortName;
@@ -176,8 +174,6 @@ public class TagValue extends com.pulumi.resources.CustomResource {
     /**
      * @return Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     * 
-     * ***
      * 
      */
     public Output<String> shortName() {

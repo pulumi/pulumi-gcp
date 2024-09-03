@@ -25,9 +25,7 @@ import (
 //   - [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
 //   - [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
 //
-// ## Example Usage
-//
-// ### Netapp Volume Basic
+// ##
 //
 // ```go
 // package main
@@ -145,8 +143,6 @@ type Volume struct {
 	// Structure is documented below.
 	MountOptions VolumeMountOptionArrayOutput `pulumi:"mountOptions"`
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -291,8 +287,6 @@ type volumeState struct {
 	// Structure is documented below.
 	MountOptions []VolumeMountOption `pulumi:"mountOptions"`
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
 	Network *string `pulumi:"network"`
@@ -388,8 +382,6 @@ type VolumeState struct {
 	// Structure is documented below.
 	MountOptions VolumeMountOptionArrayInput
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`. Inherited from storage pool.
 	Network pulumi.StringPtrInput
@@ -472,8 +464,6 @@ type volumeArgs struct {
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
 	Location string `pulumi:"location"`
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -534,8 +524,6 @@ type VolumeArgs struct {
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
 	Location pulumi.StringInput
 	// The name of the volume. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -746,8 +734,6 @@ func (o VolumeOutput) MountOptions() VolumeMountOptionArrayOutput {
 }
 
 // The name of the volume. Needs to be unique per location.
-//
-// ***
 func (o VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

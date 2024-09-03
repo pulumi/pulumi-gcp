@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         /// <summary>
         /// A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
         /// certificate is signed. To see the full allowed syntax and some examples,
-        /// see https://cloud.google.com/certificate-authority-service/docs/cel-guide
+        /// see &lt;https://cloud.google.com/certificate-authority-service/docs/cel-guide&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("celExpression")]

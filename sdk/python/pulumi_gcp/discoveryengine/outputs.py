@@ -99,8 +99,6 @@ class ChatEngineChatEngineConfigAgentCreationConfig(dict):
         :param str time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         :param str business: Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
         :param str location: Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-               
-               - - -
         """
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "time_zone", time_zone)
@@ -138,8 +136,6 @@ class ChatEngineChatEngineConfigAgentCreationConfig(dict):
     def location(self) -> Optional[str]:
         """
         Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -554,8 +550,6 @@ class SearchEngineSearchEngineConfig(dict):
         """
         :param Sequence[str] search_add_ons: The add-on that this search engine enables.
                Each value may be one of: `SEARCH_ADD_ON_LLM`.
-               
-               - - -
         :param str search_tier: The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
                Default value is `SEARCH_TIER_STANDARD`.
                Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
@@ -571,8 +565,6 @@ class SearchEngineSearchEngineConfig(dict):
         """
         The add-on that this search engine enables.
         Each value may be one of: `SEARCH_ADD_ON_LLM`.
-
-        - - -
         """
         return pulumi.get(self, "search_add_ons")
 

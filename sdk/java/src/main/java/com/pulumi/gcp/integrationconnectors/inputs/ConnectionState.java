@@ -311,16 +311,12 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of Connection needs to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of Connection needs to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -970,8 +966,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of Connection needs to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -982,8 +976,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of Connection needs to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 

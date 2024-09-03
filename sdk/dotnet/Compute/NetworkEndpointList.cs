@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+    ///   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
     /// 
@@ -176,9 +176,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The network endpoint group these endpoints are part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("networkEndpointGroup")]
         public Output<string> NetworkEndpointGroup { get; private set; } = null!;
@@ -253,9 +250,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The network endpoint group these endpoints are part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkEndpointGroup", required: true)]
         public Input<string> NetworkEndpointGroup { get; set; } = null!;
@@ -298,9 +292,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The network endpoint group these endpoints are part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkEndpointGroup")]
         public Input<string>? NetworkEndpointGroup { get; set; }

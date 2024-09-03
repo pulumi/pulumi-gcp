@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Basic_workload
+ * ### basicWorkload
  * A basic test of a assuredworkloads api
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,7 +47,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Sovereign_controls_workload
+ *
+ * ### sovereignControlsWorkload
  * A Sovereign Controls test of the assuredworkloads api
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -189,10 +190,6 @@ export class Workload extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The organization for the resource
-     *
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -374,10 +371,6 @@ export interface WorkloadState {
     name?: pulumi.Input<string>;
     /**
      * The organization for the resource
-     *
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -451,10 +444,6 @@ export interface WorkloadArgs {
     location: pulumi.Input<string>;
     /**
      * The organization for the resource
-     *
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
     /**

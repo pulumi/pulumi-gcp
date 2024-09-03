@@ -7,9 +7,7 @@ import * as utilities from "../utilities";
 /**
  * A secret version resource.
  *
- * ## Example Usage
- *
- * ### Secret Version Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * ```
- * ### Secret Version Deletion Policy Abandon
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +49,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "ABANDON",
  * });
  * ```
- * ### Secret Version Deletion Policy Disable
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -73,7 +71,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DISABLE",
  * });
  * ```
- * ### Secret Version With Base64 String Secret Data
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -171,9 +169,6 @@ export class SecretVersion extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Secret Manager secret resource
-     *
-     *
-     * - - -
      */
     public readonly secret!: pulumi.Output<string>;
     /**
@@ -269,9 +264,6 @@ export interface SecretVersionState {
     name?: pulumi.Input<string>;
     /**
      * Secret Manager secret resource
-     *
-     *
-     * - - -
      */
     secret?: pulumi.Input<string>;
     /**
@@ -308,9 +300,6 @@ export interface SecretVersionArgs {
     isSecretDataBase64?: pulumi.Input<boolean>;
     /**
      * Secret Manager secret resource
-     *
-     *
-     * - - -
      */
     secret: pulumi.Input<string>;
     /**

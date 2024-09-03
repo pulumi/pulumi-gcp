@@ -142,7 +142,7 @@ type WorkflowTemplate struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+	// Output only. The resource name of the workflow template, as described in <https://cloud.google.com/apis/design/resource_names>. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
 	// when the template is instantiated.
@@ -227,7 +227,7 @@ type workflowTemplateState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+	// Output only. The resource name of the workflow template, as described in <https://cloud.google.com/apis/design/resource_names>. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
 	// when the template is instantiated.
@@ -269,7 +269,7 @@ type WorkflowTemplateState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+	// Output only. The resource name of the workflow template, as described in <https://cloud.google.com/apis/design/resource_names>. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
 	// when the template is instantiated.
@@ -312,7 +312,7 @@ type workflowTemplateArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+	// Output only. The resource name of the workflow template, as described in <https://cloud.google.com/apis/design/resource_names>. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
 	// when the template is instantiated.
@@ -348,7 +348,7 @@ type WorkflowTemplateArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+	// Output only. The resource name of the workflow template, as described in <https://cloud.google.com/apis/design/resource_names>. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided
 	// when the template is instantiated.
@@ -490,7 +490,7 @@ func (o WorkflowTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+// Output only. The resource name of the workflow template, as described in <https://cloud.google.com/apis/design/resource_names>. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 func (o WorkflowTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

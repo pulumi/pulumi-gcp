@@ -1116,7 +1116,7 @@ type SubscriptionBigqueryConfig struct {
 	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
 	// The service account to use to write to BigQuery. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table string `pulumi:"table"`
@@ -1149,7 +1149,7 @@ type SubscriptionBigqueryConfigArgs struct {
 	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
 	// The service account to use to write to BigQuery. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
@@ -1250,7 +1250,7 @@ func (o SubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutp
 
 // The service account to use to write to BigQuery. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 func (o SubscriptionBigqueryConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -1316,7 +1316,7 @@ func (o SubscriptionBigqueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrO
 
 // The service account to use to write to BigQuery. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 func (o SubscriptionBigqueryConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *string {
 		if v == nil {
@@ -1390,7 +1390,7 @@ type SubscriptionCloudStorageConfig struct {
 	MaxDuration *string `pulumi:"maxDuration"`
 	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// (Output)
 	// An output-only field that indicates whether or not the subscription can receive messages.
@@ -1429,7 +1429,7 @@ type SubscriptionCloudStorageConfigArgs struct {
 	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
 	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// (Output)
 	// An output-only field that indicates whether or not the subscription can receive messages.
@@ -1554,7 +1554,7 @@ func (o SubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutp
 
 // The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 func (o SubscriptionCloudStorageConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -1665,7 +1665,7 @@ func (o SubscriptionCloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrO
 
 // The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>, is used.
 func (o SubscriptionCloudStorageConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
 		if v == nil {
@@ -1828,7 +1828,7 @@ type SubscriptionDeadLetterPolicy struct {
 	// Format is `projects/{project}/topics/{topic}`.
 	// The Cloud Pub/Sub service account associated with the enclosing subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Publish() to this topic.
 	// The operation will fail if the topic does not exist.
 	// Users should ensure that there is a subscription attached to this topic
@@ -1861,7 +1861,7 @@ type SubscriptionDeadLetterPolicyArgs struct {
 	// Format is `projects/{project}/topics/{topic}`.
 	// The Cloud Pub/Sub service account associated with the enclosing subscription's
 	// parent project (i.e.,
-	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 	// permission to Publish() to this topic.
 	// The operation will fail if the topic does not exist.
 	// Users should ensure that there is a subscription attached to this topic
@@ -1959,7 +1959,7 @@ func (o SubscriptionDeadLetterPolicyOutput) ToSubscriptionDeadLetterPolicyPtrOut
 // Format is `projects/{project}/topics/{topic}`.
 // The Cloud Pub/Sub service account associated with the enclosing subscription's
 // parent project (i.e.,
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 // permission to Publish() to this topic.
 // The operation will fail if the topic does not exist.
 // Users should ensure that there is a subscription attached to this topic
@@ -2008,7 +2008,7 @@ func (o SubscriptionDeadLetterPolicyPtrOutput) Elem() SubscriptionDeadLetterPoli
 // Format is `projects/{project}/topics/{topic}`.
 // The Cloud Pub/Sub service account associated with the enclosing subscription's
 // parent project (i.e.,
-// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+// <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
 // permission to Publish() to this topic.
 // The operation will fail if the topic does not exist.
 // Users should ensure that there is a subscription attached to this topic
@@ -2954,7 +2954,7 @@ type SubscriptionPushConfigOidcToken struct {
 	// identifies the recipients that the JWT is intended for. The audience
 	// value is a single case-sensitive string. Having multiple values (array)
 	// for the audience field is not supported. More info about the OIDC JWT
-	// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+	// token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
 	// Note: if not specified, the Push endpoint URL will be used.
 	Audience *string `pulumi:"audience"`
 	// Service account email to be used for generating the OIDC token.
@@ -2980,7 +2980,7 @@ type SubscriptionPushConfigOidcTokenArgs struct {
 	// identifies the recipients that the JWT is intended for. The audience
 	// value is a single case-sensitive string. Having multiple values (array)
 	// for the audience field is not supported. More info about the OIDC JWT
-	// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+	// token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
 	// Note: if not specified, the Push endpoint URL will be used.
 	Audience pulumi.StringPtrInput `pulumi:"audience"`
 	// Service account email to be used for generating the OIDC token.
@@ -3071,7 +3071,7 @@ func (o SubscriptionPushConfigOidcTokenOutput) ToSubscriptionPushConfigOidcToken
 // identifies the recipients that the JWT is intended for. The audience
 // value is a single case-sensitive string. Having multiple values (array)
 // for the audience field is not supported. More info about the OIDC JWT
-// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+// token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
 // Note: if not specified, the Push endpoint URL will be used.
 func (o SubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionPushConfigOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
@@ -3113,7 +3113,7 @@ func (o SubscriptionPushConfigOidcTokenPtrOutput) Elem() SubscriptionPushConfigO
 // identifies the recipients that the JWT is intended for. The audience
 // value is a single case-sensitive string. Having multiple values (array)
 // for the audience field is not supported. More info about the OIDC JWT
-// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+// token audience here: <https://tools.ietf.org/html/rfc7519#section-4.1.3>
 // Note: if not specified, the Push endpoint URL will be used.
 func (o SubscriptionPushConfigOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubscriptionPushConfigOidcToken) *string {
@@ -4156,7 +4156,7 @@ type TopicSchemaSettings struct {
 	Encoding *string `pulumi:"encoding"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
-	// The value of this field will be _deleted-schema_
+	// The value of this field will be *deleted-schema*
 	// if the schema has been deleted.
 	Schema string `pulumi:"schema"`
 }
@@ -4179,7 +4179,7 @@ type TopicSchemaSettingsArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
-	// The value of this field will be _deleted-schema_
+	// The value of this field will be *deleted-schema*
 	// if the schema has been deleted.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -4270,7 +4270,7 @@ func (o TopicSchemaSettingsOutput) Encoding() pulumi.StringPtrOutput {
 
 // The name of the schema that messages published should be
 // validated against. Format is projects/{project}/schemas/{schema}.
-// The value of this field will be _deleted-schema_
+// The value of this field will be *deleted-schema*
 // if the schema has been deleted.
 func (o TopicSchemaSettingsOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v TopicSchemaSettings) string { return v.Schema }).(pulumi.StringOutput)
@@ -4314,7 +4314,7 @@ func (o TopicSchemaSettingsPtrOutput) Encoding() pulumi.StringPtrOutput {
 
 // The name of the schema that messages published should be
 // validated against. Format is projects/{project}/schemas/{schema}.
-// The value of this field will be _deleted-schema_
+// The value of this field will be *deleted-schema*
 // if the schema has been deleted.
 func (o TopicSchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TopicSchemaSettings) *string {

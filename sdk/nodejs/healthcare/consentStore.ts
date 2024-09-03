@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
  * * How-to Guides
- *     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+ *   * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
  *
- * ## Example Usage
- *
- * ### Healthcare Consent Store Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +28,7 @@ import * as utilities from "../utilities";
  *     name: "my-consent-store",
  * });
  * ```
- * ### Healthcare Consent Store Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,7 +48,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Healthcare Consent Store Iam
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -119,9 +117,6 @@ export class ConsentStore extends pulumi.CustomResource {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -209,9 +204,6 @@ export interface ConsentStoreState {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -260,9 +252,6 @@ export interface ConsentStoreArgs {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset: pulumi.Input<string>;
     /**

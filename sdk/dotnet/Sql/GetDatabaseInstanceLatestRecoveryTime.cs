@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Sql
         /// and
         /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -48,7 +47,6 @@ namespace Pulumi.Gcp.Sql
         /// [official documentation](https://cloud.google.com/sql/)
         /// and
         /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
-        /// 
         /// 
         /// ## Example Usage
         /// 

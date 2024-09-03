@@ -164,6 +164,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Inspect Template Custom Type
 //
 // ```go
@@ -255,6 +256,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Inspect Template Custom Type Surrogate
 //
 // ```go
@@ -344,6 +346,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Dlp Inspect Template Max Infotype Per Finding Default
 //
 // ```go
@@ -424,8 +427,6 @@ type PreventionInspectTemplate struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -480,8 +481,6 @@ type preventionInspectTemplateState struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -504,8 +503,6 @@ type PreventionInspectTemplateState struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -530,8 +527,6 @@ type preventionInspectTemplateArgs struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -553,8 +548,6 @@ type PreventionInspectTemplateArgs struct {
 	// * `projects/{{project}}/locations/{{location}}`
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -677,8 +670,6 @@ func (o PreventionInspectTemplateOutput) Name() pulumi.StringOutput {
 // * `projects/{{project}}/locations/{{location}}`
 // * `organizations/{{organization_id}}`
 // * `organizations/{{organization_id}}/locations/{{location}}`
-//
-// ***
 func (o PreventionInspectTemplateOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -41,9 +41,6 @@ class VPNTunnelArgs:
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
@@ -125,9 +122,6 @@ class VPNTunnelArgs:
         Shared secret used to set the secure session between the Cloud VPN
         gateway and the peer VPN gateway.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
-
-        - - -
         """
         return pulumi.get(self, "shared_secret")
 
@@ -425,9 +419,6 @@ class _VPNTunnelState:
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
@@ -745,9 +736,6 @@ class _VPNTunnelState:
         Shared secret used to set the secure session between the Cloud VPN
         gateway and the peer VPN gateway.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
-
-        - - -
         """
         return pulumi.get(self, "shared_secret")
 
@@ -849,12 +837,10 @@ class VPNTunnel(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
         * How-to Guides
-            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-            * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+          * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+          * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
 
-        ## Example Usage
-
-        ### Vpn Tunnel Basic
+        ## 
 
         ```python
         import pulumi
@@ -971,9 +957,6 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
@@ -994,12 +977,10 @@ class VPNTunnel(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
         * How-to Guides
-            * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-            * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+          * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+          * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
 
-        ## Example Usage
-
-        ### Vpn Tunnel Basic
+        ## 
 
         ```python
         import pulumi
@@ -1234,9 +1215,6 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] shared_secret: Shared secret used to set the secure session between the Cloud VPN
                gateway and the peer VPN gateway.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
@@ -1458,9 +1436,6 @@ class VPNTunnel(pulumi.CustomResource):
         Shared secret used to set the secure session between the Cloud VPN
         gateway and the peer VPN gateway.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
-
-        - - -
         """
         return pulumi.get(self, "shared_secret")
 

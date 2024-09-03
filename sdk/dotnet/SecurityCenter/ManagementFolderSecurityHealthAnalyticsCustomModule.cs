@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/folders.locations.securityHealthAnalyticsCustomModules)
     /// * How-to Guides
-    ///     * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+    ///   * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
     /// 
     /// ## Example Usage
     /// 
@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// 
     /// ### Scc Management Folder Security Health Analytics Custom Module Full
     /// 
     /// ```csharp
@@ -186,9 +187,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent folder.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("folder")]
         public Output<string> Folder { get; private set; } = null!;
@@ -292,9 +290,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent folder.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder", required: true)]
         public Input<string> Folder { get; set; } = null!;
@@ -347,9 +342,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent folder.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("folder")]
         public Input<string>? Folder { get; set; }

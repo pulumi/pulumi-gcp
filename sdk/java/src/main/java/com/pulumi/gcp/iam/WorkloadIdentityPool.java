@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools)
  * * How-to Guides
- *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+ *   * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
  * 
- * ## Example Usage
- * 
- * ### Iam Workload Identity Pool Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -61,7 +59,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Iam Workload Identity Pool Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -239,8 +237,6 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      * 
-     * ***
-     * 
      */
     @Export(name="workloadIdentityPoolId", refs={String.class}, tree="[0]")
     private Output<String> workloadIdentityPoolId;
@@ -249,8 +245,6 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
      * @return The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
-     * 
-     * ***
      * 
      */
     public Output<String> workloadIdentityPoolId() {

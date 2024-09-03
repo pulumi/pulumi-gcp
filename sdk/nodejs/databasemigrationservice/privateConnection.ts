@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/database-migration/docs/oracle-to-postgresql/create-private-connectivity-configuration)
+ *   * [Official Documentation](https://cloud.google.com/database-migration/docs/oracle-to-postgresql/create-private-connectivity-configuration)
  *
- * ## Example Usage
- *
- * ### Database Migration Service Private Connection
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

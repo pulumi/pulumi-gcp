@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 //
-// ## Example Usage
-//
-// ### Network Management Connectivity Test Instances
+// ##
 //
 // ```go
 // package main
@@ -113,7 +111,7 @@ import (
 //	}
 //
 // ```
-// ### Network Management Connectivity Test Addresses
+// ##
 //
 // ```go
 // package main

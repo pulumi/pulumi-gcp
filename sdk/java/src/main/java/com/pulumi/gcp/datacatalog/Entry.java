@@ -30,11 +30,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  * 
- * ## Example Usage
- * 
- * ### Data Catalog Entry Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,7 +75,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Catalog Entry Fileset
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -123,7 +121,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Catalog Entry Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -225,7 +223,7 @@ import javax.annotation.Nullable;
 public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
      * Structure is documented below.
      * 
      */
@@ -234,7 +232,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Context: &lt;https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding&gt;.
      * Structure is documented below.
      * 
      */
@@ -304,16 +302,12 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * The id of the entry to create.
      * 
-     * ***
-     * 
      */
     @Export(name="entryId", refs={String.class}, tree="[0]")
     private Output<String> entryId;
 
     /**
      * @return The id of the entry to create.
-     * 
-     * ***
      * 
      */
     public Output<String> entryId() {
@@ -394,7 +388,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
      * for what fields this schema can contain.
      * 
      */
@@ -404,7 +398,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * @return Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * &lt;https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema&gt;
      * for what fields this schema can contain.
      * 
      */

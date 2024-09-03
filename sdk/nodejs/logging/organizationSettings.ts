@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getSettings)
  * * How-to Guides
- *     * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
+ *   * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings)
  *
  * ## Example Usage
  *
@@ -107,9 +107,6 @@ export class OrganizationSettings extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The organization for which to retrieve or configure settings.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -181,9 +178,6 @@ export interface OrganizationSettingsState {
     name?: pulumi.Input<string>;
     /**
      * The organization for which to retrieve or configure settings.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -206,9 +200,6 @@ export interface OrganizationSettingsArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * The organization for which to retrieve or configure settings.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
     /**

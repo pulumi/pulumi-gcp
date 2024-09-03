@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
  * * How-to Guides
- *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
+ *   * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
  *
  * ## Example Usage
  *
@@ -89,9 +89,6 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -166,9 +163,6 @@ export interface OrganizationSecurityPolicyState {
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -200,9 +194,6 @@ export interface OrganizationSecurityPolicyArgs {
     /**
      * The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
      * Format: organizations/{organization_id} or folders/{folder_id}
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

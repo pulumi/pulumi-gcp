@@ -41,6 +41,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firebase Apple App Full
 //
 // ```go
@@ -136,8 +137,6 @@ type AppleApp struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrOutput `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	//
-	// ***
 	BundleId       pulumi.StringOutput    `pulumi:"bundleId"`
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
@@ -198,8 +197,6 @@ type appleAppState struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	//
-	// ***
 	BundleId       *string `pulumi:"bundleId"`
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
@@ -225,8 +222,6 @@ type AppleAppState struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	//
-	// ***
 	BundleId       pulumi.StringPtrInput
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
@@ -253,8 +248,6 @@ type appleAppArgs struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	//
-	// ***
 	BundleId       string  `pulumi:"bundleId"`
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
@@ -275,8 +268,6 @@ type AppleAppArgs struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	//
-	// ***
 	BundleId       pulumi.StringInput
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
@@ -394,8 +385,6 @@ func (o AppleAppOutput) AppStoreId() pulumi.StringPtrOutput {
 }
 
 // The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-//
-// ***
 func (o AppleAppOutput) BundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.BundleId }).(pulumi.StringOutput)
 }

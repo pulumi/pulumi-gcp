@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  * 
- * ## Example Usage
- * 
- * ### Forwarding Rule Externallb
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -91,7 +89,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Global Internallb
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -169,7 +167,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -211,7 +209,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule L3 Default
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -269,7 +267,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Internallb
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -347,7 +345,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Http Lb
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -579,7 +577,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Regional Http Xlb
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -819,7 +817,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Vpc Psc
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -949,7 +947,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Vpc Psc No Automate Dns
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1077,7 +1075,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Regional Steering
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1144,7 +1142,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Forwarding Rule Internallb Ipv6
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1640,8 +1638,6 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1658,8 +1654,6 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -2041,11 +2035,11 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-     *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+     * * For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+     * * `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+     * * `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+     *   For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
      */
     @Export(name="target", refs={String.class}, tree="[0]")
@@ -2057,11 +2051,11 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-     *    For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+     * * For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+     * * `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+     * * `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+     *   For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      * 
      */
     public Output<Optional<String>> target() {

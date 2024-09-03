@@ -1077,8 +1077,6 @@ func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) StorageUtilization
 type InstanceConfigReplica struct {
 	// If true, this location is designated as the default leader location where
 	// leader replicas are placed.
-	//
-	// ***
 	DefaultLeaderLocation *bool `pulumi:"defaultLeaderLocation"`
 	// The location of the serving resources, e.g. "us-central1".
 	Location *string `pulumi:"location"`
@@ -1103,8 +1101,6 @@ type InstanceConfigReplicaInput interface {
 type InstanceConfigReplicaArgs struct {
 	// If true, this location is designated as the default leader location where
 	// leader replicas are placed.
-	//
-	// ***
 	DefaultLeaderLocation pulumi.BoolPtrInput `pulumi:"defaultLeaderLocation"`
 	// The location of the serving resources, e.g. "us-central1".
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -1168,8 +1164,6 @@ func (o InstanceConfigReplicaOutput) ToInstanceConfigReplicaOutputWithContext(ct
 
 // If true, this location is designated as the default leader location where
 // leader replicas are placed.
-//
-// ***
 func (o InstanceConfigReplicaOutput) DefaultLeaderLocation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigReplica) *bool { return v.DefaultLeaderLocation }).(pulumi.BoolPtrOutput)
 }

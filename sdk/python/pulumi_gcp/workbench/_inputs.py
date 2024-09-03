@@ -78,11 +78,11 @@ if not MYPY:
         enable_ip_forwarding: NotRequired[pulumi.Input[bool]]
         """
         Optional. Flag to enable ip forwarding or not, default false/off.
-        https://cloud.google.com/vpc/docs/using-routes#canipforward
+        <https://cloud.google.com/vpc/docs/using-routes#canipforward>
         """
         machine_type: NotRequired[pulumi.Input[str]]
         """
-        Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
         """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -148,8 +148,8 @@ class InstanceGceSetupArgs:
                Structure is documented below.
         :param pulumi.Input[bool] disable_public_ip: Optional. If true, no external IP will be assigned to this VM instance.
         :param pulumi.Input[bool] enable_ip_forwarding: Optional. Flag to enable ip forwarding or not, default false/off.
-               https://cloud.google.com/vpc/docs/using-routes#canipforward
-        :param pulumi.Input[str] machine_type: Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+               <https://cloud.google.com/vpc/docs/using-routes#canipforward>
+        :param pulumi.Input[str] machine_type: Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Custom metadata to apply to this instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]] network_interfaces: The network interfaces for the VM. Supports only one interface.
                Structure is documented below.
@@ -263,7 +263,7 @@ class InstanceGceSetupArgs:
     def enable_ip_forwarding(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Flag to enable ip forwarding or not, default false/off.
-        https://cloud.google.com/vpc/docs/using-routes#canipforward
+        <https://cloud.google.com/vpc/docs/using-routes#canipforward>
         """
         return pulumi.get(self, "enable_ip_forwarding")
 
@@ -275,7 +275,7 @@ class InstanceGceSetupArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        Optional. The machine type of the VM instance. <https://cloud.google.com/compute/docs/machine-resource>
         """
         return pulumi.get(self, "machine_type")
 
@@ -862,7 +862,7 @@ if not MYPY:
         """
         (Output)
         Output only. The list of scopes to be made available for this
-        service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+        service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
         """
 elif False:
     InstanceGceSetupServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
@@ -876,7 +876,7 @@ class InstanceGceSetupServiceAccountArgs:
         :param pulumi.Input[str] email: Optional. Email address of the service account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: (Output)
                Output only. The list of scopes to be made available for this
-               service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+               service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -901,7 +901,7 @@ class InstanceGceSetupServiceAccountArgs:
         """
         (Output)
         Output only. The list of scopes to be made available for this
-        service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+        service account. Set by the CLH to <https://www.googleapis.com/auth/cloud-platform>
         """
         return pulumi.get(self, "scopes")
 

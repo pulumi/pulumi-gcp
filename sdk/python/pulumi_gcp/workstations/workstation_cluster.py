@@ -38,9 +38,6 @@ class WorkstationClusterArgs:
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -105,9 +102,6 @@ class WorkstationClusterArgs:
     def workstation_cluster_id(self) -> pulumi.Input[str]:
         """
         ID to use for the workstation cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -265,9 +259,6 @@ class _WorkstationClusterState:
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -554,9 +545,6 @@ class _WorkstationClusterState:
     def workstation_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
         ID to use for the workstation cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -582,99 +570,6 @@ class WorkstationCluster(pulumi.CustomResource):
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Workstation Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Workstation Cluster Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-private",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-private",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-private",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Workstation Cluster Custom Domain
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-custom-domain",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-custom-domain",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-custom-domain",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            domain_config={
-                "domain": "workstations.example.com",
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-
         ## Import
 
         WorkstationCluster can be imported using any of these accepted formats:
@@ -720,9 +615,6 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -731,99 +623,6 @@ class WorkstationCluster(pulumi.CustomResource):
                  args: WorkstationClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Workstation Cluster Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Workstation Cluster Private
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-private",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-private",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-private",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-        ### Workstation Cluster Custom Domain
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_network = gcp.compute.Network("default",
-            name="workstation-cluster-custom-domain",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster-custom-domain",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default_network.name)
-        default = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster-custom-domain",
-            network=default_network.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            private_cluster_config={
-                "enable_private_endpoint": True,
-            },
-            domain_config={
-                "domain": "workstations.example.com",
-            },
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        project = gcp.organizations.get_project()
-        ```
-
         ## Import
 
         WorkstationCluster can be imported using any of these accepted formats:
@@ -980,9 +779,6 @@ class WorkstationCluster(pulumi.CustomResource):
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1178,9 +974,6 @@ class WorkstationCluster(pulumi.CustomResource):
     def workstation_cluster_id(self) -> pulumi.Output[str]:
         """
         ID to use for the workstation cluster.
-
-
-        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 

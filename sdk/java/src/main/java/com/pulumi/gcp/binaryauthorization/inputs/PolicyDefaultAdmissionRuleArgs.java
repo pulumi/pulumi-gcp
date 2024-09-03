@@ -21,8 +21,6 @@ public final class PolicyDefaultAdmissionRuleArgs extends com.pulumi.resources.R
      * The action when a pod creation is denied by the admission rule.
      * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
      * 
-     * ***
-     * 
      */
     @Import(name="enforcementMode", required=true)
     private Output<String> enforcementMode;
@@ -30,8 +28,6 @@ public final class PolicyDefaultAdmissionRuleArgs extends com.pulumi.resources.R
     /**
      * @return The action when a pod creation is denied by the admission rule.
      * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-     * 
-     * ***
      * 
      */
     public Output<String> enforcementMode() {
@@ -114,8 +110,6 @@ public final class PolicyDefaultAdmissionRuleArgs extends com.pulumi.resources.R
          * @param enforcementMode The action when a pod creation is denied by the admission rule.
          * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -127,8 +121,6 @@ public final class PolicyDefaultAdmissionRuleArgs extends com.pulumi.resources.R
         /**
          * @param enforcementMode The action when a pod creation is denied by the admission rule.
          * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-         * 
-         * ***
          * 
          * @return builder
          * 

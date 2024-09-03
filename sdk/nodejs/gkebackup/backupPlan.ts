@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+ *   * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
  *
  * ## Example Usage
  *
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Gkebackup Backupplan Autopilot
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -84,6 +84,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Cmek
  *
  * ```typescript
@@ -133,6 +134,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Full
  *
  * ```typescript
@@ -184,6 +186,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Permissive
  *
  * ```typescript
@@ -236,6 +239,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Rpo Daily Window
  *
  * ```typescript
@@ -302,6 +306,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Gkebackup Backupplan Rpo Weekly Window
  *
  * ```typescript
@@ -485,9 +490,6 @@ export class BackupPlan extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region of the Backup Plan.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -642,9 +644,6 @@ export interface BackupPlanState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the Backup Plan.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -724,9 +723,6 @@ export interface BackupPlanArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region of the Backup Plan.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

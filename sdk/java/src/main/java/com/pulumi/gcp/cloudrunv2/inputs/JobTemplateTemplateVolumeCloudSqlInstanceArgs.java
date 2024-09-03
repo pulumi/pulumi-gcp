@@ -17,14 +17,14 @@ public final class JobTemplateTemplateVolumeCloudSqlInstanceArgs extends com.pul
     public static final JobTemplateTemplateVolumeCloudSqlInstanceArgs Empty = new JobTemplateTemplateVolumeCloudSqlInstanceArgs();
 
     /**
-     * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+     * The Cloud SQL instance connection names, as can be found in &lt;https://console.cloud.google.com/sql/instances&gt;. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
      * 
      */
     @Import(name="instances")
     private @Nullable Output<List<String>> instances;
 
     /**
-     * @return The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+     * @return The Cloud SQL instance connection names, as can be found in &lt;https://console.cloud.google.com/sql/instances&gt;. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
      * 
      */
     public Optional<Output<List<String>>> instances() {
@@ -56,7 +56,7 @@ public final class JobTemplateTemplateVolumeCloudSqlInstanceArgs extends com.pul
         }
 
         /**
-         * @param instances The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         * @param instances The Cloud SQL instance connection names, as can be found in &lt;https://console.cloud.google.com/sql/instances&gt;. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class JobTemplateTemplateVolumeCloudSqlInstanceArgs extends com.pul
         }
 
         /**
-         * @param instances The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         * @param instances The Cloud SQL instance connection names, as can be found in &lt;https://console.cloud.google.com/sql/instances&gt;. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class JobTemplateTemplateVolumeCloudSqlInstanceArgs extends com.pul
         }
 
         /**
-         * @param instances The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         * @param instances The Cloud SQL instance connection names, as can be found in &lt;https://console.cloud.google.com/sql/instances&gt;. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          * 
          * @return builder
          * 

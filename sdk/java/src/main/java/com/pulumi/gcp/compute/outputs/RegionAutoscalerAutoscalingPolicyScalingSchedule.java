@@ -45,7 +45,7 @@ public final class RegionAutoscalerAutoscalingPolicyScalingSchedule {
      */
     private String schedule;
     /**
-     * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     private @Nullable String timeZone;
@@ -94,7 +94,7 @@ public final class RegionAutoscalerAutoscalingPolicyScalingSchedule {
         return this.schedule;
     }
     /**
-     * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     public Optional<String> timeZone() {

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  * 
  * ## Example Usage
  * 
@@ -119,16 +119,12 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The global network endpoint group this endpoint is part of.
      * 
-     * ***
-     * 
      */
     @Export(name="globalNetworkEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> globalNetworkEndpointGroup;
 
     /**
      * @return The global network endpoint group this endpoint is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> globalNetworkEndpointGroup() {

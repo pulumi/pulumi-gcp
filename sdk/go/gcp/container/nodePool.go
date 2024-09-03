@@ -18,7 +18,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Using A Separately Managed Node Pool (Recommended)
+// ### using a separately managed node pool (recommended)
 //
 // ```go
 // package main
@@ -71,7 +71,7 @@ import (
 //
 // ```
 //
-// ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+// ### 2 node pools, 1 separately managed + the default node pool
 //
 // ```go
 // package main
@@ -162,8 +162,6 @@ type NodePool struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-	//
-	// ***
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -176,8 +174,6 @@ type NodePool struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayOutput `pulumi:"managedInstanceGroupUrls"`
@@ -274,8 +270,6 @@ type nodePoolState struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-	//
-	// ***
 	Cluster *string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -288,8 +282,6 @@ type nodePoolState struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls []string `pulumi:"managedInstanceGroupUrls"`
@@ -354,8 +346,6 @@ type NodePoolState struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-	//
-	// ***
 	Cluster pulumi.StringPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -368,8 +358,6 @@ type NodePoolState struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
 	// The location (region or zone) of the cluster.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayInput
@@ -438,8 +426,6 @@ type nodePoolArgs struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-	//
-	// ***
 	Cluster string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -450,8 +436,6 @@ type nodePoolArgs struct {
 	// ignore subsqeuent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The location (region or zone) of the cluster.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
@@ -514,8 +498,6 @@ type NodePoolArgs struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-	//
-	// ***
 	Cluster pulumi.StringInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -526,8 +508,6 @@ type NodePoolArgs struct {
 	// ignore subsqeuent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The location (region or zone) of the cluster.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
@@ -678,8 +658,6 @@ func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
 }
 
 // The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-//
-// ***
 func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -701,8 +679,6 @@ func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 }
 
 // The location (region or zone) of the cluster.
-//
-// ***
 func (o NodePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

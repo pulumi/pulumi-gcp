@@ -36,9 +36,6 @@ class MeshArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -100,9 +97,6 @@ class MeshArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Mesh resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -151,9 +145,6 @@ class _MeshState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -253,9 +244,6 @@ class _MeshState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Mesh resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -326,36 +314,6 @@ class Mesh(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Services Mesh Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.Mesh("default",
-            name="my-mesh",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            interception_port=443)
-        ```
-        ### Network Services Mesh No Port
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.Mesh("default",
-            name="my-mesh-noport",
-            labels={
-                "foo": "bar",
-            },
-            description="my description")
-        ```
-
         ## Import
 
         Mesh can be imported using any of these accepted formats:
@@ -392,9 +350,6 @@ class Mesh(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -405,36 +360,6 @@ class Mesh(pulumi.CustomResource):
                  args: Optional[MeshArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Services Mesh Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.Mesh("default",
-            name="my-mesh",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            interception_port=443)
-        ```
-        ### Network Services Mesh No Port
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.Mesh("default",
-            name="my-mesh-noport",
-            labels={
-                "foo": "bar",
-            },
-            description="my description")
-        ```
-
         ## Import
 
         Mesh can be imported using any of these accepted formats:
@@ -539,9 +464,6 @@ class Mesh(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -616,9 +538,6 @@ class Mesh(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Short name of the Mesh resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

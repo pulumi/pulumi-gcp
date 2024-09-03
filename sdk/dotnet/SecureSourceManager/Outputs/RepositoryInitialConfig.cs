@@ -19,17 +19,17 @@ namespace Pulumi.Gcp.SecureSourceManager.Outputs
         public readonly string? DefaultBranch;
         /// <summary>
         /// List of gitignore template names user can choose from.
-        /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        /// Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
         /// </summary>
         public readonly ImmutableArray<string> Gitignores;
         /// <summary>
         /// License template name user can choose from.
-        /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        /// Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
         /// </summary>
         public readonly string? License;
         /// <summary>
         /// README template name.
-        /// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+        /// Valid values can be viewed at &lt;https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig&gt;.
         /// </summary>
         public readonly string? Readme;
 

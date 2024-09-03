@@ -18,16 +18,12 @@ public final class GetHcVpnGatewayPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * The name of the forwarding rule.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the forwarding rule.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -96,8 +92,6 @@ public final class GetHcVpnGatewayPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param name The name of the forwarding rule.
-         * 
-         * ***
          * 
          * @return builder
          * 

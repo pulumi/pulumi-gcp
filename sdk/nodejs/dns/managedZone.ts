@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
  * * How-to Guides
- *     * [Managing Zones](https://cloud.google.com/dns/zones/)
+ *   * [Managing Zones](https://cloud.google.com/dns/zones/)
  *
- * ## Example Usage
- *
- * ### Dns Managed Zone Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +32,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dns Managed Zone Private
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,6 +66,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Dns Managed Zone Private Forwarding
  *
  * ```typescript
@@ -112,7 +113,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dns Managed Zone Private Gke
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -179,7 +180,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dns Managed Zone Private Peering
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -210,7 +211,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Dns Managed Zone Service Directory
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -236,7 +237,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * ```
- * ### Dns Managed Zone Cloud Logging
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -359,8 +360,6 @@ export class ManagedZone extends pulumi.CustomResource {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -529,8 +528,6 @@ export interface ManagedZoneState {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -623,8 +620,6 @@ export interface ManagedZoneArgs {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

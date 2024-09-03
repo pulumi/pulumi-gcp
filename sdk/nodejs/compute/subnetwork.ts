@@ -34,12 +34,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
  * * How-to Guides
- *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
- *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
+ *   * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+ *   * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  *
- * ## Example Usage
- *
- * ### Subnetwork Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,7 +58,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Subnetwork Logging Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,7 +80,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Subnetwork Internal L7lb
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +99,7 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * ### Subnetwork Ipv6
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,7 +118,7 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * ### Subnetwork Internal Ipv6
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -140,7 +138,7 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * ### Subnetwork Purpose Private Nat
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -158,7 +156,7 @@ import * as utilities from "../utilities";
  *     network: custom_test.id,
  * });
  * ```
- * ### Subnetwork Cidr Overlap
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -310,9 +308,6 @@ export class Subnetwork extends pulumi.CustomResource {
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -532,9 +527,6 @@ export interface SubnetworkState {
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -659,9 +651,6 @@ export interface SubnetworkArgs {
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

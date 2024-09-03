@@ -48,8 +48,6 @@ if not MYPY:
         family_subsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgsDict']]]]
         """
         A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-
-        -----
         """
         row_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -65,8 +63,6 @@ class AuthorizedViewSubsetViewArgs:
                  row_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]] family_subsets: A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-               
-               -----
         :param pulumi.Input[Sequence[pulumi.Input[str]]] row_prefixes: A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
         """
         if family_subsets is not None:
@@ -79,8 +75,6 @@ class AuthorizedViewSubsetViewArgs:
     def family_subsets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]:
         """
         A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-
-        -----
         """
         return pulumi.get(self, "family_subsets")
 
@@ -184,8 +178,6 @@ if not MYPY:
         duration: NotRequired[pulumi.Input[str]]
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-
-        -----
         """
 elif False:
     GCPolicyMaxAgeArgsDict: TypeAlias = Mapping[str, Any]
@@ -198,8 +190,6 @@ class GCPolicyMaxAgeArgs:
         """
         :param pulumi.Input[int] days: Number of days before applying GC policy.
         :param pulumi.Input[str] duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-               
-               -----
         """
         if days is not None:
             warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
@@ -227,8 +217,6 @@ class GCPolicyMaxAgeArgs:
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-
-        -----
         """
         return pulumi.get(self, "duration")
 
@@ -242,9 +230,6 @@ if not MYPY:
         number: pulumi.Input[int]
         """
         Number of version before applying the GC policy.
-
-        -----
-        `gc_rules` include 2 fields:
         """
 elif False:
     GCPolicyMaxVersionArgsDict: TypeAlias = Mapping[str, Any]
@@ -255,9 +240,6 @@ class GCPolicyMaxVersionArgs:
                  number: pulumi.Input[int]):
         """
         :param pulumi.Input[int] number: Number of version before applying the GC policy.
-               
-               -----
-               `gc_rules` include 2 fields:
         """
         pulumi.set(__self__, "number", number)
 
@@ -266,9 +248,6 @@ class GCPolicyMaxVersionArgs:
     def number(self) -> pulumi.Input[int]:
         """
         Number of version before applying the GC policy.
-
-        -----
-        `gc_rules` include 2 fields:
         """
         return pulumi.get(self, "number")
 

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Apphub
         /// <summary>
         /// Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.Apphub
 
         /// <summary>
         /// Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
-        /// 
         /// 
         /// ## Example Usage
         /// 

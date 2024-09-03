@@ -127,7 +127,7 @@ public final class FirebaseFunctions {
      * 
      * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
      * * How-to Guides
-     *     * [Official Documentation](https://firebase.google.com/)
+     *   * [Official Documentation](https://firebase.google.com/)
      * 
      */
     public static Output<GetWebAppConfigResult> getWebAppConfig(GetWebAppConfigArgs args) {
@@ -140,7 +140,7 @@ public final class FirebaseFunctions {
      * 
      * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
      * * How-to Guides
-     *     * [Official Documentation](https://firebase.google.com/)
+     *   * [Official Documentation](https://firebase.google.com/)
      * 
      */
     public static CompletableFuture<GetWebAppConfigResult> getWebAppConfigPlain(GetWebAppConfigPlainArgs args) {
@@ -153,7 +153,7 @@ public final class FirebaseFunctions {
      * 
      * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
      * * How-to Guides
-     *     * [Official Documentation](https://firebase.google.com/)
+     *   * [Official Documentation](https://firebase.google.com/)
      * 
      */
     public static Output<GetWebAppConfigResult> getWebAppConfig(GetWebAppConfigArgs args, InvokeOptions options) {
@@ -166,7 +166,7 @@ public final class FirebaseFunctions {
      * 
      * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
      * * How-to Guides
-     *     * [Official Documentation](https://firebase.google.com/)
+     *   * [Official Documentation](https://firebase.google.com/)
      * 
      */
     public static CompletableFuture<GetWebAppConfigResult> getWebAppConfigPlain(GetWebAppConfigPlainArgs args, InvokeOptions options) {

@@ -13,13 +13,11 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
  * * How-to Guides
- *     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+ *   * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
  *
  * > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
  *
- * ## Example Usage
- *
- * ### Cloudbuild Trigger Filename
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +36,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * ### Cloudbuild Trigger Build
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -138,7 +136,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Service Account
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -170,6 +168,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Cloudbuild Trigger Include Build Logs
  *
  * ```typescript
@@ -190,7 +191,7 @@ import * as utilities from "../utilities";
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
  * });
  * ```
- * ### Cloudbuild Trigger Pubsub Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -221,7 +222,7 @@ import * as utilities from "../utilities";
  *     filter: "_ACTION.matches('INSERT')",
  * });
  * ```
- * ### Cloudbuild Trigger Webhook Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -272,7 +273,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Manual
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -296,6 +297,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Manual Github Enterprise
  *
  * ```typescript
@@ -319,7 +321,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Manual Bitbucket Server
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -342,7 +344,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Repo
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -374,7 +376,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * ### Cloudbuild Trigger Bitbucket Server Push
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -395,7 +397,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * ### Cloudbuild Trigger Bitbucket Server Pull Request
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -417,6 +419,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
+ *
  * ### Cloudbuild Trigger Github Enterprise
  *
  * ```typescript
@@ -437,7 +440,7 @@ import * as utilities from "../utilities";
  *     filename: "cloudbuild.yaml",
  * });
  * ```
- * ### Cloudbuild Trigger Allow Failure
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -514,7 +517,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Allow Exit Codes
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -594,7 +597,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Pubsub With Repo
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -745,7 +748,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -762,7 +765,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly includeBuildLogs!: pulumi.Output<string | undefined>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we
@@ -971,7 +974,7 @@ export interface TriggerState {
      */
     github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -988,7 +991,7 @@ export interface TriggerState {
      */
     includeBuildLogs?: pulumi.Input<string>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we
@@ -1123,7 +1126,7 @@ export interface TriggerArgs {
      */
     github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -1140,7 +1143,7 @@ export interface TriggerArgs {
      */
     includeBuildLogs?: pulumi.Input<string>;
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we

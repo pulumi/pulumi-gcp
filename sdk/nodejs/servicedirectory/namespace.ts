@@ -12,11 +12,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
  * * How-to Guides
- *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
+ *   * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
  *
- * ## Example Usage
- *
- * ### Service Directory Namespace Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -111,9 +109,6 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     public readonly namespaceId!: pulumi.Output<string>;
     /**
@@ -201,9 +196,6 @@ export interface NamespaceState {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     namespaceId?: pulumi.Input<string>;
     /**
@@ -240,9 +232,6 @@ export interface NamespaceArgs {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     namespaceId: pulumi.Input<string>;
     /**

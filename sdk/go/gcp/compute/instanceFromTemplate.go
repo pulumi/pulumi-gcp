@@ -168,8 +168,6 @@ type InstanceFromTemplate struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
-	//
-	// ***
 	SourceInstanceTemplate pulumi.StringOutput `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -307,8 +305,6 @@ type instanceFromTemplateState struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
-	//
-	// ***
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -409,8 +405,6 @@ type InstanceFromTemplateState struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
-	//
-	// ***
 	SourceInstanceTemplate pulumi.StringPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -498,8 +492,6 @@ type instanceFromTemplateArgs struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
-	//
-	// ***
 	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -582,8 +574,6 @@ type InstanceFromTemplateArgs struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
-	//
-	// ***
 	SourceInstanceTemplate pulumi.StringInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -893,8 +883,6 @@ func (o InstanceFromTemplateOutput) ShieldedInstanceConfig() InstanceFromTemplat
 // Name or self link of an instance
 // template to create the instance based on. It is recommended to reference
 // instance templates through their unique id (`selfLinkUnique` attribute).
-//
-// ***
 func (o InstanceFromTemplateOutput) SourceInstanceTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
 }

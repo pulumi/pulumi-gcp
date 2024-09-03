@@ -36,9 +36,9 @@ type IamMemberRemove struct {
 
 	// The IAM principal that should not have the target role.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The project id of the target project.
@@ -88,9 +88,9 @@ func GetIamMemberRemove(ctx *pulumi.Context,
 type iamMemberRemoveState struct {
 	// The IAM principal that should not have the target role.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member *string `pulumi:"member"`
 	// The project id of the target project.
@@ -102,9 +102,9 @@ type iamMemberRemoveState struct {
 type IamMemberRemoveState struct {
 	// The IAM principal that should not have the target role.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringPtrInput
 	// The project id of the target project.
@@ -120,9 +120,9 @@ func (IamMemberRemoveState) ElementType() reflect.Type {
 type iamMemberRemoveArgs struct {
 	// The IAM principal that should not have the target role.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member string `pulumi:"member"`
 	// The project id of the target project.
@@ -135,9 +135,9 @@ type iamMemberRemoveArgs struct {
 type IamMemberRemoveArgs struct {
 	// The IAM principal that should not have the target role.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Member pulumi.StringInput
 	// The project id of the target project.
@@ -235,9 +235,9 @@ func (o IamMemberRemoveOutput) ToIamMemberRemoveOutputWithContext(ctx context.Co
 
 // The IAM principal that should not have the target role.
 // Each entry can have one of the following values:
-// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 // * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o IamMemberRemoveOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamMemberRemove) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)

@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appgateways)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+ *   * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  * 
- * ## Example Usage
- * 
- * ### Beyondcorp App Gateway Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -67,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Beyondcorp App Gateway Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -228,16 +226,12 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * ID of the AppGateway.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return ID of the AppGateway.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

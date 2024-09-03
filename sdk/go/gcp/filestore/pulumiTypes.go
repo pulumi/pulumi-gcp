@@ -398,8 +398,6 @@ type InstanceNetwork struct {
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-	//
-	// ***
 	ConnectMode *string `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
@@ -433,8 +431,6 @@ type InstanceNetworkArgs struct {
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-	//
-	// ***
 	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
@@ -507,8 +503,6 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 // DIRECT_PEERING.
 // Default value is `DIRECT_PEERING`.
 // Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-//
-// ***
 func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
@@ -563,8 +557,6 @@ type GetInstanceFileShare struct {
 	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb int `pulumi:"capacityGb"`
 	// The name of a Filestore instance.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []GetInstanceFileShareNfsExportOption `pulumi:"nfsExportOptions"`
@@ -590,8 +582,6 @@ type GetInstanceFileShareArgs struct {
 	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
 	// The name of a Filestore instance.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions GetInstanceFileShareNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
@@ -659,8 +649,6 @@ func (o GetInstanceFileShareOutput) CapacityGb() pulumi.IntOutput {
 }
 
 // The name of a Filestore instance.
-//
-// ***
 func (o GetInstanceFileShareOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) string { return v.Name }).(pulumi.StringOutput)
 }

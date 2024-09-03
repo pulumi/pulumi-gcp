@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
     /// * How-to Guides
-    ///     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+    ///   * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Backend Service Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,7 +51,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service External Iap
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -78,7 +76,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service Cache
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -119,7 +117,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service Ilb Round Robin
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -150,7 +148,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service External
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -181,7 +179,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service External Weighted
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -213,7 +211,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service Ilb Ring Hash
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -265,7 +263,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service Balancing Mode
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -371,7 +369,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Backend Service Connection Tracking
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -593,7 +591,7 @@ namespace Pulumi.Gcp.Compute
         /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
-        /// Maglev, refer to https://ai.google/research/pubs/pub44824
+        /// Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
         /// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         /// reported weights. If set, the Backend Service must
         /// configure a non legacy HTTP-based Health Check, and
@@ -639,9 +637,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -908,7 +903,7 @@ namespace Pulumi.Gcp.Compute
         /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
-        /// Maglev, refer to https://ai.google/research/pubs/pub44824
+        /// Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
         /// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         /// reported weights. If set, the Backend Service must
         /// configure a non legacy HTTP-based Health Check, and
@@ -954,9 +949,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1198,7 +1190,7 @@ namespace Pulumi.Gcp.Compute
         /// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
         /// Maglev is not as stable as ring hash but has faster table lookup
         /// build times and host selection times. For more information about
-        /// Maglev, refer to https://ai.google/research/pubs/pub44824
+        /// Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
         /// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
         /// reported weights. If set, the Backend Service must
         /// configure a non legacy HTTP-based Health Check, and
@@ -1244,9 +1236,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

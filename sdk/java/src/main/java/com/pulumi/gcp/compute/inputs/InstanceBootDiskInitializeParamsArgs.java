@@ -172,7 +172,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     /**
      * The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      * 
      */
@@ -182,7 +182,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     /**
      * @return The URL of the storage pool in which the new disk is created.
      * For example:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+     * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
      * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
      * 
      */
@@ -433,7 +433,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         /**
          * @param storagePool The URL of the storage pool in which the new disk is created.
          * For example:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
          * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
          * 
          * @return builder
@@ -447,7 +447,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         /**
          * @param storagePool The URL of the storage pool in which the new disk is created.
          * For example:
-         * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * &lt;https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}&gt;
          * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
          * 
          * @return builder

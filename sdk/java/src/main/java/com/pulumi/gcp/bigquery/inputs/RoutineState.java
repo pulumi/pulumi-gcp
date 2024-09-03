@@ -55,7 +55,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
      * Possible values are: `DATA_MASKING`.
      * 
      */
@@ -63,7 +63,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dataGovernanceType;
 
     /**
-     * @return If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * @return If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
      * Possible values are: `DATA_MASKING`.
      * 
      */
@@ -90,8 +90,6 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      * 
-     * ***
-     * 
      */
     @Import(name="definitionBody")
     private @Nullable Output<String> definitionBody;
@@ -99,8 +97,6 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> definitionBody() {
@@ -423,7 +419,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataGovernanceType If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+         * @param dataGovernanceType If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
          * Possible values are: `DATA_MASKING`.
          * 
          * @return builder
@@ -435,7 +431,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataGovernanceType If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+         * @param dataGovernanceType If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
          * Possible values are: `DATA_MASKING`.
          * 
          * @return builder
@@ -470,8 +466,6 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
          * @param definitionBody The body of the routine. For functions, this is the expression in the AS clause.
          * If language=SQL, it is the substring inside (but excluding) the parentheses.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -483,8 +477,6 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param definitionBody The body of the routine. For functions, this is the expression in the AS clause.
          * If language=SQL, it is the substring inside (but excluding) the parentheses.
-         * 
-         * ***
          * 
          * @return builder
          * 

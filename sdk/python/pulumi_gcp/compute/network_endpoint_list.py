@@ -28,9 +28,6 @@ class NetworkEndpointListArgs:
         """
         The set of arguments for constructing a NetworkEndpointList resource.
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group these endpoints are part of.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
@@ -52,9 +49,6 @@ class NetworkEndpointListArgs:
     def network_endpoint_group(self) -> pulumi.Input[str]:
         """
         The network endpoint group these endpoints are part of.
-
-
-        - - -
         """
         return pulumi.get(self, "network_endpoint_group")
 
@@ -113,9 +107,6 @@ class _NetworkEndpointListState:
         """
         Input properties used for looking up and filtering NetworkEndpointList resources.
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group these endpoints are part of.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['NetworkEndpointListNetworkEndpointArgs']]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
@@ -138,9 +129,6 @@ class _NetworkEndpointListState:
     def network_endpoint_group(self) -> Optional[pulumi.Input[str]]:
         """
         The network endpoint group these endpoints are part of.
-
-
-        - - -
         """
         return pulumi.get(self, "network_endpoint_group")
 
@@ -217,7 +205,7 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
 
@@ -316,9 +304,6 @@ class NetworkEndpointList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group these endpoints are part of.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
@@ -351,7 +336,7 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
 
@@ -503,9 +488,6 @@ class NetworkEndpointList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group these endpoints are part of.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkEndpointListNetworkEndpointArgs', 'NetworkEndpointListNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints to be added to the enclosing network endpoint group
                (NEG). Each endpoint specifies an IP address and port, along with
                additional information depending on the NEG type.
@@ -529,9 +511,6 @@ class NetworkEndpointList(pulumi.CustomResource):
     def network_endpoint_group(self) -> pulumi.Output[str]:
         """
         The network endpoint group these endpoints are part of.
-
-
-        - - -
         """
         return pulumi.get(self, "network_endpoint_group")
 

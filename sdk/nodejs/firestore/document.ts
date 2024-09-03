@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/manage-data/add-data)
  *
  * > **Warning:** This resource creates a Firestore Document on a project that already has
  * a Firestore database. If you haven't already created it, you may
@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  * });
  * ```
+ *
  * ### Firestore Document Nested Document
  *
  * ```typescript
@@ -168,9 +169,6 @@ export class Document extends pulumi.CustomResource {
     public readonly database!: pulumi.Output<string | undefined>;
     /**
      * The client-assigned document ID to use for this document during creation.
-     *
-     *
-     * - - -
      */
     public readonly documentId!: pulumi.Output<string>;
     /**
@@ -262,9 +260,6 @@ export interface DocumentState {
     database?: pulumi.Input<string>;
     /**
      * The client-assigned document ID to use for this document during creation.
-     *
-     *
-     * - - -
      */
     documentId?: pulumi.Input<string>;
     /**
@@ -305,9 +300,6 @@ export interface DocumentArgs {
     database?: pulumi.Input<string>;
     /**
      * The client-assigned document ID to use for this document during creation.
-     *
-     *
-     * - - -
      */
     documentId: pulumi.Input<string>;
     /**

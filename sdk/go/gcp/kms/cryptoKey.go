@@ -63,6 +63,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Kms Crypto Key Asymmetric Sign
 //
 // ```go
@@ -136,15 +137,13 @@ type CryptoKey struct {
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
 	// sign operations, and the operation will fail if rejected by the policy. The
 	// policy is defined by specifying zero or more allowed justification codes.
-	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
 	// By default, this field is absent, and all justification codes are allowed.
 	// This field is currently in beta and is subject to change.
 	// Structure is documented below.
 	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyOutput `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -232,15 +231,13 @@ type cryptoKeyState struct {
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
 	// sign operations, and the operation will fail if rejected by the policy. The
 	// policy is defined by specifying zero or more allowed justification codes.
-	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
 	// By default, this field is absent, and all justification codes are allowed.
 	// This field is currently in beta and is subject to change.
 	// Structure is documented below.
 	KeyAccessJustificationsPolicy *CryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing *string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -291,15 +288,13 @@ type CryptoKeyState struct {
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
 	// sign operations, and the operation will fail if rejected by the policy. The
 	// policy is defined by specifying zero or more allowed justification codes.
-	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
 	// By default, this field is absent, and all justification codes are allowed.
 	// This field is currently in beta and is subject to change.
 	// Structure is documented below.
 	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -352,15 +347,13 @@ type cryptoKeyArgs struct {
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
 	// sign operations, and the operation will fail if rejected by the policy. The
 	// policy is defined by specifying zero or more allowed justification codes.
-	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
 	// By default, this field is absent, and all justification codes are allowed.
 	// This field is currently in beta and is subject to change.
 	// Structure is documented below.
 	KeyAccessJustificationsPolicy *CryptoKeyKeyAccessJustificationsPolicy `pulumi:"keyAccessJustificationsPolicy"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -403,15 +396,13 @@ type CryptoKeyArgs struct {
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
 	// sign operations, and the operation will fail if rejected by the policy. The
 	// policy is defined by specifying zero or more allowed justification codes.
-	// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+	// <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
 	// By default, this field is absent, and all justification codes are allowed.
 	// This field is currently in beta and is subject to change.
 	// Structure is documented below.
 	KeyAccessJustificationsPolicy CryptoKeyKeyAccessJustificationsPolicyPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-	//
-	// ***
 	KeyRing pulumi.StringInput
 	// Labels with user-defined metadata to apply to this resource.
 	//
@@ -553,7 +544,7 @@ func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 // Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
 // sign operations, and the operation will fail if rejected by the policy. The
 // policy is defined by specifying zero or more allowed justification codes.
-// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+// <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
 // By default, this field is absent, and all justification codes are allowed.
 // This field is currently in beta and is subject to change.
 // Structure is documented below.
@@ -565,8 +556,6 @@ func (o CryptoKeyOutput) KeyAccessJustificationsPolicy() CryptoKeyKeyAccessJusti
 
 // The KeyRing that this key belongs to.
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-//
-// ***
 func (o CryptoKeyOutput) KeyRing() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.KeyRing }).(pulumi.StringOutput)
 }

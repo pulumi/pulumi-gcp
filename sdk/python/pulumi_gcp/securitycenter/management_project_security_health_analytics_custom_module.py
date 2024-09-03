@@ -318,7 +318,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/projects.locations.securityHealthAnalyticsCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -344,6 +344,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Organization Project Security Health Analytics Custom Module Full
 
         ```python
@@ -437,7 +438,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/projects.locations.securityHealthAnalyticsCustomModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -463,6 +464,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Management Organization Project Security Health Analytics Custom Module Full
 
         ```python

@@ -93,10 +93,9 @@ def get_token(identifier: Optional[str] = None,
               verification_method: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTokenResult:
     """
-    ## subcategory: "Site Verification"
-
+    subcategory: "Site Verification"
     description: |-
-      A verification token is used to demonstrate ownership of a website or domain.
+    A verification token is used to demonstrate ownership of a website or domain.
     ---
 
     # siteverification_get_token
@@ -107,11 +106,11 @@ def get_token(identifier: Optional[str] = None,
 
     * [API documentation](https://developers.google.com/site-verification/v1)
     * How-to Guides
-        * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
+      * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
 
     ## Example Usage
 
-    ### Site Verification Via Site META Tag
+    ### Site Verification via Site META Tag
 
     ```python
     import pulumi
@@ -122,7 +121,7 @@ def get_token(identifier: Optional[str] = None,
         verification_method="META")
     ```
 
-    ### Site Verification Via DNS TXT Record
+    ### Site Verification via DNS TXT Record
 
     ```python
     import pulumi
@@ -141,9 +140,6 @@ def get_token(identifier: Optional[str] = None,
     :param str verification_method: The verification method for the Site Verification system to use to verify
            this site or domain.
            Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-           
-           
-           - - -
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -166,10 +162,9 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
                      verification_method: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTokenResult]:
     """
-    ## subcategory: "Site Verification"
-
+    subcategory: "Site Verification"
     description: |-
-      A verification token is used to demonstrate ownership of a website or domain.
+    A verification token is used to demonstrate ownership of a website or domain.
     ---
 
     # siteverification_get_token
@@ -180,11 +175,11 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
 
     * [API documentation](https://developers.google.com/site-verification/v1)
     * How-to Guides
-        * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
+      * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
 
     ## Example Usage
 
-    ### Site Verification Via Site META Tag
+    ### Site Verification via Site META Tag
 
     ```python
     import pulumi
@@ -195,7 +190,7 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
         verification_method="META")
     ```
 
-    ### Site Verification Via DNS TXT Record
+    ### Site Verification via DNS TXT Record
 
     ```python
     import pulumi
@@ -214,8 +209,5 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
     :param str verification_method: The verification method for the Site Verification system to use to verify
            this site or domain.
            Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-           
-           
-           - - -
     """
     ...

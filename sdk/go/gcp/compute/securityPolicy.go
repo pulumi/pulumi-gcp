@@ -71,7 +71,7 @@ import (
 //
 // ```
 //
-// ### With ReCAPTCHA Configuration Options
+// ### With reCAPTCHA configuration options
 //
 // ```go
 // package main
@@ -120,7 +120,7 @@ import (
 //
 // ```
 //
-// ### With Header Actions
+// ### With header actions
 //
 // ```go
 // package main
@@ -182,7 +182,7 @@ import (
 //
 // ```
 //
-// ### With EnforceOnKey Value As Empty String
+// ### With enforceOnKey value as empty string
 // A scenario example that won't cause any conflict between `enforceOnKey` and `enforceOnKeyConfigs`, because `enforceOnKey` was specified as an empty string:
 //
 // ```go
@@ -279,8 +279,6 @@ type SecurityPolicy struct {
 	// Fingerprint of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The name of the security policy.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -344,8 +342,6 @@ type securityPolicyState struct {
 	// Fingerprint of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The name of the security policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -380,8 +376,6 @@ type SecurityPolicyState struct {
 	// Fingerprint of this resource.
 	Fingerprint pulumi.StringPtrInput
 	// The name of the security policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -418,8 +412,6 @@ type securityPolicyArgs struct {
 	// An optional description of this security policy. Max size is 2048.
 	Description *string `pulumi:"description"`
 	// The name of the security policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -451,8 +443,6 @@ type SecurityPolicyArgs struct {
 	// An optional description of this security policy. Max size is 2048.
 	Description pulumi.StringPtrInput
 	// The name of the security policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -585,8 +575,6 @@ func (o SecurityPolicyOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // The name of the security policy.
-//
-// ***
 func (o SecurityPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

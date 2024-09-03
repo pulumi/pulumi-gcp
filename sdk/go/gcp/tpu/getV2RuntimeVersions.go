@@ -37,7 +37,7 @@ import (
 //
 // ```
 //
-// ### Configure Basic TPU VM With Available Version
+// ### Configure Basic TPU VM with available version
 //
 // ```go
 // package main

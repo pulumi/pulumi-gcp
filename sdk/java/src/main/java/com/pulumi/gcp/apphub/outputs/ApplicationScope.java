@@ -16,8 +16,6 @@ public final class ApplicationScope {
      * REGIONAL
      * Possible values are: `REGIONAL`.
      * 
-     * ***
-     * 
      */
     private String type;
 
@@ -27,8 +25,6 @@ public final class ApplicationScope {
      * Possible values:
      * REGIONAL
      * Possible values are: `REGIONAL`.
-     * 
-     * ***
      * 
      */
     public String type() {

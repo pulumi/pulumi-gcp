@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    ///   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vertex Ai Featurestore Entitytype Feature
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -67,7 +65,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -166,9 +164,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entitytype")]
         public Output<string> Entitytype { get; private set; } = null!;
@@ -214,7 +209,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        /// Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -278,9 +273,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entitytype", required: true)]
         public Input<string> Entitytype { get; set; } = null!;
@@ -307,7 +299,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        /// Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -350,9 +342,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entitytype")]
         public Input<string>? Entitytype { get; set; }
@@ -414,7 +403,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+        /// Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

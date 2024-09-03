@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.customTargetTypes)
  * * How-to Guides
- *     * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
+ *   * [Define and use a custom target type](https://cloud.google.com/deploy/docs/deploy-app-custom-target)
  * 
- * ## Example Usage
- * 
- * ### Clouddeploy Custom Target Type Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -78,7 +76,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Clouddeploy Custom Target Type Git Skaffold Modules
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -127,7 +125,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Clouddeploy Custom Target Type Gcs Skaffold Modules
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -175,7 +173,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Clouddeploy Custom Target Type Gcb Repo Skaffold Modules
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -253,7 +251,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:clouddeploy/customTargetType:CustomTargetType")
 public class CustomTargetType extends com.pulumi.resources.CustomResource {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -262,7 +260,7 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -383,16 +381,12 @@ public class CustomTargetType extends com.pulumi.resources.CustomResource {
     /**
      * The location of the source.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the source.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

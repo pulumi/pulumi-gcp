@@ -16,14 +16,14 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs e
     public static final EntitlementApprovalWorkflowManualApprovalsStepApproversArgs Empty = new EntitlementApprovalWorkflowManualApprovalsStepApproversArgs();
 
     /**
-     * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+     * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
      * 
      */
     @Import(name="principals", required=true)
     private Output<List<String>> principals;
 
     /**
-     * @return Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+     * @return Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
      * 
      */
     public Output<List<String>> principals() {
@@ -55,7 +55,7 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs e
         }
 
         /**
-         * @param principals Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         * @param principals Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs e
         }
 
         /**
-         * @param principals Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         * @param principals Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class EntitlementApprovalWorkflowManualApprovalsStepApproversArgs e
         }
 
         /**
-         * @param principals Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         * @param principals Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: &lt;https://cloud.google.com/iam/docs/principal-identifiers#v1&gt;
          * 
          * @return builder
          * 

@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains)
  * * How-to Guides
- *     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
+ *   * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
  * 
  * ## Example Usage
  * 
@@ -113,9 +113,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
+     * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
      * 
      */
     @Export(name="domainName", refs={String.class}, tree="[0]")
@@ -123,9 +121,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
-     * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     * 
-     * ***
+     * of &lt;https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains&gt;.
      * 
      */
     public Output<String> domainName() {

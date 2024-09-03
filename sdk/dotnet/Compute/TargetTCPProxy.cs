@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
     /// * How-to Guides
-    ///     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+    ///   * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Target Tcp Proxy Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -89,9 +87,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backendService")]
         public Output<string> BackendService { get; private set; } = null!;
@@ -203,9 +198,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;
@@ -261,9 +253,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }

@@ -73,8 +73,6 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      * 
-     * ***
-     * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
@@ -86,8 +84,6 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
      *   types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> kind() {
@@ -241,8 +237,6 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
          * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
          *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -258,8 +252,6 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
          *   types can contain references to other entity types (with or without aliases).
          * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
          *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
-         * 
-         * ***
          * 
          * @return builder
          * 

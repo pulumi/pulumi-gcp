@@ -18,7 +18,7 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
     public static final CustomTargetTypeState Empty = new CustomTargetTypeState();
 
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -27,7 +27,7 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * @return User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -157,16 +157,12 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
     /**
      * The location of the source.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the source.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -291,7 +287,7 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -304,7 +300,7 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+         * @param annotations User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See &lt;https://google.aip.dev/128#annotations&gt; for more details such as format and size limitations.
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -480,8 +476,6 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
         /**
          * @param location The location of the source.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -492,8 +486,6 @@ public final class CustomTargetTypeState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param location The location of the source.
-         * 
-         * ***
          * 
          * @return builder
          * 

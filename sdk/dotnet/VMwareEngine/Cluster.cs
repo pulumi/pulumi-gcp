@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// });
     /// ```
+    /// 
     /// ### Vmware Engine Cluster Full
     /// 
     /// ```csharp
@@ -161,9 +162,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -178,7 +176,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the private cloud to create a new cluster in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         /// </summary>
         [Output("parent")]
@@ -244,9 +242,6 @@ namespace Pulumi.Gcp.VMwareEngine
     {
         /// <summary>
         /// The ID of the Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -267,7 +262,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the private cloud to create a new cluster in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         /// </summary>
         [Input("parent", required: true)]
@@ -290,9 +285,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The ID of the Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -313,7 +305,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// The resource name of the private cloud to create a new cluster in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         /// </summary>
         [Input("parent")]

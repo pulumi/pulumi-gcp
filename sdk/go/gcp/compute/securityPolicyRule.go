@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Creating global security policy rules](https://cloud.google.com/armor/docs/configure-security-policies)
 //
-// ## Example Usage
-//
-// ### Security Policy Rule Basic
+// ##
 //
 // ```go
 // package main
@@ -67,6 +65,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Security Policy Rule Default Rule
 //
 // ```go
@@ -135,7 +136,7 @@ import (
 //	}
 //
 // ```
-// ### Security Policy Rule Multiple Rules
+// ##
 //
 // ```go
 // package main
@@ -256,8 +257,6 @@ type SecurityPolicyRule struct {
 	// Structure is documented below.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrOutput `pulumi:"rateLimitOptions"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 }
 
@@ -330,8 +329,6 @@ type securityPolicyRuleState struct {
 	// Structure is documented below.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 }
 
@@ -366,8 +363,6 @@ type SecurityPolicyRuleState struct {
 	// Structure is documented below.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringPtrInput
 }
 
@@ -406,8 +401,6 @@ type securityPolicyRuleArgs struct {
 	// Structure is documented below.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy string `pulumi:"securityPolicy"`
 }
 
@@ -443,8 +436,6 @@ type SecurityPolicyRuleArgs struct {
 	// Structure is documented below.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringInput
 }
 
@@ -591,8 +582,6 @@ func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimit
 }
 
 // The name of the security policy this rule belongs to.
-//
-// ***
 func (o SecurityPolicyRuleOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicyRule) pulumi.StringOutput { return v.SecurityPolicy }).(pulumi.StringOutput)
 }

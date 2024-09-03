@@ -7,11 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## +---
- *
+ * +---
  * subcategory: "Cloud Bigtable"
  * description: |-
- *   Creates a Google Bigtable instance.
+ * Creates a Google Bigtable instance.
  * ---
  *
  * # gcp.bigtable.Instance
@@ -20,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
+ *   * [Official Documentation](https://cloud.google.com/bigtable/docs)
  *
  * ## Example Usage
  *
@@ -128,11 +127,9 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up 
+     * A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     *
-     * -----
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
@@ -146,8 +143,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * -----
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -165,7 +160,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
-     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -233,11 +228,9 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up 
+     * A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     *
-     * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -251,8 +244,6 @@ export interface InstanceState {
     displayName?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * -----
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -270,7 +261,7 @@ export interface InstanceState {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -296,11 +287,9 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * A block of cluster configuration options. This can be specified at least once, and up 
+     * A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     *
-     * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -327,7 +316,7 @@ export interface InstanceArgs {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.

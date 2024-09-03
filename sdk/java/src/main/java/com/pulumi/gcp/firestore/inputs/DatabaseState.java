@@ -140,9 +140,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Output only. The keyPrefix for this database.
-     * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
+     * This keyPrefix is used, in combination with the project id (&#34;&lt;del&gt;&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v&lt;/del&gt;foo).
      * 
      */
     @Import(name="keyPrefix")
@@ -150,9 +150,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Output only. The keyPrefix for this database.
-     * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
+     * This keyPrefix is used, in combination with the project id (&#34;&lt;del&gt;&#34;) to construct the application id
      * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+     * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v&lt;/del&gt;foo).
      * 
      */
     public Optional<Output<String>> keyPrefix() {
@@ -161,7 +161,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
      * 
      */
     @Import(name="locationId")
@@ -169,7 +169,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
      * 
      */
     public Optional<Output<String>> locationId() {
@@ -247,11 +247,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     @Import(name="type")
@@ -259,11 +257,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -525,9 +521,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyPrefix Output only. The keyPrefix for this database.
-         * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
+         * This keyPrefix is used, in combination with the project id (&#34;&lt;del&gt;&#34;) to construct the application id
          * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-         * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+         * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v&lt;/del&gt;foo).
          * 
          * @return builder
          * 
@@ -539,9 +535,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyPrefix Output only. The keyPrefix for this database.
-         * This keyPrefix is used, in combination with the project id (&#34;~&#34;) to construct the application id
+         * This keyPrefix is used, in combination with the project id (&#34;&lt;del&gt;&#34;) to construct the application id
          * that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-         * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+         * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v&lt;/del&gt;foo).
          * 
          * @return builder
          * 
@@ -552,7 +548,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param locationId The location of the database. Available locations are listed at
-         * https://cloud.google.com/firestore/docs/locations.
+         * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
          * 
          * @return builder
          * 
@@ -564,7 +560,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param locationId The location of the database. Available locations are listed at
-         * https://cloud.google.com/firestore/docs/locations.
+         * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
          * 
          * @return builder
          * 
@@ -662,11 +658,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the database.
-         * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+         * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
          * for information about how to choose.
          * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -678,11 +672,9 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the database.
-         * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+         * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
          * for information about how to choose.
          * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-         * 
-         * ***
          * 
          * @return builder
          * 

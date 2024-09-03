@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/biglake/rest/v1/projects.locations.catalogs.databases.tables)
  * * How-to Guides
- *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
+ *   * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
  * 
- * ## Example Usage
- * 
- * ### Biglake Table
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -263,8 +261,6 @@ public class Table extends com.pulumi.resources.CustomResource {
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -272,8 +268,6 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * @return Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

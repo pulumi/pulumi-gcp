@@ -31,11 +31,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
  * * How-to Guides
- *     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+ *   * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
  * 
- * ## Example Usage
- * 
- * ### Reservation Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -33,9 +33,6 @@ class PreventionInspectTemplateArgs:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] description: A description of the inspect template.
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
@@ -63,9 +60,6 @@ class PreventionInspectTemplateArgs:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -146,9 +140,6 @@ class _PreventionInspectTemplateState:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -224,9 +215,6 @@ class _PreventionInspectTemplateState:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -267,7 +255,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.inspectTemplates)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
+          * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 
         ## Example Usage
 
@@ -385,6 +373,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type
 
         ```python
@@ -448,6 +437,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type Surrogate
 
         ```python
@@ -509,6 +499,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Max Infotype Per Finding Default
 
         ```python
@@ -566,9 +557,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -586,7 +574,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.inspectTemplates)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
+          * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
 
         ## Example Usage
 
@@ -704,6 +692,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type
 
         ```python
@@ -767,6 +756,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Custom Type Surrogate
 
         ```python
@@ -828,6 +818,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Dlp Inspect Template Max Infotype Per Finding Default
 
         ```python
@@ -944,9 +935,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -1005,9 +993,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

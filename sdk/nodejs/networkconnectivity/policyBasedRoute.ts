@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.global.policyBasedRoutes)
  * * How-to Guides
- *     * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
+ *   * [Use policy-based routes](https://cloud.google.com/vpc/docs/use-policy-based-routes#api)
  *
- * ## Example Usage
- *
- * ### Network Connectivity Policy Based Route Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  *     nextHopOtherRoutes: "DEFAULT_ROUTING",
  * });
  * ```
- * ### Network Connectivity Policy Based Route Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,9 +44,6 @@ import * as utilities from "../utilities";
  *     name: "my-network",
  *     autoCreateSubnetworks: false,
  * });
- * // This example substitutes an arbitrary internal IP for an internal network
- * // load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
- * // to set one up.
  * const ilb = new gcp.compute.GlobalAddress("ilb", {name: "my-ilb"});
  * const _default = new gcp.networkconnectivity.PolicyBasedRoute("default", {
  *     name: "my-pbr",

@@ -10,89 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Region Security Policy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var region_sec_policy_basic = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-basic", new()
-    ///     {
-    ///         Name = "my-sec-policy-basic",
-    ///         Description = "basic region security policy",
-    ///         Type = "CLOUD_ARMOR",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Region Security Policy With Ddos Protection Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var region_sec_policy_ddos_protection = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-ddos-protection", new()
-    ///     {
-    ///         Name = "my-sec-policy-ddos-protection",
-    ///         Description = "with ddos protection config",
-    ///         Type = "CLOUD_ARMOR_NETWORK",
-    ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
-    ///         {
-    ///             DdosProtection = "ADVANCED_PREVIEW",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Region Security Policy With User Defined Fields
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var region_sec_policy_user_defined_fields = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", new()
-    ///     {
-    ///         Name = "my-sec-policy-user-defined-fields",
-    ///         Description = "with user defined fields",
-    ///         Type = "CLOUD_ARMOR_NETWORK",
-    ///         UserDefinedFields = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyUserDefinedFieldArgs
-    ///             {
-    ///                 Name = "SIG1_AT_0",
-    ///                 Base = "UDP",
-    ///                 Offset = 8,
-    ///                 Size = 2,
-    ///                 Mask = "0x8F00",
-    ///             },
-    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyUserDefinedFieldArgs
-    ///             {
-    ///                 Name = "SIG2_AT_8",
-    ///                 Base = "UDP",
-    ///                 Offset = 16,
-    ///                 Size = 4,
-    ///                 Mask = "0xFFFFFFFF",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RegionSecurityPolicy can be imported using any of these accepted formats:
@@ -149,9 +66,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         /// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -270,9 +184,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         /// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -348,9 +259,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         /// Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

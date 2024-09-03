@@ -99,6 +99,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Alloydb Backup Full
 //
 // ```go
@@ -208,7 +209,7 @@ import (
 type Backup struct {
 	pulumi.CustomResourceState
 
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -239,7 +240,7 @@ type Backup struct {
 	// EncryptionInfo describes the encryption information of a cluster or a backup.
 	// Structure is documented below.
 	EncryptionInfos BackupEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
 	// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
@@ -254,8 +255,6 @@ type Backup struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -265,7 +264,7 @@ type Backup struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+	// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Output only. The size of the backup in bytes.
@@ -326,7 +325,7 @@ func GetBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Backup resources.
 type backupState struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -357,7 +356,7 @@ type backupState struct {
 	// EncryptionInfo describes the encryption information of a cluster or a backup.
 	// Structure is documented below.
 	EncryptionInfos []BackupEncryptionInfo `pulumi:"encryptionInfos"`
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag *string `pulumi:"etag"`
 	// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
 	// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
@@ -372,8 +371,6 @@ type backupState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name *string `pulumi:"name"`
@@ -383,7 +380,7 @@ type backupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+	// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Output only. The size of the backup in bytes.
@@ -401,7 +398,7 @@ type backupState struct {
 }
 
 type BackupState struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -432,7 +429,7 @@ type BackupState struct {
 	// EncryptionInfo describes the encryption information of a cluster or a backup.
 	// Structure is documented below.
 	EncryptionInfos BackupEncryptionInfoArrayInput
-	// For Resource freshness validation (https://google.aip.dev/154)
+	// For Resource freshness validation (<https://google.aip.dev/154>)
 	Etag pulumi.StringPtrInput
 	// Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
 	// Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
@@ -447,8 +444,6 @@ type BackupState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name pulumi.StringPtrInput
@@ -458,7 +453,7 @@ type BackupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+	// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
 	// Output only. The size of the backup in bytes.
@@ -480,7 +475,7 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -503,8 +498,6 @@ type backupArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -516,7 +509,7 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
-	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -539,8 +532,6 @@ type BackupArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -637,7 +628,7 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
-// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 //
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -704,7 +695,7 @@ func (o BackupOutput) EncryptionInfos() BackupEncryptionInfoArrayOutput {
 	return o.ApplyT(func(v *Backup) BackupEncryptionInfoArrayOutput { return v.EncryptionInfos }).(BackupEncryptionInfoArrayOutput)
 }
 
-// For Resource freshness validation (https://google.aip.dev/154)
+// For Resource freshness validation (<https://google.aip.dev/154>)
 func (o BackupOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -731,8 +722,6 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb backup should reside.
-//
-// ***
 func (o BackupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -754,7 +743,7 @@ func (o BackupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+// Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
 // This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o BackupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)

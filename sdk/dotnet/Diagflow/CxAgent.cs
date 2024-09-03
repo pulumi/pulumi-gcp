@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dialogflowcx Agent Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -246,9 +244,6 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         /// Europe/Paris.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
@@ -402,9 +397,6 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         /// Europe/Paris.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("timeZone", required: true)]
         public Input<string> TimeZone { get; set; } = null!;
@@ -532,9 +524,6 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         /// Europe/Paris.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

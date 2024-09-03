@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
  * ## Example Usage
  *
@@ -158,9 +158,6 @@ export class NetworkEndpointList extends pulumi.CustomResource {
 
     /**
      * The network endpoint group these endpoints are part of.
-     *
-     *
-     * - - -
      */
     public readonly networkEndpointGroup!: pulumi.Output<string>;
     /**
@@ -218,9 +215,6 @@ export class NetworkEndpointList extends pulumi.CustomResource {
 export interface NetworkEndpointListState {
     /**
      * The network endpoint group these endpoints are part of.
-     *
-     *
-     * - - -
      */
     networkEndpointGroup?: pulumi.Input<string>;
     /**
@@ -247,9 +241,6 @@ export interface NetworkEndpointListState {
 export interface NetworkEndpointListArgs {
     /**
      * The network endpoint group these endpoints are part of.
-     *
-     *
-     * - - -
      */
     networkEndpointGroup: pulumi.Input<string>;
     /**

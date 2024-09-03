@@ -41,11 +41,11 @@ namespace Pulumi.Gcp.Workbench.Outputs
         public readonly bool? DisablePublicIp;
         /// <summary>
         /// Optional. Flag to enable ip forwarding or not, default false/off.
-        /// https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// &lt;https://cloud.google.com/vpc/docs/using-routes#canipforward&gt;
         /// </summary>
         public readonly bool? EnableIpForwarding;
         /// <summary>
-        /// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        /// Optional. The machine type of the VM instance. &lt;https://cloud.google.com/compute/docs/machine-resource&gt;
         /// </summary>
         public readonly string? MachineType;
         /// <summary>

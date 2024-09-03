@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.BigTable.Outputs
     {
         /// <summary>
         /// A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         public readonly ImmutableArray<Outputs.AuthorizedViewSubsetViewFamilySubset> FamilySubsets;
         /// <summary>

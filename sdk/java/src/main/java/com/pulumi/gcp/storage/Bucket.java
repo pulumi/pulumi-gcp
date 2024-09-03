@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+ * ### creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Life Cycle Settings For Storage Bucket Objects
+ * ### Life cycle settings for storage bucket objects
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+ * ### Life cycle settings for storage bucket objects with no_age enabled
  * When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Enabling Public Access Prevention
+ * ### Enabling public access prevention
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -414,16 +414,12 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

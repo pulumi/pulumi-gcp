@@ -13,10 +13,10 @@ namespace Pulumi.Gcp.Container
     /// Manages a Google Kubernetes Engine (GKE) cluster.
     /// 
     /// To get more information about GKE clusters, see:
-    ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
-    ///   * How-to guides
-    ///     * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
-    ///     * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+    /// * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
+    /// * How-to guides
+    ///   * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
+    ///   * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
     /// 
     /// &gt; On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
     /// and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Example Usage
     /// 
-    /// ### With A Separately Managed Node Pool (Recommended)
+    /// ### with a separately managed node pool (recommended)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Container
     /// This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
     /// `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
     /// 
-    /// ### With The Default Node Pool
+    /// ### with the default node pool
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Container
     /// });
     /// ```
     /// 
-    /// ### Autopilot
+    /// ### autopilot
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -525,8 +525,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -599,7 +597,7 @@ namespace Pulumi.Gcp.Container
         /// See gcp.container.NodePool for schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-        /// to say "these are the _only_ node pools associated with this cluster", use the
+        /// to say "these are the *only* node pools associated with this cluster", use the
         /// gcp.container.NodePool resource instead of this property.
         /// </summary>
         [Output("nodePools")]
@@ -1149,8 +1147,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1232,7 +1228,7 @@ namespace Pulumi.Gcp.Container
         /// See gcp.container.NodePool for schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-        /// to say "these are the _only_ node pools associated with this cluster", use the
+        /// to say "these are the *only* node pools associated with this cluster", use the
         /// gcp.container.NodePool resource instead of this property.
         /// </summary>
         public InputList<Inputs.ClusterNodePoolArgs> NodePools
@@ -1747,8 +1743,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1830,7 +1824,7 @@ namespace Pulumi.Gcp.Container
         /// See gcp.container.NodePool for schema.
         /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
         /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-        /// to say "these are the _only_ node pools associated with this cluster", use the
+        /// to say "these are the *only* node pools associated with this cluster", use the
         /// gcp.container.NodePool resource instead of this property.
         /// </summary>
         public InputList<Inputs.ClusterNodePoolGetArgs> NodePools

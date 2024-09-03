@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _metricOverrides;
 
         /// <summary>
-        /// One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-        /// 
-        /// - - -
+        /// One or more [available OSS metrics] (&lt;https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics&gt;) to collect for the metric course.
         /// </summary>
         public InputList<string> MetricOverrides
         {

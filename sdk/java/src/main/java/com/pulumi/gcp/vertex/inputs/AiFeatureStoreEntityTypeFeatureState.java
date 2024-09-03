@@ -64,16 +64,12 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
      * 
-     * ***
-     * 
      */
     @Import(name="entitytype")
     private @Nullable Output<String> entitytype;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> entitytype() {
@@ -179,14 +175,14 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
     }
 
     /**
-     * Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
      * 
      */
     @Import(name="valueType")
     private @Nullable Output<String> valueType;
 
     /**
-     * @return Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * @return Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
      * 
      */
     public Optional<Output<String>> valueType() {
@@ -293,8 +289,6 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
         /**
          * @param entitytype The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -305,8 +299,6 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
 
         /**
          * @param entitytype The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -450,7 +442,7 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
         }
 
         /**
-         * @param valueType Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+         * @param valueType Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
          * 
          * @return builder
          * 
@@ -461,7 +453,7 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
         }
 
         /**
-         * @param valueType Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+         * @param valueType Type of Feature value. Immutable. &lt;https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType&gt;
          * 
          * @return builder
          * 

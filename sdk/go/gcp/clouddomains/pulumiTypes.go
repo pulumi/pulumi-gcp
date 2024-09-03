@@ -474,12 +474,10 @@ type RegistrationContactSettingsAdminContactPostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients []string `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-	// ensure the value is correct. See https://cldr.unicode.org/ and
-	// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// ensure the value is correct. See <https://cldr.unicode.org/> and
+	// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 	RegionCode string `pulumi:"regionCode"`
 }
 
@@ -517,12 +515,10 @@ type RegistrationContactSettingsAdminContactPostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-	// ensure the value is correct. See https://cldr.unicode.org/ and
-	// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// ensure the value is correct. See <https://cldr.unicode.org/> and
+	// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 }
 
@@ -640,15 +636,13 @@ func (o RegistrationContactSettingsAdminContactPostalAddressOutput) PostalCode()
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsAdminContactPostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsAdminContactPostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
 // Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-// ensure the value is correct. See https://cldr.unicode.org/ and
-// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// ensure the value is correct. See <https://cldr.unicode.org/> and
+// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 func (o RegistrationContactSettingsAdminContactPostalAddressOutput) RegionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsAdminContactPostalAddress) string { return v.RegionCode }).(pulumi.StringOutput)
 }
@@ -739,8 +733,6 @@ func (o RegistrationContactSettingsAdminContactPostalAddressPtrOutput) PostalCod
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsAdminContactPostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsAdminContactPostalAddress) []string {
 		if v == nil {
@@ -751,8 +743,8 @@ func (o RegistrationContactSettingsAdminContactPostalAddressPtrOutput) Recipient
 }
 
 // Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-// ensure the value is correct. See https://cldr.unicode.org/ and
-// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// ensure the value is correct. See <https://cldr.unicode.org/> and
+// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 func (o RegistrationContactSettingsAdminContactPostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsAdminContactPostalAddress) *string {
 		if v == nil {
@@ -985,12 +977,10 @@ type RegistrationContactSettingsRegistrantContactPostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients []string `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-	// ensure the value is correct. See https://cldr.unicode.org/ and
-	// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// ensure the value is correct. See <https://cldr.unicode.org/> and
+	// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 	RegionCode string `pulumi:"regionCode"`
 }
 
@@ -1028,12 +1018,10 @@ type RegistrationContactSettingsRegistrantContactPostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-	// ensure the value is correct. See https://cldr.unicode.org/ and
-	// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// ensure the value is correct. See <https://cldr.unicode.org/> and
+	// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 }
 
@@ -1151,15 +1139,13 @@ func (o RegistrationContactSettingsRegistrantContactPostalAddressOutput) PostalC
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsRegistrantContactPostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsRegistrantContactPostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
 // Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-// ensure the value is correct. See https://cldr.unicode.org/ and
-// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// ensure the value is correct. See <https://cldr.unicode.org/> and
+// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 func (o RegistrationContactSettingsRegistrantContactPostalAddressOutput) RegionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsRegistrantContactPostalAddress) string { return v.RegionCode }).(pulumi.StringOutput)
 }
@@ -1250,8 +1236,6 @@ func (o RegistrationContactSettingsRegistrantContactPostalAddressPtrOutput) Post
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsRegistrantContactPostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsRegistrantContactPostalAddress) []string {
 		if v == nil {
@@ -1262,8 +1246,8 @@ func (o RegistrationContactSettingsRegistrantContactPostalAddressPtrOutput) Reci
 }
 
 // Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-// ensure the value is correct. See https://cldr.unicode.org/ and
-// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// ensure the value is correct. See <https://cldr.unicode.org/> and
+// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 func (o RegistrationContactSettingsRegistrantContactPostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsRegistrantContactPostalAddress) *string {
 		if v == nil {
@@ -1496,12 +1480,10 @@ type RegistrationContactSettingsTechnicalContactPostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients []string `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-	// ensure the value is correct. See https://cldr.unicode.org/ and
-	// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// ensure the value is correct. See <https://cldr.unicode.org/> and
+	// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 	RegionCode string `pulumi:"regionCode"`
 }
 
@@ -1539,12 +1521,10 @@ type RegistrationContactSettingsTechnicalContactPostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 	// it might contain "care of" information.
-	//
-	// ***
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
 	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-	// ensure the value is correct. See https://cldr.unicode.org/ and
-	// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// ensure the value is correct. See <https://cldr.unicode.org/> and
+	// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 }
 
@@ -1662,15 +1642,13 @@ func (o RegistrationContactSettingsTechnicalContactPostalAddressOutput) PostalCo
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsTechnicalContactPostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsTechnicalContactPostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
 // Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-// ensure the value is correct. See https://cldr.unicode.org/ and
-// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// ensure the value is correct. See <https://cldr.unicode.org/> and
+// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 func (o RegistrationContactSettingsTechnicalContactPostalAddressOutput) RegionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistrationContactSettingsTechnicalContactPostalAddress) string { return v.RegionCode }).(pulumi.StringOutput)
 }
@@ -1761,8 +1739,6 @@ func (o RegistrationContactSettingsTechnicalContactPostalAddressPtrOutput) Posta
 
 // The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
 // it might contain "care of" information.
-//
-// ***
 func (o RegistrationContactSettingsTechnicalContactPostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsTechnicalContactPostalAddress) []string {
 		if v == nil {
@@ -1773,8 +1749,8 @@ func (o RegistrationContactSettingsTechnicalContactPostalAddressPtrOutput) Recip
 }
 
 // Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-// ensure the value is correct. See https://cldr.unicode.org/ and
-// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// ensure the value is correct. See <https://cldr.unicode.org/> and
+// <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
 func (o RegistrationContactSettingsTechnicalContactPostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistrationContactSettingsTechnicalContactPostalAddress) *string {
 		if v == nil {

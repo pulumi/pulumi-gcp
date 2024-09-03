@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  * 
- * ## Example Usage
- * 
- * ### Region Target Https Proxy Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -123,7 +121,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Target Https Proxy Mtls
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -262,7 +260,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Target Https Proxy Certificate Manager Certificate
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -576,8 +574,6 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
      * 
-     * ***
-     * 
      */
     @Export(name="urlMap", refs={String.class}, tree="[0]")
     private Output<String> urlMap;
@@ -585,8 +581,6 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
     /**
      * @return A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
-     * 
-     * ***
      * 
      */
     public Output<String> urlMap() {

@@ -30,9 +30,6 @@ class FirewallEndpointArgs:
         :param pulumi.Input[str] location: The location (zone) of the firewall endpoint.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -77,9 +74,6 @@ class FirewallEndpointArgs:
         """
         The name of the parent this firewall endpoint belongs to.
         Format: organizations/{organization_id}.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -148,12 +142,9 @@ class _FirewallEndpointState:
         :param pulumi.Input[str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] state: The current state of the endpoint.
         :param pulumi.Input[str] update_time: Time the firewall endpoint was updated in UTC.
@@ -281,9 +272,6 @@ class _FirewallEndpointState:
         """
         The name of the parent this firewall endpoint belongs to.
         Format: organizations/{organization_id}.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -308,7 +296,7 @@ class _FirewallEndpointState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         """
         return pulumi.get(self, "reconciling")
 
@@ -373,8 +361,8 @@ class FirewallEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
         * How-to Guides
-            * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
-            * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+          * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+          * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project_id` and set `user_project_override` to true
@@ -423,9 +411,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -442,8 +427,8 @@ class FirewallEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
         * How-to Guides
-            * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
-            * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+          * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+          * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project_id` and set `user_project_override` to true
@@ -576,12 +561,9 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[str] parent: The name of the parent this firewall endpoint belongs to.
                Format: organizations/{organization_id}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        :param pulumi.Input[bool] reconciling: Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] state: The current state of the endpoint.
         :param pulumi.Input[str] update_time: Time the firewall endpoint was updated in UTC.
@@ -673,9 +655,6 @@ class FirewallEndpoint(pulumi.CustomResource):
         """
         The name of the parent this firewall endpoint belongs to.
         Format: organizations/{organization_id}.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -692,7 +671,7 @@ class FirewallEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+        Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
         """
         return pulumi.get(self, "reconciling")
 

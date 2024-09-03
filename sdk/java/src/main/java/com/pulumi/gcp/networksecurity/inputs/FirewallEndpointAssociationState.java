@@ -105,16 +105,12 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
     /**
      * The location (zone) of the firewall endpoint association.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location (zone) of the firewall endpoint association.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -186,14 +182,14 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
     }
 
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * @return Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -416,8 +412,6 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
         /**
          * @param location The location (zone) of the firewall endpoint association.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -428,8 +422,6 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
 
         /**
          * @param location The location (zone) of the firewall endpoint association.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -527,7 +519,7 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
         }
 
         /**
-         * @param reconciling Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+         * @param reconciling Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
          * 
          * @return builder
          * 
@@ -538,7 +530,7 @@ public final class FirewallEndpointAssociationState extends com.pulumi.resources
         }
 
         /**
-         * @param reconciling Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+         * @param reconciling Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
          * 
          * @return builder
          * 

@@ -26,9 +26,6 @@ class KeyRingArgs:
         The set of arguments for constructing a KeyRing resource.
         :param pulumi.Input[str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -45,9 +42,6 @@ class KeyRingArgs:
         """
         The location for the KeyRing.
         A full list of valid locations can be found by running `gcloud kms locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -91,9 +85,6 @@ class _KeyRingState:
         Input properties used for looking up and filtering KeyRing resources.
         :param pulumi.Input[str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -111,9 +102,6 @@ class _KeyRingState:
         """
         The location for the KeyRing.
         A full list of valid locations can be found by running `gcloud kms locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -167,7 +155,7 @@ class KeyRing(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
         * How-to Guides
-            * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+          * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
 
         ## Example Usage
 
@@ -210,9 +198,6 @@ class KeyRing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -234,7 +219,7 @@ class KeyRing(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
         * How-to Guides
-            * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+          * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
 
         ## Example Usage
 
@@ -327,9 +312,6 @@ class KeyRing(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the KeyRing.
                A full list of valid locations can be found by running `gcloud kms locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -349,9 +331,6 @@ class KeyRing(pulumi.CustomResource):
         """
         The location for the KeyRing.
         A full list of valid locations can be found by running `gcloud kms locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

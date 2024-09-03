@@ -11,9 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **Warning:** These resources require allow-listing to use, and are not openly available to all Cloud customers. Engage with your Cloud account team to discuss how to onboard.
  *
- * ## Example Usage
- *
- * ### Network Services Edge Cache Service Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +66,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Services Edge Cache Service Advanced
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -267,7 +265,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Services Edge Cache Service Dual Token
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

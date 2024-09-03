@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureGroups.features)
     /// * How-to Guides
-    ///     * [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
+    ///   * [Creating a Feature](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-feature)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vertex Ai Feature Group Feature
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -193,9 +191,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the feature group's region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -304,9 +299,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the feature group's region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -405,9 +397,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The region for the resource. It should be the same as the feature group's region.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

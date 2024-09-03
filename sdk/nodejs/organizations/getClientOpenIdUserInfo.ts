@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Exporting An Email
+ * ### exporting an email
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,7 +65,7 @@ export interface GetClientOpenIdUserInfoResult {
  *
  * ## Example Usage
  *
- * ### Exporting An Email
+ * ### exporting an email
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

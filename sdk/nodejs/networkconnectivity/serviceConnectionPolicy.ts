@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/networkconnectivity/rest/v1/projects.locations.networkConnectionPolicies)
  * * How-to Guides
- *     * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
+ *   * [About Service Connection Policies](https://cloud.google.com/vpc/docs/about-service-connection-policies#service-policies)
  *
- * ## Example Usage
- *
- * ### Network Connectivity Policy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -127,13 +125,10 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of the ServiceConnectionPolicy.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: <https://google.aip.dev/122#fields-representing-resource-names>
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -265,13 +260,10 @@ export interface ServiceConnectionPolicyState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the ServiceConnectionPolicy.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: <https://google.aip.dev/122#fields-representing-resource-names>
      */
     name?: pulumi.Input<string>;
     /**
@@ -326,13 +318,10 @@ export interface ServiceConnectionPolicyArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of the ServiceConnectionPolicy.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
+     * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: <https://google.aip.dev/122#fields-representing-resource-names>
      */
     name?: pulumi.Input<string>;
     /**

@@ -562,9 +562,10 @@ class AwsNodePool(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_aws_cluster
+        ### basic_aws_cluster
         A basic example of a containeraws node pool
         ```python
         import pulumi
@@ -686,7 +687,8 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
-        ### Basic_enum_aws_cluster
+
+        ### basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums
         ```python
         import pulumi
@@ -805,7 +807,8 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
-        ### Beta_basic_enum_aws_cluster
+
+        ### beta_basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums (beta)
         ```python
         import pulumi
@@ -984,9 +987,10 @@ class AwsNodePool(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_aws_cluster
+        ### basic_aws_cluster
         A basic example of a containeraws node pool
         ```python
         import pulumi
@@ -1108,7 +1112,8 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
-        ### Basic_enum_aws_cluster
+
+        ### basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums
         ```python
         import pulumi
@@ -1227,7 +1232,8 @@ class AwsNodePool(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
-        ### Beta_basic_enum_aws_cluster
+
+        ### beta_basic_enum_aws_cluster
         A basic example of a containeraws node pool with lowercase enums (beta)
         ```python
         import pulumi

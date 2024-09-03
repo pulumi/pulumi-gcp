@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/locations.buckets.links)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+ *   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
  * ## Example Usage
  *
@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     description: "Linked dataset test",
  * });
  * ```
+ *
  * ### Logging Linked Dataset All Params
  *
  * ```typescript
@@ -107,9 +108,6 @@ export class LinkedDataset extends pulumi.CustomResource {
     public readonly bigqueryDatasets!: pulumi.Output<outputs.logging.LinkedDatasetBigqueryDataset[]>;
     /**
      * The bucket to which the linked dataset is attached.
-     *
-     *
-     * - - -
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
@@ -202,9 +200,6 @@ export interface LinkedDatasetState {
     bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[]>;
     /**
      * The bucket to which the linked dataset is attached.
-     *
-     *
-     * - - -
      */
     bucket?: pulumi.Input<string>;
     /**
@@ -253,9 +248,6 @@ export interface LinkedDatasetArgs {
     bigqueryDatasets?: pulumi.Input<pulumi.Input<inputs.logging.LinkedDatasetBigqueryDataset>[]>;
     /**
      * The bucket to which the linked dataset is attached.
-     *
-     *
-     * - - -
      */
     bucket: pulumi.Input<string>;
     /**

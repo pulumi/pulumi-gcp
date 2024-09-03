@@ -33,8 +33,6 @@ public final class LbRouteExtensionExtensionChainExtension {
      * @return List of the HTTP headers to forward to the extension (from the client or backend).
      * If omitted, all headers are sent. Each element is a string indicating the header name.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> forwardHeaders;
     /**
@@ -80,8 +78,6 @@ public final class LbRouteExtensionExtensionChainExtension {
     /**
      * @return List of the HTTP headers to forward to the extension (from the client or backend).
      * If omitted, all headers are sent. Each element is a string indicating the header name.
-     * 
-     * ***
      * 
      */
     public List<String> forwardHeaders() {

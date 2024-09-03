@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     instanceId: "active-db",
  * });
  * ```
+ *
  * ### Firebase Database Instance Full
  *
  * ```typescript
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  *     desiredState: "DISABLED",
  * });
  * ```
+ *
  * ### Firebase Database Instance Default Database
  *
  * ```typescript
@@ -132,9 +134,6 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -162,7 +161,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
      * Creating user Databases is only available for projects on the Blaze plan.
-     * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+     * Projects can be upgraded using the Cloud Billing API <https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo>.
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
@@ -227,9 +226,6 @@ export interface DatabaseInstanceState {
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -257,7 +253,7 @@ export interface DatabaseInstanceState {
      * The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
      * Creating user Databases is only available for projects on the Blaze plan.
-     * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+     * Projects can be upgraded using the Cloud Billing API <https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo>.
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
@@ -275,9 +271,6 @@ export interface DatabaseInstanceArgs {
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**
@@ -294,7 +287,7 @@ export interface DatabaseInstanceArgs {
      * The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
      * Creating user Databases is only available for projects on the Blaze plan.
-     * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+     * Projects can be upgraded using the Cloud Billing API <https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo>.
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */

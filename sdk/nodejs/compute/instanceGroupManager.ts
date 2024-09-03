@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### With Top Level Instance Template (`Google` Provider)
+ * ### with top level instance template (google provider)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With Multiple Versions (`Google-Beta` Provider)
+ * ### with multiple versions (google-beta provider)
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With Standby Policy (`Google-Beta` Provider)
+ * ### with standby policy (google-beta provider)
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -233,8 +233,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     public readonly params!: pulumi.Output<outputs.compute.InstanceGroupManagerParams | undefined>;
     /**
@@ -311,8 +309,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     /**
      * The zone that instances in this group should be created
      * in.
-     *
-     * - - -
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -470,8 +466,6 @@ export interface InstanceGroupManagerState {
     operation?: pulumi.Input<string>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
     /**
@@ -548,8 +542,6 @@ export interface InstanceGroupManagerState {
     /**
      * The zone that instances in this group should be created
      * in.
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }
@@ -610,8 +602,6 @@ export interface InstanceGroupManagerArgs {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
     /**
@@ -680,8 +670,6 @@ export interface InstanceGroupManagerArgs {
     /**
      * The zone that instances in this group should be created
      * in.
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }

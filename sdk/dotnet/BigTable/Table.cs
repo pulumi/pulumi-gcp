@@ -102,8 +102,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-        /// 
-        /// -----
         /// </summary>
         [Output("automatedBackupPolicy")]
         public Output<Outputs.TableAutomatedBackupPolicy?> AutomatedBackupPolicy { get; private set; } = null!;
@@ -201,8 +199,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-        /// 
-        /// -----
         /// </summary>
         [Input("automatedBackupPolicy")]
         public Input<Inputs.TableAutomatedBackupPolicyArgs>? AutomatedBackupPolicy { get; set; }
@@ -274,8 +270,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.
-        /// 
-        /// -----
         /// </summary>
         [Input("automatedBackupPolicy")]
         public Input<Inputs.TableAutomatedBackupPolicyGetArgs>? AutomatedBackupPolicy { get; set; }

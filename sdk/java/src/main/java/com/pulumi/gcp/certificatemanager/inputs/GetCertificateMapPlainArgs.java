@@ -18,16 +18,12 @@ public final class GetCertificateMapPlainArgs extends com.pulumi.resources.Invok
     /**
      * The name of the certificate map.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the certificate map.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -78,8 +74,6 @@ public final class GetCertificateMapPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param name The name of the certificate map.
-         * 
-         * ***
          * 
          * @return builder
          * 

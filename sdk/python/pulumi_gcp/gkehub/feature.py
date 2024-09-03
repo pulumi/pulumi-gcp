@@ -30,9 +30,6 @@ class FeatureArgs:
         """
         The set of arguments for constructing a Feature resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input['FeatureFleetDefaultMemberConfigArgs'] fleet_default_member_config: Optional. Fleet Default Membership Configuration.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
@@ -61,9 +58,6 @@ class FeatureArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -164,9 +158,6 @@ class _FeatureState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -277,9 +268,6 @@ class _FeatureState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -398,7 +386,7 @@ class Feature(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
         * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+          * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
 
@@ -429,6 +417,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Multi Cluster Service Discovery
 
         ```python
@@ -442,6 +431,7 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Gkehub Feature Anthos Service Mesh
 
         ```python
@@ -452,6 +442,7 @@ class Feature(pulumi.CustomResource):
             name="servicemesh",
             location="global")
         ```
+
         ### Enable Fleet Observability For Default Logs With Copy
 
         ```python
@@ -471,6 +462,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Scope Logs With Move
 
         ```python
@@ -490,6 +482,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Both Default And Scope Logs
 
         ```python
@@ -512,6 +505,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Service Mesh
 
         ```python
@@ -527,6 +521,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Configmanagement
 
         ```python
@@ -546,6 +541,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller
 
         ```python
@@ -578,6 +574,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Full
 
         ```python
@@ -646,6 +643,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
         ```python
@@ -672,6 +670,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Clusterupgrade
 
         ```python
@@ -723,9 +722,6 @@ class Feature(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -745,7 +741,7 @@ class Feature(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
         * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+          * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
 
         ## Example Usage
 
@@ -776,6 +772,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Multi Cluster Service Discovery
 
         ```python
@@ -789,6 +786,7 @@ class Feature(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Gkehub Feature Anthos Service Mesh
 
         ```python
@@ -799,6 +797,7 @@ class Feature(pulumi.CustomResource):
             name="servicemesh",
             location="global")
         ```
+
         ### Enable Fleet Observability For Default Logs With Copy
 
         ```python
@@ -818,6 +817,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Scope Logs With Move
 
         ```python
@@ -837,6 +837,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Observability For Both Default And Scope Logs
 
         ```python
@@ -859,6 +860,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Service Mesh
 
         ```python
@@ -874,6 +876,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Configmanagement
 
         ```python
@@ -893,6 +896,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller
 
         ```python
@@ -925,6 +929,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Full
 
         ```python
@@ -993,6 +998,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Enable Fleet Default Member Config Policycontroller Minimal
 
         ```python
@@ -1019,6 +1025,7 @@ class Feature(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkehub Feature Clusterupgrade
 
         ```python
@@ -1148,9 +1155,6 @@ class Feature(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1233,9 +1237,6 @@ class Feature(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

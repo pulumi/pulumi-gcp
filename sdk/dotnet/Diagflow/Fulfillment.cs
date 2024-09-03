@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
+    ///   * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
     /// 
     /// ## Example Usage
     /// 
@@ -79,9 +79,6 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -168,9 +165,6 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -218,9 +212,6 @@ namespace Pulumi.Gcp.Diagflow
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

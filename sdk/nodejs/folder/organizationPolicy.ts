@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
  * * How-to Guides
- *     * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ *   * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
  *
  * ## Example Usage
  *
@@ -136,8 +136,6 @@ export class OrganizationPolicy extends pulumi.CustomResource {
     public readonly booleanPolicy!: pulumi.Output<outputs.folder.OrganizationPolicyBooleanPolicy | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     *
-     * - - -
      */
     public readonly constraint!: pulumi.Output<string>;
     /**
@@ -158,8 +156,6 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      *
      * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-     *
-     * - - -
      */
     public readonly restorePolicy!: pulumi.Output<outputs.folder.OrganizationPolicyRestorePolicy | undefined>;
     /**
@@ -224,8 +220,6 @@ export interface OrganizationPolicyState {
     booleanPolicy?: pulumi.Input<inputs.folder.OrganizationPolicyBooleanPolicy>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     *
-     * - - -
      */
     constraint?: pulumi.Input<string>;
     /**
@@ -246,8 +240,6 @@ export interface OrganizationPolicyState {
      *
      * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-     *
-     * - - -
      */
     restorePolicy?: pulumi.Input<inputs.folder.OrganizationPolicyRestorePolicy>;
     /**
@@ -270,8 +262,6 @@ export interface OrganizationPolicyArgs {
     booleanPolicy?: pulumi.Input<inputs.folder.OrganizationPolicyBooleanPolicy>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-     *
-     * - - -
      */
     constraint: pulumi.Input<string>;
     /**
@@ -288,8 +278,6 @@ export interface OrganizationPolicyArgs {
      *
      * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-     *
-     * - - -
      */
     restorePolicy?: pulumi.Input<inputs.folder.OrganizationPolicyRestorePolicy>;
     /**

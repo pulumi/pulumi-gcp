@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         public readonly int? BootDiskSizeGb;
         /// <summary>
         /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-        /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        /// See &lt;https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization&gt;
         /// </summary>
         public readonly bool? EnableNestedVirtualization;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        /// The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types &lt;https://cloud.google.com/workstations/docs/available-machine-types&gt;. Defaults to e2-standard-4.
         /// </summary>
         public readonly string? MachineType;
         /// <summary>

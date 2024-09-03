@@ -47,9 +47,6 @@ class HttpHealthCheckArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] port: The TCP port number for the HTTP health check request.
                The default value is 80.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -147,9 +144,6 @@ class HttpHealthCheckArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -258,9 +252,6 @@ class _HttpHealthCheckState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] port: The TCP port number for the HTTP health check request.
                The default value is 80.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -375,9 +366,6 @@ class _HttpHealthCheckState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -494,11 +482,9 @@ class HttpHealthCheck(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpHealthChecks)
         * How-to Guides
-            * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+          * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
-        ## Example Usage
-
-        ### Http Health Check Basic
+        ## 
 
         ```python
         import pulumi
@@ -553,9 +539,6 @@ class HttpHealthCheck(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] port: The TCP port number for the HTTP health check request.
                The default value is 80.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -588,11 +571,9 @@ class HttpHealthCheck(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpHealthChecks)
         * How-to Guides
-            * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+          * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
-        ## Example Usage
-
-        ### Http Health Check Basic
+        ## 
 
         ```python
         import pulumi
@@ -721,9 +702,6 @@ class HttpHealthCheck(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] port: The TCP port number for the HTTP health check request.
                The default value is 80.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -811,9 +789,6 @@ class HttpHealthCheck(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

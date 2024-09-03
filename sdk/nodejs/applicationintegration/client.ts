@@ -13,12 +13,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.clients)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
- *     * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
+ *   * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+ *   * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
  *
- * ## Example Usage
- *
- * ### Integrations Client Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.applicationintegration.Client("example", {location: "us-central1"});
  * ```
- * ### Integrations Client Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -133,9 +131,6 @@ export class Client extends pulumi.CustomResource {
     public readonly createSampleWorkflows!: pulumi.Output<boolean | undefined>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -219,9 +214,6 @@ export interface ClientState {
     createSampleWorkflows?: pulumi.Input<boolean>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -268,9 +260,6 @@ export interface ClientArgs {
     createSampleWorkflows?: pulumi.Input<boolean>;
     /**
      * Location in which client needs to be provisioned.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

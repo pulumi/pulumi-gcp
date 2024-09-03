@@ -117,7 +117,7 @@ class Project(pulumi.CustomResource):
 
         * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
         * How-to Guides
-            * Official Documentation
+          * Official Documentation
 
         > **Note:** This resource should usually be used with a provider configuration
         with `user_project_override = true` unless you wish for your quota
@@ -180,7 +180,7 @@ class Project(pulumi.CustomResource):
 
         * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
         * How-to Guides
-            * Official Documentation
+          * Official Documentation
 
         > **Note:** This resource should usually be used with a provider configuration
         with `user_project_override = true` unless you wish for your quota

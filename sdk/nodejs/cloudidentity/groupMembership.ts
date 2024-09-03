@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+ *   * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloud Identity Group Membership User
  *
  * ```typescript

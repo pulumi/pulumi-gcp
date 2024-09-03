@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.authorizedOrgsDescs)
     /// * How-to Guides
-    ///     * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
+    ///   * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
     /// 
     /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
     /// you must specify a `billing_project` and set `user_project_override` to true
@@ -126,9 +126,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The `authorized_orgs_desc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
         /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -241,9 +238,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The `authorized_orgs_desc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
         /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -324,9 +318,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The `authorized_orgs_desc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
         /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

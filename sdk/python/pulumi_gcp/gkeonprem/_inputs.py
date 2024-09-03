@@ -309,7 +309,7 @@ if not MYPY:
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
         documentation below to know the exact format:
-        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
         Structure is documented below.
         """
 elif False:
@@ -326,7 +326,7 @@ class BareMetalAdminClusterControlPlaneArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]] api_server_args: Customizes the default API server args. Only a subset of
                customized flags are supported. Please refer to the API server
                documentation below to know the exact format:
-               https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+               <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
                Structure is documented below.
         """
         pulumi.set(__self__, "control_plane_node_pool_config", control_plane_node_pool_config)
@@ -353,7 +353,7 @@ class BareMetalAdminClusterControlPlaneArgs:
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
         documentation below to know the exact format:
-        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
         Structure is documented below.
         """
         return pulumi.get(self, "api_server_args")
@@ -458,7 +458,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -494,7 +494,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
@@ -523,7 +523,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -583,7 +583,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -608,7 +608,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
@@ -630,7 +630,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigN
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -2047,7 +2047,7 @@ if not MYPY:
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
         documentation below to know the exact format:
-        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
         Structure is documented below.
         """
 elif False:
@@ -2064,7 +2064,7 @@ class BareMetalClusterControlPlaneArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]] api_server_args: Customizes the default API server args. Only a subset of
                customized flags are supported. Please refer to the API server
                documentation below to know the exact format:
-               https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+               <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
                Structure is documented below.
         """
         pulumi.set(__self__, "control_plane_node_pool_config", control_plane_node_pool_config)
@@ -2091,7 +2091,7 @@ class BareMetalClusterControlPlaneArgs:
         Customizes the default API server args. Only a subset of
         customized flags are supported. Please refer to the API server
         documentation below to know the exact format:
-        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        <https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/>
         Structure is documented below.
         """
         return pulumi.get(self, "api_server_args")
@@ -2196,7 +2196,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -2232,7 +2232,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
@@ -2261,7 +2261,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -2321,7 +2321,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -2346,7 +2346,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
@@ -2368,7 +2368,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeCo
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -2987,7 +2987,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3026,7 +3026,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
@@ -3070,7 +3070,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3143,7 +3143,7 @@ if not MYPY:
         Prevents the Kubelet from pulling multiple images at a time.
         We recommend *not* changing the default value on nodes that run docker
         daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-        backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+        backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
         more details.
         """
 elif False:
@@ -3170,7 +3170,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         :param pulumi.Input[bool] serialize_image_pulls_disabled: Prevents the Kubelet from pulling multiple images at a time.
                We recommend *not* changing the default value on nodes that run docker
                daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-               backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+               backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
                more details.
         """
         if registry_burst is not None:
@@ -3220,7 +3220,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         Prevents the Kubelet from pulling multiple images at a time.
         We recommend *not* changing the default value on nodes that run docker
         daemon with version  < 1.9 or an Another Union File System (Aufs) storage
-        backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+        backend. Issue <https://github.com/kubernetes/kubernetes/issues/10959> has
         more details.
         """
         return pulumi.get(self, "serialize_image_pulls_disabled")
@@ -3241,7 +3241,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3266,7 +3266,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
@@ -3288,7 +3288,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3620,7 +3620,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3656,7 +3656,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]] node_configs: The list of machine addresses in the Bare Metal Node Pool.
@@ -3685,7 +3685,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3745,7 +3745,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -3770,7 +3770,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
@@ -3792,7 +3792,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -4806,8 +4806,6 @@ if not MYPY:
         storage_class: pulumi.Input[str]
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
 elif False:
     BareMetalClusterStorageLvpNodeMountsConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -4820,8 +4818,6 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
         """
         :param pulumi.Input[str] path: The host machine path.
         :param pulumi.Input[str] storage_class: The StorageClass name that PVs will be created with.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -4843,8 +4839,6 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
     def storage_class(self) -> pulumi.Input[str]:
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
         return pulumi.get(self, "storage_class")
 
@@ -5257,7 +5251,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -5290,7 +5284,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] operating_system: Specifies the nodes operating system (default: LINUX).
@@ -5329,7 +5323,7 @@ class BareMetalNodePoolNodePoolConfigArgs:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -5376,7 +5370,7 @@ if not MYPY:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -5401,7 +5395,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
                version -- it's best to assume the behavior is undefined and
                conflicts should be avoided. For more information, including usage
                and the valid values, see:
-               - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
                An object containing a list of "key": value pairs.
                For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] node_ip: The default IPv4 address for SSH access and Kubernetes node.
@@ -5423,7 +5417,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfigArgs:
         version -- it's best to assume the behavior is undefined and
         conflicts should be avoided. For more information, including usage
         and the valid values, see:
-        - http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        - <http://kubernetes.io/v1.1/docs/user-guide/labels.html>
         An object containing a list of "key": value pairs.
         For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         """
@@ -5453,8 +5447,6 @@ if not MYPY:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         key: NotRequired[pulumi.Input[str]]
         """
@@ -5476,8 +5468,6 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         :param pulumi.Input[str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-               
-               - - -
         :param pulumi.Input[str] key: Key associated with the effect.
         :param pulumi.Input[str] value: Value associated with the effect.
         """
@@ -5494,8 +5484,6 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         return pulumi.get(self, "effect")
 
@@ -8370,8 +8358,6 @@ if not MYPY:
         tag: NotRequired[pulumi.Input[str]]
         """
         The Vsphere tag name.
-
-        - - -
         """
 elif False:
     VMwareNodePoolConfigVsphereConfigTagArgsDict: TypeAlias = Mapping[str, Any]
@@ -8384,8 +8370,6 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
         """
         :param pulumi.Input[str] category: The Vsphere tag category.
         :param pulumi.Input[str] tag: The Vsphere tag name.
-               
-               - - -
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -8409,8 +8393,6 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
         The Vsphere tag name.
-
-        - - -
         """
         return pulumi.get(self, "tag")
 

@@ -17,7 +17,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
     public static final GuestPoliciesRecipeArtifactGcsArgs Empty = new GuestPoliciesRecipeArtifactGcsArgs();
 
     /**
-     * Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be my-bucket.
      * 
      */
@@ -25,7 +25,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
     private @Nullable Output<String> bucket;
 
     /**
-     * @return Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * @return Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be my-bucket.
      * 
      */
@@ -35,7 +35,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
 
     /**
      * Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-     * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+     * &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
      * 
      */
     @Import(name="generation")
@@ -43,7 +43,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
 
     /**
      * @return Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-     * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+     * &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
      * 
      */
     public Optional<Output<Integer>> generation() {
@@ -51,7 +51,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
     }
 
     /**
-     * Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be foo/bar.
      * 
      */
@@ -59,7 +59,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
     private @Nullable Output<String> object;
 
     /**
-     * @return Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * @return Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be foo/bar.
      * 
      */
@@ -94,7 +94,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bucket Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * @param bucket Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
          * this value would be my-bucket.
          * 
          * @return builder
@@ -106,7 +106,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param bucket Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * @param bucket Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
          * this value would be my-bucket.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
 
         /**
          * @param generation Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-         * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+         * &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
 
         /**
          * @param generation Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-         * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+         * &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param object Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * @param object Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
          * this value would be foo/bar.
          * 
          * @return builder
@@ -152,7 +152,7 @@ public final class GuestPoliciesRecipeArtifactGcsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param object Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * @param object Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
          * this value would be foo/bar.
          * 
          * @return builder

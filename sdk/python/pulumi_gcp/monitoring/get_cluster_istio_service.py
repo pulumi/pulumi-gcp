@@ -168,8 +168,8 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
     * How-to Guides
-        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+      * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+      * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
 
@@ -187,18 +187,14 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
     ```
 
 
-    :param str cluster_name: The name of the Kubernetes cluster in which this Istio service 
+    :param str cluster_name: The name of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
-    :param str location: The location of the Kubernetes cluster in which this Istio service 
+    :param str location: The location of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the location resource label in k8s_cluster resources.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
-           
-           - - -
-           
-           Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """
@@ -244,8 +240,8 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
 
     * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
     * How-to Guides
-        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+      * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+      * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
     ## Example Usage
 
@@ -263,18 +259,14 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
     ```
 
 
-    :param str cluster_name: The name of the Kubernetes cluster in which this Istio service 
+    :param str cluster_name: The name of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
-    :param str location: The location of the Kubernetes cluster in which this Istio service 
+    :param str location: The location of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the location resource label in k8s_cluster resources.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
-           
-           - - -
-           
-           Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """

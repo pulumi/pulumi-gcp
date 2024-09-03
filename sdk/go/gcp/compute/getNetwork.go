@@ -14,6 +14,30 @@ import (
 // Get a network within GCE from its name.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "default-us-east1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkResult
@@ -27,8 +51,6 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkArgs struct {
 	// The name of the network.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -69,8 +91,6 @@ func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkOutputArgs struct {
 	// The name of the network.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

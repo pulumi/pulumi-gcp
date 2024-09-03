@@ -13,9 +13,50 @@ import (
 
 // Use this data source to access IP ranges in your firewall rules.
 //
-// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+// <https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules>
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ranges, err := compute.GetLBIPRanges(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewall(ctx, "lb", &compute.FirewallArgs{
+//				Name:    pulumi.String("lb-firewall"),
+//				Network: pulumi.Any(main.Name),
+//				Allows: compute.FirewallAllowArray{
+//					&compute.FirewallAllowArgs{
+//						Protocol: pulumi.String("tcp"),
+//						Ports: pulumi.StringArray{
+//							pulumi.String("80"),
+//						},
+//					},
+//				},
+//				SourceRanges: interface{}(ranges.Networks),
+//				TargetTags: pulumi.StringArray{
+//					pulumi.String("InstanceBehindLoadBalancer"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLBIPRangesResult

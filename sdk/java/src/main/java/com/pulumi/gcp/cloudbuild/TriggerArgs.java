@@ -184,7 +184,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -197,7 +197,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> ignoredFiles;
 
     /**
-     * @return ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * @return ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If ignoredFiles and changed files are both empty, then they are not
      * used to determine whether or not to trigger a build.
@@ -232,7 +232,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we
@@ -247,7 +247,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> includedFiles;
 
     /**
-     * @return ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+     * @return ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
      * extended with support for `**`.
      * If any of the files altered in the commit pass the ignoredFiles filter
      * and includedFiles is empty, then as far as this filter is concerned, we
@@ -729,7 +729,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoredFiles ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+         * @param ignoredFiles ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
          * extended with support for `**`.
          * If ignoredFiles and changed files are both empty, then they are not
          * used to determine whether or not to trigger a build.
@@ -746,7 +746,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoredFiles ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+         * @param ignoredFiles ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
          * extended with support for `**`.
          * If ignoredFiles and changed files are both empty, then they are not
          * used to determine whether or not to trigger a build.
@@ -762,7 +762,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoredFiles ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+         * @param ignoredFiles ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
          * extended with support for `**`.
          * If ignoredFiles and changed files are both empty, then they are not
          * used to determine whether or not to trigger a build.
@@ -805,7 +805,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includedFiles ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+         * @param includedFiles ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
          * extended with support for `**`.
          * If any of the files altered in the commit pass the ignoredFiles filter
          * and includedFiles is empty, then as far as this filter is concerned, we
@@ -824,7 +824,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includedFiles ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+         * @param includedFiles ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
          * extended with support for `**`.
          * If any of the files altered in the commit pass the ignoredFiles filter
          * and includedFiles is empty, then as far as this filter is concerned, we
@@ -842,7 +842,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includedFiles ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+         * @param includedFiles ignoredFiles and includedFiles are file glob matches using &lt;https://golang.org/pkg/path/filepath/#Match&gt;
          * extended with support for `**`.
          * If any of the files altered in the commit pass the ignoredFiles filter
          * and includedFiles is empty, then as far as this filter is concerned, we

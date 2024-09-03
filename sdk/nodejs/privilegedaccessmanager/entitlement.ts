@@ -123,7 +123,7 @@ export class Entitlement extends pulumi.CustomResource {
      */
     public readonly entitlementId!: pulumi.Output<string>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -265,7 +265,7 @@ export interface EntitlementState {
      */
     entitlementId?: pulumi.Input<string>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     etag?: pulumi.Input<string>;
     /**

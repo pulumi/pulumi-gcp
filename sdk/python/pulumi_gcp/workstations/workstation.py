@@ -31,9 +31,6 @@ class WorkstationArgs:
         """
         The set of arguments for constructing a Workstation resource.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID of the parent workstation cluster config.
         :param pulumi.Input[str] workstation_id: ID to use for the workstation.
@@ -68,9 +65,6 @@ class WorkstationArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the workstation parent resources reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -216,9 +210,6 @@ class _WorkstationState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -369,9 +360,6 @@ class _WorkstationState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the workstation parent resources reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -494,60 +482,6 @@ class Workstation(pulumi.CustomResource):
                  workstation_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Workstation Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default",
-            name="workstation-cluster",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default.name)
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster",
-            network=default.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        default_workstation_config = gcp.workstations.WorkstationConfig("default",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host={
-                "gce_instance": {
-                    "machine_type": "e2-standard-4",
-                    "boot_disk_size_gb": 35,
-                    "disable_public_ip_addresses": True,
-                },
-            })
-        default_workstation = gcp.workstations.Workstation("default",
-            workstation_id="work-station",
-            workstation_config_id=default_workstation_config.workstation_config_id,
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            env={
-                "name": "foo",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        ```
-
         ## Import
 
         Workstation can be imported using any of these accepted formats:
@@ -583,9 +517,6 @@ class Workstation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
@@ -599,60 +530,6 @@ class Workstation(pulumi.CustomResource):
                  args: WorkstationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Workstation Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.Network("default",
-            name="workstation-cluster",
-            auto_create_subnetworks=False)
-        default_subnetwork = gcp.compute.Subnetwork("default",
-            name="workstation-cluster",
-            ip_cidr_range="10.0.0.0/24",
-            region="us-central1",
-            network=default.name)
-        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
-            workstation_cluster_id="workstation-cluster",
-            network=default.id,
-            subnetwork=default_subnetwork.id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        default_workstation_config = gcp.workstations.WorkstationConfig("default",
-            workstation_config_id="workstation-config",
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            host={
-                "gce_instance": {
-                    "machine_type": "e2-standard-4",
-                    "boot_disk_size_gb": 35,
-                    "disable_public_ip_addresses": True,
-                },
-            })
-        default_workstation = gcp.workstations.Workstation("default",
-            workstation_id="work-station",
-            workstation_config_id=default_workstation_config.workstation_config_id,
-            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
-            location="us-central1",
-            labels={
-                "label": "key",
-            },
-            env={
-                "name": "foo",
-            },
-            annotations={
-                "label-one": "value-one",
-            })
-        ```
-
         ## Import
 
         Workstation can be imported using any of these accepted formats:
@@ -785,9 +662,6 @@ class Workstation(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -894,9 +768,6 @@ class Workstation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the workstation parent resources reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

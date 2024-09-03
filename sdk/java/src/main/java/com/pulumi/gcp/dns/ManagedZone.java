@@ -32,11 +32,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
  * * How-to Guides
- *     * [Managing Zones](https://cloud.google.com/dns/zones/)
+ *   * [Managing Zones](https://cloud.google.com/dns/zones/)
  * 
- * ## Example Usage
- * 
- * ### Dns Managed Zone Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +71,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dns Managed Zone Private
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -133,6 +131,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Dns Managed Zone Private Forwarding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -203,7 +204,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dns Managed Zone Private Gke
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -307,7 +308,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dns Managed Zone Private Peering
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -369,7 +370,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dns Managed Zone Service Directory
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -427,7 +428,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dns Managed Zone Cloud Logging
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -658,8 +659,6 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * User assigned name for this resource.
      * Must be unique within the project.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -667,8 +666,6 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     /**
      * @return User assigned name for this resource.
      * Must be unique within the project.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

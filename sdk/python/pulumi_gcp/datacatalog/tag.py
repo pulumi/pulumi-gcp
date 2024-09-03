@@ -245,11 +245,9 @@ class Tag(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Entry Tag Basic
+        ## 
 
         ```python
         import pulumi
@@ -310,7 +308,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
-        ### Data Catalog Entry Group Tag
+        ## 
 
         ```python
         import pulumi
@@ -376,7 +374,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
-        ### Data Catalog Entry Tag Full
+        ## 
 
         ```python
         import pulumi
@@ -541,11 +539,9 @@ class Tag(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Entry Tag Basic
+        ## 
 
         ```python
         import pulumi
@@ -606,7 +602,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
-        ### Data Catalog Entry Group Tag
+        ## 
 
         ```python
         import pulumi
@@ -672,7 +668,7 @@ class Tag(pulumi.CustomResource):
                 "string_value": "my-string",
             }])
         ```
-        ### Data Catalog Entry Tag Full
+        ## 
 
         ```python
         import pulumi

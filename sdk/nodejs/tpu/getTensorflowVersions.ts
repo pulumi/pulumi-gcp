@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * const available = gcp.tpu.getTensorflowVersions({});
  * ```
  *
- * ### Configure Basic TPU Node With Available Version
+ * ### Configure Basic TPU Node with available version
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ export interface GetTensorflowVersionsResult {
  * const available = gcp.tpu.getTensorflowVersions({});
  * ```
  *
- * ### Configure Basic TPU Node With Available Version
+ * ### Configure Basic TPU Node with available version
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

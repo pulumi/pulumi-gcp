@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class JobTemplateTemplateContainerVolumeMount {
     /**
-     * @return Path within the container at which the volume should be mounted. Must not contain &#39;:&#39;. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+     * @return Path within the container at which the volume should be mounted. Must not contain &#39;:&#39;. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt;
      * 
      */
     private String mountPath;
@@ -23,7 +23,7 @@ public final class JobTemplateTemplateContainerVolumeMount {
 
     private JobTemplateTemplateContainerVolumeMount() {}
     /**
-     * @return Path within the container at which the volume should be mounted. Must not contain &#39;:&#39;. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+     * @return Path within the container at which the volume should be mounted. Must not contain &#39;:&#39;. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt;
      * 
      */
     public String mountPath() {

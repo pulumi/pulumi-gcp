@@ -11,9 +11,7 @@ import * as utilities from "../utilities";
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
  *
- * ## Example Usage
- *
- * ### Identity Platform Tenant Oauth Idp Config Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,9 +83,6 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
 
     /**
      * The client id of an OAuth client.
-     *
-     *
-     * - - -
      */
     public readonly clientId!: pulumi.Output<string>;
     /**
@@ -175,9 +170,6 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
 export interface TenantOauthIdpConfigState {
     /**
      * The client id of an OAuth client.
-     *
-     *
-     * - - -
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -217,9 +209,6 @@ export interface TenantOauthIdpConfigState {
 export interface TenantOauthIdpConfigArgs {
     /**
      * The client id of an OAuth client.
-     *
-     *
-     * - - -
      */
     clientId: pulumi.Input<string>;
     /**

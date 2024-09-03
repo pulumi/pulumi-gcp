@@ -96,8 +96,6 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
      * 
-     * ***
-     * 
      */
     @Import(name="urlMap", required=true)
     private Output<String> urlMap;
@@ -105,8 +103,6 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
     /**
      * @return A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the BackendService.
-     * 
-     * ***
      * 
      */
     public Output<String> urlMap() {
@@ -245,8 +241,6 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
          * @param urlMap A reference to the RegionUrlMap resource that defines the mapping from URL
          * to the BackendService.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -258,8 +252,6 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
         /**
          * @param urlMap A reference to the RegionUrlMap resource that defines the mapping from URL
          * to the BackendService.
-         * 
-         * ***
          * 
          * @return builder
          * 

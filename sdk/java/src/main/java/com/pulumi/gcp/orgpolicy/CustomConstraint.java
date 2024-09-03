@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
- *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *   * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
  * 
  * ## Example Usage
  * 
@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Org Policy Custom Constraint Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -229,16 +230,12 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

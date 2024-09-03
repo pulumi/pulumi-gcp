@@ -393,7 +393,7 @@ class FolderFeed(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
+          * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
 
@@ -494,7 +494,7 @@ class FolderFeed(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/asset-inventory/docs/reference/rest/)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
+          * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 
         ## Example Usage
 

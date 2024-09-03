@@ -40,9 +40,6 @@ class ClientTlsPolicyArgs:
         :param pulumi.Input[str] location: The location of the client tls policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
@@ -123,9 +120,6 @@ class ClientTlsPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ClientTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -200,9 +194,6 @@ class _ClientTlsPolicyState:
         :param pulumi.Input[str] location: The location of the client tls policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -318,9 +309,6 @@ class _ClientTlsPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ClientTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -407,53 +395,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  sni: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Security Client Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            name="my-client-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            sni="secure.example.com")
-        ```
-        ### Network Security Client Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            name="my-client-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            client_certificate={
-                "certificate_provider_instance": {
-                    "plugin_instance": "google_cloud_private_spiffe",
-                },
-            },
-            server_validation_cas=[
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath",
-                    },
-                },
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath1",
-                    },
-                },
-            ])
-        ```
-
         ## Import
 
         ClientTlsPolicy can be imported using any of these accepted formats:
@@ -489,9 +430,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the client tls policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClientTlsPolicyServerValidationCaArgs', 'ClientTlsPolicyServerValidationCaArgsDict']]]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
@@ -505,53 +443,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  args: Optional[ClientTlsPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Security Client Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            name="my-client-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            sni="secure.example.com")
-        ```
-        ### Network Security Client Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ClientTlsPolicy("default",
-            name="my-client-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            client_certificate={
-                "certificate_provider_instance": {
-                    "plugin_instance": "google_cloud_private_spiffe",
-                },
-            },
-            server_validation_cas=[
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath",
-                    },
-                },
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath1",
-                    },
-                },
-            ])
-        ```
-
         ## Import
 
         ClientTlsPolicy can be imported using any of these accepted formats:
@@ -662,9 +553,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the client tls policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -749,9 +637,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ClientTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

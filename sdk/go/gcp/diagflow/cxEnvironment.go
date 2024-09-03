@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
-// ## Example Usage
-//
-// ### Dialogflowcx Environment Full
+// ##
 //
 // ```go
 // package main

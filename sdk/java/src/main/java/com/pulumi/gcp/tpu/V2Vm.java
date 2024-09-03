@@ -26,172 +26,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Tpu V2 Vm Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.tpu.TpuFunctions;
- * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
- * import com.pulumi.gcp.tpu.V2Vm;
- * import com.pulumi.gcp.tpu.V2VmArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var available = TpuFunctions.getV2RuntimeVersions();
- * 
- *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
- *             .name("test-tpu")
- *             .zone("us-central1-c")
- *             .runtimeVersion("tpu-vm-tf-2.13.0")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Tpu V2 Vm Full
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.tpu.TpuFunctions;
- * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
- * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.Subnetwork;
- * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.compute.Disk;
- * import com.pulumi.gcp.compute.DiskArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
- * import com.pulumi.gcp.tpu.V2Vm;
- * import com.pulumi.gcp.tpu.V2VmArgs;
- * import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
- * import com.pulumi.gcp.tpu.inputs.V2VmNetworkConfigArgs;
- * import com.pulumi.gcp.tpu.inputs.V2VmSchedulingConfigArgs;
- * import com.pulumi.gcp.tpu.inputs.V2VmShieldedInstanceConfigArgs;
- * import com.pulumi.gcp.tpu.inputs.V2VmServiceAccountArgs;
- * import com.pulumi.gcp.tpu.inputs.V2VmDataDiskArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var available = TpuFunctions.getV2RuntimeVersions();
- * 
- *         final var availableGetV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
- * 
- *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tpu-net")
- *             .autoCreateSubnetworks(false)
- *             .build());
- * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
- *             .name("tpu-subnet")
- *             .ipCidrRange("10.0.0.0/16")
- *             .region("us-central1")
- *             .network(network.id())
- *             .build());
- * 
- *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tpu-sa")
- *             .displayName("Test TPU VM")
- *             .build());
- * 
- *         var disk = new Disk("disk", DiskArgs.builder()
- *             .name("tpu-disk")
- *             .image("debian-cloud/debian-11")
- *             .size(10)
- *             .type("pd-ssd")
- *             .zone("us-central1-c")
- *             .build());
- * 
- *         // Wait after service account creation to limit eventual consistency errors.
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
- *             .createDuration("60s")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sa)
- *                 .build());
- * 
- *         var tpu = new V2Vm("tpu", V2VmArgs.builder()
- *             .name("test-tpu")
- *             .zone("us-central1-c")
- *             .description("Text description of the TPU.")
- *             .runtimeVersion("tpu-vm-tf-2.13.0")
- *             .acceleratorConfig(V2VmAcceleratorConfigArgs.builder()
- *                 .type("V2")
- *                 .topology("2x2")
- *                 .build())
- *             .cidrBlock("10.0.0.0/29")
- *             .networkConfig(V2VmNetworkConfigArgs.builder()
- *                 .canIpForward(true)
- *                 .enableExternalIps(true)
- *                 .network(network.id())
- *                 .subnetwork(subnet.id())
- *                 .build())
- *             .schedulingConfig(V2VmSchedulingConfigArgs.builder()
- *                 .preemptible(true)
- *                 .build())
- *             .shieldedInstanceConfig(V2VmShieldedInstanceConfigArgs.builder()
- *                 .enableSecureBoot(true)
- *                 .build())
- *             .serviceAccount(V2VmServiceAccountArgs.builder()
- *                 .email(sa.email())
- *                 .scopes("https://www.googleapis.com/auth/cloud-platform")
- *                 .build())
- *             .dataDisks(V2VmDataDiskArgs.builder()
- *                 .sourceDisk(disk.id())
- *                 .mode("READ_ONLY")
- *                 .build())
- *             .labels(Map.of("foo", "bar"))
- *             .metadata(Map.of("foo", "bar"))
- *             .tags("foo")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(wait60Seconds)
- *                 .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Vm can be imported using any of these accepted formats:
@@ -512,16 +346,12 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
     /**
      * Runtime version for the TPU.
      * 
-     * ***
-     * 
      */
     @Export(name="runtimeVersion", refs={String.class}, tree="[0]")
     private Output<String> runtimeVersion;
 
     /**
      * @return Runtime version for the TPU.
-     * 
-     * ***
      * 
      */
     public Output<String> runtimeVersion() {

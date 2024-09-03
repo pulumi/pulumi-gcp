@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        /// Output only. The resource name of the workflow template, as described in &lt;https://cloud.google.com/apis/design/resource_names&gt;. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        /// Output only. The resource name of the workflow template, as described in &lt;https://cloud.google.com/apis/design/resource_names&gt;. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
+        /// Output only. The resource name of the workflow template, as described in &lt;https://cloud.google.com/apis/design/resource_names&gt;. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

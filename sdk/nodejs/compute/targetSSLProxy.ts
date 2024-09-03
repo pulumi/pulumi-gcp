@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
  * * How-to Guides
- *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+ *   * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
  *
- * ## Example Usage
- *
- * ### Target Ssl Proxy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -107,9 +105,6 @@ export class TargetSSLProxy extends pulumi.CustomResource {
 
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
@@ -221,9 +216,6 @@ export class TargetSSLProxy extends pulumi.CustomResource {
 export interface TargetSSLProxyState {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -290,9 +282,6 @@ export interface TargetSSLProxyState {
 export interface TargetSSLProxyArgs {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService: pulumi.Input<string>;
     /**

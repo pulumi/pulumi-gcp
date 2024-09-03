@@ -29,11 +29,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes.snapshots)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volume-snapshots/overview)
  * 
- * ## Example Usage
- * 
- * ### Volume Snapshot Create
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -192,16 +190,12 @@ public class VolumeSnapshot extends com.pulumi.resources.CustomResource {
     /**
      * The name of the snapshot.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the snapshot.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

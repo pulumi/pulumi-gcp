@@ -888,7 +888,7 @@ class AccessLevelCustom(dict):
         """
         :param 'AccessLevelCustomExprArgs' expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
-               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
                Structure is documented below.
         """
         pulumi.set(__self__, "expr", expr)
@@ -899,7 +899,7 @@ class AccessLevelCustom(dict):
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "expr")
@@ -975,7 +975,7 @@ class AccessLevelsAccessLevel(dict):
         :param 'AccessLevelsAccessLevelBasicArgs' basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
         :param 'AccessLevelsAccessLevelCustomArgs' custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-               See CEL spec at: https://github.com/google/cel-spec.
+               See CEL spec at: <https://github.com/google/cel-spec>.
                Structure is documented below.
         :param str description: Description of the AccessLevel and its use. Does not affect behavior.
         """
@@ -1020,7 +1020,7 @@ class AccessLevelsAccessLevel(dict):
     def custom(self) -> Optional['outputs.AccessLevelsAccessLevelCustom']:
         """
         Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        See CEL spec at: https://github.com/google/cel-spec.
+        See CEL spec at: <https://github.com/google/cel-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "custom")
@@ -1530,7 +1530,7 @@ class AccessLevelsAccessLevelCustom(dict):
         """
         :param 'AccessLevelsAccessLevelCustomExprArgs' expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
-               custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+               custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
                Structure is documented below.
         """
         pulumi.set(__self__, "expr", expr)
@@ -1541,7 +1541,7 @@ class AccessLevelsAccessLevelCustom(dict):
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
         Structure is documented below.
         """
         return pulumi.get(self, "expr")

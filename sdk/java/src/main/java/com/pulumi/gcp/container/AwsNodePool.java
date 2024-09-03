@@ -26,9 +26,10 @@ import javax.annotation.Nullable;
  * 
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+ * 
  * ## Example Usage
  * 
- * ### Basic_aws_cluster
+ * ### basic_aws_cluster
  * A basic example of a containeraws node pool
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -193,7 +194,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Basic_enum_aws_cluster
+ * 
+ * ### basic_enum_aws_cluster
  * A basic example of a containeraws node pool with lowercase enums
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -354,7 +356,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Beta_basic_enum_aws_cluster
+ * 
+ * ### beta_basic_enum_aws_cluster
  * A basic example of a containeraws node pool with lowercase enums (beta)
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

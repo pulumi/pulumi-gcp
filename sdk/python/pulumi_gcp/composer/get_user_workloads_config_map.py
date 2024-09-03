@@ -51,7 +51,7 @@ class GetUserWorkloadsConfigMapResult:
     def data(self) -> Mapping[str, str]:
         """
         The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-        For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+        For details see: <https://kubernetes.io/docs/concepts/configuration/configmap/>
         """
         return pulumi.get(self, "data")
 

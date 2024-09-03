@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
         /// <summary>
         /// An email address of a user to grant access to. For example:
-        /// fred@example.com
+        /// &lt;fred@example.com&gt;
         /// </summary>
         [Input("userByEmail")]
         public Input<string>? UserByEmail { get; set; }

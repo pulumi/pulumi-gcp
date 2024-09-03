@@ -12,93 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Dataform Repository Release Config
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataform"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sourcerepo"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gitRepository, err := sourcerepo.NewRepository(ctx, "git_repository", &sourcerepo.RepositoryArgs{
-//				Name: pulumi.String("my/repository"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("my_secret"),
-//				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
-//				SecretData: pulumi.String("secret-data"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			repository, err := dataform.NewRepository(ctx, "repository", &dataform.RepositoryArgs{
-//				Name:   pulumi.String("dataform_repository"),
-//				Region: pulumi.String("us-central1"),
-//				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
-//					Url:                              gitRepository.Url,
-//					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
-//				},
-//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
-//					DefaultDatabase: pulumi.String("database"),
-//					SchemaSuffix:    pulumi.String("_suffix"),
-//					TablePrefix:     pulumi.String("prefix_"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dataform.NewRepositoryReleaseConfig(ctx, "release", &dataform.RepositoryReleaseConfigArgs{
-//				Project:      repository.Project,
-//				Region:       repository.Region,
-//				Repository:   repository.Name,
-//				Name:         pulumi.String("my_release"),
-//				GitCommitish: pulumi.String("main"),
-//				CronSchedule: pulumi.String("0 7 * * *"),
-//				TimeZone:     pulumi.String("America/New_York"),
-//				CodeCompilationConfig: &dataform.RepositoryReleaseConfigCodeCompilationConfigArgs{
-//					DefaultDatabase: pulumi.String("gcp-example-project"),
-//					DefaultSchema:   pulumi.String("example-dataset"),
-//					DefaultLocation: pulumi.String("us-central1"),
-//					AssertionSchema: pulumi.String("example-assertion-dataset"),
-//					DatabaseSuffix:  pulumi.String(""),
-//					SchemaSuffix:    pulumi.String(""),
-//					TablePrefix:     pulumi.String(""),
-//					Vars: pulumi.StringMap{
-//						"var1": pulumi.String("value"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // RepositoryReleaseConfig can be imported using any of these accepted formats:
@@ -137,8 +50,6 @@ type RepositoryReleaseConfig struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish pulumi.StringOutput `pulumi:"gitCommitish"`
 	// The release's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -152,7 +63,7 @@ type RepositoryReleaseConfig struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrOutput `pulumi:"repository"`
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
 }
 
@@ -195,8 +106,6 @@ type repositoryReleaseConfigState struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish *string `pulumi:"gitCommitish"`
 	// The release's name.
 	Name *string `pulumi:"name"`
@@ -210,7 +119,7 @@ type repositoryReleaseConfigState struct {
 	Region *string `pulumi:"region"`
 	// A reference to the Dataform repository
 	Repository *string `pulumi:"repository"`
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -221,8 +130,6 @@ type RepositoryReleaseConfigState struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish pulumi.StringPtrInput
 	// The release's name.
 	Name pulumi.StringPtrInput
@@ -236,7 +143,7 @@ type RepositoryReleaseConfigState struct {
 	Region pulumi.StringPtrInput
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrInput
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -251,8 +158,6 @@ type repositoryReleaseConfigArgs struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish string `pulumi:"gitCommitish"`
 	// The release's name.
 	Name *string `pulumi:"name"`
@@ -263,7 +168,7 @@ type repositoryReleaseConfigArgs struct {
 	Region *string `pulumi:"region"`
 	// A reference to the Dataform repository
 	Repository *string `pulumi:"repository"`
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -275,8 +180,6 @@ type RepositoryReleaseConfigArgs struct {
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-	//
-	// ***
 	GitCommitish pulumi.StringInput
 	// The release's name.
 	Name pulumi.StringPtrInput
@@ -287,7 +190,7 @@ type RepositoryReleaseConfigArgs struct {
 	Region pulumi.StringPtrInput
 	// A reference to the Dataform repository
 	Repository pulumi.StringPtrInput
-	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+	// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -392,8 +295,6 @@ func (o RepositoryReleaseConfigOutput) CronSchedule() pulumi.StringPtrOutput {
 }
 
 // Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-//
-// ***
 func (o RepositoryReleaseConfigOutput) GitCommitish() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringOutput { return v.GitCommitish }).(pulumi.StringOutput)
 }
@@ -427,7 +328,7 @@ func (o RepositoryReleaseConfigOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringPtrOutput { return v.Repository }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+// Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)>. If left unspecified, the default is UTC.
 func (o RepositoryReleaseConfigOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }

@@ -29,9 +29,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 //
-// ## Example Usage
-//
-// ### Region Health Check Tcp
+// ##
 //
 // ```go
 // package main
@@ -61,7 +59,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Tcp Full
+// ##
 //
 // ```go
 // package main
@@ -98,7 +96,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Ssl
+// ##
 //
 // ```go
 // package main
@@ -128,7 +126,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Ssl Full
+// ##
 //
 // ```go
 // package main
@@ -165,7 +163,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Http
+// ##
 //
 // ```go
 // package main
@@ -195,7 +193,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Http Logs
+// ##
 //
 // ```go
 // package main
@@ -228,7 +226,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Http Full
+// ##
 //
 // ```go
 // package main
@@ -266,7 +264,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Https
+// ##
 //
 // ```go
 // package main
@@ -296,7 +294,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Https Full
+// ##
 //
 // ```go
 // package main
@@ -334,7 +332,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Http2
+// ##
 //
 // ```go
 // package main
@@ -364,7 +362,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Http2 Full
+// ##
 //
 // ```go
 // package main
@@ -402,7 +400,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Grpc
+// ##
 //
 // ```go
 // package main
@@ -432,7 +430,7 @@ import (
 //	}
 //
 // ```
-// ### Region Health Check Grpc Full
+// ##
 //
 // ```go
 // package main
@@ -530,8 +528,6 @@ type RegionHealthCheck struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -621,8 +617,6 @@ type regionHealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -683,8 +677,6 @@ type RegionHealthCheckState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -747,8 +739,6 @@ type regionHealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -804,8 +794,6 @@ type RegionHealthCheckArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -975,8 +963,6 @@ func (o RegionHealthCheckOutput) LogConfig() RegionHealthCheckLogConfigOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
-//
-// ***
 func (o RegionHealthCheckOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

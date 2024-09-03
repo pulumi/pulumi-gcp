@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
  * 
- * ## Example Usage
- * 
- * ### Os Config Patch Deployment Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -73,7 +71,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Os Config Patch Deployment Daily
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -125,7 +123,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Os Config Patch Deployment Daily Midnight
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -177,7 +175,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Os Config Patch Deployment Instance
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -273,7 +271,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Os Config Patch Deployment Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * &lt;!--End PulumiCodeChooser --&gt;

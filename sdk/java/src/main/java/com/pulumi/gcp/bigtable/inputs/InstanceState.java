@@ -24,8 +24,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      * 
-     * ***
-     * 
      */
     @Import(name="clusters")
     private @Nullable Output<List<InstanceClusterArgs>> clusters;
@@ -34,8 +32,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<InstanceClusterArgs>>> clusters() {
@@ -77,16 +73,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
-     * ***
-     * 
      */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
@@ -140,7 +132,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -150,7 +142,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -245,8 +237,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -260,8 +250,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -273,8 +261,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param clusters A block of cluster configuration options. This can be specified at least once, and up
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -330,8 +316,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -342,8 +326,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -411,7 +393,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * @param labels A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -425,7 +407,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * @param labels A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements&gt;.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.

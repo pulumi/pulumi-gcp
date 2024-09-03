@@ -12,9 +12,7 @@ namespace Pulumi.Gcp.Apphub
     /// <summary>
     /// Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Application Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -36,7 +34,7 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
-    /// ### Application Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

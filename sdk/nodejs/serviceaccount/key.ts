@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ### Creating A New Key
+ * ### creating a new Key
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Creating And Regularly Rotating A Key
+ * ### creating and regularly rotating a key
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Save Key In Kubernetes Secret - DEPRECATED
+ * ### save key in Kubernetes secret - DEPRECATED
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

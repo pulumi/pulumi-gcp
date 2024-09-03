@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The minimum CPU platform for the reservation. For example,
         /// `"Intel Skylake"`. See
-        /// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+        /// the CPU platform availability reference](&lt;https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones&gt;)
         /// for information on available CPU platforms.
         /// </summary>
         public readonly string? MinCpuPlatform;

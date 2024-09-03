@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/active-directory/about-ad)
 //
-// ## Example Usage
-//
-// ### Netapp Active Directory Full
+// ##
 //
 // ```go
 // package main
@@ -136,8 +134,6 @@ type ActiveDirectory struct {
 	// Name of the region for the policy to apply to.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the Active Directory pool. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// NetBIOS name prefix of the server to be created.
 	// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -258,8 +254,6 @@ type activeDirectoryState struct {
 	// Name of the region for the policy to apply to.
 	Location *string `pulumi:"location"`
 	// The resource name of the Active Directory pool. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// NetBIOS name prefix of the server to be created.
 	// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -324,8 +318,6 @@ type ActiveDirectoryState struct {
 	// Name of the region for the policy to apply to.
 	Location pulumi.StringPtrInput
 	// The resource name of the Active Directory pool. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// NetBIOS name prefix of the server to be created.
 	// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -390,8 +382,6 @@ type activeDirectoryArgs struct {
 	// Name of the region for the policy to apply to.
 	Location string `pulumi:"location"`
 	// The resource name of the Active Directory pool. Needs to be unique per location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// NetBIOS name prefix of the server to be created.
 	// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -446,8 +436,6 @@ type ActiveDirectoryArgs struct {
 	// Name of the region for the policy to apply to.
 	Location pulumi.StringInput
 	// The resource name of the Active Directory pool. Needs to be unique per location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// NetBIOS name prefix of the server to be created.
 	// A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -633,8 +621,6 @@ func (o ActiveDirectoryOutput) Location() pulumi.StringOutput {
 }
 
 // The resource name of the Active Directory pool. Needs to be unique per location.
-//
-// ***
 func (o ActiveDirectoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActiveDirectory) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

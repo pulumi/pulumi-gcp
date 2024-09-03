@@ -1072,7 +1072,7 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule struct 
 	AllowAll *bool `pulumi:"allowAll"`
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Condition *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
@@ -1101,7 +1101,7 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs str
 	AllowAll pulumi.BoolPtrInput `pulumi:"allowAll"`
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Condition PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
@@ -1172,7 +1172,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutpu
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 // Structure is documented below.
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput) Condition() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule) *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition {
@@ -1586,7 +1586,7 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule struct {
 	AllowAll *bool `pulumi:"allowAll"`
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Condition *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
@@ -1615,7 +1615,7 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs struct {
 	AllowAll pulumi.BoolPtrInput `pulumi:"allowAll"`
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Condition PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
@@ -1686,7 +1686,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) All
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 // Structure is documented below.
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) Condition() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule) *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
@@ -3269,8 +3269,6 @@ func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfi
 
 type PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -3287,8 +3285,6 @@ type PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigRe
 
 type PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -3370,8 +3366,6 @@ func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfi
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector) []string {
 		return v.ResourceTypes
@@ -3403,8 +3397,6 @@ func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfi
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector) []string {
 		if v == nil {

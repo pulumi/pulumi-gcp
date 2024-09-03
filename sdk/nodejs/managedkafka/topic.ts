@@ -5,42 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Managedkafka Topic Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const cluster = new gcp.managedkafka.Cluster("cluster", {
- *     clusterId: "my-cluster",
- *     location: "us-central1",
- *     capacityConfig: {
- *         vcpuCount: "3",
- *         memoryBytes: "3221225472",
- *     },
- *     gcpConfig: {
- *         accessConfig: {
- *             networkConfigs: [{
- *                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
- *             }],
- *         },
- *     },
- * });
- * const example = new gcp.managedkafka.Topic("example", {
- *     topicId: "my-topic",
- *     cluster: cluster.clusterId,
- *     location: "us-central1",
- *     partitionCount: 2,
- *     replicationFactor: 3,
- *     configs: {
- *         "cleanup.policy": "compact",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Topic can be imported using any of these accepted formats:
@@ -102,7 +66,7 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly configs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -124,9 +88,6 @@ export class Topic extends pulumi.CustomResource {
     public readonly replicationFactor!: pulumi.Output<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     *
-     *
-     * - - -
      */
     public readonly topicId!: pulumi.Output<string>;
 
@@ -192,7 +153,7 @@ export interface TopicState {
      */
     configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
      */
     location?: pulumi.Input<string>;
     /**
@@ -214,9 +175,6 @@ export interface TopicState {
     replicationFactor?: pulumi.Input<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     *
-     *
-     * - - -
      */
     topicId?: pulumi.Input<string>;
 }
@@ -234,7 +192,7 @@ export interface TopicArgs {
      */
     configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
      */
     location: pulumi.Input<string>;
     /**
@@ -252,9 +210,6 @@ export interface TopicArgs {
     replicationFactor: pulumi.Input<number>;
     /**
      * The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     *
-     *
-     * - - -
      */
     topicId: pulumi.Input<string>;
 }

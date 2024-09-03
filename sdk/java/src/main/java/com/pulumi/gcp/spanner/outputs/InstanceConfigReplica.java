@@ -16,8 +16,6 @@ public final class InstanceConfigReplica {
      * @return If true, this location is designated as the default leader location where
      * leader replicas are placed.
      * 
-     * ***
-     * 
      */
     private @Nullable Boolean defaultLeaderLocation;
     /**
@@ -38,8 +36,6 @@ public final class InstanceConfigReplica {
     /**
      * @return If true, this location is designated as the default leader location where
      * leader replicas are placed.
-     * 
-     * ***
      * 
      */
     public Optional<Boolean> defaultLeaderLocation() {

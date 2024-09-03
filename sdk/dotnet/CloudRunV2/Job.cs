@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/run/docs/)
+    ///   * [Official Documentation](https://cloud.google.com/run/docs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Cloudrunv2 Job Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -51,7 +49,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Limits
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -90,7 +88,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Sql
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -205,7 +203,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Vpcaccess
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -268,7 +266,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Directvpc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -317,7 +315,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Secret
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -414,7 +412,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Emptydir
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -466,7 +464,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Job Run Job
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

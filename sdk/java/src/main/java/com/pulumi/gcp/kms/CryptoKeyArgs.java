@@ -75,7 +75,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * &lt;https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes&gt;
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -90,7 +90,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * &lt;https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes&gt;
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -104,8 +104,6 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
      * The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
      * 
-     * ***
-     * 
      */
     @Import(name="keyRing", required=true)
     private Output<String> keyRing;
@@ -113,8 +111,6 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
-     * 
-     * ***
      * 
      */
     public Output<String> keyRing() {
@@ -342,7 +338,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
          * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
          * sign operations, and the operation will fail if rejected by the policy. The
          * policy is defined by specifying zero or more allowed justification codes.
-         * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+         * &lt;https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes&gt;
          * By default, this field is absent, and all justification codes are allowed.
          * This field is currently in beta and is subject to change.
          * Structure is documented below.
@@ -361,7 +357,7 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
          * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
          * sign operations, and the operation will fail if rejected by the policy. The
          * policy is defined by specifying zero or more allowed justification codes.
-         * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+         * &lt;https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes&gt;
          * By default, this field is absent, and all justification codes are allowed.
          * This field is currently in beta and is subject to change.
          * Structure is documented below.
@@ -377,8 +373,6 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
          * @param keyRing The KeyRing that this key belongs to.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -390,8 +384,6 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keyRing The KeyRing that this key belongs to.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
-         * 
-         * ***
          * 
          * @return builder
          * 

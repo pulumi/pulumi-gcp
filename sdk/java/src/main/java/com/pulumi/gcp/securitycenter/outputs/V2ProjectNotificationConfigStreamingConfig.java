@@ -31,8 +31,6 @@ public final class V2ProjectNotificationConfigStreamingConfig {
      *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      *   for information on how to write a filter.
      * 
-     * ***
-     * 
      */
     private String filter;
 
@@ -57,8 +55,6 @@ public final class V2ProjectNotificationConfigStreamingConfig {
      *   See
      *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      *   for information on how to write a filter.
-     * 
-     * ***
      * 
      */
     public String filter() {

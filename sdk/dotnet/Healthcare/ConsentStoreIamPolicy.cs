@@ -104,10 +104,9 @@ namespace Pulumi.Gcp.Healthcare
     /// });
     /// ```
     /// 
-    /// ## &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
-    /// 
+    /// &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-    /// ---
+    /// ***
     /// 
     /// # IAM policy for Cloud Healthcare ConsentStore
     /// Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
@@ -236,7 +235,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy")]
     public partial class ConsentStoreIamPolicy : global::Pulumi.CustomResource

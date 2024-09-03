@@ -31,9 +31,6 @@ class VpcServiceControlsArgs:
         :param pulumi.Input[str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The id of the Google Cloud project containing the consumer network.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -74,9 +71,6 @@ class VpcServiceControlsArgs:
         The service that is managing peering connectivity for a service
         producer's organization. For Google services that support this
         functionality, this value is `servicenetworking.googleapis.com`.
-
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -113,9 +107,6 @@ class _VpcServiceControlsState:
         :param pulumi.Input[str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -170,9 +161,6 @@ class _VpcServiceControlsState:
         The service that is managing peering connectivity for a service
         producer's organization. For Google services that support this
         functionality, this value is `servicenetworking.googleapis.com`.
-
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -221,38 +209,32 @@ class VpcServiceControls(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services)
         * How-to Guides
-            * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
-            * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
-            * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
+          * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
+          * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
+          * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
 
         > **Note:** Destroying a `servicenetworking.VpcServiceControls`
         resource will remove it from state, but will not change the
         underlying VPC Service Controls configuration for the service
         producer network.
 
-        ## Example Usage
-
-        ### Service Networking Vpc Service Controls Basic
+        ## 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        # Create a VPC
         default = gcp.compute.Network("default", name="example-network")
-        # Create an IP address
         default_global_address = gcp.compute.GlobalAddress("default",
             name="psa-range",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=default.id)
-        # Create a private connection
         default_connection = gcp.servicenetworking.Connection("default",
             network=default.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[default_global_address.name])
-        # Enable VPC-SC on the producer network
         default_vpc_service_controls = gcp.servicenetworking.VpcServiceControls("default",
             network=default.name,
             service="servicenetworking.googleapis.com",
@@ -293,9 +275,6 @@ class VpcServiceControls(pulumi.CustomResource):
         :param pulumi.Input[str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -333,38 +312,32 @@ class VpcServiceControls(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services)
         * How-to Guides
-            * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
-            * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
-            * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
+          * [Enable VPC Service Controls for service networking](https://cloud.google.com/sdk/gcloud/reference/services/vpc-peerings/enable-vpc-service-controls)
+          * [Private Google Access with VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)
+          * [Set up private connectivity to Google APIs and services](https://cloud.google.com/vpc-service-controls/docs/set-up-private-connectivity)
 
         > **Note:** Destroying a `servicenetworking.VpcServiceControls`
         resource will remove it from state, but will not change the
         underlying VPC Service Controls configuration for the service
         producer network.
 
-        ## Example Usage
-
-        ### Service Networking Vpc Service Controls Basic
+        ## 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        # Create a VPC
         default = gcp.compute.Network("default", name="example-network")
-        # Create an IP address
         default_global_address = gcp.compute.GlobalAddress("default",
             name="psa-range",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=default.id)
-        # Create a private connection
         default_connection = gcp.servicenetworking.Connection("default",
             network=default.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[default_global_address.name])
-        # Enable VPC-SC on the producer network
         default_vpc_service_controls = gcp.servicenetworking.VpcServiceControls("default",
             network=default.name,
             service="servicenetworking.googleapis.com",
@@ -462,9 +435,6 @@ class VpcServiceControls(pulumi.CustomResource):
         :param pulumi.Input[str] service: The service that is managing peering connectivity for a service
                producer's organization. For Google services that support this
                functionality, this value is `servicenetworking.googleapis.com`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -508,9 +478,6 @@ class VpcServiceControls(pulumi.CustomResource):
         The service that is managing peering connectivity for a service
         producer's organization. For Google services that support this
         functionality, this value is `servicenetworking.googleapis.com`.
-
-
-        - - -
         """
         return pulumi.get(self, "service")
 

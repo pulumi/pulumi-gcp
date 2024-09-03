@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases/create)
  * * How-to Guides
- *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+ *   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
  * ## Example Usage
  *

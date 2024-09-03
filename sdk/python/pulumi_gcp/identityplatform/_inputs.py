@@ -1277,7 +1277,7 @@ if not MYPY:
     class ConfigSmsRegionConfigAllowByDefaultArgsDict(TypedDict):
         disallowed_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
 elif False:
     ConfigSmsRegionConfigAllowByDefaultArgsDict: TypeAlias = Mapping[str, Any]
@@ -1287,7 +1287,7 @@ class ConfigSmsRegionConfigAllowByDefaultArgs:
     def __init__(__self__, *,
                  disallowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] disallowed_regions: Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disallowed_regions: Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         if disallowed_regions is not None:
             pulumi.set(__self__, "disallowed_regions", disallowed_regions)
@@ -1296,7 +1296,7 @@ class ConfigSmsRegionConfigAllowByDefaultArgs:
     @pulumi.getter(name="disallowedRegions")
     def disallowed_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         return pulumi.get(self, "disallowed_regions")
 
@@ -1309,7 +1309,7 @@ if not MYPY:
     class ConfigSmsRegionConfigAllowlistOnlyArgsDict(TypedDict):
         allowed_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
 elif False:
     ConfigSmsRegionConfigAllowlistOnlyArgsDict: TypeAlias = Mapping[str, Any]
@@ -1319,7 +1319,7 @@ class ConfigSmsRegionConfigAllowlistOnlyArgs:
     def __init__(__self__, *,
                  allowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_regions: Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_regions: Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         if allowed_regions is not None:
             pulumi.set(__self__, "allowed_regions", allowed_regions)
@@ -1328,7 +1328,7 @@ class ConfigSmsRegionConfigAllowlistOnlyArgs:
     @pulumi.getter(name="allowedRegions")
     def allowed_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
         """
         return pulumi.get(self, "allowed_regions")
 
@@ -1473,7 +1473,6 @@ if not MYPY:
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
 
-
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         sp_entity_id: NotRequired[pulumi.Input[str]]
@@ -1494,7 +1493,6 @@ class InboundSamlConfigSpConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
-               
                
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
@@ -1525,7 +1523,6 @@ class InboundSamlConfigSpConfigArgs:
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
@@ -2106,7 +2103,6 @@ if not MYPY:
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
 
-
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
 elif False:
@@ -2124,7 +2120,6 @@ class TenantInboundSamlConfigSpConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
-               
                
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
@@ -2164,7 +2159,6 @@ class TenantInboundSamlConfigSpConfigArgs:
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """

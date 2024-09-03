@@ -7,59 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Netapp Volume Replication Create
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.compute.getNetwork({
- *     name: "test-network",
- * });
- * const sourcePool = new gcp.netapp.StoragePool("source_pool", {
- *     name: "source-pool",
- *     location: "us-central1",
- *     serviceLevel: "PREMIUM",
- *     capacityGib: "2048",
- *     network: _default.then(_default => _default.id),
- * });
- * const destinationPool = new gcp.netapp.StoragePool("destination_pool", {
- *     name: "destination-pool",
- *     location: "us-west2",
- *     serviceLevel: "PREMIUM",
- *     capacityGib: "2048",
- *     network: _default.then(_default => _default.id),
- * });
- * const sourceVolume = new gcp.netapp.Volume("source_volume", {
- *     location: sourcePool.location,
- *     name: "source-volume",
- *     capacityGib: "100",
- *     shareName: "source-volume",
- *     storagePool: sourcePool.name,
- *     protocols: ["NFSV3"],
- *     deletionPolicy: "FORCE",
- * });
- * const testReplication = new gcp.netapp.VolumeReplication("test_replication", {
- *     location: sourceVolume.location,
- *     volumeName: sourceVolume.name,
- *     name: "test-replication",
- *     replicationSchedule: "EVERY_10_MINUTES",
- *     description: "This is a replication resource",
- *     destinationVolumeParameters: {
- *         storagePool: destinationPool.id,
- *         volumeId: "destination-volume",
- *         shareName: "source-volume",
- *         description: "This is a replicated volume",
- *     },
- *     deleteDestinationVolume: true,
- *     waitForMirror: true,
- * }, {
- *     dependsOn: [sourceVolume],
- * });
- * ```
- *
  * ## Import
  *
  * VolumeReplication can be imported using any of these accepted formats:
@@ -167,9 +114,6 @@ export class VolumeReplication extends pulumi.CustomResource {
     public /*out*/ readonly mirrorState!: pulumi.Output<string>;
     /**
      * The name of the replication. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -360,9 +304,6 @@ export interface VolumeReplicationState {
     mirrorState?: pulumi.Input<string>;
     /**
      * The name of the replication. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -451,9 +392,6 @@ export interface VolumeReplicationArgs {
     location: pulumi.Input<string>;
     /**
      * The name of the replication. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

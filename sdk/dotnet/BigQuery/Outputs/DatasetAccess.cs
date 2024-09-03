@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? SpecialGroup;
         /// <summary>
         /// An email address of a user to grant access to. For example:
-        /// fred@example.com
+        /// &lt;fred@example.com&gt;
         /// </summary>
         public readonly string? UserByEmail;
         /// <summary>

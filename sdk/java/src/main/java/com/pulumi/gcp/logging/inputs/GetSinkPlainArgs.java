@@ -19,7 +19,7 @@ public final class GetSinkPlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
      * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-     * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+     * - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
      * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
      * 
      */
@@ -32,7 +32,7 @@ public final class GetSinkPlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
      * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-     * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+     * - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
      * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
      * 
      */
@@ -70,7 +70,7 @@ public final class GetSinkPlainArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
          * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-         * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+         * - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
          * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
          * 
          * @return builder

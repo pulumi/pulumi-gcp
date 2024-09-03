@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
  * * How-to Guides
- *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
- *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+ *   * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+ *   * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProjectId` and set `userProjectOverride` to true
@@ -118,9 +118,6 @@ export class FirewallEndpoint extends pulumi.CustomResource {
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -129,7 +126,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -244,9 +241,6 @@ export interface FirewallEndpointState {
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -255,7 +249,7 @@ export interface FirewallEndpointState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
@@ -298,9 +292,6 @@ export interface FirewallEndpointArgs {
     /**
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
 }

@@ -22,8 +22,6 @@ public final class ManagementServerNetwork {
      * Default value is `PRIVATE_SERVICE_ACCESS`.
      * Possible values are: `PRIVATE_SERVICE_ACCESS`.
      * 
-     * ***
-     * 
      */
     private @Nullable String peeringMode;
 
@@ -39,8 +37,6 @@ public final class ManagementServerNetwork {
      * @return Type of Network peeringMode
      * Default value is `PRIVATE_SERVICE_ACCESS`.
      * Possible values are: `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
      * 
      */
     public Optional<String> peeringMode() {

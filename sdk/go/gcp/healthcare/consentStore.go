@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 //
-// ## Example Usage
-//
-// ### Healthcare Consent Store Basic
+// ##
 //
 // ```go
 // package main
@@ -55,7 +53,7 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Consent Store Full
+// ##
 //
 // ```go
 // package main
@@ -93,7 +91,7 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Consent Store Iam
+// ##
 //
 // ```go
 // package main
@@ -164,8 +162,6 @@ type ConsentStore struct {
 
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -234,8 +230,6 @@ func GetConsentStore(ctx *pulumi.Context,
 type consentStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -267,8 +261,6 @@ type consentStoreState struct {
 type ConsentStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -304,8 +296,6 @@ func (ConsentStoreState) ElementType() reflect.Type {
 type consentStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -333,8 +323,6 @@ type consentStoreArgs struct {
 type ConsentStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -447,8 +435,6 @@ func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context)
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-//
-// ***
 func (o ConsentStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsentStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

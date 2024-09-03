@@ -33,9 +33,7 @@ import (
 // * How-to Guides
 //   - [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 //
-// ## Example Usage
-//
-// ### Disk Basic
+// ##
 //
 // ```go
 // package main
@@ -67,7 +65,7 @@ import (
 //	}
 //
 // ```
-// ### Disk Async
+// ##
 //
 // ```go
 // package main
@@ -107,7 +105,7 @@ import (
 //	}
 //
 // ```
-// ### Disk Features
+// ##
 //
 // ```go
 // package main
@@ -260,8 +258,6 @@ type Disk struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -314,8 +310,8 @@ type Disk struct {
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -349,7 +345,7 @@ type Disk struct {
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
 	// The URL of the storage pool in which the new disk is created.
 	// For example:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
 	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
 	StoragePool pulumi.StringPtrOutput `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
@@ -472,8 +468,6 @@ type diskState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -526,8 +520,8 @@ type diskState struct {
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -561,7 +555,7 @@ type diskState struct {
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
 	// The URL of the storage pool in which the new disk is created.
 	// For example:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
 	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
 	StoragePool *string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
@@ -650,8 +644,6 @@ type DiskState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -704,8 +696,8 @@ type DiskState struct {
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -739,7 +731,7 @@ type DiskState struct {
 	SourceSnapshotId pulumi.StringPtrInput
 	// The URL of the storage pool in which the new disk is created.
 	// For example:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
 	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
 	StoragePool pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to
@@ -819,8 +811,6 @@ type diskArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -868,8 +858,8 @@ type diskArgs struct {
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -886,7 +876,7 @@ type diskArgs struct {
 	SourceSnapshotEncryptionKey *DiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// The URL of the storage pool in which the new disk is created.
 	// For example:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
 	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
 	StoragePool *string `pulumi:"storagePool"`
 	// URL of the disk type resource describing which disk type to use to
@@ -960,8 +950,6 @@ type DiskArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -1009,8 +997,8 @@ type DiskArgs struct {
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-	// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 	// * projects/{project}/zones/{zone}/disks/{disk}
 	// * projects/{project}/regions/{region}/disks/{disk}
 	// * zones/{zone}/disks/{disk}
@@ -1027,7 +1015,7 @@ type DiskArgs struct {
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrInput
 	// The URL of the storage pool in which the new disk is created.
 	// For example:
-	// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+	// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
 	// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
 	StoragePool pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to
@@ -1250,8 +1238,6 @@ func (o DiskOutput) MultiWriter() pulumi.BoolPtrOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1334,8 +1320,8 @@ func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 
 // The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 // For example, the following are valid values:
-// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-// * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+// * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
 // * projects/{project}/zones/{zone}/disks/{disk}
 // * projects/{project}/regions/{region}/disks/{disk}
 // * zones/{zone}/disks/{disk}
@@ -1387,7 +1373,7 @@ func (o DiskOutput) SourceSnapshotId() pulumi.StringOutput {
 
 // The URL of the storage pool in which the new disk is created.
 // For example:
-// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
+// * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}>
 // * /projects/{project}/zones/{zone}/storagePools/{storagePool}
 func (o DiskOutput) StoragePool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.StoragePool }).(pulumi.StringPtrOutput)

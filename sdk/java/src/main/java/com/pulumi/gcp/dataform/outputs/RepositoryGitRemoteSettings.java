@@ -31,7 +31,7 @@ public final class RepositoryGitRemoteSettings {
     private @Nullable RepositoryGitRemoteSettingsSshAuthenticationConfig sshAuthenticationConfig;
     /**
      * @return (Output)
-     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+     * Indicates the status of the Git access token. &lt;https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus&gt;
      * 
      */
     private @Nullable String tokenStatus;
@@ -66,7 +66,7 @@ public final class RepositoryGitRemoteSettings {
     }
     /**
      * @return (Output)
-     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+     * Indicates the status of the Git access token. &lt;https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus&gt;
      * 
      */
     public Optional<String> tokenStatus() {

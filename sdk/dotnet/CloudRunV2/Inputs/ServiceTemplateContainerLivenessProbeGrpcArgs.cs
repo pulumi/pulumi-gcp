@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
         /// <summary>
         /// The name of the service to place in the gRPC HealthCheckRequest
-        /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        /// (see &lt;https://github.com/grpc/grpc/blob/master/doc/health-checking.md)&gt;.
         /// If this is not specified, the default behavior is defined by gRPC.
         /// </summary>
         [Input("service")]

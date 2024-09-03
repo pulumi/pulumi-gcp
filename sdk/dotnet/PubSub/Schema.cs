@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.schemas)
     /// * How-to Guides
-    ///     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
+    ///   * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Pubsub Schema Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -54,6 +52,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Pubsub Schema Protobuf
     /// 
     /// ```csharp
@@ -137,9 +138,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The ID to use for the schema, which will become the final component of the schema's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -219,9 +217,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The ID to use for the schema, which will become the final component of the schema's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -263,9 +258,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The ID to use for the schema, which will become the final component of the schema's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

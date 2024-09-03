@@ -34,14 +34,11 @@ class DatabaseArgs:
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
-               https://cloud.google.com/firestore/docs/locations.
+               <https://cloud.google.com/firestore/docs/locations>.
         :param pulumi.Input[str] type: The type of the database.
-               See https://cloud.google.com/datastore/docs/firestore-or-datastore
+               See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input['DatabaseCmekConfigArgs'] cmek_config: The CMEK (Customer Managed Encryption Key) configuration for a Firestore
@@ -90,7 +87,7 @@ class DatabaseArgs:
     def location_id(self) -> pulumi.Input[str]:
         """
         The location of the database. Available locations are listed at
-        https://cloud.google.com/firestore/docs/locations.
+        <https://cloud.google.com/firestore/docs/locations>.
         """
         return pulumi.get(self, "location_id")
 
@@ -103,12 +100,9 @@ class DatabaseArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the database.
-        See https://cloud.google.com/datastore/docs/firestore-or-datastore
+        See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -262,11 +256,11 @@ class _DatabaseState:
                and may be sent on update and delete requests to ensure the client has an
                up-to-date value before proceeding.
         :param pulumi.Input[str] key_prefix: Output only. The keyPrefix for this database.
-               This keyPrefix is used, in combination with the project id ("~") to construct the application id
+               This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
                that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-               This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+               This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v</del>foo).
         :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
-               https://cloud.google.com/firestore/docs/locations.
+               <https://cloud.google.com/firestore/docs/locations>.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -283,12 +277,9 @@ class _DatabaseState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the database.
-               See https://cloud.google.com/datastore/docs/firestore-or-datastore
+               See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Output only. The system-generated UUID4 for this Database.
         :param pulumi.Input[str] update_time: Output only. The timestamp at which this database was most recently updated.
         :param pulumi.Input[str] version_retention_period: Output only. The period during which past versions of data are retained in the database.
@@ -435,9 +426,9 @@ class _DatabaseState:
     def key_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Output only. The keyPrefix for this database.
-        This keyPrefix is used, in combination with the project id ("~") to construct the application id
+        This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
         that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-        This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+        This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v</del>foo).
         """
         return pulumi.get(self, "key_prefix")
 
@@ -450,7 +441,7 @@ class _DatabaseState:
     def location_id(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the database. Available locations are listed at
-        https://cloud.google.com/firestore/docs/locations.
+        <https://cloud.google.com/firestore/docs/locations>.
         """
         return pulumi.get(self, "location_id")
 
@@ -511,12 +502,9 @@ class _DatabaseState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the database.
-        See https://cloud.google.com/datastore/docs/firestore-or-datastore
+        See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -593,7 +581,7 @@ class Database(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
 
@@ -609,6 +597,7 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
+
         ### Firestore Database
 
         ```python
@@ -626,6 +615,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+
         ### Firestore Cmek Database
 
         ```python
@@ -659,6 +649,7 @@ class Database(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
+
         ### Firestore Default Database In Datastore Mode
 
         ```python
@@ -671,6 +662,7 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="DATASTORE_MODE")
         ```
+
         ### Firestore Database In Datastore Mode
 
         ```python
@@ -688,6 +680,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+
         ### Firestore Cmek Database In Datastore Mode
 
         ```python
@@ -757,7 +750,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
-               https://cloud.google.com/firestore/docs/locations.
+               <https://cloud.google.com/firestore/docs/locations>.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -774,12 +767,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the database.
-               See https://cloud.google.com/datastore/docs/firestore-or-datastore
+               See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -800,7 +790,7 @@ class Database(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/)
+          * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
 
@@ -816,6 +806,7 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="FIRESTORE_NATIVE")
         ```
+
         ### Firestore Database
 
         ```python
@@ -833,6 +824,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+
         ### Firestore Cmek Database
 
         ```python
@@ -866,6 +858,7 @@ class Database(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[firestore_cmek_keyuser]))
         ```
+
         ### Firestore Default Database In Datastore Mode
 
         ```python
@@ -878,6 +871,7 @@ class Database(pulumi.CustomResource):
             location_id="nam5",
             type="DATASTORE_MODE")
         ```
+
         ### Firestore Database In Datastore Mode
 
         ```python
@@ -895,6 +889,7 @@ class Database(pulumi.CustomResource):
             delete_protection_state="DELETE_PROTECTION_ENABLED",
             deletion_policy="DELETE")
         ```
+
         ### Firestore Cmek Database In Datastore Mode
 
         ```python
@@ -1058,11 +1053,11 @@ class Database(pulumi.CustomResource):
                and may be sent on update and delete requests to ensure the client has an
                up-to-date value before proceeding.
         :param pulumi.Input[str] key_prefix: Output only. The keyPrefix for this database.
-               This keyPrefix is used, in combination with the project id ("~") to construct the application id
+               This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
                that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-               This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+               This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v</del>foo).
         :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
-               https://cloud.google.com/firestore/docs/locations.
+               <https://cloud.google.com/firestore/docs/locations>.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -1079,12 +1074,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the database.
-               See https://cloud.google.com/datastore/docs/firestore-or-datastore
+               See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Output only. The system-generated UUID4 for this Database.
         :param pulumi.Input[str] update_time: Output only. The timestamp at which this database was most recently updated.
         :param pulumi.Input[str] version_retention_period: Output only. The period during which past versions of data are retained in the database.
@@ -1187,9 +1179,9 @@ class Database(pulumi.CustomResource):
     def key_prefix(self) -> pulumi.Output[str]:
         """
         Output only. The keyPrefix for this database.
-        This keyPrefix is used, in combination with the project id ("~") to construct the application id
+        This keyPrefix is used, in combination with the project id ("<del>") to construct the application id
         that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
-        This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
+        This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v</del>foo).
         """
         return pulumi.get(self, "key_prefix")
 
@@ -1198,7 +1190,7 @@ class Database(pulumi.CustomResource):
     def location_id(self) -> pulumi.Output[str]:
         """
         The location of the database. Available locations are listed at
-        https://cloud.google.com/firestore/docs/locations.
+        <https://cloud.google.com/firestore/docs/locations>.
         """
         return pulumi.get(self, "location_id")
 
@@ -1243,12 +1235,9 @@ class Database(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of the database.
-        See https://cloud.google.com/datastore/docs/firestore-or-datastore
+        See <https://cloud.google.com/datastore/docs/firestore-or-datastore>
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 

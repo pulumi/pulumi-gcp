@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_compute\_machine\_image\_iam\_policy
  *
  * ```typescript
@@ -62,6 +63,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ *
  * ## gcp.compute.MachineImageIamBinding
  *
  * ```typescript
@@ -94,6 +96,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ## gcp.compute.MachineImageIamMember
  *
  * ```typescript
@@ -129,8 +132,6 @@ import * as utilities from "../utilities";
  *
  * ## This resource supports User Project Overrides.
  *
- * - 
- *
  * # IAM policy for Compute Engine MachineImage
  * Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
  *
@@ -147,6 +148,7 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.compute.MachineImageIamBinding` resources **can be** used in conjunction with `gcp.compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
  * ## google\_compute\_machine\_image\_iam\_policy
  *
  * ```typescript
@@ -189,6 +191,7 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
+ *
  * ## gcp.compute.MachineImageIamBinding
  *
  * ```typescript
@@ -221,6 +224,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ## gcp.compute.MachineImageIamMember
  *
  * ```typescript
@@ -288,7 +292,7 @@ import * as utilities from "../utilities";
  *
  * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
  *
- *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class MachineImageIamPolicy extends pulumi.CustomResource {
     /**

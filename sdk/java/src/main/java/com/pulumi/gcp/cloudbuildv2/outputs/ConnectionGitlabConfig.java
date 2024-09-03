@@ -22,7 +22,7 @@ public final class ConnectionGitlabConfig {
      */
     private ConnectionGitlabConfigAuthorizerCredential authorizerCredential;
     /**
-     * @return The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+     * @return The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
      * 
      */
     private @Nullable String hostUri;
@@ -65,7 +65,7 @@ public final class ConnectionGitlabConfig {
         return this.authorizerCredential;
     }
     /**
-     * @return The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+     * @return The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
      * 
      */
     public Optional<String> hostUri() {

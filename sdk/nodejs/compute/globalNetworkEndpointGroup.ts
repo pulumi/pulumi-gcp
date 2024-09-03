@@ -16,11 +16,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
  *
- * ## Example Usage
- *
- * ### Global Network Endpoint Group
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * ```
- * ### Global Network Endpoint Group Ip Address
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,9 +118,6 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     *
-     *
-     * - - -
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     /**
@@ -198,9 +193,6 @@ export interface GlobalNetworkEndpointGroupState {
     /**
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     *
-     *
-     * - - -
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -241,9 +233,6 @@ export interface GlobalNetworkEndpointGroupArgs {
     /**
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     *
-     *
-     * - - -
      */
     networkEndpointType: pulumi.Input<string>;
     /**

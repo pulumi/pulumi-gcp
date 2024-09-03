@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
  * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ *   * [AlloyDB](https://cloud.google.com/alloydb/docs/)
  *
  * ## Example Usage
  *
@@ -58,6 +58,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultInstance],
  * });
  * ```
+ *
  * ### Alloydb Backup Full
  *
  * ```typescript
@@ -158,7 +159,7 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -211,7 +212,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.BackupEncryptionInfo[]>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -234,9 +235,6 @@ export class Backup extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb backup should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -254,7 +252,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
@@ -370,7 +368,7 @@ export class Backup extends pulumi.CustomResource {
  */
 export interface BackupState {
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -423,7 +421,7 @@ export interface BackupState {
      */
     encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.BackupEncryptionInfo>[]>;
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (<https://google.aip.dev/154>)
      */
     etag?: pulumi.Input<string>;
     /**
@@ -446,9 +444,6 @@ export interface BackupState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb backup should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -466,7 +461,7 @@ export interface BackupState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * Output only. Reconciling (<https://google.aip.dev/128#reconciliation)>, if true, indicates that the service is actively updating the resource.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     reconciling?: pulumi.Input<boolean>;
@@ -499,7 +494,7 @@ export interface BackupState {
  */
 export interface BackupArgs {
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. <https://google.aip.dev/128>
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -536,9 +531,6 @@ export interface BackupArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb backup should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries {
     /**
-     * @return Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+     * @return Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
      * 
      */
     private @Nullable String code;
 
     private PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries() {}
     /**
-     * @return Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+     * @return Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
      * 
      */
     public Optional<String> code() {

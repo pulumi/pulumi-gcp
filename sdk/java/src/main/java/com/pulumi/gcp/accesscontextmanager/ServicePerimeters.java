@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
  * * How-to Guides
- *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+ *   * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  * 
  * ## Example Usage
  * 
@@ -136,8 +136,6 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -145,8 +143,6 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
     /**
      * @return The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

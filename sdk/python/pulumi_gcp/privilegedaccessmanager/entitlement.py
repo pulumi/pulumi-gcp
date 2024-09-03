@@ -208,7 +208,7 @@ class _EntitlementState:
         :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
                This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
                This value should be unique among all other Entitlements under the specified `parent`.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[str] location: The region of the Entitlement resource.
         :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
                A requester can choose to ask for access for less than this duration but never more.
@@ -322,7 +322,7 @@ class _EntitlementState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 
@@ -700,7 +700,7 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.Input[str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
                This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
                This value should be unique among all other Entitlements under the specified `parent`.
-        :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[str] etag: For Resource freshness validation (<https://google.aip.dev/154>)
         :param pulumi.Input[str] location: The region of the Entitlement resource.
         :param pulumi.Input[str] max_request_duration: The maximum amount of time for which access would be granted for a request.
                A requester can choose to ask for access for less than this duration but never more.
@@ -785,7 +785,7 @@ class Entitlement(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        For Resource freshness validation (https://google.aip.dev/154)
+        For Resource freshness validation (<https://google.aip.dev/154>)
         """
         return pulumi.get(self, "etag")
 

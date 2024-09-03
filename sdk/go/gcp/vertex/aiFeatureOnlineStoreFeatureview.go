@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 //
-// ## Example Usage
-//
-// ### Vertex Ai Featureonlinestore Featureview
+// ##
 //
 // ```go
 // package main
@@ -128,7 +126,7 @@ import (
 //	}
 //
 // ```
-// ### Vertex Ai Featureonlinestore Featureview Feature Registry
+// ##
 //
 // ```go
 // package main
@@ -261,6 +259,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Vertex Ai Featureonlinestore Featureview Cross Project
 //
 // ```go
@@ -457,7 +458,7 @@ import (
 //	}
 //
 // ```
-// ### Vertex Ai Featureonlinestore Featureview With Vector Search
+// ##
 //
 // ```go
 // package main
@@ -668,8 +669,6 @@ type AiFeatureOnlineStoreFeatureview struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
@@ -748,8 +747,6 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
@@ -788,8 +785,6 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region for the resource. It should be the same as the featureonlinestore region.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
@@ -825,8 +820,6 @@ type aiFeatureOnlineStoreFeatureviewArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region for the resource. It should be the same as the featureonlinestore region.
-	//
-	// ***
 	Region string `pulumi:"region"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
@@ -857,8 +850,6 @@ type AiFeatureOnlineStoreFeatureviewArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region for the resource. It should be the same as the featureonlinestore region.
-	//
-	// ***
 	Region pulumi.StringInput
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
@@ -1012,8 +1003,6 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) PulumiLabels() pulumi.StringMapOu
 }
 
 // The region for the resource. It should be the same as the featureonlinestore region.
-//
-// ***
 func (o AiFeatureOnlineStoreFeatureviewOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

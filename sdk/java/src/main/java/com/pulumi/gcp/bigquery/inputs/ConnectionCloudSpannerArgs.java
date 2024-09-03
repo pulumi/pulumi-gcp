@@ -34,14 +34,14 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+     * Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see &lt;https://cloud.google.com/spanner/docs/fgac-about&gt;.
      * 
      */
     @Import(name="databaseRole")
     private @Nullable Output<String> databaseRole;
 
     /**
-     * @return Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+     * @return Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see &lt;https://cloud.google.com/spanner/docs/fgac-about&gt;.
      * 
      */
     public Optional<Output<String>> databaseRole() {
@@ -173,7 +173,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param databaseRole Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+         * @param databaseRole Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see &lt;https://cloud.google.com/spanner/docs/fgac-about&gt;.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param databaseRole Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+         * @param databaseRole Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see &lt;https://cloud.google.com/spanner/docs/fgac-about&gt;.
          * 
          * @return builder
          * 

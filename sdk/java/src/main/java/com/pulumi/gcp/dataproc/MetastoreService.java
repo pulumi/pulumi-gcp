@@ -32,11 +32,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
  * 
- * ## Example Usage
- * 
- * ### Dataproc Metastore Service Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -83,6 +81,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Dataproc Metastore Service Cmek Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -141,6 +142,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataproc Metastore Service Private Service Connect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -203,6 +205,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dataproc Metastore Service Private Service Connect Custom Routes
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -266,7 +269,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Dpms2
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -310,7 +313,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Dpms2 Scaling Factor
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -354,7 +357,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Scheduled Backup
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -415,7 +418,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Autoscaling Max Scaling Factor
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -466,7 +469,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Autoscaling Min And Max Scaling Factor
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -518,7 +521,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Autoscaling Min Scaling Factor
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -569,7 +572,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Dataproc Metastore Service Autoscaling No Limit Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -955,8 +958,6 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
@@ -965,8 +966,6 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * @return The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {

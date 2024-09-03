@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools)
     /// * How-to Guides
-    ///     * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
+    ///   * [Manage pools](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#manage_pools)
     /// 
     /// &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for
     /// your billing/quota project. The account team notifies you when the project is granted access.
@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// 
     /// ### Iam Workforce Pool Full
     /// 
     /// ```csharp
@@ -141,9 +142,6 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -262,9 +260,6 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -337,9 +332,6 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

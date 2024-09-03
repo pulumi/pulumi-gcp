@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
  * * How-to Guides
- *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+ *   * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project` and set `user_project_override` to true
@@ -112,6 +112,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Access Context Manager Service Perimeter Secure Data Exchange
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -257,6 +258,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Access Context Manager Service Perimeter Dry-Run
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -360,8 +362,6 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -370,8 +370,6 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
      * @return Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

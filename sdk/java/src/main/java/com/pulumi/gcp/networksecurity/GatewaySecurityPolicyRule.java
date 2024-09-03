@@ -24,9 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
  * 
- * ## Example Usage
- * 
- * ### Network Security Gateway Security Policy Rules Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -75,7 +73,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Security Gateway Security Policy Rules Advanced
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -233,16 +231,12 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
     /**
      * The name of the gatewat security policy this rule belongs to.
      * 
-     * ***
-     * 
      */
     @Export(name="gatewaySecurityPolicy", refs={String.class}, tree="[0]")
     private Output<String> gatewaySecurityPolicy;
 
     /**
      * @return The name of the gatewat security policy this rule belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> gatewaySecurityPolicy() {

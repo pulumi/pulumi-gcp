@@ -43,18 +43,15 @@ class CertificateArgs:
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-               See https://cloud.google.com/vpc/docs/edge-locations.
+               See <https://cloud.google.com/vpc/docs/edge-locations>.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See <https://cloud.google.com/compute/docs/regions-zones>
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -137,9 +134,6 @@ class CertificateArgs:
         A user-defined name of the certificate. Certificate names must be unique
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -168,9 +162,9 @@ class CertificateArgs:
         DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-        See https://cloud.google.com/vpc/docs/edge-locations.
+        See <https://cloud.google.com/vpc/docs/edge-locations>.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See <https://cloud.google.com/compute/docs/regions-zones>
         """
         return pulumi.get(self, "scope")
 
@@ -222,9 +216,6 @@ class _CertificateState:
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -233,9 +224,9 @@ class _CertificateState:
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-               See https://cloud.google.com/vpc/docs/edge-locations.
+               See <https://cloud.google.com/vpc/docs/edge-locations>.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See <https://cloud.google.com/compute/docs/regions-zones>
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -334,9 +325,6 @@ class _CertificateState:
         A user-defined name of the certificate. Certificate names must be unique
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -378,9 +366,9 @@ class _CertificateState:
         DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-        See https://cloud.google.com/vpc/docs/edge-locations.
+        See <https://cloud.google.com/vpc/docs/edge-locations>.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See <https://cloud.google.com/compute/docs/regions-zones>
         """
         return pulumi.get(self, "scope")
 
@@ -421,9 +409,7 @@ class Certificate(pulumi.CustomResource):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
 
-        ## Example Usage
-
-        ### Certificate Manager Google Managed Certificate Dns
+        ## 
 
         ```python
         import pulumi
@@ -455,7 +441,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Google Managed Certificate Issuance Config
+        ## 
 
         ```python
         import pulumi
@@ -500,7 +486,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
@@ -522,7 +507,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ## 
 
         ```python
         import pulumi
@@ -551,7 +536,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Self Managed Certificate Regional
+        ## 
 
         ```python
         import pulumi
@@ -567,7 +552,7 @@ class Certificate(pulumi.CustomResource):
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
-        ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+        ## 
 
         ```python
         import pulumi
@@ -612,7 +597,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
@@ -634,7 +618,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Google Managed Certificate Dns All Regions
+        ## 
 
         ```python
         import pulumi
@@ -663,7 +647,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Google Managed Regional Certificate Dns Auth
+        ## 
 
         ```python
         import pulumi
@@ -722,18 +706,15 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-               See https://cloud.google.com/vpc/docs/edge-locations.
+               See <https://cloud.google.com/vpc/docs/edge-locations>.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See <https://cloud.google.com/compute/docs/regions-zones>
         :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -748,9 +729,7 @@ class Certificate(pulumi.CustomResource):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
 
-        ## Example Usage
-
-        ### Certificate Manager Google Managed Certificate Dns
+        ## 
 
         ```python
         import pulumi
@@ -782,7 +761,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Google Managed Certificate Issuance Config
+        ## 
 
         ```python
         import pulumi
@@ -827,7 +806,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
@@ -849,7 +827,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Certificate Basic
+        ## 
 
         ```python
         import pulumi
@@ -878,7 +856,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Self Managed Certificate Regional
+        ## 
 
         ```python
         import pulumi
@@ -894,7 +872,7 @@ class Certificate(pulumi.CustomResource):
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
-        ### Certificate Manager Google Managed Certificate Issuance Config All Regions
+        ## 
 
         ```python
         import pulumi
@@ -939,7 +917,6 @@ class Certificate(pulumi.CustomResource):
             deletion_protection=False,
             skip_grace_period=True,
             ignore_active_certificates_on_deletion=True)
-        # creating certificate_issuance_config to use it in the managed certificate
         issuanceconfig = gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig",
             name="issuance-config",
             description="sample description for the certificate issuanceConfigs",
@@ -961,7 +938,7 @@ class Certificate(pulumi.CustomResource):
                 "issuance_config": issuanceconfig.id,
             })
         ```
-        ### Certificate Manager Google Managed Certificate Dns All Regions
+        ## 
 
         ```python
         import pulumi
@@ -990,7 +967,7 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Google Managed Regional Certificate Dns Auth
+        ## 
 
         ```python
         import pulumi
@@ -1119,9 +1096,6 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1130,9 +1104,9 @@ class Certificate(pulumi.CustomResource):
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-               See https://cloud.google.com/vpc/docs/edge-locations.
+               See <https://cloud.google.com/vpc/docs/edge-locations>.
                ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-               See https://cloud.google.com/compute/docs/regions-zones
+               See <https://cloud.google.com/compute/docs/regions-zones>
         :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -1206,9 +1180,6 @@ class Certificate(pulumi.CustomResource):
         A user-defined name of the certificate. Certificate names must be unique
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1238,9 +1209,9 @@ class Certificate(pulumi.CustomResource):
         DEFAULT: Certificates with default scope are served from core Google data centers.
         If unsure, choose this option.
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
-        See https://cloud.google.com/vpc/docs/edge-locations.
+        See <https://cloud.google.com/vpc/docs/edge-locations>.
         ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
-        See https://cloud.google.com/compute/docs/regions-zones
+        See <https://cloud.google.com/compute/docs/regions-zones>
         """
         return pulumi.get(self, "scope")
 

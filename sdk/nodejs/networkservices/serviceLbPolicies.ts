@@ -7,49 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Network Services Service Lb Policies Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.ServiceLbPolicies("default", {
- *     name: "my-lb-policy",
- *     location: "global",
- * });
- * ```
- * ### Network Services Service Lb Policies Advanced
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.networkservices.ServiceLbPolicies("default", {
- *     name: "my-lb-policy",
- *     location: "global",
- *     description: "my description",
- *     loadBalancingAlgorithm: "SPRAY_TO_REGION",
- *     autoCapacityDrain: {
- *         enable: true,
- *     },
- *     failoverConfig: {
- *         failoverHealthThreshold: 70,
- *     },
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * const defaultBackendService = new gcp.compute.BackendService("default", {
- *     name: "my-lb-backend",
- *     description: "my description",
- *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
- *     protocol: "HTTP",
- *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
- * });
- * ```
- *
  * ## Import
  *
  * ServiceLbPolicies can be imported using any of these accepted formats:
@@ -137,9 +94,6 @@ export class ServiceLbPolicies extends pulumi.CustomResource {
     public readonly loadBalancingAlgorithm!: pulumi.Output<string | undefined>;
     /**
      * The location of the service lb policy.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -250,9 +204,6 @@ export interface ServiceLbPoliciesState {
     loadBalancingAlgorithm?: pulumi.Input<string>;
     /**
      * The location of the service lb policy.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -306,9 +257,6 @@ export interface ServiceLbPoliciesArgs {
     loadBalancingAlgorithm?: pulumi.Input<string>;
     /**
      * The location of the service lb policy.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

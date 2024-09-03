@@ -37,9 +37,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      * Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
      * table. The BigQuery Service Account associated with your project requires access to this
      * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-     * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-     * 
-     * ***
+     * See &lt;https://cloud.google.com/bigquery/docs/customer-managed-encryption&gt; for more information.
      * 
      */
     @Import(name="kmsKeyName")
@@ -49,9 +47,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      * @return Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
      * table. The BigQuery Service Account associated with your project requires access to this
      * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-     * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-     * 
-     * ***
+     * See &lt;https://cloud.google.com/bigquery/docs/customer-managed-encryption&gt; for more information.
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -60,7 +56,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
     /**
      * The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * See &lt;https://cloud.google.com/bigquery/docs/locations&gt; for supported locations.
      * 
      */
     @Import(name="location", required=true)
@@ -68,7 +64,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
     /**
      * @return The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * See &lt;https://cloud.google.com/bigquery/docs/locations&gt; for supported locations.
      * 
      */
     public Output<String> location() {
@@ -128,9 +124,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
          * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
          * table. The BigQuery Service Account associated with your project requires access to this
          * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-         * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-         * 
-         * ***
+         * See &lt;https://cloud.google.com/bigquery/docs/customer-managed-encryption&gt; for more information.
          * 
          * @return builder
          * 
@@ -144,9 +138,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
          * @param kmsKeyName Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
          * table. The BigQuery Service Account associated with your project requires access to this
          * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-         * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-         * 
-         * ***
+         * See &lt;https://cloud.google.com/bigquery/docs/customer-managed-encryption&gt; for more information.
          * 
          * @return builder
          * 
@@ -157,7 +149,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
         /**
          * @param location The geographic location where the dataset should reside.
-         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         * See &lt;https://cloud.google.com/bigquery/docs/locations&gt; for supported locations.
          * 
          * @return builder
          * 
@@ -169,7 +161,7 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
         /**
          * @param location The geographic location where the dataset should reside.
-         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         * See &lt;https://cloud.google.com/bigquery/docs/locations&gt; for supported locations.
          * 
          * @return builder
          * 

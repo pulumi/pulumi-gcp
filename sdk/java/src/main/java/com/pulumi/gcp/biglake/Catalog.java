@@ -20,11 +20,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/biglake/rest/v1/projects.locations.catalogs)
  * * How-to Guides
- *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
+ *   * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Biglake Catalog
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -161,8 +159,6 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -170,8 +166,6 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

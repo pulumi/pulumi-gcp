@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
  * * How-to Guides
- *     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
+ *   * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
  *
- * ## Example Usage
- *
- * ### Pubsub Lite Subscription Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -113,9 +111,6 @@ export class LiteSubscription extends pulumi.CustomResource {
     public readonly deliveryConfig!: pulumi.Output<outputs.pubsub.LiteSubscriptionDeliveryConfig | undefined>;
     /**
      * Name of the subscription.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -183,9 +178,6 @@ export interface LiteSubscriptionState {
     deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
     /**
      * Name of the subscription.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -218,9 +210,6 @@ export interface LiteSubscriptionArgs {
     deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
     /**
      * Name of the subscription.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

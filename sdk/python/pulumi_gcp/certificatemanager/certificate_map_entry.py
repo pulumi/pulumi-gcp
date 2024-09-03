@@ -33,9 +33,6 @@ class CertificateMapEntryArgs:
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
-               
-               
-               - - -
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -87,9 +84,6 @@ class CertificateMapEntryArgs:
     def map(self) -> pulumi.Input[str]:
         """
         A map entry that is inputted into the cetrificate map
-
-
-        - - -
         """
         return pulumi.get(self, "map")
 
@@ -216,9 +210,6 @@ class _CertificateMapEntryState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
-               
-               
-               - - -
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
@@ -347,9 +338,6 @@ class _CertificateMapEntryState:
     def map(self) -> Optional[pulumi.Input[str]]:
         """
         A map entry that is inputted into the cetrificate map
-
-
-        - - -
         """
         return pulumi.get(self, "map")
 
@@ -454,9 +442,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         CertificateMapEntry is a list of certificate configurations,
         that have been issued for a particular hostname
 
-        ## Example Usage
-
-        ### Certificate Manager Certificate Map Entry Full
+        ## 
 
         ```python
         import pulumi
@@ -543,9 +529,6 @@ class CertificateMapEntry(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
-               
-               
-               - - -
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
@@ -563,9 +546,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         CertificateMapEntry is a list of certificate configurations,
         that have been issued for a particular hostname
 
-        ## Example Usage
-
-        ### Certificate Manager Certificate Map Entry Full
+        ## 
 
         ```python
         import pulumi
@@ -735,9 +716,6 @@ class CertificateMapEntry(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
-               
-               
-               - - -
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
@@ -834,9 +812,6 @@ class CertificateMapEntry(pulumi.CustomResource):
     def map(self) -> pulumi.Output[str]:
         """
         A map entry that is inputted into the cetrificate map
-
-
-        - - -
         """
         return pulumi.get(self, "map")
 

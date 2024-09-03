@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/router/docs/)
+ *   * [Official Documentation](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
  *
@@ -56,8 +56,6 @@ export interface GetRouterNatArgs {
     region?: string;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     * - - -
      */
     router: string;
 }
@@ -99,7 +97,7 @@ export interface GetRouterNatResult {
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/router/docs/)
+ *   * [Official Documentation](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
  *
@@ -137,8 +135,6 @@ export interface GetRouterNatOutputArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     * - - -
      */
     router: pulumi.Input<string>;
 }

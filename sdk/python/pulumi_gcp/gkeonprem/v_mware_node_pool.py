@@ -544,6 +544,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 "enable_load_balancer": True,
             })
         ```
+
         ## Import
 
         VmwareNodePool can be imported using any of these accepted formats:
@@ -649,6 +650,7 @@ class VMwareNodePool(pulumi.CustomResource):
                 "enable_load_balancer": True,
             })
         ```
+
         ## Import
 
         VmwareNodePool can be imported using any of these accepted formats:

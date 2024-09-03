@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Create a Search Engine](https://cloud.google.com/generative-ai-app-builder/docs/create-engine-es)
 //
-// ## Example Usage
-//
-// ### Discoveryengine Searchengine Basic
+// ##
 //
 // ```go
 // package main

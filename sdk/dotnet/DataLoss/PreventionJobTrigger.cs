@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.jobTriggers)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
+    ///   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
     /// 
     /// ## Example Usage
     /// 
@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Bigquery Row Limit
     /// 
     /// ```csharp
@@ -144,6 +145,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Bigquery Row Limit Percentage
     /// 
     /// ```csharp
@@ -208,6 +210,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Job Notification Emails
     /// 
     /// ```csharp
@@ -258,6 +261,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Deidentify
     /// 
     /// ```csharp
@@ -374,6 +378,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Hybrid
     /// 
     /// ```csharp
@@ -444,6 +449,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Inspect
     /// 
     /// ```csharp
@@ -593,6 +599,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Publish To Stackdriver
     /// 
     /// ```csharp
@@ -643,6 +650,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger With Id
     /// 
     /// ```csharp
@@ -704,6 +712,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Multiple Actions
     /// 
     /// ```csharp
@@ -771,6 +780,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
     /// 
     /// ```csharp
@@ -835,6 +845,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Job Trigger Timespan Config Big Query
     /// 
     /// ```csharp

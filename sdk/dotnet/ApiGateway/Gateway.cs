@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
-    /// 
-    /// ## Example Usage
+    ///   * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
     /// 
     /// ## Import
     /// 
@@ -81,9 +79,6 @@ namespace Pulumi.Gcp.ApiGateway
 
         /// <summary>
         /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("gatewayId")]
         public Output<string> GatewayId { get; private set; } = null!;
@@ -190,9 +185,6 @@ namespace Pulumi.Gcp.ApiGateway
 
         /// <summary>
         /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
@@ -271,9 +263,6 @@ namespace Pulumi.Gcp.ApiGateway
 
         /// <summary>
         /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gatewayId")]
         public Input<string>? GatewayId { get; set; }

@@ -34,11 +34,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  * 
- * ## Example Usage
- * 
- * ### Storage Object Access Control Public Object
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,8 +239,6 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      * 
-     * ***
-     * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
@@ -250,8 +246,6 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
     /**
      * @return The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     * 
-     * ***
      * 
      */
     public Output<String> role() {

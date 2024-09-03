@@ -85,6 +85,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Edgecontainer Node Pool With Cmek
 //
 // ```go
@@ -172,6 +173,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Edgecontainer Local Control Plane Node Pool
 //
 // ```go
@@ -270,8 +272,6 @@ type NodePool struct {
 	pulumi.CustomResourceState
 
 	// The name of the target Distributed Cloud Edge Cluster.
-	//
-	// ***
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The time when the node pool was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -359,8 +359,6 @@ func GetNodePool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
 	// The name of the target Distributed Cloud Edge Cluster.
-	//
-	// ***
 	Cluster *string `pulumi:"cluster"`
 	// The time when the node pool was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -402,8 +400,6 @@ type nodePoolState struct {
 
 type NodePoolState struct {
 	// The name of the target Distributed Cloud Edge Cluster.
-	//
-	// ***
 	Cluster pulumi.StringPtrInput
 	// The time when the node pool was created.
 	CreateTime pulumi.StringPtrInput
@@ -449,8 +445,6 @@ func (NodePoolState) ElementType() reflect.Type {
 
 type nodePoolArgs struct {
 	// The name of the target Distributed Cloud Edge Cluster.
-	//
-	// ***
 	Cluster string `pulumi:"cluster"`
 	// Labels associated with this resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -482,8 +476,6 @@ type nodePoolArgs struct {
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
 	// The name of the target Distributed Cloud Edge Cluster.
-	//
-	// ***
 	Cluster pulumi.StringInput
 	// Labels associated with this resource.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -600,8 +592,6 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 }
 
 // The name of the target Distributed Cloud Edge Cluster.
-//
-// ***
 func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }

@@ -124,8 +124,6 @@ type InstanceGroupMembership struct {
 	// An instance being added to the InstanceGroup
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// Represents an Instance Group resource name that the instance belongs to.
-	//
-	// ***
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -173,8 +171,6 @@ type instanceGroupMembershipState struct {
 	// An instance being added to the InstanceGroup
 	Instance *string `pulumi:"instance"`
 	// Represents an Instance Group resource name that the instance belongs to.
-	//
-	// ***
 	InstanceGroup *string `pulumi:"instanceGroup"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -187,8 +183,6 @@ type InstanceGroupMembershipState struct {
 	// An instance being added to the InstanceGroup
 	Instance pulumi.StringPtrInput
 	// Represents an Instance Group resource name that the instance belongs to.
-	//
-	// ***
 	InstanceGroup pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -205,8 +199,6 @@ type instanceGroupMembershipArgs struct {
 	// An instance being added to the InstanceGroup
 	Instance string `pulumi:"instance"`
 	// Represents an Instance Group resource name that the instance belongs to.
-	//
-	// ***
 	InstanceGroup string `pulumi:"instanceGroup"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -220,8 +212,6 @@ type InstanceGroupMembershipArgs struct {
 	// An instance being added to the InstanceGroup
 	Instance pulumi.StringInput
 	// Represents an Instance Group resource name that the instance belongs to.
-	//
-	// ***
 	InstanceGroup pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -323,8 +313,6 @@ func (o InstanceGroupMembershipOutput) Instance() pulumi.StringOutput {
 }
 
 // Represents an Instance Group resource name that the instance belongs to.
-//
-// ***
 func (o InstanceGroupMembershipOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupMembership) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
 }

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
  * * How-to Guides
- *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ *   * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  *
  * ## Example Usage
  *
@@ -74,9 +74,6 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
 
     /**
      * The backend bucket this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     public readonly backendBucket!: pulumi.Output<string>;
     /**
@@ -138,9 +135,6 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
 export interface BackendBucketSignedUrlKeyState {
     /**
      * The backend bucket this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     backendBucket?: pulumi.Input<string>;
     /**
@@ -166,9 +160,6 @@ export interface BackendBucketSignedUrlKeyState {
 export interface BackendBucketSignedUrlKeyArgs {
     /**
      * The backend bucket this signed URL key belongs.
-     *
-     *
-     * - - -
      */
     backendBucket: pulumi.Input<string>;
     /**

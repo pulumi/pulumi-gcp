@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.internalRanges)
  * * How-to Guides
- *     * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
+ *   * [Use internal ranges](https://cloud.google.com/vpc/docs/create-use-internal-ranges)
  *
- * ## Example Usage
- *
- * ### Network Connectivity Internal Ranges Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +35,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Connectivity Internal Ranges Automatic Reservation
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,7 +54,7 @@ import * as utilities from "../utilities";
  *     targetCidrRanges: ["192.16.0.0/16"],
  * });
  * ```
- * ### Network Connectivity Internal Ranges External Ranges
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -77,7 +75,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Network Connectivity Internal Ranges Reserve With Overlap
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -193,9 +191,6 @@ export class InternalRange extends pulumi.CustomResource {
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     *
-     *
-     * - - -
      */
     public readonly peering!: pulumi.Output<string>;
     /**
@@ -329,9 +324,6 @@ export interface InternalRangeState {
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     *
-     *
-     * - - -
      */
     peering?: pulumi.Input<string>;
     /**
@@ -402,9 +394,6 @@ export interface InternalRangeArgs {
     /**
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     *
-     *
-     * - - -
      */
     peering: pulumi.Input<string>;
     /**

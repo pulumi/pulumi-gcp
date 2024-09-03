@@ -89,6 +89,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Cloud Identity Group Membership User
 //
 // ```go

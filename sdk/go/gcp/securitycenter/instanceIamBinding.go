@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 //
-// ## Example Usage
-//
-// ### Data Fusion Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -49,7 +47,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Full
+// ##
 //
 // ```go
 // package main
@@ -123,7 +121,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Psc
+// ##
 //
 // ```go
 // package main
@@ -186,7 +184,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Cmek
+// ##
 //
 // ```go
 // package main
@@ -248,7 +246,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Enterprise
+// ##
 //
 // ```go
 // package main
@@ -276,7 +274,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Event
+// ##
 //
 // ```go
 // package main
@@ -314,7 +312,7 @@ import (
 //	}
 //
 // ```
-// ### Data Fusion Instance Zone
+// ##
 //
 // ```go
 // package main

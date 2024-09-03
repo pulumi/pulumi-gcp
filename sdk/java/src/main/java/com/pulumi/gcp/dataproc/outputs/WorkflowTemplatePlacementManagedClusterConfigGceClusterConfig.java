@@ -23,7 +23,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable Boolean internalIpOnly;
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+     * @return The Compute Engine metadata entries to add to all instances (see (&lt;https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))&gt;.
      * 
      */
     private @Nullable Map<String,String> metadata;
@@ -48,12 +48,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity reservationAffinity;
     /**
-     * @return The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+     * @return The (&lt;https://cloud.google.com/compute/docs/access/service-accounts#default_service_account&gt;) is used.
      * 
      */
     private @Nullable String serviceAccount;
     /**
-     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * &lt;https://www.googleapis.com/auth/cloud.useraccounts.readonly&gt; * &lt;https://www.googleapis.com/auth/devstorage.read_write&gt; * &lt;https://www.googleapis.com/auth/logging.write&gt; If no scopes are specified, the following defaults are also provided: * &lt;https://www.googleapis.com/auth/bigquery&gt; * &lt;https://www.googleapis.com/auth/bigtable.admin.table&gt; * &lt;https://www.googleapis.com/auth/bigtable.data&gt; * &lt;https://www.googleapis.com/auth/devstorage.full_control&gt;
      * 
      */
     private @Nullable List<String> serviceAccountScopes;
@@ -68,7 +68,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable String subnetwork;
     /**
-     * @return The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     * @return The Compute Engine tags to add to all instances (see (&lt;https://cloud.google.com/compute/docs/label-or-tag-resources#tags))&gt;.
      * 
      */
     private @Nullable List<String> tags;
@@ -87,7 +87,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.internalIpOnly);
     }
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+     * @return The Compute Engine metadata entries to add to all instances (see (&lt;https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))&gt;.
      * 
      */
     public Map<String,String> metadata() {
@@ -122,14 +122,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.reservationAffinity);
     }
     /**
-     * @return The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+     * @return The (&lt;https://cloud.google.com/compute/docs/access/service-accounts#default_service_account&gt;) is used.
      * 
      */
     public Optional<String> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
-     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+     * @return The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * &lt;https://www.googleapis.com/auth/cloud.useraccounts.readonly&gt; * &lt;https://www.googleapis.com/auth/devstorage.read_write&gt; * &lt;https://www.googleapis.com/auth/logging.write&gt; If no scopes are specified, the following defaults are also provided: * &lt;https://www.googleapis.com/auth/bigquery&gt; * &lt;https://www.googleapis.com/auth/bigtable.admin.table&gt; * &lt;https://www.googleapis.com/auth/bigtable.data&gt; * &lt;https://www.googleapis.com/auth/devstorage.full_control&gt;
      * 
      */
     public List<String> serviceAccountScopes() {
@@ -150,7 +150,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.subnetwork);
     }
     /**
-     * @return The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     * @return The Compute Engine tags to add to all instances (see (&lt;https://cloud.google.com/compute/docs/label-or-tag-resources#tags))&gt;.
      * 
      */
     public List<String> tags() {

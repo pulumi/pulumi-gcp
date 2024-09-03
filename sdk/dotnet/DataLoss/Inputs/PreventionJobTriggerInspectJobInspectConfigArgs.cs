@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         private InputList<Inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs>? _customInfoTypes;
 
         /// <summary>
-        /// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        /// Custom info types to be used. See &lt;https://cloud.google.com/dlp/docs/creating-custom-infotypes&gt; to learn more.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs> CustomInfoTypes
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        /// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        /// or listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt;.
         /// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
         /// By default this may be all types, but may change over time as detectors are updated.
         /// Structure is documented below.
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobInspectConfigLimitsArgs>? Limits { get; set; }
 
         /// <summary>
-        /// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        /// Only returns findings equal or above this threshold. See &lt;https://cloud.google.com/dlp/docs/likelihood&gt; for more info
         /// Default value is `POSSIBLE`.
         /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         /// </summary>

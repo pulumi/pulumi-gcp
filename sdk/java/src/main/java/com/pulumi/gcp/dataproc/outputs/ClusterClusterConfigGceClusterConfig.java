@@ -67,8 +67,6 @@ public final class ClusterClusterConfigGceClusterConfig {
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
      * 
-     * ***
-     * 
      */
     private @Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
@@ -159,8 +157,6 @@ public final class ClusterClusterConfigGceClusterConfig {
     }
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-     * 
-     * ***
      * 
      */
     public Optional<ClusterClusterConfigGceClusterConfigShieldedInstanceConfig> shieldedInstanceConfig() {

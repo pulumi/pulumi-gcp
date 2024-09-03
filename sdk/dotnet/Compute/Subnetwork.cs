@@ -37,12 +37,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
     /// * How-to Guides
-    ///     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
-    ///     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
+    ///   * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+    ///   * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Subnetwork Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -76,7 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Subnetwork Logging Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -108,7 +106,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Subnetwork Internal L7lb
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -136,7 +134,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Subnetwork Ipv6
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -164,7 +162,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Subnetwork Internal Ipv6
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -193,7 +191,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Subnetwork Purpose Private Nat
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -220,7 +218,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Subnetwork Cidr Overlap
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -378,9 +376,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network this subnet belongs to.
         /// Only networks that are in the distributed mode can have subnetworks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -581,9 +576,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network this subnet belongs to.
         /// Only networks that are in the distributed mode can have subnetworks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -777,9 +769,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network this subnet belongs to.
         /// Only networks that are in the distributed mode can have subnetworks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

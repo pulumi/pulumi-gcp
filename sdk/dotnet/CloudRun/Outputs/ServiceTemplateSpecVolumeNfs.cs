@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly string Path;
         /// <summary>
         /// If true, mount the NFS volume as read only in all mounts. Defaults to false.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>

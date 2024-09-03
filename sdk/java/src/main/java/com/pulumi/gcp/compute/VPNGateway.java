@@ -26,9 +26,7 @@ import javax.annotation.Nullable;
  * &gt; **Warning:** Classic VPN is deprecating certain functionality on October 31, 2021. For more information,
  * see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
  * 
- * ## Example Usage
- * 
- * ### Target Vpn Gateway Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -230,16 +228,12 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
     /**
      * The network this VPN gateway is accepting traffic for.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The network this VPN gateway is accepting traffic for.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles/create)
  * * How-to Guides
- *     * [Database Migration](https://cloud.google.com/database-migration/docs/)
+ *   * [Database Migration](https://cloud.google.com/database-migration/docs/)
  *
- * ## Example Usage
- *
- * ### Database Migration Service Connection Profile Cloudsql
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +99,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cloudsqlprofile],
  * });
  * ```
- * ### Database Migration Service Connection Profile Postgres
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,6 +149,9 @@ import * as utilities from "../utilities";
  *     dependsOn: [sqldbUser],
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Database Migration Service Connection Profile Oracle
  *
  * ```typescript
@@ -174,6 +175,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Database Migration Service Connection Profile Alloydb
  *
  * ```typescript
@@ -293,9 +295,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
     public readonly cloudsql!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
     /**
      * The ID of the connection profile.
-     *
-     *
-     * - - -
      */
     public readonly connectionProfileId!: pulumi.Output<string>;
     /**
@@ -440,9 +439,6 @@ export interface ConnectionProfileState {
     cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
     /**
      * The ID of the connection profile.
-     *
-     *
-     * - - -
      */
     connectionProfileId?: pulumi.Input<string>;
     /**
@@ -528,9 +524,6 @@ export interface ConnectionProfileArgs {
     cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
     /**
      * The ID of the connection profile.
-     *
-     *
-     * - - -
      */
     connectionProfileId: pulumi.Input<string>;
     /**

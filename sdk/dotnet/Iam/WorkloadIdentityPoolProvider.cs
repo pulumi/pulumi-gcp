@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
     /// * How-to Guides
-    ///     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+    ///   * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Iam Workload Identity Pool Provider Aws Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -47,7 +45,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Provider Aws Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -84,7 +82,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Provider Oidc Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -115,7 +113,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Provider Oidc Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -161,7 +159,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Provider Saml Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -198,7 +196,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Provider Saml Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -238,7 +236,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
-    /// ### Iam Workload Identity Pool Provider Oidc Upload Key
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -457,9 +455,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name. This
         /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("workloadIdentityPoolProviderId")]
         public Output<string> WorkloadIdentityPoolProviderId { get; private set; } = null!;
@@ -641,9 +636,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name. This
         /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
@@ -806,9 +798,6 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name. This
         /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolProviderId")]
         public Input<string>? WorkloadIdentityPoolProviderId { get; set; }

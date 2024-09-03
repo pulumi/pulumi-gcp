@@ -16,7 +16,7 @@ public final class DiskSourceImageEncryptionKey {
      * in the cloud console. Your project&#39;s Compute Engine System service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * See &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys&gt;
      * 
      */
     private @Nullable String kmsKeySelfLink;
@@ -46,7 +46,7 @@ public final class DiskSourceImageEncryptionKey {
      * in the cloud console. Your project&#39;s Compute Engine System service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * See &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys&gt;
      * 
      */
     public Optional<String> kmsKeySelfLink() {

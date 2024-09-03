@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Android App Custom Api Key
     /// 
     /// ```csharp
@@ -169,9 +170,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("packageName")]
         public Output<string> PackageName { get; private set; } = null!;
@@ -261,9 +259,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("packageName", required: true)]
         public Input<string> PackageName { get; set; } = null!;
@@ -348,9 +343,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The canonical package name of the Android app as would appear in the Google Play
         /// Developer Console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("packageName")]
         public Input<string>? PackageName { get; set; }

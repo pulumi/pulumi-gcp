@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         /// <summary>
         /// Optional. The email of the trigger's service account. The service account
         /// must have permission to invoke Cloud Run services. If empty, defaults to the
-        /// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+        /// Compute Engine default service account: {project_&lt;number}-compute@developer.gserviceaccount.com&gt;.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }

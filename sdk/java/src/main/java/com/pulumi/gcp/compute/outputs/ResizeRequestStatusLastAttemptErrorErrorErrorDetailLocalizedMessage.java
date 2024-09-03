@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
     /**
      * @return (Output)
-     * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
+     * The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
      * 
      */
     private @Nullable String locale;
@@ -27,7 +27,7 @@ public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedM
     private ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage() {}
     /**
      * @return (Output)
-     * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
+     * The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
      * 
      */
     public Optional<String> locale() {

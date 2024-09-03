@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ *
  * ### Alloydb Secondary Instance Basic
  *
  * ```typescript
@@ -208,14 +209,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
     public readonly gceZone!: pulumi.Output<string | undefined>;
     /**
      * The ID of the alloydb instance.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     public readonly instanceType!: pulumi.Output<string>;
@@ -425,14 +423,11 @@ export interface InstanceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
     gceZone?: pulumi.Input<string>;
     /**
      * The ID of the alloydb instance.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     instanceType?: pulumi.Input<string>;
@@ -548,14 +543,11 @@ export interface InstanceArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
     gceZone?: pulumi.Input<string>;
     /**
      * The ID of the alloydb instance.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     instanceType: pulumi.Input<string>;

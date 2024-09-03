@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     userByEmail: bqowner.email,
  * });
  * ```
+ *
  * ### Bigquery Dataset Access View
  *
  * ```typescript
@@ -49,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Dataset Access Authorized Dataset
  *
  * ```typescript
@@ -68,6 +70,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Dataset Access Authorized Routine
  *
  * ```typescript
@@ -160,9 +163,6 @@ export class DatasetAccess extends pulumi.CustomResource {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     *
-     *
-     * - - -
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -212,7 +212,7 @@ export class DatasetAccess extends pulumi.CustomResource {
     public readonly specialGroup!: pulumi.Output<string | undefined>;
     /**
      * An email address of a user to grant access to. For example:
-     * fred@example.com
+     * <fred@example.com>
      */
     public readonly userByEmail!: pulumi.Output<string | undefined>;
     /**
@@ -291,9 +291,6 @@ export interface DatasetAccessState {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     *
-     *
-     * - - -
      */
     datasetId?: pulumi.Input<string>;
     /**
@@ -343,7 +340,7 @@ export interface DatasetAccessState {
     specialGroup?: pulumi.Input<string>;
     /**
      * An email address of a user to grant access to. For example:
-     * fred@example.com
+     * <fred@example.com>
      */
     userByEmail?: pulumi.Input<string>;
     /**
@@ -370,9 +367,6 @@ export interface DatasetAccessArgs {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     *
-     *
-     * - - -
      */
     datasetId: pulumi.Input<string>;
     /**
@@ -422,7 +416,7 @@ export interface DatasetAccessArgs {
     specialGroup?: pulumi.Input<string>;
     /**
      * An email address of a user to grant access to. For example:
-     * fred@example.com
+     * <fred@example.com>
      */
     userByEmail?: pulumi.Input<string>;
     /**

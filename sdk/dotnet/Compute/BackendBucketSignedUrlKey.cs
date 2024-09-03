@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
     /// * How-to Guides
-    ///     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+    ///   * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
     /// 
     /// ## Example Usage
     /// 
@@ -69,9 +69,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The backend bucket this signed URL key belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("backendBucket")]
         public Output<string> BackendBucket { get; private set; } = null!;
@@ -149,9 +146,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The backend bucket this signed URL key belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendBucket", required: true)]
         public Input<string> BackendBucket { get; set; } = null!;
@@ -197,9 +191,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The backend bucket this signed URL key belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("backendBucket")]
         public Input<string>? BackendBucket { get; set; }

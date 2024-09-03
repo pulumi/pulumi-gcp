@@ -36,8 +36,6 @@ class AppConnectionApplicationEndpoint(dict):
         """
         :param str host: Hostname or IP address of the remote application endpoint.
         :param int port: Port of the remote application endpoint.
-               
-               - - -
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -55,8 +53,6 @@ class AppConnectionApplicationEndpoint(dict):
     def port(self) -> int:
         """
         Port of the remote application endpoint.
-
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -92,7 +88,7 @@ class AppConnectionGateway(dict):
         :param int ingress_port: (Output)
                Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         :param str type: The type of hosting used by the gateway. Refer to
-               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+               <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
                for a list of possible values.
         :param str uri: (Output)
                Server-defined URI for this resource.
@@ -127,7 +123,7 @@ class AppConnectionGateway(dict):
     def type(self) -> Optional[str]:
         """
         The type of hosting used by the gateway. Refer to
-        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+        <https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1>
         for a list of possible values.
         """
         return pulumi.get(self, "type")
@@ -185,8 +181,6 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
                  email: str):
         """
         :param str email: Email address of the service account.
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
 
@@ -195,8 +189,6 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
     def email(self) -> str:
         """
         Email address of the service account.
-
-        - - -
         """
         return pulumi.get(self, "email")
 

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Storage
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// Example picture stored within a folder.
@@ -47,7 +46,6 @@ namespace Pulumi.Gcp.Storage
         /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
         /// and
         /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-        /// 
         /// 
         /// ## Example Usage
         /// 

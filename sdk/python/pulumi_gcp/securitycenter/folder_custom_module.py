@@ -277,7 +277,7 @@ class FolderCustomModule(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/folders.securityHealthAnalyticsSettings.customModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -306,6 +306,7 @@ class FolderCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Folder Custom Module Full
 
         ```python
@@ -394,7 +395,7 @@ class FolderCustomModule(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/folders.securityHealthAnalyticsSettings.customModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -423,6 +424,7 @@ class FolderCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Folder Custom Module Full
 
         ```python

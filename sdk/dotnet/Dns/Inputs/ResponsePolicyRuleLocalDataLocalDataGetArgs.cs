@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dns.Inputs
     public sealed class ResponsePolicyRuleLocalDataLocalDataGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For example, www.example.com.
+        /// For example, &lt;http://www.example.com&gt;.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

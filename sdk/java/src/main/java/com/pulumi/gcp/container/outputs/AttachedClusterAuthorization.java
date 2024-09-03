@@ -16,7 +16,7 @@ public final class AttachedClusterAuthorization {
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
      * to the groups. Up to ten admin groups can be provided.
      * For more info on RBAC, see
-     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     private @Nullable List<String> adminGroups;
@@ -25,7 +25,7 @@ public final class AttachedClusterAuthorization {
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
      * to the users. Up to ten admin users can be provided.
      * For more info on RBAC, see
-     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     private @Nullable List<String> adminUsers;
@@ -36,7 +36,7 @@ public final class AttachedClusterAuthorization {
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
      * to the groups. Up to ten admin groups can be provided.
      * For more info on RBAC, see
-     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     public List<String> adminGroups() {
@@ -47,7 +47,7 @@ public final class AttachedClusterAuthorization {
      * ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
      * to the users. Up to ten admin users can be provided.
      * For more info on RBAC, see
-     * https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+     * &lt;https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles&gt;
      * 
      */
     public List<String> adminUsers() {

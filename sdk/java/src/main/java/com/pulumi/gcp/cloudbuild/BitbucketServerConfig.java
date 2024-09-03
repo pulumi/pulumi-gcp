@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.bitbucketServerConfigs)
  * * How-to Guides
- *     * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
+ *   * [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
  * 
- * ## Example Usage
- * 
- * ### Cloudbuild Bitbucket Server Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -72,6 +70,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Cloudbuild Bitbucket Server Config Repositories
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -126,7 +127,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloudbuild Bitbucket Server Config Peered Network
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

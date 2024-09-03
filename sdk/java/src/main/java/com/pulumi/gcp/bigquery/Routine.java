@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  * * How-to Guides
- *     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
+ *   * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Routine Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -74,7 +72,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Routine Json
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -129,7 +127,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Routine Tvf
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -194,7 +192,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Routine Pyspark
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -244,18 +242,18 @@ import javax.annotation.Nullable;
  * from pyspark.sql import SparkSession
  * 
  * spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
- *     
+ * 
  * # Load data from BigQuery.
  * words = spark.read.format("bigquery") \
  *   .option("table", "bigquery-public-data:samples.shakespeare") \
  *   .load()
  * words.createOrReplaceTempView("words")
- *     
+ * 
  * # Perform word count.
  * word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
  * word_count.show()
  * word_count.printSchema()
- *     
+ * 
  * # Saving the data to BigQuery
  * word_count.write.format("bigquery") \
  *   .option("writeMethod", "direct") \
@@ -272,7 +270,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Routine Pyspark Mainfile
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -334,7 +332,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Routine Spark Jar
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -399,7 +397,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Routine Data Governance Type
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -450,6 +448,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Bigquery Routine Remote Function
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -571,7 +572,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return this.creationTime;
     }
     /**
-     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
      * Possible values are: `DATA_MASKING`.
      * 
      */
@@ -579,7 +580,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> dataGovernanceType;
 
     /**
-     * @return If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+     * @return If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
      * Possible values are: `DATA_MASKING`.
      * 
      */
@@ -604,8 +605,6 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      * 
-     * ***
-     * 
      */
     @Export(name="definitionBody", refs={String.class}, tree="[0]")
     private Output<String> definitionBody;
@@ -613,8 +612,6 @@ public class Routine extends com.pulumi.resources.CustomResource {
     /**
      * @return The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
-     * 
-     * ***
      * 
      */
     public Output<String> definitionBody() {

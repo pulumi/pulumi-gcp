@@ -66,8 +66,6 @@ if not MYPY:
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
 elif False:
     AccessApprovalSettingsEnrolledServiceArgsDict: TypeAlias = Mapping[str, Any]
@@ -92,8 +90,6 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         :param pulumi.Input[str] enrollment_level: The enrollment level of the service.
                Default value is `BLOCK_ALL`.
                Possible values are: `BLOCK_ALL`.
-               
-               - - -
         """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
@@ -128,8 +124,6 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
         return pulumi.get(self, "enrollment_level")
 
@@ -277,9 +271,9 @@ if not MYPY:
         """
         Identities that do not cause logging for this type of permission.
         Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
 elif False:
@@ -294,9 +288,9 @@ class IamAuditConfigAuditLogConfigArgs:
         :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.
                Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         pulumi.set(__self__, "log_type", log_type)
@@ -321,9 +315,9 @@ class IamAuditConfigAuditLogConfigArgs:
         """
         Identities that do not cause logging for this type of permission.
         Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "exempted_members")
@@ -705,13 +699,13 @@ if not MYPY:
     class GetIAMPolicyBindingArgsDict(TypedDict):
         members: Sequence[str]
         """
-        An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         role: str
@@ -734,13 +728,13 @@ class GetIAMPolicyBindingArgs:
                  role: str,
                  condition: Optional['GetIAMPolicyBindingConditionArgs'] = None):
         """
-        :param Sequence[str] members: An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        :param Sequence[str] members: An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param str role: The role/permission that will be granted to the members.
                See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
@@ -756,13 +750,13 @@ class GetIAMPolicyBindingArgs:
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "members")

@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
  * * How-to Guides
- *     * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
+ *   * [Creating a key Version](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions/create)
  * 
  * ## Example Usage
  * 
@@ -131,8 +131,6 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
      * 
-     * ***
-     * 
      */
     @Export(name="cryptoKey", refs={String.class}, tree="[0]")
     private Output<String> cryptoKey;
@@ -140,8 +138,6 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
-     * 
-     * ***
      * 
      */
     public Output<String> cryptoKey() {

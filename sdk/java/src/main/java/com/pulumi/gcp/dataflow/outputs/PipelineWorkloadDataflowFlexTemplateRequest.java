@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class PipelineWorkloadDataflowFlexTemplateRequest {
     /**
      * @return Parameter to launch a job from a Flex Template.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter&gt;
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class PipelineWorkloadDataflowFlexTemplateRequest {
     private PipelineWorkloadDataflowFlexTemplateRequest() {}
     /**
      * @return Parameter to launch a job from a Flex Template.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter&gt;
      * Structure is documented below.
      * 
      */

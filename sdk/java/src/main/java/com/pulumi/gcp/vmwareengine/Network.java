@@ -23,9 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
  * 
- * ## Example Usage
- * 
- * ### Vmware Engine Network Standard
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -62,6 +60,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Vmware Engine Network Legacy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -188,16 +189,12 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the VMwareEngineNetwork.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID of the VMwareEngineNetwork.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

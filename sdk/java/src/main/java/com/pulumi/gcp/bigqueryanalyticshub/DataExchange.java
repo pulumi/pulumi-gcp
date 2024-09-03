@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ *   * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Analyticshub Data Exchange Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -128,16 +126,12 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
     /**
      * Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

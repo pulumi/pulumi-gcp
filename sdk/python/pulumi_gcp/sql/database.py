@@ -29,9 +29,6 @@ class DatabaseArgs:
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
-               
-               
-               - - -
         :param pulumi.Input[str] charset: The charset value. See MySQL's
                [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
                and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
@@ -69,9 +66,6 @@ class DatabaseArgs:
         """
         The name of the Cloud SQL instance. This does not include the project
         ID.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -181,9 +175,6 @@ class _DatabaseState:
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
                This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -258,9 +249,6 @@ class _DatabaseState:
         """
         The name of the Cloud SQL instance. This does not include the project
         ID.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -323,15 +311,12 @@ class Database(pulumi.CustomResource):
         Represents a SQL database inside the Cloud SQL instance, hosted in
         Google's cloud.
 
-        ## Example Usage
-
-        ### Sql Database Basic
+        ## 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -344,13 +329,12 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
-        ### Sql Database Deletion Policy
+        ## 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -419,9 +403,6 @@ class Database(pulumi.CustomResource):
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
                This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -437,15 +418,12 @@ class Database(pulumi.CustomResource):
         Represents a SQL database inside the Cloud SQL instance, hosted in
         Google's cloud.
 
-        ## Example Usage
-
-        ### Sql Database Basic
+        ## 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -458,13 +436,12 @@ class Database(pulumi.CustomResource):
             name="my-database",
             instance=instance.name)
         ```
-        ### Sql Database Deletion Policy
+        ## 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -594,9 +571,6 @@ class Database(pulumi.CustomResource):
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project
                ID.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance.
                This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -657,9 +631,6 @@ class Database(pulumi.CustomResource):
         """
         The name of the Cloud SQL instance. This does not include the project
         ID.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

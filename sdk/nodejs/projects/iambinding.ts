@@ -19,17 +19,17 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
- *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
+ * IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
  *
  * ## gcp.projects.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
- *    from anyone without organization-level access to the project. Proceed with caution.
- *    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
- *    to avoid locking yourself out, and it should generally only be used with projects
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
+ * using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
+ * from anyone without organization-level access to the project. Proceed with caution.
+ * It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
+ * to avoid locking yourself out, and it should generally only be used with projects
+ * fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ * applying the change.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -156,12 +156,12 @@ import * as utilities from "../utilities";
  * ## gcp.projects.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
- *    from anyone without organization-level access to the project. Proceed with caution.
- *    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
- *    to avoid locking yourself out, and it should generally only be used with projects
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
+ * using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
+ * from anyone without organization-level access to the project. Proceed with caution.
+ * It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
+ * to avoid locking yourself out, and it should generally only be used with projects
+ * fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ * applying the change.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -351,9 +351,9 @@ export class IAMBinding extends pulumi.CustomResource {
     /**
      * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly members!: pulumi.Output<string[]>;
@@ -425,9 +425,9 @@ export interface IAMBindingState {
     /**
      * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
@@ -456,9 +456,9 @@ export interface IAMBindingArgs {
     /**
      * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     members: pulumi.Input<pulumi.Input<string>[]>;

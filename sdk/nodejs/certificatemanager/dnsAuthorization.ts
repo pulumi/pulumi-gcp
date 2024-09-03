@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  *
- * ## Example Usage
- *
- * ### Certificate Manager Dns Authorization Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,7 +25,7 @@ import * as utilities from "../utilities";
  * export const recordTypeToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].type);
  * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
  * ```
- * ### Certificate Manager Dns Authorization Regional
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,9 +127,6 @@ export class DnsAuthorization extends pulumi.CustomResource {
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -240,9 +235,6 @@ export interface DnsAuthorizationState {
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -295,9 +287,6 @@ export interface DnsAuthorizationArgs {
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

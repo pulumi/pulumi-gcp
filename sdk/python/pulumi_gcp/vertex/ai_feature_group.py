@@ -343,11 +343,9 @@ class AiFeatureGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureGroups)
         * How-to Guides
-            * [Creating a Feature Group](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-featuregroup)
+          * [Creating a Feature Group](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-featuregroup)
 
-        ## Example Usage
-
-        ### Vertex Ai Feature Group
+        ## 
 
         ```python
         import pulumi
@@ -451,11 +449,9 @@ class AiFeatureGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureGroups)
         * How-to Guides
-            * [Creating a Feature Group](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-featuregroup)
+          * [Creating a Feature Group](https://cloud.google.com/vertex-ai/docs/featurestore/latest/create-featuregroup)
 
-        ## Example Usage
-
-        ### Vertex Ai Feature Group
+        ## 
 
         ```python
         import pulumi

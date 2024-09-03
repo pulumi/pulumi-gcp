@@ -22,8 +22,6 @@ public final class DatabaseHiveOptions {
      * list of&#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
-     * ***
-     * 
      */
     private @Nullable Map<String,String> parameters;
 
@@ -39,8 +37,6 @@ public final class DatabaseHiveOptions {
      * @return Stores user supplied Hive database parameters. An object containing a
      * list of&#34;key&#34;: value pairs.
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
-     * 
-     * ***
      * 
      */
     public Map<String,String> parameters() {

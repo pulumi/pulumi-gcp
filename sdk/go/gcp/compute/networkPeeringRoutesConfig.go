@@ -23,9 +23,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 //
-// ## Example Usage
-//
-// ### Network Peering Routes Config Basic
+// ##
 //
 // ```go
 // package main
@@ -85,7 +83,7 @@ import (
 //	}
 //
 // ```
-// ### Network Peering Routes Config Gke
+// ##
 //
 // ```go
 // package main
@@ -200,8 +198,6 @@ type NetworkPeeringRoutesConfig struct {
 	// Whether to import the custom routes to the peer network.
 	ImportCustomRoutes pulumi.BoolOutput `pulumi:"importCustomRoutes"`
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Name of the peering.
 	Peering pulumi.StringOutput `pulumi:"peering"`
@@ -257,8 +253,6 @@ type networkPeeringRoutesConfigState struct {
 	// Whether to import the custom routes to the peer network.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// Name of the peering.
 	Peering *string `pulumi:"peering"`
@@ -273,8 +267,6 @@ type NetworkPeeringRoutesConfigState struct {
 	// Whether to import the custom routes to the peer network.
 	ImportCustomRoutes pulumi.BoolPtrInput
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// Name of the peering.
 	Peering pulumi.StringPtrInput
@@ -293,8 +285,6 @@ type networkPeeringRoutesConfigArgs struct {
 	// Whether to import the custom routes to the peer network.
 	ImportCustomRoutes bool `pulumi:"importCustomRoutes"`
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// Name of the peering.
 	Peering string `pulumi:"peering"`
@@ -310,8 +300,6 @@ type NetworkPeeringRoutesConfigArgs struct {
 	// Whether to import the custom routes to the peer network.
 	ImportCustomRoutes pulumi.BoolInput
 	// The name of the primary network for the peering.
-	//
-	// ***
 	Network pulumi.StringInput
 	// Name of the peering.
 	Peering pulumi.StringInput
@@ -418,8 +406,6 @@ func (o NetworkPeeringRoutesConfigOutput) ImportCustomRoutes() pulumi.BoolOutput
 }
 
 // The name of the primary network for the peering.
-//
-// ***
 func (o NetworkPeeringRoutesConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPeeringRoutesConfig) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

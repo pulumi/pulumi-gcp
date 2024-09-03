@@ -262,8 +262,6 @@ class InstanceNetwork(dict):
                DIRECT_PEERING.
                Default value is `DIRECT_PEERING`.
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-               
-               - - -
         :param Sequence[str] ip_addresses: (Output)
                A list of IPv4 or IPv6 addresses.
         :param str reserved_ip_range: A /29 CIDR block that identifies the range of IP
@@ -306,8 +304,6 @@ class InstanceNetwork(dict):
         DIRECT_PEERING.
         Default value is `DIRECT_PEERING`.
         Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-
-        - - -
         """
         return pulumi.get(self, "connect_mode")
 
@@ -341,8 +337,6 @@ class GetInstanceFileShareResult(dict):
         :param int capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param str name: The name of a Filestore instance.
-               
-               - - -
         :param Sequence['GetInstanceFileShareNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param str source_backup: The resource name of the backup, in the format
                projects/{projectId}/locations/{locationId}/backups/{backupId},
@@ -367,8 +361,6 @@ class GetInstanceFileShareResult(dict):
     def name(self) -> str:
         """
         The name of a Filestore instance.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

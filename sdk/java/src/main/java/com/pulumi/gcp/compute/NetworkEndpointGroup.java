@@ -35,11 +35,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  * 
- * ## Example Usage
- * 
- * ### Network Endpoint Group
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -93,7 +91,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Endpoint Group Non Gcp
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -241,8 +239,6 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
@@ -251,8 +247,6 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * @return The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
      * 
-     * ***
-     * 
      */
     public Output<String> network() {
         return this.network;
@@ -260,7 +254,7 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * Type of network endpoints in this network endpoint group.
      * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
      * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
@@ -276,7 +270,7 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return Type of network endpoints in this network endpoint group.
      * NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
-     * endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
+     * endpoint groups (see &lt;https://cloud.google.com/load-balancing/docs/hybrid)&gt;.
      * Note that NON_GCP_PRIVATE_IP_PORT can only be used with Backend Services
      * that 1) have the following load balancing schemes: EXTERNAL, EXTERNAL_MANAGED,
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or

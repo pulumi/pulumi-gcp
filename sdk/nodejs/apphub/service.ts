@@ -104,6 +104,7 @@ import * as utilities from "../utilities";
  *     discoveredService: catalog_service.apply(catalog_service => catalog_service.name),
  * });
  * ```
+ *
  * ### Apphub Service Full
  *
  * ```typescript
@@ -313,9 +314,6 @@ export class Service extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The Service identifier.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -450,9 +448,6 @@ export interface ServiceState {
     project?: pulumi.Input<string>;
     /**
      * The Service identifier.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -516,9 +511,6 @@ export interface ServiceArgs {
     project?: pulumi.Input<string>;
     /**
      * The Service identifier.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

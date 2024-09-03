@@ -143,8 +143,6 @@ type EnvironmentKeyvaluemaps struct {
 
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// Required. ID of the key value map.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -185,8 +183,6 @@ func GetEnvironmentKeyvaluemaps(ctx *pulumi.Context,
 type environmentKeyvaluemapsState struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId *string `pulumi:"envId"`
 	// Required. ID of the key value map.
 	Name *string `pulumi:"name"`
@@ -195,8 +191,6 @@ type environmentKeyvaluemapsState struct {
 type EnvironmentKeyvaluemapsState struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringPtrInput
 	// Required. ID of the key value map.
 	Name pulumi.StringPtrInput
@@ -209,8 +203,6 @@ func (EnvironmentKeyvaluemapsState) ElementType() reflect.Type {
 type environmentKeyvaluemapsArgs struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId string `pulumi:"envId"`
 	// Required. ID of the key value map.
 	Name *string `pulumi:"name"`
@@ -220,8 +212,6 @@ type environmentKeyvaluemapsArgs struct {
 type EnvironmentKeyvaluemapsArgs struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringInput
 	// Required. ID of the key value map.
 	Name pulumi.StringPtrInput
@@ -316,8 +306,6 @@ func (o EnvironmentKeyvaluemapsOutput) ToEnvironmentKeyvaluemapsOutputWithContex
 
 // The Apigee environment group associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-//
-// ***
 func (o EnvironmentKeyvaluemapsOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentKeyvaluemaps) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }

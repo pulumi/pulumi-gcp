@@ -25,9 +25,7 @@ import javax.annotation.Nullable;
  * You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
  * the Cloud Console prior to creating tenants.
  * 
- * ## Example Usage
- * 
- * ### Identity Platform Tenant Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -125,16 +123,12 @@ public class Tenant extends com.pulumi.resources.CustomResource {
     /**
      * Human friendly display name of the tenant.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return Human friendly display name of the tenant.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

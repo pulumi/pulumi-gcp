@@ -30,11 +30,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/build/docs)
+ *   * [Official Documentation](https://cloud.google.com/build/docs)
  * 
- * ## Example Usage
- * 
- * ### Cloudbuildv2 Connection
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,6 +75,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Cloudbuildv2 Connection Ghe
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -179,6 +180,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloudbuildv2 Connection Github
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -457,16 +459,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

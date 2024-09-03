@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Access View
     /// 
     /// ```csharp
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Access Authorized Dataset
     /// 
     /// ```csharp
@@ -125,6 +127,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
     /// ### Bigquery Dataset Access Authorized Routine
     /// 
     /// ```csharp
@@ -223,9 +226,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// An email address of a user to grant access to. For example:
-        /// fred@example.com
+        /// &lt;fred@example.com&gt;
         /// </summary>
         [Output("userByEmail")]
         public Output<string?> UserByEmail { get; private set; } = null!;
@@ -364,9 +364,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -432,7 +429,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// An email address of a user to grant access to. For example:
-        /// fred@example.com
+        /// &lt;fred@example.com&gt;
         /// </summary>
         [Input("userByEmail")]
         public Input<string>? UserByEmail { get; set; }
@@ -474,9 +471,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
@@ -542,7 +536,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// An email address of a user to grant access to. For example:
-        /// fred@example.com
+        /// &lt;fred@example.com&gt;
         /// </summary>
         [Input("userByEmail")]
         public Input<string>? UserByEmail { get; set; }

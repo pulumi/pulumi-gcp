@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
  * 
  * ## Example Usage
  * 
@@ -101,16 +101,12 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the fulfillment, unique within the agent.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the fulfillment, unique within the agent.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

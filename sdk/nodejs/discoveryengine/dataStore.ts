@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores)
  * * How-to Guides
- *     * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
+ *   * [Create a search data store](https://cloud.google.com/generative-ai-app-builder/docs/create-data-store-es)
  *
- * ## Example Usage
- *
- * ### Discoveryengine Datastore Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  *     skipDefaultSchemaCreation: false,
  * });
  * ```
- * ### Discoveryengine Datastore Document Processing Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -133,9 +131,6 @@ export class DataStore extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
@@ -273,9 +268,6 @@ export interface DataStoreState {
     createTime?: pulumi.Input<string>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId?: pulumi.Input<string>;
     /**
@@ -348,9 +340,6 @@ export interface DataStoreArgs {
     createAdvancedSiteSearch?: pulumi.Input<boolean>;
     /**
      * The unique id of the data store.
-     *
-     *
-     * - - -
      */
     dataStoreId: pulumi.Input<string>;
     /**

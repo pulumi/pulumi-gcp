@@ -3430,8 +3430,6 @@ class MembershipRbacRoleBindingRole(dict):
         """
         :param str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-               
-               - - -
         """
         pulumi.set(__self__, "predefined_role", predefined_role)
 
@@ -3441,8 +3439,6 @@ class MembershipRbacRoleBindingRole(dict):
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 
@@ -3567,8 +3563,6 @@ class ScopeRbacRoleBindingRole(dict):
         """
         :param str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-               
-               - - -
         """
         if predefined_role is not None:
             pulumi.set(__self__, "predefined_role", predefined_role)
@@ -3579,8 +3573,6 @@ class ScopeRbacRoleBindingRole(dict):
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 

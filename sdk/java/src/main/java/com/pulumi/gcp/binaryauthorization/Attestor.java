@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *   * [Official Documentation](https://cloud.google.com/binary-authorization/)
  * 
- * ## Example Usage
- * 
- * ### Binary Authorization Attestor Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -96,6 +94,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Binary Authorization Attestor Kms
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

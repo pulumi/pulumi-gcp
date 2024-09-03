@@ -19,11 +19,9 @@ namespace Pulumi.Gcp.ML
     /// 
     /// * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+    ///   * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Ml Model Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -42,7 +40,7 @@ namespace Pulumi.Gcp.ML
     /// 
     /// });
     /// ```
-    /// ### Ml Model Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -125,9 +123,6 @@ namespace Pulumi.Gcp.ML
 
         /// <summary>
         /// The name specified for the model.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -246,9 +241,6 @@ namespace Pulumi.Gcp.ML
 
         /// <summary>
         /// The name specified for the model.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -333,9 +325,6 @@ namespace Pulumi.Gcp.ML
 
         /// <summary>
         /// The name specified for the model.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

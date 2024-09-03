@@ -17,73 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Managedkafka Topic Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.managedkafka.Cluster;
- * import com.pulumi.gcp.managedkafka.ClusterArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
- * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
- * import com.pulumi.gcp.managedkafka.Topic;
- * import com.pulumi.gcp.managedkafka.TopicArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var cluster = new Cluster("cluster", ClusterArgs.builder()
- *             .clusterId("my-cluster")
- *             .location("us-central1")
- *             .capacityConfig(ClusterCapacityConfigArgs.builder()
- *                 .vcpuCount(3)
- *                 .memoryBytes(3221225472)
- *                 .build())
- *             .gcpConfig(ClusterGcpConfigArgs.builder()
- *                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
- *                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
- *                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.applyValue(getProjectResult -> getProjectResult.number())))
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var example = new Topic("example", TopicArgs.builder()
- *             .topicId("my-topic")
- *             .cluster(cluster.clusterId())
- *             .location("us-central1")
- *             .partitionCount(2)
- *             .replicationFactor(3)
- *             .configs(Map.of("cleanup.policy", "compact"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Topic can be imported using any of these accepted formats:
@@ -140,14 +73,14 @@ public class Topic extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.configs);
     }
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * @return ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     public Output<String> location() {
@@ -214,16 +147,12 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
      * 
-     * ***
-     * 
      */
     @Export(name="topicId", refs={String.class}, tree="[0]")
     private Output<String> topicId;
 
     /**
      * @return The ID to use for the topic, which will become the final component of the topic&#39;s name. This value is structured like: `my-topic-name`.
-     * 
-     * ***
      * 
      */
     public Output<String> topicId() {

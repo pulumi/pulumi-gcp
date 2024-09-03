@@ -134,7 +134,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
     /**
      * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
      * 
      */
     @Import(name="serviceAccountEmail")
@@ -143,7 +143,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
     /**
      * @return The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
-     * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+     * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -357,7 +357,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         /**
          * @param serviceAccountEmail The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
-         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         /**
          * @param serviceAccountEmail The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
-         * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+         * &lt;service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com&gt;, is used.
          * 
          * @return builder
          * 

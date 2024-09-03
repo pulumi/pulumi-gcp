@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// <summary>
         /// The add-on that this search engine enables.
         /// Each value may be one of: `SEARCH_ADD_ON_LLM`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> SearchAddOns;
         /// <summary>

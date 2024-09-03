@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
+// A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (<https://www.hl7.org/fhir/STU3/>)
 // standard for Healthcare information exchange
 //
 // To get more information about FhirStore, see:
@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 //
-// ## Example Usage
-//
-// ### Healthcare Fhir Store Basic
+// ##
 //
 // ```go
 // package main
@@ -78,7 +76,7 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Fhir Store Streaming Config
+// ##
 //
 // ```go
 // package main
@@ -160,7 +158,7 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Fhir Store Notification Configs
+// ##
 //
 // ```go
 // package main
@@ -241,8 +239,6 @@ type FhirStore struct {
 	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -283,9 +279,9 @@ type FhirStore struct {
 	EnableUpdateCreate pulumi.BoolPtrOutput `pulumi:"enableUpdateCreate"`
 	// User-supplied key-value pairs used to organize FHIR stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -369,8 +365,6 @@ type fhirStoreState struct {
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -411,9 +405,9 @@ type fhirStoreState struct {
 	EnableUpdateCreate *bool `pulumi:"enableUpdateCreate"`
 	// User-supplied key-value pairs used to organize FHIR stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -460,8 +454,6 @@ type FhirStoreState struct {
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -502,9 +494,9 @@ type FhirStoreState struct {
 	EnableUpdateCreate pulumi.BoolPtrInput
 	// User-supplied key-value pairs used to organize FHIR stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -555,8 +547,6 @@ type fhirStoreArgs struct {
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -595,9 +585,9 @@ type fhirStoreArgs struct {
 	EnableUpdateCreate *bool `pulumi:"enableUpdateCreate"`
 	// User-supplied key-value pairs used to organize FHIR stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -640,8 +630,6 @@ type FhirStoreArgs struct {
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -680,9 +668,9 @@ type FhirStoreArgs struct {
 	EnableUpdateCreate pulumi.BoolPtrInput
 	// User-supplied key-value pairs used to organize FHIR stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -813,8 +801,6 @@ func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-//
-// ***
 func (o FhirStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -879,9 +865,9 @@ func (o FhirStoreOutput) EnableUpdateCreate() pulumi.BoolPtrOutput {
 
 // User-supplied key-value pairs used to organize FHIR stores.
 // Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 // Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 // No more than 64 labels can be associated with a given store.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

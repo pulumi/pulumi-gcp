@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// * [API documentation](https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.deliveryPipelines.automations)
     /// * How-to Guides
-    ///     * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
+    ///   * [Automate your deployment](https://cloud.google.com/deploy/docs/automation)
     /// 
     /// ## Example Usage
     /// 
@@ -79,6 +79,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Clouddeploy Automation Full
     /// 
     /// ```csharp

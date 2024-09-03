@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.iap_tunnel.locations.destGroups)
  * * How-to Guides
- *     * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
+ *   * [Set up IAP TCP forwarding with an IP address or hostname in a Google Cloud or non-Google Cloud environment](https://cloud.google.com/iap/docs/tcp-by-host)
  *
- * ## Example Usage
- *
- * ### Iap Destgroup
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -111,9 +109,6 @@ export class TunnelDestGroup extends pulumi.CustomResource {
     public readonly fqdns!: pulumi.Output<string[] | undefined>;
     /**
      * Unique tunnel destination group name.
-     *
-     *
-     * - - -
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
@@ -180,9 +175,6 @@ export interface TunnelDestGroupState {
     fqdns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Unique tunnel destination group name.
-     *
-     *
-     * - - -
      */
     groupName?: pulumi.Input<string>;
     /**
@@ -214,9 +206,6 @@ export interface TunnelDestGroupArgs {
     fqdns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Unique tunnel destination group name.
-     *
-     *
-     * - - -
      */
     groupName: pulumi.Input<string>;
     /**

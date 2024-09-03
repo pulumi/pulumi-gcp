@@ -134,16 +134,12 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the resource. Provided by the client when the resource is created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

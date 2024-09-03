@@ -265,13 +265,11 @@ class CustomService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         * How-to Guides
-            * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-            * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
+          * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+          * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+          * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
 
-        ## Example Usage
-
-        ### Monitoring Service Custom
+        ## 
 
         ```python
         import pulumi
@@ -333,13 +331,11 @@ class CustomService(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
         * How-to Guides
-            * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-            * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
+          * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+          * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+          * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
 
-        ## Example Usage
-
-        ### Monitoring Service Custom
+        ## 
 
         ```python
         import pulumi

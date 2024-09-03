@@ -35,9 +35,6 @@ class VpnConnectionArgs:
         The set of arguments for constructing a VpnConnection resource.
         :param pulumi.Input[str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[str] location: Google Cloud Platform location.
-               
-               
-               - - -
         :param pulumi.Input[bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -88,9 +85,6 @@ class VpnConnectionArgs:
     def location(self) -> pulumi.Input[str]:
         """
         Google Cloud Platform location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -230,9 +224,6 @@ class _VpnConnectionState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Google Cloud Platform location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of VPN connection
         :param pulumi.Input[str] nat_gateway_ip: NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
                This is empty if NAT is not used.
@@ -357,9 +348,6 @@ class _VpnConnectionState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Google Cloud Platform location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -491,7 +479,7 @@ class VpnConnection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.vpnConnections)
         * How-to Guides
-            * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+          * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
 
         ## Example Usage
 
@@ -569,9 +557,6 @@ class VpnConnection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Google Cloud Platform location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of VPN connection
         :param pulumi.Input[str] nat_gateway_ip: NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
                This is empty if NAT is not used.
@@ -595,7 +580,7 @@ class VpnConnection(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.vpnConnections)
         * How-to Guides
-            * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+          * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
 
         ## Example Usage
 
@@ -762,9 +747,6 @@ class VpnConnection(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Google Cloud Platform location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of VPN connection
         :param pulumi.Input[str] nat_gateway_ip: NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
                This is empty if NAT is not used.
@@ -855,9 +837,6 @@ class VpnConnection(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         Google Cloud Platform location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

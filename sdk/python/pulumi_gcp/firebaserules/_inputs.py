@@ -117,8 +117,6 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         File name.
-
-        - - -
         """
         fingerprint: NotRequired[pulumi.Input[str]]
         """
@@ -136,8 +134,6 @@ class RulesetSourceFileArgs:
         """
         :param pulumi.Input[str] content: Textual Content.
         :param pulumi.Input[str] name: File name.
-               
-               - - -
         :param pulumi.Input[str] fingerprint: Fingerprint (e.g. github sha) associated with the `File`.
         """
         pulumi.set(__self__, "content", content)
@@ -162,8 +158,6 @@ class RulesetSourceFileArgs:
     def name(self) -> pulumi.Input[str]:
         """
         File name.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

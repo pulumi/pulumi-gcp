@@ -28,11 +28,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
  * * How-to Guides
- *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+ *   * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  * 
- * ## Example Usage
- * 
- * ### Autoscaler Single Instance
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -133,7 +131,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Autoscaler Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

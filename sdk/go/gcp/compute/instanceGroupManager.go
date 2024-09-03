@@ -21,7 +21,7 @@ import (
 //
 // ## Example Usage
 //
-// ### With Top Level Instance Template (`Google` Provider)
+// ### with top level instance template (google provider)
 //
 // ```go
 // package main
@@ -90,7 +90,7 @@ import (
 //
 // ```
 //
-// ### With Multiple Versions (`Google-Beta` Provider)
+// ### with multiple versions (google-beta provider)
 // ```go
 // package main
 //
@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ### With Standby Policy (`Google-Beta` Provider)
+// ### with standby policy (google-beta provider)
 // ```go
 // package main
 //
@@ -245,8 +245,6 @@ type InstanceGroupManager struct {
 	NamedPorts InstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
 	Operation  pulumi.StringOutput                      `pulumi:"operation"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params InstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -291,8 +289,6 @@ type InstanceGroupManager struct {
 	WaitForInstancesStatus pulumi.StringPtrOutput `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -374,8 +370,6 @@ type instanceGroupManagerState struct {
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	Operation  *string                         `pulumi:"operation"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -420,8 +414,6 @@ type instanceGroupManagerState struct {
 	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone *string `pulumi:"zone"`
 }
 
@@ -468,8 +460,6 @@ type InstanceGroupManagerState struct {
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
 	Operation  pulumi.StringPtrInput
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -514,8 +504,6 @@ type InstanceGroupManagerState struct {
 	WaitForInstancesStatus pulumi.StringPtrInput
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -559,8 +547,6 @@ type instanceGroupManagerArgs struct {
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -601,8 +587,6 @@ type instanceGroupManagerArgs struct {
 	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone *string `pulumi:"zone"`
 }
 
@@ -643,8 +627,6 @@ type InstanceGroupManagerArgs struct {
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -685,8 +667,6 @@ type InstanceGroupManagerArgs struct {
 	WaitForInstancesStatus pulumi.StringPtrInput
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -861,8 +841,6 @@ func (o InstanceGroupManagerOutput) Operation() pulumi.StringOutput {
 }
 
 // Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-//
-// ***
 func (o InstanceGroupManagerOutput) Params() InstanceGroupManagerParamsPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerParamsPtrOutput { return v.Params }).(InstanceGroupManagerParamsPtrOutput)
 }
@@ -959,8 +937,6 @@ func (o InstanceGroupManagerOutput) WaitForInstancesStatus() pulumi.StringPtrOut
 
 // The zone that instances in this group should be created
 // in.
-//
-// ***
 func (o InstanceGroupManagerOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

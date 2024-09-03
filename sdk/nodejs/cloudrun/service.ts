@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/run/docs/)
+ *   * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * > **Warning:** We recommend using the `gcp.cloudrunv2.Service` resource which offers a better
  * developer experience and broader support of Cloud Run features.
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Cloud Run Service Sql
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -128,6 +128,7 @@ import * as utilities from "../utilities";
  *     autogenerateRevisionName: true,
  * });
  * ```
+ *
  * ### Cloud Run Service Noauth
  *
  * ```typescript
@@ -158,6 +159,7 @@ import * as utilities from "../utilities";
  *     policyData: noauth.then(noauth => noauth.policyData),
  * });
  * ```
+ *
  * ### Cloud Run Service Probes
  *
  * ```typescript
@@ -194,6 +196,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Cloud Run Service Multicontainer
  *
  * ```typescript
@@ -329,7 +332,7 @@ export class Service extends pulumi.CustomResource {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -417,7 +420,7 @@ export interface ServiceState {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -466,7 +469,7 @@ export interface ServiceArgs {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     * More info: <https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names>
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

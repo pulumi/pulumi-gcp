@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups)
  * * How-to Guides
- *     * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
- *     * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
- *     * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
+ *   * [Add instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/addInstances)
+ *   * [List instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/listInstances)
+ *   * [Remove instances](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/removeInstances)
  * 
  * ## Example Usage
  * 
@@ -152,16 +152,12 @@ public class InstanceGroupMembership extends com.pulumi.resources.CustomResource
     /**
      * Represents an Instance Group resource name that the instance belongs to.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceGroup", refs={String.class}, tree="[0]")
     private Output<String> instanceGroup;
 
     /**
      * @return Represents an Instance Group resource name that the instance belongs to.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceGroup() {

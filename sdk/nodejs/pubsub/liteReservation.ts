@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.reservations)
  * * How-to Guides
- *     * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
+ *   * [Managing Reservations](https://cloud.google.com/pubsub/lite/docs/reservations)
  *
- * ## Example Usage
- *
- * ### Pubsub Lite Reservation Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,9 +87,6 @@ export class LiteReservation extends pulumi.CustomResource {
 
     /**
      * Name of the reservation.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -148,9 +143,6 @@ export class LiteReservation extends pulumi.CustomResource {
 export interface LiteReservationState {
     /**
      * Name of the reservation.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -176,9 +168,6 @@ export interface LiteReservationState {
 export interface LiteReservationArgs {
     /**
      * Name of the reservation.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

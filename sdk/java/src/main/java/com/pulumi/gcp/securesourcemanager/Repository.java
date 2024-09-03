@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * To get more information about Repository, see:
  * 
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
  * 
- * ## Example Usage
- * 
- * ### Secure Source Manager Repository Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -70,7 +68,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secure Source Manager Repository Initial Config
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -260,16 +258,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * The ID for the Repository.
      * 
-     * ***
-     * 
      */
     @Export(name="repositoryId", refs={String.class}, tree="[0]")
     private Output<String> repositoryId;
 
     /**
      * @return The ID for the Repository.
-     * 
-     * ***
      * 
      */
     public Output<String> repositoryId() {

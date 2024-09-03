@@ -150,16 +150,12 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
     /**
      * The name of the regional disk in which the resource policies are attached to.
      * 
-     * ***
-     * 
      */
     @Export(name="disk", refs={String.class}, tree="[0]")
     private Output<String> disk;
 
     /**
      * @return The name of the regional disk in which the resource policies are attached to.
-     * 
-     * ***
      * 
      */
     public Output<String> disk() {

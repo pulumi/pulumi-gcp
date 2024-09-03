@@ -36,8 +36,6 @@ public final class ManagementServerNetworkArgs extends com.pulumi.resources.Reso
      * Default value is `PRIVATE_SERVICE_ACCESS`.
      * Possible values are: `PRIVATE_SERVICE_ACCESS`.
      * 
-     * ***
-     * 
      */
     @Import(name="peeringMode")
     private @Nullable Output<String> peeringMode;
@@ -46,8 +44,6 @@ public final class ManagementServerNetworkArgs extends com.pulumi.resources.Reso
      * @return Type of Network peeringMode
      * Default value is `PRIVATE_SERVICE_ACCESS`.
      * Possible values are: `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> peeringMode() {
@@ -105,8 +101,6 @@ public final class ManagementServerNetworkArgs extends com.pulumi.resources.Reso
          * Default value is `PRIVATE_SERVICE_ACCESS`.
          * Possible values are: `PRIVATE_SERVICE_ACCESS`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -119,8 +113,6 @@ public final class ManagementServerNetworkArgs extends com.pulumi.resources.Reso
          * @param peeringMode Type of Network peeringMode
          * Default value is `PRIVATE_SERVICE_ACCESS`.
          * Possible values are: `PRIVATE_SERVICE_ACCESS`.
-         * 
-         * ***
          * 
          * @return builder
          * 

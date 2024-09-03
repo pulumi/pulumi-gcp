@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     public sealed class JobTemplateTemplateVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit &lt;https://cloud.google.com/sql/docs/mysql/connect-run&gt; for more information on how to connect Cloud SQL and Cloud Run.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudSqlInstance")]
@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.JobTemplateTemplateVolumeNfsArgs>? Nfs { get; set; }
 
         /// <summary>
-        /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        /// Secret represents a secret that should populate this volume. More info: &lt;https://kubernetes.io/docs/concepts/storage/volumes#secret&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("secret")]

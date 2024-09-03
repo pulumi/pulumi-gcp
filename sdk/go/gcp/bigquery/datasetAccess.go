@@ -54,6 +54,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Access View
 //
 // ```go
@@ -108,6 +109,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Access Authorized Dataset
 //
 // ```go
@@ -154,6 +156,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquery Dataset Access Authorized Routine
 //
 // ```go
@@ -255,8 +258,6 @@ type DatasetAccess struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -290,7 +291,7 @@ type DatasetAccess struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup pulumi.StringPtrOutput `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail pulumi.StringPtrOutput `pulumi:"userByEmail"`
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -343,8 +344,6 @@ type datasetAccessState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId *string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -378,7 +377,7 @@ type datasetAccessState struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail *string `pulumi:"userByEmail"`
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -399,8 +398,6 @@ type DatasetAccessState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -434,7 +431,7 @@ type DatasetAccessState struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup pulumi.StringPtrInput
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail pulumi.StringPtrInput
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -456,8 +453,6 @@ type datasetAccessArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -491,7 +486,7 @@ type datasetAccessArgs struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail *string `pulumi:"userByEmail"`
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -510,8 +505,6 @@ type DatasetAccessArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -545,7 +538,7 @@ type DatasetAccessArgs struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup pulumi.StringPtrInput
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail pulumi.StringPtrInput
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -658,8 +651,6 @@ func (o DatasetAccessOutput) AuthorizedDataset() DatasetAccessAuthorizedDatasetP
 // A unique ID for this dataset, without the project name. The ID
 // must contain only letters (a-z, A-Z), numbers (0-9), or
 // underscores (_). The maximum length is 1,024 characters.
-//
-// ***
 func (o DatasetAccessOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
@@ -717,7 +708,7 @@ func (o DatasetAccessOutput) SpecialGroup() pulumi.StringPtrOutput {
 }
 
 // An email address of a user to grant access to. For example:
-// fred@example.com
+// <fred@example.com>
 func (o DatasetAccessOutput) UserByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.StringPtrOutput { return v.UserByEmail }).(pulumi.StringPtrOutput)
 }

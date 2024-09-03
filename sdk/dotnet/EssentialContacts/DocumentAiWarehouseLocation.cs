@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EssentialContacts
     /// 
     /// * [API documentation](https://cloud.google.com/document-warehouse/docs/reference/rest/v1/projects.locations)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
+    ///   * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
     /// 
     /// ## Example Usage
     /// 
@@ -85,9 +85,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -177,9 +174,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -231,9 +225,6 @@ namespace Pulumi.Gcp.EssentialContacts
 
         /// <summary>
         /// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

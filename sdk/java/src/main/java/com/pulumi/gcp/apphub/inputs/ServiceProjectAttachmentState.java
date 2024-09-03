@@ -84,16 +84,12 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
     /**
      * Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="serviceProjectAttachmentId")
     private @Nullable Output<String> serviceProjectAttachmentId;
 
     /**
      * @return Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> serviceProjectAttachmentId() {
@@ -253,8 +249,6 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
         /**
          * @param serviceProjectAttachmentId Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -265,8 +259,6 @@ public final class ServiceProjectAttachmentState extends com.pulumi.resources.Re
 
         /**
          * @param serviceProjectAttachmentId Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: &#34;projects/{project_id}&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

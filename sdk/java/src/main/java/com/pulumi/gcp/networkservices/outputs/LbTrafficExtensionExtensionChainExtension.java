@@ -54,8 +54,6 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> supportedEvents;
     /**
@@ -115,8 +113,6 @@ public final class LbTrafficExtensionExtensionChainExtension {
      * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-     * 
-     * ***
      * 
      */
     public List<String> supportedEvents() {

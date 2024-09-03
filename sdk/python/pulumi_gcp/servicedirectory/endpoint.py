@@ -29,9 +29,6 @@ class EndpointArgs:
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[str] service: The resource name of the service that this endpoint provides.
         :param pulumi.Input[str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the endpoint. This data can be consumed
@@ -59,9 +56,6 @@ class EndpointArgs:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -149,9 +143,6 @@ class _EndpointState:
         :param pulumi.Input[str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the endpoint. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
@@ -196,9 +187,6 @@ class _EndpointState:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -291,11 +279,9 @@ class Endpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
         * How-to Guides
-            * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
+          * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
-        ## Example Usage
-
-        ### Service Directory Endpoint Basic
+        ## 
 
         ```python
         import pulumi
@@ -317,7 +303,7 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
-        ### Service Directory Endpoint With Network
+        ## 
 
         ```python
         import pulumi
@@ -372,9 +358,6 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the endpoint. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
@@ -397,11 +380,9 @@ class Endpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
         * How-to Guides
-            * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
+          * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
-        ## Example Usage
-
-        ### Service Directory Endpoint Basic
+        ## 
 
         ```python
         import pulumi
@@ -423,7 +404,7 @@ class Endpoint(pulumi.CustomResource):
             address="1.2.3.4",
             port=5353)
         ```
-        ### Service Directory Endpoint With Network
+        ## 
 
         ```python
         import pulumi
@@ -541,9 +522,6 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] address: IPv4 or IPv6 address of the endpoint.
         :param pulumi.Input[str] endpoint_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the endpoint. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
@@ -582,9 +560,6 @@ class Endpoint(pulumi.CustomResource):
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "endpoint_id")
 

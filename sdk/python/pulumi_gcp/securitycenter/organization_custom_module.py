@@ -277,7 +277,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.securityHealthAnalyticsSettings.customModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -303,6 +303,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Organization Custom Module Full
 
         ```python
@@ -388,7 +389,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.securityHealthAnalyticsSettings.customModules)
         * How-to Guides
-            * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
+          * [Overview of custom modules for Security Health Analytics](https://cloud.google.com/security-command-center/docs/custom-modules-sha-overview)
 
         ## Example Usage
 
@@ -414,6 +415,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
                 "severity": "MEDIUM",
             })
         ```
+
         ### Scc Organization Custom Module Full
 
         ```python

@@ -16,12 +16,10 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances.snapshots)
     /// * How-to Guides
-    ///     * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
-    ///     * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
+    ///   * [Creating Snapshots](https://cloud.google.com/filestore/docs/create-snapshots)
+    ///   * [Official Documentation](https://cloud.google.com/filestore/docs/snapshots)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Filestore Snapshot Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -63,7 +61,7 @@ namespace Pulumi.Gcp.Filestore
     /// 
     /// });
     /// ```
-    /// ### Filestore Snapshot Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -164,9 +162,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The resource name of the filestore instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -277,9 +272,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The resource name of the filestore instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -368,9 +360,6 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The resource name of the filestore instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

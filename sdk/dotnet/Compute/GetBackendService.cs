@@ -18,15 +18,26 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_backend_service" "baz" {
-        ///   name = "foobar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// resource "google_compute_backend_service" "default" {
-        ///   name          = "backend-service"
-        ///   health_checks = [tolist(data.google_compute_backend_service.baz.health_checks)[0]]
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var baz = Gcp.Compute.GetBackendService.Invoke(new()
+        ///     {
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.BackendService("default", new()
+        ///     {
+        ///         Name = "backend-service",
+        ///         HealthChecks = baz.Apply(getBackendServiceResult =&gt; getBackendServiceResult.HealthChecks[0]),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
@@ -39,15 +50,26 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_backend_service" "baz" {
-        ///   name = "foobar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// resource "google_compute_backend_service" "default" {
-        ///   name          = "backend-service"
-        ///   health_checks = [tolist(data.google_compute_backend_service.baz.health_checks)[0]]
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var baz = Gcp.Compute.GetBackendService.Invoke(new()
+        ///     {
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.BackendService("default", new()
+        ///     {
+        ///         Name = "backend-service",
+        ///         HealthChecks = baz.Apply(getBackendServiceResult =&gt; getBackendServiceResult.HealthChecks[0]),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetBackendServiceResult> Invoke(GetBackendServiceInvokeArgs args, InvokeOptions? options = null)
@@ -59,8 +81,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the Backend Service.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -81,8 +101,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the Backend Service.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -85,7 +85,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
 
     /**
      * Configuration for VM IPs.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration&gt;
      * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
      * 
      */
@@ -94,7 +94,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
 
     /**
      * @return Configuration for VM IPs.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration&gt;
      * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
      * 
      */
@@ -223,14 +223,14 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
     }
 
     /**
-     * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
+     * The Compute Engine region (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
      * 
      */
     @Import(name="workerRegion")
     private @Nullable Output<String> workerRegion;
 
     /**
-     * @return The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
+     * @return The Compute Engine region (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
      * 
      */
     public Optional<Output<String>> workerRegion() {
@@ -238,14 +238,14 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
     }
 
     /**
-     * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+     * The Compute Engine zone (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
      * 
      */
     @Import(name="workerZone")
     private @Nullable Output<String> workerZone;
 
     /**
-     * @return The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+     * @return The Compute Engine zone (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
      * 
      */
     public Optional<Output<String>> workerZone() {
@@ -406,7 +406,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
 
         /**
          * @param ipConfiguration Configuration for VM IPs.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration&gt;
          * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
          * 
          * @return builder
@@ -419,7 +419,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
 
         /**
          * @param ipConfiguration Configuration for VM IPs.
-         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+         * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration&gt;
          * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
          * 
          * @return builder
@@ -598,7 +598,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
         }
 
         /**
-         * @param workerRegion The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
+         * @param workerRegion The Compute Engine region (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
         }
 
         /**
-         * @param workerRegion The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
+         * @param workerRegion The Compute Engine region (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1&#34;. Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane&#39;s region.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
         }
 
         /**
-         * @param workerZone The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+         * @param workerZone The Compute Engine zone (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
         }
 
         /**
-         * @param workerZone The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+         * @param workerZone The Compute Engine zone (&lt;https://cloud.google.com/compute/docs/regions-zones/regions-zones&gt;) in which worker processing should occur, e.g. &#34;us-west1-a&#34;. Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane&#39;s region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
          * 
          * @return builder
          * 

@@ -32,14 +32,14 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
      * 
      */
     @Import(name="exportSubnetRoutesWithPublicIp")
     private @Nullable Output<Boolean> exportSubnetRoutesWithPublicIp;
 
     /**
-     * @return Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+     * @return Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
      * 
      */
     public Optional<Output<Boolean>> exportSubnetRoutesWithPublicIp() {
@@ -62,14 +62,14 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
      * 
      */
     @Import(name="importSubnetRoutesWithPublicIp")
     private @Nullable Output<Boolean> importSubnetRoutesWithPublicIp;
 
     /**
-     * @return Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+     * @return Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
      * 
      */
     public Optional<Output<Boolean>> importSubnetRoutesWithPublicIp() {
@@ -225,7 +225,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param exportSubnetRoutesWithPublicIp Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+         * @param exportSubnetRoutesWithPublicIp Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param exportSubnetRoutesWithPublicIp Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+         * @param exportSubnetRoutesWithPublicIp Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always exported to peers and are not controlled by this field.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param importSubnetRoutesWithPublicIp Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+         * @param importSubnetRoutesWithPublicIp Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class NetworkPeeringState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param importSubnetRoutesWithPublicIp Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+         * @param importSubnetRoutesWithPublicIp Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (&lt;https://en.wikipedia.org/wiki/IPv4#Special_addresses&gt;) are always imported from peers and are not controlled by this field.
          * 
          * @return builder
          * 

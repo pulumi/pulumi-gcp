@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+ *   * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
- * ## Example Usage
- *
- * ### Data Fusion Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
- * ### Data Fusion Instance Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,7 +65,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Data Fusion Instance Psc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -103,7 +101,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Data Fusion Instance Cmek
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -134,7 +132,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyMember],
  * });
  * ```
- * ### Data Fusion Instance Enterprise
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -147,7 +145,7 @@ import * as utilities from "../utilities";
  *     enableRbac: true,
  * });
  * ```
- * ### Data Fusion Instance Event
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -164,7 +162,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Data Fusion Instance Zone
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -378,9 +376,6 @@ export class Instance extends pulumi.CustomResource {
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
      * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -630,9 +625,6 @@ export interface InstanceState {
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
      * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -742,9 +734,6 @@ export interface InstanceArgs {
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
      * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
     /**

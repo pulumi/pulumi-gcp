@@ -87,8 +87,6 @@ type CryptoKeyVersion struct {
 	Attestations CryptoKeyVersionAttestationArrayOutput `pulumi:"attestations"`
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey pulumi.StringOutput `pulumi:"cryptoKey"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
@@ -145,8 +143,6 @@ type cryptoKeyVersionState struct {
 	Attestations []CryptoKeyVersionAttestation `pulumi:"attestations"`
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey *string `pulumi:"cryptoKey"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
@@ -171,8 +167,6 @@ type CryptoKeyVersionState struct {
 	Attestations CryptoKeyVersionAttestationArrayInput
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey pulumi.StringPtrInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
@@ -195,8 +189,6 @@ func (CryptoKeyVersionState) ElementType() reflect.Type {
 type cryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey string `pulumi:"cryptoKey"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
@@ -210,8 +202,6 @@ type cryptoKeyVersionArgs struct {
 type CryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-	//
-	// ***
 	CryptoKey pulumi.StringInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
@@ -322,8 +312,6 @@ func (o CryptoKeyVersionOutput) Attestations() CryptoKeyVersionAttestationArrayO
 
 // The name of the cryptoKey associated with the CryptoKeyVersions.
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-//
-// ***
 func (o CryptoKeyVersionOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CryptoKey }).(pulumi.StringOutput)
 }

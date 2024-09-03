@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// The SQL Server data type. Full data types list can be found here:
-        /// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        /// &lt;https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16&gt;
         /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }

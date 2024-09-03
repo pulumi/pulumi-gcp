@@ -18,12 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTemplateTemplateContainer {
     /**
-     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     private @Nullable List<String> args;
     /**
-     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     private @Nullable List<String> commands;
@@ -34,7 +34,7 @@ public final class JobTemplateTemplateContainer {
      */
     private @Nullable List<JobTemplateTemplateContainerEnv> envs;
     /**
-     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
      * 
      */
     private String image;
@@ -51,7 +51,7 @@ public final class JobTemplateTemplateContainer {
      */
     private @Nullable List<JobTemplateTemplateContainerPort> ports;
     /**
-     * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     * @return Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
      * Structure is documented below.
      * 
      */
@@ -70,14 +70,14 @@ public final class JobTemplateTemplateContainer {
 
     private JobTemplateTemplateContainer() {}
     /**
-     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     public List<String> commands() {
@@ -92,7 +92,7 @@ public final class JobTemplateTemplateContainer {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
      * 
      */
     public String image() {
@@ -115,7 +115,7 @@ public final class JobTemplateTemplateContainer {
         return this.ports == null ? List.of() : this.ports;
     }
     /**
-     * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     * @return Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
      * Structure is documented below.
      * 
      */

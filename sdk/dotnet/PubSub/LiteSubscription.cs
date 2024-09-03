@@ -17,11 +17,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
     /// * How-to Guides
-    ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
+    ///   * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Pubsub Lite Subscription Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,9 +105,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Name of the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -194,9 +189,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Name of the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -243,9 +235,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Name of the subscription.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

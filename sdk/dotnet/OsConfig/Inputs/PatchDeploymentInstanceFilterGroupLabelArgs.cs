@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-        /// 
-        /// - - -
         /// </summary>
         public InputMap<string> Labels
         {

@@ -22,8 +22,6 @@ public final class GetInstanceFileShare {
     /**
      * @return The name of a Filestore instance.
      * 
-     * ***
-     * 
      */
     private String name;
     /**
@@ -50,8 +48,6 @@ public final class GetInstanceFileShare {
     }
     /**
      * @return The name of a Filestore instance.
-     * 
-     * ***
      * 
      */
     public String name() {

@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquery Dataset Access View
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -132,6 +133,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquery Dataset Access Authorized Dataset
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -185,6 +187,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquery Dataset Access Authorized Routine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -313,8 +316,6 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="datasetId", refs={String.class}, tree="[0]")
     private Output<String> datasetId;
@@ -323,8 +324,6 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * @return A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> datasetId() {
@@ -464,7 +463,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
     }
     /**
      * An email address of a user to grant access to. For example:
-     * fred{@literal @}example.com
+     * &lt;fred{@literal @}example.com&gt;
      * 
      */
     @Export(name="userByEmail", refs={String.class}, tree="[0]")
@@ -472,7 +471,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
 
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred{@literal @}example.com
+     * &lt;fred{@literal @}example.com&gt;
      * 
      */
     public Output<Optional<String>> userByEmail() {

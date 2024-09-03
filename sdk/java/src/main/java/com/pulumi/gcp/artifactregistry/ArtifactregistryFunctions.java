@@ -294,7 +294,7 @@ public final class ArtifactregistryFunctions {
      * 
      * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -329,7 +329,7 @@ public final class ArtifactregistryFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Multi-Regional Artifact Registry Deployment
+     * ### Multi-regional Artifact Registry deployment
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -387,7 +387,7 @@ public final class ArtifactregistryFunctions {
      * 
      * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -422,7 +422,7 @@ public final class ArtifactregistryFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Multi-Regional Artifact Registry Deployment
+     * ### Multi-regional Artifact Registry deployment
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -480,7 +480,7 @@ public final class ArtifactregistryFunctions {
      * 
      * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -515,7 +515,7 @@ public final class ArtifactregistryFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Multi-Regional Artifact Registry Deployment
+     * ### Multi-regional Artifact Registry deployment
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -573,7 +573,7 @@ public final class ArtifactregistryFunctions {
      * 
      * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -608,7 +608,7 @@ public final class ArtifactregistryFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Multi-Regional Artifact Registry Deployment
+     * ### Multi-regional Artifact Registry deployment
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -666,7 +666,7 @@ public final class ArtifactregistryFunctions {
      * 
      * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -701,7 +701,7 @@ public final class ArtifactregistryFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Multi-Regional Artifact Registry Deployment
+     * ### Multi-regional Artifact Registry deployment
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -759,7 +759,7 @@ public final class ArtifactregistryFunctions {
      * 
      * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
      * 
      * ## Example Usage
      * 
@@ -794,7 +794,7 @@ public final class ArtifactregistryFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Multi-Regional Artifact Registry Deployment
+     * ### Multi-regional Artifact Registry deployment
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

@@ -157,7 +157,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * An email address of a user to grant access to. For example:
-     * fred{@literal @}example.com
+     * &lt;fred{@literal @}example.com&gt;
      * 
      */
     @Import(name="userByEmail")
@@ -165,7 +165,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return An email address of a user to grant access to. For example:
-     * fred{@literal @}example.com
+     * &lt;fred{@literal @}example.com&gt;
      * 
      */
     public Optional<Output<String>> userByEmail() {
@@ -410,7 +410,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param userByEmail An email address of a user to grant access to. For example:
-         * fred{@literal @}example.com
+         * &lt;fred{@literal @}example.com&gt;
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param userByEmail An email address of a user to grant access to. For example:
-         * fred{@literal @}example.com
+         * &lt;fred{@literal @}example.com&gt;
          * 
          * @return builder
          * 

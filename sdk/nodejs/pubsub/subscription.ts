@@ -14,14 +14,12 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
  * * How-to Guides
- *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+ *   * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
  *
  * > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
  * by using the `gcp.projects.ServiceIdentity` resource.
  *
- * ## Example Usage
- *
- * ### Pubsub Subscription Push
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,7 +41,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Pubsub Subscription Pull
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,7 +66,7 @@ import * as utilities from "../utilities";
  *     enableMessageOrdering: false,
  * });
  * ```
- * ### Pubsub Subscription Dead Letter
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Pubsub Subscription Push Bq
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -131,7 +129,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Pubsub Subscription Push Bq Table Schema
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -178,7 +176,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Pubsub Subscription Push Bq Service Account
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -230,7 +228,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Pubsub Subscription Push Cloudstorage
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -266,7 +264,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Pubsub Subscription Push Cloudstorage Avro
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -305,7 +303,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Pubsub Subscription Push Cloudstorage Service Account
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -438,7 +436,7 @@ export class Subscription extends pulumi.CustomResource {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription's
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      */
@@ -537,9 +535,6 @@ export class Subscription extends pulumi.CustomResource {
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     *
-     *
-     * - - -
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -647,7 +642,7 @@ export interface SubscriptionState {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription's
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      */
@@ -746,9 +741,6 @@ export interface SubscriptionState {
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     *
-     *
-     * - - -
      */
     topic?: pulumi.Input<string>;
 }
@@ -795,7 +787,7 @@ export interface SubscriptionArgs {
      * is disabled.
      * The Cloud Pub/Sub service account associated with this subscription's
      * parent project (i.e.,
-     * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+     * <service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com>) must have
      * permission to Acknowledge() messages on this subscription.
      * Structure is documented below.
      */
@@ -885,9 +877,6 @@ export interface SubscriptionArgs {
      * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
      * (as in the id property of a google_pubsub_topic), or just a topic name if
      * the topic is in the same project as the subscription.
-     *
-     *
-     * - - -
      */
     topic: pulumi.Input<string>;
 }

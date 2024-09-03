@@ -68,14 +68,14 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
     }
 
     /**
-     * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     @Import(name="initialDelaySeconds")
     private @Nullable Output<Integer> initialDelaySeconds;
 
     /**
-     * @return Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     public Optional<Output<Integer>> initialDelaySeconds() {
@@ -115,14 +115,14 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
     }
 
     /**
-     * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     @Import(name="timeoutSeconds")
     private @Nullable Output<Integer> timeoutSeconds;
 
     /**
-     * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * 
      */
     public Optional<Output<Integer>> timeoutSeconds() {
@@ -227,7 +227,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param initialDelaySeconds Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param initialDelaySeconds Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param initialDelaySeconds Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param initialDelaySeconds Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param timeoutSeconds Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param timeoutSeconds Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class ServiceTemplateContainerLivenessProbeArgs extends com.pulumi.
         }
 
         /**
-         * @param timeoutSeconds Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param timeoutSeconds Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * 
          * @return builder
          * 

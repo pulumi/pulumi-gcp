@@ -17,15 +17,13 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+    ///   * [Official Documentation](https://cloud.google.com/certificate-authority-service)
     /// 
     /// &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
     /// (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
     /// It is recommended to not set this field (or set it to true) until you're ready to destroy.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Privateca Certificate Authority Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -98,7 +96,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ### Privateca Certificate Authority Subordinate
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -227,6 +225,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Privateca Certificate Authority Byo Key
     /// 
     /// ```csharp
@@ -344,7 +345,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     /// 
     /// });
     /// ```
-    /// ### Privateca Certificate Authority Custom Ski
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

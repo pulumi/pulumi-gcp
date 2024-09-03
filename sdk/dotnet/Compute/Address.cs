@@ -28,12 +28,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
     /// * How-to Guides
-    ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
-    ///     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+    ///   * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+    ///   * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Address Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -50,7 +48,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Address With Subnetwork
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -84,7 +82,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Address With Gce Endpoint
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -103,7 +101,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Instance With Ip
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -154,7 +152,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Compute Address Ipsec Interconnect
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -290,9 +288,6 @@ namespace Pulumi.Gcp.Compute
         /// which means the first character must be a lowercase letter, and all
         /// following characters must be a dash, lowercase letter, or digit,
         /// except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -492,9 +487,6 @@ namespace Pulumi.Gcp.Compute
         /// which means the first character must be a lowercase letter, and all
         /// following characters must be a dash, lowercase letter, or digit,
         /// except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -661,9 +653,6 @@ namespace Pulumi.Gcp.Compute
         /// which means the first character must be a lowercase letter, and all
         /// following characters must be a dash, lowercase letter, or digit,
         /// except the last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

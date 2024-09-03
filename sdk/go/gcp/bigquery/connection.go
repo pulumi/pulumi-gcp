@@ -19,9 +19,7 @@ import (
 // * How-to Guides
 //   - [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 //
-// ## Example Usage
-//
-// ### Bigquery Connection Cloud Resource
+// ##
 //
 // ```go
 // package main
@@ -50,7 +48,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Basic
+// ##
 //
 // ```go
 // package main
@@ -122,7 +120,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Full
+// ##
 //
 // ```go
 // package main
@@ -195,7 +193,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Aws
+// ##
 //
 // ```go
 // package main
@@ -228,7 +226,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Azure
+// ##
 //
 // ```go
 // package main
@@ -260,7 +258,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Cloudspanner
+// ##
 //
 // ```go
 // package main
@@ -292,7 +290,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Cloudspanner Databoost
+// ##
 //
 // ```go
 // package main
@@ -326,7 +324,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Spark
+// ##
 //
 // ```go
 // package main
@@ -381,7 +379,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Kms
+// ##
 //
 // ```go
 // package main

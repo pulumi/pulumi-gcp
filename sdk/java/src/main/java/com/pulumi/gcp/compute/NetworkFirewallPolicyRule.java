@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Global
+ * ### global
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code

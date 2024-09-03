@@ -3015,7 +3015,7 @@ func (o ConfigSmsRegionConfigPtrOutput) AllowlistOnly() ConfigSmsRegionConfigAll
 }
 
 type ConfigSmsRegionConfigAllowByDefault struct {
-	// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	// Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 	DisallowedRegions []string `pulumi:"disallowedRegions"`
 }
 
@@ -3031,7 +3031,7 @@ type ConfigSmsRegionConfigAllowByDefaultInput interface {
 }
 
 type ConfigSmsRegionConfigAllowByDefaultArgs struct {
-	// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	// Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 	DisallowedRegions pulumi.StringArrayInput `pulumi:"disallowedRegions"`
 }
 
@@ -3112,7 +3112,7 @@ func (o ConfigSmsRegionConfigAllowByDefaultOutput) ToConfigSmsRegionConfigAllowB
 	}).(ConfigSmsRegionConfigAllowByDefaultPtrOutput)
 }
 
-// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+// Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 func (o ConfigSmsRegionConfigAllowByDefaultOutput) DisallowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConfigSmsRegionConfigAllowByDefault) []string { return v.DisallowedRegions }).(pulumi.StringArrayOutput)
 }
@@ -3141,7 +3141,7 @@ func (o ConfigSmsRegionConfigAllowByDefaultPtrOutput) Elem() ConfigSmsRegionConf
 	}).(ConfigSmsRegionConfigAllowByDefaultOutput)
 }
 
-// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+// Two letter unicode region codes to disallow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 func (o ConfigSmsRegionConfigAllowByDefaultPtrOutput) DisallowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConfigSmsRegionConfigAllowByDefault) []string {
 		if v == nil {
@@ -3152,7 +3152,7 @@ func (o ConfigSmsRegionConfigAllowByDefaultPtrOutput) DisallowedRegions() pulumi
 }
 
 type ConfigSmsRegionConfigAllowlistOnly struct {
-	// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	// Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 	AllowedRegions []string `pulumi:"allowedRegions"`
 }
 
@@ -3168,7 +3168,7 @@ type ConfigSmsRegionConfigAllowlistOnlyInput interface {
 }
 
 type ConfigSmsRegionConfigAllowlistOnlyArgs struct {
-	// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	// Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 	AllowedRegions pulumi.StringArrayInput `pulumi:"allowedRegions"`
 }
 
@@ -3249,7 +3249,7 @@ func (o ConfigSmsRegionConfigAllowlistOnlyOutput) ToConfigSmsRegionConfigAllowli
 	}).(ConfigSmsRegionConfigAllowlistOnlyPtrOutput)
 }
 
-// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+// Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 func (o ConfigSmsRegionConfigAllowlistOnlyOutput) AllowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConfigSmsRegionConfigAllowlistOnly) []string { return v.AllowedRegions }).(pulumi.StringArrayOutput)
 }
@@ -3278,7 +3278,7 @@ func (o ConfigSmsRegionConfigAllowlistOnlyPtrOutput) Elem() ConfigSmsRegionConfi
 	}).(ConfigSmsRegionConfigAllowlistOnlyOutput)
 }
 
-// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+// Two letter unicode region codes to allow as defined by <https://cldr.unicode.org/> The full list of these region codes is here: <https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json>
 func (o ConfigSmsRegionConfigAllowlistOnlyPtrOutput) AllowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConfigSmsRegionConfigAllowlistOnly) []string {
 		if v == nil {

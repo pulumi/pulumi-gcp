@@ -22,9 +22,7 @@ import (
 //   - [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
 //   - [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
 //
-// ## Example Usage
-//
-// ### Filestore Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -63,7 +61,7 @@ import (
 //	}
 //
 // ```
-// ### Filestore Instance Full
+// ##
 //
 // ```go
 // package main
@@ -121,7 +119,7 @@ import (
 //	}
 //
 // ```
-// ### Filestore Instance Protocol
+// ##
 //
 // ```go
 // package main
@@ -161,6 +159,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Filestore Instance Enterprise
 //
 // ```go

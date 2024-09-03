@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/biglake/rest/v1/projects.locations.catalogs)
  * * How-to Guides
- *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
+ *   * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_catalogs)
  *
- * ## Example Usage
- *
- * ### Bigquery Biglake Catalog
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -105,9 +103,6 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -190,9 +185,6 @@ export interface CatalogState {
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -219,9 +211,6 @@ export interface CatalogArgs {
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

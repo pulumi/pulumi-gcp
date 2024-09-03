@@ -15,8 +15,6 @@ public final class BareMetalNodePoolNodePoolConfigTaint {
      * @return Specifies the nodes operating system (default: LINUX).
      * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
      * 
-     * ***
-     * 
      */
     private @Nullable String effect;
     /**
@@ -34,8 +32,6 @@ public final class BareMetalNodePoolNodePoolConfigTaint {
     /**
      * @return Specifies the nodes operating system (default: LINUX).
      * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-     * 
-     * ***
      * 
      */
     public Optional<String> effect() {

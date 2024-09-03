@@ -332,8 +332,6 @@ if not MYPY:
         match the structure and any object identifiers encoded in
         publicKeyPem (i.e. this algorithm must match that of the
         public key).
-
-        - - -
         """
 elif False:
     AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict: TypeAlias = Mapping[str, Any]
@@ -351,8 +349,6 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
                match the structure and any object identifiers encoded in
                publicKeyPem (i.e. this algorithm must match that of the
                public key).
-               
-               - - -
         """
         if public_key_pem is not None:
             pulumi.set(__self__, "public_key_pem", public_key_pem)
@@ -381,8 +377,6 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs:
         match the structure and any object identifiers encoded in
         publicKeyPem (i.e. this algorithm must match that of the
         public key).
-
-        - - -
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -647,8 +641,6 @@ if not MYPY:
         """
         The action when a pod creation is denied by the admission rule.
         Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-
-        - - -
         """
         evaluation_mode: pulumi.Input[str]
         """
@@ -678,8 +670,6 @@ class PolicyDefaultAdmissionRuleArgs:
         """
         :param pulumi.Input[str] enforcement_mode: The action when a pod creation is denied by the admission rule.
                Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-               
-               - - -
         :param pulumi.Input[str] evaluation_mode: How this admission rule will be evaluated.
                Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] require_attestations_bies: The resource names of the attestors that must attest to a
@@ -702,8 +692,6 @@ class PolicyDefaultAdmissionRuleArgs:
         """
         The action when a pod creation is denied by the admission rule.
         Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
-
-        - - -
         """
         return pulumi.get(self, "enforcement_mode")
 

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+    ///   * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### App Engine Domain Mapping Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -71,9 +69,6 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
@@ -163,9 +158,6 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
@@ -203,9 +195,6 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

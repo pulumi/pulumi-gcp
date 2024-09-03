@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.backups/create)
  * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ *   * [AlloyDB](https://cloud.google.com/alloydb/docs/)
  * 
  * ## Example Usage
  * 
@@ -115,6 +115,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Alloydb Backup Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -231,7 +232,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:alloydb/backup:Backup")
 public class Backup extends com.pulumi.resources.CustomResource {
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -242,7 +243,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
-     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -407,14 +408,14 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.encryptionInfos;
     }
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * @return For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     public Output<String> etag() {
@@ -477,16 +478,12 @@ public class Backup extends com.pulumi.resources.CustomResource {
     /**
      * The location where the alloydb backup should reside.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location where the alloydb backup should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -539,7 +536,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;, if true, indicates that the service is actively updating the resource.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
@@ -547,7 +544,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * @return Output only. Reconciling (&lt;https://google.aip.dev/128#reconciliation)&gt;, if true, indicates that the service is actively updating the resource.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */

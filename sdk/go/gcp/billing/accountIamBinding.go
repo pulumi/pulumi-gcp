@@ -257,9 +257,9 @@ type AccountIamBinding struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
@@ -318,9 +318,9 @@ type accountIamBindingState struct {
 	Etag *string `pulumi:"etag"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
@@ -341,9 +341,9 @@ type AccountIamBindingState struct {
 	Etag pulumi.StringPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
@@ -366,9 +366,9 @@ type accountIamBindingArgs struct {
 	Condition        *AccountIamBindingCondition `pulumi:"condition"`
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
@@ -388,9 +388,9 @@ type AccountIamBindingArgs struct {
 	Condition        AccountIamBindingConditionPtrInput
 	// Identities that will be granted the privilege in `role`.
 	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
@@ -506,9 +506,9 @@ func (o AccountIamBindingOutput) Etag() pulumi.StringOutput {
 
 // Identities that will be granted the privilege in `role`.
 // Each entry can have one of the following values:
-// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+// * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
 // * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o AccountIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)

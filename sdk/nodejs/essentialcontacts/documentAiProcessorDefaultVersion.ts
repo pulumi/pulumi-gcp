@@ -7,9 +7,7 @@ import * as utilities from "../utilities";
 /**
  * The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
  *
- * ## Example Usage
- *
- * ### Documentai Default Version
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,9 +66,6 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
 
     /**
      * The processor to set the version on.
-     *
-     *
-     * - - -
      */
     public readonly processor!: pulumi.Output<string>;
     /**
@@ -116,9 +111,6 @@ export class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
 export interface DocumentAiProcessorDefaultVersionState {
     /**
      * The processor to set the version on.
-     *
-     *
-     * - - -
      */
     processor?: pulumi.Input<string>;
     /**
@@ -134,9 +126,6 @@ export interface DocumentAiProcessorDefaultVersionState {
 export interface DocumentAiProcessorDefaultVersionArgs {
     /**
      * The processor to set the version on.
-     *
-     *
-     * - - -
      */
     processor: pulumi.Input<string>;
     /**

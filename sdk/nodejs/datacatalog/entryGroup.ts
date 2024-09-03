@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage
- *
- * ### Data Catalog Entry Group Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {entryGroupId: "my_group"});
  * ```
- * ### Data Catalog Entry Group Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,9 +85,6 @@ export class EntryGroup extends pulumi.CustomResource {
     /**
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     *
-     *
-     * - - -
      */
     public readonly entryGroupId!: pulumi.Output<string>;
     /**
@@ -157,9 +152,6 @@ export interface EntryGroupState {
     /**
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     *
-     *
-     * - - -
      */
     entryGroupId?: pulumi.Input<string>;
     /**
@@ -192,9 +184,6 @@ export interface EntryGroupArgs {
     /**
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     *
-     *
-     * - - -
      */
     entryGroupId: pulumi.Input<string>;
     /**

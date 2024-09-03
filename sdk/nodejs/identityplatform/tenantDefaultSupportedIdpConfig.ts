@@ -11,9 +11,7 @@ import * as utilities from "../utilities";
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
  *
- * ## Example Usage
- *
- * ### Identity Platform Tenant Default Supported Idp Config Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,9 +85,6 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
     public readonly clientId!: pulumi.Output<string>;
     /**
      * OAuth client secret
-     *
-     *
-     * - - -
      */
     public readonly clientSecret!: pulumi.Output<string>;
     /**
@@ -181,9 +176,6 @@ export interface TenantDefaultSupportedIdpConfigState {
     clientId?: pulumi.Input<string>;
     /**
      * OAuth client secret
-     *
-     *
-     * - - -
      */
     clientSecret?: pulumi.Input<string>;
     /**
@@ -229,9 +221,6 @@ export interface TenantDefaultSupportedIdpConfigArgs {
     clientId: pulumi.Input<string>;
     /**
      * OAuth client secret
-     *
-     *
-     * - - -
      */
     clientSecret: pulumi.Input<string>;
     /**

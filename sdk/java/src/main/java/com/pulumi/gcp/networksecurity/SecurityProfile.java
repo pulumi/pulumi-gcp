@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.securityProfiles)
  * * How-to Guides
- *     * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
+ *   * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
  * 
  * ## Example Usage
  * 
@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Network Security Security Profile Overrides
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -234,16 +235,12 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
     /**
      * The name of the security profile resource.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the security profile resource.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

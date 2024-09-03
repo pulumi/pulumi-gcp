@@ -64,8 +64,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The value to set for the given metadata key.
-        /// 
-        /// - - -
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -131,8 +129,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The value to set for the given metadata key.
-        /// 
-        /// - - -
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -160,8 +156,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The value to set for the given metadata key.
-        /// 
-        /// - - -
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

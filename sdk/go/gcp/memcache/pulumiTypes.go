@@ -948,8 +948,6 @@ type InstanceNodeConfig struct {
 	// Number of CPUs per node.
 	CpuCount int `pulumi:"cpuCount"`
 	// Memory size in Mebibytes for each memcache node.
-	//
-	// ***
 	MemorySizeMb int `pulumi:"memorySizeMb"`
 }
 
@@ -968,8 +966,6 @@ type InstanceNodeConfigArgs struct {
 	// Number of CPUs per node.
 	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
 	// Memory size in Mebibytes for each memcache node.
-	//
-	// ***
 	MemorySizeMb pulumi.IntInput `pulumi:"memorySizeMb"`
 }
 
@@ -1056,8 +1052,6 @@ func (o InstanceNodeConfigOutput) CpuCount() pulumi.IntOutput {
 }
 
 // Memory size in Mebibytes for each memcache node.
-//
-// ***
 func (o InstanceNodeConfigOutput) MemorySizeMb() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceNodeConfig) int { return v.MemorySizeMb }).(pulumi.IntOutput)
 }
@@ -1097,8 +1091,6 @@ func (o InstanceNodeConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
 }
 
 // Memory size in Mebibytes for each memcache node.
-//
-// ***
 func (o InstanceNodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceNodeConfig) *int {
 		if v == nil {

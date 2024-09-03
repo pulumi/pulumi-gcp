@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations)
  * * How-to Guides
- *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
+ *   * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  * 
  * ## Example Usage
  * 
@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Organization Cloud Basic Disable Vpc Peering
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -133,6 +134,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Organization Cloud Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -233,6 +235,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Apigee Organization Cloud Full Disable Vpc Peering
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -520,16 +523,12 @@ public class Organization extends com.pulumi.resources.CustomResource {
     /**
      * The project ID associated with the Apigee organization.
      * 
-     * ***
-     * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
      * @return The project ID associated with the Apigee organization.
-     * 
-     * ***
      * 
      */
     public Output<String> projectId() {

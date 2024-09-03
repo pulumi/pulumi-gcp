@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
+// A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (<https://www.hl7.org/hl7V2/STU3/>)
 // standard for Healthcare information exchange
 //
 // To get more information about Hl7V2Store, see:
@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 //
-// ## Example Usage
-//
-// ### Healthcare Hl7 V2 Store Basic
+// ##
 //
 // ```go
 // package main
@@ -72,7 +70,7 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Hl7 V2 Store Parser Config
+// ##
 //
 // ```go
 // package main
@@ -190,7 +188,7 @@ import (
 //	}
 //
 // ```
-// ### Healthcare Hl7 V2 Store Unschematized
+// ##
 //
 // ```go
 // package main
@@ -251,16 +249,14 @@ type Hl7Store struct {
 
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -336,16 +332,14 @@ func GetHl7Store(ctx *pulumi.Context,
 type hl7StoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -384,16 +378,14 @@ type hl7StoreState struct {
 type Hl7StoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -436,14 +428,12 @@ func (Hl7StoreState) ElementType() reflect.Type {
 type hl7StoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -478,14 +468,12 @@ type hl7StoreArgs struct {
 type Hl7StoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -605,8 +593,6 @@ func (o Hl7StoreOutput) ToHl7StoreOutputWithContext(ctx context.Context) Hl7Stor
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-//
-// ***
 func (o Hl7StoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -618,9 +604,9 @@ func (o Hl7StoreOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 // User-supplied key-value pairs used to organize HL7v2 stores.
 // Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
 // Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
 // No more than 64 labels can be associated with a given store.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

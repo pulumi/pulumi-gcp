@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.lakes.tasks)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dataplex/docs)
+    ///   * [Official Documentation](https://cloud.google.com/dataplex/docs)
     /// 
     /// ## Example Usage
     /// 
@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Task Spark
     /// 
     /// ```csharp
@@ -169,6 +170,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataplex Task Notebook
     /// 
     /// ```csharp

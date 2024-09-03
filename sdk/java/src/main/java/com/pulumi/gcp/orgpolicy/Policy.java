@@ -23,8 +23,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
- *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *   * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
  * 
  * ## Example Usage
  * 
@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Org Policy Policy Folder
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Org Policy Policy Organization
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -165,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Org Policy Policy Project
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -227,6 +230,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Org Policy Policy Dry Run Spec
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -352,16 +356,12 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * The parent of the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
      * @return The parent of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

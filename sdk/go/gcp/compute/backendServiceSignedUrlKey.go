@@ -124,8 +124,6 @@ type BackendServiceSignedUrlKey struct {
 	pulumi.CustomResourceState
 
 	// The backend service this signed URL key belongs.
-	//
-	// ***
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -182,8 +180,6 @@ func GetBackendServiceSignedUrlKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BackendServiceSignedUrlKey resources.
 type backendServiceSignedUrlKeyState struct {
 	// The backend service this signed URL key belongs.
-	//
-	// ***
 	BackendService *string `pulumi:"backendService"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -198,8 +194,6 @@ type backendServiceSignedUrlKeyState struct {
 
 type BackendServiceSignedUrlKeyState struct {
 	// The backend service this signed URL key belongs.
-	//
-	// ***
 	BackendService pulumi.StringPtrInput
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -218,8 +212,6 @@ func (BackendServiceSignedUrlKeyState) ElementType() reflect.Type {
 
 type backendServiceSignedUrlKeyArgs struct {
 	// The backend service this signed URL key belongs.
-	//
-	// ***
 	BackendService string `pulumi:"backendService"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -235,8 +227,6 @@ type backendServiceSignedUrlKeyArgs struct {
 // The set of arguments for constructing a BackendServiceSignedUrlKey resource.
 type BackendServiceSignedUrlKeyArgs struct {
 	// The backend service this signed URL key belongs.
-	//
-	// ***
 	BackendService pulumi.StringInput
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
@@ -337,8 +327,6 @@ func (o BackendServiceSignedUrlKeyOutput) ToBackendServiceSignedUrlKeyOutputWith
 }
 
 // The backend service this signed URL key belongs.
-//
-// ***
 func (o BackendServiceSignedUrlKeyOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendServiceSignedUrlKey) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
 }

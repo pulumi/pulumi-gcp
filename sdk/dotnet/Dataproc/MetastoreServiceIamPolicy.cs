@@ -109,8 +109,6 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// ## This resource supports User Project Overrides.
     /// 
-    /// - 
-    /// 
     /// # IAM policy for Dataproc metastore Service
     /// Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
     /// 
@@ -245,7 +243,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:dataproc/metastoreServiceIamPolicy:MetastoreServiceIamPolicy")]
     public partial class MetastoreServiceIamPolicy : global::Pulumi.CustomResource

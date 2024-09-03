@@ -252,7 +252,7 @@ class EntitlementApprovalWorkflowManualApprovalsStepApprovers(dict):
     def __init__(__self__, *,
                  principals: Sequence[str]):
         """
-        :param Sequence[str] principals: Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        :param Sequence[str] principals: Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
         """
         pulumi.set(__self__, "principals", principals)
 
@@ -260,7 +260,7 @@ class EntitlementApprovalWorkflowManualApprovalsStepApprovers(dict):
     @pulumi.getter
     def principals(self) -> Sequence[str]:
         """
-        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: <https://cloud.google.com/iam/docs/principal-identifiers#v1>
         """
         return pulumi.get(self, "principals")
 
@@ -305,7 +305,7 @@ class EntitlementPrivilegedAccess(dict):
     def __init__(__self__, *,
                  gcp_iam_access: 'outputs.EntitlementPrivilegedAccessGcpIamAccess'):
         """
-        :param 'EntitlementPrivilegedAccessGcpIamAccessArgs' gcp_iam_access: GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        :param 'EntitlementPrivilegedAccessGcpIamAccessArgs' gcp_iam_access: GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
                Structure is documented below.
         """
         pulumi.set(__self__, "gcp_iam_access", gcp_iam_access)
@@ -314,7 +314,7 @@ class EntitlementPrivilegedAccess(dict):
     @pulumi.getter(name="gcpIamAccess")
     def gcp_iam_access(self) -> 'outputs.EntitlementPrivilegedAccessGcpIamAccess':
         """
-        GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        GcpIamAccess represents IAM based access control on a GCP resource. Refer to <https://cloud.google.com/iam/docs> to understand more about IAM.
         Structure is documented below.
         """
         return pulumi.get(self, "gcp_iam_access")
@@ -404,9 +404,9 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBinding(dict):
                  role: str,
                  condition_expression: Optional[str] = None):
         """
-        :param str role: IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        :param str role: IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
         :param str condition_expression: The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-               https://cloud.google.com/iam/docs/conditions-overview#attributes.
+               <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
         """
         pulumi.set(__self__, "role", role)
         if condition_expression is not None:
@@ -416,7 +416,7 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBinding(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        IAM role to be granted. <https://cloud.google.com/iam/docs/roles-overview>.
         """
         return pulumi.get(self, "role")
 
@@ -425,7 +425,7 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBinding(dict):
     def condition_expression(self) -> Optional[str]:
         """
         The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-        https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        <https://cloud.google.com/iam/docs/conditions-overview#attributes>.
         """
         return pulumi.get(self, "condition_expression")
 
@@ -455,8 +455,6 @@ class EntitlementRequesterJustificationConfig(dict):
         """
         :param 'EntitlementRequesterJustificationConfigNotMandatoryArgs' not_mandatory: The justification is not mandatory but can be provided in any of the supported formats.
         :param 'EntitlementRequesterJustificationConfigUnstructuredArgs' unstructured: The requester has to provide a justification in the form of free flowing text.
-               
-               - - -
         """
         if not_mandatory is not None:
             pulumi.set(__self__, "not_mandatory", not_mandatory)
@@ -476,8 +474,6 @@ class EntitlementRequesterJustificationConfig(dict):
     def unstructured(self) -> Optional['outputs.EntitlementRequesterJustificationConfigUnstructured']:
         """
         The requester has to provide a justification in the form of free flowing text.
-
-        - - -
         """
         return pulumi.get(self, "unstructured")
 

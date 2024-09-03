@@ -57,8 +57,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
@@ -66,8 +64,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {
@@ -152,8 +148,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * @param serviceId The Resource ID must be 1-63 characters long, including digits,
          * lowercase letters or the hyphen character.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -165,8 +159,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceId The Resource ID must be 1-63 characters long, including digits,
          * lowercase letters or the hyphen character.
-         * 
-         * ***
          * 
          * @return builder
          * 

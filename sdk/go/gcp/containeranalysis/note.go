@@ -22,9 +22,7 @@ import (
 //   - [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 //   - [Official Documentation](https://cloud.google.com/container-analysis/)
 //
-// ## Example Usage
-//
-// ### Container Analysis Note Basic
+// ##
 //
 // ```go
 // package main
@@ -54,7 +52,7 @@ import (
 //	}
 //
 // ```
-// ### Container Analysis Note Attestation Full
+// ##
 //
 // ```go
 // package main

@@ -17,7 +17,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs 
 
     /**
      * (Output)
-     * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
+     * The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
      * 
      */
     @Import(name="locale")
@@ -25,7 +25,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs 
 
     /**
      * @return (Output)
-     * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
+     * The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
      * 
      */
     public Optional<Output<String>> locale() {
@@ -76,7 +76,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs 
 
         /**
          * @param locale (Output)
-         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
+         * The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs 
 
         /**
          * @param locale (Output)
-         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
+         * The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: &#34;en-US&#34;, &#34;fr-CH&#34;, &#34;es-MX&#34;
          * 
          * @return builder
          * 

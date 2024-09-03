@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
  * 
  * ## Example Usage
  * 
@@ -288,16 +288,12 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
     /**
      * The region instance group manager this instance config is part of.
      * 
-     * ***
-     * 
      */
     @Export(name="regionInstanceGroupManager", refs={String.class}, tree="[0]")
     private Output<String> regionInstanceGroupManager;
 
     /**
      * @return The region instance group manager this instance config is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> regionInstanceGroupManager() {

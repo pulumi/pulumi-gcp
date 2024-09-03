@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+    ///   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Data Catalog Taxonomies Policy Tag Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -49,7 +47,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// });
     /// ```
-    /// ### Data Catalog Taxonomies Policy Tag Child Policies
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -156,9 +154,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Taxonomy the policy tag is associated with
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("taxonomy")]
         public Output<string> Taxonomy { get; private set; } = null!;
@@ -236,9 +231,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Taxonomy the policy tag is associated with
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("taxonomy", required: true)]
         public Input<string> Taxonomy { get; set; } = null!;
@@ -297,9 +289,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Taxonomy the policy tag is associated with
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("taxonomy")]
         public Input<string>? Taxonomy { get; set; }

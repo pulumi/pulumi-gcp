@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
  * 
- * ## Example Usage
- * 
- * ### Global Network Endpoint Group
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -67,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Global Network Endpoint Group Ip Address
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -193,8 +191,6 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
-     * ***
-     * 
      */
     @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
     private Output<String> networkEndpointType;
@@ -202,8 +198,6 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * @return Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     * 
-     * ***
      * 
      */
     public Output<String> networkEndpointType() {

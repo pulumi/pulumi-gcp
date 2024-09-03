@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ *   * [Google Cloud Router](https://cloud.google.com/router/docs/)
  * 
  * ## Example Usage
  * 
@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Router Nat Manual Ips
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -179,6 +180,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Router Nat Rules
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -277,6 +279,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Router Nat Private
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -655,16 +658,12 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Cloud Router in which this NAT will be configured.
      * 
-     * ***
-     * 
      */
     @Export(name="router", refs={String.class}, tree="[0]")
     private Output<String> router;
 
     /**
      * @return The name of the Cloud Router in which this NAT will be configured.
-     * 
-     * ***
      * 
      */
     public Output<String> router() {

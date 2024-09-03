@@ -1157,7 +1157,7 @@ type ConnectionProfileCloudsqlSettings struct {
 	// The database flags passed to the Cloud SQL instance at startup.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// The database engine type and version.
-	// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+	// Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// The edition of the given Cloud SQL instance.
 	// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -1176,7 +1176,7 @@ type ConnectionProfileCloudsqlSettings struct {
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit *string `pulumi:"storageAutoResizeLimit"`
 	// The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-	// For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+	// For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
 	Tier *string `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -1214,7 +1214,7 @@ type ConnectionProfileCloudsqlSettingsArgs struct {
 	// The database flags passed to the Cloud SQL instance at startup.
 	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
 	// The database engine type and version.
-	// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+	// Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
 	DatabaseVersion pulumi.StringPtrInput `pulumi:"databaseVersion"`
 	// The edition of the given Cloud SQL instance.
 	// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -1233,7 +1233,7 @@ type ConnectionProfileCloudsqlSettingsArgs struct {
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	StorageAutoResizeLimit pulumi.StringPtrInput `pulumi:"storageAutoResizeLimit"`
 	// The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-	// For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+	// For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
@@ -1357,7 +1357,7 @@ func (o ConnectionProfileCloudsqlSettingsOutput) DatabaseFlags() pulumi.StringMa
 }
 
 // The database engine type and version.
-// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+// Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
 func (o ConnectionProfileCloudsqlSettingsOutput) DatabaseVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileCloudsqlSettings) *string { return v.DatabaseVersion }).(pulumi.StringPtrOutput)
 }
@@ -1399,7 +1399,7 @@ func (o ConnectionProfileCloudsqlSettingsOutput) StorageAutoResizeLimit() pulumi
 }
 
 // The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-// For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+// For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
 func (o ConnectionProfileCloudsqlSettingsOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileCloudsqlSettings) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -1512,7 +1512,7 @@ func (o ConnectionProfileCloudsqlSettingsPtrOutput) DatabaseFlags() pulumi.Strin
 }
 
 // The database engine type and version.
-// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+// Currently supported values located at <https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion>
 func (o ConnectionProfileCloudsqlSettingsPtrOutput) DatabaseVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileCloudsqlSettings) *string {
 		if v == nil {
@@ -1587,7 +1587,7 @@ func (o ConnectionProfileCloudsqlSettingsPtrOutput) StorageAutoResizeLimit() pul
 }
 
 // The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
-// For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+// For more information, see <https://cloud.google.com/sql/docs/mysql/instance-settings>
 func (o ConnectionProfileCloudsqlSettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileCloudsqlSettings) *string {
 		if v == nil {
@@ -4218,8 +4218,6 @@ func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConne
 
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet string `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -4239,8 +4237,6 @@ type PrivateConnectionVpcPeeringConfigInput interface {
 
 type PrivateConnectionVpcPeeringConfigArgs struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -4325,8 +4321,6 @@ func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringCo
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -4362,8 +4356,6 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcP
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
 		if v == nil {

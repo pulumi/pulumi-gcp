@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionJobTriggerInspectJobInspectConfig {
     /**
-     * @return Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+     * @return Custom info types to be used. See &lt;https://cloud.google.com/dlp/docs/creating-custom-infotypes&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
     private @Nullable Boolean includeQuote;
     /**
      * @return Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-     * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+     * or listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt;.
      * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
      * By default this may be all types, but may change over time as detectors are updated.
      * Structure is documented below.
@@ -49,7 +49,7 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
      */
     private @Nullable PreventionJobTriggerInspectJobInspectConfigLimits limits;
     /**
-     * @return Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+     * @return Only returns findings equal or above this threshold. See &lt;https://cloud.google.com/dlp/docs/likelihood&gt; for more info
      * Default value is `POSSIBLE`.
      * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
@@ -65,7 +65,7 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
 
     private PreventionJobTriggerInspectJobInspectConfig() {}
     /**
-     * @return Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+     * @return Custom info types to be used. See &lt;https://cloud.google.com/dlp/docs/creating-custom-infotypes&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -88,7 +88,7 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
     }
     /**
      * @return Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-     * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+     * or listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt;.
      * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
      * By default this may be all types, but may change over time as detectors are updated.
      * Structure is documented below.
@@ -106,7 +106,7 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
         return Optional.ofNullable(this.limits);
     }
     /**
-     * @return Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+     * @return Only returns findings equal or above this threshold. See &lt;https://cloud.google.com/dlp/docs/likelihood&gt; for more info
      * Default value is `POSSIBLE`.
      * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 

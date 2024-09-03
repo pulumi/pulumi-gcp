@@ -18,9 +18,10 @@ import javax.annotation.Nullable;
  * 
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+ * 
  * ## Example Usage
  * 
- * ### Basic_azure_client
+ * ### basic_azure_client
  * A basic example of a containerazure azure client
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -173,16 +174,12 @@ public class AzureClient extends com.pulumi.resources.CustomResource {
     /**
      * The Azure Active Directory Tenant ID.
      * 
-     * ***
-     * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
      * @return The Azure Active Directory Tenant ID.
-     * 
-     * ***
      * 
      */
     public Output<String> tenantId() {

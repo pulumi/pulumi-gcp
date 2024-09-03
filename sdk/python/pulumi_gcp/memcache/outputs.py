@@ -500,8 +500,6 @@ class InstanceNodeConfig(dict):
         """
         :param int cpu_count: Number of CPUs per node.
         :param int memory_size_mb: Memory size in Mebibytes for each memcache node.
-               
-               - - -
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
         pulumi.set(__self__, "memory_size_mb", memory_size_mb)
@@ -519,8 +517,6 @@ class InstanceNodeConfig(dict):
     def memory_size_mb(self) -> int:
         """
         Memory size in Mebibytes for each memcache node.
-
-        - - -
         """
         return pulumi.get(self, "memory_size_mb")
 

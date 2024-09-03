@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
  * * How-to Guides
- *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ *   * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  *
- * ## Example Usage
- *
- * ### Node Template Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +29,7 @@ import * as utilities from "../utilities";
  *     nodeType: "n1-node-96-624",
  * });
  * ```
- * ### Node Template Server Binding
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

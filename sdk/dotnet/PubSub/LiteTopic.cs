@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.topics)
     /// * How-to Guides
-    ///     * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
+    ///   * [Managing Topics](https://cloud.google.com/pubsub/lite/docs/topics)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Pubsub Lite Topic Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,9 +98,6 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Name of the topic.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -195,9 +190,6 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Name of the topic.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -252,9 +244,6 @@ namespace Pulumi.Gcp.PubSub
     {
         /// <summary>
         /// Name of the topic.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

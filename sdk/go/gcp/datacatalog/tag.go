@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
-// ## Example Usage
-//
-// ### Data Catalog Entry Tag Basic
+// ##
 //
 // ```go
 // package main
@@ -116,7 +114,7 @@ import (
 //	}
 //
 // ```
-// ### Data Catalog Entry Group Tag
+// ##
 //
 // ```go
 // package main
@@ -217,7 +215,7 @@ import (
 //	}
 //
 // ```
-// ### Data Catalog Entry Tag Full
+// ##
 //
 // ```go
 // package main

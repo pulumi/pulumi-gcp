@@ -25,10 +25,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
  * 
  * &gt; **Warning:** This resource creates a Firestore Single Field override on a project that
- *  already has a Firestore database. If you haven&#39;t already created it, you may
+ * already has a Firestore database. If you haven&#39;t already created it, you may
  * create a `gcp.firestore.Database` resource with `location_id` set to your
  * chosen location.
  * 
@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Field Timestamp
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -145,6 +146,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Field Match Override
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -253,16 +255,12 @@ public class Field extends com.pulumi.resources.CustomResource {
     /**
      * The id of the field to configure.
      * 
-     * ***
-     * 
      */
     @Export(name="field", refs={String.class}, tree="[0]")
     private Output<String> field;
 
     /**
      * @return The id of the field to configure.
-     * 
-     * ***
      * 
      */
     public Output<String> field() {

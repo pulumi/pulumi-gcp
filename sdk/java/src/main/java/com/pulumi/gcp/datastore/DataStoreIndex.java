@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
+ *   * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
  * 
  * &gt; **Warning:** `datastore_index` is deprecated and will be removed in a future major release.
  * Use `firestore_index` instead; this resource is deprecated because it only supports the (default) database.
@@ -160,16 +160,12 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
     /**
      * The entity kind which the index applies to.
      * 
-     * ***
-     * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
      * @return The entity kind which the index applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> kind() {

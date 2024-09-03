@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations.processors)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
  *
- * ## Example Usage
- *
- * ### Documentai Processor
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,14 +83,11 @@ export class DocumentAiProcessor extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
      */
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -160,14 +155,11 @@ export interface DocumentAiProcessorState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -194,14 +186,11 @@ export interface DocumentAiProcessorArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+     * The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
      */
     kmsKeyName?: pulumi.Input<string>;
     /**
      * The location of the resource.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -17,12 +17,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
- *     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+ *   * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
  *
- * ## Example Usage
- *
- * ### Netapp Volume Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -175,9 +173,6 @@ export class Volume extends pulumi.CustomResource {
     public /*out*/ readonly mountOptions!: pulumi.Output<outputs.netapp.VolumeMountOption[]>;
     /**
      * The name of the volume. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -461,9 +456,6 @@ export interface VolumeState {
     mountOptions?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeMountOption>[]>;
     /**
      * The name of the volume. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -603,9 +595,6 @@ export interface VolumeArgs {
     location: pulumi.Input<string>;
     /**
      * The name of the volume. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

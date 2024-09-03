@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/datastream/docs/create-a-private-connectivity-configuration)
 //
-// ## Example Usage
-//
-// ### Datastream Private Connection Full
+// ##
 //
 // ```go
 // package main

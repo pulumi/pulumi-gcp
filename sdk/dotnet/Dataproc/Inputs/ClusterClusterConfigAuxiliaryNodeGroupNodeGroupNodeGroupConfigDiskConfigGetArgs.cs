@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? LocalSsdInterface { get; set; }
 
         /// <summary>
-        /// The amount of local SSD disks that will be attached to each master cluster node. 
+        /// The amount of local SSD disks that will be attached to each master cluster node.
         /// Defaults to 0.
         /// </summary>
         [Input("numLocalSsds")]

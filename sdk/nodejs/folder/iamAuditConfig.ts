@@ -19,17 +19,17 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
- *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+ * IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
  *
  * ## gcp.folder.IAMPolicy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your folder
- *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
- *    from anyone without permissions on its parent folder/organization. Proceed with caution.
- *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
- *    to avoid locking yourself out, and it should generally only be used with folders
- *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
- *    applying the change.
+ * using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ * from anyone without permissions on its parent folder/organization. Proceed with caution.
+ * It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ * to avoid locking yourself out, and it should generally only be used with folders
+ * fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+ * applying the change.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

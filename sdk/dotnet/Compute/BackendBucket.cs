@@ -22,11 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
     /// * How-to Guides
-    ///     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+    ///   * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Backend Bucket Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -52,7 +50,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Bucket Security Policy
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -86,7 +84,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Bucket Query String Whitelist
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -122,7 +120,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Backend Bucket Include Http Headers
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -245,9 +243,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -370,9 +365,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -457,9 +449,6 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.appAttestConfig)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/app-check)
+ *   * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
  *
@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait30s],
  * });
  * ```
+ *
  * ### Firebase App Check App Attest Config Full
  *
  * ```typescript
@@ -123,9 +124,6 @@ export class AppCheckAppAttestConfig extends pulumi.CustomResource {
     /**
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -183,9 +181,6 @@ export interface AppCheckAppAttestConfigState {
     /**
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId?: pulumi.Input<string>;
     /**
@@ -212,9 +207,6 @@ export interface AppCheckAppAttestConfigArgs {
     /**
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Multi_target
+ * ### multiTarget
  * tests creating and updating a multi-target
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,7 +47,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Run_target
+ *
+ * ### runTarget
  * tests creating and updating a cloud run target
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,7 +81,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Target
+ *
+ * ### target
  * Creates a basic Cloud Deploy target
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -162,7 +164,7 @@ export class Target extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -222,10 +224,6 @@ export class Target extends pulumi.CustomResource {
     public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
      * Name of the `Target`. Format is `a-z?`.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -332,7 +330,7 @@ export class Target extends pulumi.CustomResource {
  */
 export interface TargetState {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -392,10 +390,6 @@ export interface TargetState {
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
      * Name of the `Target`. Format is `a-z?`.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -433,7 +427,7 @@ export interface TargetState {
  */
 export interface TargetArgs {
     /**
-     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
      *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -480,10 +474,6 @@ export interface TargetArgs {
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
      * Name of the `Target`. Format is `a-z?`.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

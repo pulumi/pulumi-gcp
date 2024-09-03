@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/document-warehouse/docs/reference/rest/v1/projects.locations)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
+ *   * [Official Documentation](https://cloud.google.com/document-warehouse/docs/overview)
  *
  * ## Example Usage
  *
@@ -89,9 +89,6 @@ export class DocumentAiWarehouseLocation extends pulumi.CustomResource {
     public readonly kmsKey!: pulumi.Output<string | undefined>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -173,9 +170,6 @@ export interface DocumentAiWarehouseLocationState {
     kmsKey?: pulumi.Input<string>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -213,9 +207,6 @@ export interface DocumentAiWarehouseLocationArgs {
     kmsKey?: pulumi.Input<string>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

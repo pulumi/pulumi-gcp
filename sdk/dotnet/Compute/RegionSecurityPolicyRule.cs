@@ -12,196 +12,6 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ### Region Security Policy Rule Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
-    ///     {
-    ///         Region = "us-west2",
-    ///         Name = "policyruletest",
-    ///         Description = "basic region security policy",
-    ///         Type = "CLOUD_ARMOR",
-    ///     });
-    /// 
-    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule", new()
-    ///     {
-    ///         Region = "us-west2",
-    ///         SecurityPolicy = @default.Name,
-    ///         Description = "new rule",
-    ///         Priority = 100,
-    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
-    ///         {
-    ///             VersionedExpr = "SRC_IPS_V1",
-    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
-    ///             {
-    ///                 SrcIpRanges = new[]
-    ///                 {
-    ///                     "10.10.0.0/16",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Action = "allow",
-    ///         Preview = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Region Security Policy Rule Multiple Rules
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
-    ///     {
-    ///         Region = "us-west2",
-    ///         Name = "policywithmultiplerules",
-    ///         Description = "basic region security policy",
-    ///         Type = "CLOUD_ARMOR",
-    ///     });
-    /// 
-    ///     var policyRuleOne = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule_one", new()
-    ///     {
-    ///         Region = "us-west2",
-    ///         SecurityPolicy = @default.Name,
-    ///         Description = "new rule one",
-    ///         Priority = 100,
-    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
-    ///         {
-    ///             VersionedExpr = "SRC_IPS_V1",
-    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
-    ///             {
-    ///                 SrcIpRanges = new[]
-    ///                 {
-    ///                     "10.10.0.0/16",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Action = "allow",
-    ///         Preview = true,
-    ///     });
-    /// 
-    ///     var policyRuleTwo = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule_two", new()
-    ///     {
-    ///         Region = "us-west2",
-    ///         SecurityPolicy = @default.Name,
-    ///         Description = "new rule two",
-    ///         Priority = 101,
-    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
-    ///         {
-    ///             VersionedExpr = "SRC_IPS_V1",
-    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
-    ///             {
-    ///                 SrcIpRanges = new[]
-    ///                 {
-    ///                     "192.168.0.0/16",
-    ///                     "10.0.0.0/8",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Action = "allow",
-    ///         Preview = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Region Security Policy Rule With Preconfigured Waf Config
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
-    ///     {
-    ///         Region = "asia-southeast1",
-    ///         Name = "policyruletest",
-    ///         Description = "basic region security policy",
-    ///         Type = "CLOUD_ARMOR",
-    ///     });
-    /// 
-    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule", new()
-    ///     {
-    ///         Region = "asia-southeast1",
-    ///         SecurityPolicy = @default.Name,
-    ///         Description = "new rule",
-    ///         Priority = 100,
-    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
-    ///         {
-    ///             VersionedExpr = "SRC_IPS_V1",
-    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
-    ///             {
-    ///                 SrcIpRanges = new[]
-    ///                 {
-    ///                     "10.10.0.0/16",
-    ///                 },
-    ///             },
-    ///         },
-    ///         PreconfiguredWafConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs
-    ///         {
-    ///             Exclusions = new[]
-    ///             {
-    ///                 new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs
-    ///                 {
-    ///                     RequestUris = new[]
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs
-    ///                         {
-    ///                             Operator = "STARTS_WITH",
-    ///                             Value = "/admin",
-    ///                         },
-    ///                     },
-    ///                     TargetRuleSet = "rce-stable",
-    ///                 },
-    ///                 new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs
-    ///                 {
-    ///                     RequestQueryParams = new[]
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs
-    ///                         {
-    ///                             Operator = "CONTAINS",
-    ///                             Value = "password",
-    ///                         },
-    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs
-    ///                         {
-    ///                             Operator = "STARTS_WITH",
-    ///                             Value = "freeform",
-    ///                         },
-    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs
-    ///                         {
-    ///                             Operator = "EQUALS",
-    ///                             Value = "description",
-    ///                         },
-    ///                     },
-    ///                     TargetRuleSet = "xss-stable",
-    ///                     TargetRuleIds = new[]
-    ///                     {
-    ///                         "owasp-crs-v030001-id941330-xss",
-    ///                         "owasp-crs-v030001-id941340-xss",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Action = "allow",
-    ///         Preview = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Region Security Policy Rule With Network Match
     /// 
     /// ```csharp
@@ -406,9 +216,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("securityPolicy")]
         public Output<string> SecurityPolicy { get; private set; } = null!;
@@ -542,9 +349,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityPolicy", required: true)]
         public Input<string> SecurityPolicy { get; set; } = null!;
@@ -640,9 +444,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }

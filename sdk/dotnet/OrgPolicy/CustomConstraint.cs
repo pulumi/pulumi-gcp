@@ -16,8 +16,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
-    ///     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+    ///   * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+    ///   * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
     /// 
     /// ## Example Usage
     /// 
@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// 
     /// ### Org Policy Custom Constraint Full
     /// 
     /// ```csharp
@@ -152,9 +153,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -262,9 +260,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -334,9 +329,6 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

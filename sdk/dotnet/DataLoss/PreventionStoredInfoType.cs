@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// * [API documentation](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.storedInfoTypes)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
+    ///   * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
     /// 
     /// ## Example Usage
     /// 
@@ -47,6 +47,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Stored Info Type Dictionary
     /// 
     /// ```csharp
@@ -77,6 +78,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Stored Info Type Large Custom Dictionary
     /// 
     /// ```csharp
@@ -126,6 +128,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dlp Stored Info Type With Id
     /// 
     /// ```csharp
@@ -214,9 +217,6 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -314,9 +314,6 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -382,9 +379,6 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

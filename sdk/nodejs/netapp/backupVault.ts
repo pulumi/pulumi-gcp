@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults)
  * * How-to Guides
- *     * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
+ *   * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
  *
  * ## Example Usage
  *
@@ -109,9 +109,6 @@ export class BackupVault extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the backup vault. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -202,9 +199,6 @@ export interface BackupVaultState {
     location?: pulumi.Input<string>;
     /**
      * The resource name of the backup vault. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -244,9 +238,6 @@ export interface BackupVaultArgs {
     location: pulumi.Input<string>;
     /**
      * The resource name of the backup vault. Needs to be unique per location.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

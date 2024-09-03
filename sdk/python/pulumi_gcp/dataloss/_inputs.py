@@ -1415,7 +1415,7 @@ if not MYPY:
         Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
         This can be used on data of type: number, long, string, timestamp.
         If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
@@ -1433,7 +1433,7 @@ if not MYPY:
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
         Structure is documented below.
         """
         crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
@@ -1444,7 +1444,7 @@ if not MYPY:
         """
         date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
         Structure is documented below.
         """
         fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
@@ -1453,7 +1453,7 @@ if not MYPY:
         The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         This can be used on data of type: double, long.
         If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]
@@ -1501,7 +1501,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs'] bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
                This can be used on data of type: number, long, string, timestamp.
                If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-               See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+               See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs'] character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
@@ -1510,18 +1510,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs'] crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
                Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
                Currently, only string and integer values can be hashed.
-               See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+               See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs'] crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs'] date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs'] date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs'] fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
                The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
                This can be used on data of type: double, long.
                If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-               See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+               See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs'] redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs'] replace_config: Replace each input value with a given value.
@@ -1564,7 +1564,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
         This can be used on data of type: number, long, string, timestamp.
         If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "bucketing_config")
@@ -1606,7 +1606,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "crypto_hash_config")
@@ -1633,7 +1633,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="dateShiftConfig")
     def date_shift_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs']]:
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "date_shift_config")
@@ -1650,7 +1650,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         This can be used on data of type: double, long.
         If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "fixed_size_bucketing_config")
@@ -2016,8 +2016,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -2038,8 +2036,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -2055,8 +2051,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -2347,8 +2341,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -2369,8 +2361,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -2386,8 +2376,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -2678,8 +2666,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -2700,8 +2686,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -2717,8 +2701,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -3029,8 +3011,8 @@ if not MYPY:
         This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
         Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
+        * reverse a surrogate that does not correspond to an actual identifier
+        * be unable to parse the surrogate and result in an error
         Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
@@ -3058,8 +3040,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
                Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-               *   reverse a surrogate that does not correspond to an actual identifier
-               *   be unable to parse the surrogate and result in an error
+               * reverse a surrogate that does not correspond to an actual identifier
+               * be unable to parse the surrogate and result in an error
                Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
         """
@@ -3110,8 +3092,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
         Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
+        * reverse a surrogate that does not correspond to an actual identifier
+        * be unable to parse the surrogate and result in an error
         Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
@@ -3731,13 +3713,13 @@ if not MYPY:
         """
         The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
         If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
+        1. there is no record present when transforming a given value or
+        2. the field is not present when transforming a given value,
         a default tweak will be used.
         Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
         The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        * a 64 bit integer is encoded followed by a single byte of value 1
+        * a string is encoded in UTF-8 format followed by a single byte of value 2
         Structure is documented below.
         """
         crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]
@@ -3779,13 +3761,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
-               1.  there is no record present when transforming a given value or
-               2.  the field is not present when transforming a given value,
+               1. there is no record present when transforming a given value or
+               2. the field is not present when transforming a given value,
                a default tweak will be used.
                Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
                The tweak is constructed as a sequence of bytes in big endian byte order such that:
-               *   a 64 bit integer is encoded followed by a single byte of value 1
-               *   a string is encoded in UTF-8 format followed by a single byte of value 2
+               * a 64 bit integer is encoded followed by a single byte of value 1
+               * a string is encoded in UTF-8 format followed by a single byte of value 2
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
@@ -3830,13 +3812,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
         If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
+        1. there is no record present when transforming a given value or
+        2. the field is not present when transforming a given value,
         a default tweak will be used.
         Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
         The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        * a 64 bit integer is encoded followed by a single byte of value 1
+        * a string is encoded in UTF-8 format followed by a single byte of value 2
         Structure is documented below.
         """
         return pulumi.get(self, "context")
@@ -5031,8 +5013,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -5053,8 +5033,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -5070,8 +5048,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -5906,8 +5882,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -5928,8 +5902,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -5945,8 +5917,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -6315,7 +6285,7 @@ if not MYPY:
         Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
         This can be used on data of type: number, long, string, timestamp.
         If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
@@ -6333,7 +6303,7 @@ if not MYPY:
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
         Structure is documented below.
         """
         crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
@@ -6344,7 +6314,7 @@ if not MYPY:
         """
         date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
         Structure is documented below.
         """
         fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
@@ -6353,7 +6323,7 @@ if not MYPY:
         The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         This can be used on data of type: double, long.
         If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]
@@ -6401,7 +6371,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs'] bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
                This can be used on data of type: number, long, string, timestamp.
                If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-               See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+               See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs'] character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
@@ -6410,18 +6380,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs'] crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
                Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
                Currently, only string and integer values can be hashed.
-               See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+               See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs'] crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs'] date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs'] date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs'] fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
                The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
                This can be used on data of type: double, long.
                If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-               See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+               See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs'] redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs'] replace_config: Replace each input value with a given value.
@@ -6464,7 +6434,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
         This can be used on data of type: number, long, string, timestamp.
         If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "bucketing_config")
@@ -6506,7 +6476,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "crypto_hash_config")
@@ -6533,7 +6503,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @pulumi.getter(name="dateShiftConfig")
     def date_shift_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs']]:
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "date_shift_config")
@@ -6550,7 +6520,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         This can be used on data of type: double, long.
         If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "fixed_size_bucketing_config")
@@ -6915,8 +6885,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -6937,8 +6905,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -6954,8 +6920,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -7246,8 +7210,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -7268,8 +7230,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -7285,8 +7245,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -7577,8 +7535,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -7599,8 +7555,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -7616,8 +7570,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -7918,8 +7870,8 @@ if not MYPY:
         This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
         Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
+        * reverse a surrogate that does not correspond to an actual identifier
+        * be unable to parse the surrogate and result in an error
         Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
@@ -7950,8 +7902,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
                Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-               *   reverse a surrogate that does not correspond to an actual identifier
-               *   be unable to parse the surrogate and result in an error
+               * reverse a surrogate that does not correspond to an actual identifier
+               * be unable to parse the surrogate and result in an error
                Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs'] context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
@@ -7989,8 +7941,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
         Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
+        * reverse a surrogate that does not correspond to an actual identifier
+        * be unable to parse the surrogate and result in an error
         Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
@@ -8630,13 +8582,13 @@ if not MYPY:
         """
         The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
         If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
+        1. there is no record present when transforming a given value or
+        2. the field is not present when transforming a given value,
         a default tweak will be used.
         Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
         The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        * a 64 bit integer is encoded followed by a single byte of value 1
+        * a string is encoded in UTF-8 format followed by a single byte of value 2
         Structure is documented below.
         """
         custom_alphabet: NotRequired[pulumi.Input[str]]
@@ -8675,13 +8627,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
-               1.  there is no record present when transforming a given value or
-               2.  the field is not present when transforming a given value,
+               1. there is no record present when transforming a given value or
+               2. the field is not present when transforming a given value,
                a default tweak will be used.
                Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
                The tweak is constructed as a sequence of bytes in big endian byte order such that:
-               *   a 64 bit integer is encoded followed by a single byte of value 1
-               *   a string is encoded in UTF-8 format followed by a single byte of value 2
+               * a 64 bit integer is encoded followed by a single byte of value 1
+               * a string is encoded in UTF-8 format followed by a single byte of value 2
                Structure is documented below.
         :param pulumi.Input[str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
                ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
@@ -8736,13 +8688,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
         If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
+        1. there is no record present when transforming a given value or
+        2. the field is not present when transforming a given value,
         a default tweak will be used.
         Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
         The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        * a 64 bit integer is encoded followed by a single byte of value 1
+        * a string is encoded in UTF-8 format followed by a single byte of value 2
         Structure is documented below.
         """
         return pulumi.get(self, "context")
@@ -9922,8 +9874,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -9944,8 +9894,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -9961,8 +9909,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -10205,7 +10151,7 @@ if not MYPY:
         Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
         This can be used on data of type: number, long, string, timestamp.
         If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         character_mask_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]
@@ -10223,7 +10169,7 @@ if not MYPY:
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
         Structure is documented below.
         """
         crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]
@@ -10234,7 +10180,7 @@ if not MYPY:
         """
         date_shift_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict']]
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
         Structure is documented below.
         """
         fixed_size_bucketing_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]
@@ -10243,7 +10189,7 @@ if not MYPY:
         The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         This can be used on data of type: double, long.
         If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         redact_config: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict']]
@@ -10286,7 +10232,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgs'] bucketing_config: Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
                This can be used on data of type: number, long, string, timestamp.
                If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-               See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+               See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs'] character_mask_config: Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
                Structure is documented below.
@@ -10295,18 +10241,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgs'] crypto_hash_config: Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
                Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
                Currently, only string and integer values can be hashed.
-               See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+               See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs'] crypto_replace_ffx_fpe_config: Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
                Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
                Structure is documented below.
-        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs'] date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs'] date_shift_config: Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs'] fixed_size_bucketing_config: Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
                The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
                This can be used on data of type: double, long.
                If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-               See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+               See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs'] redact_config: Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs'] replace_config: Replace each input value with a given value.
@@ -10346,7 +10292,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
         This can be used on data of type: number, long, string, timestamp.
         If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "bucketing_config")
@@ -10388,7 +10334,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
         Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
         Currently, only string and integer values can be hashed.
-        See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        See <https://cloud.google.com/dlp/docs/pseudonymization> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "crypto_hash_config")
@@ -10415,7 +10361,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @pulumi.getter(name="dateShiftConfig")
     def date_shift_config(self) -> Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs']]:
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See <https://cloud.google.com/dlp/docs/concepts-date-shifting> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "date_shift_config")
@@ -10432,7 +10378,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
         This can be used on data of type: double, long.
         If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-        See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        See <https://cloud.google.com/dlp/docs/concepts-bucketing> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "fixed_size_bucketing_config")
@@ -10806,8 +10752,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -10828,8 +10772,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -10845,8 +10787,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -11157,8 +11097,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -11179,8 +11117,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -11196,8 +11132,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -11508,8 +11442,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -11530,8 +11462,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -11547,8 +11477,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -11859,8 +11787,8 @@ if not MYPY:
         This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
         Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
+        * reverse a surrogate that does not correspond to an actual identifier
+        * be unable to parse the surrogate and result in an error
         Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
@@ -11888,8 +11816,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
                Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-               *   reverse a surrogate that does not correspond to an actual identifier
-               *   be unable to parse the surrogate and result in an error
+               * reverse a surrogate that does not correspond to an actual identifier
+               * be unable to parse the surrogate and result in an error
                Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
         """
@@ -11940,8 +11868,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
         Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
-        *   reverse a surrogate that does not correspond to an actual identifier
-        *   be unable to parse the surrogate and result in an error
+        * reverse a surrogate that does not correspond to an actual identifier
+        * be unable to parse the surrogate and result in an error
         Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
@@ -12561,13 +12489,13 @@ if not MYPY:
         """
         The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
         If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
+        1. there is no record present when transforming a given value or
+        2. the field is not present when transforming a given value,
         a default tweak will be used.
         Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
         The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        * a 64 bit integer is encoded followed by a single byte of value 1
+        * a string is encoded in UTF-8 format followed by a single byte of value 2
         Structure is documented below.
         """
         crypto_key: NotRequired[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]
@@ -12609,13 +12537,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
-               1.  there is no record present when transforming a given value or
-               2.  the field is not present when transforming a given value,
+               1. there is no record present when transforming a given value or
+               2. the field is not present when transforming a given value,
                a default tweak will be used.
                Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
                The tweak is constructed as a sequence of bytes in big endian byte order such that:
-               *   a 64 bit integer is encoded followed by a single byte of value 1
-               *   a string is encoded in UTF-8 format followed by a single byte of value 2
+               * a 64 bit integer is encoded followed by a single byte of value 1
+               * a string is encoded in UTF-8 format followed by a single byte of value 2
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
@@ -12660,13 +12588,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
         If the context is set but:
-        1.  there is no record present when transforming a given value or
-        2.  the field is not present when transforming a given value,
+        1. there is no record present when transforming a given value or
+        2. the field is not present when transforming a given value,
         a default tweak will be used.
         Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
         The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        * a 64 bit integer is encoded followed by a single byte of value 1
+        * a string is encoded in UTF-8 format followed by a single byte of value 2
         Structure is documented below.
         """
         return pulumi.get(self, "context")
@@ -13706,8 +13634,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -13728,8 +13654,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -13745,8 +13669,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -14057,8 +13979,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -14079,8 +13999,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -14096,8 +14014,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -14460,8 +14376,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -14482,8 +14396,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -14499,8 +14411,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -15189,8 +15099,6 @@ if not MYPY:
         day: NotRequired[pulumi.Input[int]]
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         month: NotRequired[pulumi.Input[int]]
         """
@@ -15211,8 +15119,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                  year: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-               
-               - - -
         :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -15228,8 +15134,6 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def day(self) -> Optional[pulumi.Input[int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-
-        - - -
         """
         return pulumi.get(self, "day")
 
@@ -18144,7 +18048,7 @@ if not MYPY:
         """
         custom_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict']]]]
         """
-        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
         Structure is documented below.
         """
         exclude_info_types: NotRequired[pulumi.Input[bool]]
@@ -18158,7 +18062,7 @@ if not MYPY:
         info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgsDict']]]]
         """
         Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
         When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
         By default this may be all types, but may change over time as detectors are updated.
         Structure is documented below.
@@ -18170,7 +18074,7 @@ if not MYPY:
         """
         min_likelihood: NotRequired[pulumi.Input[str]]
         """
-        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
         Default value is `POSSIBLE`.
         Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
@@ -18197,18 +18101,18 @@ class PreventionInspectTemplateInspectConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
                Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
-        :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]] custom_info_types: Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
                Structure is documented below.
         :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings.
         :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgs']]] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-               or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+               or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
                When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
                By default this may be all types, but may change over time as detectors are updated.
                Structure is documented below.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigLimitsArgs'] limits: Configuration to control the number of findings returned.
                Structure is documented below.
-        :param pulumi.Input[str] min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        :param pulumi.Input[str] min_likelihood: Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
                Default value is `POSSIBLE`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgs']]] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
@@ -18249,7 +18153,7 @@ class PreventionInspectTemplateInspectConfigArgs:
     @pulumi.getter(name="customInfoTypes")
     def custom_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]]]:
         """
-        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "custom_info_types")
@@ -18287,7 +18191,7 @@ class PreventionInspectTemplateInspectConfigArgs:
     def info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgs']]]]:
         """
         Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
         When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
         By default this may be all types, but may change over time as detectors are updated.
         Structure is documented below.
@@ -18315,7 +18219,7 @@ class PreventionInspectTemplateInspectConfigArgs:
     @pulumi.getter(name="minLikelihood")
     def min_likelihood(self) -> Optional[pulumi.Input[str]]:
         """
-        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
         Default value is `POSSIBLE`.
         Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
@@ -18675,7 +18579,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]
         """
@@ -18697,7 +18601,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
@@ -18713,7 +18617,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -18786,7 +18690,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -18802,7 +18706,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs:
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression.
-               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
@@ -18814,7 +18718,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs:
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -18920,7 +18824,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict']]
         """
@@ -18942,7 +18846,7 @@ class PreventionInspectTemplateInspectConfigInfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
@@ -18958,7 +18862,7 @@ class PreventionInspectTemplateInspectConfigInfoTypeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -19164,7 +19068,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]
         """
@@ -19186,7 +19090,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
@@ -19202,7 +19106,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -19331,7 +19235,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]
         """
@@ -19353,7 +19257,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
@@ -19369,7 +19273,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -19499,7 +19403,7 @@ if not MYPY:
     class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
         matching_type: pulumi.Input[str]
         """
-        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
         Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         """
         dictionary: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]
@@ -19535,7 +19439,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs:
                  exclude_info_types: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']] = None,
                  regex: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs']] = None):
         """
-        :param pulumi.Input[str] matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        :param pulumi.Input[str] matching_type: How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
                Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -19561,7 +19465,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs:
     @pulumi.getter(name="matchingType")
     def matching_type(self) -> pulumi.Input[str]:
         """
-        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
         Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         """
         return pulumi.get(self, "matching_type")
@@ -19820,7 +19724,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -19837,7 +19741,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression. Its syntax
-               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
                the entire match is returned. No more than 3 may be included.
         """
@@ -19850,7 +19754,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -19963,7 +19867,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]
         """
@@ -19985,7 +19889,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version name for this InfoType.
@@ -20001,7 +19905,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -20074,7 +19978,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -20090,7 +19994,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs:
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression.
-               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
@@ -20102,7 +20006,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs:
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -20218,7 +20122,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -20235,7 +20139,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexAr
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression. Its syntax
-               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
                the entire match is returned. No more than 3 may be included.
         """
@@ -20248,7 +20152,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexAr
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -21221,7 +21125,7 @@ if not MYPY:
     class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
         custom_info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict']]]]
         """
-        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
         Structure is documented below.
         """
         exclude_info_types: NotRequired[pulumi.Input[bool]]
@@ -21235,7 +21139,7 @@ if not MYPY:
         info_types: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict']]]]
         """
         Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
         When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
         By default this may be all types, but may change over time as detectors are updated.
         Structure is documented below.
@@ -21247,7 +21151,7 @@ if not MYPY:
         """
         min_likelihood: NotRequired[pulumi.Input[str]]
         """
-        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
         Default value is `POSSIBLE`.
         Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
@@ -21271,18 +21175,18 @@ class PreventionJobTriggerInspectJobInspectConfigArgs:
                  min_likelihood: Optional[pulumi.Input[str]] = None,
                  rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs']]] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs']]] custom_info_types: Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
                Structure is documented below.
         :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings.
         :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs']]] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-               or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+               or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
                When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
                By default this may be all types, but may change over time as detectors are updated.
                Structure is documented below.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsArgs'] limits: Configuration to control the number of findings returned.
                Structure is documented below.
-        :param pulumi.Input[str] min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        :param pulumi.Input[str] min_likelihood: Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
                Default value is `POSSIBLE`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgs']]] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
@@ -21308,7 +21212,7 @@ class PreventionJobTriggerInspectJobInspectConfigArgs:
     @pulumi.getter(name="customInfoTypes")
     def custom_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs']]]]:
         """
-        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        Custom info types to be used. See <https://cloud.google.com/dlp/docs/creating-custom-infotypes> to learn more.
         Structure is documented below.
         """
         return pulumi.get(self, "custom_info_types")
@@ -21346,7 +21250,7 @@ class PreventionJobTriggerInspectJobInspectConfigArgs:
     def info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs']]]]:
         """
         Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
-        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        or listed at <https://cloud.google.com/dlp/docs/infotypes-reference>.
         When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
         By default this may be all types, but may change over time as detectors are updated.
         Structure is documented below.
@@ -21374,7 +21278,7 @@ class PreventionJobTriggerInspectJobInspectConfigArgs:
     @pulumi.getter(name="minLikelihood")
     def min_likelihood(self) -> Optional[pulumi.Input[str]]:
         """
-        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        Only returns findings equal or above this threshold. See <https://cloud.google.com/dlp/docs/likelihood> for more info
         Default value is `POSSIBLE`.
         Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
@@ -21734,7 +21638,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]
         """
@@ -21756,7 +21660,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
@@ -21772,7 +21676,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -21845,7 +21749,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -21861,7 +21765,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs:
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression.
-               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
@@ -21873,7 +21777,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs:
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -22002,7 +21906,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict']]
         """
@@ -22024,7 +21928,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
@@ -22040,7 +21944,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -22249,7 +22153,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]
         """
@@ -22271,7 +22175,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
@@ -22287,7 +22191,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        listed at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -22417,7 +22321,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]
         """
@@ -22439,7 +22343,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
@@ -22455,7 +22359,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs:
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -22585,7 +22489,7 @@ if not MYPY:
     class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
         matching_type: pulumi.Input[str]
         """
-        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
         Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         """
         dictionary: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]
@@ -22620,7 +22524,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs:
                  exclude_info_types: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']] = None,
                  regex: Optional[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs']] = None):
         """
-        :param pulumi.Input[str] matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        :param pulumi.Input[str] matching_type: How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
                Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -22645,7 +22549,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs:
     @pulumi.getter(name="matchingType")
     def matching_type(self) -> pulumi.Input[str]:
         """
-        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        How the rule is applied. See the documentation for more information: <https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType>
         Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         """
         return pulumi.get(self, "matching_type")
@@ -22910,7 +22814,7 @@ if not MYPY:
         pattern: NotRequired[pulumi.Input[str]]
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
 elif False:
     PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict: TypeAlias = Mapping[str, Any]
@@ -22924,7 +22828,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
                the entire match is returned. No more than 3 may be included.
         :param pulumi.Input[str] pattern: Pattern defining the regular expression. Its syntax
-               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         if group_indexes is not None:
             pulumi.set(__self__, "group_indexes", group_indexes)
@@ -22949,7 +22853,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     def pattern(self) -> Optional[pulumi.Input[str]]:
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -23049,7 +22953,7 @@ if not MYPY:
         name: pulumi.Input[str]
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         sensitivity_score: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]
         """
@@ -23071,7 +22975,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         :param pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
                Structure is documented below.
         :param pulumi.Input[str] version: Version of the information type to use. By default, the version is set to stable.
@@ -23087,7 +22991,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     def name(self) -> pulumi.Input[str]:
         """
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
-        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        at <https://cloud.google.com/dlp/docs/infotypes-reference> when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -23160,7 +23064,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -23176,7 +23080,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexAr
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression.
-               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
@@ -23188,7 +23092,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexAr
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -23312,7 +23216,7 @@ if not MYPY:
         pattern: NotRequired[pulumi.Input[str]]
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
 elif False:
     PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict: TypeAlias = Mapping[str, Any]
@@ -23326,7 +23230,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
                the entire match is returned. No more than 3 may be included.
         :param pulumi.Input[str] pattern: Pattern defining the regular expression. Its syntax
-               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         if group_indexes is not None:
             pulumi.set(__self__, "group_indexes", group_indexes)
@@ -23351,7 +23255,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
     def pattern(self) -> Optional[pulumi.Input[str]]:
         """
         Pattern defining the regular expression. Its syntax
-        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -24832,8 +24736,6 @@ if not MYPY:
         A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
         This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-
-        - - -
         """
 elif False:
     PreventionJobTriggerTriggerScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -24847,8 +24749,6 @@ class PreventionJobTriggerTriggerScheduleArgs:
                A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
                This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-               
-               - - -
         """
         if recurrence_period_duration is not None:
             pulumi.set(__self__, "recurrence_period_duration", recurrence_period_duration)
@@ -24861,8 +24761,6 @@ class PreventionJobTriggerTriggerScheduleArgs:
         A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
         This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-
-        - - -
         """
         return pulumi.get(self, "recurrence_period_duration")
 
@@ -25300,7 +25198,7 @@ if not MYPY:
         pattern: pulumi.Input[str]
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         group_indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
@@ -25316,7 +25214,7 @@ class PreventionStoredInfoTypeRegexArgs:
                  group_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[str] pattern: Pattern defining the regular expression.
-               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+               Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
@@ -25328,7 +25226,7 @@ class PreventionStoredInfoTypeRegexArgs:
     def pattern(self) -> pulumi.Input[str]:
         """
         Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Its syntax (<https://github.com/google/re2/wiki/Syntax>) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 

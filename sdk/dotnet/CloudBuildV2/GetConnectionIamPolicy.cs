@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// <summary>
         /// Retrieves the current IAM policy data for connection
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -40,7 +39,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Retrieves the current IAM policy data for connection
-        /// 
         /// 
         /// ## example
         /// 

@@ -33,9 +33,6 @@ class DatabaseArgs:
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
                Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
@@ -80,9 +77,6 @@ class DatabaseArgs:
     def instance(self) -> pulumi.Input[str]:
         """
         The instance to create the database on.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -224,9 +218,6 @@ class _DatabaseState:
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -328,9 +319,6 @@ class _DatabaseState:
     def instance(self) -> Optional[pulumi.Input[str]]:
         """
         The instance to create the database on.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -415,7 +403,7 @@ class Database(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/spanner/)
+          * [Official Documentation](https://cloud.google.com/spanner/)
 
         > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
         (and run `pulumi up` to write the field to state) in order to destroy an instance.
@@ -423,9 +411,7 @@ class Database(pulumi.CustomResource):
         On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
         on databases in order to prevent accidental data loss.
 
-        ## Example Usage
-
-        ### Spanner Database Basic
+        ## 
 
         ```python
         import pulumi
@@ -490,9 +476,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -516,7 +499,7 @@ class Database(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/spanner/)
+          * [Official Documentation](https://cloud.google.com/spanner/)
 
         > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
         (and run `pulumi up` to write the field to state) in order to destroy an instance.
@@ -524,9 +507,7 @@ class Database(pulumi.CustomResource):
         On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
         on databases in order to prevent accidental data loss.
 
-        ## Example Usage
-
-        ### Spanner Database Basic
+        ## 
 
         ```python
         import pulumi
@@ -661,9 +642,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the database
                Structure is documented below.
         :param pulumi.Input[str] instance: The instance to create the database on.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -740,9 +718,6 @@ class Database(pulumi.CustomResource):
     def instance(self) -> pulumi.Output[str]:
         """
         The instance to create the database on.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

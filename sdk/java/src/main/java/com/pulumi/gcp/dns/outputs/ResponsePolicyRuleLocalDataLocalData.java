@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ResponsePolicyRuleLocalDataLocalData {
     /**
-     * @return For example, www.example.com.
+     * @return For example, &lt;http://www.example.com&gt;.
      * 
      */
     private String name;
@@ -39,7 +39,7 @@ public final class ResponsePolicyRuleLocalDataLocalData {
 
     private ResponsePolicyRuleLocalDataLocalData() {}
     /**
-     * @return For example, www.example.com.
+     * @return For example, &lt;http://www.example.com&gt;.
      * 
      */
     public String name() {

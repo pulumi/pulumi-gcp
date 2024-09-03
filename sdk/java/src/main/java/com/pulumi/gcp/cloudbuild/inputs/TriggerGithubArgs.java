@@ -36,7 +36,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Name of the repository. For example: The name for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;cloud-builders&#34;.
      * 
      */
     @Import(name="name")
@@ -44,7 +44,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Name of the repository. For example: The name for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;cloud-builders&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -53,7 +53,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Owner of the repository. For example: The owner for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;googlecloudplatform&#34;.
      * 
      */
     @Import(name="owner")
@@ -61,7 +61,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Owner of the repository. For example: The owner for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;googlecloudplatform&#34;.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -155,7 +155,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the repository. For example: The name for
-         * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+         * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;cloud-builders&#34;.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the repository. For example: The name for
-         * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+         * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;cloud-builders&#34;.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param owner Owner of the repository. For example: The owner for
-         * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+         * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;googlecloudplatform&#34;.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param owner Owner of the repository. For example: The owner for
-         * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+         * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;googlecloudplatform&#34;.
          * 
          * @return builder
          * 

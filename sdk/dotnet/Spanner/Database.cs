@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/spanner/)
+    ///   * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
     /// &gt; **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
     /// (and run `pulumi up` to write the field to state) in order to destroy an instance.
@@ -24,9 +24,7 @@ namespace Pulumi.Gcp.Spanner
     /// On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
     /// on databases in order to prevent accidental data loss.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Spanner Database Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -128,9 +126,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the database on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -253,9 +248,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the database on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -334,9 +326,6 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the database on.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

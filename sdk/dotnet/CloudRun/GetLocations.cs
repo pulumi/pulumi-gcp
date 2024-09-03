@@ -12,14 +12,14 @@ namespace Pulumi.Gcp.CloudRun
     public static class GetLocations
     {
         /// <summary>
-        /// Get Cloud Run locations available for a project. 
+        /// Get Cloud Run locations available for a project.
         /// 
         /// To get more information about Cloud Run, see:
         /// 
         /// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/run/docs/)
-        ///     
+        ///   * [Official Documentation](https://cloud.google.com/run/docs/)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -39,14 +39,14 @@ namespace Pulumi.Gcp.CloudRun
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get Cloud Run locations available for a project. 
+        /// Get Cloud Run locations available for a project.
         /// 
         /// To get more information about Cloud Run, see:
         /// 
         /// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/run/docs/)
-        ///     
+        ///   * [Official Documentation](https://cloud.google.com/run/docs/)
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

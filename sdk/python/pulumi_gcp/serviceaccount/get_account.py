@@ -145,7 +145,7 @@ def get_account(account_id: Optional[str] = None,
     object_viewer = gcp.serviceaccount.get_account(account_id="object-viewer")
     ```
 
-    ### Save Key In Kubernetes Secret
+    ### save key in Kubernetes secret
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -210,7 +210,7 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
     object_viewer = gcp.serviceaccount.get_account(account_id="object-viewer")
     ```
 
-    ### Save Key In Kubernetes Secret
+    ### save key in Kubernetes secret
     ```python
     import pulumi
     import pulumi_gcp as gcp

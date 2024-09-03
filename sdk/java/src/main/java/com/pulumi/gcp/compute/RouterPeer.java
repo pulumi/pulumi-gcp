@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ *   * [Google Cloud Router](https://cloud.google.com/router/docs/)
  * 
  * ## Example Usage
  * 
@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Router Peer Disabled
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -115,6 +116,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Router Peer Bfd
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -162,7 +164,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Router Peer Router Appliance
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -316,7 +318,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Router Peer Md5 Authentication Key
+ * ### Router Peer md5 authentication key
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -362,7 +364,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Router Peer Export And Import Policies
+ * ### Router peer export and import policies
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1031,16 +1033,12 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      * 
-     * ***
-     * 
      */
     @Export(name="router", refs={String.class}, tree="[0]")
     private Output<String> router;
 
     /**
      * @return The name of the Cloud Router in which this BgpPeer will be configured.
-     * 
-     * ***
      * 
      */
     public Output<String> router() {

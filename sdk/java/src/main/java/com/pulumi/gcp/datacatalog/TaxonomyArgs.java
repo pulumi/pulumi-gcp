@@ -62,8 +62,6 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
@@ -74,8 +72,6 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -211,8 +207,6 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
          * and spaces; not start or end with spaces; and be at most 200 bytes
          * long when encoded in UTF-8.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -227,8 +221,6 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
          * It must: contain only unicode letters, numbers, underscores, dashes
          * and spaces; not start or end with spaces; and be at most 200 bytes
          * long when encoded in UTF-8.
-         * 
-         * ***
          * 
          * @return builder
          * 

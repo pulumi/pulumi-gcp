@@ -62,14 +62,14 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
      * 
      */
     @Import(name="encryptionKey")
     private @Nullable Output<String> encryptionKey;
 
     /**
-     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
      * 
      */
     public Optional<Output<String>> encryptionKey() {
@@ -95,7 +95,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
      * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
      * 
@@ -105,7 +105,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
      * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
      * 
@@ -179,14 +179,14 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * Enables session affinity. For more information, go to &lt;https://cloud.google.com/run/docs/configuring/session-affinity&gt;
      * 
      */
     @Import(name="sessionAffinity")
     private @Nullable Output<Boolean> sessionAffinity;
 
     /**
-     * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * @return Enables session affinity. For more information, go to &lt;https://cloud.google.com/run/docs/configuring/session-affinity&gt;
      * 
      */
     public Optional<Output<Boolean>> sessionAffinity() {
@@ -228,7 +228,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
      * Structure is documented below.
      * 
      */
@@ -236,7 +236,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<ServiceTemplateVpcAccessArgs> vpcAccess;
 
     /**
-     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * @return VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
      * Structure is documented below.
      * 
      */
@@ -342,7 +342,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param encryptionKey A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         * @param encryptionKey A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param encryptionKey A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         * @param encryptionKey A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to &lt;https://cloud.google.com/run/docs/securing/using-cmek&gt;
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
          * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
          * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          * 
@@ -401,7 +401,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * For more information, visit &lt;https://cloud.google.com/resource-manager/docs/creating-managing-labels&gt; or &lt;https://cloud.google.com/run/docs/configuring/labels&gt;.
          * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
          * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          * 
@@ -501,7 +501,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sessionAffinity Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         * @param sessionAffinity Enables session affinity. For more information, go to &lt;https://cloud.google.com/run/docs/configuring/session-affinity&gt;
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param sessionAffinity Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         * @param sessionAffinity Enables session affinity. For more information, go to &lt;https://cloud.google.com/run/docs/configuring/session-affinity&gt;
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcAccess VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * @param vpcAccess VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -591,7 +591,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcAccess VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * @param vpcAccess VPC Access configuration to use for this Task. For more information, visit &lt;https://cloud.google.com/run/docs/configuring/connecting-vpc&gt;.
          * Structure is documented below.
          * 
          * @return builder

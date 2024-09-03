@@ -16,13 +16,11 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
  *
- * ## Example Usage
- *
- * ### Monitoring Service Example
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +97,7 @@ export class GenericService extends pulumi.CustomResource {
     /**
      * A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
      * Structure is documented below.
      */
     public readonly basicService!: pulumi.Output<outputs.monitoring.GenericServiceBasicService | undefined>;
@@ -120,9 +118,6 @@ export class GenericService extends pulumi.CustomResource {
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -185,7 +180,7 @@ export interface GenericServiceState {
     /**
      * A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
      * Structure is documented below.
      */
     basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService>;
@@ -206,9 +201,6 @@ export interface GenericServiceState {
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -234,7 +226,7 @@ export interface GenericServiceArgs {
     /**
      * A well-known service type, defined by its service type and service labels.
      * Valid values of service types and services labels are described at
-     * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+     * <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
      * Structure is documented below.
      */
     basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService>;
@@ -250,9 +242,6 @@ export interface GenericServiceArgs {
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
     /**

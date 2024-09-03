@@ -19,10 +19,6 @@ public final class GetAppEngineServicePlainArgs extends com.pulumi.resources.Inv
      * The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
      * 
-     * ***
-     * 
-     * Other optional fields include:
-     * 
      */
     @Import(name="moduleId", required=true)
     private String moduleId;
@@ -30,10 +26,6 @@ public final class GetAppEngineServicePlainArgs extends com.pulumi.resources.Inv
     /**
      * @return The ID of the App Engine module underlying this
      * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-     * 
-     * ***
-     * 
-     * Other optional fields include:
      * 
      */
     public String moduleId() {
@@ -85,10 +77,6 @@ public final class GetAppEngineServicePlainArgs extends com.pulumi.resources.Inv
         /**
          * @param moduleId The ID of the App Engine module underlying this
          * service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-         * 
-         * ***
-         * 
-         * Other optional fields include:
          * 
          * @return builder
          * 

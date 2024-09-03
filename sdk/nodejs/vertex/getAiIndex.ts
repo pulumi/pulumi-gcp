@@ -33,8 +33,6 @@ export interface GetAiIndexArgs {
     project?: string;
     /**
      * The region of the index.
-     *
-     * - - -
      */
     region: string;
 }
@@ -85,8 +83,6 @@ export interface GetAiIndexOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * The region of the index.
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
 }

@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  *
  * ### Adding a CNAME record
  *
- *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+ * The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,7 +129,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ### Setting Routing Policy instead of using rrdatas
- * ### Geolocation
+ *
+ * #### Geolocation
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -155,7 +156,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Failover
+ * #### Failover
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -294,8 +295,6 @@ export class RecordSet extends pulumi.CustomResource {
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
      * The DNS record set type.
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -374,8 +373,6 @@ export interface RecordSetState {
     ttl?: pulumi.Input<number>;
     /**
      * The DNS record set type.
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
 }
@@ -411,8 +408,6 @@ export interface RecordSetArgs {
     ttl?: pulumi.Input<number>;
     /**
      * The DNS record set type.
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
 }

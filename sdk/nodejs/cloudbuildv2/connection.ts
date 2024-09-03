@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/build/docs)
+ *   * [Official Documentation](https://cloud.google.com/build/docs)
  *
- * ## Example Usage
- *
- * ### Cloudbuildv2 Connection
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +32,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Cloudbuildv2 Connection Ghe
  *
  * ```typescript
@@ -95,6 +96,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudbuildv2 Connection Github
  *
  * ```typescript
@@ -245,9 +247,6 @@ export class Connection extends pulumi.CustomResource {
     public /*out*/ readonly installationStates!: pulumi.Output<outputs.cloudbuildv2.ConnectionInstallationState[]>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -379,9 +378,6 @@ export interface ConnectionState {
     installationStates?: pulumi.Input<pulumi.Input<inputs.cloudbuildv2.ConnectionInstallationState>[]>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -444,9 +440,6 @@ export interface ConnectionArgs {
     gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig>;
     /**
      * The location for the resource
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

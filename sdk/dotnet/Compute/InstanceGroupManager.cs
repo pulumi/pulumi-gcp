@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
-    /// ### With Top Level Instance Template (`Google` Provider)
+    /// ### with top level instance template (google provider)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With Multiple Versions (`Google-Beta` Provider)
+    /// ### with multiple versions (google-beta provider)
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
-    /// ### With Standby Policy (`Google-Beta` Provider)
+    /// ### with standby policy (google-beta provider)
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -283,8 +283,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Output("params")]
         public Output<Outputs.InstanceGroupManagerParams?> Params { get; private set; } = null!;
@@ -393,8 +391,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that instances in this group should be created
         /// in.
-        /// 
-        /// - - -
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -519,8 +515,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceGroupManagerParamsArgs>? Params { get; set; }
@@ -647,8 +641,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that instances in this group should be created
         /// in.
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -756,8 +748,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceGroupManagerParamsGetArgs>? Params { get; set; }
@@ -902,8 +892,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that instances in this group should be created
         /// in.
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

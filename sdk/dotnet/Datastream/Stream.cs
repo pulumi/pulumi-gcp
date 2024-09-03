@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.streams)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
+    ///   * [Official Documentation](https://cloud.google.com/datastream/docs/create-a-stream)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Datastream Stream Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -294,6 +292,9 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Datastream Stream Postgresql
     /// 
     /// ```csharp
@@ -437,6 +438,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Oracle
     /// 
     /// ```csharp
@@ -580,6 +582,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Stream Sql Server
     /// 
     /// ```csharp
@@ -720,7 +723,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Stream Postgresql Bigquery Dataset Id
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -850,7 +853,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Stream Bigquery
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -992,7 +995,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Stream Bigquery Append Only
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

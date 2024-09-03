@@ -120,9 +120,6 @@ export class AutokeyConfig extends pulumi.CustomResource {
 
     /**
      * The folder for which to retrieve config.
-     *
-     *
-     * - - -
      */
     public readonly folder!: pulumi.Output<string>;
     /**
@@ -166,9 +163,6 @@ export class AutokeyConfig extends pulumi.CustomResource {
 export interface AutokeyConfigState {
     /**
      * The folder for which to retrieve config.
-     *
-     *
-     * - - -
      */
     folder?: pulumi.Input<string>;
     /**
@@ -185,9 +179,6 @@ export interface AutokeyConfigState {
 export interface AutokeyConfigArgs {
     /**
      * The folder for which to retrieve config.
-     *
-     *
-     * - - -
      */
     folder: pulumi.Input<string>;
     /**

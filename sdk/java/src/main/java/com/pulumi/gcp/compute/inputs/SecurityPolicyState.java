@@ -85,16 +85,12 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     /**
      * The name of the security policy.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the security policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -318,8 +314,6 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         /**
          * @param name The name of the security policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -330,8 +324,6 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name The name of the security policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

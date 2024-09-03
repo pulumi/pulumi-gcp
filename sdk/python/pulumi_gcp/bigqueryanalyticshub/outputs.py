@@ -85,8 +85,6 @@ class ListingBigqueryDataset(dict):
                  dataset: str):
         """
         :param str dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-               
-               - - -
         """
         pulumi.set(__self__, "dataset", dataset)
 
@@ -95,8 +93,6 @@ class ListingBigqueryDataset(dict):
     def dataset(self) -> str:
         """
         Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 

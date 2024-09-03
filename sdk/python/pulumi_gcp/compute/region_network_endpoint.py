@@ -31,9 +31,6 @@ class RegionNetworkEndpointArgs:
         The set of arguments for constructing a RegionNetworkEndpoint resource.
         :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         :param pulumi.Input[int] client_destination_port: Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
@@ -77,9 +74,6 @@ class RegionNetworkEndpointArgs:
     def region_network_endpoint_group(self) -> pulumi.Input[str]:
         """
         The network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "region_network_endpoint_group")
 
@@ -189,9 +183,6 @@ class _RegionNetworkEndpointState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing network endpoint group is located.
         :param pulumi.Input[str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         """
         if client_destination_port is not None:
             pulumi.set(__self__, "client_destination_port", client_destination_port)
@@ -303,9 +294,6 @@ class _RegionNetworkEndpointState:
     def region_network_endpoint_group(self) -> Optional[pulumi.Input[str]]:
         """
         The network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "region_network_endpoint_group")
 
@@ -338,12 +326,10 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
         * How-to Guides
-            * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+          * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
-        ## Example Usage
-
-        ### Region Network Endpoint Internet Ip Port
+        ## 
 
         ```python
         import pulumi
@@ -363,7 +349,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
-        ### Region Network Endpoint Internet Fqdn Port
+        ## 
 
         ```python
         import pulumi
@@ -383,6 +369,9 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+
+        ## Example Usage
+
         ### Region Network Endpoint Portmap
 
         ```python
@@ -471,9 +460,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing network endpoint group is located.
         :param pulumi.Input[str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -491,12 +477,10 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
         * How-to Guides
-            * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+          * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
-        ## Example Usage
-
-        ### Region Network Endpoint Internet Ip Port
+        ## 
 
         ```python
         import pulumi
@@ -516,7 +500,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             ip_address="8.8.8.8",
             port=443)
         ```
-        ### Region Network Endpoint Internet Fqdn Port
+        ## 
 
         ```python
         import pulumi
@@ -536,6 +520,9 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn="backend.example.com",
             port=443)
         ```
+
+        ## Example Usage
+
         ### Region Network Endpoint Portmap
 
         ```python
@@ -691,9 +678,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing network endpoint group is located.
         :param pulumi.Input[str] region_network_endpoint_group: The network endpoint group this endpoint is part of.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -774,9 +758,6 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
     def region_network_endpoint_group(self) -> pulumi.Output[str]:
         """
         The network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "region_network_endpoint_group")
 

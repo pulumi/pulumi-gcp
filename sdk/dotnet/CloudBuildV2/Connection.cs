@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/build/docs)
+    ///   * [Official Documentation](https://cloud.google.com/build/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Cloudbuildv2 Connection
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,6 +44,9 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Cloudbuildv2 Connection Ghe
     /// 
     /// ```csharp
@@ -141,6 +142,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
+    /// 
     /// ### Cloudbuildv2 Connection Github
     /// 
     /// ```csharp
@@ -314,9 +316,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -449,9 +448,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -567,9 +563,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

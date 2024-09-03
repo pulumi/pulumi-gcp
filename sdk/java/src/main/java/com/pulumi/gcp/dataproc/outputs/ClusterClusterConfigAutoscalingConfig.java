@@ -19,8 +19,6 @@ public final class ClusterClusterConfigAutoscalingConfig {
      * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
      * Note that the policy must be in the same project and Cloud Dataproc region.
      * 
-     * ***
-     * 
      */
     private String policyUri;
 
@@ -33,8 +31,6 @@ public final class ClusterClusterConfigAutoscalingConfig {
      * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
      * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
      * Note that the policy must be in the same project and Cloud Dataproc region.
-     * 
-     * ***
      * 
      */
     public String policyUri() {

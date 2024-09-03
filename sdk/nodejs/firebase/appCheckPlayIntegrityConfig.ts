@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.playIntegrityConfig)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/app-check)
+ *   * [Official Documentation](https://firebase.google.com/docs/app-check)
  *
  * ## Example Usage
  *
@@ -48,6 +48,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait30s],
  * });
  * ```
+ *
  * ### Firebase App Check Play Integrity Config Full
  *
  * ```typescript
@@ -137,9 +138,6 @@ export class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
     /**
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -197,9 +195,6 @@ export interface AppCheckPlayIntegrityConfigState {
     /**
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId?: pulumi.Input<string>;
     /**
@@ -226,9 +221,6 @@ export interface AppCheckPlayIntegrityConfigArgs {
     /**
      * The ID of an
      * [Android App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.androidApps#AndroidApp.FIELDS.app_id).
-     *
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

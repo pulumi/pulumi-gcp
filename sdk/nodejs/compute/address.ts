@@ -23,12 +23,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
  * * How-to Guides
- *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
- *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+ *   * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+ *   * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
  *
- * ## Example Usage
- *
- * ### Address Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * const ipAddress = new gcp.compute.Address("ip_address", {name: "my-address"});
  * ```
- * ### Address With Subnetwork
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +55,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * ### Address With Gce Endpoint
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,7 +67,7 @@ import * as utilities from "../utilities";
  *     purpose: "GCE_ENDPOINT",
  * });
  * ```
- * ### Instance With Ip
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -97,7 +95,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Compute Address Ipsec Interconnect
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -231,9 +229,6 @@ export class Address extends pulumi.CustomResource {
      * which means the first character must be a lowercase letter, and all
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -423,9 +418,6 @@ export interface AddressState {
      * which means the first character must be a lowercase letter, and all
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -540,9 +532,6 @@ export interface AddressArgs {
      * which means the first character must be a lowercase letter, and all
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

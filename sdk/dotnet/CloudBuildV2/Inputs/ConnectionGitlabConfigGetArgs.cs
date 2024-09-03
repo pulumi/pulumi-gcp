@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
         public Input<Inputs.ConnectionGitlabConfigAuthorizerCredentialGetArgs> AuthorizerCredential { get; set; } = null!;
 
         /// <summary>
-        /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is &lt;https://gitlab.com&gt;.
         /// </summary>
         [Input("hostUri")]
         public Input<string>? HostUri { get; set; }

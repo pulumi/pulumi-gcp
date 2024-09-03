@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// 
         /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+        ///   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// 
         /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+        ///   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
         /// 
         /// ## Example Usage
         /// 
@@ -77,8 +77,6 @@ namespace Pulumi.Gcp.CloudBuild
     {
         /// <summary>
         /// The Cloud Build location for the trigger.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -105,8 +103,6 @@ namespace Pulumi.Gcp.CloudBuild
     {
         /// <summary>
         /// The Cloud Build location for the trigger.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

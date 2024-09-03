@@ -14,6 +14,30 @@ import (
 // Get a forwarding rule within GCE from its name.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupForwardingRule(ctx, &compute.LookupForwardingRuleArgs{
+//				Name: "forwarding-rule-us-east1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupForwardingRule(ctx *pulumi.Context, args *LookupForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupForwardingRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupForwardingRuleResult
@@ -27,8 +51,6 @@ func LookupForwardingRule(ctx *pulumi.Context, args *LookupForwardingRuleArgs, o
 // A collection of arguments for invoking getForwardingRule.
 type LookupForwardingRuleArgs struct {
 	// The name of the forwarding rule.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -94,8 +116,6 @@ func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOu
 // A collection of arguments for invoking getForwardingRule.
 type LookupForwardingRuleOutputArgs struct {
 	// The name of the forwarding rule.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

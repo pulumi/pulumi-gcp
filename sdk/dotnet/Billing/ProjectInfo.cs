@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// * [API documentation](https://cloud.google.com/billing/docs/reference/rest/v1/projects)
     /// * How-to Guides
-    ///     * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
+    ///   * [Enable, disable, or change billing for a project](https://cloud.google.com/billing/docs/how-to/modify-project)
     /// 
     /// ## Example Usage
     /// 
@@ -71,9 +71,6 @@ namespace Pulumi.Gcp.Billing
         /// The ID of the billing account associated with the project, if
         /// any. Set to empty string to disable billing for the project.
         /// For example, `"012345-567890-ABCDEF"` or `""`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("billingAccount")]
         public Output<string> BillingAccount { get; private set; } = null!;
@@ -135,9 +132,6 @@ namespace Pulumi.Gcp.Billing
         /// The ID of the billing account associated with the project, if
         /// any. Set to empty string to disable billing for the project.
         /// For example, `"012345-567890-ABCDEF"` or `""`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("billingAccount", required: true)]
         public Input<string> BillingAccount { get; set; } = null!;
@@ -161,9 +155,6 @@ namespace Pulumi.Gcp.Billing
         /// The ID of the billing account associated with the project, if
         /// any. Set to empty string to disable billing for the project.
         /// For example, `"012345-567890-ABCDEF"` or `""`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("billingAccount")]
         public Input<string>? BillingAccount { get; set; }

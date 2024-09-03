@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -55,10 +55,6 @@ export interface GetIstioCanonicalServiceArgs {
     /**
      * The name of the canonical service underlying this service.
      * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     canonicalService: string;
     /**
@@ -118,8 +114,8 @@ export interface GetIstioCanonicalServiceResult {
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
  *
@@ -148,10 +144,6 @@ export interface GetIstioCanonicalServiceOutputArgs {
     /**
      * The name of the canonical service underlying this service.
      * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
-     *
-     * - - -
-     *
-     * Other optional fields include:
      */
     canonicalService: pulumi.Input<string>;
     /**

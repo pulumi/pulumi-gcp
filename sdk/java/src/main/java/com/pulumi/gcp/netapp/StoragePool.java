@@ -19,89 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ### Storage Pool Create
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.GlobalAddress;
- * import com.pulumi.gcp.compute.GlobalAddressArgs;
- * import com.pulumi.gcp.servicenetworking.Connection;
- * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
- * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
- * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
- * import com.pulumi.gcp.netapp.StoragePool;
- * import com.pulumi.gcp.netapp.StoragePoolArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a network or use datasource to reference existing network
- *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()
- *             .name("test-network")
- *             .build());
- * 
- *         // Reserve a CIDR for NetApp Volumes to use
- *         // When using shared-VPCs, this resource needs to be created in host project
- *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
- *             .name("test-address")
- *             .purpose("VPC_PEERING")
- *             .addressType("INTERNAL")
- *             .prefixLength(16)
- *             .network(peeringNetwork.id())
- *             .build());
- * 
- *         // Create a Private Service Access connection
- *         // When using shared-VPCs, this resource needs to be created in host project
- *         var default_ = new Connection("default", ConnectionArgs.builder()
- *             .network(peeringNetwork.id())
- *             .service("netapp.servicenetworking.goog")
- *             .reservedPeeringRanges(privateIpAlloc.name())
- *             .build());
- * 
- *         // Modify the PSA Connection to allow import/export of custom routes
- *         // When using shared-VPCs, this resource needs to be created in host project
- *         var routeUpdates = new NetworkPeeringRoutesConfig("routeUpdates", NetworkPeeringRoutesConfigArgs.builder()
- *             .peering(default_.peering())
- *             .network(peeringNetwork.name())
- *             .importCustomRoutes(true)
- *             .exportCustomRoutes(true)
- *             .build());
- * 
- *         // Create a storage pool
- *         // Create this resource in the project which is expected to own the volumes
- *         var testPool = new StoragePool("testPool", StoragePoolArgs.builder()
- *             .name("test-pool")
- *             .location("us-central1")
- *             .serviceLevel("PREMIUM")
- *             .capacityGib("2048")
- *             .network(peeringNetwork.id())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * storagePool can be imported using any of these accepted formats:
@@ -270,16 +187,12 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the storage pool. Needs to be unique per location/region.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The resource name of the storage pool. Needs to be unique per location/region.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

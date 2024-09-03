@@ -133,7 +133,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
     /**
      * Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * Structure is documented below.
      * 
      */
@@ -142,7 +142,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
     /**
      * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-     * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * Structure is documented below.
      * 
      */
@@ -501,7 +501,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -514,7 +514,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-         * https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * Structure is documented below.
          * 
          * @return builder

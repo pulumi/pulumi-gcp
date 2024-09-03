@@ -76,15 +76,22 @@ def get_group_memberships(group: Optional[str] = None,
     """
     Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
 
-    https://cloud.google.com/identity/docs/concepts/overview#memberships
+    <https://cloud.google.com/identity/docs/concepts/overview#memberships>
 
     To get more information about GroupMembership, see:
 
     * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+      * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    members = gcp.cloudidentity.get_group_memberships(group="groups/123eab45c6defghi")
+    ```
 
 
     :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -106,15 +113,22 @@ def get_group_memberships_output(group: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
 
-    https://cloud.google.com/identity/docs/concepts/overview#memberships
+    <https://cloud.google.com/identity/docs/concepts/overview#memberships>
 
     To get more information about GroupMembership, see:
 
     * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+      * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    members = gcp.cloudidentity.get_group_memberships(group="groups/123eab45c6defghi")
+    ```
 
 
     :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.

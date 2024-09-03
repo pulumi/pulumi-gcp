@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
  * * How-to Guides
- *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+ *   * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  *
- * ## Example Usage
- *
- * ### Bigquery Connection Cloud Resource
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +29,7 @@ import * as utilities from "../utilities";
  *     cloudResource: {},
  * });
  * ```
- * ### Bigquery Connection Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,7 +118,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Aws
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -138,7 +136,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Azure
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -155,7 +153,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Cloudspanner
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -172,7 +170,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Cloudspanner Databoost
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -191,7 +189,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Spark
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -227,7 +225,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Kms
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

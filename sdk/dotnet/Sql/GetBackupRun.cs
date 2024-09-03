@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Sql
         public string Instance { get; set; } = null!;
 
         /// <summary>
-        /// Toggles use of the most recent backup run if multiple backups exist for a 
+        /// Toggles use of the most recent backup run if multiple backups exist for a
         /// Cloud SQL instance.
         /// </summary>
         [Input("mostRecent")]
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
-        /// Toggles use of the most recent backup run if multiple backups exist for a 
+        /// Toggles use of the most recent backup run if multiple backups exist for a
         /// Cloud SQL instance.
         /// </summary>
         [Input("mostRecent")]
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Sql
         public readonly bool? MostRecent;
         public readonly string Project;
         /// <summary>
-        /// The time the backup operation actually started in UTC timezone in RFC 3339 format, for 
+        /// The time the backup operation actually started in UTC timezone in RFC 3339 format, for
         /// example 2012-11-15T16:19:00.094Z.
         /// </summary>
         public readonly string StartTime;

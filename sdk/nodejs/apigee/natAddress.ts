@@ -6,13 +6,13 @@ import * as utilities from "../utilities";
 
 /**
  * Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
- * Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
+ * Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See <https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate>
  *
  * To get more information about NatAddress, see:
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses)
  * * How-to Guides
- *     * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
+ *   * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
  *
  * ## Example Usage
  *
@@ -129,9 +129,6 @@ export class NatAddress extends pulumi.CustomResource {
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -186,9 +183,6 @@ export interface NatAddressState {
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -212,9 +206,6 @@ export interface NatAddressArgs {
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

@@ -27,9 +27,7 @@ import (
 // > **Warning:** All arguments including the following potentially sensitive
 // values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 //
-// ## Example Usage
-//
-// ### Backend Service Basic
+// ##
 //
 // ```go
 // package main
@@ -64,7 +62,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service External Iap
+// ##
 //
 // ```go
 // package main
@@ -95,7 +93,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Cache Simple
+// ##
 //
 // ```go
 // package main
@@ -134,7 +132,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Cache Include Http Headers
+// ##
 //
 // ```go
 // package main
@@ -171,7 +169,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Cache Include Named Cookies
+// ##
 //
 // ```go
 // package main
@@ -212,7 +210,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Cache
+// ##
 //
 // ```go
 // package main
@@ -256,7 +254,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Cache Bypass Cache On Request Headers
+// ##
 //
 // ```go
 // package main
@@ -308,7 +306,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Traffic Director Round Robin
+// ##
 //
 // ```go
 // package main
@@ -345,7 +343,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Traffic Director Ring Hash
+// ##
 //
 // ```go
 // package main
@@ -398,7 +396,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service Network Endpoint
+// ##
 //
 // ```go
 // package main
@@ -457,7 +455,7 @@ import (
 //	}
 //
 // ```
-// ### Backend Service External Managed
+// ##
 //
 // ```go
 // package main
@@ -615,7 +613,7 @@ type BackendService struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -653,8 +651,6 @@ type BackendService struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name             pulumi.StringOutput                     `pulumi:"name"`
 	OutlierDetection BackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
@@ -820,7 +816,7 @@ type backendServiceState struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -858,8 +854,6 @@ type backendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name             *string                         `pulumi:"name"`
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
@@ -996,7 +990,7 @@ type BackendServiceState struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -1034,8 +1028,6 @@ type BackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name             pulumi.StringPtrInput
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
@@ -1169,7 +1161,7 @@ type backendServiceArgs struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -1207,8 +1199,6 @@ type backendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name             *string                         `pulumi:"name"`
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
@@ -1337,7 +1327,7 @@ type BackendServiceArgs struct {
 	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 	//   Maglev is not as stable as ring hash but has faster table lookup
 	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
+	//   Maglev, refer to <https://ai.google/research/pubs/pub44824>
 	// * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 	//   reported weights. If set, the Backend Service must
 	//   configure a non legacy HTTP-based Health Check, and
@@ -1375,8 +1365,6 @@ type BackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name             pulumi.StringPtrInput
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
@@ -1654,7 +1642,7 @@ func (o BackendServiceOutput) LocalityLbPolicies() BackendServiceLocalityLbPolic
 //   - `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
 //     Maglev is not as stable as ring hash but has faster table lookup
 //     build times and host selection times. For more information about
-//     Maglev, refer to https://ai.google/research/pubs/pub44824
+//     Maglev, refer to <https://ai.google/research/pubs/pub44824>
 //   - `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
 //     reported weights. If set, the Backend Service must
 //     configure a non legacy HTTP-based Health Check, and
@@ -1698,8 +1686,6 @@ func (o BackendServiceOutput) LogConfig() BackendServiceLogConfigOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o BackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

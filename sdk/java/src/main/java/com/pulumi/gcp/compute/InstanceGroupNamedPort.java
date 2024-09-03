@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
  * 
- * ## Example Usage
- * 
- * ### Instance Group Named Port Gke
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,16 +139,12 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
     /**
      * The name of the instance group.
      * 
-     * ***
-     * 
      */
     @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
      * @return The name of the instance group.
-     * 
-     * ***
      * 
      */
     public Output<String> group() {

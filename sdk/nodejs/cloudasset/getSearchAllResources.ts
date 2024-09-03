@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Searching For All Projects In An Org
+ * ### searching for all projects in an org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Searching For All Projects With CloudBuild API Enabled
+ * ### searching for all projects with CloudBuild API enabled
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Searching For All Service Accounts In A Project
+ * ### searching for all Service Accounts in a project
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ export interface GetSearchAllResourcesResult {
  *
  * ## Example Usage
  *
- * ### Searching For All Projects In An Org
+ * ### searching for all projects in an org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -113,7 +113,7 @@ export interface GetSearchAllResourcesResult {
  * });
  * ```
  *
- * ### Searching For All Projects With CloudBuild API Enabled
+ * ### searching for all projects with CloudBuild API enabled
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -126,7 +126,7 @@ export interface GetSearchAllResourcesResult {
  * });
  * ```
  *
- * ### Searching For All Service Accounts In A Project
+ * ### searching for all Service Accounts in a project
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

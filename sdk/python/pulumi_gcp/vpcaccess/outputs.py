@@ -43,7 +43,7 @@ class ConnectorSubnet(dict):
                  project_id: Optional[str] = None):
         """
         :param str name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-               https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+               <https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName}> the correct input for this field would be {subnetName}"
         :param str project_id: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
         if name is not None:
@@ -56,7 +56,7 @@ class ConnectorSubnet(dict):
     def name(self) -> Optional[str]:
         """
         Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-        https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        <https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName}> the correct input for this field would be {subnetName}"
         """
         return pulumi.get(self, "name")
 
@@ -76,8 +76,6 @@ class GetConnectorSubnetResult(dict):
                  project_id: str):
         """
         :param str name: Name of the resource.
-               
-               - - -
         :param str project_id: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
         pulumi.set(__self__, "name", name)
@@ -88,8 +86,6 @@ class GetConnectorSubnetResult(dict):
     def name(self) -> str:
         """
         Name of the resource.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

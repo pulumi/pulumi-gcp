@@ -206,9 +206,9 @@ type Function struct {
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrOutput `pulumi:"ingressSettings"`
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in <https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key>
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
-	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -227,8 +227,6 @@ type Function struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-	//
-	// ***
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayOutput `pulumi:"secretEnvironmentVariables"`
@@ -328,9 +326,9 @@ type functionState struct {
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in <https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key>
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -349,8 +347,6 @@ type functionState struct {
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-	//
-	// ***
 	Runtime *string `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -413,9 +409,9 @@ type FunctionState struct {
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in <https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key>
 	KmsKeyName pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -434,8 +430,6 @@ type FunctionState struct {
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-	//
-	// ***
 	Runtime pulumi.StringPtrInput
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
@@ -500,9 +494,9 @@ type functionArgs struct {
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in <https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key>
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -519,8 +513,6 @@ type functionArgs struct {
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-	//
-	// ***
 	Runtime string `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -577,9 +569,9 @@ type FunctionArgs struct {
 	// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
 	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in <https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key>
 	KmsKeyName pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -596,8 +588,6 @@ type FunctionArgs struct {
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-	//
-	// ***
 	Runtime pulumi.StringInput
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
@@ -783,12 +773,12 @@ func (o FunctionOutput) IngressSettings() pulumi.StringPtrOutput {
 }
 
 // Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in <https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key>
 func (o FunctionOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at <https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements>.
 //
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -828,8 +818,6 @@ func (o FunctionOutput) Region() pulumi.StringOutput {
 
 // The runtime in which the function is going to run.
 // Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-//
-// ***
 func (o FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

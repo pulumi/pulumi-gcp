@@ -435,11 +435,9 @@ class PatchDeployment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
+          * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 
-        ## Example Usage
-
-        ### Os Config Patch Deployment Basic
+        ## 
 
         ```python
         import pulumi
@@ -454,7 +452,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "execute_time": "2999-10-10T10:10:10.045123456Z",
             })
         ```
-        ### Os Config Patch Deployment Daily
+        ## 
 
         ```python
         import pulumi
@@ -477,7 +475,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
-        ### Os Config Patch Deployment Daily Midnight
+        ## 
 
         ```python
         import pulumi
@@ -500,7 +498,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
-        ### Os Config Patch Deployment Instance
+        ## 
 
         ```python
         import pulumi
@@ -555,7 +553,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
-        ### Os Config Patch Deployment Full
+        ## 
 
         ```python
         import pulumi
@@ -720,11 +718,9 @@ class PatchDeployment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
+          * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 
-        ## Example Usage
-
-        ### Os Config Patch Deployment Basic
+        ## 
 
         ```python
         import pulumi
@@ -739,7 +735,7 @@ class PatchDeployment(pulumi.CustomResource):
                 "execute_time": "2999-10-10T10:10:10.045123456Z",
             })
         ```
-        ### Os Config Patch Deployment Daily
+        ## 
 
         ```python
         import pulumi
@@ -762,7 +758,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
-        ### Os Config Patch Deployment Daily Midnight
+        ## 
 
         ```python
         import pulumi
@@ -785,7 +781,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
-        ### Os Config Patch Deployment Instance
+        ## 
 
         ```python
         import pulumi
@@ -840,7 +836,7 @@ class PatchDeployment(pulumi.CustomResource):
                 },
             })
         ```
-        ### Os Config Patch Deployment Full
+        ## 
 
         ```python
         import pulumi

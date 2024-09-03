@@ -19,9 +19,10 @@ import javax.annotation.Nullable;
 /**
  * For more information, see:
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
+ * 
  * ## Example Usage
  * 
- * ### Basic_ruleset
+ * ### basic_ruleset
  * Creates a basic Firestore ruleset
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -64,7 +65,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Minimal_ruleset
+ * 
+ * ### minimal_ruleset
  * Creates a minimal Firestore ruleset
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

@@ -27,11 +27,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
  * * How-to Guides
- *     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
+ *   * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
  *
- * ## Example Usage
- *
- * ### Region Disk Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,7 +59,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Region Disk Async
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +89,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### Region Disk Features
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -282,9 +280,6 @@ export class RegionDisk extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     public readonly replicaZones!: pulumi.Output<string[]>;
     /**
@@ -313,8 +308,8 @@ export class RegionDisk extends pulumi.CustomResource {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -541,9 +536,6 @@ export interface RegionDiskState {
     region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -572,8 +564,8 @@ export interface RegionDiskState {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}
@@ -695,9 +687,6 @@ export interface RegionDiskArgs {
     region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     replicaZones: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -722,8 +711,8 @@ export interface RegionDiskArgs {
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
-     * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
-     * * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}>
+     * * <https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/disks/{disk}>
      * * projects/{project}/zones/{zone}/disks/{disk}
      * * projects/{project}/regions/{region}/disks/{disk}
      * * zones/{zone}/disks/{disk}

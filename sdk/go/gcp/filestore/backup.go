@@ -21,9 +21,7 @@ import (
 //   - [Creating Backups](https://cloud.google.com/filestore/docs/create-backups)
 //   - [Official Documentation](https://cloud.google.com/filestore/docs/backups)
 //
-// ## Example Usage
-//
-// ### Filestore Backup Basic
+// ##
 //
 // ```go
 // package main
@@ -122,8 +120,6 @@ type Backup struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the backup. The name must be unique within the specified instance.
 	// The name must be 1-63 characters long, and comply with
@@ -213,8 +209,6 @@ type backupState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the backup. The name must be unique within the specified instance.
 	// The name must be 1-63 characters long, and comply with
@@ -261,8 +255,6 @@ type BackupState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the backup. The name must be unique within the specified instance.
 	// The name must be 1-63 characters long, and comply with
@@ -303,8 +295,6 @@ type backupArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name of the backup. The name must be unique within the specified instance.
 	// The name must be 1-63 characters long, and comply with
@@ -333,8 +323,6 @@ type BackupArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name of the backup. The name must be unique within the specified instance.
 	// The name must be 1-63 characters long, and comply with
@@ -479,8 +467,6 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-//
-// ***
 func (o BackupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

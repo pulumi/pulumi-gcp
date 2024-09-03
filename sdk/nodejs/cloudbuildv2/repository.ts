@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/build/docs)
+ *   * [Official Documentation](https://cloud.google.com/build/docs)
  *
  * ## Example Usage
  *
@@ -82,6 +82,7 @@ import * as utilities from "../utilities";
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
  * });
  * ```
+ *
  * ### Cloudbuildv2 Repository Github Doc
  *
  * ```typescript
@@ -206,9 +207,6 @@ export class Repository extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The connection for the resource
-     *
-     *
-     * - - -
      */
     public readonly parentConnection!: pulumi.Output<string>;
     /**
@@ -301,9 +299,6 @@ export interface RepositoryState {
     name?: pulumi.Input<string>;
     /**
      * The connection for the resource
-     *
-     *
-     * - - -
      */
     parentConnection?: pulumi.Input<string>;
     /**
@@ -341,9 +336,6 @@ export interface RepositoryArgs {
     name?: pulumi.Input<string>;
     /**
      * The connection for the resource
-     *
-     *
-     * - - -
      */
     parentConnection: pulumi.Input<string>;
     /**

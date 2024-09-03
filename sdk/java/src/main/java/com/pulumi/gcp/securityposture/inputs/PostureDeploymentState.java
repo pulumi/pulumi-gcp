@@ -85,14 +85,14 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * @return For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     public Optional<Output<String>> etag() {
@@ -168,16 +168,12 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     /**
      * ID of the posture deployment.
      * 
-     * ***
-     * 
      */
     @Import(name="postureDeploymentId")
     private @Nullable Output<String> postureDeploymentId;
 
     /**
      * @return ID of the posture deployment.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> postureDeploymentId() {
@@ -416,7 +412,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * @param etag For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
          * 
          * @return builder
          * 
@@ -427,7 +423,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etag For Resource freshness validation (https://google.aip.dev/154)
+         * @param etag For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
          * 
          * @return builder
          * 
@@ -529,8 +525,6 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         /**
          * @param postureDeploymentId ID of the posture deployment.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -541,8 +535,6 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param postureDeploymentId ID of the posture deployment.
-         * 
-         * ***
          * 
          * @return builder
          * 

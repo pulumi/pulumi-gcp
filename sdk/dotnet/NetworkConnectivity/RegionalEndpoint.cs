@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.regionalEndpoints)
     /// * How-to Guides
-    ///     * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
+    ///   * [Access regional Google APIs through endpoints](https://cloud.google.com/vpc/docs/access-regional-google-apis-endpoints)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Connectivity Regional Endpoint Regional Access
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -62,7 +60,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Regional Endpoint Global Access
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -170,9 +168,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the RegionalEndpoint.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -315,9 +310,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the RegionalEndpoint.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -420,9 +412,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the RegionalEndpoint.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

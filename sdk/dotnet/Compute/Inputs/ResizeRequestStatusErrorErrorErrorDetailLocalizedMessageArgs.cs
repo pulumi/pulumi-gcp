@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// (Output)
-        /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        /// The locale used following the specification defined at &lt;https://www.rfc-editor.org/rfc/bcp/bcp47.txt&gt;. Examples are: "en-US", "fr-CH", "es-MX"
         /// </summary>
         [Input("locale")]
         public Input<string>? Locale { get; set; }

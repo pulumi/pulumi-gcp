@@ -29,10 +29,6 @@ class AzureClientArgs:
         :param pulumi.Input[str] application_id: The Azure Active Directory Application ID.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         """
@@ -73,10 +69,6 @@ class AzureClientArgs:
     def tenant_id(self) -> pulumi.Input[str]:
         """
         The Azure Active Directory Tenant ID.
-
-
-
-        - - -
         """
         return pulumi.get(self, "tenant_id")
 
@@ -129,10 +121,6 @@ class _AzureClientState:
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the client.
         """
         if application_id is not None:
@@ -229,10 +217,6 @@ class _AzureClientState:
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
         The Azure Active Directory Tenant ID.
-
-
-
-        - - -
         """
         return pulumi.get(self, "tenant_id")
 
@@ -269,9 +253,10 @@ class AzureClient(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_azure_client
+        ### basic_azure_client
         A basic example of a containerazure azure client
         ```python
         import pulumi
@@ -316,10 +301,6 @@ class AzureClient(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
-               
-               
-               
-               - - -
         """
         ...
     @overload
@@ -332,9 +313,10 @@ class AzureClient(pulumi.CustomResource):
 
         For more information, see:
         * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+
         ## Example Usage
 
-        ### Basic_azure_client
+        ### basic_azure_client
         A basic example of a containerazure azure client
         ```python
         import pulumi
@@ -447,10 +429,6 @@ class AzureClient(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] tenant_id: The Azure Active Directory Tenant ID.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the client.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -520,10 +498,6 @@ class AzureClient(pulumi.CustomResource):
     def tenant_id(self) -> pulumi.Output[str]:
         """
         The Azure Active Directory Tenant ID.
-
-
-
-        - - -
         """
         return pulumi.get(self, "tenant_id")
 

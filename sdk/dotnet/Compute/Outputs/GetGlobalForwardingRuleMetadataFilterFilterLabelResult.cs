@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// The name of the global forwarding rule.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Name;
         /// <summary>

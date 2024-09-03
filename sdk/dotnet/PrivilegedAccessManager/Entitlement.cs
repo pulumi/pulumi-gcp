@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         public Output<string> EntitlementId { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -375,7 +375,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         public Input<string>? EntitlementId { get; set; }
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
     /// * How-to Guides
-    ///     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
+    ///   * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
     /// 
     /// **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
     /// 
@@ -101,9 +101,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("disk")]
         public Output<string> Disk { get; private set; } = null!;
@@ -205,9 +202,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
@@ -271,9 +265,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("disk")]
         public Input<string>? Disk { get; set; }

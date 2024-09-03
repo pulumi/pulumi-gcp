@@ -21,11 +21,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores.schemas)
  * * How-to Guides
- *     * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
+ *   * [Provide a schema for your data store](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema)
  * 
- * ## Example Usage
- * 
- * ### Discoveryengine Schema Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -186,16 +184,12 @@ public class Schema extends com.pulumi.resources.CustomResource {
     /**
      * The unique id of the schema.
      * 
-     * ***
-     * 
      */
     @Export(name="schemaId", refs={String.class}, tree="[0]")
     private Output<String> schemaId;
 
     /**
      * @return The unique id of the schema.
-     * 
-     * ***
      * 
      */
     public Output<String> schemaId() {

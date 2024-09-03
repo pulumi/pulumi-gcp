@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies.policyTags)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  * 
- * ## Example Usage
- * 
- * ### Data Catalog Taxonomies Policy Tag Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -70,7 +68,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Catalog Taxonomies Policy Tag Child Policies
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -236,16 +234,12 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
     /**
      * Taxonomy the policy tag is associated with
      * 
-     * ***
-     * 
      */
     @Export(name="taxonomy", refs={String.class}, tree="[0]")
     private Output<String> taxonomy;
 
     /**
      * @return Taxonomy the policy tag is associated with
-     * 
-     * ***
      * 
      */
     public Output<String> taxonomy() {

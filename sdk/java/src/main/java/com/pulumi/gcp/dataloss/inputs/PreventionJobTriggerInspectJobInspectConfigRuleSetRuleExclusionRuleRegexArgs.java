@@ -35,7 +35,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
     /**
      * Pattern defining the regular expression.
-     * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+     * Its syntax (&lt;https://github.com/google/re2/wiki/Syntax&gt;) can be found under the google/re2 repository on GitHub.
      * 
      */
     @Import(name="pattern", required=true)
@@ -43,7 +43,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
     /**
      * @return Pattern defining the regular expression.
-     * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+     * Its syntax (&lt;https://github.com/google/re2/wiki/Syntax&gt;) can be found under the google/re2 repository on GitHub.
      * 
      */
     public Output<String> pattern() {
@@ -108,7 +108,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
         /**
          * @param pattern Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (&lt;https://github.com/google/re2/wiki/Syntax&gt;) can be found under the google/re2 repository on GitHub.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
         /**
          * @param pattern Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * Its syntax (&lt;https://github.com/google/re2/wiki/Syntax&gt;) can be found under the google/re2 repository on GitHub.
          * 
          * @return builder
          * 

@@ -111,8 +111,6 @@ namespace Pulumi.Gcp.Endpoints
 
         /// <summary>
         /// The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -191,8 +189,6 @@ namespace Pulumi.Gcp.Endpoints
 
         /// <summary>
         /// The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -269,8 +265,6 @@ namespace Pulumi.Gcp.Endpoints
 
         /// <summary>
         /// The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keyvaluemaps/create)
  * * How-to Guides
- *     * [Using key value maps](https://cloud.google.com/apigee/docs/api-platform/cache/key-value-maps)
+ *   * [Using key value maps](https://cloud.google.com/apigee/docs/api-platform/cache/key-value-maps)
  *
  * ## Example Usage
  *
@@ -119,9 +119,6 @@ export class EnvironmentKeyvaluemaps extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envId!: pulumi.Output<string>;
     /**
@@ -164,9 +161,6 @@ export interface EnvironmentKeyvaluemapsState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId?: pulumi.Input<string>;
     /**
@@ -182,9 +176,6 @@ export interface EnvironmentKeyvaluemapsArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId: pulumi.Input<string>;
     /**

@@ -24,9 +24,7 @@ import (
 // * How-to Guides
 //   - [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 //
-// ## Example Usage
-//
-// ### Autoscaler Single Instance
+// ##
 //
 // ```go
 // package main
@@ -127,7 +125,7 @@ import (
 //	}
 //
 // ```
-// ### Autoscaler Basic
+// ##
 //
 // ```go
 // package main

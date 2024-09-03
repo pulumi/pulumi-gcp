@@ -11,9 +11,10 @@ import * as utilities from "../utilities";
  *
  * For more information, see:
  * * [Multicloud overview](https://cloud.google.com/kubernetes-engine/multi-cloud/docs)
+ *
  * ## Example Usage
  *
- * ### Basic_azure_cluster
+ * ### basicAzureCluster
  * A basic example of a containerazure azure cluster
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,7 +63,8 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
- * ### Beta_basic_enum_azure_cluster
+ *
+ * ### betaBasicEnumAzureCluster
  * A basic example of a containerazure azure cluster with lowercase enums (beta)
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

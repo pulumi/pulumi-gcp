@@ -30,9 +30,6 @@ class SourceIamBindingArgs:
         The set of arguments for constructing a SourceIamBinding resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "organization", organization)
@@ -56,9 +53,6 @@ class SourceIamBindingArgs:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -107,9 +101,6 @@ class _SourceIamBindingState:
         Input properties used for looking up and filtering SourceIamBinding resources.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -157,9 +148,6 @@ class _SourceIamBindingState:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -207,7 +195,7 @@ class SourceIamBinding(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.sources)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+          * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
 
@@ -245,9 +233,6 @@ class SourceIamBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -265,7 +250,7 @@ class SourceIamBinding(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.sources)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+          * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
 
@@ -367,9 +352,6 @@ class SourceIamBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,9 +386,6 @@ class SourceIamBinding(pulumi.CustomResource):
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

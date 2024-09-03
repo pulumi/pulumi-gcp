@@ -23,11 +23,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ *   * [Google Cloud Router](https://cloud.google.com/router/docs/)
  * 
- * ## Example Usage
- * 
- * ### Router Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -82,7 +80,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Compute Router Encrypted Interconnect
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -250,16 +248,12 @@ public class Router extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the network to which this router belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return A reference to the network to which this router belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

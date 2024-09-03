@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.ekmConnections)
  * * How-to Guides
- *     * [Creating a Ekm Connection](https://cloud.google.com/kms/docs/create-ekm-connection)
+ *   * [Creating a Ekm Connection](https://cloud.google.com/kms/docs/create-ekm-connection)
  * 
  * ## Example Usage
  * 

@@ -32,19 +32,17 @@ import javax.annotation.Nullable;
  * labels are required.
  * 
  * A list of supported channels per project the `list` endpoint can be
- * accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
+ * accessed programmatically or through the api explorer at  &lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list&gt; .
  * This provides the channel type and all of the required labels that must be passed.
  * 
  * To get more information about NotificationChannel, see:
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
  * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  * 
- * ## Example Usage
- * 
- * ### Notification Channel Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -81,6 +79,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Notification Channel Sensitive
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -286,18 +287,14 @@ public class NotificationChannel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sensitiveLabels);
     }
     /**
-     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
-     * 
-     * ***
+     * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See &lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list&gt; to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
-     * 
-     * ***
+     * @return The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See &lt;https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list&gt; to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
      * 
      */
     public Output<String> type() {

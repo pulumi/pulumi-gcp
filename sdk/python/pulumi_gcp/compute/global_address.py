@@ -53,9 +53,6 @@ class GlobalAddressArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -172,9 +169,6 @@ class GlobalAddressArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -285,9 +279,6 @@ class _GlobalAddressState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -453,9 +444,6 @@ class _GlobalAddressState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -570,11 +558,9 @@ class GlobalAddress(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
         * How-to Guides
-            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+          * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
-        ## Example Usage
-
-        ### Global Address Basic
+        ## 
 
         ```python
         import pulumi
@@ -582,7 +568,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
-        ### Global Address Private Services Connect
+        ## 
 
         ```python
         import pulumi
@@ -647,9 +633,6 @@ class GlobalAddress(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -678,11 +661,9 @@ class GlobalAddress(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
         * How-to Guides
-            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+          * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
-        ## Example Usage
-
-        ### Global Address Basic
+        ## 
 
         ```python
         import pulumi
@@ -690,7 +671,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         default = gcp.compute.GlobalAddress("default", name="global-appserver-ip")
         ```
-        ### Global Address Private Services Connect
+        ## 
 
         ```python
         import pulumi
@@ -839,9 +820,6 @@ class GlobalAddress(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -965,9 +943,6 @@ class GlobalAddress(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

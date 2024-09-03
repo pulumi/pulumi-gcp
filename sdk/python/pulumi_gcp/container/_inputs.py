@@ -545,7 +545,7 @@ if not MYPY:
         ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
         to the groups. Up to ten admin groups can be provided.
         For more info on RBAC, see
-        https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         admin_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -553,7 +553,7 @@ if not MYPY:
         ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
         to the users. Up to ten admin users can be provided.
         For more info on RBAC, see
-        https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
 elif False:
     AttachedClusterAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
@@ -568,12 +568,12 @@ class AttachedClusterAuthorizationArgs:
                ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
                to the groups. Up to ten admin groups can be provided.
                For more info on RBAC, see
-               https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+               <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         :param pulumi.Input[Sequence[pulumi.Input[str]]] admin_users: Users that can perform operations as a cluster admin. A managed
                ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
                to the users. Up to ten admin users can be provided.
                For more info on RBAC, see
-               https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+               <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         if admin_groups is not None:
             pulumi.set(__self__, "admin_groups", admin_groups)
@@ -588,7 +588,7 @@ class AttachedClusterAuthorizationArgs:
         ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
         to the groups. Up to ten admin groups can be provided.
         For more info on RBAC, see
-        https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         return pulumi.get(self, "admin_groups")
 
@@ -604,7 +604,7 @@ class AttachedClusterAuthorizationArgs:
         ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
         to the users. Up to ten admin users can be provided.
         For more info on RBAC, see
-        https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         return pulumi.get(self, "admin_users")
 
@@ -1095,11 +1095,11 @@ if not MYPY:
     class AwsClusterAuthorizationArgsDict(TypedDict):
         admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgsDict']]]
         """
-        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         admin_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgsDict']]]]
         """
-        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
 elif False:
     AwsClusterAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
@@ -1110,8 +1110,8 @@ class AwsClusterAuthorizationArgs:
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]],
                  admin_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
-        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]] admin_groups: Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]] admin_groups: Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         pulumi.set(__self__, "admin_users", admin_users)
         if admin_groups is not None:
@@ -1121,7 +1121,7 @@ class AwsClusterAuthorizationArgs:
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]:
         """
-        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         return pulumi.get(self, "admin_users")
 
@@ -1133,7 +1133,7 @@ class AwsClusterAuthorizationArgs:
     @pulumi.getter(name="adminGroups")
     def admin_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]]]:
         """
-        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         return pulumi.get(self, "admin_groups")
 
@@ -2101,8 +2101,6 @@ if not MYPY:
         vpc_id: pulumi.Input[str]
         """
         The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-
-        - - -
         """
         per_node_pool_sg_rules_disabled: NotRequired[pulumi.Input[bool]]
         """
@@ -2122,8 +2120,6 @@ class AwsClusterNetworkingArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param pulumi.Input[str] vpc_id: The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-               
-               - - -
         :param pulumi.Input[bool] per_node_pool_sg_rules_disabled: Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
@@ -2161,8 +2157,6 @@ class AwsClusterNetworkingArgs:
     def vpc_id(self) -> pulumi.Input[str]:
         """
         The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-
-        - - -
         """
         return pulumi.get(self, "vpc_id")
 
@@ -2603,7 +2597,7 @@ if not MYPY:
         """
         metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+        The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
         """
 elif False:
     AwsNodePoolConfigAutoscalingMetricsCollectionArgsDict: TypeAlias = Mapping[str, Any]
@@ -2615,7 +2609,7 @@ class AwsNodePoolConfigAutoscalingMetricsCollectionArgs:
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] granularity: The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] metrics: The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] metrics: The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
         """
         pulumi.set(__self__, "granularity", granularity)
         if metrics is not None:
@@ -2637,7 +2631,7 @@ class AwsNodePoolConfigAutoscalingMetricsCollectionArgs:
     @pulumi.getter
     def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+        The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
         """
         return pulumi.get(self, "metrics")
 
@@ -2875,7 +2869,7 @@ if not MYPY:
     class AwsNodePoolConfigSpotConfigArgsDict(TypedDict):
         instance_types: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+        List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
         """
 elif False:
     AwsNodePoolConfigSpotConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2885,7 +2879,7 @@ class AwsNodePoolConfigSpotConfigArgs:
     def __init__(__self__, *,
                  instance_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
         """
         pulumi.set(__self__, "instance_types", instance_types)
 
@@ -2893,7 +2887,7 @@ class AwsNodePoolConfigSpotConfigArgs:
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+        List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
         """
         return pulumi.get(self, "instance_types")
 
@@ -3039,8 +3033,6 @@ if not MYPY:
         max_pods_per_node: pulumi.Input[int]
         """
         The maximum number of pods to schedule on a single node.
-
-        - - -
         """
 elif False:
     AwsNodePoolMaxPodsConstraintArgsDict: TypeAlias = Mapping[str, Any]
@@ -3051,8 +3043,6 @@ class AwsNodePoolMaxPodsConstraintArgs:
                  max_pods_per_node: pulumi.Input[int]):
         """
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods to schedule on a single node.
-               
-               - - -
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -3061,8 +3051,6 @@ class AwsNodePoolMaxPodsConstraintArgs:
     def max_pods_per_node(self) -> pulumi.Input[int]:
         """
         The maximum number of pods to schedule on a single node.
-
-        - - -
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -3159,11 +3147,11 @@ if not MYPY:
     class AzureClusterAuthorizationArgsDict(TypedDict):
         admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgsDict']]]
         """
-        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         admin_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgsDict']]]]
         """
-        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
 elif False:
     AzureClusterAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
@@ -3174,8 +3162,8 @@ class AzureClusterAuthorizationArgs:
                  admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]],
                  admin_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]] admin_groups: Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]] admin_groups: Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         pulumi.set(__self__, "admin_users", admin_users)
         if admin_groups is not None:
@@ -3185,7 +3173,7 @@ class AzureClusterAuthorizationArgs:
     @pulumi.getter(name="adminUsers")
     def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]:
         """
-        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         return pulumi.get(self, "admin_users")
 
@@ -3197,7 +3185,7 @@ class AzureClusterAuthorizationArgs:
     @pulumi.getter(name="adminGroups")
     def admin_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]]]:
         """
-        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
         """
         return pulumi.get(self, "admin_groups")
 
@@ -3358,7 +3346,7 @@ if not MYPY:
         """
         vm_size: NotRequired[pulumi.Input[str]]
         """
-        Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+        Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
         """
 elif False:
     AzureClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
@@ -3386,7 +3374,7 @@ class AzureClusterControlPlaneArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]] replica_placements: Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
         :param pulumi.Input['AzureClusterControlPlaneRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying control plane Azure resources.
-        :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+        :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
         """
         pulumi.set(__self__, "ssh_config", ssh_config)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -3518,7 +3506,7 @@ class AzureClusterControlPlaneArgs:
     @pulumi.getter(name="vmSize")
     def vm_size(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+        Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
         """
         return pulumi.get(self, "vm_size")
 
@@ -3882,8 +3870,6 @@ if not MYPY:
         virtual_network_id: pulumi.Input[str]
         """
         The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-
-        - - -
         """
 elif False:
     AzureClusterNetworkingArgsDict: TypeAlias = Mapping[str, Any]
@@ -3898,8 +3884,6 @@ class AzureClusterNetworkingArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: The IP address range of the pods in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All pods in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
         :param pulumi.Input[str] virtual_network_id: The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-               
-               - - -
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -3934,8 +3918,6 @@ class AzureClusterNetworkingArgs:
     def virtual_network_id(self) -> pulumi.Input[str]:
         """
         The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-
-        - - -
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -4367,8 +4349,6 @@ if not MYPY:
         max_pods_per_node: pulumi.Input[int]
         """
         The maximum number of pods to schedule on a single node.
-
-        - - -
         """
 elif False:
     AzureNodePoolMaxPodsConstraintArgsDict: TypeAlias = Mapping[str, Any]
@@ -4379,8 +4359,6 @@ class AzureNodePoolMaxPodsConstraintArgs:
                  max_pods_per_node: pulumi.Input[int]):
         """
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods to schedule on a single node.
-               
-               - - -
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -4389,8 +4367,6 @@ class AzureNodePoolMaxPodsConstraintArgs:
     def max_pods_per_node(self) -> pulumi.Input[int]:
         """
         The maximum number of pods to schedule on a single node.
-
-        - - -
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -4493,7 +4469,6 @@ if not MYPY:
         GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         for more information.
 
-
         This example `addons_config` disables two addons:
         """
         stateful_ha_config: NotRequired[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgsDict']]
@@ -4576,7 +4551,6 @@ class ClusterAddonsConfigArgs:
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
-               
                
                This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
@@ -4801,7 +4775,6 @@ class ClusterAddonsConfigArgs:
         clusters on
         GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         for more information.
-
 
         This example `addons_config` disables two addons:
         """
@@ -5426,7 +5399,7 @@ if not MYPY:
         """
         auto_provisioning_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The list of Google Compute Engine 
+        The list of Google Compute Engine
         [zones](https://cloud.google.com/compute/docs/zones#available) in which the
         NodePool's nodes can be created by NAP.
         """
@@ -5464,7 +5437,7 @@ class ClusterClusterAutoscalingArgs:
         :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs'] auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] auto_provisioning_locations: The list of Google Compute Engine 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auto_provisioning_locations: The list of Google Compute Engine
                [zones](https://cloud.google.com/compute/docs/zones#available) in which the
                NodePool's nodes can be created by NAP.
         :param pulumi.Input[str] autoscaling_profile: Configuration
@@ -5507,7 +5480,7 @@ class ClusterClusterAutoscalingArgs:
     @pulumi.getter(name="autoProvisioningLocations")
     def auto_provisioning_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of Google Compute Engine 
+        The list of Google Compute Engine
         [zones](https://cloud.google.com/compute/docs/zones#available) in which the
         NodePool's nodes can be created by NAP.
         """
@@ -5565,7 +5538,7 @@ if not MYPY:
     class ClusterClusterAutoscalingAutoProvisioningDefaultsArgsDict(TypedDict):
         boot_disk_kms_key: NotRequired[pulumi.Input[str]]
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         disk_size: NotRequired[pulumi.Input[int]]
         """
@@ -5577,7 +5550,7 @@ if not MYPY:
         """
         image_type: NotRequired[pulumi.Input[str]]
         """
-        The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+        The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
         """
         management: NotRequired[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgsDict']]
         """
@@ -5624,10 +5597,10 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
                  shielded_instance_config: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']] = None):
         """
-        :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param pulumi.Input[int] disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
-        :param pulumi.Input[str] image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+        :param pulumi.Input[str] image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
         :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs'] management: NodeManagement configuration for this NodePool. Structure is documented below.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
                specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
@@ -5664,7 +5637,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -5700,7 +5673,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+        The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
         """
         return pulumi.get(self, "image_type")
 
@@ -9138,7 +9111,7 @@ if not MYPY:
         """
         certificate_authority_domain_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
 elif False:
     ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -9150,7 +9123,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs:
                  certificate_authority_domain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]] = None):
         """
         :param pulumi.Input[bool] enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -9172,7 +9145,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs:
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -10457,8 +10430,6 @@ if not MYPY:
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         name_prefix: NotRequired[pulumi.Input[str]]
         """
@@ -10544,8 +10515,6 @@ class ClusterNodePoolArgs:
         :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
         :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -10686,8 +10655,6 @@ class ClusterNodePoolArgs:
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -11156,7 +11123,7 @@ if not MYPY:
         """
         certificate_authority_domain_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
 elif False:
     ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -11168,7 +11135,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
                  certificate_authority_domain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]] = None):
         """
         :param pulumi.Input[bool] enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -11190,7 +11157,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -12856,7 +12823,7 @@ if not MYPY:
         """
         certificate_authority_domain_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
 elif False:
     ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -12868,7 +12835,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs:
                  certificate_authority_domain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]] = None):
         """
         :param pulumi.Input[bool] enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -12890,7 +12857,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs:
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example: 
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 

@@ -35,9 +35,6 @@ class CertificateArgs:
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] certificate_authority: The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
                a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
@@ -87,9 +84,6 @@ class CertificateArgs:
         """
         Location of the Certificate. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -270,9 +264,6 @@ class _CertificateState:
                fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
@@ -456,9 +447,6 @@ class _CertificateState:
         """
         Location of the Certificate. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -706,6 +694,7 @@ class Certificate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Privateca Certificate With Template
 
         ```python
@@ -834,6 +823,7 @@ class Certificate(pulumi.CustomResource):
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result,
             certificate_template=default_certificate_template.id)
         ```
+
         ### Privateca Certificate Csr
 
         ```python
@@ -888,6 +878,7 @@ class Certificate(pulumi.CustomResource):
             lifetime="860s",
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result)
         ```
+
         ### Privateca Certificate No Authority
 
         ```python
@@ -974,6 +965,7 @@ class Certificate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
+
         ### Privateca Certificate Custom Ski
 
         ```python
@@ -1110,9 +1102,6 @@ class Certificate(pulumi.CustomResource):
                fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
@@ -1235,6 +1224,7 @@ class Certificate(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Privateca Certificate With Template
 
         ```python
@@ -1363,6 +1353,7 @@ class Certificate(pulumi.CustomResource):
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result,
             certificate_template=default_certificate_template.id)
         ```
+
         ### Privateca Certificate Csr
 
         ```python
@@ -1417,6 +1408,7 @@ class Certificate(pulumi.CustomResource):
             lifetime="860s",
             pem_csr=std.file(input="test-fixtures/rsa_csr.pem").result)
         ```
+
         ### Privateca Certificate No Authority
 
         ```python
@@ -1503,6 +1495,7 @@ class Certificate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
+
         ### Privateca Certificate Custom Ski
 
         ```python
@@ -1738,9 +1731,6 @@ class Certificate(pulumi.CustomResource):
                fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the Certificate. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
@@ -1874,9 +1864,6 @@ class Certificate(pulumi.CustomResource):
         """
         Location of the Certificate. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

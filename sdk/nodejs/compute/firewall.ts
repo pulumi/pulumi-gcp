@@ -24,11 +24,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
  *
- * ## Example Usage
- *
- * ### Firewall Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,6 +52,9 @@ import * as utilities from "../utilities";
  *     sourceTags: ["web"],
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Firewall With Target Tags
  *
  * ```typescript
@@ -197,9 +198,6 @@ export class Firewall extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -410,9 +408,6 @@ export interface FirewallState {
     name?: pulumi.Input<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -558,9 +553,6 @@ export interface FirewallArgs {
     name?: pulumi.Input<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

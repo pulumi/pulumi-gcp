@@ -21,13 +21,13 @@ public final class TriggerGithub {
     private @Nullable String enterpriseConfigResourceName;
     /**
      * @return Name of the repository. For example: The name for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;cloud-builders&#34;.
      * 
      */
     private @Nullable String name;
     /**
      * @return Owner of the repository. For example: The owner for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;googlecloudplatform&#34;.
      * 
      */
     private @Nullable String owner;
@@ -55,7 +55,7 @@ public final class TriggerGithub {
     }
     /**
      * @return Name of the repository. For example: The name for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;cloud-builders&#34;.
      * 
      */
     public Optional<String> name() {
@@ -63,7 +63,7 @@ public final class TriggerGithub {
     }
     /**
      * @return Owner of the repository. For example: The owner for
-     * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+     * &lt;https://github.com/googlecloudplatform/cloud-builders&gt; is &#34;googlecloudplatform&#34;.
      * 
      */
     public Optional<String> owner() {

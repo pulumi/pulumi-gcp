@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations/create)
  * * How-to Guides
- *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+ *   * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Reservation Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -206,16 +204,12 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the reservation. This field must only contain alphanumeric characters or dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

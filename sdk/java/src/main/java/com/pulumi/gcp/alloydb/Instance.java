@@ -113,6 +113,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Alloydb Secondary Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -388,14 +389,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * The Compute Engine zone that the instance should serve from, per &lt;https://cloud.google.com/compute/docs/regions-zones&gt; This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
     @Export(name="gceZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gceZone;
 
     /**
-     * @return The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+     * @return The Compute Engine zone that the instance should serve from, per &lt;https://cloud.google.com/compute/docs/regions-zones&gt; This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
     public Output<Optional<String>> gceZone() {
@@ -404,16 +405,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the alloydb instance.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
      * @return The ID of the alloydb instance.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {

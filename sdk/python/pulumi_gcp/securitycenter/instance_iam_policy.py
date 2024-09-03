@@ -184,11 +184,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
-        ## Example Usage
-
-        ### Data Fusion Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -199,7 +197,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        ### Data Fusion Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -239,7 +237,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
                 "state": "ENABLED",
             }])
         ```
-        ### Data Fusion Instance Psc
+        ## 
 
         ```python
         import pulumi
@@ -271,7 +269,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Data Fusion Instance Cmek
+        ## 
 
         ```python
         import pulumi
@@ -297,7 +295,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
-        ### Data Fusion Instance Enterprise
+        ## 
 
         ```python
         import pulumi
@@ -309,7 +307,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        ### Data Fusion Instance Event
+        ## 
 
         ```python
         import pulumi
@@ -325,7 +323,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
                 "topic": event_topic.id,
             })
         ```
-        ### Data Fusion Instance Zone
+        ## 
 
         ```python
         import pulumi
@@ -388,11 +386,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+          * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
-        ## Example Usage
-
-        ### Data Fusion Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -403,7 +399,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        ### Data Fusion Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -443,7 +439,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
                 "state": "ENABLED",
             }])
         ```
-        ### Data Fusion Instance Psc
+        ## 
 
         ```python
         import pulumi
@@ -475,7 +471,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Data Fusion Instance Cmek
+        ## 
 
         ```python
         import pulumi
@@ -501,7 +497,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
-        ### Data Fusion Instance Enterprise
+        ## 
 
         ```python
         import pulumi
@@ -513,7 +509,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
             type="ENTERPRISE",
             enable_rbac=True)
         ```
-        ### Data Fusion Instance Event
+        ## 
 
         ```python
         import pulumi
@@ -529,7 +525,7 @@ class InstanceIamPolicy(pulumi.CustomResource):
                 "topic": event_topic.id,
             })
         ```
-        ### Data Fusion Instance Zone
+        ## 
 
         ```python
         import pulumi

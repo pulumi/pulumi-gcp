@@ -59,9 +59,6 @@ class AddressArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -215,9 +212,6 @@ class AddressArgs:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -385,9 +379,6 @@ class _AddressState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -594,9 +585,6 @@ class _AddressState:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -787,12 +775,10 @@ class Address(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
         * How-to Guides
-            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
-            * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+          * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+          * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
-        ## Example Usage
-
-        ### Address Basic
+        ## 
 
         ```python
         import pulumi
@@ -800,7 +786,7 @@ class Address(pulumi.CustomResource):
 
         ip_address = gcp.compute.Address("ip_address", name="my-address")
         ```
-        ### Address With Subnetwork
+        ## 
 
         ```python
         import pulumi
@@ -819,7 +805,7 @@ class Address(pulumi.CustomResource):
             address="10.0.42.42",
             region="us-central1")
         ```
-        ### Address With Gce Endpoint
+        ## 
 
         ```python
         import pulumi
@@ -830,7 +816,7 @@ class Address(pulumi.CustomResource):
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
-        ### Instance With Ip
+        ## 
 
         ```python
         import pulumi
@@ -855,7 +841,7 @@ class Address(pulumi.CustomResource):
                 }],
             }])
         ```
-        ### Compute Address Ipsec Interconnect
+        ## 
 
         ```python
         import pulumi
@@ -929,9 +915,6 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -987,12 +970,10 @@ class Address(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
         * How-to Guides
-            * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
-            * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+          * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
+          * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
-        ## Example Usage
-
-        ### Address Basic
+        ## 
 
         ```python
         import pulumi
@@ -1000,7 +981,7 @@ class Address(pulumi.CustomResource):
 
         ip_address = gcp.compute.Address("ip_address", name="my-address")
         ```
-        ### Address With Subnetwork
+        ## 
 
         ```python
         import pulumi
@@ -1019,7 +1000,7 @@ class Address(pulumi.CustomResource):
             address="10.0.42.42",
             region="us-central1")
         ```
-        ### Address With Gce Endpoint
+        ## 
 
         ```python
         import pulumi
@@ -1030,7 +1011,7 @@ class Address(pulumi.CustomResource):
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
-        ### Instance With Ip
+        ## 
 
         ```python
         import pulumi
@@ -1055,7 +1036,7 @@ class Address(pulumi.CustomResource):
                 }],
             }])
         ```
-        ### Compute Address Ipsec Interconnect
+        ## 
 
         ```python
         import pulumi
@@ -1228,9 +1209,6 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -1386,9 +1364,6 @@ class Address(pulumi.CustomResource):
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

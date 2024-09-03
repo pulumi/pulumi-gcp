@@ -51,9 +51,6 @@ class VolumeReplicationArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] replication_enabled: Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
@@ -189,9 +186,6 @@ class VolumeReplicationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the replication. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -288,9 +282,6 @@ class _VolumeReplicationState:
                transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
                currently receives an update. Updated every 5 minutes.
         :param pulumi.Input[str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -504,9 +495,6 @@ class _VolumeReplicationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the replication. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -672,52 +660,6 @@ class VolumeReplication(pulumi.CustomResource):
                  wait_for_mirror: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Netapp Volume Replication Create
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_network(name="test-network")
-        source_pool = gcp.netapp.StoragePool("source_pool",
-            name="source-pool",
-            location="us-central1",
-            service_level="PREMIUM",
-            capacity_gib="2048",
-            network=default.id)
-        destination_pool = gcp.netapp.StoragePool("destination_pool",
-            name="destination-pool",
-            location="us-west2",
-            service_level="PREMIUM",
-            capacity_gib="2048",
-            network=default.id)
-        source_volume = gcp.netapp.Volume("source_volume",
-            location=source_pool.location,
-            name="source-volume",
-            capacity_gib="100",
-            share_name="source-volume",
-            storage_pool=source_pool.name,
-            protocols=["NFSV3"],
-            deletion_policy="FORCE")
-        test_replication = gcp.netapp.VolumeReplication("test_replication",
-            location=source_volume.location,
-            volume_name=source_volume.name,
-            name="test-replication",
-            replication_schedule="EVERY_10_MINUTES",
-            description="This is a replication resource",
-            destination_volume_parameters={
-                "storage_pool": destination_pool.id,
-                "volume_id": "destination-volume",
-                "share_name": "source-volume",
-                "description": "This is a replicated volume",
-            },
-            delete_destination_volume=True,
-            wait_for_mirror=True,
-            opts = pulumi.ResourceOptions(depends_on=[source_volume]))
-        ```
-
         ## Import
 
         VolumeReplication can be imported using any of these accepted formats:
@@ -757,9 +699,6 @@ class VolumeReplication(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Name of region for this resource. The resource needs to be created in the region of the destination volume.
         :param pulumi.Input[str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] replication_enabled: Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
@@ -777,52 +716,6 @@ class VolumeReplication(pulumi.CustomResource):
                  args: VolumeReplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Netapp Volume Replication Create
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.compute.get_network(name="test-network")
-        source_pool = gcp.netapp.StoragePool("source_pool",
-            name="source-pool",
-            location="us-central1",
-            service_level="PREMIUM",
-            capacity_gib="2048",
-            network=default.id)
-        destination_pool = gcp.netapp.StoragePool("destination_pool",
-            name="destination-pool",
-            location="us-west2",
-            service_level="PREMIUM",
-            capacity_gib="2048",
-            network=default.id)
-        source_volume = gcp.netapp.Volume("source_volume",
-            location=source_pool.location,
-            name="source-volume",
-            capacity_gib="100",
-            share_name="source-volume",
-            storage_pool=source_pool.name,
-            protocols=["NFSV3"],
-            deletion_policy="FORCE")
-        test_replication = gcp.netapp.VolumeReplication("test_replication",
-            location=source_volume.location,
-            volume_name=source_volume.name,
-            name="test-replication",
-            replication_schedule="EVERY_10_MINUTES",
-            description="This is a replication resource",
-            destination_volume_parameters={
-                "storage_pool": destination_pool.id,
-                "volume_id": "destination-volume",
-                "share_name": "source-volume",
-                "description": "This is a replicated volume",
-            },
-            delete_destination_volume=True,
-            wait_for_mirror=True,
-            opts = pulumi.ResourceOptions(depends_on=[source_volume]))
-        ```
-
         ## Import
 
         VolumeReplication can be imported using any of these accepted formats:
@@ -977,9 +870,6 @@ class VolumeReplication(pulumi.CustomResource):
                transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
                currently receives an update. Updated every 5 minutes.
         :param pulumi.Input[str] name: The name of the replication. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1131,9 +1021,6 @@ class VolumeReplication(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the replication. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -29,11 +29,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles/create)
  * * How-to Guides
- *     * [Database Migration](https://cloud.google.com/database-migration/docs/)
+ *   * [Database Migration](https://cloud.google.com/database-migration/docs/)
  * 
- * ## Example Usage
- * 
- * ### Database Migration Service Connection Profile Cloudsql
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -155,7 +153,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Database Migration Service Connection Profile Postgres
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -240,6 +238,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Database Migration Service Connection Profile Oracle
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -287,6 +288,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Database Migration Service Connection Profile Alloydb
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -442,16 +444,12 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the connection profile.
      * 
-     * ***
-     * 
      */
     @Export(name="connectionProfileId", refs={String.class}, tree="[0]")
     private Output<String> connectionProfileId;
 
     /**
      * @return The ID of the connection profile.
-     * 
-     * ***
      * 
      */
     public Output<String> connectionProfileId() {

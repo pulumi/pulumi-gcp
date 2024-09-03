@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
 //
-// ## Example Usage
-//
-// ### Edgecontainer Cluster
+// ##
 //
 // ```go
 // package main
@@ -75,7 +73,7 @@ import (
 //	}
 //
 // ```
-// ### Edgecontainer Cluster With Maintenance Window
+// ##
 //
 // ```go
 // package main
@@ -135,6 +133,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Edgecontainer Local Control Plane Cluster
 //
 // ```go

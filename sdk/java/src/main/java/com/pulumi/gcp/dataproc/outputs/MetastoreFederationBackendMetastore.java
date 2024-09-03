@@ -14,8 +14,6 @@ public final class MetastoreFederationBackendMetastore {
      * @return The type of the backend metastore.
      * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
      * 
-     * ***
-     * 
      */
     private String metastoreType;
     /**
@@ -33,8 +31,6 @@ public final class MetastoreFederationBackendMetastore {
     /**
      * @return The type of the backend metastore.
      * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
-     * 
-     * ***
      * 
      */
     public String metastoreType() {

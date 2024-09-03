@@ -2556,8 +2556,6 @@ type InsightsReportConfigCsvOptions struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter *string `pulumi:"delimiter"`
 	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-	//
-	// ***
 	HeaderRequired *bool `pulumi:"headerRequired"`
 	// The character used to separate the records in the inventory report CSV file.
 	RecordSeparator *string `pulumi:"recordSeparator"`
@@ -2578,8 +2576,6 @@ type InsightsReportConfigCsvOptionsArgs struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
 	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-	//
-	// ***
 	HeaderRequired pulumi.BoolPtrInput `pulumi:"headerRequired"`
 	// The character used to separate the records in the inventory report CSV file.
 	RecordSeparator pulumi.StringPtrInput `pulumi:"recordSeparator"`
@@ -2668,8 +2664,6 @@ func (o InsightsReportConfigCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput
 }
 
 // The boolean that indicates whether or not headers are included in the inventory report CSV file.
-//
-// ***
 func (o InsightsReportConfigCsvOptionsOutput) HeaderRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InsightsReportConfigCsvOptions) *bool { return v.HeaderRequired }).(pulumi.BoolPtrOutput)
 }
@@ -2714,8 +2708,6 @@ func (o InsightsReportConfigCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOut
 }
 
 // The boolean that indicates whether or not headers are included in the inventory report CSV file.
-//
-// ***
 func (o InsightsReportConfigCsvOptionsPtrOutput) HeaderRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) *bool {
 		if v == nil {

@@ -37,9 +37,6 @@ class BackupArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the backup. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_snapshot: If specified, backup will be created from the given snapshot. If not specified,
@@ -118,9 +115,6 @@ class BackupArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the backup. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -200,9 +194,6 @@ class _BackupState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the backup.
         :param pulumi.Input[str] name: The resource name of the backup. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -339,9 +330,6 @@ class _BackupState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the backup. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -472,11 +460,9 @@ class Backup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults.backups)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
 
-        ## Example Usage
-
-        ### Netapp Backup
+        ## 
 
         ```python
         import pulumi
@@ -543,9 +529,6 @@ class Backup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the backup.
         :param pulumi.Input[str] name: The resource name of the backup. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_snapshot: If specified, backup will be created from the given snapshot. If not specified,
@@ -580,11 +563,9 @@ class Backup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults.backups)
         * How-to Guides
-            * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
+          * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-backups)
 
-        ## Example Usage
-
-        ### Netapp Backup
+        ## 
 
         ```python
         import pulumi
@@ -739,9 +720,6 @@ class Backup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the backup.
         :param pulumi.Input[str] name: The resource name of the backup. Needs to be unique per location.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -840,9 +818,6 @@ class Backup(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the backup. Needs to be unique per location.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -14,7 +14,7 @@ import (
 
 // Standard App Version resource to create a new version of standard GAE Application.
 // Learn about the differences between the standard environment and the flexible environment
-// at https://cloud.google.com/appengine/docs/the-appengine-environments.
+// at <https://cloud.google.com/appengine/docs/the-appengine-environments>.
 // Currently supporting Zip and File Containers.
 //
 // To get more information about StandardAppVersion, see:

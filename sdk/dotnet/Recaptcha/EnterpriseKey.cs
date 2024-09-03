@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// ## Example Usage
     /// 
-    /// ### Android_key
+    /// ### android_key
     /// A basic test of recaptcha enterprise key that can be used by Android apps
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +45,8 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
-    /// ### Ios_key
+    /// 
+    /// ### ios_key
     /// A basic test of recaptcha enterprise key that can be used by iOS apps
     /// ```csharp
     /// using System.Collections.Generic;
@@ -76,7 +77,8 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
-    /// ### Minimal_key
+    /// 
+    /// ### minimal_key
     /// A minimal test of recaptcha enterprise key
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,7 +102,8 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
-    /// ### Waf_key
+    /// 
+    /// ### waf_key
     /// A basic test of recaptcha enterprise key that includes WAF settings
     /// ```csharp
     /// using System.Collections.Generic;
@@ -139,7 +142,8 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
-    /// ### Web_key
+    /// 
+    /// ### web_key
     /// A basic test of recaptcha enterprise key that can be used by websites
     /// ```csharp
     /// using System.Collections.Generic;
@@ -173,7 +177,8 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
-    /// ### Web_score_key
+    /// 
+    /// ### web_score_key
     /// A basic test of recaptcha enterprise key with score integration type that can be used by websites
     /// ```csharp
     /// using System.Collections.Generic;
@@ -248,10 +253,6 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -372,10 +373,6 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -447,10 +444,6 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

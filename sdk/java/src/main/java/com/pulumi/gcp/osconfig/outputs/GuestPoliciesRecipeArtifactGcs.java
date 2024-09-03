@@ -13,19 +13,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuestPoliciesRecipeArtifactGcs {
     /**
-     * @return Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * @return Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be my-bucket.
      * 
      */
     private @Nullable String bucket;
     /**
      * @return Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-     * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+     * &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
      * 
      */
     private @Nullable Integer generation;
     /**
-     * @return Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * @return Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be foo/bar.
      * 
      */
@@ -33,7 +33,7 @@ public final class GuestPoliciesRecipeArtifactGcs {
 
     private GuestPoliciesRecipeArtifactGcs() {}
     /**
-     * @return Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * @return Bucket of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be my-bucket.
      * 
      */
@@ -42,14 +42,14 @@ public final class GuestPoliciesRecipeArtifactGcs {
     }
     /**
      * @return Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
-     * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+     * &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt; this value would be 1234567.
      * 
      */
     public Optional<Integer> generation() {
         return Optional.ofNullable(this.generation);
     }
     /**
-     * @return Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+     * @return Name of the Google Cloud Storage object. Given an example URL: &lt;https://storage.googleapis.com/my-bucket/foo/bar#1234567&gt;
      * this value would be foo/bar.
      * 
      */

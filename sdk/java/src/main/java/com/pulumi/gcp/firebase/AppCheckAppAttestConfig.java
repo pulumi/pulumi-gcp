@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.appAttestConfig)
  * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/app-check)
+ *   * [Official Documentation](https://firebase.google.com/docs/app-check)
  * 
  * ## Example Usage
  * 
@@ -82,6 +82,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firebase App Check App Attest Config Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -172,8 +173,6 @@ public class AppCheckAppAttestConfig extends com.pulumi.resources.CustomResource
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
      * 
-     * ***
-     * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
@@ -181,8 +180,6 @@ public class AppCheckAppAttestConfig extends com.pulumi.resources.CustomResource
     /**
      * @return The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-     * 
-     * ***
      * 
      */
     public Output<String> appId() {

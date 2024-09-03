@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
  * * How-to Guides
- *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+ *   * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  *
- * ## Example Usage
- *
- * ### Region Backend Service Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +38,7 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  * });
  * ```
- * ### Region Backend Service External Iap
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Region Backend Service Cache
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -87,7 +85,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- * ### Region Backend Service Ilb Round Robin
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -108,7 +106,7 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "ROUND_ROBIN",
  * });
  * ```
- * ### Region Backend Service External
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,7 +127,7 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL",
  * });
  * ```
- * ### Region Backend Service External Weighted
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,7 +149,7 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "WEIGHTED_MAGLEV",
  * });
  * ```
- * ### Region Backend Service Ilb Ring Hash
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -188,7 +186,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Region Backend Service Balancing Mode
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -257,7 +255,7 @@ import * as utilities from "../utilities";
  *     healthChecks: defaultRegionHealthCheck.id,
  * });
  * ```
- * ### Region Backend Service Connection Tracking
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -461,7 +459,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      * Maglev is not as stable as ring hash but has faster table lookup
      * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
+     * Maglev, refer to <https://ai.google/research/pubs/pub44824>
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      * reported weights. If set, the Backend Service must
      * configure a non legacy HTTP-based Health Check, and
@@ -503,9 +501,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -769,7 +764,7 @@ export interface RegionBackendServiceState {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      * Maglev is not as stable as ring hash but has faster table lookup
      * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
+     * Maglev, refer to <https://ai.google/research/pubs/pub44824>
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      * reported weights. If set, the Backend Service must
      * configure a non legacy HTTP-based Health Check, and
@@ -811,9 +806,6 @@ export interface RegionBackendServiceState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -984,7 +976,7 @@ export interface RegionBackendServiceArgs {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      * Maglev is not as stable as ring hash but has faster table lookup
      * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
+     * Maglev, refer to <https://ai.google/research/pubs/pub44824>
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      * reported weights. If set, the Backend Service must
      * configure a non legacy HTTP-based Health Check, and
@@ -1026,9 +1018,6 @@ export interface RegionBackendServiceArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

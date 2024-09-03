@@ -14,6 +14,33 @@ import (
 // Get info about a Google Cloud Redis instance.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myInstance, err := redis.LookupInstance(ctx, &redis.LookupInstanceArgs{
+//				Name: "my-redis-instance",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("instanceMemorySizeGb", myInstance.MemorySizeGb)
+//			ctx.Export("instanceConnectMode", myInstance.ConnectMode)
+//			ctx.Export("instanceAuthorizedNetwork", myInstance.AuthorizedNetwork)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceResult
@@ -27,8 +54,6 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 // A collection of arguments for invoking getInstance.
 type LookupInstanceArgs struct {
 	// The name of a Redis instance.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -96,8 +121,6 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 // A collection of arguments for invoking getInstance.
 type LookupInstanceOutputArgs struct {
 	// The name of a Redis instance.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

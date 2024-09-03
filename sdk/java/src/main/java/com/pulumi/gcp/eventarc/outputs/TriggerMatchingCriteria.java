@@ -23,9 +23,7 @@ public final class TriggerMatchingCriteria {
      */
     private @Nullable String operator;
     /**
-     * @return Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-     * 
-     * ***
+     * @return Required. The value for the attribute. See &lt;https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud&gt; for available values.
      * 
      */
     private String value;
@@ -46,9 +44,7 @@ public final class TriggerMatchingCriteria {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
-     * 
-     * ***
+     * @return Required. The value for the attribute. See &lt;https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud&gt; for available values.
      * 
      */
     public String value() {

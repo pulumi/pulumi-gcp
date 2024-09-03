@@ -41,8 +41,6 @@ type Sharedflow struct {
 	pulumi.CustomResourceState
 
 	// Path to the config zip bundle.
-	//
-	// ***
 	ConfigBundle  pulumi.StringOutput    `pulumi:"configBundle"`
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
@@ -97,8 +95,6 @@ func GetSharedflow(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Sharedflow resources.
 type sharedflowState struct {
 	// Path to the config zip bundle.
-	//
-	// ***
 	ConfigBundle  *string `pulumi:"configBundle"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The id of the most recently created revision for this shared flow.
@@ -118,8 +114,6 @@ type sharedflowState struct {
 
 type SharedflowState struct {
 	// Path to the config zip bundle.
-	//
-	// ***
 	ConfigBundle  pulumi.StringPtrInput
 	DetectMd5hash pulumi.StringPtrInput
 	// The id of the most recently created revision for this shared flow.
@@ -143,8 +137,6 @@ func (SharedflowState) ElementType() reflect.Type {
 
 type sharedflowArgs struct {
 	// Path to the config zip bundle.
-	//
-	// ***
 	ConfigBundle  string  `pulumi:"configBundle"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the shared flow.
@@ -156,8 +148,6 @@ type sharedflowArgs struct {
 // The set of arguments for constructing a Sharedflow resource.
 type SharedflowArgs struct {
 	// Path to the config zip bundle.
-	//
-	// ***
 	ConfigBundle  pulumi.StringInput
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the shared flow.
@@ -254,8 +244,6 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 }
 
 // Path to the config zip bundle.
-//
-// ***
 func (o SharedflowOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
 }

@@ -749,8 +749,6 @@ class PrivateConnectionVpcPeeringConfig(dict):
                  vpc: str):
         """
         :param str subnet: A free subnet for peering. (CIDR of /29)
-               
-               - - -
         :param str vpc: Fully qualified name of the VPC that Datastream will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
@@ -762,8 +760,6 @@ class PrivateConnectionVpcPeeringConfig(dict):
     def subnet(self) -> str:
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         return pulumi.get(self, "subnet")
 
@@ -1033,7 +1029,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
         :param str collation: Column collation.
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
-               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+               <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
         :param int length: (Output)
                Column length.
         :param bool nullable: Whether or not the column can accept a null value.
@@ -1076,7 +1072,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
     def data_type(self) -> Optional[str]:
         """
         The MySQL data type. Full data types list can be found here:
-        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -1285,7 +1281,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
         """
         :param str column: Column name.
         :param str data_type: The Oracle data type. Full data types list can be found here:
-               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+               <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
         :param str encoding: (Output)
                Column encoding.
         :param int length: (Output)
@@ -1333,7 +1329,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn(
     def data_type(self) -> Optional[str]:
         """
         The Oracle data type. Full data types list can be found here:
-        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -1571,7 +1567,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
         """
         :param str column: Column name.
         :param str data_type: The PostgreSQL data type. Full data types list can be found here:
-               https://www.postgresql.org/docs/current/datatype.html
+               <https://www.postgresql.org/docs/current/datatype.html>
         :param int length: (Output)
                Column length.
         :param bool nullable: Whether or not the column can accept a null value.
@@ -1612,7 +1608,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     def data_type(self) -> Optional[str]:
         """
         The PostgreSQL data type. Full data types list can be found here:
-        https://www.postgresql.org/docs/current/datatype.html
+        <https://www.postgresql.org/docs/current/datatype.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -1787,7 +1783,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn(dict):
         """
         :param str column: Column name.
         :param str data_type: The SQL Server data type. Full data types list can be found here:
-               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+               <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
         :param int length: (Output)
                Column length.
         :param bool nullable: (Output)
@@ -1831,7 +1827,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn(dict):
     def data_type(self) -> Optional[str]:
         """
         The SQL Server data type. Full data types list can be found here:
-        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
         """
         return pulumi.get(self, "data_type")
 
@@ -2184,15 +2180,13 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
                  kms_key_name: Optional[str] = None):
         """
         :param str location: The geographic location where the dataset should reside.
-               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+               See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
         :param str dataset_id_prefix: If supplied, every created dataset will have its name prefixed by the provided value.
                The prefix and name will be separated by an underscore. i.e. _.
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
                table. The BigQuery Service Account associated with your project requires access to this
                encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-               See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-               
-               - - -
+               See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
         """
         pulumi.set(__self__, "location", location)
         if dataset_id_prefix is not None:
@@ -2205,7 +2199,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
     def location(self) -> str:
         """
         The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        See <https://cloud.google.com/bigquery/docs/locations> for supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -2225,9 +2219,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
         table. The BigQuery Service Account associated with your project requires access to this
         encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
-        See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-
-        - - -
+        See <https://cloud.google.com/bigquery/docs/customer-managed-encryption> for more information.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -2739,7 +2731,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         :param str collation: Column collation.
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
-               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+               <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
         :param int length: (Output)
                Column length.
         :param bool nullable: Whether or not the column can accept a null value.
@@ -2782,7 +2774,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     def data_type(self) -> Optional[str]:
         """
         The MySQL data type. Full data types list can be found here:
-        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -2990,7 +2982,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         :param str collation: Column collation.
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
-               https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+               <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
         :param int length: (Output)
                Column length.
         :param bool nullable: Whether or not the column can accept a null value.
@@ -3033,7 +3025,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     def data_type(self) -> Optional[str]:
         """
         The MySQL data type. Full data types list can be found here:
-        https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        <https://dev.mysql.com/doc/refman/8.0/en/data-types.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -3362,7 +3354,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
         """
         :param str column: Column name.
         :param str data_type: The Oracle data type. Full data types list can be found here:
-               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+               <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
         :param str encoding: (Output)
                Column encoding.
         :param int length: (Output)
@@ -3410,7 +3402,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     def data_type(self) -> Optional[str]:
         """
         The Oracle data type. Full data types list can be found here:
-        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -3649,7 +3641,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
         """
         :param str column: Column name.
         :param str data_type: The Oracle data type. Full data types list can be found here:
-               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+               <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
         :param str encoding: (Output)
                Column encoding.
         :param int length: (Output)
@@ -3697,7 +3689,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     def data_type(self) -> Optional[str]:
         """
         The Oracle data type. Full data types list can be found here:
-        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+        <https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -4039,7 +4031,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
         """
         :param str column: Column name.
         :param str data_type: The PostgreSQL data type. Full data types list can be found here:
-               https://www.postgresql.org/docs/current/datatype.html
+               <https://www.postgresql.org/docs/current/datatype.html>
         :param int length: (Output)
                Column length.
         :param bool nullable: Whether or not the column can accept a null value.
@@ -4080,7 +4072,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     def data_type(self) -> Optional[str]:
         """
         The PostgreSQL data type. Full data types list can be found here:
-        https://www.postgresql.org/docs/current/datatype.html
+        <https://www.postgresql.org/docs/current/datatype.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -4306,7 +4298,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
         """
         :param str column: Column name.
         :param str data_type: The PostgreSQL data type. Full data types list can be found here:
-               https://www.postgresql.org/docs/current/datatype.html
+               <https://www.postgresql.org/docs/current/datatype.html>
         :param int length: (Output)
                Column length.
         :param bool nullable: Whether or not the column can accept a null value.
@@ -4347,7 +4339,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     def data_type(self) -> Optional[str]:
         """
         The PostgreSQL data type. Full data types list can be found here:
-        https://www.postgresql.org/docs/current/datatype.html
+        <https://www.postgresql.org/docs/current/datatype.html>
         """
         return pulumi.get(self, "data_type")
 
@@ -4604,7 +4596,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn(dic
         """
         :param str column: Column name.
         :param str data_type: The SQL Server data type. Full data types list can be found here:
-               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+               <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
         :param int length: (Output)
                Column length.
         :param bool nullable: (Output)
@@ -4648,7 +4640,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn(dic
     def data_type(self) -> Optional[str]:
         """
         The SQL Server data type. Full data types list can be found here:
-        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
         """
         return pulumi.get(self, "data_type")
 
@@ -4826,7 +4818,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn(dic
         """
         :param str column: Column name.
         :param str data_type: The SQL Server data type. Full data types list can be found here:
-               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+               <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
         :param int length: (Output)
                Column length.
         :param bool nullable: (Output)
@@ -4870,7 +4862,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn(dic
     def data_type(self) -> Optional[str]:
         """
         The SQL Server data type. Full data types list can be found here:
-        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        <https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16>
         """
         return pulumi.get(self, "data_type")
 

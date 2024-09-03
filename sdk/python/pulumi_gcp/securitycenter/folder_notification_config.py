@@ -258,7 +258,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/folders.notificationConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+          * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
 
@@ -309,7 +309,7 @@ class FolderNotificationConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1/folders.notificationConfigs)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/security-command-center/docs)
+          * [Official Documentation](https://cloud.google.com/security-command-center/docs)
 
         ## Example Usage
 

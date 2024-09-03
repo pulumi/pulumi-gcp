@@ -32,9 +32,6 @@ class CaPoolArgs:
         The set of arguments for constructing a CaPool resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
         :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -70,9 +67,6 @@ class CaPoolArgs:
         """
         Location of the CaPool. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -187,9 +181,6 @@ class _CaPoolState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -267,9 +258,6 @@ class _CaPoolState:
         """
         Location of the CaPool. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -360,9 +348,7 @@ class CaPool(pulumi.CustomResource):
         issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the
         trust anchor.
 
-        ## Example Usage
-
-        ### Privateca Capool Basic
+        ## 
 
         ```python
         import pulumi
@@ -380,7 +366,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ### Privateca Capool All Fields
+        ## 
 
         ```python
         import pulumi
@@ -550,9 +536,6 @@ class CaPool(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -572,9 +555,7 @@ class CaPool(pulumi.CustomResource):
         issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the
         trust anchor.
 
-        ## Example Usage
-
-        ### Privateca Capool Basic
+        ## 
 
         ```python
         import pulumi
@@ -592,7 +573,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ### Privateca Capool All Fields
+        ## 
 
         ```python
         import pulumi
@@ -833,9 +814,6 @@ class CaPool(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -897,9 +875,6 @@ class CaPool(pulumi.CustomResource):
         """
         Location of the CaPool. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

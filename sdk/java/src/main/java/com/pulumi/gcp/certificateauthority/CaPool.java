@@ -23,9 +23,7 @@ import javax.annotation.Nullable;
  * issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the
  * trust anchor.
  * 
- * ## Example Usage
- * 
- * ### Privateca Capool Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -67,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Privateca Capool All Fields
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -307,8 +305,6 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -316,8 +312,6 @@ public class CaPool extends com.pulumi.resources.CustomResource {
     /**
      * @return Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

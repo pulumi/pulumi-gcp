@@ -19,16 +19,12 @@ public final class AutokeyConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The folder for which to retrieve config.
      * 
-     * ***
-     * 
      */
     @Import(name="folder", required=true)
     private Output<String> folder;
 
     /**
      * @return The folder for which to retrieve config.
-     * 
-     * ***
      * 
      */
     public Output<String> folder() {
@@ -82,8 +78,6 @@ public final class AutokeyConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param folder The folder for which to retrieve config.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -94,8 +88,6 @@ public final class AutokeyConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param folder The folder for which to retrieve config.
-         * 
-         * ***
          * 
          * @return builder
          * 

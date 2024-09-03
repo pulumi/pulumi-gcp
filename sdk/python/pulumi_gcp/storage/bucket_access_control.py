@@ -35,14 +35,11 @@ class BucketAccessControlArgs:
                allUsers
                allAuthenticatedUsers
                Examples:
-               The user liz@example.com would be user-liz@example.com.
-               The group example@googlegroups.com would be
-               group-example@googlegroups.com.
+               The user <liz@example.com> would be <user-liz@example.com>.
+               The group <example@googlegroups.com> would be
+               <group-example@googlegroups.com>.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -77,14 +74,11 @@ class BucketAccessControlArgs:
         allUsers
         allAuthenticatedUsers
         Examples:
-        The user liz@example.com would be user-liz@example.com.
-        The group example@googlegroups.com would be
-        group-example@googlegroups.com.
+        The user <liz@example.com> would be <user-liz@example.com>.
+        The group <example@googlegroups.com> would be
+        <group-example@googlegroups.com>.
         To refer to all members of the Google Apps for Business domain
         example.com, the entity would be domain-example.com.
-
-
-        - - -
         """
         return pulumi.get(self, "entity")
 
@@ -129,14 +123,11 @@ class _BucketAccessControlState:
                allUsers
                allAuthenticatedUsers
                Examples:
-               The user liz@example.com would be user-liz@example.com.
-               The group example@googlegroups.com would be
-               group-example@googlegroups.com.
+               The user <liz@example.com> would be <user-liz@example.com>.
+               The group <example@googlegroups.com> would be
+               <group-example@googlegroups.com>.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -201,14 +192,11 @@ class _BucketAccessControlState:
         allUsers
         allAuthenticatedUsers
         Examples:
-        The user liz@example.com would be user-liz@example.com.
-        The group example@googlegroups.com would be
-        group-example@googlegroups.com.
+        The user <liz@example.com> would be <user-liz@example.com>.
+        The group <example@googlegroups.com> would be
+        <group-example@googlegroups.com>.
         To refer to all members of the Google Apps for Business domain
         example.com, the entity would be domain-example.com.
-
-
-        - - -
         """
         return pulumi.get(self, "entity")
 
@@ -261,11 +249,9 @@ class BucketAccessControl(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+          * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
-        ## Example Usage
-
-        ### Storage Bucket Access Control Public Bucket
+        ## 
 
         ```python
         import pulumi
@@ -305,14 +291,11 @@ class BucketAccessControl(pulumi.CustomResource):
                allUsers
                allAuthenticatedUsers
                Examples:
-               The user liz@example.com would be user-liz@example.com.
-               The group example@googlegroups.com would be
-               group-example@googlegroups.com.
+               The user <liz@example.com> would be <user-liz@example.com>.
+               The group <example@googlegroups.com> would be
+               <group-example@googlegroups.com>.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -344,11 +327,9 @@ class BucketAccessControl(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+          * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
-        ## Example Usage
-
-        ### Storage Bucket Access Control Public Bucket
+        ## 
 
         ```python
         import pulumi
@@ -446,14 +427,11 @@ class BucketAccessControl(pulumi.CustomResource):
                allUsers
                allAuthenticatedUsers
                Examples:
-               The user liz@example.com would be user-liz@example.com.
-               The group example@googlegroups.com would be
-               group-example@googlegroups.com.
+               The user <liz@example.com> would be <user-liz@example.com>.
+               The group <example@googlegroups.com> would be
+               <group-example@googlegroups.com>.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
-               
-               
-               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -506,14 +484,11 @@ class BucketAccessControl(pulumi.CustomResource):
         allUsers
         allAuthenticatedUsers
         Examples:
-        The user liz@example.com would be user-liz@example.com.
-        The group example@googlegroups.com would be
-        group-example@googlegroups.com.
+        The user <liz@example.com> would be <user-liz@example.com>.
+        The group <example@googlegroups.com> would be
+        <group-example@googlegroups.com>.
         To refer to all members of the Google Apps for Business domain
         example.com, the entity would be domain-example.com.
-
-
-        - - -
         """
         return pulumi.get(self, "entity")
 

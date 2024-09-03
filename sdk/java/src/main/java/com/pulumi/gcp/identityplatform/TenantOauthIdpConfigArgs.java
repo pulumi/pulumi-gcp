@@ -20,16 +20,12 @@ public final class TenantOauthIdpConfigArgs extends com.pulumi.resources.Resourc
     /**
      * The client id of an OAuth client.
      * 
-     * ***
-     * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
      * @return The client id of an OAuth client.
-     * 
-     * ***
      * 
      */
     public Output<String> clientId() {
@@ -177,8 +173,6 @@ public final class TenantOauthIdpConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param clientId The client id of an OAuth client.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -189,8 +183,6 @@ public final class TenantOauthIdpConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param clientId The client id of an OAuth client.
-         * 
-         * ***
          * 
          * @return builder
          * 

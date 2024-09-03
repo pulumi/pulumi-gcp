@@ -110,8 +110,6 @@ type AppCheckDeviceCheckConfig struct {
 
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
@@ -180,8 +178,6 @@ func GetAppCheckDeviceCheckConfig(ctx *pulumi.Context,
 type appCheckDeviceCheckConfigState struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId *string `pulumi:"appId"`
 	// The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
 	KeyId *string `pulumi:"keyId"`
@@ -205,8 +201,6 @@ type appCheckDeviceCheckConfigState struct {
 type AppCheckDeviceCheckConfigState struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringPtrInput
 	// The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
 	KeyId pulumi.StringPtrInput
@@ -234,8 +228,6 @@ func (AppCheckDeviceCheckConfigState) ElementType() reflect.Type {
 type appCheckDeviceCheckConfigArgs struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
 	KeyId string `pulumi:"keyId"`
@@ -255,8 +247,6 @@ type appCheckDeviceCheckConfigArgs struct {
 type AppCheckDeviceCheckConfigArgs struct {
 	// The ID of an
 	// [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-	//
-	// ***
 	AppId pulumi.StringInput
 	// The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
 	KeyId pulumi.StringInput
@@ -361,8 +351,6 @@ func (o AppCheckDeviceCheckConfigOutput) ToAppCheckDeviceCheckConfigOutputWithCo
 
 // The ID of an
 // [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
-//
-// ***
 func (o AppCheckDeviceCheckConfigOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppCheckDeviceCheckConfig) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

@@ -274,10 +274,15 @@ def get_global_forwarding_rule(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_global_forwarding_rule(name="forwarding-rule-global")
+    ```
+
 
     :param str name: The name of the global forwarding rule.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -324,10 +329,15 @@ def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_global_forwarding_rule(name="forwarding-rule-global")
+    ```
+
 
     :param str name: The name of the global forwarding rule.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

@@ -20,12 +20,10 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes)
     /// * How-to Guides
-    ///     * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
-    ///     * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
+    ///   * [Documentation](https://cloud.google.com/netapp/volumes/docs/configure-and-use/volumes/overview)
+    ///   * [Quickstart](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-volume)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Netapp Volume Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -199,9 +197,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the volume. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -450,9 +445,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the volume. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -686,9 +678,6 @@ namespace Pulumi.Gcp.Netapp
 
         /// <summary>
         /// The name of the volume. Needs to be unique per location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

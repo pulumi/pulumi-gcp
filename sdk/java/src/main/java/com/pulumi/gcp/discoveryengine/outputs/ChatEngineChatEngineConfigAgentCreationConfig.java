@@ -25,8 +25,6 @@ public final class ChatEngineChatEngineConfigAgentCreationConfig {
     /**
      * @return Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
      * 
-     * ***
-     * 
      */
     private @Nullable String location;
     /**
@@ -52,8 +50,6 @@ public final class ChatEngineChatEngineConfigAgentCreationConfig {
     }
     /**
      * @return Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
-     * 
-     * ***
      * 
      */
     public Optional<String> location() {

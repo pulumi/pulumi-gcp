@@ -20,11 +20,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
  * * How-to Guides
- *     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+ *   * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
  *
- * ## Example Usage
- *
- * ### Reservation Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

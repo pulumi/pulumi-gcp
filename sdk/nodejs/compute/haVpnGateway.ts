@@ -15,12 +15,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnGateways)
  * * How-to Guides
- *     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
- *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+ *   * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
+ *   * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *
- * ## Example Usage
- *
- * ### Ha Vpn Gateway Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  *     network: network1.id,
  * });
  * ```
- * ### Ha Vpn Gateway Ipv6
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +51,9 @@ import * as utilities from "../utilities";
  *     stackType: "IPV4_IPV6",
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  *
  * ```typescript
@@ -199,9 +200,6 @@ export class HaVpnGateway extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -298,9 +296,6 @@ export interface HaVpnGatewayState {
     name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -356,9 +351,6 @@ export interface HaVpnGatewayArgs {
     name?: pulumi.Input<string>;
     /**
      * The network this VPN gateway is accepting traffic for.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

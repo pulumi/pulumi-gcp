@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// <summary>
         /// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
         /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        /// described at https://github.com/google/re2/wiki/Syntax
+        /// described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
         /// </summary>
         public readonly string? BranchName;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// <summary>
         /// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
         /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        /// described at https://github.com/google/re2/wiki/Syntax
+        /// described at &lt;https://github.com/google/re2/wiki/Syntax&gt;
         /// </summary>
         public readonly string? TagName;
 

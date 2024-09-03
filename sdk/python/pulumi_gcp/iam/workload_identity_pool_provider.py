@@ -40,9 +40,6 @@ class WorkloadIdentityPoolProviderArgs:
         :param pulumi.Input[str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         :param pulumi.Input[str] attribute_condition: [A Common Expression Language](https://opensource.google/projects/cel) expression, in
                plain text, to restrict what otherwise valid authentication credentials issued by the
                provider should not be accepted.
@@ -154,9 +151,6 @@ class WorkloadIdentityPoolProviderArgs:
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
 
@@ -433,9 +427,6 @@ class _WorkloadIdentityPoolProviderState:
         :param pulumi.Input[str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         """
         if attribute_condition is not None:
             pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -683,9 +674,6 @@ class _WorkloadIdentityPoolProviderState:
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
 
@@ -718,11 +706,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
         * How-to Guides
-            * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+          * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 
-        ## Example Usage
-
-        ### Iam Workload Identity Pool Provider Aws Basic
+        ## 
 
         ```python
         import pulumi
@@ -736,7 +722,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
-        ### Iam Workload Identity Pool Provider Aws Full
+        ## 
 
         ```python
         import pulumi
@@ -759,7 +745,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
-        ### Iam Workload Identity Pool Provider Oidc Basic
+        ## 
 
         ```python
         import pulumi
@@ -776,7 +762,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
-        ### Iam Workload Identity Pool Provider Oidc Full
+        ## 
 
         ```python
         import pulumi
@@ -807,7 +793,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
-        ### Iam Workload Identity Pool Provider Saml Basic
+        ## 
 
         ```python
         import pulumi
@@ -827,7 +813,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
-        ### Iam Workload Identity Pool Provider Saml Full
+        ## 
 
         ```python
         import pulumi
@@ -850,7 +836,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
-        ### Iam Workload Identity Pool Provider Oidc Upload Key
+        ## 
 
         ```python
         import pulumi
@@ -983,9 +969,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -1000,11 +983,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers)
         * How-to Guides
-            * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+          * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
 
-        ## Example Usage
-
-        ### Iam Workload Identity Pool Provider Aws Basic
+        ## 
 
         ```python
         import pulumi
@@ -1018,7 +999,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
-        ### Iam Workload Identity Pool Provider Aws Full
+        ## 
 
         ```python
         import pulumi
@@ -1041,7 +1022,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
-        ### Iam Workload Identity Pool Provider Oidc Basic
+        ## 
 
         ```python
         import pulumi
@@ -1058,7 +1039,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
-        ### Iam Workload Identity Pool Provider Oidc Full
+        ## 
 
         ```python
         import pulumi
@@ -1089,7 +1070,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
-        ### Iam Workload Identity Pool Provider Saml Basic
+        ## 
 
         ```python
         import pulumi
@@ -1109,7 +1090,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
-        ### Iam Workload Identity Pool Provider Saml Full
+        ## 
 
         ```python
         import pulumi
@@ -1132,7 +1113,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
             })
         ```
-        ### Iam Workload Identity Pool Provider Oidc Upload Key
+        ## 
 
         ```python
         import pulumi
@@ -1354,9 +1335,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] workload_identity_pool_provider_id: The ID for the provider, which becomes the final component of the resource name. This
                value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1548,9 +1526,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         The ID for the provider, which becomes the final component of the resource name. This
         value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         `gcp-` is reserved for use by Google, and may not be specified.
-
-
-        - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
 

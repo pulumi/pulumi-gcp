@@ -92,8 +92,6 @@ type V2OrganizationMuteConfig struct {
 	// config creation or update.
 	MostRecentEditor pulumi.StringOutput `pulumi:"mostRecentEditor"`
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId pulumi.StringOutput `pulumi:"muteConfigId"`
 	// Name of the mute config. Its format is
 	// organizations/{organization}/locations/global/muteConfigs/{configId},
@@ -171,8 +169,6 @@ type v2organizationMuteConfigState struct {
 	// config creation or update.
 	MostRecentEditor *string `pulumi:"mostRecentEditor"`
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId *string `pulumi:"muteConfigId"`
 	// Name of the mute config. Its format is
 	// organizations/{organization}/locations/global/muteConfigs/{configId},
@@ -209,8 +205,6 @@ type V2OrganizationMuteConfigState struct {
 	// config creation or update.
 	MostRecentEditor pulumi.StringPtrInput
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId pulumi.StringPtrInput
 	// Name of the mute config. Its format is
 	// organizations/{organization}/locations/global/muteConfigs/{configId},
@@ -244,8 +238,6 @@ type v2organizationMuteConfigArgs struct {
 	// location Id is provided by organization. If not provided, Use global as default.
 	Location *string `pulumi:"location"`
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId string `pulumi:"muteConfigId"`
 	// The organization whose Cloud Security Command Center the Mute
 	// Config lives in.
@@ -267,8 +259,6 @@ type V2OrganizationMuteConfigArgs struct {
 	// location Id is provided by organization. If not provided, Use global as default.
 	Location pulumi.StringPtrInput
 	// Unique identifier provided by the client within the parent scope.
-	//
-	// ***
 	MuteConfigId pulumi.StringInput
 	// The organization whose Cloud Security Command Center the Mute
 	// Config lives in.
@@ -397,8 +387,6 @@ func (o V2OrganizationMuteConfigOutput) MostRecentEditor() pulumi.StringOutput {
 }
 
 // Unique identifier provided by the client within the parent scope.
-//
-// ***
 func (o V2OrganizationMuteConfigOutput) MuteConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2OrganizationMuteConfig) pulumi.StringOutput { return v.MuteConfigId }).(pulumi.StringOutput)
 }

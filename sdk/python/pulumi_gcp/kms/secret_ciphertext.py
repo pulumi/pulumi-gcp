@@ -26,9 +26,6 @@ class SecretCiphertextArgs:
         The set of arguments for constructing a SecretCiphertext resource.
         :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
@@ -45,9 +42,6 @@ class SecretCiphertextArgs:
         """
         The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 
@@ -96,9 +90,6 @@ class _SecretCiphertextState:
         :param pulumi.Input[str] ciphertext: Contains the result of encrypting the provided plaintext, encoded in base64.
         :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -142,9 +133,6 @@ class _SecretCiphertextState:
         """
         The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 
@@ -187,7 +175,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
         * How-to Guides
-            * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+          * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
         ## Example Usage
 
@@ -235,9 +223,6 @@ class SecretCiphertext(pulumi.CustomResource):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -259,7 +244,7 @@ class SecretCiphertext(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
         * How-to Guides
-            * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+          * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
         ## Example Usage
 
@@ -364,9 +349,6 @@ class SecretCiphertext(pulumi.CustomResource):
         :param pulumi.Input[str] ciphertext: Contains the result of encrypting the provided plaintext, encoded in base64.
         :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -403,9 +385,6 @@ class SecretCiphertext(pulumi.CustomResource):
         """
         The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 

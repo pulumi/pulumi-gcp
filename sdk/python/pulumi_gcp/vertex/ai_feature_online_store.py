@@ -45,9 +45,6 @@ class AiFeatureOnlineStoreArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-               
-               
-               - - -
         :param pulumi.Input['AiFeatureOnlineStoreOptimizedArgs'] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -148,9 +145,6 @@ class AiFeatureOnlineStoreArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -232,9 +226,6 @@ class _AiFeatureOnlineStoreState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-               
-               
-               - - -
         :param pulumi.Input['AiFeatureOnlineStoreOptimizedArgs'] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -387,9 +378,6 @@ class _AiFeatureOnlineStoreState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -494,11 +482,9 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
-        ## Example Usage
-
-        ### Vertex Ai Feature Online Store
+        ## 
 
         ```python
         import pulumi
@@ -518,7 +504,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
-        ### Vertex Ai Featureonlinestore With Optimized
+        ## 
 
         ```python
         import pulumi
@@ -539,7 +525,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
-        ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
+        ## 
 
         ```python
         import pulumi
@@ -610,9 +596,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-               
-               
-               - - -
         :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -631,11 +614,9 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
-        ## Example Usage
-
-        ### Vertex Ai Feature Online Store
+        ## 
 
         ```python
         import pulumi
@@ -655,7 +636,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
-        ### Vertex Ai Featureonlinestore With Optimized
+        ## 
 
         ```python
         import pulumi
@@ -676,7 +657,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                 },
             })
         ```
-        ### Vertex Ai Featureonlinestore With Beta Fields Bigtable
+        ## 
 
         ```python
         import pulumi
@@ -830,9 +811,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-               
-               
-               - - -
         :param pulumi.Input[Union['AiFeatureOnlineStoreOptimizedArgs', 'AiFeatureOnlineStoreOptimizedArgsDict']] optimized: Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -940,9 +918,6 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

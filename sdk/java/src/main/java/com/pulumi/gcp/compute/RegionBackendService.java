@@ -35,11 +35,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
  * * How-to Guides
- *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+ *   * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  * 
- * ## Example Usage
- * 
- * ### Region Backend Service Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -89,7 +87,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service External Iap
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -131,7 +129,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service Cache
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -190,7 +188,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service Ilb Round Robin
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -239,7 +237,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service External
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -288,7 +286,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service External Weighted
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -338,7 +336,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service Ilb Ring Hash
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -408,7 +406,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service Balancing Mode
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -523,7 +521,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Region Backend Service Connection Tracking
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -923,7 +921,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      *   reported weights. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
@@ -974,7 +972,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      *   Maglev is not as stable as ring hash but has faster table lookup
      *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
+     *   Maglev, refer to &lt;https://ai.google/research/pubs/pub44824&gt;
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      *   reported weights. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
@@ -1032,8 +1030,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1046,8 +1042,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -20,7 +20,7 @@ public final class AiIndexMetadataConfigAlgorithmConfig {
     private @Nullable AiIndexMetadataConfigAlgorithmConfigBruteForceConfig bruteForceConfig;
     /**
      * @return Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-     * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
      * Structure is documented below.
      * 
      */
@@ -37,7 +37,7 @@ public final class AiIndexMetadataConfigAlgorithmConfig {
     }
     /**
      * @return Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-     * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
      * Structure is documented below.
      * 
      */

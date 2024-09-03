@@ -22,9 +22,7 @@ import (
 //   - [Official Documentation](https://cloud.google.com/certificate-authority-service)
 //   - [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
 //
-// ## Example Usage
-//
-// ### Privateca Template Basic
+// ##
 //
 // ```go
 // package main
@@ -177,8 +175,6 @@ type CertificateTemplate struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime pulumi.StringPtrOutput `pulumi:"maximumLifetime"`
@@ -252,8 +248,6 @@ type certificateTemplateState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime *string `pulumi:"maximumLifetime"`
@@ -290,8 +284,6 @@ type CertificateTemplateState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime pulumi.StringPtrInput
@@ -328,8 +320,6 @@ type certificateTemplateArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime *string `pulumi:"maximumLifetime"`
@@ -358,8 +348,6 @@ type CertificateTemplateArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
 	MaximumLifetime pulumi.StringPtrInput
@@ -494,8 +482,6 @@ func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location for the resource
-//
-// ***
 func (o CertificateTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

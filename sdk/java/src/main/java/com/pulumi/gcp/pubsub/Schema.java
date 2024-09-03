@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.schemas)
  * * How-to Guides
- *     * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
+ *   * [Creating and managing schemas](https://cloud.google.com/pubsub/docs/schemas)
  * 
- * ## Example Usage
- * 
- * ### Pubsub Schema Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -77,6 +75,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Pubsub Schema Protobuf
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -191,16 +192,12 @@ public class Schema extends com.pulumi.resources.CustomResource {
     /**
      * The ID to use for the schema, which will become the final component of the schema&#39;s resource name.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The ID to use for the schema, which will become the final component of the schema&#39;s resource name.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

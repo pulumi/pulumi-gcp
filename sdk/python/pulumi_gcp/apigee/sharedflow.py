@@ -28,8 +28,6 @@ class SharedflowArgs:
         """
         The set of arguments for constructing a Sharedflow resource.
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
-               
-               - - -
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         :param pulumi.Input[str] name: The ID of the shared flow.
         """
@@ -45,8 +43,6 @@ class SharedflowArgs:
     def config_bundle(self) -> pulumi.Input[str]:
         """
         Path to the config zip bundle.
-
-        - - -
         """
         return pulumi.get(self, "config_bundle")
 
@@ -102,8 +98,6 @@ class _SharedflowState:
         """
         Input properties used for looking up and filtering Sharedflow resources.
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
-               
-               - - -
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]] meta_datas: Metadata describing the shared flow.
@@ -134,8 +128,6 @@ class _SharedflowState:
     def config_bundle(self) -> Optional[pulumi.Input[str]]:
         """
         Path to the config zip bundle.
-
-        - - -
         """
         return pulumi.get(self, "config_bundle")
 
@@ -243,7 +235,7 @@ class Sharedflow(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
         * How-to Guides
-            * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+          * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
 
         ## Import
 
@@ -266,8 +258,6 @@ class Sharedflow(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
-               
-               - - -
         :param pulumi.Input[str] name: The ID of the shared flow.
         :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         """
@@ -284,7 +274,7 @@ class Sharedflow(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.sharedflows)
         * How-to Guides
-            * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
+          * [Sharedflows](https://cloud.google.com/apigee/docs/resources)
 
         ## Import
 
@@ -370,8 +360,6 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_bundle: Path to the config zip bundle.
-               
-               - - -
         :param pulumi.Input[str] latest_revision_id: The id of the most recently created revision for this shared flow.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SharedflowMetaDataArgs', 'SharedflowMetaDataArgsDict']]]] meta_datas: Metadata describing the shared flow.
@@ -399,8 +387,6 @@ class Sharedflow(pulumi.CustomResource):
     def config_bundle(self) -> pulumi.Output[str]:
         """
         Path to the config zip bundle.
-
-        - - -
         """
         return pulumi.get(self, "config_bundle")
 

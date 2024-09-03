@@ -33,7 +33,6 @@ public final class RegionInstanceGroupManagerStandbyPolicyArgs extends com.pulum
 
     /**
      * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-     * ***
      * 
      */
     @Import(name="mode")
@@ -41,7 +40,6 @@ public final class RegionInstanceGroupManagerStandbyPolicyArgs extends com.pulum
 
     /**
      * @return Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-     * ***
      * 
      */
     public Optional<Output<String>> mode() {
@@ -96,7 +94,6 @@ public final class RegionInstanceGroupManagerStandbyPolicyArgs extends com.pulum
 
         /**
          * @param mode Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-         * ***
          * 
          * @return builder
          * 
@@ -108,7 +105,6 @@ public final class RegionInstanceGroupManagerStandbyPolicyArgs extends com.pulum
 
         /**
          * @param mode Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. Valid options are: `MANUAL`, `SCALE_OUT_POOL`. If `MANUAL`(default), you have full control over which VMs are stopped and suspended in the MIG. If `SCALE_OUT_POOL`, the MIG uses the VMs from the standby pools to accelerate the scale out by resuming or starting them and then automatically replenishes the standby pool with new VMs to maintain the target sizes.
-         * ***
          * 
          * @return builder
          * 

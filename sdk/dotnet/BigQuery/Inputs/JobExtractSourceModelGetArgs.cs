@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
         /// <summary>
         /// The ID of the model.
-        /// 
-        /// - - -
         /// </summary>
         [Input("modelId", required: true)]
         public Input<string> ModelId { get; set; } = null!;

@@ -17,12 +17,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
     /// * How-to Guides
-    ///     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
-    ///     * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+    ///   * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
+    ///   * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Region Network Endpoint Group Functions
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -72,7 +70,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Cloudrun
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -123,7 +121,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Appengine
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -225,7 +223,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Appengine Empty
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -246,7 +244,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Psc
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -266,7 +264,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Psc Service Attachment
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -353,7 +351,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Internet Ip Port
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -378,7 +376,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Internet Fqdn Port
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -403,7 +401,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Region Network Endpoint Group Portmap
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -547,9 +545,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the regional NEGs reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -697,9 +692,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the regional NEGs reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -803,9 +795,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the regional NEGs reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
     /// * How-to Guides
-    ///     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+    ///   * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Healthcare Dataset Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,7 +37,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// });
     /// ```
-    /// ### Healthcare Dataset Cmek
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -130,9 +128,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The location for the Dataset.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -219,9 +214,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The location for the Dataset.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -264,9 +256,6 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The location for the Dataset.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

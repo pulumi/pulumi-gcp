@@ -47,6 +47,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Compute Project Cloud Armor Tier Project Set
 //
 // ```go
@@ -116,8 +117,6 @@ type ProjectCloudArmorTier struct {
 
 	// Managed protection tier to be set.
 	// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-	//
-	// ***
 	CloudArmorTier pulumi.StringOutput `pulumi:"cloudArmorTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,8 +158,6 @@ func GetProjectCloudArmorTier(ctx *pulumi.Context,
 type projectCloudArmorTierState struct {
 	// Managed protection tier to be set.
 	// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-	//
-	// ***
 	CloudArmorTier *string `pulumi:"cloudArmorTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -170,8 +167,6 @@ type projectCloudArmorTierState struct {
 type ProjectCloudArmorTierState struct {
 	// Managed protection tier to be set.
 	// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-	//
-	// ***
 	CloudArmorTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -185,8 +180,6 @@ func (ProjectCloudArmorTierState) ElementType() reflect.Type {
 type projectCloudArmorTierArgs struct {
 	// Managed protection tier to be set.
 	// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-	//
-	// ***
 	CloudArmorTier string `pulumi:"cloudArmorTier"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -197,8 +190,6 @@ type projectCloudArmorTierArgs struct {
 type ProjectCloudArmorTierArgs struct {
 	// Managed protection tier to be set.
 	// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-	//
-	// ***
 	CloudArmorTier pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -294,8 +285,6 @@ func (o ProjectCloudArmorTierOutput) ToProjectCloudArmorTierOutputWithContext(ct
 
 // Managed protection tier to be set.
 // Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-//
-// ***
 func (o ProjectCloudArmorTierOutput) CloudArmorTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectCloudArmorTier) pulumi.StringOutput { return v.CloudArmorTier }).(pulumi.StringOutput)
 }

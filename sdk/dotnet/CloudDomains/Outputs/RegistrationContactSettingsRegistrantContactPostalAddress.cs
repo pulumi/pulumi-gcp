@@ -46,14 +46,12 @@ namespace Pulumi.Gcp.CloudDomains.Outputs
         /// <summary>
         /// The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         /// it might contain "care of" information.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Recipients;
         /// <summary>
         /// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        /// ensure the value is correct. See https://cldr.unicode.org/ and
-        /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        /// ensure the value is correct. See &lt;https://cldr.unicode.org/&gt; and
+        /// &lt;https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html&gt; for details. Example: "CH" for Switzerland.
         /// </summary>
         public readonly string RegionCode;
 

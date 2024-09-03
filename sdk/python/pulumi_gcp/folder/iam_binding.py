@@ -30,11 +30,11 @@ class IAMBindingArgs:
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+               * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -63,11 +63,11 @@ class IAMBindingArgs:
         """
         An array of identities that will be granted the privilege in the `role`.
         Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         """
         return pulumi.get(self, "members")
 
@@ -113,11 +113,11 @@ class _IAMBindingState:
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+               * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -172,11 +172,11 @@ class _IAMBindingState:
         """
         An array of identities that will be granted the privilege in the `role`.
         Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         """
         return pulumi.get(self, "members")
 
@@ -213,13 +213,13 @@ class IAMBinding(pulumi.CustomResource):
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud Platform folder.
 
-        > **Note:** This resource _must not_ be used in conjunction with
-           `folder.IAMPolicy` or they will fight over what your policy
-           should be.
+        > **Note:** This resource *must not* be used in conjunction with
+        `folder.IAMPolicy` or they will fight over what your policy
+        should be.
 
         > **Note:** On create, this resource will overwrite members of any existing roles.
-            Use `pulumi import` and inspect the output to ensure
-            your existing members are preserved.
+        Use `pulumi import` and inspect the output to ensure
+        your existing members are preserved.
 
         ## Example Usage
 
@@ -246,18 +246,18 @@ class IAMBinding(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+               * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -272,13 +272,13 @@ class IAMBinding(pulumi.CustomResource):
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud Platform folder.
 
-        > **Note:** This resource _must not_ be used in conjunction with
-           `folder.IAMPolicy` or they will fight over what your policy
-           should be.
+        > **Note:** This resource *must not* be used in conjunction with
+        `folder.IAMPolicy` or they will fight over what your policy
+        should be.
 
         > **Note:** On create, this resource will overwrite members of any existing roles.
-            Use `pulumi import` and inspect the output to ensure
-            your existing members are preserved.
+        Use `pulumi import` and inspect the output to ensure
+        your existing members are preserved.
 
         ## Example Usage
 
@@ -305,7 +305,7 @@ class IAMBinding(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param IAMBindingArgs args: The arguments to use to populate this resource's properties.
@@ -372,11 +372,11 @@ class IAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-               * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+               * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -419,11 +419,11 @@ class IAMBinding(pulumi.CustomResource):
         """
         An array of identities that will be granted the privilege in the `role`.
         Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that is associated with a specific Google account. For example, <alice@gmail.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+        * For more details on format and restrictions see <https://cloud.google.com/billing/reference/rest/v1/Policy#Binding>
         """
         return pulumi.get(self, "members")
 

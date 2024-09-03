@@ -233,8 +233,8 @@ class RegistrationContactSettingsAdminContactPostalAddress(dict):
                  recipients: Optional[Sequence[str]] = None):
         """
         :param str region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-               ensure the value is correct. See https://cldr.unicode.org/ and
-               https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+               ensure the value is correct. See <https://cldr.unicode.org/> and
+               <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         :param Sequence[str] address_lines: Unstructured address lines describing the lower levels of an address.
                Because values in addressLines do not have type information and may sometimes contain multiple values in a single
                field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
@@ -252,8 +252,6 @@ class RegistrationContactSettingsAdminContactPostalAddress(dict):
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[str] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -274,8 +272,8 @@ class RegistrationContactSettingsAdminContactPostalAddress(dict):
     def region_code(self) -> str:
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 
@@ -335,8 +333,6 @@ class RegistrationContactSettingsAdminContactPostalAddress(dict):
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -451,8 +447,8 @@ class RegistrationContactSettingsRegistrantContactPostalAddress(dict):
                  recipients: Optional[Sequence[str]] = None):
         """
         :param str region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-               ensure the value is correct. See https://cldr.unicode.org/ and
-               https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+               ensure the value is correct. See <https://cldr.unicode.org/> and
+               <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         :param Sequence[str] address_lines: Unstructured address lines describing the lower levels of an address.
                Because values in addressLines do not have type information and may sometimes contain multiple values in a single
                field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
@@ -470,8 +466,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddress(dict):
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[str] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -492,8 +486,8 @@ class RegistrationContactSettingsRegistrantContactPostalAddress(dict):
     def region_code(self) -> str:
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 
@@ -553,8 +547,6 @@ class RegistrationContactSettingsRegistrantContactPostalAddress(dict):
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 
@@ -669,8 +661,8 @@ class RegistrationContactSettingsTechnicalContactPostalAddress(dict):
                  recipients: Optional[Sequence[str]] = None):
         """
         :param str region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-               ensure the value is correct. See https://cldr.unicode.org/ and
-               https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+               ensure the value is correct. See <https://cldr.unicode.org/> and
+               <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         :param Sequence[str] address_lines: Unstructured address lines describing the lower levels of an address.
                Because values in addressLines do not have type information and may sometimes contain multiple values in a single
                field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
@@ -688,8 +680,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddress(dict):
                they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param Sequence[str] recipients: The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
                it might contain "care of" information.
-               
-               - - -
         """
         pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
@@ -710,8 +700,8 @@ class RegistrationContactSettingsTechnicalContactPostalAddress(dict):
     def region_code(self) -> str:
         """
         Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-        ensure the value is correct. See https://cldr.unicode.org/ and
-        https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        ensure the value is correct. See <https://cldr.unicode.org/> and
+        <https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html> for details. Example: "CH" for Switzerland.
         """
         return pulumi.get(self, "region_code")
 
@@ -771,8 +761,6 @@ class RegistrationContactSettingsTechnicalContactPostalAddress(dict):
         """
         The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
         it might contain "care of" information.
-
-        - - -
         """
         return pulumi.get(self, "recipients")
 

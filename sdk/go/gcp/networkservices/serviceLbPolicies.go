@@ -12,87 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Network Services Service Lb Policies Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
-//				Name:     pulumi.String("my-lb-policy"),
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Network Services Service Lb Policies Advanced
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
-//				Name:                   pulumi.String("my-lb-policy"),
-//				Location:               pulumi.String("global"),
-//				Description:            pulumi.String("my description"),
-//				LoadBalancingAlgorithm: pulumi.String("SPRAY_TO_REGION"),
-//				AutoCapacityDrain: &networkservices.ServiceLbPoliciesAutoCapacityDrainArgs{
-//					Enable: pulumi.Bool(true),
-//				},
-//				FailoverConfig: &networkservices.ServiceLbPoliciesFailoverConfigArgs{
-//					FailoverHealthThreshold: pulumi.Int(70),
-//				},
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:                pulumi.String("my-lb-backend"),
-//				Description:         pulumi.String("my description"),
-//				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				Protocol:            pulumi.String("HTTP"),
-//				ServiceLbPolicy: _default.ID().ApplyT(func(id string) (string, error) {
-//					return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ServiceLbPolicies can be imported using any of these accepted formats:
@@ -139,8 +58,6 @@ type ServiceLbPolicies struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm pulumi.StringPtrOutput `pulumi:"loadBalancingAlgorithm"`
 	// The location of the service lb policy.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -212,8 +129,6 @@ type serviceLbPoliciesState struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
 	// The location of the service lb policy.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name *string `pulumi:"name"`
@@ -248,8 +163,6 @@ type ServiceLbPoliciesState struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm pulumi.StringPtrInput
 	// The location of the service lb policy.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name pulumi.StringPtrInput
@@ -284,8 +197,6 @@ type serviceLbPoliciesArgs struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm *string `pulumi:"loadBalancingAlgorithm"`
 	// The location of the service lb policy.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name *string `pulumi:"name"`
@@ -312,8 +223,6 @@ type ServiceLbPoliciesArgs struct {
 	// Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
 	LoadBalancingAlgorithm pulumi.StringPtrInput
 	// The location of the service lb policy.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
 	Name pulumi.StringPtrInput
@@ -450,8 +359,6 @@ func (o ServiceLbPoliciesOutput) LoadBalancingAlgorithm() pulumi.StringPtrOutput
 }
 
 // The location of the service lb policy.
-//
-// ***
 func (o ServiceLbPoliciesOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceLbPolicies) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

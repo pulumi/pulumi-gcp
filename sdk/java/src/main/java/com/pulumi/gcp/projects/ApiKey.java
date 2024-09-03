@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Android_key
+ * ### android_key
  * A basic example of a android api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -79,7 +79,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Basic_key
+ * 
+ * ### basic_key
  * A basic example of a api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -134,7 +135,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Ios_key
+ * 
+ * ### ios_key
  * A basic example of a ios api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -189,7 +191,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Minimal_key
+ * 
+ * ### minimal_key
  * A minimal example of a api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -233,7 +236,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Server_key
+ * 
+ * ### server_key
  * A basic example of a server api keys key
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

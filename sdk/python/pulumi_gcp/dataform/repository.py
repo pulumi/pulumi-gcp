@@ -44,9 +44,6 @@ class RepositoryArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The repository's name.
-               
-               
-               - - -
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -135,9 +132,6 @@ class RepositoryArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The repository's name.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -237,9 +231,6 @@ class _RepositoryState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The repository's name.
-               
-               
-               - - -
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -346,9 +337,6 @@ class _RepositoryState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The repository's name.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -539,9 +527,6 @@ class Repository(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The repository's name.
-               
-               
-               - - -
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -723,9 +708,6 @@ class Repository(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The repository's name.
-               
-               
-               - - -
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -805,9 +787,6 @@ class Repository(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The repository's name.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
  *
- * ## Example Usage
- *
- * ### Network Peering Routes Config Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +49,7 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
- * ### Network Peering Routes Config Gke
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -166,9 +164,6 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     public readonly importCustomRoutes!: pulumi.Output<boolean>;
     /**
      * The name of the primary network for the peering.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -238,9 +233,6 @@ export interface NetworkPeeringRoutesConfigState {
     importCustomRoutes?: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -268,9 +260,6 @@ export interface NetworkPeeringRoutesConfigArgs {
     importCustomRoutes: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

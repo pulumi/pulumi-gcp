@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
  * ## Example Usage
  *
@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [basicAgent],
  * });
  * ```
+ *
  * ### Dialogflow Intent Full
  *
  * ```typescript
@@ -134,9 +135,6 @@ export class Intent extends pulumi.CustomResource {
     public readonly defaultResponsePlatforms!: pulumi.Output<string[] | undefined>;
     /**
      * The name of this intent to be displayed on the console.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -278,9 +276,6 @@ export interface IntentState {
     defaultResponsePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of this intent to be displayed on the console.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -369,9 +364,6 @@ export interface IntentArgs {
     defaultResponsePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of this intent to be displayed on the console.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataflow.Inputs
     {
         /// <summary>
         /// The runtime environment for the job.
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("environment")]

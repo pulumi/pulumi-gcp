@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * const available = gcp.tpu.getV2AcceleratorTypes({});
  * ```
  *
- * ### Configure Basic TPU VM With Available Type
+ * ### Configure Basic TPU VM with available type
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -85,7 +85,7 @@ export interface GetV2AcceleratorTypesResult {
  * const available = gcp.tpu.getV2AcceleratorTypes({});
  * ```
  *
- * ### Configure Basic TPU VM With Available Type
+ * ### Configure Basic TPU VM with available type
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

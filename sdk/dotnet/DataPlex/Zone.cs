@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_zone
+    /// ### basic_zone
     /// A basic example of a dataplex zone
     /// ```csharp
     /// using System.Collections.Generic;

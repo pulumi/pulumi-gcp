@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.entityTypes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  *
- * ## Example Usage
- *
- * ### Dialogflowcx Entity Type Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

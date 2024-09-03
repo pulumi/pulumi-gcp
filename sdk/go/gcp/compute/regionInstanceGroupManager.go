@@ -26,7 +26,7 @@ import (
 //
 // ## Example Usage
 //
-// ### With Top Level Instance Template (`Google` Provider)
+// ### with top level instance template (google provider)
 //
 // ```go
 // package main
@@ -99,7 +99,7 @@ import (
 //
 // ```
 //
-// ### With Multiple Versions
+// ### with multiple versions
 // ```go
 // package main
 //
@@ -138,7 +138,7 @@ import (
 //
 // ```
 //
-// ### With Standby Policy (`Google-Beta` Provider)
+// ### with standby policy (google-beta provider)
 // ```go
 // package main
 //
@@ -238,15 +238,11 @@ type RegionInstanceGroupManager struct {
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params RegionInstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -370,15 +366,11 @@ type regionInstanceGroupManagerState struct {
 	// for details on configuration.
 	NamedPorts []RegionInstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params *RegionInstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -467,15 +459,11 @@ type RegionInstanceGroupManagerState struct {
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayInput
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params RegionInstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -562,15 +550,11 @@ type regionInstanceGroupManagerArgs struct {
 	// for details on configuration.
 	NamedPorts []RegionInstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params *RegionInstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	StandbyPolicy *RegionInstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
@@ -650,15 +634,11 @@ type RegionInstanceGroupManagerArgs struct {
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayInput
 	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-	//
-	// ***
 	Params RegionInstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyPtrInput
@@ -876,8 +856,6 @@ func (o RegionInstanceGroupManagerOutput) NamedPorts() RegionInstanceGroupManage
 }
 
 // Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-//
-// ***
 func (o RegionInstanceGroupManagerOutput) Params() RegionInstanceGroupManagerParamsPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerParamsPtrOutput { return v.Params }).(RegionInstanceGroupManagerParamsPtrOutput)
 }
@@ -889,8 +867,6 @@ func (o RegionInstanceGroupManagerOutput) Project() pulumi.StringOutput {
 }
 
 // The region where the managed instance group resides. If not provided, the provider region is used.
-//
-// ***
 func (o RegionInstanceGroupManagerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

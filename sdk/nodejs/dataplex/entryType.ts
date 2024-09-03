@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
+ *
  * ### Dataplex Entry Type Full
  *
  * ```typescript

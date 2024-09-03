@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("livenessProbe")]

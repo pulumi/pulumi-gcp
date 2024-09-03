@@ -38,7 +38,7 @@ class TargetArgs:
         """
         The set of arguments for constructing a Target resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -54,10 +54,6 @@ class TargetArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
@@ -106,7 +102,7 @@ class TargetArgs:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -221,10 +217,6 @@ class TargetArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the `Target`. Format is `a-z?`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -296,7 +288,7 @@ class _TargetState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Target resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -316,10 +308,6 @@ class _TargetState:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
@@ -377,7 +365,7 @@ class _TargetState:
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -549,10 +537,6 @@ class _TargetState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the `Target`. Format is `a-z?`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -670,7 +654,7 @@ class Target(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Multi_target
+        ### multi_target
         tests creating and updating a multi-target
         ```python
         import pulumi
@@ -705,7 +689,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        ### Run_target
+
+        ### run_target
         tests creating and updating a cloud run target
         ```python
         import pulumi
@@ -737,7 +722,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        ### Target
+
+        ### target
         Creates a basic Cloud Deploy target
         ```python
         import pulumi
@@ -791,7 +777,7 @@ class Target(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -808,10 +794,6 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input[Union['TargetRunArgs', 'TargetRunArgsDict']] run: Information specifying a Cloud Run deployment target.
@@ -827,7 +809,7 @@ class Target(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Multi_target
+        ### multi_target
         tests creating and updating a multi-target
         ```python
         import pulumi
@@ -862,7 +844,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        ### Run_target
+
+        ### run_target
         tests creating and updating a cloud run target
         ```python
         import pulumi
@@ -894,7 +877,8 @@ class Target(pulumi.CustomResource):
                 "my_second_label": "example-label-2",
             })
         ```
-        ### Target
+
+        ### target
         Creates a basic Cloud Deploy target
         ```python
         import pulumi
@@ -1049,7 +1033,7 @@ class Target(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1069,10 +1053,6 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Union['TargetMultiTargetArgs', 'TargetMultiTargetArgsDict']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is `a-z?`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
@@ -1113,7 +1093,7 @@ class Target(pulumi.CustomResource):
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See <https://google.aip.dev/128#annotations> for more details such as format and size limitations.
 
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1229,10 +1209,6 @@ class Target(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the `Target`. Format is `a-z?`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

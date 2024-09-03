@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers)
  * * How-to Guides
- *     * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
+ *   * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
  * 
  * &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
  * billing/quota project. The account team notifies you when the project is granted access.
@@ -82,6 +82,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Iam Workforce Pool Provider Saml Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -135,6 +136,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Iam Workforce Pool Provider Oidc Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -197,6 +199,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Iam Workforce Pool Provider Oidc Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -266,6 +269,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -341,6 +345,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -671,8 +676,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      * 
-     * ***
-     * 
      */
     @Export(name="providerId", refs={String.class}, tree="[0]")
     private Output<String> providerId;
@@ -681,8 +684,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * @return The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     * 
-     * ***
      * 
      */
     public Output<String> providerId() {

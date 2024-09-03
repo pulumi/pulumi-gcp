@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 //
-// ## Example Usage
-//
-// ### Compute Packet Mirroring Full
+// ##
 //
 // ```go
 // package main

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.attachments/create)
     /// * How-to Guides
-    ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
+    ///   * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
     /// 
     /// ## Example Usage
     /// 
@@ -50,9 +50,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee instance associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -118,9 +115,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee instance associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -142,9 +136,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee instance associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+    ///   * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
     /// 
@@ -121,8 +121,6 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Location of the target resource.
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -193,8 +191,6 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Location of the target resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -221,8 +217,6 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Location of the target resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

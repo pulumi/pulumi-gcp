@@ -26,7 +26,7 @@ public final class ResourcePolicyInstanceSchedulePolicy {
     private @Nullable String startTime;
     /**
      * @return Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-     * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     private String timeZone;
@@ -60,7 +60,7 @@ public final class ResourcePolicyInstanceSchedulePolicy {
     }
     /**
      * @return Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-     * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     public String timeZone() {

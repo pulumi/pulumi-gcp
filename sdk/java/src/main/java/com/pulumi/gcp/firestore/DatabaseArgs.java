@@ -88,7 +88,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
      * 
      */
     @Import(name="locationId", required=true)
@@ -96,7 +96,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The location of the database. Available locations are listed at
-     * https://cloud.google.com/firestore/docs/locations.
+     * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
      * 
      */
     public Output<String> locationId() {
@@ -174,11 +174,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     @Import(name="type", required=true)
@@ -186,11 +184,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the database.
-     * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+     * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {
@@ -323,7 +319,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param locationId The location of the database. Available locations are listed at
-         * https://cloud.google.com/firestore/docs/locations.
+         * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
          * 
          * @return builder
          * 
@@ -335,7 +331,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param locationId The location of the database. Available locations are listed at
-         * https://cloud.google.com/firestore/docs/locations.
+         * &lt;https://cloud.google.com/firestore/docs/locations&gt;.
          * 
          * @return builder
          * 
@@ -433,11 +429,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the database.
-         * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+         * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
          * for information about how to choose.
          * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -449,11 +443,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the database.
-         * See https://cloud.google.com/datastore/docs/firestore-or-datastore
+         * See &lt;https://cloud.google.com/datastore/docs/firestore-or-datastore&gt;
          * for information about how to choose.
          * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
     /// * How-to Guides
-    ///     * [Managing Zones](https://cloud.google.com/dns/zones/)
+    ///   * [Managing Zones](https://cloud.google.com/dns/zones/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dns Managed Zone Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +43,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
-    /// ### Dns Managed Zone Private
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -95,6 +93,9 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Dns Managed Zone Private Forwarding
     /// 
     /// ```csharp
@@ -159,7 +160,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
-    /// ### Dns Managed Zone Private Gke
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -252,7 +253,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
-    /// ### Dns Managed Zone Private Peering
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -301,7 +302,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
-    /// ### Dns Managed Zone Service Directory
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -340,7 +341,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// });
     /// ```
-    /// ### Dns Managed Zone Cloud Logging
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -467,8 +468,6 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// User assigned name for this resource.
         /// Must be unique within the project.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -644,8 +643,6 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// User assigned name for this resource.
         /// Must be unique within the project.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -794,8 +791,6 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// User assigned name for this resource.
         /// Must be unique within the project.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

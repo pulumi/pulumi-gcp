@@ -16,6 +16,37 @@ import (
 // and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			baz, err := compute.LookupBackendService(ctx, &compute.LookupBackendServiceArgs{
+//				Name: "foobar",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:         pulumi.String("backend-service"),
+//				HealthChecks: pulumi.String(baz.HealthChecks[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackendServiceResult
@@ -29,8 +60,6 @@ func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, o
 // A collection of arguments for invoking getBackendService.
 type LookupBackendServiceArgs struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -102,8 +131,6 @@ func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOu
 // A collection of arguments for invoking getBackendService.
 type LookupBackendServiceOutputArgs struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`

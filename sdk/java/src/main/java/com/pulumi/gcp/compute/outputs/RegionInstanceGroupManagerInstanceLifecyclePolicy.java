@@ -14,8 +14,6 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicy {
     /**
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
      * 
-     * ***
-     * 
      */
     private @Nullable String defaultActionOnFailure;
     /**
@@ -27,8 +25,6 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicy {
     private RegionInstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
-     * 
-     * ***
      * 
      */
     public Optional<String> defaultActionOnFailure() {

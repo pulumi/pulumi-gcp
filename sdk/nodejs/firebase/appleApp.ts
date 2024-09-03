@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     bundleId: "apple.app.12345",
  * });
  * ```
+ *
  * ### Firebase Apple App Full
  *
  * ```typescript
@@ -126,9 +127,6 @@ export class AppleApp extends pulumi.CustomResource {
     public readonly appStoreId!: pulumi.Output<string | undefined>;
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-     *
-     *
-     * - - -
      */
     public readonly bundleId!: pulumi.Output<string>;
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
@@ -217,9 +215,6 @@ export interface AppleAppState {
     appStoreId?: pulumi.Input<string>;
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-     *
-     *
-     * - - -
      */
     bundleId?: pulumi.Input<string>;
     deletionPolicy?: pulumi.Input<string>;
@@ -259,9 +254,6 @@ export interface AppleAppArgs {
     appStoreId?: pulumi.Input<string>;
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-     *
-     *
-     * - - -
      */
     bundleId: pulumi.Input<string>;
     deletionPolicy?: pulumi.Input<string>;

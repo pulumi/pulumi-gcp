@@ -362,7 +362,7 @@ type BudgetAllUpdatesRule struct {
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The schema version of the notification. Only "1.0" is
 	// accepted. It represents the JSON schema as defined in
-	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+	// <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
 	SchemaVersion *string `pulumi:"schemaVersion"`
 }
 
@@ -400,7 +400,7 @@ type BudgetAllUpdatesRuleArgs struct {
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// The schema version of the notification. Only "1.0" is
 	// accepted. It represents the JSON schema as defined in
-	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+	// <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
 	SchemaVersion pulumi.StringPtrInput `pulumi:"schemaVersion"`
 }
 
@@ -515,7 +515,7 @@ func (o BudgetAllUpdatesRuleOutput) PubsubTopic() pulumi.StringPtrOutput {
 
 // The schema version of the notification. Only "1.0" is
 // accepted. It represents the JSON schema as defined in
-// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+// <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
 func (o BudgetAllUpdatesRuleOutput) SchemaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
 }
@@ -598,7 +598,7 @@ func (o BudgetAllUpdatesRulePtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 
 // The schema version of the notification. Only "1.0" is
 // accepted. It represents the JSON schema as defined in
-// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+// <https://cloud.google.com/billing/docs/how-to/budgets#notification_format>.
 func (o BudgetAllUpdatesRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BudgetAllUpdatesRule) *string {
 		if v == nil {
@@ -798,8 +798,6 @@ type BudgetAmountSpecifiedAmount struct {
 	// negative. If units is negative, nanos must be negative or
 	// zero. For example $-1.75 is represented as units=-1 and
 	// nanos=-750,000,000.
-	//
-	// ***
 	Nanos *int `pulumi:"nanos"`
 	// The whole units of the amount. For example if currencyCode
 	// is "USD", then 1 unit is one US dollar.
@@ -827,8 +825,6 @@ type BudgetAmountSpecifiedAmountArgs struct {
 	// negative. If units is negative, nanos must be negative or
 	// zero. For example $-1.75 is represented as units=-1 and
 	// nanos=-750,000,000.
-	//
-	// ***
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// The whole units of the amount. For example if currencyCode
 	// is "USD", then 1 unit is one US dollar.
@@ -924,8 +920,6 @@ func (o BudgetAmountSpecifiedAmountOutput) CurrencyCode() pulumi.StringPtrOutput
 // negative. If units is negative, nanos must be negative or
 // zero. For example $-1.75 is represented as units=-1 and
 // nanos=-750,000,000.
-//
-// ***
 func (o BudgetAmountSpecifiedAmountOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
@@ -977,8 +971,6 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) CurrencyCode() pulumi.StringPtrOut
 // negative. If units is negative, nanos must be negative or
 // zero. For example $-1.75 is represented as units=-1 and
 // nanos=-750,000,000.
-//
-// ***
 func (o BudgetAmountSpecifiedAmountPtrOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) *int {
 		if v == nil {
@@ -1040,7 +1032,7 @@ type BudgetBudgetFilter struct {
 	// included in the budget. If omitted, the report will include
 	// usage for all the services. The service names are available
 	// through the Catalog API:
-	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+	// <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
 	Services []string `pulumi:"services"`
 	// A set of subaccounts of the form billingAccounts/{account_id},
 	// specifying that usage from only this set of subaccounts should
@@ -1104,7 +1096,7 @@ type BudgetBudgetFilterArgs struct {
 	// included in the budget. If omitted, the report will include
 	// usage for all the services. The service names are available
 	// through the Catalog API:
-	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+	// <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
 	Services pulumi.StringArrayInput `pulumi:"services"`
 	// A set of subaccounts of the form billingAccounts/{account_id},
 	// specifying that usage from only this set of subaccounts should
@@ -1254,7 +1246,7 @@ func (o BudgetBudgetFilterOutput) ResourceAncestors() pulumi.StringArrayOutput {
 // included in the budget. If omitted, the report will include
 // usage for all the services. The service names are available
 // through the Catalog API:
-// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+// <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
 func (o BudgetBudgetFilterOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
@@ -1390,7 +1382,7 @@ func (o BudgetBudgetFilterPtrOutput) ResourceAncestors() pulumi.StringArrayOutpu
 // included in the budget. If omitted, the report will include
 // usage for all the services. The service names are available
 // through the Catalog API:
-// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+// <https://cloud.google.com/billing/v1/how-tos/catalog-api>.
 func (o BudgetBudgetFilterPtrOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
 		if v == nil {

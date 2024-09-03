@@ -18,10 +18,10 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+    ///   * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
     /// 
     /// &gt; **Warning:** This resource creates a Firestore Single Field override on a project that
-    ///  already has a Firestore database. If you haven't already created it, you may
+    /// already has a Firestore database. If you haven't already created it, you may
     /// create a `gcp.firestore.Database` resource with `location_id` set to your
     /// chosen location.
     /// 
@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Timestamp
     /// 
     /// ```csharp
@@ -104,6 +105,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firestore Field Match Override
     /// 
     /// ```csharp
@@ -182,9 +184,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The id of the field to configure.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("field")]
         public Output<string> FieldId { get; private set; } = null!;
@@ -280,9 +279,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The id of the field to configure.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("field", required: true)]
         public Input<string> FieldId { get; set; } = null!;
@@ -333,9 +329,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The id of the field to configure.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("field")]
         public Input<string>? FieldId { get; set; }

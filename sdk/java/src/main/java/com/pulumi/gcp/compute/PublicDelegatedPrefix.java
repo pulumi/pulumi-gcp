@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/publicDelegatedPrefixes)
  * * How-to Guides
- *     * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
+ *   * [Using bring your own IP](https://cloud.google.com/vpc/docs/using-bring-your-own-ip)
  * 
  * ## Example Usage
  * 
@@ -124,16 +124,12 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
      * 
-     * ***
-     * 
      */
     @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipCidrRange;
 
     /**
      * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-     * 
-     * ***
      * 
      */
     public Output<String> ipCidrRange() {

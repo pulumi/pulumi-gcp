@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig
     {
         /// <summary>
-        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
         /// multiple times.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator> Accelerators;

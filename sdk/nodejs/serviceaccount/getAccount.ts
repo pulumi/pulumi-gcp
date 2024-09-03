@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Save Key In Kubernetes Secret
+ * ### save key in Kubernetes secret
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -122,7 +122,7 @@ export interface GetAccountResult {
  * });
  * ```
  *
- * ### Save Key In Kubernetes Secret
+ * ### save key in Kubernetes secret
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";

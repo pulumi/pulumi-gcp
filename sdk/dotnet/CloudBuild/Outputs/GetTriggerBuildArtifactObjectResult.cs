@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     {
         /// <summary>
         /// The Cloud Build location for the trigger.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Location;
         /// <summary>

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/binary-authorization/)
 //
-// ## Example Usage
-//
-// ### Binary Authorization Attestor Basic
+// ##
 //
 // ```go
 // package main
@@ -84,6 +82,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Binary Authorization Attestor Kms
 //
 // ```go

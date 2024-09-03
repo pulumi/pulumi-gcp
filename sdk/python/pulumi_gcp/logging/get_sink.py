@@ -163,12 +163,12 @@ def get_sink(id: Optional[str] = None,
     ```
 
 
-    :param str id: The identifier for the resource. 
+    :param str id: The identifier for the resource.
            Examples:
            
            - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
            - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-           -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+           - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
            - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
     """
     __args__ = dict()
@@ -209,12 +209,12 @@ def get_sink_output(id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str id: The identifier for the resource. 
+    :param str id: The identifier for the resource.
            Examples:
            
            - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
            - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-           -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+           - `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
            - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
     """
     ...

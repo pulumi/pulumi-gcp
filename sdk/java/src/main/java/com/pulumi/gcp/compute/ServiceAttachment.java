@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/serviceAttachments)
  * * How-to Guides
- *     * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+ *   * [Configuring Private Service Connect to access services](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
  * 
- * ## Example Usage
- * 
- * ### Service Attachment Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -144,7 +142,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Service Attachment Explicit Projects
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -267,7 +265,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Service Attachment Explicit Networks
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -399,7 +397,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Service Attachment Reconcile Connections
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -646,8 +644,6 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
      * 
-     * ***
-     * 
      */
     @Export(name="enableProxyProtocol", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableProxyProtocol;
@@ -656,8 +652,6 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * @return If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     * 
-     * ***
      * 
      */
     public Output<Boolean> enableProxyProtocol() {

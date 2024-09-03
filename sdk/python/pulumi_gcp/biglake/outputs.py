@@ -48,8 +48,6 @@ class DatabaseHiveOptions(dict):
         :param Mapping[str, str] parameters: Stores user supplied Hive database parameters. An object containing a
                list of"key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-               
-               - - -
         """
         if location_uri is not None:
             pulumi.set(__self__, "location_uri", location_uri)
@@ -71,8 +69,6 @@ class DatabaseHiveOptions(dict):
         Stores user supplied Hive database parameters. An object containing a
         list of"key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-
-        - - -
         """
         return pulumi.get(self, "parameters")
 

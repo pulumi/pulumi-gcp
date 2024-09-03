@@ -51,9 +51,6 @@ class StoragePoolArgs:
         :param pulumi.Input[bool] ldap_enabled: When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
@@ -205,9 +202,6 @@ class StoragePoolArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -295,9 +289,6 @@ class _StoragePoolState:
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -469,9 +460,6 @@ class _StoragePoolState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -602,47 +590,6 @@ class StoragePool(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Storage Pool Create
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # Create a network or use datasource to reference existing network
-        peering_network = gcp.compute.Network("peering_network", name="test-network")
-        # Reserve a CIDR for NetApp Volumes to use
-        # When using shared-VPCs, this resource needs to be created in host project
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="test-address",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=peering_network.id)
-        # Create a Private Service Access connection
-        # When using shared-VPCs, this resource needs to be created in host project
-        default = gcp.servicenetworking.Connection("default",
-            network=peering_network.id,
-            service="netapp.servicenetworking.goog",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        # Modify the PSA Connection to allow import/export of custom routes
-        # When using shared-VPCs, this resource needs to be created in host project
-        route_updates = gcp.compute.NetworkPeeringRoutesConfig("route_updates",
-            peering=default.peering,
-            network=peering_network.name,
-            import_custom_routes=True,
-            export_custom_routes=True)
-        # Create a storage pool
-        # Create this resource in the project which is expected to own the volumes
-        test_pool = gcp.netapp.StoragePool("test_pool",
-            name="test-pool",
-            location="us-central1",
-            service_level="PREMIUM",
-            capacity_gib="2048",
-            network=peering_network.id)
-        ```
-
         ## Import
 
         storagePool can be imported using any of these accepted formats:
@@ -683,9 +630,6 @@ class StoragePool(pulumi.CustomResource):
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -704,47 +648,6 @@ class StoragePool(pulumi.CustomResource):
                  args: StoragePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Storage Pool Create
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # Create a network or use datasource to reference existing network
-        peering_network = gcp.compute.Network("peering_network", name="test-network")
-        # Reserve a CIDR for NetApp Volumes to use
-        # When using shared-VPCs, this resource needs to be created in host project
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="test-address",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=peering_network.id)
-        # Create a Private Service Access connection
-        # When using shared-VPCs, this resource needs to be created in host project
-        default = gcp.servicenetworking.Connection("default",
-            network=peering_network.id,
-            service="netapp.servicenetworking.goog",
-            reserved_peering_ranges=[private_ip_alloc.name])
-        # Modify the PSA Connection to allow import/export of custom routes
-        # When using shared-VPCs, this resource needs to be created in host project
-        route_updates = gcp.compute.NetworkPeeringRoutesConfig("route_updates",
-            peering=default.peering,
-            network=peering_network.name,
-            import_custom_routes=True,
-            export_custom_routes=True)
-        # Create a storage pool
-        # Create this resource in the project which is expected to own the volumes
-        test_pool = gcp.netapp.StoragePool("test_pool",
-            name="test-pool",
-            location="us-central1",
-            service_level="PREMIUM",
-            capacity_gib="2048",
-            network=peering_network.id)
-        ```
-
         ## Import
 
         storagePool can be imported using any of these accepted formats:
@@ -885,9 +788,6 @@ class StoragePool(pulumi.CustomResource):
                using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
         :param pulumi.Input[str] location: Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         :param pulumi.Input[str] name: The resource name of the storage pool. Needs to be unique per location/region.
-               
-               
-               - - -
         :param pulumi.Input[str] network: VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1010,9 +910,6 @@ class StoragePool(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

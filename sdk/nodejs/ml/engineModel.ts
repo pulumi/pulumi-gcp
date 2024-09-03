@@ -16,11 +16,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
+ *   * [Official Documentation](https://cloud.google.com/ai-platform/prediction/docs/deploying-models)
  *
- * ## Example Usage
- *
- * ### Ml Model Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     regions: "us-central1",
  * });
  * ```
- * ### Ml Model Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -124,9 +122,6 @@ export class EngineModel extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name specified for the model.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -222,9 +217,6 @@ export interface EngineModelState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name specified for the model.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -274,9 +266,6 @@ export interface EngineModelArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name specified for the model.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

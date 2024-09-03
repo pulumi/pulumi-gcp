@@ -50,7 +50,7 @@ public final class ResourcePolicyInstanceSchedulePolicyArgs extends com.pulumi.r
 
     /**
      * Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-     * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     @Import(name="timeZone", required=true)
@@ -58,7 +58,7 @@ public final class ResourcePolicyInstanceSchedulePolicyArgs extends com.pulumi.r
 
     /**
      * @return Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-     * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     public Output<String> timeZone() {
@@ -171,7 +171,7 @@ public final class ResourcePolicyInstanceSchedulePolicyArgs extends com.pulumi.r
 
         /**
          * @param timeZone Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-         * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ResourcePolicyInstanceSchedulePolicyArgs extends com.pulumi.r
 
         /**
          * @param timeZone Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-         * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// For example, consider a UrlMap with the following configuration:
         /// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
         /// A PathRule for /coming_soon/ is configured for the error code 404.
-        /// If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
+        /// If the request is for &lt;http://www.myotherdomain.com&gt; and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request &lt;http://www.example.com/current_events/&gt;, the pathMatcher's policy takes effect. If however, the request for &lt;http://www.example.com/coming_soon/&gt; encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.
         /// customErrorResponsePolicy is supported only for global external Application Load Balancers.
         /// Structure is documented below.
         /// </summary>

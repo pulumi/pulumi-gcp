@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  *
  * > **Warning:** This resource should be used with extreme caution!  Provisioning an SSL
  * certificate is complex.  Ensure that you understand the lifecycle of a
@@ -33,9 +33,7 @@ import * as utilities from "../utilities";
  *
  * In conclusion: Be extremely cautious.
  *
- * ## Example Usage
- *
- * ### Managed Ssl Certificate Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

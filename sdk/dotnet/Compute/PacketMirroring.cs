@@ -18,11 +18,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirrorings)
     /// * How-to Guides
-    ///     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+    ///   * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Compute Packet Mirroring Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

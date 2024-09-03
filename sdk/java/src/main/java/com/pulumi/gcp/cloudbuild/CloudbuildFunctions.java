@@ -19,7 +19,7 @@ public final class CloudbuildFunctions {
      * 
      * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     *   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
      * 
@@ -67,7 +67,7 @@ public final class CloudbuildFunctions {
      * 
      * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     *   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
      * 
@@ -115,7 +115,7 @@ public final class CloudbuildFunctions {
      * 
      * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     *   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
      * 
@@ -163,7 +163,7 @@ public final class CloudbuildFunctions {
      * 
      * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     *   * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
      * 
      * ## Example Usage
      * 

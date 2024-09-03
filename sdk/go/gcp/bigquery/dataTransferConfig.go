@@ -86,6 +86,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Bigquerydatatransfer Config Salesforce
 //
 // ```go
@@ -183,10 +184,8 @@ type DataTransferConfig struct {
 	NotificationPubsubTopic pulumi.StringPtrOutput `pulumi:"notificationPubsubTopic"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// <https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq>
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params pulumi.StringMapOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -197,7 +196,7 @@ type DataTransferConfig struct {
 	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
-	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// <https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format>
 	// NOTE: The minimum interval time between recurring transfers depends
 	// on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
@@ -289,10 +288,8 @@ type dataTransferConfigState struct {
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// <https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq>
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,7 +300,7 @@ type dataTransferConfigState struct {
 	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
-	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// <https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format>
 	// NOTE: The minimum interval time between recurring transfers depends
 	// on the data source; refer to the documentation for your data source.
 	Schedule *string `pulumi:"schedule"`
@@ -357,10 +354,8 @@ type DataTransferConfigState struct {
 	NotificationPubsubTopic pulumi.StringPtrInput
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// <https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq>
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -371,7 +366,7 @@ type DataTransferConfigState struct {
 	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
-	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// <https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format>
 	// NOTE: The minimum interval time between recurring transfers depends
 	// on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringPtrInput
@@ -423,10 +418,8 @@ type dataTransferConfigArgs struct {
 	NotificationPubsubTopic *string `pulumi:"notificationPubsubTopic"`
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// <https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq>
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -437,7 +430,7 @@ type dataTransferConfigArgs struct {
 	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
-	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// <https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format>
 	// NOTE: The minimum interval time between recurring transfers depends
 	// on the data source; refer to the documentation for your data source.
 	Schedule *string `pulumi:"schedule"`
@@ -486,10 +479,8 @@ type DataTransferConfigArgs struct {
 	NotificationPubsubTopic pulumi.StringPtrInput
 	// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
 	// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+	// <https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq>
 	// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-	//
-	// ***
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -500,7 +491,7 @@ type DataTransferConfigArgs struct {
 	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
 	// jun 13:15, and first sunday of quarter 00:00. See more explanation
 	// about the format here:
-	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// <https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format>
 	// NOTE: The minimum interval time between recurring transfers depends
 	// on the data source; refer to the documentation for your data source.
 	Schedule pulumi.StringPtrInput
@@ -667,10 +658,8 @@ func (o DataTransferConfigOutput) NotificationPubsubTopic() pulumi.StringPtrOutp
 
 // Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
 // section for each data source. For example the parameters for Cloud Storage transfers are listed here:
-// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+// <https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq>
 // **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-//
-// ***
 func (o DataTransferConfigOutput) Params() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringMapOutput { return v.Params }).(pulumi.StringMapOutput)
 }
@@ -687,7 +676,7 @@ func (o DataTransferConfigOutput) Project() pulumi.StringOutput {
 // of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
 // jun 13:15, and first sunday of quarter 00:00. See more explanation
 // about the format here:
-// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+// <https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format>
 // NOTE: The minimum interval time between recurring transfers depends
 // on the data source; refer to the documentation for your data source.
 func (o DataTransferConfigOutput) Schedule() pulumi.StringPtrOutput {

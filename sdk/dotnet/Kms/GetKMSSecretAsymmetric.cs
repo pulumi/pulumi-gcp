@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Kms
         /// });
         /// ```
         /// 
-        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
         /// some sensitive information:
         /// 
         /// ```bash
@@ -72,8 +72,8 @@ namespace Pulumi.Gcp.Kms
         ///     -pkeyopt rsa_oaep_md:sha256 \
         ///     -pkeyopt rsa_mgf1_md:sha256 &gt; \
         ///   my-secret-password.enc
-        ///   
-        /// ## base64 encode the ciphertext  
+        /// 
+        /// ## base64 encode the ciphertext
         /// $ openssl base64 -in my-secret-password.enc
         /// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
         /// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Kms
         /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
         /// 
         /// ## optionally calculate the CRC32 of the ciphertext
-        /// $ go get github.com/binxio/crc32 
+        /// $ go get github.com/binxio/crc32
         /// $ $GOPATH/bin/crc32 -polynomial castagnoli &lt; my-secret-password.enc
         /// 12c59e54
         /// ```
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.Kms
         /// });
         /// ```
         /// 
-        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt
         /// some sensitive information:
         /// 
         /// ```bash
@@ -214,8 +214,8 @@ namespace Pulumi.Gcp.Kms
         ///     -pkeyopt rsa_oaep_md:sha256 \
         ///     -pkeyopt rsa_mgf1_md:sha256 &gt; \
         ///   my-secret-password.enc
-        ///   
-        /// ## base64 encode the ciphertext  
+        /// 
+        /// ## base64 encode the ciphertext
         /// $ openssl base64 -in my-secret-password.enc
         /// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
         /// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.Kms
         /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
         /// 
         /// ## optionally calculate the CRC32 of the ciphertext
-        /// $ go get github.com/binxio/crc32 
+        /// $ go get github.com/binxio/crc32
         /// $ $GOPATH/bin/crc32 -polynomial castagnoli &lt; my-secret-password.enc
         /// 12c59e54
         /// ```

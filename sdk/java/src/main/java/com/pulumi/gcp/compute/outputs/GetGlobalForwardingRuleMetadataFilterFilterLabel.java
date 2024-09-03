@@ -13,8 +13,6 @@ public final class GetGlobalForwardingRuleMetadataFilterFilterLabel {
     /**
      * @return The name of the global forwarding rule.
      * 
-     * ***
-     * 
      */
     private String name;
     /**
@@ -27,8 +25,6 @@ public final class GetGlobalForwardingRuleMetadataFilterFilterLabel {
     private GetGlobalForwardingRuleMetadataFilterFilterLabel() {}
     /**
      * @return The name of the global forwarding rule.
-     * 
-     * ***
      * 
      */
     public String name() {

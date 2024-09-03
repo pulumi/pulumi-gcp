@@ -18,13 +18,13 @@ type AttachedClusterAuthorization struct {
 	// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 	// to the groups. Up to ten admin groups can be provided.
 	// For more info on RBAC, see
-	// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminGroups []string `pulumi:"adminGroups"`
 	// Users that can perform operations as a cluster admin. A managed
 	// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 	// to the users. Up to ten admin users can be provided.
 	// For more info on RBAC, see
-	// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminUsers []string `pulumi:"adminUsers"`
 }
 
@@ -44,13 +44,13 @@ type AttachedClusterAuthorizationArgs struct {
 	// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 	// to the groups. Up to ten admin groups can be provided.
 	// For more info on RBAC, see
-	// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminGroups pulumi.StringArrayInput `pulumi:"adminGroups"`
 	// Users that can perform operations as a cluster admin. A managed
 	// ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 	// to the users. Up to ten admin users can be provided.
 	// For more info on RBAC, see
-	// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminUsers pulumi.StringArrayInput `pulumi:"adminUsers"`
 }
 
@@ -135,7 +135,7 @@ func (o AttachedClusterAuthorizationOutput) ToAttachedClusterAuthorizationPtrOut
 // ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 // to the groups. Up to ten admin groups can be provided.
 // For more info on RBAC, see
-// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AttachedClusterAuthorizationOutput) AdminGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedClusterAuthorization) []string { return v.AdminGroups }).(pulumi.StringArrayOutput)
 }
@@ -144,7 +144,7 @@ func (o AttachedClusterAuthorizationOutput) AdminGroups() pulumi.StringArrayOutp
 // ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 // to the users. Up to ten admin users can be provided.
 // For more info on RBAC, see
-// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AttachedClusterAuthorizationOutput) AdminUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttachedClusterAuthorization) []string { return v.AdminUsers }).(pulumi.StringArrayOutput)
 }
@@ -177,7 +177,7 @@ func (o AttachedClusterAuthorizationPtrOutput) Elem() AttachedClusterAuthorizati
 // ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 // to the groups. Up to ten admin groups can be provided.
 // For more info on RBAC, see
-// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AttachedClusterAuthorizationPtrOutput) AdminGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedClusterAuthorization) []string {
 		if v == nil {
@@ -191,7 +191,7 @@ func (o AttachedClusterAuthorizationPtrOutput) AdminGroups() pulumi.StringArrayO
 // ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
 // to the users. Up to ten admin users can be provided.
 // For more info on RBAC, see
-// https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AttachedClusterAuthorizationPtrOutput) AdminUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedClusterAuthorization) []string {
 		if v == nil {
@@ -1749,9 +1749,9 @@ func (o AttachedClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type AwsClusterAuthorization struct {
-	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminGroups []AwsClusterAuthorizationAdminGroup `pulumi:"adminGroups"`
-	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminUsers []AwsClusterAuthorizationAdminUser `pulumi:"adminUsers"`
 }
 
@@ -1767,9 +1767,9 @@ type AwsClusterAuthorizationInput interface {
 }
 
 type AwsClusterAuthorizationArgs struct {
-	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminGroups AwsClusterAuthorizationAdminGroupArrayInput `pulumi:"adminGroups"`
-	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminUsers AwsClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -1850,12 +1850,12 @@ func (o AwsClusterAuthorizationOutput) ToAwsClusterAuthorizationPtrOutputWithCon
 	}).(AwsClusterAuthorizationPtrOutput)
 }
 
-// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AwsClusterAuthorizationOutput) AdminGroups() AwsClusterAuthorizationAdminGroupArrayOutput {
 	return o.ApplyT(func(v AwsClusterAuthorization) []AwsClusterAuthorizationAdminGroup { return v.AdminGroups }).(AwsClusterAuthorizationAdminGroupArrayOutput)
 }
 
-// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AwsClusterAuthorizationOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser { return v.AdminUsers }).(AwsClusterAuthorizationAdminUserArrayOutput)
 }
@@ -1884,7 +1884,7 @@ func (o AwsClusterAuthorizationPtrOutput) Elem() AwsClusterAuthorizationOutput {
 	}).(AwsClusterAuthorizationOutput)
 }
 
-// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AwsClusterAuthorizationPtrOutput) AdminGroups() AwsClusterAuthorizationAdminGroupArrayOutput {
 	return o.ApplyT(func(v *AwsClusterAuthorization) []AwsClusterAuthorizationAdminGroup {
 		if v == nil {
@@ -1894,7 +1894,7 @@ func (o AwsClusterAuthorizationPtrOutput) AdminGroups() AwsClusterAuthorizationA
 	}).(AwsClusterAuthorizationAdminGroupArrayOutput)
 }
 
-// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AwsClusterAuthorizationPtrOutput) AdminUsers() AwsClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v *AwsClusterAuthorization) []AwsClusterAuthorizationAdminUser {
 		if v == nil {
@@ -4345,8 +4345,6 @@ type AwsClusterNetworking struct {
 	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
 	// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-	//
-	// ***
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -4369,8 +4367,6 @@ type AwsClusterNetworkingArgs struct {
 	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
 	// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-	//
-	// ***
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -4467,8 +4463,6 @@ func (o AwsClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringArra
 }
 
 // The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-//
-// ***
 func (o AwsClusterNetworkingOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterNetworking) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -4528,8 +4522,6 @@ func (o AwsClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringA
 }
 
 // The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-//
-// ***
 func (o AwsClusterNetworkingPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterNetworking) *string {
 		if v == nil {
@@ -5199,7 +5191,7 @@ func (o AwsNodePoolConfigPtrOutput) Taints() AwsNodePoolConfigTaintArrayOutput {
 type AwsNodePoolConfigAutoscalingMetricsCollection struct {
 	// The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
 	Granularity string `pulumi:"granularity"`
-	// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+	// The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
 	Metrics []string `pulumi:"metrics"`
 }
 
@@ -5217,7 +5209,7 @@ type AwsNodePoolConfigAutoscalingMetricsCollectionInput interface {
 type AwsNodePoolConfigAutoscalingMetricsCollectionArgs struct {
 	// The frequency at which EC2 Auto Scaling sends aggregated data to AWS CloudWatch. The only valid value is "1Minute".
 	Granularity pulumi.StringInput `pulumi:"granularity"`
-	// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+	// The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
 	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
 }
 
@@ -5303,7 +5295,7 @@ func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) Granularity() pulum
 	return o.ApplyT(func(v AwsNodePoolConfigAutoscalingMetricsCollection) string { return v.Granularity }).(pulumi.StringOutput)
 }
 
-// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+// The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
 func (o AwsNodePoolConfigAutoscalingMetricsCollectionOutput) Metrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigAutoscalingMetricsCollection) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
@@ -5342,7 +5334,7 @@ func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) Granularity() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+// The metrics to enable. For a list of valid metrics, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html>. If you specify granularity and don't specify any metrics, all metrics are enabled.
 func (o AwsNodePoolConfigAutoscalingMetricsCollectionPtrOutput) Metrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfigAutoscalingMetricsCollection) []string {
 		if v == nil {
@@ -5996,7 +5988,7 @@ func (o AwsNodePoolConfigRootVolumePtrOutput) VolumeType() pulumi.StringPtrOutpu
 }
 
 type AwsNodePoolConfigSpotConfig struct {
-	// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+	// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
 	InstanceTypes []string `pulumi:"instanceTypes"`
 }
 
@@ -6012,7 +6004,7 @@ type AwsNodePoolConfigSpotConfigInput interface {
 }
 
 type AwsNodePoolConfigSpotConfigArgs struct {
-	// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+	// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
 	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
 }
 
@@ -6093,7 +6085,7 @@ func (o AwsNodePoolConfigSpotConfigOutput) ToAwsNodePoolConfigSpotConfigPtrOutpu
 	}).(AwsNodePoolConfigSpotConfigPtrOutput)
 }
 
-// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
 func (o AwsNodePoolConfigSpotConfigOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigSpotConfig) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
@@ -6122,7 +6114,7 @@ func (o AwsNodePoolConfigSpotConfigPtrOutput) Elem() AwsNodePoolConfigSpotConfig
 	}).(AwsNodePoolConfigSpotConfigOutput)
 }
 
-// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (<https://github.com/aws/amazon-ec2-instance-selector>) to choose instance types with matching CPU and memory
 func (o AwsNodePoolConfigSpotConfigPtrOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfigSpotConfig) []string {
 		if v == nil {
@@ -6523,8 +6515,6 @@ func (o AwsNodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 
 type AwsNodePoolMaxPodsConstraint struct {
 	// The maximum number of pods to schedule on a single node.
-	//
-	// ***
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 }
 
@@ -6541,8 +6531,6 @@ type AwsNodePoolMaxPodsConstraintInput interface {
 
 type AwsNodePoolMaxPodsConstraintArgs struct {
 	// The maximum number of pods to schedule on a single node.
-	//
-	// ***
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 }
 
@@ -6624,8 +6612,6 @@ func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintPtrOut
 }
 
 // The maximum number of pods to schedule on a single node.
-//
-// ***
 func (o AwsNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -6655,8 +6641,6 @@ func (o AwsNodePoolMaxPodsConstraintPtrOutput) Elem() AwsNodePoolMaxPodsConstrai
 }
 
 // The maximum number of pods to schedule on a single node.
-//
-// ***
 func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolMaxPodsConstraint) *int {
 		if v == nil {
@@ -6960,9 +6944,9 @@ func (o AwsNodePoolUpdateSettingsSurgeSettingsPtrOutput) MaxUnavailable() pulumi
 }
 
 type AzureClusterAuthorization struct {
-	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminGroups []AzureClusterAuthorizationAdminGroup `pulumi:"adminGroups"`
-	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminUsers []AzureClusterAuthorizationAdminUser `pulumi:"adminUsers"`
 }
 
@@ -6978,9 +6962,9 @@ type AzureClusterAuthorizationInput interface {
 }
 
 type AzureClusterAuthorizationArgs struct {
-	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminGroups AzureClusterAuthorizationAdminGroupArrayInput `pulumi:"adminGroups"`
-	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+	// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 	AdminUsers AzureClusterAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
 }
 
@@ -7061,12 +7045,12 @@ func (o AzureClusterAuthorizationOutput) ToAzureClusterAuthorizationPtrOutputWit
 	}).(AzureClusterAuthorizationPtrOutput)
 }
 
-// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AzureClusterAuthorizationOutput) AdminGroups() AzureClusterAuthorizationAdminGroupArrayOutput {
 	return o.ApplyT(func(v AzureClusterAuthorization) []AzureClusterAuthorizationAdminGroup { return v.AdminGroups }).(AzureClusterAuthorizationAdminGroupArrayOutput)
 }
 
-// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AzureClusterAuthorizationOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser { return v.AdminUsers }).(AzureClusterAuthorizationAdminUserArrayOutput)
 }
@@ -7095,7 +7079,7 @@ func (o AzureClusterAuthorizationPtrOutput) Elem() AzureClusterAuthorizationOutp
 	}).(AzureClusterAuthorizationOutput)
 }
 
-// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AzureClusterAuthorizationPtrOutput) AdminGroups() AzureClusterAuthorizationAdminGroupArrayOutput {
 	return o.ApplyT(func(v *AzureClusterAuthorization) []AzureClusterAuthorizationAdminGroup {
 		if v == nil {
@@ -7105,7 +7089,7 @@ func (o AzureClusterAuthorizationPtrOutput) AdminGroups() AzureClusterAuthorizat
 	}).(AzureClusterAuthorizationAdminGroupArrayOutput)
 }
 
-// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+// Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see <https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles>
 func (o AzureClusterAuthorizationPtrOutput) AdminUsers() AzureClusterAuthorizationAdminUserArrayOutput {
 	return o.ApplyT(func(v *AzureClusterAuthorization) []AzureClusterAuthorizationAdminUser {
 		if v == nil {
@@ -7484,7 +7468,7 @@ type AzureClusterControlPlane struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
 	Version string `pulumi:"version"`
-	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
 	VmSize *string `pulumi:"vmSize"`
 }
 
@@ -7518,7 +7502,7 @@ type AzureClusterControlPlaneArgs struct {
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
 	Version pulumi.StringInput `pulumi:"version"`
-	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+	// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
 	VmSize pulumi.StringPtrInput `pulumi:"vmSize"`
 }
 
@@ -7648,7 +7632,7 @@ func (o AzureClusterControlPlaneOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterControlPlane) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
 func (o AzureClusterControlPlaneOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureClusterControlPlane) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }
@@ -7767,7 +7751,7 @@ func (o AzureClusterControlPlanePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
+// Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see <https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions>. When unspecified, it defaults to `Standard_DS2_v2`.
 func (o AzureClusterControlPlanePtrOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureClusterControlPlane) *string {
 		if v == nil {
@@ -9023,8 +9007,6 @@ type AzureClusterNetworking struct {
 	// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
 	// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-	//
-	// ***
 	VirtualNetworkId string `pulumi:"virtualNetworkId"`
 }
 
@@ -9045,8 +9027,6 @@ type AzureClusterNetworkingArgs struct {
 	// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
 	// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-	//
-	// ***
 	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
 }
 
@@ -9138,8 +9118,6 @@ func (o AzureClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringAr
 }
 
 // The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-//
-// ***
 func (o AzureClusterNetworkingOutput) VirtualNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterNetworking) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
 }
@@ -9189,8 +9167,6 @@ func (o AzureClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.Strin
 }
 
 // The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-//
-// ***
 func (o AzureClusterNetworkingPtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureClusterNetworking) *string {
 		if v == nil {
@@ -10291,8 +10267,6 @@ func (o AzureNodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 
 type AzureNodePoolMaxPodsConstraint struct {
 	// The maximum number of pods to schedule on a single node.
-	//
-	// ***
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 }
 
@@ -10309,8 +10283,6 @@ type AzureNodePoolMaxPodsConstraintInput interface {
 
 type AzureNodePoolMaxPodsConstraintArgs struct {
 	// The maximum number of pods to schedule on a single node.
-	//
-	// ***
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 }
 
@@ -10392,8 +10364,6 @@ func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintPt
 }
 
 // The maximum number of pods to schedule on a single node.
-//
-// ***
 func (o AzureNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v AzureNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -10423,8 +10393,6 @@ func (o AzureNodePoolMaxPodsConstraintPtrOutput) Elem() AzureNodePoolMaxPodsCons
 }
 
 // The maximum number of pods to schedule on a single node.
-//
-// ***
 func (o AzureNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolMaxPodsConstraint) *int {
 		if v == nil {
@@ -13764,13 +13732,13 @@ func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutos
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
 	DiskSize *int `pulumi:"diskSize"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
 	DiskType *string `pulumi:"diskType"`
-	// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+	// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
 	ImageType *string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool. Structure is documented below.
 	Management *ClusterClusterAutoscalingAutoProvisioningDefaultsManagement `pulumi:"management"`
@@ -13802,13 +13770,13 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
-	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+	// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool. Structure is documented below.
 	Management ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrInput `pulumi:"management"`
@@ -13905,7 +13873,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ToClusterCluste
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -13920,7 +13888,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) DiskType() pulu
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
@@ -13989,7 +13957,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Elem() Clust
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
 }
 
-// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
 		if v == nil {
@@ -14019,7 +13987,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) DiskType() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. **NOTE** : COS AND UBUNTU are deprecated as of `GKE 1.24`
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
 		if v == nil {
@@ -24652,8 +24620,6 @@ type ClusterNodePool struct {
 	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -24720,8 +24686,6 @@ type ClusterNodePoolArgs struct {
 	MaxPodsPerNode pulumi.IntPtrInput `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
@@ -24845,8 +24809,6 @@ func (o ClusterNodePoolOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 
 // The name of the cluster, unique within the project and
 // location.
-//
-// ***
 func (o ClusterNodePoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

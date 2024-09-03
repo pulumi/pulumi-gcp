@@ -16,7 +16,7 @@ public final class ApiConfigGatewayConfigBackendConfigArgs extends com.pulumi.re
 
     /**
      * Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-     * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+     * (&lt;https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)&gt;.
      * 
      */
     @Import(name="googleServiceAccount", required=true)
@@ -24,7 +24,7 @@ public final class ApiConfigGatewayConfigBackendConfigArgs extends com.pulumi.re
 
     /**
      * @return Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-     * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+     * (&lt;https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)&gt;.
      * 
      */
     public Output<String> googleServiceAccount() {
@@ -57,7 +57,7 @@ public final class ApiConfigGatewayConfigBackendConfigArgs extends com.pulumi.re
 
         /**
          * @param googleServiceAccount Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-         * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+         * (&lt;https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)&gt;.
          * 
          * @return builder
          * 
@@ -69,7 +69,7 @@ public final class ApiConfigGatewayConfigBackendConfigArgs extends com.pulumi.re
 
         /**
          * @param googleServiceAccount Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-         * (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
+         * (&lt;https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend)&gt;.
          * 
          * @return builder
          * 

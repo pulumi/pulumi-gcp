@@ -20,11 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
     /// * How-to Guides
-    ///     * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+    ///   * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Compute Mig Resize Request
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -170,9 +168,6 @@ namespace Pulumi.Gcp.Compute
         /// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
         /// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
         /// *compute.instanceGroupManagers.update
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceGroupManager")]
         public Output<string> InstanceGroupManager { get; private set; } = null!;
@@ -278,9 +273,6 @@ namespace Pulumi.Gcp.Compute
         /// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
         /// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
         /// *compute.instanceGroupManagers.update
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceGroupManager", required: true)]
         public Input<string> InstanceGroupManager { get; set; } = null!;
@@ -341,9 +333,6 @@ namespace Pulumi.Gcp.Compute
         /// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
         /// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
         /// *compute.instanceGroupManagers.update
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceGroupManager")]
         public Input<string>? InstanceGroupManager { get; set; }

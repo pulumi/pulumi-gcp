@@ -16,7 +16,7 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
      */
     private String natIp;
     /**
-     * @return The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
      * 
      */
     private String networkTier;
@@ -40,7 +40,7 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
         return this.natIp;
     }
     /**
-     * @return The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance. One of `PREMIUM` or `STANDARD`.
      * 
      */
     public String networkTier() {

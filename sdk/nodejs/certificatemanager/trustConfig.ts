@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.trustConfigs/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
+ *   * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
  *
- * ## Example Usage
- *
- * ### Certificate Manager Trust Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Trust Config Allowlisted Certificates
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -154,9 +152,6 @@ export class TrustConfig extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The trust config location.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -266,9 +261,6 @@ export interface TrustConfigState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The trust config location.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -321,9 +313,6 @@ export interface TrustConfigArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The trust config location.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

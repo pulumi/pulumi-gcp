@@ -135,8 +135,6 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
      * The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
      * 
-     * ***
-     * 
      */
     @Import(name="peering")
     private @Nullable Output<String> peering;
@@ -144,8 +142,6 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The type of peering set for this internal range.
      * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> peering() {
@@ -463,8 +459,6 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
          * @param peering The type of peering set for this internal range.
          * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -476,8 +470,6 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param peering The type of peering set for this internal range.
          * Possible values are: `FOR_SELF`, `FOR_PEER`, `NOT_SHARED`.
-         * 
-         * ***
          * 
          * @return builder
          * 

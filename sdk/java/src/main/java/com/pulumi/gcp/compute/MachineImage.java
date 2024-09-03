@@ -26,11 +26,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
  * 
- * ## Example Usage
- * 
- * ### Machine Image Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -83,7 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Compute Machine Image Kms
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -281,16 +279,12 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      * 
-     * ***
-     * 
      */
     @Export(name="sourceInstance", refs={String.class}, tree="[0]")
     private Output<String> sourceInstance;
 
     /**
      * @return The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> sourceInstance() {

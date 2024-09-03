@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.MigrationCenter.Outputs
     public sealed class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries
     {
         /// <summary>
-        /// Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
+        /// Code to identify a Compute Engine machine series. Consult &lt;https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison&gt; for more details on the available series.
         /// </summary>
         public readonly string? Code;
 

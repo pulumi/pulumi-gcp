@@ -37,9 +37,9 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -49,9 +49,9 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -146,9 +146,9 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param member Identities that will be granted the privilege in `role`.
          * Each entry can have one of the following values:
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          * 
          * @return builder
@@ -162,9 +162,9 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param member Identities that will be granted the privilege in `role`.
          * Each entry can have one of the following values:
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt; or &lt;joe{@literal @}example.com&gt;.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          * 
          * @return builder

@@ -119,7 +119,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
 
     /**
      * (Output)
-     * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */
@@ -128,7 +128,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
 
     /**
      * @return (Output)
-     * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
      * Structure is documented below.
      * 
      */
@@ -316,7 +316,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
 
         /**
          * @param policyIds (Output)
-         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -329,7 +329,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
 
         /**
          * @param policyIds (Output)
-         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -341,7 +341,7 @@ public final class CertificateConfigX509ConfigArgs extends com.pulumi.resources.
 
         /**
          * @param policyIds (Output)
-         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         * Describes the X.509 certificate policy object identifiers, per &lt;https://tools.ietf.org/html/rfc5280#section-4.2.1.4&gt;.
          * Structure is documented below.
          * 
          * @return builder

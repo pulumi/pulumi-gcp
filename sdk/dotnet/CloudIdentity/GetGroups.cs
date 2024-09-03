@@ -14,14 +14,24 @@ namespace Pulumi.Gcp.CloudIdentity
         /// <summary>
         /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
         /// 
-        /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// &lt;https://cloud.google.com/identity/docs/concepts/overview#groups&gt;
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_groups" "groups" {
-        ///   parent = "customers/A01b123xz"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
+        ///     {
+        ///         Parent = "customers/A01b123xz",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
@@ -30,14 +40,24 @@ namespace Pulumi.Gcp.CloudIdentity
         /// <summary>
         /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
         /// 
-        /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// &lt;https://cloud.google.com/identity/docs/concepts/overview#groups&gt;
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_groups" "groups" {
-        ///   parent = "customers/A01b123xz"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
+        ///     {
+        ///         Parent = "customers/A01b123xz",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)

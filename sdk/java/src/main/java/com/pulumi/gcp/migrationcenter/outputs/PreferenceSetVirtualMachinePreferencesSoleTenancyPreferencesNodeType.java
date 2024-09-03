@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
     /**
-     * @return Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+     * @return Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
      * 
      */
     private @Nullable String nodeName;
 
     private PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType() {}
     /**
-     * @return Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+     * @return Name of the Sole Tenant node. Consult &lt;https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes&gt;
      * 
      */
     public Optional<String> nodeName() {

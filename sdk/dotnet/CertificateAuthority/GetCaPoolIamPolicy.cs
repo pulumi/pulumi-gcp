@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// <summary>
         /// Retrieves the current IAM policy data for capool
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -38,7 +37,6 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Retrieves the current IAM policy data for capool
-        /// 
         /// 
         /// ## example
         /// 

@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
  * * How-to Guides
- *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+ *   * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
  * 
  * ## Example Usage
  * 
@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Kms Crypto Key Asymmetric Sign
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -216,7 +217,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * &lt;https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes&gt;
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -231,7 +232,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
      * policy is defined by specifying zero or more allowed justification codes.
-     * https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+     * &lt;https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes&gt;
      * By default, this field is absent, and all justification codes are allowed.
      * This field is currently in beta and is subject to change.
      * Structure is documented below.
@@ -244,8 +245,6 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
      * 
-     * ***
-     * 
      */
     @Export(name="keyRing", refs={String.class}, tree="[0]")
     private Output<String> keyRing;
@@ -253,8 +252,6 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
     /**
      * @return The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
-     * 
-     * ***
      * 
      */
     public Output<String> keyRing() {

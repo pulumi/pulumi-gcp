@@ -27,9 +27,6 @@ class GlobalNetworkEndpointArgs:
         """
         The set of arguments for constructing a GlobalNetworkEndpoint resource.
         :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
-               
-               
-               - - -
         :param pulumi.Input[int] port: Port number of the external endpoint.
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
@@ -51,9 +48,6 @@ class GlobalNetworkEndpointArgs:
     def global_network_endpoint_group(self) -> pulumi.Input[str]:
         """
         The global network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "global_network_endpoint_group")
 
@@ -125,9 +119,6 @@ class _GlobalNetworkEndpointState:
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
         :param pulumi.Input[int] port: Port number of the external endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -162,9 +153,6 @@ class _GlobalNetworkEndpointState:
     def global_network_endpoint_group(self) -> Optional[pulumi.Input[str]]:
         """
         The global network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "global_network_endpoint_group")
 
@@ -230,7 +218,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
 
@@ -279,9 +267,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
         :param pulumi.Input[int] port: Port number of the external endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -302,7 +287,7 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+          * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
 
@@ -409,9 +394,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] fqdn: Fully qualified domain name of network endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
         :param pulumi.Input[str] global_network_endpoint_group: The global network endpoint group this endpoint is part of.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
         :param pulumi.Input[int] port: Port number of the external endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -442,9 +424,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
     def global_network_endpoint_group(self) -> pulumi.Output[str]:
         """
         The global network endpoint group this endpoint is part of.
-
-
-        - - -
         """
         return pulumi.get(self, "global_network_endpoint_group")
 

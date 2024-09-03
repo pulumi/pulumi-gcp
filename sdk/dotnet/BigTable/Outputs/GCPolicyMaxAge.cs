@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.BigTable.Outputs
         public readonly int? Days;
         /// <summary>
         /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-        /// 
-        /// -----
         /// </summary>
         public readonly string? Duration;
 

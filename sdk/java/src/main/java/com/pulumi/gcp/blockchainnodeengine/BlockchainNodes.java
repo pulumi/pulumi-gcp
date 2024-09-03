@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/blockchain-node-engine/docs/reference/rest/v1/projects.locations.blockchainNodes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
+ *   * [Official Documentation](https://cloud.google.com/blockchain-node-engine)
  * 
- * ## Example Usage
- * 
- * ### Blockchain Nodes Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -81,7 +79,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Blockchain Nodes Geth Details
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -168,16 +166,12 @@ public class BlockchainNodes extends com.pulumi.resources.CustomResource {
     /**
      * ID of the requesting object.
      * 
-     * ***
-     * 
      */
     @Export(name="blockchainNodeId", refs={String.class}, tree="[0]")
     private Output<String> blockchainNodeId;
 
     /**
      * @return ID of the requesting object.
-     * 
-     * ***
      * 
      */
     public Output<String> blockchainNodeId() {

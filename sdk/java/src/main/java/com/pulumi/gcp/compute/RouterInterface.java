@@ -214,8 +214,6 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
      * 
-     * ***
-     * 
      */
     @Export(name="router", refs={String.class}, tree="[0]")
     private Output<String> router;
@@ -225,8 +223,6 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Changing this forces a new interface to be created.
      * 
      * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
-     * 
-     * ***
      * 
      */
     public Output<String> router() {

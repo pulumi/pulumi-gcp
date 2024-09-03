@@ -15,9 +15,7 @@ namespace Pulumi.Gcp.Dns
     /// Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
     /// as identified by the dns_name field with the longest matching suffix.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Dns Response Policy Rule Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -137,9 +135,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("responsePolicy")]
         public Output<string> ResponsePolicy { get; private set; } = null!;
@@ -225,9 +220,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("responsePolicy", required: true)]
         public Input<string> ResponsePolicy { get; set; } = null!;
@@ -275,9 +267,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("responsePolicy")]
         public Input<string>? ResponsePolicy { get; set; }

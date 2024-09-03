@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataflow.Inputs
     {
         /// <summary>
         /// Parameter to launch a job from a Flex Template.
-        /// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+        /// &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter&gt;
         /// Structure is documented below.
         /// </summary>
         [Input("launchParameter", required: true)]

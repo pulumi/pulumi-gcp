@@ -19,7 +19,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     public static final BackupArgs Empty = new BackupArgs();
 
     /**
-     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -30,7 +30,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -142,16 +142,12 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the alloydb backup should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location where the alloydb backup should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -226,7 +222,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -241,7 +237,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. &lt;https://google.aip.dev/128&gt;
          * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
          * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -391,8 +387,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the alloydb backup should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -403,8 +397,6 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the alloydb backup should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

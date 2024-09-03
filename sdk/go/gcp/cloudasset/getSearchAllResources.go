@@ -17,7 +17,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Searching For All Projects In An Org
+// ### searching for all projects in an org
 //
 // ```go
 // package main
@@ -46,7 +46,7 @@ import (
 //
 // ```
 //
-// ### Searching For All Projects With CloudBuild API Enabled
+// ### searching for all projects with CloudBuild API enabled
 //
 // ```go
 // package main
@@ -76,7 +76,7 @@ import (
 //
 // ```
 //
-// ### Searching For All Service Accounts In A Project
+// ### searching for all Service Accounts in a project
 //
 // ```go
 // package main

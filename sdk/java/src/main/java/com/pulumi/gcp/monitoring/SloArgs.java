@@ -166,16 +166,12 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * ID of the service to which this SLO belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
      * @return ID of the service to which this SLO belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {
@@ -471,8 +467,6 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param service ID of the service to which this SLO belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -483,8 +477,6 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param service ID of the service to which this SLO belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Automatic Envoy Deployment
+ * ### Automatic Envoy deployment
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -181,9 +181,41 @@ import * as utilities from "../utilities";
  * data source, which will retrieve the latest image on every `pulumi apply`, and will update
  * the template to use that specific image:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *     }],
+ * });
+ * ```
+ *
  * To have instances update to the latest on every scaling event or instance re-creation,
  * use the family as the image for the disk, and it will use GCP's default behavior, setting
  * the image for the template to the family:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-11",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -290,8 +322,6 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * The machine type to create.
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     *
-     * - - -
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
@@ -559,8 +589,6 @@ export interface InstanceTemplateState {
      * The machine type to create.
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     *
-     * - - -
      */
     machineType?: pulumi.Input<string>;
     /**
@@ -730,8 +758,6 @@ export interface InstanceTemplateArgs {
      * The machine type to create.
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     *
-     * - - -
      */
     machineType: pulumi.Input<string>;
     /**

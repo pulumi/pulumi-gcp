@@ -34,7 +34,7 @@ public final class InstanceGceSetupServiceAccountArgs extends com.pulumi.resourc
     /**
      * (Output)
      * Output only. The list of scopes to be made available for this
-     * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+     * service account. Set by the CLH to &lt;https://www.googleapis.com/auth/cloud-platform&gt;
      * 
      */
     @Import(name="scopes")
@@ -43,7 +43,7 @@ public final class InstanceGceSetupServiceAccountArgs extends com.pulumi.resourc
     /**
      * @return (Output)
      * Output only. The list of scopes to be made available for this
-     * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+     * service account. Set by the CLH to &lt;https://www.googleapis.com/auth/cloud-platform&gt;
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -99,7 +99,7 @@ public final class InstanceGceSetupServiceAccountArgs extends com.pulumi.resourc
         /**
          * @param scopes (Output)
          * Output only. The list of scopes to be made available for this
-         * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+         * service account. Set by the CLH to &lt;https://www.googleapis.com/auth/cloud-platform&gt;
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class InstanceGceSetupServiceAccountArgs extends com.pulumi.resourc
         /**
          * @param scopes (Output)
          * Output only. The list of scopes to be made available for this
-         * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+         * service account. Set by the CLH to &lt;https://www.googleapis.com/auth/cloud-platform&gt;
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class InstanceGceSetupServiceAccountArgs extends com.pulumi.resourc
         /**
          * @param scopes (Output)
          * Output only. The list of scopes to be made available for this
-         * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+         * service account. Set by the CLH to &lt;https://www.googleapis.com/auth/cloud-platform&gt;
          * 
          * @return builder
          * 

@@ -279,7 +279,7 @@ if not MYPY:
         """
         schedule: NotRequired[pulumi.Input[str]]
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
 elif False:
     AssetDiscoverySpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -299,7 +299,7 @@ class AssetDiscoverySpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input['AssetDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
-        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        :param pulumi.Input[str] schedule: Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "enabled", enabled)
         if csv_options is not None:
@@ -377,7 +377,7 @@ class AssetDiscoverySpecArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         return pulumi.get(self, "schedule")
 
@@ -853,8 +853,6 @@ if not MYPY:
         type: pulumi.Input[str]
         """
         Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-
-        - - -
         """
         name: NotRequired[pulumi.Input[str]]
         """
@@ -875,8 +873,6 @@ class AssetResourceSpecArgs:
                  read_access_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         :param pulumi.Input[str] read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
@@ -891,8 +887,6 @@ class AssetResourceSpecArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -2453,8 +2447,6 @@ if not MYPY:
         cron: pulumi.Input[str]
         """
         Cron schedule for running scans periodically. This field is required for Schedule scans.
-
-        - - -
         """
 elif False:
     DatascanExecutionSpecTriggerScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -2465,8 +2457,6 @@ class DatascanExecutionSpecTriggerScheduleArgs:
                  cron: pulumi.Input[str]):
         """
         :param pulumi.Input[str] cron: Cron schedule for running scans periodically. This field is required for Schedule scans.
-               
-               - - -
         """
         pulumi.set(__self__, "cron", cron)
 
@@ -2475,8 +2465,6 @@ class DatascanExecutionSpecTriggerScheduleArgs:
     def cron(self) -> pulumi.Input[str]:
         """
         Cron schedule for running scans periodically. This field is required for Schedule scans.
-
-        - - -
         """
         return pulumi.get(self, "cron")
 
@@ -3027,7 +3015,7 @@ if not MYPY:
     class LakeMetastoreArgsDict(TypedDict):
         service: NotRequired[pulumi.Input[str]]
         """
-        Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+        Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
         """
 elif False:
     LakeMetastoreArgsDict: TypeAlias = Mapping[str, Any]
@@ -3037,7 +3025,7 @@ class LakeMetastoreArgs:
     def __init__(__self__, *,
                  service: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] service: Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+        :param pulumi.Input[str] service: Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -3046,7 +3034,7 @@ class LakeMetastoreArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
+        Optional. A relative reference to the Dataproc Metastore (<https://cloud.google.com/dataproc-metastore/docs>) service associated with the lake: `projects/{project_id}/locations/{location_id}/services/{service_id}`
         """
         return pulumi.get(self, "service")
 
@@ -3155,13 +3143,11 @@ if not MYPY:
         """
         args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+        The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
         """
         kms_key: NotRequired[pulumi.Input[str]]
         """
         The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-
-        - - -
         """
         max_job_execution_lifetime: NotRequired[pulumi.Input[str]]
         """
@@ -3185,10 +3171,8 @@ class TaskExecutionSpecArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] args: The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] args: The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
         :param pulumi.Input[str] kms_key: The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-               
-               - - -
         :param pulumi.Input[str] max_job_execution_lifetime: The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -3219,7 +3203,7 @@ class TaskExecutionSpecArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+        The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to <https://cloud.google.com/sdk/gcloud/reference/topic/escaping>. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
         """
         return pulumi.get(self, "args")
 
@@ -3232,8 +3216,6 @@ class TaskExecutionSpecArgs:
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-
-        - - -
         """
         return pulumi.get(self, "kms_key")
 
@@ -4521,7 +4503,7 @@ if not MYPY:
         """
         schedule: NotRequired[pulumi.Input[str]]
         """
-        Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+        Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
         """
         start_time: NotRequired[pulumi.Input[str]]
         """
@@ -4543,7 +4525,7 @@ class TaskTriggerSpecArgs:
                Possible values are: `ON_DEMAND`, `RECURRING`.
         :param pulumi.Input[bool] disabled: Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
         :param pulumi.Input[int] max_retries: Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
-        :param pulumi.Input[str] schedule: Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+        :param pulumi.Input[str] schedule: Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
         :param pulumi.Input[str] start_time: The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
         """
         pulumi.set(__self__, "type", type)
@@ -4597,7 +4579,7 @@ class TaskTriggerSpecArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+        Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
         """
         return pulumi.get(self, "schedule")
 
@@ -4714,7 +4696,7 @@ if not MYPY:
         """
         schedule: NotRequired[pulumi.Input[str]]
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
 elif False:
     ZoneDiscoverySpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -4734,7 +4716,7 @@ class ZoneDiscoverySpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input['ZoneDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
-        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        :param pulumi.Input[str] schedule: Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "enabled", enabled)
         if csv_options is not None:
@@ -4812,7 +4794,7 @@ class ZoneDiscoverySpecArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        Optional. Cron schedule (<https://en.wikipedia.org/wiki/Cron>) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         return pulumi.get(self, "schedule")
 
@@ -5064,8 +5046,6 @@ if not MYPY:
         location_type: pulumi.Input[str]
         """
         Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-
-        - - -
         """
 elif False:
     ZoneResourceSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -5076,8 +5056,6 @@ class ZoneResourceSpecArgs:
                  location_type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-               
-               - - -
         """
         pulumi.set(__self__, "location_type", location_type)
 
@@ -5086,8 +5064,6 @@ class ZoneResourceSpecArgs:
     def location_type(self) -> pulumi.Input[str]:
         """
         Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-
-        - - -
         """
         return pulumi.get(self, "location_type")
 

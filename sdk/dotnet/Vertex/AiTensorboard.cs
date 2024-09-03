@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.tensorboards)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+    ///   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Vertex Ai Tensorboard
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
-    /// ### Vertex Ai Tensorboard Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -141,9 +139,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// User provided name of this Tensorboard.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -267,9 +262,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// User provided name of this Tensorboard.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -337,9 +329,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// User provided name of this Tensorboard.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

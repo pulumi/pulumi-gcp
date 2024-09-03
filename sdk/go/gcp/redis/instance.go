@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
-// ## Example Usage
-//
-// ### Redis Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -48,7 +46,7 @@ import (
 //	}
 //
 // ```
-// ### Redis Instance Full
+// ##
 //
 // ```go
 // package main
@@ -113,7 +111,7 @@ import (
 //	}
 //
 // ```
-// ### Redis Instance Full With Persistence Config
+// ##
 //
 // ```go
 // package main
@@ -146,6 +144,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Redis Instance Private Service
 //
 // ```go
@@ -217,7 +218,7 @@ import (
 //	}
 //
 // ```
-// ### Redis Instance Mrr
+// ##
 //
 // ```go
 // package main
@@ -271,6 +272,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Redis Instance Cmek
 //
 // ```go
@@ -429,8 +431,6 @@ type Instance struct {
 	// The self service update maintenance version.
 	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -468,9 +468,9 @@ type Instance struct {
 	//   can scale up and down the number of replicas.
 	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringOutput `pulumi:"readReplicasMode"`
-	// Redis configuration parameters, according to http://redis.io/topics/config.
+	// Redis configuration parameters, according to <http://redis.io/topics/config>.
 	// Please check Memorystore documentation for the list of supported parameters:
-	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+	// <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
 	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Please check the API documentation linked
@@ -606,8 +606,6 @@ type instanceState struct {
 	// The self service update maintenance version.
 	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -645,9 +643,9 @@ type instanceState struct {
 	//   can scale up and down the number of replicas.
 	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
-	// Redis configuration parameters, according to http://redis.io/topics/config.
+	// Redis configuration parameters, according to <http://redis.io/topics/config>.
 	// Please check Memorystore documentation for the list of supported parameters:
-	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+	// <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Please check the API documentation linked
@@ -745,8 +743,6 @@ type InstanceState struct {
 	// The self service update maintenance version.
 	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb pulumi.IntPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -784,9 +780,9 @@ type InstanceState struct {
 	//   can scale up and down the number of replicas.
 	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
-	// Redis configuration parameters, according to http://redis.io/topics/config.
+	// Redis configuration parameters, according to <http://redis.io/topics/config>.
 	// Please check Memorystore documentation for the list of supported parameters:
-	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+	// <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
 	RedisConfigs pulumi.StringMapInput
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Please check the API documentation linked
@@ -869,8 +865,6 @@ type instanceArgs struct {
 	// The self service update maintenance version.
 	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -888,9 +882,9 @@ type instanceArgs struct {
 	//   can scale up and down the number of replicas.
 	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
-	// Redis configuration parameters, according to http://redis.io/topics/config.
+	// Redis configuration parameters, according to <http://redis.io/topics/config>.
 	// Please check Memorystore documentation for the list of supported parameters:
-	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+	// <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Please check the API documentation linked
@@ -967,8 +961,6 @@ type InstanceArgs struct {
 	// The self service update maintenance version.
 	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
-	//
-	// ***
 	MemorySizeGb pulumi.IntInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -986,9 +978,9 @@ type InstanceArgs struct {
 	//   can scale up and down the number of replicas.
 	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
-	// Redis configuration parameters, according to http://redis.io/topics/config.
+	// Redis configuration parameters, according to <http://redis.io/topics/config>.
 	// Please check Memorystore documentation for the list of supported parameters:
-	// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+	// <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
 	RedisConfigs pulumi.StringMapInput
 	// The version of Redis software. If not provided, latest supported
 	// version will be used. Please check the API documentation linked
@@ -1217,8 +1209,6 @@ func (o InstanceOutput) MaintenanceVersion() pulumi.StringOutput {
 }
 
 // Redis memory size in GiB.
-//
-// ***
 func (o InstanceOutput) MemorySizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MemorySizeGb }).(pulumi.IntOutput)
 }
@@ -1289,9 +1279,9 @@ func (o InstanceOutput) ReadReplicasMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReadReplicasMode }).(pulumi.StringOutput)
 }
 
-// Redis configuration parameters, according to http://redis.io/topics/config.
+// Redis configuration parameters, according to <http://redis.io/topics/config>.
 // Please check Memorystore documentation for the list of supported parameters:
-// https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
+// <https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs>
 func (o InstanceOutput) RedisConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.RedisConfigs }).(pulumi.StringMapOutput)
 }

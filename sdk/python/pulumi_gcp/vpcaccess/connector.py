@@ -48,9 +48,6 @@ class ConnectorArgs:
                Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
                min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -165,9 +162,6 @@ class ConnectorArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the resource (Max 25 characters).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -260,9 +254,6 @@ class _ConnectorState:
                Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
                min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -397,9 +388,6 @@ class _ConnectorState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the resource (Max 25 characters).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -506,11 +494,9 @@ class Connector(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
         * How-to Guides
-            * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+          * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
-        ## Example Usage
-
-        ### Vpc Access Connector
+        ## 
 
         ```python
         import pulumi
@@ -521,7 +507,7 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
-        ### Vpc Access Connector Shared Vpc
+        ## 
 
         ```python
         import pulumi
@@ -586,9 +572,6 @@ class Connector(pulumi.CustomResource):
                Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
                min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -609,11 +592,9 @@ class Connector(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
         * How-to Guides
-            * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+          * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
-        ## Example Usage
-
-        ### Vpc Access Connector
+        ## 
 
         ```python
         import pulumi
@@ -624,7 +605,7 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
-        ### Vpc Access Connector Shared Vpc
+        ## 
 
         ```python
         import pulumi
@@ -768,9 +749,6 @@ class Connector(pulumi.CustomResource):
                Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and
                min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -868,9 +846,6 @@ class Connector(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the resource (Max 25 characters).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

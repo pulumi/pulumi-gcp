@@ -42,9 +42,6 @@ class InstanceArgs:
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -59,7 +56,7 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
-        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -124,9 +121,6 @@ class InstanceArgs:
     def instance_id(self) -> pulumi.Input[str]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -216,7 +210,7 @@ class InstanceArgs:
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         """
         return pulumi.get(self, "gce_zone")
 
@@ -367,11 +361,8 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -573,7 +564,7 @@ class _InstanceState:
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         """
         return pulumi.get(self, "gce_zone")
 
@@ -586,9 +577,6 @@ class _InstanceState:
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -858,6 +846,7 @@ class Instance(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
+
         ### Alloydb Secondary Instance Basic
 
         ```python
@@ -953,11 +942,8 @@ class Instance(pulumi.CustomResource):
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
-        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1019,6 +1005,7 @@ class Instance(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         project = gcp.organizations.get_project()
         ```
+
         ### Alloydb Secondary Instance Basic
 
         ```python
@@ -1233,11 +1220,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1381,7 +1365,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> pulumi.Output[Optional[str]]:
         """
-        The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        The Compute Engine zone that the instance should serve from, per <https://cloud.google.com/compute/docs/regions-zones> This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         """
         return pulumi.get(self, "gce_zone")
 
@@ -1390,9 +1374,6 @@ class Instance(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

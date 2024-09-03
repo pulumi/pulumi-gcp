@@ -14,7 +14,7 @@ import (
 
 // ## Example Usage
 //
-// ### Creating A New Key
+// ### creating a new Key
 //
 // ```go
 // package main
@@ -48,7 +48,7 @@ import (
 //
 // ```
 //
-// ### Creating And Regularly Rotating A Key
+// ### creating and regularly rotating a key
 //
 // ```go
 // package main
@@ -92,7 +92,7 @@ import (
 //
 // ```
 //
-// ### Save Key In Kubernetes Secret - DEPRECATED
+// ### save key in Kubernetes secret - DEPRECATED
 //
 // ```go
 // package main

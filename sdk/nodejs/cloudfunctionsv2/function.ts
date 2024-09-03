@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudfunctions2 Full
  *
  * ```typescript
@@ -115,6 +116,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudfunctions2 Scheduler Auth
  *
  * ```typescript
@@ -187,6 +189,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudfunctions2 Basic Gcs
  *
  * ```typescript
@@ -287,6 +290,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudfunctions2 Basic Auditlogs
  *
  * ```typescript
@@ -396,6 +400,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
  * ### Cloudfunctions2 Basic Builder
  *
  * ```typescript
@@ -465,6 +470,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait60s],
  * });
  * ```
+ *
  * ### Cloudfunctions2 Secret Env
  *
  * ```typescript
@@ -526,6 +532,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [secretSecretVersion],
  * });
  * ```
+ *
  * ### Cloudfunctions2 Secret Volume
  *
  * ```typescript
@@ -586,6 +593,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [secretSecretVersion],
  * });
  * ```
+ *
  * ### Cloudfunctions2 Private Workerpool
  *
  * ```typescript
@@ -634,6 +642,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudfunctions2 Cmek Docs
  *
  * ```typescript
@@ -713,6 +722,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [gcfCmekKeyuser],
  * });
  * ```
+ *
  * ### Cloudfunctions2 Abiu
  *
  * ```typescript
@@ -775,6 +785,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Cloudfunctions2 Abiu On Deploy
  *
  * ```typescript
@@ -928,9 +939,6 @@ export class Function extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of this cloud function.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -1064,9 +1072,6 @@ export interface FunctionState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of this cloud function.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -1137,9 +1142,6 @@ export interface FunctionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of this cloud function.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

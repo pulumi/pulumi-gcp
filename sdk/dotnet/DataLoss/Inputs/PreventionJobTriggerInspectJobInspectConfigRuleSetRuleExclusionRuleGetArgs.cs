@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesGetArgs>? ExcludeInfoTypes { get; set; }
 
         /// <summary>
-        /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        /// How the rule is applied. See the documentation for more information: &lt;https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType&gt;
         /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         /// </summary>
         [Input("matchingType", required: true)]

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *   * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
  *
@@ -115,8 +115,6 @@ export class LocationTagBinding extends pulumi.CustomResource {
 
     /**
      * Location of the target resource.
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -173,8 +171,6 @@ export class LocationTagBinding extends pulumi.CustomResource {
 export interface LocationTagBindingState {
     /**
      * Location of the target resource.
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -197,8 +193,6 @@ export interface LocationTagBindingState {
 export interface LocationTagBindingArgs {
     /**
      * Location of the target resource.
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**

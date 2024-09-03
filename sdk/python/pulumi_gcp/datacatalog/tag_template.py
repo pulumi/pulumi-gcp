@@ -260,11 +260,9 @@ class TagTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Tag Template Basic
+        ## 
 
         ```python
         import pulumi
@@ -349,11 +347,9 @@ class TagTemplate(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Tag Template Basic
+        ## 
 
         ```python
         import pulumi

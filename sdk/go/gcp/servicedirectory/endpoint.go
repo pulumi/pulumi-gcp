@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 //
-// ## Example Usage
-//
-// ### Service Directory Endpoint Basic
+// ##
 //
 // ```go
 // package main
@@ -68,7 +66,7 @@ import (
 //	}
 //
 // ```
-// ### Service Directory Endpoint With Network
+// ##
 //
 // ```go
 // package main
@@ -162,8 +160,6 @@ type Endpoint struct {
 	Address pulumi.StringPtrOutput `pulumi:"address"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// Metadata for the endpoint. This data can be consumed
 	// by service clients. The entire metadata dictionary may contain
@@ -222,8 +218,6 @@ type endpointState struct {
 	Address *string `pulumi:"address"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	EndpointId *string `pulumi:"endpointId"`
 	// Metadata for the endpoint. This data can be consumed
 	// by service clients. The entire metadata dictionary may contain
@@ -247,8 +241,6 @@ type EndpointState struct {
 	Address pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	EndpointId pulumi.StringPtrInput
 	// Metadata for the endpoint. This data can be consumed
 	// by service clients. The entire metadata dictionary may contain
@@ -276,8 +268,6 @@ type endpointArgs struct {
 	Address *string `pulumi:"address"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	EndpointId string `pulumi:"endpointId"`
 	// Metadata for the endpoint. This data can be consumed
 	// by service clients. The entire metadata dictionary may contain
@@ -299,8 +289,6 @@ type EndpointArgs struct {
 	Address pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	EndpointId pulumi.StringInput
 	// Metadata for the endpoint. This data can be consumed
 	// by service clients. The entire metadata dictionary may contain
@@ -410,8 +398,6 @@ func (o EndpointOutput) Address() pulumi.StringPtrOutput {
 
 // The Resource ID must be 1-63 characters long, including digits,
 // lowercase letters or the hyphen character.
-//
-// ***
 func (o EndpointOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }

@@ -38,8 +38,6 @@ public final class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequir
      * Kind of a Kubernetes resource, e.g.
      * &#34;CustomResourceDefinition&#34;, &#34;StorageClass&#34;, etc.
      * 
-     * ***
-     * 
      */
     @Import(name="resourceKind")
     private @Nullable Output<String> resourceKind;
@@ -47,8 +45,6 @@ public final class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequir
     /**
      * @return Kind of a Kubernetes resource, e.g.
      * &#34;CustomResourceDefinition&#34;, &#34;StorageClass&#34;, etc.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> resourceKind() {
@@ -109,8 +105,6 @@ public final class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequir
          * @param resourceKind Kind of a Kubernetes resource, e.g.
          * &#34;CustomResourceDefinition&#34;, &#34;StorageClass&#34;, etc.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -122,8 +116,6 @@ public final class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequir
         /**
          * @param resourceKind Kind of a Kubernetes resource, e.g.
          * &#34;CustomResourceDefinition&#34;, &#34;StorageClass&#34;, etc.
-         * 
-         * ***
          * 
          * @return builder
          * 

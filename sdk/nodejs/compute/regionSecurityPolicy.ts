@@ -7,64 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Region Security Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const region_sec_policy_basic = new gcp.compute.RegionSecurityPolicy("region-sec-policy-basic", {
- *     name: "my-sec-policy-basic",
- *     description: "basic region security policy",
- *     type: "CLOUD_ARMOR",
- * });
- * ```
- * ### Region Security Policy With Ddos Protection Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const region_sec_policy_ddos_protection = new gcp.compute.RegionSecurityPolicy("region-sec-policy-ddos-protection", {
- *     name: "my-sec-policy-ddos-protection",
- *     description: "with ddos protection config",
- *     type: "CLOUD_ARMOR_NETWORK",
- *     ddosProtectionConfig: {
- *         ddosProtection: "ADVANCED_PREVIEW",
- *     },
- * });
- * ```
- * ### Region Security Policy With User Defined Fields
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const region_sec_policy_user_defined_fields = new gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", {
- *     name: "my-sec-policy-user-defined-fields",
- *     description: "with user defined fields",
- *     type: "CLOUD_ARMOR_NETWORK",
- *     userDefinedFields: [
- *         {
- *             name: "SIG1_AT_0",
- *             base: "UDP",
- *             offset: 8,
- *             size: 2,
- *             mask: "0x8F00",
- *         },
- *         {
- *             name: "SIG2_AT_8",
- *             base: "UDP",
- *             offset: 16,
- *             size: 4,
- *             mask: "0xFFFFFFFF",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * RegionSecurityPolicy can be imported using any of these accepted formats:
@@ -140,9 +82,6 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -248,9 +187,6 @@ export interface RegionSecurityPolicyState {
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -309,9 +245,6 @@ export interface RegionSecurityPolicyArgs {
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

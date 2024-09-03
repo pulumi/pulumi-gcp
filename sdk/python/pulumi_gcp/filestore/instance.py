@@ -511,13 +511,11 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
         * How-to Guides
-            * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
-            * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
-            * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+          * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+          * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+          * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
 
-        ## Example Usage
-
-        ### Filestore Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -536,7 +534,7 @@ class Instance(pulumi.CustomResource):
                 "modes": ["MODE_IPV4"],
             }])
         ```
-        ### Filestore Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -570,7 +568,7 @@ class Instance(pulumi.CustomResource):
                 "connect_mode": "DIRECT_PEERING",
             }])
         ```
-        ### Filestore Instance Protocol
+        ## 
 
         ```python
         import pulumi
@@ -590,6 +588,9 @@ class Instance(pulumi.CustomResource):
                 "modes": ["MODE_IPV4"],
             }])
         ```
+
+        ## Example Usage
+
         ### Filestore Instance Enterprise
 
         ```python
@@ -676,13 +677,11 @@ class Instance(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
         * How-to Guides
-            * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
-            * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
-            * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
+          * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+          * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
+          * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
 
-        ## Example Usage
-
-        ### Filestore Instance Basic
+        ## 
 
         ```python
         import pulumi
@@ -701,7 +700,7 @@ class Instance(pulumi.CustomResource):
                 "modes": ["MODE_IPV4"],
             }])
         ```
-        ### Filestore Instance Full
+        ## 
 
         ```python
         import pulumi
@@ -735,7 +734,7 @@ class Instance(pulumi.CustomResource):
                 "connect_mode": "DIRECT_PEERING",
             }])
         ```
-        ### Filestore Instance Protocol
+        ## 
 
         ```python
         import pulumi
@@ -755,6 +754,9 @@ class Instance(pulumi.CustomResource):
                 "modes": ["MODE_IPV4"],
             }])
         ```
+
+        ## Example Usage
+
         ### Filestore Instance Enterprise
 
         ```python

@@ -5,36 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ### Network Services Service Binding Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.servicedirectory.Namespace("default", {
- *     namespaceId: "my-namespace",
- *     location: "us-central1",
- * });
- * const defaultService = new gcp.servicedirectory.Service("default", {
- *     serviceId: "my-service",
- *     namespace: _default.id,
- *     metadata: {
- *         stage: "prod",
- *         region: "us-central1",
- *     },
- * });
- * const defaultServiceBinding = new gcp.networkservices.ServiceBinding("default", {
- *     name: "my-service-binding",
- *     labels: {
- *         foo: "bar",
- *     },
- *     description: "my description",
- *     service: defaultService.id,
- * });
- * ```
- *
  * ## Import
  *
  * ServiceBinding can be imported using any of these accepted formats:
@@ -107,9 +77,6 @@ export class ServiceBinding extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the ServiceBinding resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -200,9 +167,6 @@ export interface ServiceBindingState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the ServiceBinding resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -242,9 +206,6 @@ export interface ServiceBindingArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the ServiceBinding resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

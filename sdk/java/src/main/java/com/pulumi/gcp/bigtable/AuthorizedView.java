@@ -187,16 +187,12 @@ public class AuthorizedView extends com.pulumi.resources.CustomResource {
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="subsetView", refs={AuthorizedViewSubsetView.class}, tree="[0]")
     private Output</* @Nullable */ AuthorizedViewSubsetView> subsetView;
 
     /**
      * @return An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<Optional<AuthorizedViewSubsetView>> subsetView() {

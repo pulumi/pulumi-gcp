@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
  * * How-to Guides
- *     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+ *   * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
  * 
  * ## Example Usage
  * 
@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Network Security Address Groups Organization Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -106,6 +107,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Network Security Address Groups Advanced
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -146,6 +148,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Network Security Address Groups Cloud Armor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -302,8 +305,6 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * The location of the gateway security policy.
      * The default value is `global`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -311,8 +312,6 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The location of the gateway security policy.
      * The default value is `global`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

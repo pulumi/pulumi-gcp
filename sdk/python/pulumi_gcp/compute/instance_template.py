@@ -56,8 +56,6 @@ class InstanceTemplateArgs:
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -188,8 +186,6 @@ class InstanceTemplateArgs:
         The machine type to create.
 
         To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -588,8 +584,6 @@ class _InstanceTemplateState:
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -840,8 +834,6 @@ class _InstanceTemplateState:
         The machine type to create.
 
         To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -1249,7 +1241,7 @@ class InstanceTemplate(pulumi.CustomResource):
             })
         ```
 
-        ### Automatic Envoy Deployment
+        ### Automatic Envoy deployment
 
         ```python
         import pulumi
@@ -1337,9 +1329,37 @@ class InstanceTemplate(pulumi.CustomResource):
         data source, which will retrieve the latest image on every `pulumi apply`, and will update
         the template to use that specific image:
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": my_image.self_link,
+            }])
+        ```
+
         To have instances update to the latest on every scaling event or instance re-creation,
         use the family as the image for the disk, and it will use GCP's default behavior, setting
         the image for the template to the family:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+            }])
+        ```
 
         ## Import
 
@@ -1388,8 +1408,6 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -1515,7 +1533,7 @@ class InstanceTemplate(pulumi.CustomResource):
             })
         ```
 
-        ### Automatic Envoy Deployment
+        ### Automatic Envoy deployment
 
         ```python
         import pulumi
@@ -1603,9 +1621,37 @@ class InstanceTemplate(pulumi.CustomResource):
         data source, which will retrieve the latest image on every `pulumi apply`, and will update
         the template to use that specific image:
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": my_image.self_link,
+            }])
+        ```
+
         To have instances update to the latest on every scaling event or instance re-creation,
         use the family as the image for the disk, and it will use GCP's default behavior, setting
         the image for the template to the family:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+            }])
+        ```
 
         ## Import
 
@@ -1793,8 +1839,6 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1977,8 +2021,6 @@ class InstanceTemplate(pulumi.CustomResource):
         The machine type to create.
 
         To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
         """
         return pulumi.get(self, "machine_type")
 

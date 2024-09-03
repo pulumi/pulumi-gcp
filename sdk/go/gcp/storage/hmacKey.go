@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 //
-// ## Example Usage
-//
-// ### Storage Hmac Key
+// ##
 //
 // ```go
 // package main
@@ -39,7 +37,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new service account
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("my-svc-acc"),
 //			})
@@ -94,8 +91,6 @@ type HmacKey struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The email address of the key's associated service account.
-	//
-	// ***
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
@@ -153,8 +148,6 @@ type hmacKeyState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret *string `pulumi:"secret"`
 	// The email address of the key's associated service account.
-	//
-	// ***
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
@@ -176,8 +169,6 @@ type HmacKeyState struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret pulumi.StringPtrInput
 	// The email address of the key's associated service account.
-	//
-	// ***
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
@@ -198,8 +189,6 @@ type hmacKeyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The email address of the key's associated service account.
-	//
-	// ***
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
@@ -213,8 +202,6 @@ type HmacKeyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The email address of the key's associated service account.
-	//
-	// ***
 	ServiceAccountEmail pulumi.StringInput
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
@@ -327,8 +314,6 @@ func (o HmacKeyOutput) Secret() pulumi.StringOutput {
 }
 
 // The email address of the key's associated service account.
-//
-// ***
 func (o HmacKeyOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }

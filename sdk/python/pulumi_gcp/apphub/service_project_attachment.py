@@ -25,9 +25,6 @@ class ServiceProjectAttachmentArgs:
         """
         The set of arguments for constructing a ServiceProjectAttachment resource.
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_project: "Immutable. Service project name in the format: \\"projects/abc\\"
@@ -45,9 +42,6 @@ class ServiceProjectAttachmentArgs:
     def service_project_attachment_id(self) -> pulumi.Input[str]:
         """
         Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-
-
-        - - -
         """
         return pulumi.get(self, "service_project_attachment_id")
 
@@ -103,9 +97,6 @@ class _ServiceProjectAttachmentState:
                or \\"projects/123\\". As input, project name with either project id or number
                are accepted. As output, this field will contain project number."
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-               
-               
-               - - -
         :param pulumi.Input[str] state: ServiceProjectAttachment state.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
         """
@@ -180,9 +171,6 @@ class _ServiceProjectAttachmentState:
     def service_project_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-
-
-        - - -
         """
         return pulumi.get(self, "service_project_attachment_id")
 
@@ -245,6 +233,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
         opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+
         ### Service Project Attachment Full
 
         ```python
@@ -296,9 +285,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
                or \\"projects/123\\". As input, project name with either project id or number
                are accepted. As output, this field will contain project number."
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-               
-               
-               - - -
         """
         ...
     @overload
@@ -327,6 +313,7 @@ class ServiceProjectAttachment(pulumi.CustomResource):
         example = gcp.apphub.ServiceProjectAttachment("example", service_project_attachment_id=service_project.project_id,
         opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+
         ### Service Project Attachment Full
 
         ```python
@@ -438,9 +425,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
                or \\"projects/123\\". As input, project name with either project id or number
                are accepted. As output, this field will contain project number."
         :param pulumi.Input[str] service_project_attachment_id: Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-               
-               
-               - - -
         :param pulumi.Input[str] state: ServiceProjectAttachment state.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
         """
@@ -497,9 +481,6 @@ class ServiceProjectAttachment(pulumi.CustomResource):
     def service_project_attachment_id(self) -> pulumi.Output[str]:
         """
         Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-
-
-        - - -
         """
         return pulumi.get(self, "service_project_attachment_id")
 

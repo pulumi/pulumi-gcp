@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
     /// * How-to Guides
-    ///     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+    ///   * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Scan Config Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -88,7 +86,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The blacklist URL patterns as described in
-        /// https://cloud.google.com/security-scanner/docs/excluded-urls
+        /// &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
         /// </summary>
         [Output("blacklistPatterns")]
         public Output<ImmutableArray<string>> BlacklistPatterns { get; private set; } = null!;
@@ -137,9 +135,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The starting URLs from which the scanner finds site pages.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("startingUrls")]
         public Output<ImmutableArray<string>> StartingUrls { get; private set; } = null!;
@@ -218,7 +213,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The blacklist URL patterns as described in
-        /// https://cloud.google.com/security-scanner/docs/excluded-urls
+        /// &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
         /// </summary>
         public InputList<string> BlacklistPatterns
         {
@@ -266,9 +261,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The starting URLs from which the scanner finds site pages.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> StartingUrls
         {
@@ -318,7 +310,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The blacklist URL patterns as described in
-        /// https://cloud.google.com/security-scanner/docs/excluded-urls
+        /// &lt;https://cloud.google.com/security-scanner/docs/excluded-urls&gt;
         /// </summary>
         public InputList<string> BlacklistPatterns
         {
@@ -373,9 +365,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The starting URLs from which the scanner finds site pages.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> StartingUrls
         {

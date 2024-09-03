@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+    ///   * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Datastream Connection Profile Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +42,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Connection Profile Postgresql Private Connection
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -153,7 +151,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Connection Profile Full
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -188,6 +186,9 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Datastream Connection Profile Postgres
     /// 
     /// ```csharp
@@ -272,6 +273,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// 
     /// ### Datastream Connection Profile Sql Server
     /// 
     /// ```csharp
@@ -433,9 +435,6 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -600,9 +599,6 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -727,9 +723,6 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

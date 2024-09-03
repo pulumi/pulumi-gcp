@@ -336,7 +336,7 @@ class Account(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
+          * [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
 
         > **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
 
@@ -396,7 +396,7 @@ class Account(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
+          * [Official Documentation](https://cloud.google.com/compute/docs/access/service-accounts)
 
         > **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// * [API documentation](https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.services)
     /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/docs/app-check)
+    ///   * [Official Documentation](https://firebase.google.com/docs/app-check)
     /// 
     /// ## Example Usage
     /// 
@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Check Service Config Enforced
     /// 
     /// ```csharp
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase App Check Service Config Unenforced
     /// 
     /// ```csharp
@@ -165,9 +167,6 @@ namespace Pulumi.Gcp.Firebase
         /// firebasedatabase.googleapis.com (Firebase Realtime Database)
         /// firestore.googleapis.com (Cloud Firestore)
         /// identitytoolkit.googleapis.com (Authentication)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -234,9 +233,6 @@ namespace Pulumi.Gcp.Firebase
         /// firebasedatabase.googleapis.com (Firebase Realtime Database)
         /// firestore.googleapis.com (Cloud Firestore)
         /// identitytoolkit.googleapis.com (Authentication)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -271,9 +267,6 @@ namespace Pulumi.Gcp.Firebase
         /// firebasedatabase.googleapis.com (Firebase Realtime Database)
         /// firestore.googleapis.com (Cloud Firestore)
         /// identitytoolkit.googleapis.com (Authentication)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

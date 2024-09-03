@@ -79,16 +79,12 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="rulesetName")
     private @Nullable Output<String> rulesetName;
 
     /**
      * @return Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> rulesetName() {
@@ -226,8 +222,6 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param rulesetName Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -238,8 +232,6 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param rulesetName Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 

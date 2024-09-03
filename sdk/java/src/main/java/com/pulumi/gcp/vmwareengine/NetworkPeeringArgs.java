@@ -95,16 +95,12 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The ID of the Network Peering.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the Network Peering.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -322,8 +318,6 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param name The ID of the Network Peering.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -334,8 +328,6 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param name The ID of the Network Peering.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
     /// * How-to Guides
-    ///     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+    ///   * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
     /// 
     /// ## Example Usage
     /// 

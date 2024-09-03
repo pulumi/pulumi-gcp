@@ -29,9 +29,6 @@ class ReservationAssignmentArgs:
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
         :param pulumi.Input[str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
         :param pulumi.Input[str] reservation: The reservation for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -73,9 +70,6 @@ class ReservationAssignmentArgs:
     def reservation(self) -> pulumi.Input[str]:
         """
         The reservation for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "reservation")
 
@@ -128,9 +122,6 @@ class _ReservationAssignmentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] reservation: The reservation for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
                Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
@@ -215,9 +206,6 @@ class _ReservationAssignmentState:
     def reservation(self) -> Optional[pulumi.Input[str]]:
         """
         The reservation for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "reservation")
 
@@ -257,7 +245,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
         * How-to Guides
-            * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
+          * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
 
         ## Example Usage
 
@@ -311,9 +299,6 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] reservation: The reservation for the resource
-               
-               
-               - - -
         """
         ...
     @overload
@@ -328,7 +313,7 @@ class ReservationAssignment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
         * How-to Guides
-            * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
+          * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
 
         ## Example Usage
 
@@ -447,9 +432,6 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] reservation: The reservation for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
                Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
@@ -512,9 +494,6 @@ class ReservationAssignment(pulumi.CustomResource):
     def reservation(self) -> pulumi.Output[str]:
         """
         The reservation for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "reservation")
 

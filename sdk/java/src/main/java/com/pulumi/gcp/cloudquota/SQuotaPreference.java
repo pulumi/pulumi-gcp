@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1/projects.locations.quotaPreferences)
  * * How-to Guides
- *     * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
+ *   * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
  * 
  * ## Example Usage
  * 
@@ -148,14 +148,14 @@ public class SQuotaPreference extends com.pulumi.resources.CustomResource {
         return this.dimensions;
     }
     /**
-     * The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+     * The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+     * @return The current etag of the quota preference. If an etag is provided on update and does not match the current server&#39;s etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
      * 
      */
     public Output<String> etag() {

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
  * * How-to Guides
- *     * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
+ *   * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
  * 
  * ## Example Usage
  * 
@@ -173,16 +173,12 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
     /**
      * The reservation for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="reservation", refs={String.class}, tree="[0]")
     private Output<String> reservation;
 
     /**
      * @return The reservation for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> reservation() {

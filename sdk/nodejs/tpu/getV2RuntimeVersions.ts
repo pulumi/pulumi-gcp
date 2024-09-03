@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * ```
  *
- * ### Configure Basic TPU VM With Available Version
+ * ### Configure Basic TPU VM with available version
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +83,7 @@ export interface GetV2RuntimeVersionsResult {
  * const available = gcp.tpu.getV2RuntimeVersions({});
  * ```
  *
- * ### Configure Basic TPU VM With Available Version
+ * ### Configure Basic TPU VM with available version
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

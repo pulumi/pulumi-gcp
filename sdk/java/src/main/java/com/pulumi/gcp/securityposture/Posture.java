@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * To get more information about Posture, see:
  * 
  * * How-to Guides
- *     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+ *   * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
  * 
  * ## Example Usage
  * 
@@ -205,14 +205,14 @@ public class Posture extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * For Resource freshness validation (https://google.aip.dev/154)
+     * For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return For Resource freshness validation (https://google.aip.dev/154)
+     * @return For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
      * 
      */
     public Output<String> etag() {

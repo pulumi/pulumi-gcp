@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+ *   * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
- * ## Example Usage
- *
- * ### Data Fusion Instance Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     type: "BASIC",
  * });
  * ```
- * ### Data Fusion Instance Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,7 +65,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Data Fusion Instance Psc
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -103,7 +101,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Data Fusion Instance Cmek
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -134,7 +132,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [cryptoKeyMember],
  * });
  * ```
- * ### Data Fusion Instance Enterprise
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -147,7 +145,7 @@ import * as utilities from "../utilities";
  *     enableRbac: true,
  * });
  * ```
- * ### Data Fusion Instance Event
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -164,7 +162,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Data Fusion Instance Zone
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

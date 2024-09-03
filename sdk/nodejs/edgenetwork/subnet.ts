@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.subnets)
  * * How-to Guides
- *     * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
+ *   * [Create and manage subnetworks](https://cloud.google.com/distributed-cloud/edge/latest/docs/subnetworks#api)
  *
  * ## Example Usage
  *
@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Edgenetwork Subnet With Vlan Id
  *
  * ```typescript
@@ -178,9 +179,6 @@ export class Subnet extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * A unique ID that identifies this subnet.
-     *
-     *
-     * - - -
      */
     public readonly subnetId!: pulumi.Output<string>;
     /**
@@ -310,9 +308,6 @@ export interface SubnetState {
     state?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this subnet.
-     *
-     *
-     * - - -
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -367,9 +362,6 @@ export interface SubnetArgs {
     project?: pulumi.Input<string>;
     /**
      * A unique ID that identifies this subnet.
-     *
-     *
-     * - - -
      */
     subnetId: pulumi.Input<string>;
     /**

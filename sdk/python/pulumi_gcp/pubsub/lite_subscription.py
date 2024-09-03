@@ -33,9 +33,6 @@ class LiteSubscriptionArgs:
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
@@ -83,9 +80,6 @@ class LiteSubscriptionArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -145,9 +139,6 @@ class _LiteSubscriptionState:
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
@@ -185,9 +176,6 @@ class _LiteSubscriptionState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -265,11 +253,9 @@ class LiteSubscription(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
         * How-to Guides
-            * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
+          * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 
-        ## Example Usage
-
-        ### Pubsub Lite Subscription Basic
+        ## 
 
         ```python
         import pulumi
@@ -332,9 +318,6 @@ class LiteSubscription(pulumi.CustomResource):
         :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
@@ -355,11 +338,9 @@ class LiteSubscription(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/pubsub/lite/docs/reference/rest/v1/admin.projects.locations.subscriptions)
         * How-to Guides
-            * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
+          * [Managing Subscriptions](https://cloud.google.com/pubsub/lite/docs/subscriptions)
 
-        ## Example Usage
-
-        ### Pubsub Lite Subscription Basic
+        ## 
 
         ```python
         import pulumi
@@ -481,9 +462,6 @@ class LiteSubscription(pulumi.CustomResource):
         :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the subscription.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite topic.
@@ -516,9 +494,6 @@ class LiteSubscription(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the subscription.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

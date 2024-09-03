@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
     /// * How-to Guides
-    ///     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
+    ///   * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Routine Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,7 +44,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Routine Json
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -86,7 +84,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Routine Tvf
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -140,7 +138,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Routine Pyspark
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -171,18 +169,18 @@ namespace Pulumi.Gcp.BigQuery
     ///         DefinitionBody = @"from pyspark.sql import SparkSession
     /// 
     /// spark = SparkSession.builder.appName(""spark-bigquery-demo"").getOrCreate()
-    ///     
+    /// 
     /// # Load data from BigQuery.
     /// words = spark.read.format(""bigquery"") \
     ///   .option(""table"", ""bigquery-public-data:samples.shakespeare"") \
     ///   .load()
     /// words.createOrReplaceTempView(""words"")
-    ///     
+    /// 
     /// # Perform word count.
     /// word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(""sum(word_count)"", ""sum_word_count"")
     /// word_count.show()
     /// word_count.printSchema()
-    ///     
+    /// 
     /// # Saving the data to BigQuery
     /// word_count.write.format(""bigquery"") \
     ///   .option(""writeMethod"", ""direct"") \
@@ -197,7 +195,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Routine Pyspark Mainfile
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -248,7 +246,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Routine Spark Jar
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -297,7 +295,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Routine Data Governance Type
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -333,6 +331,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Bigquery Routine Remote Function
     /// 
     /// ```csharp
@@ -419,7 +420,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
         /// Possible values are: `DATA_MASKING`.
         /// </summary>
         [Output("dataGovernanceType")]
@@ -434,9 +435,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause.
         /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("definitionBody")]
         public Output<string> DefinitionBody { get; private set; } = null!;
@@ -592,7 +590,7 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
         /// Possible values are: `DATA_MASKING`.
         /// </summary>
         [Input("dataGovernanceType")]
@@ -607,9 +605,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause.
         /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("definitionBody", required: true)]
         public Input<string> DefinitionBody { get; set; } = null!;
@@ -733,7 +728,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
-        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+        /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see &lt;https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask&gt;
         /// Possible values are: `DATA_MASKING`.
         /// </summary>
         [Input("dataGovernanceType")]
@@ -748,9 +743,6 @@ namespace Pulumi.Gcp.BigQuery
         /// <summary>
         /// The body of the routine. For functions, this is the expression in the AS clause.
         /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("definitionBody")]
         public Input<string>? DefinitionBody { get; set; }

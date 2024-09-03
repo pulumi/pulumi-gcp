@@ -22,7 +22,7 @@ public final class BareMetalAdminClusterControlPlaneArgs extends com.pulumi.reso
      * Customizes the default API server args. Only a subset of
      * customized flags are supported. Please refer to the API server
      * documentation below to know the exact format:
-     * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+     * &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
      * Structure is documented below.
      * 
      */
@@ -33,7 +33,7 @@ public final class BareMetalAdminClusterControlPlaneArgs extends com.pulumi.reso
      * @return Customizes the default API server args. Only a subset of
      * customized flags are supported. Please refer to the API server
      * documentation below to know the exact format:
-     * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+     * &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
      * Structure is documented below.
      * 
      */
@@ -87,7 +87,7 @@ public final class BareMetalAdminClusterControlPlaneArgs extends com.pulumi.reso
          * @param apiServerArgs Customizes the default API server args. Only a subset of
          * customized flags are supported. Please refer to the API server
          * documentation below to know the exact format:
-         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -102,7 +102,7 @@ public final class BareMetalAdminClusterControlPlaneArgs extends com.pulumi.reso
          * @param apiServerArgs Customizes the default API server args. Only a subset of
          * customized flags are supported. Please refer to the API server
          * documentation below to know the exact format:
-         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -116,7 +116,7 @@ public final class BareMetalAdminClusterControlPlaneArgs extends com.pulumi.reso
          * @param apiServerArgs Customizes the default API server args. Only a subset of
          * customized flags are supported. Please refer to the API server
          * documentation below to know the exact format:
-         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
          * Structure is documented below.
          * 
          * @return builder

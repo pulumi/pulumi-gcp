@@ -103,16 +103,12 @@ public final class AuthConfigArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Location in which client needs to be provisioned.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Location in which client needs to be provisioned.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -327,8 +323,6 @@ public final class AuthConfigArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location Location in which client needs to be provisioned.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -339,8 +333,6 @@ public final class AuthConfigArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location Location in which client needs to be provisioned.
-         * 
-         * ***
          * 
          * @return builder
          * 

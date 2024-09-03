@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Index Endpoint With Psc
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Index Endpoint With Public Endpoint
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -245,16 +245,12 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

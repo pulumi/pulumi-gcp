@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy")]
     public partial class AiFeatureStoreIamPolicy : global::Pulumi.CustomResource

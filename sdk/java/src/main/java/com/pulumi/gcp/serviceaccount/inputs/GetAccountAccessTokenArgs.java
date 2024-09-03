@@ -63,14 +63,14 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
+     * The service account *to* impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
      * 
      */
     @Import(name="targetServiceAccount", required=true)
     private Output<String> targetServiceAccount;
 
     /**
-     * @return The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
+     * @return The service account *to* impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
      * 
      */
     public Output<String> targetServiceAccount() {
@@ -188,7 +188,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param targetServiceAccount The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
+         * @param targetServiceAccount The service account *to* impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetAccountAccessTokenArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param targetServiceAccount The service account _to_ impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
+         * @param targetServiceAccount The service account *to* impersonate (e.g. `service_B{@literal @}your-project-id.iam.gserviceaccount.com`)
          * 
          * @return builder
          * 

@@ -18,15 +18,15 @@ import javax.annotation.Nullable;
 
 /**
  * Cloud Firestore indexes enable simple and complex queries against documents in a database.
- *  Both Firestore Native and Datastore Mode indexes are supported.
- *  This resource manages composite indexes and not single field indexes.
- *  To manage single field indexes, use the `gcp.firestore.Field` resource instead.
+ * Both Firestore Native and Datastore Mode indexes are supported.
+ * This resource manages composite indexes and not single field indexes.
+ * To manage single field indexes, use the `gcp.firestore.Field` resource instead.
  * 
  * To get more information about Index, see:
  * 
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+ *   * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
  * 
  * &gt; **Warning:** This resource creates a Firestore Index on a project that already has
  * a Firestore database. If you haven&#39;t already created it, you may
@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Index Datastore Mode
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -153,6 +154,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Firestore Index Vector
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

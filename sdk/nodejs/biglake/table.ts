@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/biglake/rest/v1/projects.locations.catalogs.databases.tables)
  * * How-to Guides
- *     * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
+ *   * [Manage open source metadata with BigLake Metastore](https://cloud.google.com/bigquery/docs/manage-open-source-metadata#create_tables)
  *
- * ## Example Usage
- *
- * ### Biglake Table
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -159,9 +157,6 @@ export class Table extends pulumi.CustomResource {
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -260,9 +255,6 @@ export interface TableState {
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -295,9 +287,6 @@ export interface TableArgs {
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -12,50 +12,50 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### ServiceAccount JSON Credential File.
- *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+ * ### ServiceAccount JSON credential file.
+ * `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const oidc = gcp.serviceaccount.getAccountIdToken({
- *   targetAudience: "https://foo.bar/",
+ *     targetAudience: "https://foo.bar/",
  * });
  * export const oidcToken = oidc.then(oidc => oidc.idToken);
  * ```
  *
  * ### Service Account Impersonation.
- *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+ * `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
  *
- *   Note: to use the following, you must grant `targetServiceAccount` the
- *   `roles/iam.serviceAccountTokenCreator` role on itself.
+ * Note: to use the following, you must grant `targetServiceAccount` the
+ * `roles/iam.serviceAccountTokenCreator` role on itself.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const impersonated = gcp.serviceaccount.getAccountAccessToken({
- *   targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
- *   delegates: [],
- *   scopes: [
- *       "userinfo-email",
- *       "cloud-platform",
- *   ],
- *   lifetime: "300s",
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     scopes: [
+ *         "userinfo-email",
+ *         "cloud-platform",
+ *     ],
+ *     lifetime: "300s",
  * });
  * const oidc = gcp.serviceaccount.getAccountIdToken({
- *   targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
- *   delegates: [],
- *   includeEmail: true,
- *   targetAudience: "https://foo.bar/",
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     includeEmail: true,
+ *     targetAudience: "https://foo.bar/",
  * });
  * export const oidcToken = oidc.then(oidc => oidc.idToken);
  * ```
  *
  * ### Invoking Cloud Run Endpoint
  *
- *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+ * The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -132,50 +132,50 @@ export interface GetAccountIdTokenResult {
  *
  * ## Example Usage
  *
- * ### ServiceAccount JSON Credential File.
- *   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+ * ### ServiceAccount JSON credential file.
+ * `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const oidc = gcp.serviceaccount.getAccountIdToken({
- *   targetAudience: "https://foo.bar/",
+ *     targetAudience: "https://foo.bar/",
  * });
  * export const oidcToken = oidc.then(oidc => oidc.idToken);
  * ```
  *
  * ### Service Account Impersonation.
- *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+ * `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
  *
- *   Note: to use the following, you must grant `targetServiceAccount` the
- *   `roles/iam.serviceAccountTokenCreator` role on itself.
+ * Note: to use the following, you must grant `targetServiceAccount` the
+ * `roles/iam.serviceAccountTokenCreator` role on itself.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const impersonated = gcp.serviceaccount.getAccountAccessToken({
- *   targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
- *   delegates: [],
- *   scopes: [
- *       "userinfo-email",
- *       "cloud-platform",
- *   ],
- *   lifetime: "300s",
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     scopes: [
+ *         "userinfo-email",
+ *         "cloud-platform",
+ *     ],
+ *     lifetime: "300s",
  * });
  * const oidc = gcp.serviceaccount.getAccountIdToken({
- *   targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
- *   delegates: [],
- *   includeEmail: true,
- *   targetAudience: "https://foo.bar/",
+ *     targetServiceAccount: "impersonated-account@project.iam.gserviceaccount.com",
+ *     delegates: [],
+ *     includeEmail: true,
+ *     targetAudience: "https://foo.bar/",
  * });
  * export const oidcToken = oidc.then(oidc => oidc.idToken);
  * ```
  *
  * ### Invoking Cloud Run Endpoint
  *
- *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+ * The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

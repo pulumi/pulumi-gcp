@@ -94,7 +94,7 @@ def get_tensorflow_versions(project: Optional[str] = None,
     available = gcp.tpu.get_tensorflow_versions()
     ```
 
-    ### Configure Basic TPU Node With Available Version
+    ### Configure Basic TPU Node with available version
 
     ```python
     import pulumi
@@ -144,7 +144,7 @@ def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[str]]
     available = gcp.tpu.get_tensorflow_versions()
     ```
 
-    ### Configure Basic TPU Node With Available Version
+    ### Configure Basic TPU Node with available version
 
     ```python
     import pulumi

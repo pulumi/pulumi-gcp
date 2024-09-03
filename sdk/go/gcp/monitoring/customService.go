@@ -24,9 +24,7 @@ import (
 //   - [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
 //   - [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
 //
-// ## Example Usage
-//
-// ### Monitoring Service Custom
+// ##
 //
 // ```go
 // package main

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 //
-// ## Example Usage
-//
-// ### Os Login Ssh Key Basic
+// ##
 //
 // ```go
 // package main
@@ -90,8 +88,6 @@ type SshPublicKey struct {
 	// The project ID of the Google Cloud Platform project.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
 	// The user email.
-	//
-	// ***
 	User pulumi.StringOutput `pulumi:"user"`
 }
 
@@ -140,8 +136,6 @@ type sshPublicKeyState struct {
 	// The project ID of the Google Cloud Platform project.
 	Project *string `pulumi:"project"`
 	// The user email.
-	//
-	// ***
 	User *string `pulumi:"user"`
 }
 
@@ -155,8 +149,6 @@ type SshPublicKeyState struct {
 	// The project ID of the Google Cloud Platform project.
 	Project pulumi.StringPtrInput
 	// The user email.
-	//
-	// ***
 	User pulumi.StringPtrInput
 }
 
@@ -172,8 +164,6 @@ type sshPublicKeyArgs struct {
 	// The project ID of the Google Cloud Platform project.
 	Project *string `pulumi:"project"`
 	// The user email.
-	//
-	// ***
 	User string `pulumi:"user"`
 }
 
@@ -186,8 +176,6 @@ type SshPublicKeyArgs struct {
 	// The project ID of the Google Cloud Platform project.
 	Project pulumi.StringPtrInput
 	// The user email.
-	//
-	// ***
 	User pulumi.StringInput
 }
 
@@ -299,8 +287,6 @@ func (o SshPublicKeyOutput) Project() pulumi.StringPtrOutput {
 }
 
 // The user email.
-//
-// ***
 func (o SshPublicKeyOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
 }

@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// <summary>
         /// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
         /// Changing this field will result in deleting/ recreating the resource.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string WebhookSecretVersionName;
 

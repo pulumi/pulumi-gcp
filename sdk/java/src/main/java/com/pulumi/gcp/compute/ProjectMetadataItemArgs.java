@@ -51,16 +51,12 @@ public final class ProjectMetadataItemArgs extends com.pulumi.resources.Resource
     /**
      * The value to set for the given metadata key.
      * 
-     * ***
-     * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
      * @return The value to set for the given metadata key.
-     * 
-     * ***
      * 
      */
     public Output<String> value() {
@@ -140,8 +136,6 @@ public final class ProjectMetadataItemArgs extends com.pulumi.resources.Resource
         /**
          * @param value The value to set for the given metadata key.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -152,8 +146,6 @@ public final class ProjectMetadataItemArgs extends com.pulumi.resources.Resource
 
         /**
          * @param value The value to set for the given metadata key.
-         * 
-         * ***
          * 
          * @return builder
          * 

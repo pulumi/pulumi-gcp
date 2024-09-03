@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+ *   * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  * 
  * ## Example Usage
  * 
@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Dialogflow Intent Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -216,16 +217,12 @@ public class Intent extends com.pulumi.resources.CustomResource {
     /**
      * The name of this intent to be displayed on the console.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return The name of this intent to be displayed on the console.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Get a spanner instance from Google Cloud by its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.spanner.getInstance({
+ *     name: "bar",
+ * });
+ * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
 
@@ -30,8 +39,6 @@ export interface GetInstanceArgs {
     displayName?: string;
     /**
      * The name of the spanner instance.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -66,6 +73,15 @@ export interface GetInstanceResult {
  * Get a spanner instance from Google Cloud by its name.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.spanner.getInstance({
+ *     name: "bar",
+ * });
+ * ```
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
     return pulumi.output(args).apply((a: any) => getInstance(a, opts))
@@ -79,8 +95,6 @@ export interface GetInstanceOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The name of the spanner instance.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

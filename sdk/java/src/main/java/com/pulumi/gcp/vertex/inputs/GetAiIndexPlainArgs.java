@@ -48,16 +48,12 @@ public final class GetAiIndexPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The region of the index.
      * 
-     * ***
-     * 
      */
     @Import(name="region", required=true)
     private String region;
 
     /**
      * @return The region of the index.
-     * 
-     * ***
      * 
      */
     public String region() {
@@ -114,8 +110,6 @@ public final class GetAiIndexPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param region The region of the index.
-         * 
-         * ***
          * 
          * @return builder
          * 

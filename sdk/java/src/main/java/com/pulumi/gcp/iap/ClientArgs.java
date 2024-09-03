@@ -19,8 +19,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
      * 
-     * ***
-     * 
      */
     @Import(name="brand", required=true)
     private Output<String> brand;
@@ -29,8 +27,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      * @return Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> brand() {
@@ -82,8 +78,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * is attached to. The format is
          * `projects/{project_number}/brands/{brand_id}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -96,8 +90,6 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          * @param brand Identifier of the brand to which this client
          * is attached to. The format is
          * `projects/{project_number}/brands/{brand_id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

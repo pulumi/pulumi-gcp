@@ -70,10 +70,6 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
      * The name of the Istio service underlying this service.
      * Corresponds to the destination_service_name metric label in Istio metrics.
      * 
-     * ***
-     * 
-     * Other optional fields include:
-     * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
@@ -81,10 +77,6 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
     /**
      * @return The name of the Istio service underlying this service.
      * Corresponds to the destination_service_name metric label in Istio metrics.
-     * 
-     * ***
-     * 
-     * Other optional fields include:
      * 
      */
     public String serviceName() {
@@ -175,10 +167,6 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
         /**
          * @param serviceName The name of the Istio service underlying this service.
          * Corresponds to the destination_service_name metric label in Istio metrics.
-         * 
-         * ***
-         * 
-         * Other optional fields include:
          * 
          * @return builder
          * 

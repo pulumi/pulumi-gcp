@@ -203,10 +203,9 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-        ---
+        ***
 
         # IAM policy for Apigee Environment
         Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -297,7 +296,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -368,10 +367,9 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
-
+        > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-        ---
+        ***
 
         # IAM policy for Apigee Environment
         Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -462,7 +460,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param EnvironmentIamPolicyArgs args: The arguments to use to populate this resource's properties.

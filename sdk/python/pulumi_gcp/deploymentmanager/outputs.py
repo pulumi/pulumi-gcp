@@ -118,8 +118,6 @@ class DeploymentTargetImport(dict):
         :param str content: The full contents of the template that you want to import.
         :param str name: The name of the template to import, as declared in the YAML
                configuration.
-               
-               - - -
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -140,8 +138,6 @@ class DeploymentTargetImport(dict):
         """
         The name of the template to import, as declared in the YAML
         configuration.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

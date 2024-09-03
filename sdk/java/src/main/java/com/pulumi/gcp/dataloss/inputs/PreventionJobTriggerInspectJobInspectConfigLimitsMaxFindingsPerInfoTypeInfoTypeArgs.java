@@ -19,7 +19,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
 
     /**
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt; when specifying a built-in type.
      * 
      */
     @Import(name="name", required=true)
@@ -27,7 +27,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
 
     /**
      * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt; when specifying a built-in type.
      * 
      */
     public Output<String> name() {
@@ -94,7 +94,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
 
         /**
          * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt; when specifying a built-in type.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
 
         /**
          * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
-         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * listed at &lt;https://cloud.google.com/dlp/docs/infotypes-reference&gt; when specifying a built-in type.
          * 
          * @return builder
          * 

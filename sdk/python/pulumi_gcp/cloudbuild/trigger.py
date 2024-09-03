@@ -65,7 +65,7 @@ class TriggerArgs:
         :param pulumi.Input['TriggerGithubArgs'] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
                used to determine whether or not to trigger a build.
@@ -76,7 +76,7 @@ class TriggerArgs:
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
                Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
                and includedFiles is empty, then as far as this filter is concerned, we
@@ -289,7 +289,7 @@ class TriggerArgs:
     @pulumi.getter(name="ignoredFiles")
     def ignored_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
         extended with support for `**`.
         If ignoredFiles and changed files are both empty, then they are not
         used to determine whether or not to trigger a build.
@@ -322,7 +322,7 @@ class TriggerArgs:
     @pulumi.getter(name="includedFiles")
     def included_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
         extended with support for `**`.
         If any of the files altered in the commit pass the ignoredFiles filter
         and includedFiles is empty, then as far as this filter is concerned, we
@@ -544,7 +544,7 @@ class _TriggerState:
         :param pulumi.Input['TriggerGithubArgs'] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
                used to determine whether or not to trigger a build.
@@ -555,7 +555,7 @@ class _TriggerState:
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
                Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
                and includedFiles is empty, then as far as this filter is concerned, we
@@ -785,7 +785,7 @@ class _TriggerState:
     @pulumi.getter(name="ignoredFiles")
     def ignored_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
         extended with support for `**`.
         If ignoredFiles and changed files are both empty, then they are not
         used to determine whether or not to trigger a build.
@@ -818,7 +818,7 @@ class _TriggerState:
     @pulumi.getter(name="includedFiles")
     def included_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
         extended with support for `**`.
         If any of the files altered in the commit pass the ignoredFiles filter
         and includedFiles is empty, then as far as this filter is concerned, we
@@ -1038,13 +1038,11 @@ class Trigger(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
         * How-to Guides
-            * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+          * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
         > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 
-        ## Example Usage
-
-        ### Cloudbuild Trigger Filename
+        ## 
 
         ```python
         import pulumi
@@ -1062,7 +1060,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Build
+        ## 
 
         ```python
         import pulumi
@@ -1161,7 +1159,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudbuild Trigger Service Account
+        ## 
 
         ```python
         import pulumi
@@ -1189,6 +1187,9 @@ class Trigger(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+
+        ## Example Usage
+
         ### Cloudbuild Trigger Include Build Logs
 
         ```python
@@ -1208,7 +1209,7 @@ class Trigger(pulumi.CustomResource):
             },
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
-        ### Cloudbuild Trigger Pubsub Config
+        ## 
 
         ```python
         import pulumi
@@ -1238,7 +1239,7 @@ class Trigger(pulumi.CustomResource):
             },
             filter="_ACTION.matches('INSERT')")
         ```
-        ### Cloudbuild Trigger Webhook Config
+        ## 
 
         ```python
         import pulumi
@@ -1283,7 +1284,7 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
-        ### Cloudbuild Trigger Manual
+        ## 
 
         ```python
         import pulumi
@@ -1306,6 +1307,7 @@ class Trigger(pulumi.CustomResource):
                 "approval_required": True,
             })
         ```
+
         ### Cloudbuild Trigger Manual Github Enterprise
 
         ```python
@@ -1328,7 +1330,7 @@ class Trigger(pulumi.CustomResource):
                 "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             })
         ```
-        ### Cloudbuild Trigger Manual Bitbucket Server
+        ## 
 
         ```python
         import pulumi
@@ -1350,7 +1352,7 @@ class Trigger(pulumi.CustomResource):
                 "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             })
         ```
-        ### Cloudbuild Trigger Repo
+        ## 
 
         ```python
         import pulumi
@@ -1379,7 +1381,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Bitbucket Server Push
+        ## 
 
         ```python
         import pulumi
@@ -1399,7 +1401,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Bitbucket Server Pull Request
+        ## 
 
         ```python
         import pulumi
@@ -1420,6 +1422,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Github Enterprise
 
         ```python
@@ -1439,7 +1442,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Allow Failure
+        ## 
 
         ```python
         import pulumi
@@ -1515,7 +1518,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudbuild Trigger Allow Exit Codes
+        ## 
 
         ```python
         import pulumi
@@ -1594,7 +1597,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudbuild Trigger Pubsub With Repo
+        ## 
 
         ```python
         import pulumi
@@ -1684,7 +1687,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
                used to determine whether or not to trigger a build.
@@ -1695,7 +1698,7 @@ class Trigger(pulumi.CustomResource):
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
                Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
                and includedFiles is empty, then as far as this filter is concerned, we
@@ -1752,13 +1755,11 @@ class Trigger(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
         * How-to Guides
-            * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+          * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
         > **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `projects.ServiceIdentity` resource.
 
-        ## Example Usage
-
-        ### Cloudbuild Trigger Filename
+        ## 
 
         ```python
         import pulumi
@@ -1776,7 +1777,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Build
+        ## 
 
         ```python
         import pulumi
@@ -1875,7 +1876,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudbuild Trigger Service Account
+        ## 
 
         ```python
         import pulumi
@@ -1903,6 +1904,9 @@ class Trigger(pulumi.CustomResource):
                     logs_writer,
                 ]))
         ```
+
+        ## Example Usage
+
         ### Cloudbuild Trigger Include Build Logs
 
         ```python
@@ -1922,7 +1926,7 @@ class Trigger(pulumi.CustomResource):
             },
             include_build_logs="INCLUDE_BUILD_LOGS_WITH_STATUS")
         ```
-        ### Cloudbuild Trigger Pubsub Config
+        ## 
 
         ```python
         import pulumi
@@ -1952,7 +1956,7 @@ class Trigger(pulumi.CustomResource):
             },
             filter="_ACTION.matches('INSERT')")
         ```
-        ### Cloudbuild Trigger Webhook Config
+        ## 
 
         ```python
         import pulumi
@@ -1997,7 +2001,7 @@ class Trigger(pulumi.CustomResource):
                 "repo_type": "GITHUB",
             })
         ```
-        ### Cloudbuild Trigger Manual
+        ## 
 
         ```python
         import pulumi
@@ -2020,6 +2024,7 @@ class Trigger(pulumi.CustomResource):
                 "approval_required": True,
             })
         ```
+
         ### Cloudbuild Trigger Manual Github Enterprise
 
         ```python
@@ -2042,7 +2047,7 @@ class Trigger(pulumi.CustomResource):
                 "github_enterprise_config": "projects/myProject/locations/global/githubEnterpriseConfigs/configID",
             })
         ```
-        ### Cloudbuild Trigger Manual Bitbucket Server
+        ## 
 
         ```python
         import pulumi
@@ -2064,7 +2069,7 @@ class Trigger(pulumi.CustomResource):
                 "bitbucket_server_config": "projects/myProject/locations/global/bitbucketServerConfigs/configID",
             })
         ```
-        ### Cloudbuild Trigger Repo
+        ## 
 
         ```python
         import pulumi
@@ -2093,7 +2098,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Bitbucket Server Push
+        ## 
 
         ```python
         import pulumi
@@ -2113,7 +2118,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Bitbucket Server Pull Request
+        ## 
 
         ```python
         import pulumi
@@ -2134,6 +2139,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
+
         ### Cloudbuild Trigger Github Enterprise
 
         ```python
@@ -2153,7 +2159,7 @@ class Trigger(pulumi.CustomResource):
             },
             filename="cloudbuild.yaml")
         ```
-        ### Cloudbuild Trigger Allow Failure
+        ## 
 
         ```python
         import pulumi
@@ -2229,7 +2235,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudbuild Trigger Allow Exit Codes
+        ## 
 
         ```python
         import pulumi
@@ -2308,7 +2314,7 @@ class Trigger(pulumi.CustomResource):
                 },
             })
         ```
-        ### Cloudbuild Trigger Pubsub With Repo
+        ## 
 
         ```python
         import pulumi
@@ -2511,7 +2517,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
                One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
                used to determine whether or not to trigger a build.
@@ -2522,7 +2528,7 @@ class Trigger(pulumi.CustomResource):
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
                Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
                and includedFiles is empty, then as far as this filter is concerned, we
@@ -2692,7 +2698,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter(name="ignoredFiles")
     def ignored_files(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
         extended with support for `**`.
         If ignoredFiles and changed files are both empty, then they are not
         used to determine whether or not to trigger a build.
@@ -2717,7 +2723,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter(name="includedFiles")
     def included_files(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
+        ignoredFiles and includedFiles are file glob matches using <https://golang.org/pkg/path/filepath/#Match>
         extended with support for `**`.
         If any of the files altered in the commit pass the ignoredFiles filter
         and includedFiles is empty, then as far as this filter is concerned, we

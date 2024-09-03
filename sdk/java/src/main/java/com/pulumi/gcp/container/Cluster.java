@@ -61,10 +61,10 @@ import javax.annotation.Nullable;
  * Manages a Google Kubernetes Engine (GKE) cluster.
  * 
  * To get more information about GKE clusters, see:
- *   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
- *   * How-to guides
- *     * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
- *     * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
+ * * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters)
+ * * How-to guides
+ *   * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
+ *   * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
  * 
  * &gt; On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
  * and run `pulumi up` to write the field to state in order to destroy a cluster.
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### With A Separately Managed Node Pool (Recommended)
+ * ### with a separately managed node pool (recommended)
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  * This allows node pools to be added and removed without recreating the cluster.  Node pools defined directly in the
  * `gcp.container.Cluster` resource cannot be removed without re-creating the cluster.
  * 
- * ### With The Default Node Pool
+ * ### with the default node pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Autopilot
+ * ### autopilot
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -1049,8 +1049,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster, unique within the project and
      * location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1058,8 +1056,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cluster, unique within the project and
      * location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -1210,7 +1206,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-     * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+     * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
      * gcp.container.NodePool resource instead of this property.
      * 
      */
@@ -1222,7 +1218,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * See gcp.container.NodePool for schema.
      * **Warning:** node pools defined inside a cluster can&#39;t be changed (or added/removed) after
      * cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-     * to say &#34;these are the _only_ node pools associated with this cluster&#34;, use the
+     * to say &#34;these are the *only* node pools associated with this cluster&#34;, use the
      * gcp.container.NodePool resource instead of this property.
      * 
      */

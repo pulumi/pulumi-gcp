@@ -157,8 +157,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         [Output("subsetView")]
         public Output<Outputs.AuthorizedViewSubsetView?> SubsetView { get; private set; } = null!;
@@ -239,8 +237,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         [Input("subsetView")]
         public Input<Inputs.AuthorizedViewSubsetViewArgs>? SubsetView { get; set; }
@@ -283,8 +279,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         [Input("subsetView")]
         public Input<Inputs.AuthorizedViewSubsetViewGetArgs>? SubsetView { get; set; }

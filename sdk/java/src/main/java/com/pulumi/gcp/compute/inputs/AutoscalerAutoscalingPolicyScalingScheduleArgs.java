@@ -109,14 +109,14 @@ public final class AutoscalerAutoscalingPolicyScalingScheduleArgs extends com.pu
     }
 
     /**
-     * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * @return The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -280,7 +280,7 @@ public final class AutoscalerAutoscalingPolicyScalingScheduleArgs extends com.pu
         }
 
         /**
-         * @param timeZone The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * @param timeZone The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class AutoscalerAutoscalingPolicyScalingScheduleArgs extends com.pu
         }
 
         /**
-         * @param timeZone The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         * @param timeZone The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: &lt;http://en.wikipedia.org/wiki/Tz_database&gt;.
          * 
          * @return builder
          * 

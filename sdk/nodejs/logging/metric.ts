@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+ *   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
- * ## Example Usage
- *
- * ### Logging Metric Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,7 +58,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Logging Metric Counter Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -75,7 +73,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Logging Metric Counter Labels
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,6 +96,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Logging Metric Logging Bucket
  *
  * ```typescript
@@ -115,7 +116,7 @@ import * as utilities from "../utilities";
  *     bucketName: loggingMetric.id,
  * });
  * ```
- * ### Logging Metric Disabled
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -199,11 +200,8 @@ export class Metric extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
      * is used to match log entries.
-     *
-     *
-     * - - -
      */
     public readonly filter!: pulumi.Output<string>;
     /**
@@ -239,7 +237,7 @@ export class Metric extends pulumi.CustomResource {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      */
@@ -314,11 +312,8 @@ export interface MetricState {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
      * is used to match log entries.
-     *
-     *
-     * - - -
      */
     filter?: pulumi.Input<string>;
     /**
@@ -354,7 +349,7 @@ export interface MetricState {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      */
@@ -386,11 +381,8 @@ export interface MetricArgs {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * An advanced logs filter (<https://cloud.google.com/logging/docs/view/advanced-filters>) which
      * is used to match log entries.
-     *
-     *
-     * - - -
      */
     filter: pulumi.Input<string>;
     /**
@@ -426,7 +418,7 @@ export interface MetricArgs {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (<https://github.com/google/re2/wiki/Syntax>) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      */

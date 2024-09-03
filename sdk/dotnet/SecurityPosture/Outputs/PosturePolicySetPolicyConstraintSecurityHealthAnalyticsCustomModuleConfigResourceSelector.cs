@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.SecurityPosture.Outputs
     {
         /// <summary>
         /// The resource types to run the detector on.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> ResourceTypes;
 

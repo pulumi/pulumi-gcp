@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+ *   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  * 
- * ## Example Usage
- * 
- * ### Logging Metric Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -98,7 +96,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Logging Metric Counter Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -138,7 +136,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Logging Metric Counter Labels
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -184,6 +182,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Logging Metric Logging Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -228,7 +229,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Logging Metric Disabled
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -356,20 +357,16 @@ public class Metric extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disabled);
     }
     /**
-     * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
      * is used to match log entries.
-     * 
-     * ***
      * 
      */
     @Export(name="filter", refs={String.class}, tree="[0]")
     private Output<String> filter;
 
     /**
-     * @return An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
+     * @return An advanced logs filter (&lt;https://cloud.google.com/logging/docs/view/advanced-filters&gt;) which
      * is used to match log entries.
-     * 
-     * ***
      * 
      */
     public Output<String> filter() {
@@ -460,7 +457,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      * 
@@ -473,7 +470,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
      * REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
      * the value is to be extracted. 2. regex - A regular expression using the Google RE2 syntax
-     * (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
+     * (&lt;https://github.com/google/re2/wiki/Syntax&gt;) with a single capture group to extract data from the specified
      * log entry field. The value of the field is converted to a string before applying the regex. It is an
      * error to specify a regex that does not include exactly one capture group.
      * 

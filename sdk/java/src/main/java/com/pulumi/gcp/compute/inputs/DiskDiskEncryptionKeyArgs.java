@@ -20,7 +20,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
      * in the cloud console. Your project&#39;s Compute Engine System service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * See &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys&gt;
      * 
      */
     @Import(name="kmsKeySelfLink")
@@ -31,7 +31,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
      * in the cloud console. Your project&#39;s Compute Engine System service account
      * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-     * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * See &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys&gt;
      * 
      */
     public Optional<Output<String>> kmsKeySelfLink() {
@@ -147,7 +147,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
          * in the cloud console. Your project&#39;s Compute Engine System service account
          * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * See &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys&gt;
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
          * in the cloud console. Your project&#39;s Compute Engine System service account
          * (`service-{{PROJECT_NUMBER}}{@literal @}compute-system.iam.gserviceaccount.com`) must have
          * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
-         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         * See &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys&gt;
          * 
          * @return builder
          * 

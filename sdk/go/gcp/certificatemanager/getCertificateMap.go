@@ -14,6 +14,30 @@ import (
 // Get info about a Google Certificate Manager Certificate Map resource.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.GetCertificateMap(ctx, &certificatemanager.GetCertificateMapArgs{
+//				Name: "cert-map",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCertificateMap(ctx *pulumi.Context, args *GetCertificateMapArgs, opts ...pulumi.InvokeOption) (*GetCertificateMapResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificateMapResult
@@ -27,8 +51,6 @@ func GetCertificateMap(ctx *pulumi.Context, args *GetCertificateMapArgs, opts ..
 // A collection of arguments for invoking getCertificateMap.
 type GetCertificateMapArgs struct {
 	// The name of the certificate map.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -66,8 +88,6 @@ func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputAr
 // A collection of arguments for invoking getCertificateMap.
 type GetCertificateMapOutputArgs struct {
 	// The name of the certificate map.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

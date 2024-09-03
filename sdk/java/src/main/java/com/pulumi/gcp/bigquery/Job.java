@@ -29,11 +29,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
  * * How-to Guides
- *     * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+ *   * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Job Query
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -101,7 +99,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Job Query Table Reference
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -171,7 +169,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Job Load
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -239,6 +237,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Bigquery Job Load Geojson
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -333,7 +334,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Job Load Parquet
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -427,6 +428,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquery Job Copy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -599,7 +601,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Job Extract
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

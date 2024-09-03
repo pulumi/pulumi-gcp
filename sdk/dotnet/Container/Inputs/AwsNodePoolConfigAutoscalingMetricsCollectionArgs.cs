@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _metrics;
 
         /// <summary>
-        /// The metrics to enable. For a list of valid metrics, see https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html. If you specify granularity and don't specify any metrics, all metrics are enabled.
+        /// The metrics to enable. For a list of valid metrics, see &lt;https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html&gt;. If you specify granularity and don't specify any metrics, all metrics are enabled.
         /// </summary>
         public InputList<string> Metrics
         {

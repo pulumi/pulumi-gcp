@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+ *   * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  * 
- * ## Example Usage
- * 
- * ### Monitoring Group Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -64,7 +62,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Monitoring Group Subgroup
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -141,8 +139,6 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The filter used to determine which monitored resources
      * belong to this group.
      * 
-     * ***
-     * 
      */
     @Export(name="filter", refs={String.class}, tree="[0]")
     private Output<String> filter;
@@ -150,8 +146,6 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * @return The filter used to determine which monitored resources
      * belong to this group.
-     * 
-     * ***
      * 
      */
     public Output<String> filter() {

@@ -42,16 +42,12 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location of the queue
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the queue
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -211,8 +207,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of the queue
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location of the queue
-         * 
-         * ***
          * 
          * @return builder
          * 

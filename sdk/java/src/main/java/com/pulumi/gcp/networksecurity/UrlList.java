@@ -22,11 +22,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
  * * How-to Guides
- *     * Use UrlLists
+ *   * [Use UrlLists](https://cloud.google.com/secure-web-proxy/docs/use-url-list)
  * 
- * ## Example Usage
- * 
- * ### Network Security Url Lists Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -62,7 +60,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Security Url Lists Advanced
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -165,16 +163,12 @@ public class UrlList extends com.pulumi.resources.CustomResource {
     /**
      * The location of the url lists.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location of the url lists.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

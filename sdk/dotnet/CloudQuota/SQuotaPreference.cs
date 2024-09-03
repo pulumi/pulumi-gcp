@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudQuota
     /// 
     /// * [API documentation](https://cloud.google.com/docs/quotas/reference/rest/v1/projects.locations.quotaPreferences)
     /// * How-to Guides
-    ///     * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
+    ///   * [Cloud Quotas Overview](https://cloud.google.com/docs/quotas/overview)
     /// 
     /// ## Example Usage
     /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.CloudQuota
         public Output<ImmutableDictionary<string, string>> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+        /// The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.Gcp.CloudQuota
         }
 
         /// <summary>
-        /// The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See https://google.aip.dev/134#etags for more details on etags.
+        /// The current etag of the quota preference. If an etag is provided on update and does not match the current server's etag of the quota preference, the request will be blocked and an ABORTED error will be returned. See &lt;https://google.aip.dev/134#etags&gt; for more details on etags.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

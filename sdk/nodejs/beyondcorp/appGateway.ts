@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appgateways)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
+ *   * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  *
- * ## Example Usage
- *
- * ### Beyondcorp App Gateway Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     hostType: "GCP_REGIONAL_MIG",
  * });
  * ```
- * ### Beyondcorp App Gateway Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -137,9 +135,6 @@ export class AppGateway extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ID of the AppGateway.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -250,9 +245,6 @@ export interface AppGatewayState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the AppGateway.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -308,9 +300,6 @@ export interface AppGatewayArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the AppGateway.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

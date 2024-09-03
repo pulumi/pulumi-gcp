@@ -595,8 +595,6 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`self_link_unique` attribute).
      * 
-     * ***
-     * 
      */
     @Import(name="sourceInstanceTemplate")
     private @Nullable Output<String> sourceInstanceTemplate;
@@ -605,8 +603,6 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
      * @return Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`self_link_unique` attribute).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> sourceInstanceTemplate() {
@@ -1550,8 +1546,6 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
          * template to create the instance based on. It is recommended to reference
          * instance templates through their unique id (`self_link_unique` attribute).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1564,8 +1558,6 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
          * @param sourceInstanceTemplate Name or self link of an instance
          * template to create the instance based on. It is recommended to reference
          * instance templates through their unique id (`self_link_unique` attribute).
-         * 
-         * ***
          * 
          * @return builder
          * 

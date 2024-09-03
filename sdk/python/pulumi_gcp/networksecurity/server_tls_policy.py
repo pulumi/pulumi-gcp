@@ -44,9 +44,6 @@ class ServerTlsPolicyArgs:
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServerTlsPolicyServerCertificateArgs'] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -141,9 +138,6 @@ class ServerTlsPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServerTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -210,9 +204,6 @@ class _ServerTlsPolicyState:
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -342,9 +333,6 @@ class _ServerTlsPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServerTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -419,121 +407,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  server_certificate: Optional[pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Security Server Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            allow_open=False,
-            server_certificate={
-                "certificate_provider_instance": {
-                    "plugin_instance": "google_cloud_private_spiffe",
-                },
-            },
-            mtls_policy={
-                "client_validation_cas": [
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:mypath",
-                        },
-                    },
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:abc/mypath",
-                        },
-                    },
-                    {
-                        "certificate_provider_instance": {
-                            "plugin_instance": "google_cloud_private_spiffe",
-                        },
-                    },
-                ],
-            })
-        ```
-        ### Network Security Server Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy={
-                "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-            })
-        ```
-        ### Network Security Server Tls Policy Server Cert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            server_certificate={
-                "grpc_endpoint": {
-                    "target_uri": "unix:mypath",
-                },
-            })
-        ```
-        ### Network Security Server Tls Policy Mtls
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        project = gcp.organizations.get_project()
-        default_trust_config = gcp.certificatemanager.TrustConfig("default",
-            name="my-trust-config",
-            description="sample trust config description",
-            location="global",
-            trust_stores=[{
-                "trust_anchors": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-                "intermediate_cas": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-            }],
-            labels={
-                "foo": "bar",
-            })
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy={
-                "client_validation_mode": "REJECT_INVALID",
-                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
-            },
-            labels={
-                "foo": "bar",
-            })
-        ```
-
         ## Import
 
         ServerTlsPolicy can be imported using any of these accepted formats:
@@ -573,9 +446,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -588,121 +458,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  args: Optional[ServerTlsPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Security Server Tls Policy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            allow_open=False,
-            server_certificate={
-                "certificate_provider_instance": {
-                    "plugin_instance": "google_cloud_private_spiffe",
-                },
-            },
-            mtls_policy={
-                "client_validation_cas": [
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:mypath",
-                        },
-                    },
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:abc/mypath",
-                        },
-                    },
-                    {
-                        "certificate_provider_instance": {
-                            "plugin_instance": "google_cloud_private_spiffe",
-                        },
-                    },
-                ],
-            })
-        ```
-        ### Network Security Server Tls Policy Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy={
-                "client_validation_mode": "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
-            })
-        ```
-        ### Network Security Server Tls Policy Server Cert
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            labels={
-                "foo": "bar",
-            },
-            description="my description",
-            location="global",
-            allow_open=False,
-            server_certificate={
-                "grpc_endpoint": {
-                    "target_uri": "unix:mypath",
-                },
-            })
-        ```
-        ### Network Security Server Tls Policy Mtls
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        project = gcp.organizations.get_project()
-        default_trust_config = gcp.certificatemanager.TrustConfig("default",
-            name="my-trust-config",
-            description="sample trust config description",
-            location="global",
-            trust_stores=[{
-                "trust_anchors": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-                "intermediate_cas": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-            }],
-            labels={
-                "foo": "bar",
-            })
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy={
-                "client_validation_mode": "REJECT_INVALID",
-                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
-            },
-            labels={
-                "foo": "bar",
-            })
-        ```
-
         ## Import
 
         ServerTlsPolicy can be imported using any of these accepted formats:
@@ -817,9 +572,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -914,9 +666,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ServerTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

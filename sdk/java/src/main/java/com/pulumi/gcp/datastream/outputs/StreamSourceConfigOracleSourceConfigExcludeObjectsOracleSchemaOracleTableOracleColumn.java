@@ -20,7 +20,7 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
     private @Nullable String column;
     /**
      * @return The Oracle data type. Full data types list can be found here:
-     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+     * &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
      * 
      */
     private @Nullable String dataType;
@@ -77,7 +77,7 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
     }
     /**
      * @return The Oracle data type. Full data types list can be found here:
-     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
+     * &lt;https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html&gt;
      * 
      */
     public Optional<String> dataType() {

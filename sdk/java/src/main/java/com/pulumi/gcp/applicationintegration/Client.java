@@ -23,12 +23,10 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.clients)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
- *     * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
+ *   * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+ *   * [Set up Application Integration](https://cloud.google.com/application-integration/docs/setup-application-integration)
  * 
- * ## Example Usage
- * 
- * ### Integrations Client Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -62,7 +60,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Integrations Client Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -223,16 +221,12 @@ public class Client extends com.pulumi.resources.CustomResource {
     /**
      * Location in which client needs to be provisioned.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Location in which client needs to be provisioned.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

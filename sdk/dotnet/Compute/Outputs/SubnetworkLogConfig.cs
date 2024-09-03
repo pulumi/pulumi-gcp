@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? AggregationInterval;
         /// <summary>
         /// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
-        /// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+        /// &lt;https://cloud.google.com/vpc/docs/flow-logs#filtering&gt; for details on how to format this field.
         /// The default value is 'true', which evaluates to include everything.
         /// </summary>
         public readonly string? FilterExpr;

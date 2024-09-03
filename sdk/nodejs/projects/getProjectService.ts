@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
  * * How-to Guides
- *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+ *   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
  *
  * ## Example Usage
  *
@@ -50,8 +50,6 @@ export interface GetProjectServiceArgs {
     project?: string;
     /**
      * The name of the Google Platform project service.
-     *
-     * - - -
      */
     service: string;
 }
@@ -83,7 +81,7 @@ export interface GetProjectServiceResult {
  *
  * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
  * * How-to Guides
- *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+ *   * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
  *
  * ## Example Usage
  *
@@ -111,8 +109,6 @@ export interface GetProjectServiceOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * The name of the Google Platform project service.
-     *
-     * - - -
      */
     service: pulumi.Input<string>;
 }

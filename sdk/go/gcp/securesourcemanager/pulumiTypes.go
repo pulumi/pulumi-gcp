@@ -1007,13 +1007,13 @@ type RepositoryInitialConfig struct {
 	// Default branch name of the repository.
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// List of gitignore template names user can choose from.
-	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 	Gitignores []string `pulumi:"gitignores"`
 	// License template name user can choose from.
-	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 	License *string `pulumi:"license"`
 	// README template name.
-	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 	Readme *string `pulumi:"readme"`
 }
 
@@ -1032,13 +1032,13 @@ type RepositoryInitialConfigArgs struct {
 	// Default branch name of the repository.
 	DefaultBranch pulumi.StringPtrInput `pulumi:"defaultBranch"`
 	// List of gitignore template names user can choose from.
-	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 	Gitignores pulumi.StringArrayInput `pulumi:"gitignores"`
 	// License template name user can choose from.
-	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 	License pulumi.StringPtrInput `pulumi:"license"`
 	// README template name.
-	// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+	// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 	Readme pulumi.StringPtrInput `pulumi:"readme"`
 }
 
@@ -1125,19 +1125,19 @@ func (o RepositoryInitialConfigOutput) DefaultBranch() pulumi.StringPtrOutput {
 }
 
 // List of gitignore template names user can choose from.
-// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 func (o RepositoryInitialConfigOutput) Gitignores() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepositoryInitialConfig) []string { return v.Gitignores }).(pulumi.StringArrayOutput)
 }
 
 // License template name user can choose from.
-// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 func (o RepositoryInitialConfigOutput) License() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryInitialConfig) *string { return v.License }).(pulumi.StringPtrOutput)
 }
 
 // README template name.
-// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 func (o RepositoryInitialConfigOutput) Readme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryInitialConfig) *string { return v.Readme }).(pulumi.StringPtrOutput)
 }
@@ -1177,7 +1177,7 @@ func (o RepositoryInitialConfigPtrOutput) DefaultBranch() pulumi.StringPtrOutput
 }
 
 // List of gitignore template names user can choose from.
-// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 func (o RepositoryInitialConfigPtrOutput) Gitignores() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepositoryInitialConfig) []string {
 		if v == nil {
@@ -1188,7 +1188,7 @@ func (o RepositoryInitialConfigPtrOutput) Gitignores() pulumi.StringArrayOutput 
 }
 
 // License template name user can choose from.
-// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 func (o RepositoryInitialConfigPtrOutput) License() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryInitialConfig) *string {
 		if v == nil {
@@ -1199,7 +1199,7 @@ func (o RepositoryInitialConfigPtrOutput) License() pulumi.StringPtrOutput {
 }
 
 // README template name.
-// Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
+// Valid values can be viewed at <https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig>.
 func (o RepositoryInitialConfigPtrOutput) Readme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryInitialConfig) *string {
 		if v == nil {

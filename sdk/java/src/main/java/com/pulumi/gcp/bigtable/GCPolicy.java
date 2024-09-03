@@ -294,8 +294,7 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-     * ---
+     * you understand the risks listed at &lt;https://cloud.google.com/bigtable/docs/garbage-collection#increasing&gt; before setting this option.
      * 
      */
     @Export(name="ignoreWarnings", refs={Boolean.class}, tree="[0]")
@@ -304,8 +303,7 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
-     * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
-     * ---
+     * you understand the risks listed at &lt;https://cloud.google.com/bigtable/docs/garbage-collection#increasing&gt; before setting this option.
      * 
      */
     public Output<Optional<Boolean>> ignoreWarnings() {

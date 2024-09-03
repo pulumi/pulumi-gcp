@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// * [API documentation](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.engines)
     /// * How-to Guides
-    ///     * [Vertex AI Conversation](https://cloud.google.com/dialogflow/cx/docs/concept/generative)
+    ///   * [Vertex AI Conversation](https://cloud.google.com/dialogflow/cx/docs/concept/generative)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Discoveryengine Chat Engine Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

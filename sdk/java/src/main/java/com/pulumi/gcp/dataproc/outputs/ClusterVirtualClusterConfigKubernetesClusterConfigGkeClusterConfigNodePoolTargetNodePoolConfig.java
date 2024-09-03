@@ -29,7 +29,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     /**
      * @return The list of Compute Engine zones where node pool nodes associated
      * with a Dataproc on GKE virtual cluster will be located.
-     * ***
      * 
      */
     private List<String> locations;
@@ -53,7 +52,6 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     /**
      * @return The list of Compute Engine zones where node pool nodes associated
      * with a Dataproc on GKE virtual cluster will be located.
-     * ***
      * 
      */
     public List<String> locations() {

@@ -34,9 +34,6 @@ class AuthConfigArgs:
         The set of arguments for constructing a AuthConfig resource.
         :param pulumi.Input[str] display_name: The name of the auth config.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input['AuthConfigClientCertificateArgs'] client_certificate: Raw client certificate
                Structure is documented below.
         :param pulumi.Input['AuthConfigDecryptedCredentialArgs'] decrypted_credential: Raw auth credentials.
@@ -85,9 +82,6 @@ class AuthConfigArgs:
     def location(self) -> pulumi.Input[str]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -228,9 +222,6 @@ class _AuthConfigState:
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] last_modifier_email: The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Resource name of the auth config.
         :param pulumi.Input[str] override_valid_time: User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -428,9 +419,6 @@ class _AuthConfigState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -562,8 +550,8 @@ class AuthConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
         * How-to Guides
-            * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
-            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+          * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+          * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
 
         ## Example Usage
 
@@ -611,9 +599,6 @@ class AuthConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expiry_notification_durations: User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[str] override_valid_time: User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -634,8 +619,8 @@ class AuthConfig(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/application-integration/docs/reference/rest/v1/projects.locations.authConfigs)
         * How-to Guides
-            * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
-            * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
+          * [Manage authentication profiles](https://cloud.google.com/application-integration/docs/configure-authentication-profiles)
+          * [Official Documentation](https://cloud.google.com/application-integration/docs/overview)
 
         ## Example Usage
 
@@ -783,9 +768,6 @@ class AuthConfig(pulumi.CustomResource):
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] last_modifier_email: The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] location: Location in which client needs to be provisioned.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Resource name of the auth config.
         :param pulumi.Input[str] override_valid_time: User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -924,9 +906,6 @@ class AuthConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         Location in which client needs to be provisioned.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

@@ -85,7 +85,8 @@ import (
 //	}
 //
 // ```
-// ### Config Management With OCI
+//
+// ### Config Management with OCI
 //
 // ```go
 // package main
@@ -251,7 +252,7 @@ import (
 //
 // ```
 //
-// ### Config Management With Regional Membership
+// ### Config Management with Regional Membership
 //
 // ```go
 // package main
@@ -323,7 +324,7 @@ import (
 //
 // ```
 //
-// ### Policy Controller With Minimal Configuration
+// ### Policy Controller with minimal configuration
 //
 // ```go
 // package main
@@ -387,7 +388,7 @@ import (
 //
 // ```
 //
-// ### Policy Controller With Custom Configurations
+// ### Policy Controller with custom configurations
 //
 // ```go
 // package main

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 //
-// ## Example Usage
-//
-// ### Bigquery Routine Basic
+// ##
 //
 // ```go
 // package main
@@ -57,7 +55,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Routine Json
+// ##
 //
 // ```go
 // package main
@@ -103,7 +101,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Routine Tvf
+// ##
 //
 // ```go
 // package main
@@ -169,7 +167,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Routine Pyspark
+// ##
 //
 // ```go
 // package main
@@ -240,7 +238,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Routine Pyspark Mainfile
+// ##
 //
 // ```go
 // package main
@@ -297,7 +295,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Routine Spark Jar
+// ##
 //
 // ```go
 // package main
@@ -353,7 +351,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Routine Data Governance Type
+// ##
 //
 // ```go
 // package main
@@ -396,6 +394,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Bigquery Routine Remote Function
 //
 // ```go
@@ -480,15 +481,13 @@ type Routine struct {
 	// The time when this routine was created, in milliseconds since the
 	// epoch.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
-	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
 	// Possible values are: `DATA_MASKING`.
 	DataGovernanceType pulumi.StringPtrOutput `pulumi:"dataGovernanceType"`
 	// The ID of the dataset containing this routine
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody pulumi.StringOutput `pulumi:"definitionBody"`
 	// The description of the routine if defined.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -583,15 +582,13 @@ type routineState struct {
 	// The time when this routine was created, in milliseconds since the
 	// epoch.
 	CreationTime *int `pulumi:"creationTime"`
-	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
 	// Possible values are: `DATA_MASKING`.
 	DataGovernanceType *string `pulumi:"dataGovernanceType"`
 	// The ID of the dataset containing this routine
 	DatasetId *string `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody *string `pulumi:"definitionBody"`
 	// The description of the routine if defined.
 	Description *string `pulumi:"description"`
@@ -645,15 +642,13 @@ type RoutineState struct {
 	// The time when this routine was created, in milliseconds since the
 	// epoch.
 	CreationTime pulumi.IntPtrInput
-	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
 	// Possible values are: `DATA_MASKING`.
 	DataGovernanceType pulumi.StringPtrInput
 	// The ID of the dataset containing this routine
 	DatasetId pulumi.StringPtrInput
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody pulumi.StringPtrInput
 	// The description of the routine if defined.
 	Description pulumi.StringPtrInput
@@ -708,15 +703,13 @@ type routineArgs struct {
 	// Input/output argument of a function or a stored procedure.
 	// Structure is documented below.
 	Arguments []RoutineArgument `pulumi:"arguments"`
-	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
 	// Possible values are: `DATA_MASKING`.
 	DataGovernanceType *string `pulumi:"dataGovernanceType"`
 	// The ID of the dataset containing this routine
 	DatasetId string `pulumi:"datasetId"`
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody string `pulumi:"definitionBody"`
 	// The description of the routine if defined.
 	Description *string `pulumi:"description"`
@@ -765,15 +758,13 @@ type RoutineArgs struct {
 	// Input/output argument of a function or a stored procedure.
 	// Structure is documented below.
 	Arguments RoutineArgumentArrayInput
-	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+	// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
 	// Possible values are: `DATA_MASKING`.
 	DataGovernanceType pulumi.StringPtrInput
 	// The ID of the dataset containing this routine
 	DatasetId pulumi.StringInput
 	// The body of the routine. For functions, this is the expression in the AS clause.
 	// If language=SQL, it is the substring inside (but excluding) the parentheses.
-	//
-	// ***
 	DefinitionBody pulumi.StringInput
 	// The description of the routine if defined.
 	Description pulumi.StringPtrInput
@@ -916,7 +907,7 @@ func (o RoutineOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Routine) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
+// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see <https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask>
 // Possible values are: `DATA_MASKING`.
 func (o RoutineOutput) DataGovernanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.DataGovernanceType }).(pulumi.StringPtrOutput)
@@ -929,8 +920,6 @@ func (o RoutineOutput) DatasetId() pulumi.StringOutput {
 
 // The body of the routine. For functions, this is the expression in the AS clause.
 // If language=SQL, it is the substring inside (but excluding) the parentheses.
-//
-// ***
 func (o RoutineOutput) DefinitionBody() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.DefinitionBody }).(pulumi.StringOutput)
 }

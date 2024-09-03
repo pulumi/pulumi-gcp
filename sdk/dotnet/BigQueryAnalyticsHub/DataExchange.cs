@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+    ///   * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Bigquery Analyticshub Data Exchange Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -88,9 +86,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -199,9 +194,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -259,9 +251,6 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

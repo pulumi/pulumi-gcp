@@ -118,14 +118,11 @@ export class Subnet extends pulumi.CustomResource {
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     public readonly parent!: pulumi.Output<string>;
@@ -240,14 +237,11 @@ export interface SubnetState {
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     parent?: pulumi.Input<string>;
@@ -291,14 +285,11 @@ export interface SubnetArgs {
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
     parent: pulumi.Input<string>;

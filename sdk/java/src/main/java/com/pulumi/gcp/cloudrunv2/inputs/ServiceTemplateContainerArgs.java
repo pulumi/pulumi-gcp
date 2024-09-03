@@ -24,14 +24,14 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     public static final ServiceTemplateContainerArgs Empty = new ServiceTemplateContainerArgs();
 
     /**
-     * Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -39,14 +39,14 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     @Import(name="commands")
     private @Nullable Output<List<String>> commands;
 
     /**
-     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
      * 
      */
     public Optional<Output<List<String>>> commands() {
@@ -86,14 +86,14 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+     * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
      * 
      */
     @Import(name="image", required=true)
     private Output<String> image;
 
     /**
-     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
      * 
      */
     public Output<String> image() {
@@ -101,7 +101,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * Structure is documented below.
      * 
      */
@@ -109,7 +109,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     private @Nullable Output<ServiceTemplateContainerLivenessProbeArgs> livenessProbe;
 
     /**
-     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * Structure is documented below.
      * 
      */
@@ -152,7 +152,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     * Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
      * Structure is documented below.
      * 
      */
@@ -160,7 +160,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     private @Nullable Output<ServiceTemplateContainerResourcesArgs> resources;
 
     /**
-     * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     * @return Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
      * Structure is documented below.
      * 
      */
@@ -169,7 +169,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * Structure is documented below.
      * 
      */
@@ -177,7 +177,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     private @Nullable Output<ServiceTemplateContainerStartupProbeArgs> startupProbe;
 
     /**
-     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+     * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
      * Structure is documented below.
      * 
      */
@@ -253,7 +253,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param args Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param commands Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param commands Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param commands Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param commands Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param commands Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         * @param commands Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell&gt;
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param image URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         * @param image URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param image URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         * @param image URL of the Container image in Google Container Registry or Google Artifact Registry. More info: &lt;https://kubernetes.io/docs/concepts/containers/images&gt;
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -413,7 +413,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param livenessProbe Periodic probe of container liveness. Container will be restarted if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -482,7 +482,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resources Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * @param resources Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -494,7 +494,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resources Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * @param resources Compute Resource requirements by this container. More info: &lt;https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -505,7 +505,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param startupProbe Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param startupProbe Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * Structure is documented below.
          * 
          * @return builder
@@ -517,7 +517,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param startupProbe Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * @param startupProbe Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: &lt;https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes&gt;
          * Structure is documented below.
          * 
          * @return builder

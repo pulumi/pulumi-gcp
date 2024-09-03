@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+ *   * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
  *
- * ## Example Usage
- *
- * ### Bigquery Analyticshub Listing Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Analyticshub Listing Restricted
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

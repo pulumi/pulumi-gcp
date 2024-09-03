@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 /**
  * For more information, see:
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
+ * 
  * ## Example Usage
  * 
  * ## Import
@@ -92,16 +93,12 @@ public class Release extends com.pulumi.resources.CustomResource {
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="rulesetName", refs={String.class}, tree="[0]")
     private Output<String> rulesetName;
 
     /**
      * @return Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> rulesetName() {

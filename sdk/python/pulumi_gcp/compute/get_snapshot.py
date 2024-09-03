@@ -249,7 +249,7 @@ def get_snapshot(filter: Optional[str] = None,
 
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+      * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
     ## Example Usage
 
@@ -257,7 +257,7 @@ def get_snapshot(filter: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    #by name 
+    #by name
     snapshot = gcp.compute.get_snapshot(name="my-snapshot")
     # using a filter
     latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
@@ -269,9 +269,7 @@ def get_snapshot(filter: Optional[str] = None,
            See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots/list#body.QUERY_PARAMETERS.filter) for reference.
            If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
            If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
-    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
-           
-           - - -
+    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
     :param str name: The name of the compute snapshot. One of `name` or `filter` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
@@ -320,7 +318,7 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
 
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+      * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
     ## Example Usage
 
@@ -328,7 +326,7 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    #by name 
+    #by name
     snapshot = gcp.compute.get_snapshot(name="my-snapshot")
     # using a filter
     latest_snapshot = gcp.compute.get_snapshot(filter="name != my-snapshot",
@@ -340,9 +338,7 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
            See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots/list#body.QUERY_PARAMETERS.filter) for reference.
            If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
            If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
-    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
-           
-           - - -
+    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
     :param str name: The name of the compute snapshot. One of `name` or `filter` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.

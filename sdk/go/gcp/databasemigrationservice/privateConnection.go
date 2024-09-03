@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/database-migration/docs/oracle-to-postgresql/create-private-connectivity-configuration)
 //
-// ## Example Usage
-//
-// ### Database Migration Service Private Connection
+// ##
 //
 // ```go
 // package main

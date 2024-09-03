@@ -3502,7 +3502,7 @@ func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOut
 }
 
 type AiFeatureOnlineStoreFeatureviewSyncConfig struct {
-	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+	// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
 	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 	Cron *string `pulumi:"cron"`
 }
@@ -3519,7 +3519,7 @@ type AiFeatureOnlineStoreFeatureviewSyncConfigInput interface {
 }
 
 type AiFeatureOnlineStoreFeatureviewSyncConfigArgs struct {
-	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+	// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
 	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 	Cron pulumi.StringPtrInput `pulumi:"cron"`
 }
@@ -3601,7 +3601,7 @@ func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ToAiFeatureOnlineStoreF
 	}).(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput)
 }
 
-// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
 // To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) Cron() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewSyncConfig) *string { return v.Cron }).(pulumi.StringPtrOutput)
@@ -3631,7 +3631,7 @@ func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Elem() AiFeatureOnli
 	}).(AiFeatureOnlineStoreFeatureviewSyncConfigOutput)
 }
 
-// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+// Cron schedule (<https://en.wikipedia.org/wiki/Cron>) to launch scheduled runs.
 // To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
 func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Cron() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewSyncConfig) *string {
@@ -3657,7 +3657,7 @@ type AiFeatureOnlineStoreFeatureviewVectorSearchConfig struct {
 	EmbeddingDimension *int `pulumi:"embeddingDimension"`
 	// Columns of features that are used to filter vector search results.
 	FilterColumns []string `pulumi:"filterColumns"`
-	// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 	// Structure is documented below.
 	TreeAhConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig `pulumi:"treeAhConfig"`
 }
@@ -3688,7 +3688,7 @@ type AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs struct {
 	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
 	// Columns of features that are used to filter vector search results.
 	FilterColumns pulumi.StringArrayInput `pulumi:"filterColumns"`
-	// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 	// Structure is documented below.
 	TreeAhConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput `pulumi:"treeAhConfig"`
 }
@@ -3804,7 +3804,7 @@ func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) FilterColumns()
 	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) []string { return v.FilterColumns }).(pulumi.StringArrayOutput)
 }
 
-// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 // Structure is documented below.
 func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) TreeAhConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
 	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
@@ -3898,7 +3898,7 @@ func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) FilterColumn
 	}).(pulumi.StringArrayOutput)
 }
 
-// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 // Structure is documented below.
 func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) TreeAhConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
@@ -7031,7 +7031,7 @@ func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput) AuthProvid
 }
 
 type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider struct {
-	// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+	// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
 	AllowedIssuers []string `pulumi:"allowedIssuers"`
 	// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
 	Audiences []string `pulumi:"audiences"`
@@ -7049,7 +7049,7 @@ type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderInput interf
 }
 
 type AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs struct {
-	// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+	// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
 	AllowedIssuers pulumi.StringArrayInput `pulumi:"allowedIssuers"`
 	// The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
 	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
@@ -7132,7 +7132,7 @@ func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) T
 	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput)
 }
 
-// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
 func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput) AllowedIssuers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) []string {
 		return v.AllowedIssuers
@@ -7168,7 +7168,7 @@ func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput
 	}).(AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderOutput)
 }
 
-// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
+// A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: <service-account-name@project-id.iam.gserviceaccount.com>
 func (o AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderPtrOutput) AllowedIssuers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider) []string {
 		if v == nil {
@@ -7718,7 +7718,7 @@ type AiIndexMetadata struct {
 	// field is set when calling IndexService.UpdateIndex, then no other
 	// Index field can be also updated as part of the same call.
 	// The expected structure and format of the files this URI points to is
-	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+	// described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
 	ContentsDeltaUri string `pulumi:"contentsDeltaUri"`
 	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
 	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -7745,7 +7745,7 @@ type AiIndexMetadataArgs struct {
 	// field is set when calling IndexService.UpdateIndex, then no other
 	// Index field can be also updated as part of the same call.
 	// The expected structure and format of the files this URI points to is
-	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+	// described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
 	ContentsDeltaUri pulumi.StringInput `pulumi:"contentsDeltaUri"`
 	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
 	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -7840,7 +7840,7 @@ func (o AiIndexMetadataOutput) Config() AiIndexMetadataConfigPtrOutput {
 // field is set when calling IndexService.UpdateIndex, then no other
 // Index field can be also updated as part of the same call.
 // The expected structure and format of the files this URI points to is
-// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+// described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
 func (o AiIndexMetadataOutput) ContentsDeltaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AiIndexMetadata) string { return v.ContentsDeltaUri }).(pulumi.StringOutput)
 }
@@ -7891,7 +7891,7 @@ func (o AiIndexMetadataPtrOutput) Config() AiIndexMetadataConfigPtrOutput {
 // field is set when calling IndexService.UpdateIndex, then no other
 // Index field can be also updated as part of the same call.
 // The expected structure and format of the files this URI points to is
-// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+// described at <https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format>
 func (o AiIndexMetadataPtrOutput) ContentsDeltaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiIndexMetadata) *string {
 		if v == nil {
@@ -8205,7 +8205,7 @@ type AiIndexMetadataConfigAlgorithmConfig struct {
 	// standard linear search in the database for each query.
 	BruteForceConfig *AiIndexMetadataConfigAlgorithmConfigBruteForceConfig `pulumi:"bruteForceConfig"`
 	// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-	// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 	// Structure is documented below.
 	TreeAhConfig *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig `pulumi:"treeAhConfig"`
 }
@@ -8226,7 +8226,7 @@ type AiIndexMetadataConfigAlgorithmConfigArgs struct {
 	// standard linear search in the database for each query.
 	BruteForceConfig AiIndexMetadataConfigAlgorithmConfigBruteForceConfigPtrInput `pulumi:"bruteForceConfig"`
 	// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-	// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 	// Structure is documented below.
 	TreeAhConfig AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrInput `pulumi:"treeAhConfig"`
 }
@@ -8317,7 +8317,7 @@ func (o AiIndexMetadataConfigAlgorithmConfigOutput) BruteForceConfig() AiIndexMe
 }
 
 // Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 // Structure is documented below.
 func (o AiIndexMetadataConfigAlgorithmConfigOutput) TreeAhConfig() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
 	return o.ApplyT(func(v AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
@@ -8361,7 +8361,7 @@ func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) BruteForceConfig() AiInde
 }
 
 // Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Please refer to this paper for more details: <https://arxiv.org/abs/1908.10396>
 // Structure is documented below.
 func (o AiIndexMetadataConfigAlgorithmConfigPtrOutput) TreeAhConfig() AiIndexMetadataConfigAlgorithmConfigTreeAhConfigPtrOutput {
 	return o.ApplyT(func(v *AiIndexMetadataConfigAlgorithmConfig) *AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {

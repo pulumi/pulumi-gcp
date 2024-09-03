@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  *
  * ## Example Usage
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * //by name 
+ * //by name
  * const snapshot = gcp.compute.getSnapshot({
  *     name: "my-snapshot",
  * });
@@ -54,9 +54,7 @@ export interface GetSnapshotArgs {
      */
     filter?: string;
     /**
-     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
-     *
-     * - - -
+     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
      */
     mostRecent?: boolean;
     /**
@@ -105,7 +103,7 @@ export interface GetSnapshotResult {
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  *
  * ## Example Usage
  *
@@ -113,7 +111,7 @@ export interface GetSnapshotResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * //by name 
+ * //by name
  * const snapshot = gcp.compute.getSnapshot({
  *     name: "my-snapshot",
  * });
@@ -140,9 +138,7 @@ export interface GetSnapshotOutputArgs {
      */
     filter?: pulumi.Input<string>;
     /**
-     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
-     *
-     * - - -
+     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
      */
     mostRecent?: pulumi.Input<boolean>;
     /**

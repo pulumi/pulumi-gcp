@@ -205,8 +205,6 @@ def get_ai_index(name: Optional[str] = None,
     :param str name: The name of the index.
     :param str project: The ID of the project in which the resource belongs.
     :param str region: The region of the index.
-           
-           - - -
     """
     __args__ = dict()
     __args__['name'] = name
@@ -247,7 +245,5 @@ def get_ai_index_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the index.
     :param str project: The ID of the project in which the resource belongs.
     :param str region: The region of the index.
-           
-           - - -
     """
     ...

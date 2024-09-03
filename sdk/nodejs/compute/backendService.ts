@@ -18,14 +18,12 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+ *   * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
  * > **Warning:** All arguments including the following potentially sensitive
  * values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
  *
- * ## Example Usage
- *
- * ### Backend Service Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,7 +40,7 @@ import * as utilities from "../utilities";
  *     healthChecks: defaultHttpHealthCheck.id,
  * });
  * ```
- * ### Backend Service External Iap
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,7 +56,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Cache Simple
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,7 +77,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Cache Include Http Headers
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,7 +97,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Cache Include Named Cookies
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -125,7 +123,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Cache
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -151,7 +149,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Cache Bypass Cache On Request Headers
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -185,7 +183,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Traffic Director Round Robin
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -204,7 +202,7 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "ROUND_ROBIN",
  * });
  * ```
- * ### Backend Service Traffic Director Ring Hash
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -239,7 +237,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Backend Service Network Endpoint
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -267,7 +265,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Backend Service External Managed
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -472,7 +470,7 @@ export class BackendService extends pulumi.CustomResource {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      * Maglev is not as stable as ring hash but has faster table lookup
      * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
+     * Maglev, refer to <https://ai.google/research/pubs/pub44824>
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      * reported weights. If set, the Backend Service must
      * configure a non legacy HTTP-based Health Check, and
@@ -514,9 +512,6 @@ export class BackendService extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
@@ -798,7 +793,7 @@ export interface BackendServiceState {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      * Maglev is not as stable as ring hash but has faster table lookup
      * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
+     * Maglev, refer to <https://ai.google/research/pubs/pub44824>
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      * reported weights. If set, the Backend Service must
      * configure a non legacy HTTP-based Health Check, and
@@ -840,9 +835,6 @@ export interface BackendServiceState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
@@ -1027,7 +1019,7 @@ export interface BackendServiceArgs {
      * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
      * Maglev is not as stable as ring hash but has faster table lookup
      * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
+     * Maglev, refer to <https://ai.google/research/pubs/pub44824>
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
      * reported weights. If set, the Backend Service must
      * configure a non legacy HTTP-based Health Check, and
@@ -1069,9 +1061,6 @@ export interface BackendServiceArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;

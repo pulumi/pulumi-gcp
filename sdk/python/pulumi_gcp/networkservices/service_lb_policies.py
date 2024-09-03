@@ -32,9 +32,6 @@ class ServiceLbPoliciesArgs:
         """
         The set of arguments for constructing a ServiceLbPolicies resource.
         :param pulumi.Input[str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input['ServiceLbPoliciesAutoCapacityDrainArgs'] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
@@ -70,9 +67,6 @@ class ServiceLbPoliciesArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the service lb policy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -201,9 +195,6 @@ class _ServiceLbPoliciesState:
         :param pulumi.Input[str] load_balancing_algorithm: The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
                Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
         :param pulumi.Input[str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -330,9 +321,6 @@ class _ServiceLbPoliciesState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the service lb policy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -406,46 +394,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Network Services Service Lb Policies Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.ServiceLbPolicies("default",
-            name="my-lb-policy",
-            location="global")
-        ```
-        ### Network Services Service Lb Policies Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.ServiceLbPolicies("default",
-            name="my-lb-policy",
-            location="global",
-            description="my description",
-            load_balancing_algorithm="SPRAY_TO_REGION",
-            auto_capacity_drain={
-                "enable": True,
-            },
-            failover_config={
-                "failover_health_threshold": 70,
-            },
-            labels={
-                "foo": "bar",
-            })
-        default_backend_service = gcp.compute.BackendService("default",
-            name="my-lb-backend",
-            description="my description",
-            load_balancing_scheme="INTERNAL_SELF_MANAGED",
-            protocol="HTTP",
-            service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
-        ```
-
         ## Import
 
         ServiceLbPolicies can be imported using any of these accepted formats:
@@ -483,9 +431,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancing_algorithm: The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
                Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
         :param pulumi.Input[str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -497,46 +442,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  args: ServiceLbPoliciesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Network Services Service Lb Policies Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.ServiceLbPolicies("default",
-            name="my-lb-policy",
-            location="global")
-        ```
-        ### Network Services Service Lb Policies Advanced
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.networkservices.ServiceLbPolicies("default",
-            name="my-lb-policy",
-            location="global",
-            description="my description",
-            load_balancing_algorithm="SPRAY_TO_REGION",
-            auto_capacity_drain={
-                "enable": True,
-            },
-            failover_config={
-                "failover_health_threshold": 70,
-            },
-            labels={
-                "foo": "bar",
-            })
-        default_backend_service = gcp.compute.BackendService("default",
-            name="my-lb-backend",
-            description="my description",
-            load_balancing_scheme="INTERNAL_SELF_MANAGED",
-            protocol="HTTP",
-            service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
-        ```
-
         ## Import
 
         ServiceLbPolicies can be imported using any of these accepted formats:
@@ -651,9 +556,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancing_algorithm: The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
                Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
         :param pulumi.Input[str] location: The location of the service lb policy.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -745,9 +647,6 @@ class ServiceLbPolicies(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the service lb policy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

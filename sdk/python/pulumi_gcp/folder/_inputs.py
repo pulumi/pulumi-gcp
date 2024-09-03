@@ -70,8 +70,6 @@ if not MYPY:
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
 elif False:
     AccessApprovalSettingsEnrolledServiceArgsDict: TypeAlias = Mapping[str, Any]
@@ -108,8 +106,6 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         :param pulumi.Input[str] enrollment_level: The enrollment level of the service.
                Default value is `BLOCK_ALL`.
                Possible values are: `BLOCK_ALL`.
-               
-               - - -
         """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
@@ -156,8 +152,6 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
         return pulumi.get(self, "enrollment_level")
 

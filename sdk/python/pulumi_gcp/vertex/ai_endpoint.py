@@ -34,13 +34,10 @@ class AiEndpointArgs:
         The set of arguments for constructing a AiEndpoint resource.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
@@ -83,9 +80,6 @@ class AiEndpointArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -122,7 +116,7 @@ class AiEndpointArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -213,13 +207,10 @@ class _AiEndpointState:
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
@@ -354,7 +345,7 @@ class _AiEndpointState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -369,9 +360,6 @@ class _AiEndpointState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -488,7 +476,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
 
@@ -560,13 +548,10 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -586,7 +571,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+          * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
 
         ## Example Usage
 
@@ -750,13 +735,10 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
-               
-               
-               - - -
         :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
@@ -852,7 +834,7 @@ class AiEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+        The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See <https://goo.gl/xmQnxf> for more information and examples of labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -863,9 +845,6 @@ class AiEndpoint(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

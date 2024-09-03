@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
+ *   * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  *
- * ## Example Usage
- *
- * ### Monitoring Group Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +27,7 @@ import * as utilities from "../utilities";
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
- * ### Monitoring Group Subgroup
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,9 +92,6 @@ export class Group extends pulumi.CustomResource {
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
-     *
-     *
-     * - - -
      */
     public readonly filter!: pulumi.Output<string>;
     /**
@@ -173,9 +168,6 @@ export interface GroupState {
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
-     *
-     *
-     * - - -
      */
     filter?: pulumi.Input<string>;
     /**
@@ -214,9 +206,6 @@ export interface GroupArgs {
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
-     *
-     *
-     * - - -
      */
     filter: pulumi.Input<string>;
     /**

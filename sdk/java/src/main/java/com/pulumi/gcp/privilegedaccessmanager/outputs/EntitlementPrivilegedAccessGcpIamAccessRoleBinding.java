@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
     /**
      * @return The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-     * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+     * &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
      * 
      */
     private @Nullable String conditionExpression;
     /**
-     * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+     * @return IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
      * 
      */
     private String role;
@@ -27,14 +27,14 @@ public final class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
     private EntitlementPrivilegedAccessGcpIamAccessRoleBinding() {}
     /**
      * @return The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
-     * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+     * &lt;https://cloud.google.com/iam/docs/conditions-overview#attributes&gt;.
      * 
      */
     public Optional<String> conditionExpression() {
         return Optional.ofNullable(this.conditionExpression);
     }
     /**
-     * @return IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+     * @return IAM role to be granted. &lt;https://cloud.google.com/iam/docs/roles-overview&gt;.
      * 
      */
     public String role() {

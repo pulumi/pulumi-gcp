@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
+ *   * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
  *
- * ## Example Usage
- *
- * ### Storage Hmac Key
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Create a new service account
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {accountId: "my-svc-acc"});
  * //Create the HMAC key for the associated service account
  * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
@@ -97,9 +94,6 @@ export class HmacKey extends pulumi.CustomResource {
     public /*out*/ readonly secret!: pulumi.Output<string>;
     /**
      * The email address of the key's associated service account.
-     *
-     *
-     * - - -
      */
     public readonly serviceAccountEmail!: pulumi.Output<string>;
     /**
@@ -177,9 +171,6 @@ export interface HmacKeyState {
     secret?: pulumi.Input<string>;
     /**
      * The email address of the key's associated service account.
-     *
-     *
-     * - - -
      */
     serviceAccountEmail?: pulumi.Input<string>;
     /**
@@ -209,9 +200,6 @@ export interface HmacKeyArgs {
     project?: pulumi.Input<string>;
     /**
      * The email address of the key's associated service account.
-     *
-     *
-     * - - -
      */
     serviceAccountEmail: pulumi.Input<string>;
     /**

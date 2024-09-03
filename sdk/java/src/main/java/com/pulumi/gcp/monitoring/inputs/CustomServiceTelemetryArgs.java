@@ -18,7 +18,7 @@ public final class CustomServiceTelemetryArgs extends com.pulumi.resources.Resou
     /**
      * The full name of the resource that defines this service.
      * Formatted as described in
-     * https://cloud.google.com/apis/design/resource_names.
+     * &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * 
      */
     @Import(name="resourceName")
@@ -27,7 +27,7 @@ public final class CustomServiceTelemetryArgs extends com.pulumi.resources.Resou
     /**
      * @return The full name of the resource that defines this service.
      * Formatted as described in
-     * https://cloud.google.com/apis/design/resource_names.
+     * &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * 
      */
     public Optional<Output<String>> resourceName() {
@@ -61,7 +61,7 @@ public final class CustomServiceTelemetryArgs extends com.pulumi.resources.Resou
         /**
          * @param resourceName The full name of the resource that defines this service.
          * Formatted as described in
-         * https://cloud.google.com/apis/design/resource_names.
+         * &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class CustomServiceTelemetryArgs extends com.pulumi.resources.Resou
         /**
          * @param resourceName The full name of the resource that defines this service.
          * Formatted as described in
-         * https://cloud.google.com/apis/design/resource_names.
+         * &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * 
          * @return builder
          * 

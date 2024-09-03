@@ -61,8 +61,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="datasetId")
     private @Nullable Output<String> datasetId;
@@ -71,8 +69,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
      * @return A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> datasetId() {
@@ -605,8 +601,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
          * must contain only letters (a-z, A-Z), numbers (0-9), or
          * underscores (_). The maximum length is 1,024 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -619,8 +613,6 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
          * @param datasetId A unique ID for this dataset, without the project name. The ID
          * must contain only letters (a-z, A-Z), numbers (0-9), or
          * underscores (_). The maximum length is 1,024 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -29,10 +29,7 @@ class CapacityCommitmentArgs:
                  renewal_plan: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
@@ -65,10 +62,7 @@ class CapacityCommitmentArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[str]:
         """
-        Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-
-
-        - - -
+        Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         """
         return pulumi.get(self, "plan")
 
@@ -194,10 +188,7 @@ class _CapacityCommitmentState:
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
@@ -321,10 +312,7 @@ class _CapacityCommitmentState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-
-
-        - - -
+        Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         """
         return pulumi.get(self, "plan")
 
@@ -405,7 +393,7 @@ class CapacityCommitment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.capacityCommitments)
         * How-to Guides
-            * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+          * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
 
@@ -457,10 +445,7 @@ class CapacityCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
@@ -481,7 +466,7 @@ class CapacityCommitment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.capacityCommitments)
         * How-to Guides
-            * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+          * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
 
@@ -611,10 +596,7 @@ class CapacityCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-               
-               
-               - - -
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
@@ -703,10 +685,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-
-
-        - - -
+        Capacity commitment plan. Valid values are at <https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan>
         """
         return pulumi.get(self, "plan")
 

@@ -28,11 +28,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+ *   * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  * 
- * ## Example Usage
- * 
- * ### Data Fusion Instance Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -68,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Fusion Instance Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -145,7 +143,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Fusion Instance Psc
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -216,7 +214,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Fusion Instance Cmek
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -285,7 +283,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Fusion Instance Enterprise
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -322,7 +320,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Fusion Instance Event
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -369,7 +367,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Data Fusion Instance Zone
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -875,8 +873,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
-     * ***
-     * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
@@ -893,8 +889,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {

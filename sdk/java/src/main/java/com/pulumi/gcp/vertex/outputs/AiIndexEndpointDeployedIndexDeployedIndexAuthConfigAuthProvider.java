@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
     /**
-     * @return A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+     * @return A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
      * 
      */
     private @Nullable List<String> allowedIssuers;
@@ -24,7 +24,7 @@ public final class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvid
 
     private AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider() {}
     /**
-     * @return A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name{@literal @}project-id.iam.gserviceaccount.com
+     * @return A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: &lt;service-account-name{@literal @}project-id.iam.gserviceaccount.com&gt;
      * 
      */
     public List<String> allowedIssuers() {

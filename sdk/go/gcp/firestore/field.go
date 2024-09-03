@@ -23,9 +23,7 @@ import (
 //   - [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 //
 // > **Warning:** This resource creates a Firestore Single Field override on a project that
-//
-//	already has a Firestore database. If you haven't already created it, you may
-//
+// already has a Firestore database. If you haven't already created it, you may
 // create a `firestore.Database` resource with `locationId` set to your
 // chosen location.
 //
@@ -81,6 +79,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Timestamp
 //
 // ```go
@@ -122,6 +121,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Firestore Field Match Override
 //
 // ```go
@@ -194,8 +194,6 @@ type Field struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// The id of the field to configure.
-	//
-	// ***
 	Field pulumi.StringOutput `pulumi:"field"`
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -255,8 +253,6 @@ type fieldState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The id of the field to configure.
-	//
-	// ***
 	Field *string `pulumi:"field"`
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -281,8 +277,6 @@ type FieldState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The id of the field to configure.
-	//
-	// ***
 	Field pulumi.StringPtrInput
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -311,8 +305,6 @@ type fieldArgs struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The id of the field to configure.
-	//
-	// ***
 	Field string `pulumi:"field"`
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -335,8 +327,6 @@ type FieldArgs struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The id of the field to configure.
-	//
-	// ***
 	Field pulumi.StringInput
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -450,8 +440,6 @@ func (o FieldOutput) Database() pulumi.StringPtrOutput {
 }
 
 // The id of the field to configure.
-//
-// ***
 func (o FieldOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.Field }).(pulumi.StringOutput)
 }

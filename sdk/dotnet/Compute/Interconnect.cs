@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/interconnects)
     /// * How-to Guides
-    ///     * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
+    ///   * [Create a Dedicated Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/concepts/dedicated-overview)
     /// 
     /// ## Example Usage
     /// 
@@ -106,9 +106,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
         /// crossconnect.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("customerName")]
         public Output<string> CustomerName { get; private set; } = null!;
@@ -377,9 +374,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
         /// crossconnect.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("customerName", required: true)]
         public Input<string> CustomerName { get; set; } = null!;
@@ -556,9 +550,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
         /// crossconnect.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("customerName")]
         public Input<string>? CustomerName { get; set; }

@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
  * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
  * 
@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkehub Feature Multi Cluster Service Discovery
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -130,6 +131,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkehub Feature Anthos Service Mesh
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -165,6 +167,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Observability For Default Logs With Copy
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -213,6 +216,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Observability For Scope Logs With Move
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -261,6 +265,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Observability For Both Default And Scope Logs
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -313,6 +318,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Default Member Config Service Mesh
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -355,6 +361,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Default Member Config Configmanagement
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -403,6 +410,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Default Member Config Policycontroller
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -464,6 +472,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Default Member Config Policycontroller Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -560,6 +569,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Enable Fleet Default Member Config Policycontroller Minimal
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -616,6 +626,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Gkehub Feature Clusterupgrade
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -769,16 +780,12 @@ public class Feature extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

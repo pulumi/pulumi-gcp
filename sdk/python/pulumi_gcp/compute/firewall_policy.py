@@ -26,10 +26,6 @@ class FirewallPolicyArgs:
         The set of arguments for constructing a FirewallPolicy resource.
         :param pulumi.Input[str] parent: The parent of the firewall policy.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         """
         pulumi.set(__self__, "parent", parent)
@@ -54,10 +50,6 @@ class FirewallPolicyArgs:
     def short_name(self) -> pulumi.Input[str]:
         """
         User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-
-        - - -
         """
         return pulumi.get(self, "short_name")
 
@@ -103,10 +95,6 @@ class _FirewallPolicyState:
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -242,10 +230,6 @@ class _FirewallPolicyState:
     def short_name(self) -> Optional[pulumi.Input[str]]:
         """
         User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-
-        - - -
         """
         return pulumi.get(self, "short_name")
 
@@ -299,10 +283,6 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] parent: The parent of the firewall policy.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         """
         ...
     @overload
@@ -419,10 +399,6 @@ class FirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] short_name: User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,10 +493,6 @@ class FirewallPolicy(pulumi.CustomResource):
     def short_name(self) -> pulumi.Output[str]:
         """
         User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-
-        - - -
         """
         return pulumi.get(self, "short_name")
 

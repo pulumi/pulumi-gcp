@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.firewallEndpoints)
  * * How-to Guides
- *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
- *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
+ *   * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
+ *   * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project_id` and set `user_project_override` to true
@@ -205,8 +205,6 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      * The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -214,8 +212,6 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the parent this firewall endpoint belongs to.
      * Format: organizations/{organization_id}.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -238,14 +234,14 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+     * @return Whether reconciling is in progress, recommended per &lt;https://google.aip.dev/128&gt;.
      * 
      */
     public Output<Boolean> reconciling() {

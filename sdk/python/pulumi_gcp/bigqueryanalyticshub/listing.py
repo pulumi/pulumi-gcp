@@ -553,11 +553,9 @@ class Listing(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+          * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
-        ## Example Usage
-
-        ### Bigquery Analyticshub Listing Basic
+        ## 
 
         ```python
         import pulumi
@@ -583,7 +581,7 @@ class Listing(pulumi.CustomResource):
                 "dataset": listing_dataset.id,
             })
         ```
-        ### Bigquery Analyticshub Listing Restricted
+        ## 
 
         ```python
         import pulumi
@@ -670,11 +668,9 @@ class Listing(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.listings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+          * [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
 
-        ## Example Usage
-
-        ### Bigquery Analyticshub Listing Basic
+        ## 
 
         ```python
         import pulumi
@@ -700,7 +696,7 @@ class Listing(pulumi.CustomResource):
                 "dataset": listing_dataset.id,
             })
         ```
-        ### Bigquery Analyticshub Listing Restricted
+        ## 
 
         ```python
         import pulumi

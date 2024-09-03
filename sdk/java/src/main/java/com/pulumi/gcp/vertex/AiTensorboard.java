@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.tensorboards)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  * 
- * ## Example Usage
- * 
- * ### Vertex Ai Tensorboard
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -68,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Vertex Ai Tensorboard Full
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -206,16 +204,12 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
     /**
      * User provided name of this Tensorboard.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return User provided name of this Tensorboard.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

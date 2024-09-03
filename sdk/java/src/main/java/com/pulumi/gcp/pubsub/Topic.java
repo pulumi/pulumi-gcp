@@ -26,14 +26,12 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
  * * How-to Guides
- *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+ *   * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
  * 
  * &gt; **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
  * by using the `gcp.projects.ServiceIdentity` resource.
  * 
- * ## Example Usage
- * 
- * ### Pubsub Topic Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -69,6 +67,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Example Usage
+ * 
  * ### Pubsub Topic Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -118,7 +119,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Topic Geo Restricted
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -156,6 +157,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Pubsub Topic Schema Settings
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -221,7 +223,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Pubsub Topic Ingestion Kinesis
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -416,16 +418,12 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * Name of the topic.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return Name of the topic.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

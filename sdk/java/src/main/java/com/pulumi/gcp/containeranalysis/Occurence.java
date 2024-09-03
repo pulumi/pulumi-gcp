@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/container-analysis/)
+ *   * [Official Documentation](https://cloud.google.com/container-analysis/)
  * 
  * ## Example Usage
  * 
@@ -267,7 +267,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
+     * &lt;https://gcr.io/project/image{@literal @}sha256:123abc&gt; for a Docker image.
      * 
      */
     @Export(name="resourceUri", refs={String.class}, tree="[0]")
@@ -276,7 +276,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
     /**
      * @return Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image{@literal @}sha256:123abc for a Docker image.
+     * &lt;https://gcr.io/project/image{@literal @}sha256:123abc&gt; for a Docker image.
      * 
      */
     public Output<String> resourceUri() {

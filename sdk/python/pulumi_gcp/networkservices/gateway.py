@@ -58,9 +58,6 @@ class GatewayArgs:
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -230,9 +227,6 @@ class GatewayArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Gateway resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -354,9 +348,6 @@ class _GatewayState:
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -544,9 +535,6 @@ class _GatewayState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Gateway resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -719,9 +707,7 @@ class Gateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
 
-        ## Example Usage
-
-        ### Network Services Gateway Basic
+        ## 
 
         ```python
         import pulumi
@@ -733,7 +719,7 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
-        ### Network Services Gateway Advanced
+        ## 
 
         ```python
         import pulumi
@@ -749,7 +735,7 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
-        ### Network Services Gateway Secure Web Proxy
+        ## 
 
         ```python
         import pulumi
@@ -806,7 +792,7 @@ class Gateway(pulumi.CustomResource):
             delete_swg_autogen_router_on_destroy=True,
             opts = pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
-        ### Network Services Gateway Multiple Swp Same Network
+        ## 
 
         ```python
         import pulumi
@@ -920,9 +906,6 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -959,9 +942,7 @@ class Gateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
 
-        ## Example Usage
-
-        ### Network Services Gateway Basic
+        ## 
 
         ```python
         import pulumi
@@ -973,7 +954,7 @@ class Gateway(pulumi.CustomResource):
             type="OPEN_MESH",
             ports=[443])
         ```
-        ### Network Services Gateway Advanced
+        ## 
 
         ```python
         import pulumi
@@ -989,7 +970,7 @@ class Gateway(pulumi.CustomResource):
             ports=[443],
             scope="default-scope-advance")
         ```
-        ### Network Services Gateway Secure Web Proxy
+        ## 
 
         ```python
         import pulumi
@@ -1046,7 +1027,7 @@ class Gateway(pulumi.CustomResource):
             delete_swg_autogen_router_on_destroy=True,
             opts = pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
-        ### Network Services Gateway Multiple Swp Same Network
+        ## 
 
         ```python
         import pulumi
@@ -1262,9 +1243,6 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1401,9 +1379,6 @@ class Gateway(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Short name of the Gateway resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

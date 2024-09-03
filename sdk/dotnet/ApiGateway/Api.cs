@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+    ///   * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Apigateway Api Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -67,9 +65,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -102,7 +97,7 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        /// Immutable. The name of a Google Managed Service ( &lt;https://cloud.google.com/service-infrastructure/docs/glossary#managed)&gt;.
         /// If not specified, a new Service will automatically be created in the same project as this API.
         /// </summary>
         [Output("managedService")]
@@ -181,9 +176,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -210,7 +202,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
 
         /// <summary>
-        /// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        /// Immutable. The name of a Google Managed Service ( &lt;https://cloud.google.com/service-infrastructure/docs/glossary#managed)&gt;.
         /// If not specified, a new Service will automatically be created in the same project as this API.
         /// </summary>
         [Input("managedService")]
@@ -233,9 +225,6 @@ namespace Pulumi.Gcp.ApiGateway
     {
         /// <summary>
         /// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }
@@ -284,7 +273,7 @@ namespace Pulumi.Gcp.ApiGateway
         }
 
         /// <summary>
-        /// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+        /// Immutable. The name of a Google Managed Service ( &lt;https://cloud.google.com/service-infrastructure/docs/glossary#managed)&gt;.
         /// If not specified, a new Service will automatically be created in the same project as this API.
         /// </summary>
         [Input("managedService")]

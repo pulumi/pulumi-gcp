@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/projects.agentPools)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
+    ///   * [Official Documentation](https://cloud.google.com/storage-transfer/docs/on-prem-agent-pools)
     /// 
     /// ## Example Usage
     /// 
@@ -110,9 +110,6 @@ namespace Pulumi.Gcp.Storage
         /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         /// * One or more numerals or lowercase ASCII characters.
         /// As expressed by the regular expression: ^(?!goog)a-z?$.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -198,9 +195,6 @@ namespace Pulumi.Gcp.Storage
         /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         /// * One or more numerals or lowercase ASCII characters.
         /// As expressed by the regular expression: ^(?!goog)a-z?$.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -242,9 +236,6 @@ namespace Pulumi.Gcp.Storage
         /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
         /// * One or more numerals or lowercase ASCII characters.
         /// As expressed by the regular expression: ^(?!goog)a-z?$.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

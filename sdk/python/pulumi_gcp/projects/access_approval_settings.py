@@ -339,6 +339,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "enrollment_level": "BLOCK_ALL",
             }])
         ```
+
         ### Project Access Approval Active Key Version
 
         ```python
@@ -437,6 +438,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 "enrollment_level": "BLOCK_ALL",
             }])
         ```
+
         ### Project Access Approval Active Key Version
 
         ```python

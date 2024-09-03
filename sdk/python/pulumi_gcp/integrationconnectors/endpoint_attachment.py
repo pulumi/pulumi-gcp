@@ -37,9 +37,6 @@ class EndpointAttachmentArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -124,9 +121,6 @@ class EndpointAttachmentArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of Endpoint Attachment needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -176,9 +170,6 @@ class _EndpointAttachmentState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -303,9 +294,6 @@ class _EndpointAttachmentState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of Endpoint Attachment needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -384,11 +372,9 @@ class EndpointAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.endpointAttachments)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
+          * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
 
-        ## Example Usage
-
-        ### Integration Connectors Endpoint Attachment
+        ## 
 
         ```python
         import pulumi
@@ -438,9 +424,6 @@ class EndpointAttachment(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_attachment: The path of the service attachment.
@@ -458,11 +441,9 @@ class EndpointAttachment(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/integration-connectors/docs/reference/rest/v1/projects.locations.endpointAttachments)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
+          * [Official Documentation](https://cloud.google.com/integration-connectors/docs/create-endpoint-attachment)
 
-        ## Example Usage
-
-        ### Integration Connectors Endpoint Attachment
+        ## 
 
         ```python
         import pulumi
@@ -591,9 +572,6 @@ class EndpointAttachment(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location in which Endpoint Attachment needs to be created.
         :param pulumi.Input[str] name: Name of Endpoint Attachment needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -683,9 +661,6 @@ class EndpointAttachment(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of Endpoint Attachment needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

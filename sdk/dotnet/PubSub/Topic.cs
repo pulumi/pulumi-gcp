@@ -16,14 +16,12 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
     /// * How-to Guides
-    ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+    ///   * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
     /// 
     /// &gt; **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
     /// by using the `gcp.projects.ServiceIdentity` resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Pubsub Topic Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,6 +43,9 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Example Usage
+    /// 
     /// ### Pubsub Topic Cmek
     /// 
     /// ```csharp
@@ -75,7 +76,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Topic Geo Restricted
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -99,6 +100,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Pubsub Topic Schema Settings
     /// 
     /// ```csharp
@@ -148,7 +150,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Topic Ingestion Kinesis
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -259,9 +261,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Name of the topic.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -394,9 +393,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Name of the topic.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -495,9 +491,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// Name of the topic.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

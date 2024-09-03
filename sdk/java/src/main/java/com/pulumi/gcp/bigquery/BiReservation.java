@@ -24,11 +24,9 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/BiReservation)
  * * How-to Guides
- *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+ *   * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  * 
- * ## Example Usage
- * 
- * ### Bigquery Reservation Bi Reservation Basic
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -94,16 +92,12 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
     /**
      * LOCATION_DESCRIPTION
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return LOCATION_DESCRIPTION
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

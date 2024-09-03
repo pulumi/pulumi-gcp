@@ -110,8 +110,6 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -119,8 +117,6 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -381,8 +377,6 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
          * @param name A unique name for the resource, required by GCE. Changing
          * this forces a new resource to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -394,8 +388,6 @@ public final class TargetPoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name A unique name for the resource, required by GCE. Changing
          * this forces a new resource to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 

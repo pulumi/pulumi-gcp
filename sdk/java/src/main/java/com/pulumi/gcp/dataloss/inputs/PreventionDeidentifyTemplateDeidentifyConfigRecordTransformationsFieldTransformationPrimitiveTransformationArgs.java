@@ -29,7 +29,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      * Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
      * This can be used on data of type: number, long, string, timestamp.
      * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      * @return Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
      * This can be used on data of type: number, long, string, timestamp.
      * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -86,7 +86,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      * Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
      * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
      * Currently, only string and integer values can be hashed.
-     * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+     * See &lt;https://cloud.google.com/dlp/docs/pseudonymization&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -97,7 +97,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      * @return Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
      * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
      * Currently, only string and integer values can be hashed.
-     * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+     * See &lt;https://cloud.google.com/dlp/docs/pseudonymization&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -125,7 +125,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
 
     /**
-     * Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+     * Shifts dates by random number of days, with option to be consistent for the same context. See &lt;https://cloud.google.com/dlp/docs/concepts-date-shifting&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -133,7 +133,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs> dateShiftConfig;
 
     /**
-     * @return Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+     * @return Shifts dates by random number of days, with option to be consistent for the same context. See &lt;https://cloud.google.com/dlp/docs/concepts-date-shifting&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -146,7 +146,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with &#34;10-20&#34;.
      * This can be used on data of type: double, long.
      * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -158,7 +158,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with &#34;10-20&#34;.
      * This can be used on data of type: double, long.
      * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
      * Structure is documented below.
      * 
      */
@@ -270,7 +270,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          * @param bucketingConfig Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
          * This can be used on data of type: number, long, string, timestamp.
          * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -285,7 +285,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          * @param bucketingConfig Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
          * This can be used on data of type: number, long, string, timestamp.
          * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -345,7 +345,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          * @param cryptoHashConfig Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
          * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
          * Currently, only string and integer values can be hashed.
-         * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+         * See &lt;https://cloud.google.com/dlp/docs/pseudonymization&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -360,7 +360,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          * @param cryptoHashConfig Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
          * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
          * Currently, only string and integer values can be hashed.
-         * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+         * See &lt;https://cloud.google.com/dlp/docs/pseudonymization&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -396,7 +396,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param dateShiftConfig Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+         * @param dateShiftConfig Shifts dates by random number of days, with option to be consistent for the same context. See &lt;https://cloud.google.com/dlp/docs/concepts-date-shifting&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -408,7 +408,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param dateShiftConfig Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+         * @param dateShiftConfig Shifts dates by random number of days, with option to be consistent for the same context. See &lt;https://cloud.google.com/dlp/docs/concepts-date-shifting&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -423,7 +423,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with &#34;10-20&#34;.
          * This can be used on data of type: double, long.
          * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder
@@ -439,7 +439,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with &#34;10-20&#34;.
          * This can be used on data of type: double, long.
          * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
-         * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+         * See &lt;https://cloud.google.com/dlp/docs/concepts-bucketing&gt; to learn more.
          * Structure is documented below.
          * 
          * @return builder

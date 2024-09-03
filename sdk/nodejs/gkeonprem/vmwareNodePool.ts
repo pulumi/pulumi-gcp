@@ -67,6 +67,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ## Import
  *
  * VmwareNodePool can be imported using any of these accepted formats:

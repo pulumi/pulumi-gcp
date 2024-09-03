@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
  *
- * ## Example Usage
+ * ## Example usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

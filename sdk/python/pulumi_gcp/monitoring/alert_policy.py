@@ -480,7 +480,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+          * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
 
@@ -509,6 +509,7 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Monitoring Alert Policy Evaluation Missing Data
 
         ```python
@@ -535,6 +536,7 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Monitoring Alert Policy Forecast Options
 
         ```python
@@ -563,6 +565,7 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Monitoring Alert Policy Promql Condition
 
         ```python
@@ -644,7 +647,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+          * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
 
@@ -673,6 +676,7 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Monitoring Alert Policy Evaluation Missing Data
 
         ```python
@@ -699,6 +703,7 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Monitoring Alert Policy Forecast Options
 
         ```python
@@ -727,6 +732,7 @@ class AlertPolicy(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+
         ### Monitoring Alert Policy Promql Condition
 
         ```python

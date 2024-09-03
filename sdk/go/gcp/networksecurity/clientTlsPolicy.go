@@ -11,85 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Network Security Client Tls Policy Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networksecurity.NewClientTlsPolicy(ctx, "default", &networksecurity.ClientTlsPolicyArgs{
-//				Name: pulumi.String("my-client-tls-policy"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Description: pulumi.String("my description"),
-//				Sni:         pulumi.String("secure.example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Network Security Client Tls Policy Advanced
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networksecurity.NewClientTlsPolicy(ctx, "default", &networksecurity.ClientTlsPolicyArgs{
-//				Name: pulumi.String("my-client-tls-policy"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//				Description: pulumi.String("my description"),
-//				ClientCertificate: &networksecurity.ClientTlsPolicyClientCertificateArgs{
-//					CertificateProviderInstance: &networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs{
-//						PluginInstance: pulumi.String("google_cloud_private_spiffe"),
-//					},
-//				},
-//				ServerValidationCas: networksecurity.ClientTlsPolicyServerValidationCaArray{
-//					&networksecurity.ClientTlsPolicyServerValidationCaArgs{
-//						GrpcEndpoint: &networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs{
-//							TargetUri: pulumi.String("unix:mypath"),
-//						},
-//					},
-//					&networksecurity.ClientTlsPolicyServerValidationCaArgs{
-//						GrpcEndpoint: &networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs{
-//							TargetUri: pulumi.String("unix:mypath1"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ClientTlsPolicy can be imported using any of these accepted formats:
@@ -133,8 +54,6 @@ type ClientTlsPolicy struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -203,8 +122,6 @@ type clientTlsPolicyState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -239,8 +156,6 @@ type ClientTlsPolicyState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -275,8 +190,6 @@ type clientTlsPolicyArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,8 +216,6 @@ type ClientTlsPolicyArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the ClientTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -438,8 +349,6 @@ func (o ClientTlsPolicyOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Name of the ClientTlsPolicy resource.
-//
-// ***
 func (o ClientTlsPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

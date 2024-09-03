@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
     /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/)
+    ///   * [Official Documentation](https://firebase.google.com/)
     /// 
     /// ## Example Usage
     /// 
@@ -123,9 +123,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the App.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -203,9 +200,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the App.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -257,9 +251,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the App.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

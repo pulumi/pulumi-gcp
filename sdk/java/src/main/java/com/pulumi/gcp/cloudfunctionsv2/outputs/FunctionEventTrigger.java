@@ -40,7 +40,7 @@ public final class FunctionEventTrigger {
     /**
      * @return Optional. The email of the trigger&#39;s service account. The service account
      * must have permission to invoke Cloud Run services. If empty, defaults to the
-     * Compute Engine default service account: {project_number}-compute{@literal @}developer.gserviceaccount.com.
+     * Compute Engine default service account: {project_&lt;number}-compute{@literal @}developer.gserviceaccount.com&gt;.
      * 
      */
     private @Nullable String serviceAccountEmail;
@@ -95,7 +95,7 @@ public final class FunctionEventTrigger {
     /**
      * @return Optional. The email of the trigger&#39;s service account. The service account
      * must have permission to invoke Cloud Run services. If empty, defaults to the
-     * Compute Engine default service account: {project_number}-compute{@literal @}developer.gserviceaccount.com.
+     * Compute Engine default service account: {project_&lt;number}-compute{@literal @}developer.gserviceaccount.com&gt;.
      * 
      */
     public Optional<String> serviceAccountEmail() {

@@ -25,9 +25,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
-// ## Example Usage
-//
-// ### Data Catalog Entry Basic
+// ##
 //
 // ```go
 // package main
@@ -61,7 +59,7 @@ import (
 //	}
 //
 // ```
-// ### Data Catalog Entry Fileset
+// ##
 //
 // ```go
 // package main
@@ -99,7 +97,7 @@ import (
 //	}
 //
 // ```
-// ### Data Catalog Entry Full
+// ##
 //
 // ```go
 // package main
@@ -191,7 +189,7 @@ type Entry struct {
 	pulumi.CustomResourceState
 
 	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-	// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
 	// Structure is documented below.
 	BigqueryDateShardedSpecs EntryBigqueryDateShardedSpecArrayOutput `pulumi:"bigqueryDateShardedSpecs"`
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
@@ -205,8 +203,6 @@ type Entry struct {
 	// The name of the entry group this entry is in.
 	EntryGroup pulumi.StringOutput `pulumi:"entryGroup"`
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId pulumi.StringOutput `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -226,7 +222,7 @@ type Entry struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
-	// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+	// <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
 	// for what fields this schema can contain.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -282,7 +278,7 @@ func GetEntry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Entry resources.
 type entryState struct {
 	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-	// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
 	// Structure is documented below.
 	BigqueryDateShardedSpecs []EntryBigqueryDateShardedSpec `pulumi:"bigqueryDateShardedSpecs"`
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
@@ -296,8 +292,6 @@ type entryState struct {
 	// The name of the entry group this entry is in.
 	EntryGroup *string `pulumi:"entryGroup"`
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId *string `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -317,7 +311,7 @@ type entryState struct {
 	Name *string `pulumi:"name"`
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
-	// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+	// <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
 	// for what fields this schema can contain.
 	Schema *string `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -338,7 +332,7 @@ type entryState struct {
 
 type EntryState struct {
 	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-	// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
 	// Structure is documented below.
 	BigqueryDateShardedSpecs EntryBigqueryDateShardedSpecArrayInput
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
@@ -352,8 +346,6 @@ type EntryState struct {
 	// The name of the entry group this entry is in.
 	EntryGroup pulumi.StringPtrInput
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId pulumi.StringPtrInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -373,7 +365,7 @@ type EntryState struct {
 	Name pulumi.StringPtrInput
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
-	// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+	// <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
 	// for what fields this schema can contain.
 	Schema pulumi.StringPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -405,8 +397,6 @@ type entryArgs struct {
 	// The name of the entry group this entry is in.
 	EntryGroup string `pulumi:"entryGroup"`
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId string `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -420,7 +410,7 @@ type entryArgs struct {
 	LinkedResource *string `pulumi:"linkedResource"`
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
-	// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+	// <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
 	// for what fields this schema can contain.
 	Schema *string `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -449,8 +439,6 @@ type EntryArgs struct {
 	// The name of the entry group this entry is in.
 	EntryGroup pulumi.StringInput
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId pulumi.StringInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -464,7 +452,7 @@ type EntryArgs struct {
 	LinkedResource pulumi.StringPtrInput
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
-	// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+	// <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
 	// for what fields this schema can contain.
 	Schema pulumi.StringPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -571,7 +559,7 @@ func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 }
 
 // Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+// Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
 // Structure is documented below.
 func (o EntryOutput) BigqueryDateShardedSpecs() EntryBigqueryDateShardedSpecArrayOutput {
 	return o.ApplyT(func(v *Entry) EntryBigqueryDateShardedSpecArrayOutput { return v.BigqueryDateShardedSpecs }).(EntryBigqueryDateShardedSpecArrayOutput)
@@ -600,8 +588,6 @@ func (o EntryOutput) EntryGroup() pulumi.StringOutput {
 }
 
 // The id of the entry to create.
-//
-// ***
 func (o EntryOutput) EntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryId }).(pulumi.StringOutput)
 }
@@ -636,7 +622,7 @@ func (o EntryOutput) Name() pulumi.StringOutput {
 
 // Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 // attached to it. See
-// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+// <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
 // for what fields this schema can contain.
 func (o EntryOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringPtrOutput { return v.Schema }).(pulumi.StringPtrOutput)

@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
     {
         /// <summary>
         /// The memory to provision for the cluster in bytes. The value must be between 1 GiB and 8 GiB per vCPU. Ex. 1024Mi, 4Gi.
-        /// 
-        /// - - -
         /// </summary>
         [Input("memoryBytes", required: true)]
         public Input<string> MemoryBytes { get; set; } = null!;

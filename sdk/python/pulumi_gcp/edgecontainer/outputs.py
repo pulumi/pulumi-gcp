@@ -89,8 +89,6 @@ class ClusterAuthorizationAdminUsers(dict):
                  username: str):
         """
         :param str username: An active Google username.
-               
-               - - -
         """
         pulumi.set(__self__, "username", username)
 
@@ -99,8 +97,6 @@ class ClusterAuthorizationAdminUsers(dict):
     def username(self) -> str:
         """
         An active Google username.
-
-        - - -
         """
         return pulumi.get(self, "username")
 
@@ -189,7 +185,6 @@ class ClusterControlPlaneEncryption(dict):
                If populated, this field contains the error status reported by Cloud KMS.
                Structure is documented below.
                
-               
                <a name="nested_kms_status"></a>The `kms_status` block contains:
         """
         if kms_key is not None:
@@ -243,7 +238,6 @@ class ClusterControlPlaneEncryption(dict):
         populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
         If populated, this field contains the error status reported by Cloud KMS.
         Structure is documented below.
-
 
         <a name="nested_kms_status"></a>The `kms_status` block contains:
         """
@@ -812,7 +806,7 @@ class ClusterMaintenancePolicyWindowRecurringWindow(dict):
                  recurrence: Optional[str] = None,
                  window: Optional['outputs.ClusterMaintenancePolicyWindowRecurringWindowWindow'] = None):
         """
-        :param str recurrence: An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        :param str recurrence: An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
                this window recurs. They go on for the span of time between the start and
                end time.
         :param 'ClusterMaintenancePolicyWindowRecurringWindowWindowArgs' window: Represents an arbitrary window of time.
@@ -827,7 +821,7 @@ class ClusterMaintenancePolicyWindowRecurringWindow(dict):
     @pulumi.getter
     def recurrence(self) -> Optional[str]:
         """
-        An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        An RRULE (<https://tools.ietf.org/html/rfc5545#section-3.8.5.3>) for how
         this window recurs. They go on for the span of time between the start and
         end time.
         """

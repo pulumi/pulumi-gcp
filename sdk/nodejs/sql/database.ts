@@ -8,15 +8,12 @@ import * as utilities from "../utilities";
  * Represents a SQL database inside the Cloud SQL instance, hosted in
  * Google's cloud.
  *
- * ## Example Usage
- *
- * ### Sql Database Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "my-database-instance",
  *     region: "us-central1",
@@ -31,13 +28,12 @@ import * as utilities from "../utilities";
  *     instance: instance.name,
  * });
  * ```
- * ### Sql Database Deletion Policy
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "my-database-instance",
  *     region: "us-central1",
@@ -144,9 +140,6 @@ export class Database extends pulumi.CustomResource {
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -232,9 +225,6 @@ export interface DatabaseState {
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -283,9 +273,6 @@ export interface DatabaseArgs {
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

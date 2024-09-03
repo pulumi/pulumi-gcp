@@ -31,11 +31,9 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+    ///   * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Storage Bucket Access Control Public Bucket
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -105,14 +103,11 @@ namespace Pulumi.Gcp.Storage
         /// allUsers
         /// allAuthenticatedUsers
         /// Examples:
-        /// The user liz@example.com would be user-liz@example.com.
-        /// The group example@googlegroups.com would be
-        /// group-example@googlegroups.com.
+        /// The user &lt;liz@example.com&gt; would be &lt;user-liz@example.com&gt;.
+        /// The group &lt;example@googlegroups.com&gt; would be
+        /// &lt;group-example@googlegroups.com&gt;.
         /// To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entity")]
         public Output<string> Entity { get; private set; } = null!;
@@ -187,14 +182,11 @@ namespace Pulumi.Gcp.Storage
         /// allUsers
         /// allAuthenticatedUsers
         /// Examples:
-        /// The user liz@example.com would be user-liz@example.com.
-        /// The group example@googlegroups.com would be
-        /// group-example@googlegroups.com.
+        /// The user &lt;liz@example.com&gt; would be &lt;user-liz@example.com&gt;.
+        /// The group &lt;example@googlegroups.com&gt; would be
+        /// &lt;group-example@googlegroups.com&gt;.
         /// To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
@@ -243,14 +235,11 @@ namespace Pulumi.Gcp.Storage
         /// allUsers
         /// allAuthenticatedUsers
         /// Examples:
-        /// The user liz@example.com would be user-liz@example.com.
-        /// The group example@googlegroups.com would be
-        /// group-example@googlegroups.com.
+        /// The user &lt;liz@example.com&gt; would be &lt;user-liz@example.com&gt;.
+        /// The group &lt;example@googlegroups.com&gt; would be
+        /// &lt;group-example@googlegroups.com&gt;.
         /// To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entity")]
         public Input<string>? Entity { get; set; }

@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
     /**
      * @return Specifies the mechanism to be used to restore this volume data.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy&gt;
      * for more information on each policy option.
      * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
      * 
@@ -29,7 +29,7 @@ public final class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
     private RestorePlanRestoreConfigVolumeDataRestorePolicyBinding() {}
     /**
      * @return Specifies the mechanism to be used to restore this volume data.
-     * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+     * See &lt;https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy&gt;
      * for more information on each policy option.
      * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
      * 

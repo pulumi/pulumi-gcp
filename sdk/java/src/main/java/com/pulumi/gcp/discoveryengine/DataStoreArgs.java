@@ -58,16 +58,12 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The unique id of the data store.
      * 
-     * ***
-     * 
      */
     @Import(name="dataStoreId", required=true)
     private Output<String> dataStoreId;
 
     /**
      * @return The unique id of the data store.
-     * 
-     * ***
      * 
      */
     public Output<String> dataStoreId() {
@@ -287,8 +283,6 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataStoreId The unique id of the data store.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -299,8 +293,6 @@ public final class DataStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataStoreId The unique id of the data store.
-         * 
-         * ***
          * 
          * @return builder
          * 

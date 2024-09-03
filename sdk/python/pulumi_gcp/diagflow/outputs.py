@@ -516,8 +516,6 @@ class CxEntityTypeEntity(dict):
         """
         :param Sequence[str] synonyms: A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
                For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-               
-               - - -
         :param str value: The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
                For KIND_MAP entity types: A canonical value to be used in place of synonyms.
                For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
@@ -533,8 +531,6 @@ class CxEntityTypeEntity(dict):
         """
         A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
         For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-
-        - - -
         """
         return pulumi.get(self, "synonyms")
 
@@ -574,8 +570,6 @@ class CxEnvironmentVersionConfig(dict):
                  version: str):
         """
         :param str version: Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-               
-               - - -
         """
         pulumi.set(__self__, "version", version)
 
@@ -584,8 +578,6 @@ class CxEnvironmentVersionConfig(dict):
     def version(self) -> str:
         """
         Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-
-        - - -
         """
         return pulumi.get(self, "version")
 

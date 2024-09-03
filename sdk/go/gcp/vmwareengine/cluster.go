@@ -82,6 +82,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vmware Engine Cluster Full
 //
 // ```go
@@ -165,15 +166,13 @@ type Cluster struct {
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolOutput `pulumi:"management"`
 	// The ID of the Cluster.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs ClusterNodeTypeConfigArrayOutput `pulumi:"nodeTypeConfigs"`
 	// The resource name of the private cloud to create a new cluster in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// State of the Cluster.
@@ -219,15 +218,13 @@ type clusterState struct {
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management *bool `pulumi:"management"`
 	// The ID of the Cluster.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs []ClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
 	// The resource name of the private cloud to create a new cluster in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent *string `pulumi:"parent"`
 	// State of the Cluster.
@@ -241,15 +238,13 @@ type ClusterState struct {
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolPtrInput
 	// The ID of the Cluster.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs ClusterNodeTypeConfigArrayInput
 	// The resource name of the private cloud to create a new cluster in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent pulumi.StringPtrInput
 	// State of the Cluster.
@@ -264,15 +259,13 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// The ID of the Cluster.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs []ClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
 	// The resource name of the private cloud to create a new cluster in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent string `pulumi:"parent"`
 }
@@ -280,15 +273,13 @@ type clusterArgs struct {
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// The ID of the Cluster.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	// Structure is documented below.
 	NodeTypeConfigs ClusterNodeTypeConfigArrayInput
 	// The resource name of the private cloud to create a new cluster in.
-	// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+	// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 	// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 	Parent pulumi.StringInput
 }
@@ -387,8 +378,6 @@ func (o ClusterOutput) Management() pulumi.BoolOutput {
 }
 
 // The ID of the Cluster.
-//
-// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -401,7 +390,7 @@ func (o ClusterOutput) NodeTypeConfigs() ClusterNodeTypeConfigArrayOutput {
 }
 
 // The resource name of the private cloud to create a new cluster in.
-// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+// Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
 // For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
 func (o ClusterOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Connect to a Bitbucket Server host](https://cloud.google.com/build/docs/automating-builds/bitbucket/connect-host-bitbucket-server)
 //
-// ## Example Usage
-//
-// ### Cloudbuild Bitbucket Server Config
+// ##
 //
 // ```go
 // package main
@@ -56,6 +54,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Cloudbuild Bitbucket Server Config Repositories
 //
 // ```go
@@ -100,7 +101,7 @@ import (
 //	}
 //
 // ```
-// ### Cloudbuild Bitbucket Server Config Peered Network
+// ##
 //
 // ```go
 // package main

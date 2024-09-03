@@ -19,16 +19,12 @@ public final class OauthIdpConfigState extends com.pulumi.resources.ResourceArgs
     /**
      * The client id of an OAuth client.
      * 
-     * ***
-     * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
      * @return The client id of an OAuth client.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -160,8 +156,6 @@ public final class OauthIdpConfigState extends com.pulumi.resources.ResourceArgs
         /**
          * @param clientId The client id of an OAuth client.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -172,8 +166,6 @@ public final class OauthIdpConfigState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param clientId The client id of an OAuth client.
-         * 
-         * ***
          * 
          * @return builder
          * 

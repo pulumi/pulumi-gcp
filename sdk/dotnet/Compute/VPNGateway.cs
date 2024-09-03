@@ -20,9 +20,7 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Warning:** Classic VPN is deprecating certain functionality on October 31, 2021. For more information,
     /// see the [Classic VPN partial deprecation page](https://cloud.google.com/network-connectivity/docs/vpn/deprecations/classic-vpn-deprecation).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Target Vpn Gateway Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -167,9 +165,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -259,9 +254,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -319,9 +311,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network this VPN gateway is accepting traffic for.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

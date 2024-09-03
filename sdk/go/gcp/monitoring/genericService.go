@@ -25,9 +25,7 @@ import (
 //   - [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
 //   - [Service-orientation on Wikipedia](https://en.wikipedia.org/wiki/Service-orientation)
 //
-// ## Example Usage
-//
-// ### Monitoring Service Example
+// ##
 //
 // ```go
 // package main
@@ -92,7 +90,7 @@ type GenericService struct {
 
 	// A well-known service type, defined by its service type and service labels.
 	// Valid values of service types and services labels are described at
-	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+	// <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrOutput `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
@@ -105,8 +103,6 @@ type GenericService struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	// Structure is documented below.
@@ -155,7 +151,7 @@ func GetGenericService(ctx *pulumi.Context,
 type genericServiceState struct {
 	// A well-known service type, defined by its service type and service labels.
 	// Valid values of service types and services labels are described at
-	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+	// <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
 	// Structure is documented below.
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
@@ -168,8 +164,6 @@ type genericServiceState struct {
 	Project *string `pulumi:"project"`
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	// Structure is documented below.
@@ -186,7 +180,7 @@ type genericServiceState struct {
 type GenericServiceState struct {
 	// A well-known service type, defined by its service type and service labels.
 	// Valid values of service types and services labels are described at
-	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+	// <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrInput
 	// Name used for UI elements listing this Service.
@@ -199,8 +193,6 @@ type GenericServiceState struct {
 	Project pulumi.StringPtrInput
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
 	// Structure is documented below.
@@ -221,7 +213,7 @@ func (GenericServiceState) ElementType() reflect.Type {
 type genericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
 	// Valid values of service types and services labels are described at
-	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+	// <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
 	// Structure is documented below.
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
@@ -231,8 +223,6 @@ type genericServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -247,7 +237,7 @@ type genericServiceArgs struct {
 type GenericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
 	// Valid values of service types and services labels are described at
-	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+	// <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrInput
 	// Name used for UI elements listing this Service.
@@ -257,8 +247,6 @@ type GenericServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -358,7 +346,7 @@ func (o GenericServiceOutput) ToGenericServiceOutputWithContext(ctx context.Cont
 
 // A well-known service type, defined by its service type and service labels.
 // Valid values of service types and services labels are described at
-// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
+// <https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli>
 // Structure is documented below.
 func (o GenericServiceOutput) BasicService() GenericServiceBasicServicePtrOutput {
 	return o.ApplyT(func(v *GenericService) GenericServiceBasicServicePtrOutput { return v.BasicService }).(GenericServiceBasicServicePtrOutput)
@@ -383,8 +371,6 @@ func (o GenericServiceOutput) Project() pulumi.StringOutput {
 
 // An optional service ID to use. If not given, the server will generate a
 // service ID.
-//
-// ***
 func (o GenericServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

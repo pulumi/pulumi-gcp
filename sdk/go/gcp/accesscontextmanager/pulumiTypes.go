@@ -1713,7 +1713,7 @@ func (o AccessLevelConditionVpcNetworkSourceVpcSubnetworkPtrOutput) VpcIpSubnetw
 type AccessLevelCustom struct {
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Expr AccessLevelCustomExpr `pulumi:"expr"`
 }
@@ -1732,7 +1732,7 @@ type AccessLevelCustomInput interface {
 type AccessLevelCustomArgs struct {
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Expr AccessLevelCustomExprInput `pulumi:"expr"`
 }
@@ -1816,7 +1816,7 @@ func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutputWithContext(ctx con
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 // Structure is documented below.
 func (o AccessLevelCustomOutput) Expr() AccessLevelCustomExprOutput {
 	return o.ApplyT(func(v AccessLevelCustom) AccessLevelCustomExpr { return v.Expr }).(AccessLevelCustomExprOutput)
@@ -1848,7 +1848,7 @@ func (o AccessLevelCustomPtrOutput) Elem() AccessLevelCustomOutput {
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 // Structure is documented below.
 func (o AccessLevelCustomPtrOutput) Expr() AccessLevelCustomExprPtrOutput {
 	return o.ApplyT(func(v *AccessLevelCustom) *AccessLevelCustomExpr {
@@ -2058,7 +2058,7 @@ type AccessLevelsAccessLevel struct {
 	// Structure is documented below.
 	Basic *AccessLevelsAccessLevelBasic `pulumi:"basic"`
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.
+	// See CEL spec at: <https://github.com/google/cel-spec>.
 	// Structure is documented below.
 	Custom *AccessLevelsAccessLevelCustom `pulumi:"custom"`
 	// Description of the AccessLevel and its use. Does not affect behavior.
@@ -2087,7 +2087,7 @@ type AccessLevelsAccessLevelArgs struct {
 	// Structure is documented below.
 	Basic AccessLevelsAccessLevelBasicPtrInput `pulumi:"basic"`
 	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-	// See CEL spec at: https://github.com/google/cel-spec.
+	// See CEL spec at: <https://github.com/google/cel-spec>.
 	// Structure is documented below.
 	Custom AccessLevelsAccessLevelCustomPtrInput `pulumi:"custom"`
 	// Description of the AccessLevel and its use. Does not affect behavior.
@@ -2158,7 +2158,7 @@ func (o AccessLevelsAccessLevelOutput) Basic() AccessLevelsAccessLevelBasicPtrOu
 }
 
 // Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-// See CEL spec at: https://github.com/google/cel-spec.
+// See CEL spec at: <https://github.com/google/cel-spec>.
 // Structure is documented below.
 func (o AccessLevelsAccessLevelOutput) Custom() AccessLevelsAccessLevelCustomPtrOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevel) *AccessLevelsAccessLevelCustom { return v.Custom }).(AccessLevelsAccessLevelCustomPtrOutput)
@@ -3263,7 +3263,7 @@ func (o AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOut
 type AccessLevelsAccessLevelCustom struct {
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Expr AccessLevelsAccessLevelCustomExpr `pulumi:"expr"`
 }
@@ -3282,7 +3282,7 @@ type AccessLevelsAccessLevelCustomInput interface {
 type AccessLevelsAccessLevelCustomArgs struct {
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 	// Structure is documented below.
 	Expr AccessLevelsAccessLevelCustomExprInput `pulumi:"expr"`
 }
@@ -3366,7 +3366,7 @@ func (o AccessLevelsAccessLevelCustomOutput) ToAccessLevelsAccessLevelCustomPtrO
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 // Structure is documented below.
 func (o AccessLevelsAccessLevelCustomOutput) Expr() AccessLevelsAccessLevelCustomExprOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevelCustom) AccessLevelsAccessLevelCustomExpr { return v.Expr }).(AccessLevelsAccessLevelCustomExprOutput)
@@ -3398,7 +3398,7 @@ func (o AccessLevelsAccessLevelCustomPtrOutput) Elem() AccessLevelsAccessLevelCu
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// custom access levels - <https://cloud.google.com/access-context-manager/docs/custom-access-level-spec>.
 // Structure is documented below.
 func (o AccessLevelsAccessLevelCustomPtrOutput) Expr() AccessLevelsAccessLevelCustomExprPtrOutput {
 	return o.ApplyT(func(v *AccessLevelsAccessLevelCustom) *AccessLevelsAccessLevelCustomExpr {

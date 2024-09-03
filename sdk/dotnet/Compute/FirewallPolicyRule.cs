@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic_fir_sec_rule
+    /// ### basic_fir_sec_rule
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

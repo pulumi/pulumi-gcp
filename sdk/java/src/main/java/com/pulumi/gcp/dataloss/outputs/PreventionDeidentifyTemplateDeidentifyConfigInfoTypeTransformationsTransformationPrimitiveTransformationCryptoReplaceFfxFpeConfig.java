@@ -24,14 +24,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     /**
      * @return The &#39;tweak&#39;, a context may be used for higher security since the same identifier in two different contexts won&#39;t be given the same surrogate. If the context is not set, a default tweak will be used.
      * If the context is set but:
-     * 1.  there is no record present when transforming a given value or
-     * 2.  the field is not present when transforming a given value,
-     *     a default tweak will be used.
-     *     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-     *     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-     * *   a 64 bit integer is encoded followed by a single byte of value 1
-     * *   a string is encoded in UTF-8 format followed by a single byte of value 2
-     *     Structure is documented below.
+     * 1. there is no record present when transforming a given value or
+     * 2. the field is not present when transforming a given value,
+     *    a default tweak will be used.
+     *    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+     *    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+     * * a 64 bit integer is encoded followed by a single byte of value 1
+     * * a string is encoded in UTF-8 format followed by a single byte of value 2
+     *   Structure is documented below.
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext context;
@@ -74,14 +74,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     /**
      * @return The &#39;tweak&#39;, a context may be used for higher security since the same identifier in two different contexts won&#39;t be given the same surrogate. If the context is not set, a default tweak will be used.
      * If the context is set but:
-     * 1.  there is no record present when transforming a given value or
-     * 2.  the field is not present when transforming a given value,
-     *     a default tweak will be used.
-     *     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-     *     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-     * *   a 64 bit integer is encoded followed by a single byte of value 1
-     * *   a string is encoded in UTF-8 format followed by a single byte of value 2
-     *     Structure is documented below.
+     * 1. there is no record present when transforming a given value or
+     * 2. the field is not present when transforming a given value,
+     *    a default tweak will be used.
+     *    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+     *    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+     * * a 64 bit integer is encoded followed by a single byte of value 1
+     * * a string is encoded in UTF-8 format followed by a single byte of value 2
+     *   Structure is documented below.
      * 
      */
     public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext> context() {

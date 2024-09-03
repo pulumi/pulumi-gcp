@@ -216,8 +216,6 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * Name or self link of a machine
      * image to create the instance based on.
-     *
-     * - - -
      */
     public readonly sourceMachineImage!: pulumi.Output<string>;
     /**
@@ -507,8 +505,6 @@ export interface InstanceFromMachineImageState {
     /**
      * Name or self link of a machine
      * image to create the instance based on.
-     *
-     * - - -
      */
     sourceMachineImage?: pulumi.Input<string>;
     /**
@@ -648,8 +644,6 @@ export interface InstanceFromMachineImageArgs {
     /**
      * Name or self link of a machine
      * image to create the instance based on.
-     *
-     * - - -
      */
     sourceMachineImage: pulumi.Input<string>;
     /**

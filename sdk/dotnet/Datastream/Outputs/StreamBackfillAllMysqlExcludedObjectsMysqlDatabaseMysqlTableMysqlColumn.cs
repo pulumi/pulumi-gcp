@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         public readonly string? Column;
         /// <summary>
         /// The MySQL data type. Full data types list can be found here:
-        /// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
+        /// &lt;https://dev.mysql.com/doc/refman/8.0/en/data-types.html&gt;
         /// </summary>
         public readonly string? DataType;
         /// <summary>

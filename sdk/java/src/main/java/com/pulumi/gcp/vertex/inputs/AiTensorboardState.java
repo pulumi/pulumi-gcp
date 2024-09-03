@@ -65,16 +65,12 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
     /**
      * User provided name of this Tensorboard.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return User provided name of this Tensorboard.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -330,8 +326,6 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param displayName User provided name of this Tensorboard.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -342,8 +336,6 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param displayName User provided name of this Tensorboard.
-         * 
-         * ***
          * 
          * @return builder
          * 

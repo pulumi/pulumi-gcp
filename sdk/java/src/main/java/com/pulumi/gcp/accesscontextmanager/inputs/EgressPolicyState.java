@@ -18,16 +18,12 @@ public final class EgressPolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
-     * ***
-     * 
      */
     @Import(name="egressPolicyName")
     private @Nullable Output<String> egressPolicyName;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> egressPolicyName() {
@@ -77,8 +73,6 @@ public final class EgressPolicyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param egressPolicyName The name of the Service Perimeter to add this resource to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -89,8 +83,6 @@ public final class EgressPolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param egressPolicyName The name of the Service Perimeter to add this resource to.
-         * 
-         * ***
          * 
          * @return builder
          * 

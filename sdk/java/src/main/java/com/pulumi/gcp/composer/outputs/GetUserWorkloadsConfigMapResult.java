@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class GetUserWorkloadsConfigMapResult {
     /**
      * @return The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
      * 
      */
     private Map<String,String> data;
@@ -32,7 +32,7 @@ public final class GetUserWorkloadsConfigMapResult {
     private GetUserWorkloadsConfigMapResult() {}
     /**
      * @return The &#34;data&#34; field of Kubernetes ConfigMap, organized in key-value pairs.
-     * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
+     * For details see: &lt;https://kubernetes.io/docs/concepts/configuration/configmap/&gt;
      * 
      */
     public Map<String,String> data() {

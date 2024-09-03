@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
- *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ *   * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
- * ## Example Usage
- *
- * ### Router Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Compute Router Encrypted Interconnect
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -152,9 +150,6 @@ export class Router extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * A reference to the network to which this router belongs.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -246,9 +241,6 @@ export interface RouterState {
     name?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -295,9 +287,6 @@ export interface RouterArgs {
     name?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

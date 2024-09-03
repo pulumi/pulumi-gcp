@@ -118,16 +118,12 @@ public final class VolumeReplicationArgs extends com.pulumi.resources.ResourceAr
     /**
      * The name of the replication. Needs to be unique per location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the replication. Needs to be unique per location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -377,8 +373,6 @@ public final class VolumeReplicationArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param name The name of the replication. Needs to be unique per location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -389,8 +383,6 @@ public final class VolumeReplicationArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The name of the replication. Needs to be unique per location.
-         * 
-         * ***
          * 
          * @return builder
          * 

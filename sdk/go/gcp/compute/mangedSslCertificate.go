@@ -37,9 +37,7 @@ import (
 //
 // In conclusion: Be extremely cautious.
 //
-// ## Example Usage
-//
-// ### Managed Ssl Certificate Basic
+// ##
 //
 // ```go
 // package main

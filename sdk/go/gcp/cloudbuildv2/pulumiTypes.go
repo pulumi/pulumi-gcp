@@ -2012,7 +2012,7 @@ type ConnectionGitlabConfig struct {
 	// Required. A GitLab personal access token with the `api` scope access.
 	// Structure is documented below.
 	AuthorizerCredential ConnectionGitlabConfigAuthorizerCredential `pulumi:"authorizerCredential"`
-	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
 	HostUri *string `pulumi:"hostUri"`
 	// Required. A GitLab personal access token with the minimum `readApi` scope access.
 	// Structure is documented below.
@@ -2044,7 +2044,7 @@ type ConnectionGitlabConfigArgs struct {
 	// Required. A GitLab personal access token with the `api` scope access.
 	// Structure is documented below.
 	AuthorizerCredential ConnectionGitlabConfigAuthorizerCredentialInput `pulumi:"authorizerCredential"`
-	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
 	HostUri pulumi.StringPtrInput `pulumi:"hostUri"`
 	// Required. A GitLab personal access token with the minimum `readApi` scope access.
 	// Structure is documented below.
@@ -2146,7 +2146,7 @@ func (o ConnectionGitlabConfigOutput) AuthorizerCredential() ConnectionGitlabCon
 	}).(ConnectionGitlabConfigAuthorizerCredentialOutput)
 }
 
-// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
 func (o ConnectionGitlabConfigOutput) HostUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfig) *string { return v.HostUri }).(pulumi.StringPtrOutput)
 }
@@ -2218,7 +2218,7 @@ func (o ConnectionGitlabConfigPtrOutput) AuthorizerCredential() ConnectionGitlab
 	}).(ConnectionGitlabConfigAuthorizerCredentialPtrOutput)
 }
 
-// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
 func (o ConnectionGitlabConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfig) *string {
 		if v == nil {

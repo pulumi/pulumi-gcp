@@ -91,14 +91,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+     * @return ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
      * 
      */
     public Output<String> location() {
@@ -252,7 +252,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+         * @param location ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+         * @param location ID of the location of the Kafka resource. See &lt;https://cloud.google.com/managed-kafka/docs/locations&gt; for a list of supported locations.
          * 
          * @return builder
          * 

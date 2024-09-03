@@ -38,8 +38,6 @@ export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions):
 export interface GetFunctionArgs {
     /**
      * The name of a Cloud Function.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -178,8 +176,6 @@ export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.Inv
 export interface GetFunctionOutputArgs {
     /**
      * The name of a Cloud Function.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
  * * How-to Guides
- *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+ *   * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billing_project` and set `user_project_override` to true
@@ -126,7 +126,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
     }
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.
+     * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
      * Structure is documented below.
      * 
      */
@@ -135,7 +135,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.
+     * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
      * Structure is documented below.
      * 
      */
@@ -161,8 +161,6 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -171,8 +169,6 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * @return Resource name for the Access Level. The short_name component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

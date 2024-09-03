@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Database Instance Full
     /// 
     /// ```csharp
@@ -52,6 +53,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// 
     /// ### Firebase Database Instance Default Database
     /// 
     /// ```csharp
@@ -150,9 +152,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The globally unique identifier of the Firebase Realtime Database instance.
         /// Instance IDs cannot be reused after deletion.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -190,7 +189,7 @@ namespace Pulumi.Gcp.Firebase
         /// The database type.
         /// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
         /// Creating user Databases is only available for projects on the Blaze plan.
-        /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+        /// Projects can be upgraded using the Cloud Billing API &lt;https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo&gt;.
         /// Default value is `USER_DATABASE`.
         /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         /// </summary>
@@ -252,9 +251,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The globally unique identifier of the Firebase Realtime Database instance.
         /// Instance IDs cannot be reused after deletion.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -277,7 +273,7 @@ namespace Pulumi.Gcp.Firebase
         /// The database type.
         /// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
         /// Creating user Databases is only available for projects on the Blaze plan.
-        /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+        /// Projects can be upgraded using the Cloud Billing API &lt;https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo&gt;.
         /// Default value is `USER_DATABASE`.
         /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         /// </summary>
@@ -308,9 +304,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The globally unique identifier of the Firebase Realtime Database instance.
         /// Instance IDs cannot be reused after deletion.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -348,7 +341,7 @@ namespace Pulumi.Gcp.Firebase
         /// The database type.
         /// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
         /// Creating user Databases is only available for projects on the Blaze plan.
-        /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
+        /// Projects can be upgraded using the Cloud Billing API &lt;https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo&gt;.
         /// Default value is `USER_DATABASE`.
         /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         /// </summary>

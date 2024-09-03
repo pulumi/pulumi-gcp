@@ -117,16 +117,12 @@ public final class KmsconfigState extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the CMEK policy.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the CMEK policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -352,8 +348,6 @@ public final class KmsconfigState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of the CMEK policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -364,8 +358,6 @@ public final class KmsconfigState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the CMEK policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

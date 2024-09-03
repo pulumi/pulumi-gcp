@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Project Access Approval Active Key Version
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
  *
- * ## Example Usage
- *
- * ### Vmware Engine Network Standard
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +26,9 @@ import * as utilities from "../utilities";
  *     description: "VMwareEngine standard network sample",
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Vmware Engine Network Legacy
  *
  * ```typescript
@@ -123,9 +124,6 @@ export class Network extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The ID of the VMwareEngineNetwork.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -210,9 +208,6 @@ export interface NetworkState {
     location?: pulumi.Input<string>;
     /**
      * The ID of the VMwareEngineNetwork.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -255,9 +250,6 @@ export interface NetworkArgs {
     location: pulumi.Input<string>;
     /**
      * The ID of the VMwareEngineNetwork.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -14,11 +14,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs)
  * * How-to Guides
- *     * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
+ *   * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
  *
- * ## Example Usage
- *
- * ### Bigquery Job Query
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Job Query Table Reference
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -93,7 +91,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Job Load
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -132,6 +130,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Bigquery Job Load Geojson
  *
  * ```typescript
@@ -183,7 +184,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [object],
  * });
  * ```
- * ### Bigquery Job Load Parquet
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -236,6 +237,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Bigquery Job Copy
  *
  * ```typescript
@@ -356,7 +358,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [encryptRole],
  * });
  * ```
- * ### Bigquery Job Extract
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        /// The Compute Engine metadata entries to add to all instances (see (&lt;https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata))&gt;.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+        /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default`*`default`
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        /// The (&lt;https://cloud.google.com/compute/docs/access/service-accounts#default_service_account&gt;) is used.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _serviceAccountScopes;
 
         /// <summary>
-        /// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        /// The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * &lt;https://www.googleapis.com/auth/cloud.useraccounts.readonly&gt; * &lt;https://www.googleapis.com/auth/devstorage.read_write&gt; * &lt;https://www.googleapis.com/auth/logging.write&gt; If no scopes are specified, the following defaults are also provided: * &lt;https://www.googleapis.com/auth/bigquery&gt; * &lt;https://www.googleapis.com/auth/bigtable.admin.table&gt; * &lt;https://www.googleapis.com/auth/bigtable.data&gt; * &lt;https://www.googleapis.com/auth/devstorage.full_control&gt;
         /// </summary>
         public InputList<string> ServiceAccountScopes
         {
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// The Compute Engine tags to add to all instances (see (&lt;https://cloud.google.com/compute/docs/label-or-tag-resources#tags))&gt;.
         /// </summary>
         public InputList<string> Tags
         {

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// ## Example Usage
         /// 
-        /// ### Searching For All Projects In An Org
+        /// ### searching for all projects in an org
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.CloudAsset
         /// });
         /// ```
         /// 
-        /// ### Searching For All Projects With CloudBuild API Enabled
+        /// ### searching for all projects with CloudBuild API enabled
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.CloudAsset
         /// });
         /// ```
         /// 
-        /// ### Searching For All Service Accounts In A Project
+        /// ### searching for all Service Accounts in a project
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.CloudAsset
         /// 
         /// ## Example Usage
         /// 
-        /// ### Searching For All Projects In An Org
+        /// ### searching for all projects in an org
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.CloudAsset
         /// });
         /// ```
         /// 
-        /// ### Searching For All Projects With CloudBuild API Enabled
+        /// ### searching for all projects with CloudBuild API enabled
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.CloudAsset
         /// });
         /// ```
         /// 
-        /// ### Searching For All Service Accounts In A Project
+        /// ### searching for all Service Accounts in a project
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

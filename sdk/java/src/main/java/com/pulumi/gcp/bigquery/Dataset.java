@@ -24,61 +24,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Bigquery Dataset Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.bigquery.Dataset;
- * import com.pulumi.gcp.bigquery.DatasetArgs;
- * import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var bqowner = new Account("bqowner", AccountArgs.builder()
- *             .accountId("bqowner")
- *             .build());
- * 
- *         var dataset = new Dataset("dataset", DatasetArgs.builder()
- *             .datasetId("example_dataset")
- *             .friendlyName("test")
- *             .description("This is a test description")
- *             .location("EU")
- *             .defaultTableExpirationMs(3600000)
- *             .labels(Map.of("env", "default"))
- *             .accesses(            
- *                 DatasetAccessArgs.builder()
- *                     .role("OWNER")
- *                     .userByEmail(bqowner.email())
- *                     .build(),
- *                 DatasetAccessArgs.builder()
- *                     .role("READER")
- *                     .domain("hashicorp.com")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquery Dataset Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -135,7 +80,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Dataset Authorized Dataset
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -219,6 +164,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquery Dataset Authorized Routine
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -304,6 +250,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Bigquery Dataset External Reference Aws
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -411,8 +358,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
      * 
-     * ***
-     * 
      */
     @Export(name="datasetId", refs={String.class}, tree="[0]")
     private Output<String> datasetId;
@@ -421,8 +366,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * @return A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> datasetId() {

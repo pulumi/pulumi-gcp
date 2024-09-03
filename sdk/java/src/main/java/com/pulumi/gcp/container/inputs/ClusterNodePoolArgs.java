@@ -128,8 +128,6 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      * The name of the cluster, unique within the project and
      * location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -137,8 +135,6 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The name of the cluster, unique within the project and
      * location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -501,8 +497,6 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * @param name The name of the cluster, unique within the project and
          * location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -514,8 +508,6 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name The name of the cluster, unique within the project and
          * location.
-         * 
-         * ***
          * 
          * @return builder
          * 

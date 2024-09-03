@@ -33,13 +33,13 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don&#39;t** support this identity.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don&#39;t** support this identity.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -47,13 +47,13 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
     private List<String> members;
 
     /**
-     * @return An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+     * @return An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
      * Each entry can have one of the following values:
      * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don&#39;t** support this identity.
      * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don&#39;t** support this identity.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt;.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
@@ -118,13 +118,13 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param members An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * @param members An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
          * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don&#39;t** support this identity.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don&#39;t** support this identity.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt;.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          * 
          * @return builder
@@ -136,13 +136,13 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param members An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+         * @param members An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see &lt;https://cloud.google.com/billing/reference/rest/v1/Policy#Binding&gt;
          * Each entry can have one of the following values:
          * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don&#39;t** support this identity.
          * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don&#39;t** support this identity.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, &lt;alice{@literal @}gmail.com&gt;.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, &lt;my-other-app{@literal @}appspot.gserviceaccount.com&gt;.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, &lt;admins{@literal @}example.com&gt;.
          * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          * 
          * @return builder

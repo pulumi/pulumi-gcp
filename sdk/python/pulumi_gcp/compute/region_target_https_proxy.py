@@ -32,9 +32,6 @@ class RegionTargetHttpsProxyArgs:
         The set of arguments for constructing a RegionTargetHttpsProxy resource.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
                sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
@@ -94,9 +91,6 @@ class RegionTargetHttpsProxyArgs:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the RegionBackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -283,9 +277,6 @@ class _RegionTargetHttpsProxyState:
                resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
-               
-               
-               - - -
         """
         if certificate_manager_certificates is not None:
             pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
@@ -476,9 +467,6 @@ class _RegionTargetHttpsProxyState:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the RegionBackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -510,11 +498,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Region Target Https Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -562,7 +548,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
-        ### Region Target Https Proxy Mtls
+        ## 
 
         ```python
         import pulumi
@@ -639,7 +625,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_region_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
-        ### Region Target Https Proxy Certificate Manager Certificate
+        ## 
 
         ```python
         import pulumi
@@ -737,9 +723,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -755,11 +738,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+          * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage
-
-        ### Region Target Https Proxy Basic
+        ## 
 
         ```python
         import pulumi
@@ -807,7 +788,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
-        ### Region Target Https Proxy Mtls
+        ## 
 
         ```python
         import pulumi
@@ -884,7 +865,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             ssl_certificates=[default_region_ssl_certificate.id],
             server_tls_policy=default_server_tls_policy.id)
         ```
-        ### Region Target Https Proxy Certificate Manager Certificate
+        ## 
 
         ```python
         import pulumi
@@ -1059,9 +1040,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1201,9 +1179,6 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the RegionBackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 

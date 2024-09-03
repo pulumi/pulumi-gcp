@@ -26,8 +26,6 @@ class BucketACLArgs:
         """
         The set of arguments for constructing a BucketACL resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-               
-               - - -
         :param pulumi.Input[str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
@@ -45,8 +43,6 @@ class BucketACLArgs:
     def bucket(self) -> pulumi.Input[str]:
         """
         The name of the bucket it applies to.
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -101,8 +97,6 @@ class _BucketACLState:
         """
         Input properties used for looking up and filtering BucketACL resources.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-               
-               - - -
         :param pulumi.Input[str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
@@ -121,8 +115,6 @@ class _BucketACLState:
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the bucket it applies to.
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -215,8 +207,6 @@ class BucketACL(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-               
-               - - -
         :param pulumi.Input[str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
@@ -318,8 +308,6 @@ class BucketACL(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.
-               
-               - - -
         :param pulumi.Input[str] default_acl: Configure this ACL to be the default ACL.
         :param pulumi.Input[str] predefined_acl: The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
@@ -339,8 +327,6 @@ class BucketACL(pulumi.CustomResource):
     def bucket(self) -> pulumi.Output[str]:
         """
         The name of the bucket it applies to.
-
-        - - -
         """
         return pulumi.get(self, "bucket")
 

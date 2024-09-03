@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/run/docs/)
+ *   * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * ## Example Usage
  *
@@ -63,7 +63,7 @@ export interface GetLocationsResult {
  *
  * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/run/docs/)
+ *   * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * ## Example Usage
  *

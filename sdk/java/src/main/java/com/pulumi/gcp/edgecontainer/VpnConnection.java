@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/container/rest/v1/projects.locations.vpnConnections)
  * * How-to Guides
- *     * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
+ *   * [Google Distributed Cloud Edge](https://cloud.google.com/distributed-cloud/edge/latest/docs)
  * 
  * ## Example Usage
  * 
@@ -239,16 +239,12 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
     /**
      * Google Cloud Platform location.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Google Cloud Platform location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

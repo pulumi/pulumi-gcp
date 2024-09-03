@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic_workload
+ * ### basic_workload
  * A basic test of a assuredworkloads api
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -88,7 +88,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Sovereign_controls_workload
+ * 
+ * ### sovereign_controls_workload
  * A Sovereign Controls test of the assuredworkloads api
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -372,16 +373,12 @@ public class Workload extends com.pulumi.resources.CustomResource {
     /**
      * The organization for the resource
      * 
-     * ***
-     * 
      */
     @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
      * @return The organization for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {

@@ -35,9 +35,6 @@ class BackupPlanArgs:
         The set of arguments for constructing a BackupPlan resource.
         :param pulumi.Input[str] cluster: The source cluster from which Backups will be created via this BackupPlan.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-               
-               
-               - - -
         :param pulumi.Input['BackupPlanBackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
                Structure is documented below.
         :param pulumi.Input['BackupPlanBackupScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
@@ -95,9 +92,6 @@ class BackupPlanArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The region of the Backup Plan.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -260,9 +254,6 @@ class _BackupPlanState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -426,9 +417,6 @@ class _BackupPlanState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The region of the Backup Plan.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -559,7 +547,7 @@ class BackupPlan(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+          * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
 
@@ -594,7 +582,7 @@ class BackupPlan(pulumi.CustomResource):
                 "all_namespaces": True,
             })
         ```
-        ### Gkebackup Backupplan Autopilot
+        ## 
 
         ```python
         import pulumi
@@ -626,6 +614,7 @@ class BackupPlan(pulumi.CustomResource):
                 "all_namespaces": True,
             })
         ```
+
         ### Gkebackup Backupplan Cmek
 
         ```python
@@ -671,6 +660,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Backupplan Full
 
         ```python
@@ -720,6 +710,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Backupplan Permissive
 
         ```python
@@ -770,6 +761,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Backupplan Rpo Daily Window
 
         ```python
@@ -834,6 +826,7 @@ class BackupPlan(pulumi.CustomResource):
                 "all_namespaces": True,
             })
         ```
+
         ### Gkebackup Backupplan Rpo Weekly Window
 
         ```python
@@ -957,9 +950,6 @@ class BackupPlan(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -979,7 +969,7 @@ class BackupPlan(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/projects.locations.backupPlans)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
+          * [Official Documentation](https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke)
 
         ## Example Usage
 
@@ -1014,7 +1004,7 @@ class BackupPlan(pulumi.CustomResource):
                 "all_namespaces": True,
             })
         ```
-        ### Gkebackup Backupplan Autopilot
+        ## 
 
         ```python
         import pulumi
@@ -1046,6 +1036,7 @@ class BackupPlan(pulumi.CustomResource):
                 "all_namespaces": True,
             })
         ```
+
         ### Gkebackup Backupplan Cmek
 
         ```python
@@ -1091,6 +1082,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Backupplan Full
 
         ```python
@@ -1140,6 +1132,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Backupplan Permissive
 
         ```python
@@ -1190,6 +1183,7 @@ class BackupPlan(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Gkebackup Backupplan Rpo Daily Window
 
         ```python
@@ -1254,6 +1248,7 @@ class BackupPlan(pulumi.CustomResource):
                 "all_namespaces": True,
             })
         ```
+
         ### Gkebackup Backupplan Rpo Weekly Window
 
         ```python
@@ -1473,9 +1468,6 @@ class BackupPlan(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1595,9 +1587,6 @@ class BackupPlan(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The region of the Backup Plan.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

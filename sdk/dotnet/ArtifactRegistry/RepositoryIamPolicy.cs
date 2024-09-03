@@ -109,8 +109,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// ## This resource supports User Project Overrides.
     /// 
-    /// - 
-    /// 
     /// # IAM policy for Artifact Registry Repository
     /// Three different resources help you manage your IAM policy for Artifact Registry Repository. Each of these resources serves a different use case:
     /// 
@@ -245,7 +243,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
-    ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     [GcpResourceType("gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy")]
     public partial class RepositoryIamPolicy : global::Pulumi.CustomResource

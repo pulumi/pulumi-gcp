@@ -80,7 +80,7 @@ def get_folders(parent_id: Optional[str] = None,
 
     ## Example Usage
 
-    ### Searching For Folders At The Root Of An Org
+    ### searching for folders at the root of an org
 
     ```python
     import pulumi
@@ -114,7 +114,7 @@ def get_folders_output(parent_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    ### Searching For Folders At The Root Of An Org
+    ### searching for folders at the root of an org
 
     ```python
     import pulumi

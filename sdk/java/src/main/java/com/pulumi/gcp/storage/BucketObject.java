@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 /**
  * Creates a new object inside an existing bucket in Google cloud storage service (GCS).
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `gcp.storage.ObjectACL` resource.
- *  For more information see
+ * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
@@ -399,8 +399,6 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      * 
-     * ***
-     * 
      */
     @Export(name="source", refs={AssetOrArchive.class}, tree="[0]")
     private Output</* @Nullable */ AssetOrArchive> source;
@@ -408,8 +406,6 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * @return A path to the data you want to upload. Must be defined
      * if `content` is not.
-     * 
-     * ***
      * 
      */
     public Output<Optional<AssetOrArchive>> source() {

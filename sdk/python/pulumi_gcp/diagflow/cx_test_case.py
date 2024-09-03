@@ -30,9 +30,6 @@ class CxTestCaseArgs:
         """
         The set of arguments for constructing a CxTestCase resource.
         :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] notes: Additional freeform notes about the test case. Limit of 400 characters.
         :param pulumi.Input[str] parent: The agent to create the test case for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -60,9 +57,6 @@ class CxTestCaseArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -151,9 +145,6 @@ class _CxTestCaseState:
         Input properties used for looking up and filtering CxTestCase resources.
         :param pulumi.Input[str] creation_time: When the test was created. A timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]] last_test_results: The latest test result.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the page.
@@ -204,9 +195,6 @@ class _CxTestCaseState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -324,11 +312,9 @@ class CxTestCase(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.testCases)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+          * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
-        ## Example Usage
-
-        ### Dialogflowcx Test Case Full
+        ## 
 
         ```python
         import pulumi
@@ -474,9 +460,6 @@ class CxTestCase(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] notes: Additional freeform notes about the test case. Limit of 400 characters.
         :param pulumi.Input[str] parent: The agent to create the test case for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -500,11 +483,9 @@ class CxTestCase(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.testCases)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
+          * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 
-        ## Example Usage
-
-        ### Dialogflowcx Test Case Full
+        ## 
 
         ```python
         import pulumi
@@ -716,9 +697,6 @@ class CxTestCase(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_time: When the test was created. A timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[Union['CxTestCaseLastTestResultArgs', 'CxTestCaseLastTestResultArgsDict']]]] last_test_results: The latest test result.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the page.
@@ -761,9 +739,6 @@ class CxTestCase(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

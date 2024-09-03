@@ -190,8 +190,6 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -200,15 +198,13 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * @return The ID of the subnet. For userDefined subnets, this name should be in the format of &#34;service-n&#34;,
      * where n ranges from 1 to 5.
      * 
-     * ***
-     * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
      * The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
@@ -217,7 +213,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of the private cloud to create a new subnet in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */

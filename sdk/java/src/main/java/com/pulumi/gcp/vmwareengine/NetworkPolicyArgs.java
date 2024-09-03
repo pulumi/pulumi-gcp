@@ -90,7 +90,7 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-central1
      * 
      */
@@ -99,7 +99,7 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The resource name of the location (region) to create the new network policy in.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
      * For example: projects/my-project/locations/us-central1
      * 
      */
@@ -110,16 +110,12 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the Network Policy.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the Network Policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -289,7 +285,7 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The resource name of the location (region) to create the new network policy in.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-central1
          * 
          * @return builder
@@ -302,7 +298,7 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The resource name of the location (region) to create the new network policy in.
-         * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+         * Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
          * For example: projects/my-project/locations/us-central1
          * 
          * @return builder
@@ -315,8 +311,6 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The ID of the Network Policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -327,8 +321,6 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The ID of the Network Policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

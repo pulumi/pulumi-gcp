@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         public readonly string MediaType;
         /// <summary>
-        /// The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example, 
+        /// The fully qualified name of the fetched image.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/dockerImages/{{docker_image}}`. For example,
         /// ```
         /// projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
         /// ```
@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string? Project;
         public readonly string RepositoryId;
         /// <summary>
-        /// The URI to access the image.  For example, 
+        /// The URI to access the image.  For example,
         /// ```
         /// us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
         /// ```

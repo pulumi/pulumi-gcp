@@ -10,151 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Tpu
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ### Tpu V2 Vm Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-    /// 
-    ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
-    ///     {
-    ///         Name = "test-tpu",
-    ///         Zone = "us-central1-c",
-    ///         RuntimeVersion = "tpu-vm-tf-2.13.0",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Tpu V2 Vm Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var available = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
-    /// 
-    ///     var availableGetV2AcceleratorTypes = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
-    /// 
-    ///     var network = new Gcp.Compute.Network("network", new()
-    ///     {
-    ///         Name = "tpu-net",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
-    ///     {
-    ///         Name = "tpu-subnet",
-    ///         IpCidrRange = "10.0.0.0/16",
-    ///         Region = "us-central1",
-    ///         Network = network.Id,
-    ///     });
-    /// 
-    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
-    ///     {
-    ///         AccountId = "tpu-sa",
-    ///         DisplayName = "Test TPU VM",
-    ///     });
-    /// 
-    ///     var disk = new Gcp.Compute.Disk("disk", new()
-    ///     {
-    ///         Name = "tpu-disk",
-    ///         Image = "debian-cloud/debian-11",
-    ///         Size = 10,
-    ///         Type = "pd-ssd",
-    ///         Zone = "us-central1-c",
-    ///     });
-    /// 
-    ///     // Wait after service account creation to limit eventual consistency errors.
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
-    ///     {
-    ///         CreateDuration = "60s",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             sa,
-    ///         },
-    ///     });
-    /// 
-    ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
-    ///     {
-    ///         Name = "test-tpu",
-    ///         Zone = "us-central1-c",
-    ///         Description = "Text description of the TPU.",
-    ///         RuntimeVersion = "tpu-vm-tf-2.13.0",
-    ///         AcceleratorConfig = new Gcp.Tpu.Inputs.V2VmAcceleratorConfigArgs
-    ///         {
-    ///             Type = "V2",
-    ///             Topology = "2x2",
-    ///         },
-    ///         CidrBlock = "10.0.0.0/29",
-    ///         NetworkConfig = new Gcp.Tpu.Inputs.V2VmNetworkConfigArgs
-    ///         {
-    ///             CanIpForward = true,
-    ///             EnableExternalIps = true,
-    ///             Network = network.Id,
-    ///             Subnetwork = subnet.Id,
-    ///         },
-    ///         SchedulingConfig = new Gcp.Tpu.Inputs.V2VmSchedulingConfigArgs
-    ///         {
-    ///             Preemptible = true,
-    ///         },
-    ///         ShieldedInstanceConfig = new Gcp.Tpu.Inputs.V2VmShieldedInstanceConfigArgs
-    ///         {
-    ///             EnableSecureBoot = true,
-    ///         },
-    ///         ServiceAccount = new Gcp.Tpu.Inputs.V2VmServiceAccountArgs
-    ///         {
-    ///             Email = sa.Email,
-    ///             Scopes = new[]
-    ///             {
-    ///                 "https://www.googleapis.com/auth/cloud-platform",
-    ///             },
-    ///         },
-    ///         DataDisks = new[]
-    ///         {
-    ///             new Gcp.Tpu.Inputs.V2VmDataDiskArgs
-    ///             {
-    ///                 SourceDisk = disk.Id,
-    ///                 Mode = "READ_ONLY",
-    ///             },
-    ///         },
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Metadata = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///         Tags = new[]
-    ///         {
-    ///             "foo",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             wait60Seconds,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Vm can be imported using any of these accepted formats:
@@ -314,9 +169,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// Runtime version for the TPU.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("runtimeVersion")]
         public Output<string> RuntimeVersion { get; private set; } = null!;
@@ -512,9 +364,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// Runtime version for the TPU.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("runtimeVersion", required: true)]
         public Input<string> RuntimeVersion { get; set; } = null!;
@@ -737,9 +586,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// Runtime version for the TPU.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("runtimeVersion")]
         public Input<string>? RuntimeVersion { get; set; }

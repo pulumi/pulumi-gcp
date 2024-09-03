@@ -25,7 +25,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+// ### creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
 //
 // ```go
 // package main
@@ -76,7 +76,7 @@ import (
 //
 // ```
 //
-// ### Life Cycle Settings For Storage Bucket Objects
+// ### Life cycle settings for storage bucket objects
 //
 // ```go
 // package main
@@ -122,7 +122,7 @@ import (
 //
 // ```
 //
-// ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
+// ### Life cycle settings for storage bucket objects with noAge enabled
 // When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `noAge` flag to `true` to prevent this and avoid any potentially unintended interactions.
 //
 // ```go
@@ -162,7 +162,7 @@ import (
 //
 // ```
 //
-// ### Enabling Public Access Prevention
+// ### Enabling public access prevention
 //
 // ```go
 // package main
@@ -245,8 +245,6 @@ type Bucket struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrOutput `pulumi:"logging"`
@@ -344,8 +342,6 @@ type bucketState struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
@@ -406,8 +402,6 @@ type BucketState struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
@@ -471,8 +465,6 @@ type bucketArgs struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging *BucketLogging `pulumi:"logging"`
@@ -525,8 +517,6 @@ type BucketArgs struct {
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput
 	// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-	//
-	// ***
 	Location pulumi.StringInput
 	// The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
 	Logging BucketLoggingPtrInput
@@ -695,8 +685,6 @@ func (o BucketOutput) LifecycleRules() BucketLifecycleRuleArrayOutput {
 }
 
 // The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-//
-// ***
 func (o BucketOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

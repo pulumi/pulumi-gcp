@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// Pattern defining the regular expression.
-        /// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        /// Its syntax (&lt;https://github.com/google/re2/wiki/Syntax&gt;) can be found under the google/re2 repository on GitHub.
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;

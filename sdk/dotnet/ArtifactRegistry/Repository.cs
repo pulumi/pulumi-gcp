@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+    ///   * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Artifact Registry Repository Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -40,7 +38,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Docker
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -64,7 +62,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Cmek
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,7 +98,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Virtual
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -155,7 +153,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -184,7 +182,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Apt
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -217,7 +215,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Yum
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -250,7 +248,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Cleanup
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -322,7 +320,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Dockerhub Auth
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -384,7 +382,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Docker Custom With Auth
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -449,7 +447,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Maven Custom With Auth
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -514,7 +512,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Npm Custom With Auth
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -579,7 +577,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
-    /// ### Artifact Registry Repository Remote Python Custom With Auth
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -725,9 +723,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -917,9 +912,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -1074,9 +1066,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

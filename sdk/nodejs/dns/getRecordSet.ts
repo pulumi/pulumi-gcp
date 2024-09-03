@@ -12,6 +12,20 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample = gcp.dns.getManagedZone({
+ *     name: "sample-zone",
+ * });
+ * const rs = Promise.all([sample, sample]).then(([sample, sample1]) => gcp.dns.getRecordSet({
+ *     managedZone: sample.name,
+ *     name: `my-record.${sample1.dnsName}`,
+ *     type: "A",
+ * }));
+ * ```
  */
 export function getRecordSet(args: GetRecordSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordSetResult> {
 
@@ -75,6 +89,20 @@ export interface GetRecordSetResult {
  * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample = gcp.dns.getManagedZone({
+ *     name: "sample-zone",
+ * });
+ * const rs = Promise.all([sample, sample]).then(([sample, sample1]) => gcp.dns.getRecordSet({
+ *     managedZone: sample.name,
+ *     name: `my-record.${sample1.dnsName}`,
+ *     type: "A",
+ * }));
+ * ```
  */
 export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordSetResult> {
     return pulumi.output(args).apply((a: any) => getRecordSet(a, opts))

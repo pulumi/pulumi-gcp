@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.securityProfiles)
     /// * How-to Guides
-    ///     * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
+    ///   * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
     /// 
     /// ## Example Usage
     /// 
@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// 
     /// ### Network Security Security Profile Overrides
     /// 
     /// ```csharp
@@ -148,9 +149,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the security profile resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -276,9 +274,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the security profile resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -372,9 +367,6 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The name of the security profile resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

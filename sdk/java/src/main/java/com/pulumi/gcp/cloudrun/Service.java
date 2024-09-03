@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/run/docs/)
+ *   * [Official Documentation](https://cloud.google.com/run/docs/)
  * 
  * &gt; **Warning:** We recommend using the `gcp.cloudrunv2.Service` resource which offers a better
  * developer experience and broader support of Cloud Run features.
@@ -178,7 +178,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Cloud Run Service Sql
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -244,6 +244,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloud Run Service Noauth
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -306,6 +307,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloud Run Service Probes
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -369,6 +371,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Cloud Run Service Multicontainer
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -536,7 +539,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     * More info: &lt;https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names&gt;
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -546,7 +549,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @return Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+     * More info: &lt;https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names&gt;
      * 
      */
     public Output<String> name() {

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _autoProvisioningLocations;
 
         /// <summary>
-        /// The list of Google Compute Engine 
+        /// The list of Google Compute Engine
         /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
         /// NodePool's nodes can be created by NAP.
         /// </summary>

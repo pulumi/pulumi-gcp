@@ -100,8 +100,6 @@ type FolderSettings struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink pulumi.BoolOutput `pulumi:"disableDefaultSink"`
 	// The folder for which to retrieve settings.
-	//
-	// ***
 	Folder pulumi.StringOutput `pulumi:"folder"`
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
@@ -151,8 +149,6 @@ type folderSettingsState struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink *bool `pulumi:"disableDefaultSink"`
 	// The folder for which to retrieve settings.
-	//
-	// ***
 	Folder *string `pulumi:"folder"`
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -170,8 +166,6 @@ type FolderSettingsState struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink pulumi.BoolPtrInput
 	// The folder for which to retrieve settings.
-	//
-	// ***
 	Folder pulumi.StringPtrInput
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName pulumi.StringPtrInput
@@ -193,8 +187,6 @@ type folderSettingsArgs struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink *bool `pulumi:"disableDefaultSink"`
 	// The folder for which to retrieve settings.
-	//
-	// ***
 	Folder string `pulumi:"folder"`
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -207,8 +199,6 @@ type FolderSettingsArgs struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink pulumi.BoolPtrInput
 	// The folder for which to retrieve settings.
-	//
-	// ***
 	Folder pulumi.StringInput
 	// The resource name for the configured Cloud KMS key.
 	KmsKeyName pulumi.StringPtrInput
@@ -309,8 +299,6 @@ func (o FolderSettingsOutput) DisableDefaultSink() pulumi.BoolOutput {
 }
 
 // The folder for which to retrieve settings.
-//
-// ***
 func (o FolderSettingsOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderSettings) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         public readonly Outputs.AiIndexMetadataConfigAlgorithmConfigBruteForceConfig? BruteForceConfig;
         /// <summary>
         /// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-        /// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        /// Please refer to this paper for more details: &lt;https://arxiv.org/abs/1908.10396&gt;
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiIndexMetadataConfigAlgorithmConfigTreeAhConfig? TreeAhConfig;

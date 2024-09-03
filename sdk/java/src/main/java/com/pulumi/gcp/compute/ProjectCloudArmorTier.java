@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setCloudArmorTier)
  * * How-to Guides
- *     * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
+ *   * [Subscribing to Cloud Armor Enterprise](https://cloud.google.com/armor/docs/managed-protection-overview#subscribing_to_plus)
  * 
  * ## Example Usage
  * 
@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Compute Project Cloud Armor Tier Project Set
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -138,8 +139,6 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
      * Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
      * 
-     * ***
-     * 
      */
     @Export(name="cloudArmorTier", refs={String.class}, tree="[0]")
     private Output<String> cloudArmorTier;
@@ -147,8 +146,6 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
     /**
      * @return Managed protection tier to be set.
      * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
-     * 
-     * ***
      * 
      */
     public Output<String> cloudArmorTier() {

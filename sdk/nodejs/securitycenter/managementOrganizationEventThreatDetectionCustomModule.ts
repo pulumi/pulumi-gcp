@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.eventThreatDetectionCustomModules)
  * * How-to Guides
- *     * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
+ *   * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
  *
  * ## Example Usage
  *
@@ -92,9 +92,6 @@ export class ManagementOrganizationEventThreatDetectionCustomModule extends pulu
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -183,9 +180,6 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleState {
     name?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleArgs {
     location?: pulumi.Input<string>;
     /**
      * Numerical ID of the parent organization.
-     *
-     *
-     * - - -
      */
     organization: pulumi.Input<string>;
     /**

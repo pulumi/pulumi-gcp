@@ -851,8 +851,6 @@ type ApplicationScope struct {
 	// Possible values:
 	// REGIONAL
 	// Possible values are: `REGIONAL`.
-	//
-	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -872,8 +870,6 @@ type ApplicationScopeArgs struct {
 	// Possible values:
 	// REGIONAL
 	// Possible values are: `REGIONAL`.
-	//
-	// ***
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -958,8 +954,6 @@ func (o ApplicationScopeOutput) ToApplicationScopePtrOutputWithContext(ctx conte
 // Possible values:
 // REGIONAL
 // Possible values are: `REGIONAL`.
-//
-// ***
 func (o ApplicationScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationScope) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -992,8 +986,6 @@ func (o ApplicationScopePtrOutput) Elem() ApplicationScopeOutput {
 // Possible values:
 // REGIONAL
 // Possible values are: `REGIONAL`.
-//
-// ***
 func (o ApplicationScopePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationScope) *string {
 		if v == nil {

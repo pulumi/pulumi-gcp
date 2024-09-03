@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.targetservers/create)
  * * How-to Guides
- *     * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
+ *   * [Load balancing across backend servers](https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers)
  * 
  * ## Example Usage
  * 
@@ -189,8 +189,6 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      * 
-     * ***
-     * 
      */
     @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
@@ -198,8 +196,6 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     * 
-     * ***
      * 
      */
     public Output<String> envId() {

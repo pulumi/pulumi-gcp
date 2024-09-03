@@ -2187,7 +2187,7 @@ if not MYPY:
     class ResponsePolicyRuleLocalDataLocalDataArgsDict(TypedDict):
         name: pulumi.Input[str]
         """
-        For example, www.example.com.
+        For example, <http://www.example.com>.
         """
         type: pulumi.Input[str]
         """
@@ -2214,7 +2214,7 @@ class ResponsePolicyRuleLocalDataLocalDataArgs:
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] name: For example, www.example.com.
+        :param pulumi.Input[str] name: For example, <http://www.example.com>.
         :param pulumi.Input[str] type: One of valid DNS resource types.
                Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
@@ -2232,7 +2232,7 @@ class ResponsePolicyRuleLocalDataLocalDataArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        For example, www.example.com.
+        For example, <http://www.example.com>.
         """
         return pulumi.get(self, "name")
 

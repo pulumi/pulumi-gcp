@@ -27,9 +27,6 @@ class ServiceArgs:
         :param pulumi.Input[str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata for the service. This data can be consumed
                by service clients. The entire metadata dictionary may contain
                up to 2000 characters, spread across all key-value pairs.
@@ -58,9 +55,6 @@ class ServiceArgs:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -102,9 +96,6 @@ class _ServiceState:
         :param pulumi.Input[str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
@@ -161,9 +152,6 @@ class _ServiceState:
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -188,11 +176,9 @@ class Service(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
         * How-to Guides
-            * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
+          * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
-        ## Example Usage
-
-        ### Service Directory Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -243,9 +229,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -260,11 +243,9 @@ class Service(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
         * How-to Guides
-            * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
+          * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
-        ## Example Usage
-
-        ### Service Directory Service Basic
+        ## 
 
         ```python
         import pulumi
@@ -371,9 +352,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -419,9 +397,6 @@ class Service(pulumi.CustomResource):
         """
         The Resource ID must be 1-63 characters long, including digits,
         lowercase letters or the hyphen character.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

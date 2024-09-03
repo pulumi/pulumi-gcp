@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
  * * How-to Guides
- *     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+ *   * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
  * 
  * ## Example Usage
  * 
@@ -144,8 +144,6 @@ public class SecretCiphertext extends com.pulumi.resources.CustomResource {
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
      * 
-     * ***
-     * 
      */
     @Export(name="cryptoKey", refs={String.class}, tree="[0]")
     private Output<String> cryptoKey;
@@ -153,8 +151,6 @@ public class SecretCiphertext extends com.pulumi.resources.CustomResource {
     /**
      * @return The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
-     * 
-     * ***
      * 
      */
     public Output<String> cryptoKey() {

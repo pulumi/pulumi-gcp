@@ -7,18 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
+ * A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (<https://www.hl7.org/fhir/STU3/>)
  * standard for Healthcare information exchange
  *
  * To get more information about FhirStore, see:
  *
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.fhirStores)
  * * How-to Guides
- *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
+ *   * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
  *
- * ## Example Usage
- *
- * ### Healthcare Fhir Store Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,7 +45,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Healthcare Fhir Store Streaming Config
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,7 +89,7 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "fhir-notifications"});
  * ```
- * ### Healthcare Fhir Store Notification Configs
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -175,9 +173,6 @@ export class FhirStore extends pulumi.CustomResource {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -234,9 +229,9 @@ export class FhirStore extends pulumi.CustomResource {
     /**
      * User-supplied key-value pairs used to organize FHIR stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -363,9 +358,6 @@ export interface FhirStoreState {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -422,9 +414,9 @@ export interface FhirStoreState {
     /**
      * User-supplied key-value pairs used to organize FHIR stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -492,9 +484,6 @@ export interface FhirStoreArgs {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset: pulumi.Input<string>;
     /**
@@ -547,9 +536,9 @@ export interface FhirStoreArgs {
     /**
      * User-supplied key-value pairs used to organize FHIR stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
-     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}*-]{0,62}
      * Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
-     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}*-]{0,63}
      * No more than 64 labels can be associated with a given store.
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

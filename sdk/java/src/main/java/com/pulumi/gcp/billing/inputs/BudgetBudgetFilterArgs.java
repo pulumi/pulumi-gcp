@@ -171,7 +171,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * included in the budget. If omitted, the report will include
      * usage for all the services. The service names are available
      * through the Catalog API:
-     * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+     * &lt;https://cloud.google.com/billing/v1/how-tos/catalog-api&gt;.
      * 
      */
     @Import(name="services")
@@ -183,7 +183,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * included in the budget. If omitted, the report will include
      * usage for all the services. The service names are available
      * through the Catalog API:
-     * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+     * &lt;https://cloud.google.com/billing/v1/how-tos/catalog-api&gt;.
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -484,7 +484,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * included in the budget. If omitted, the report will include
          * usage for all the services. The service names are available
          * through the Catalog API:
-         * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+         * &lt;https://cloud.google.com/billing/v1/how-tos/catalog-api&gt;.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * included in the budget. If omitted, the report will include
          * usage for all the services. The service names are available
          * through the Catalog API:
-         * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+         * &lt;https://cloud.google.com/billing/v1/how-tos/catalog-api&gt;.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * included in the budget. If omitted, the report will include
          * usage for all the services. The service names are available
          * through the Catalog API:
-         * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+         * &lt;https://cloud.google.com/billing/v1/how-tos/catalog-api&gt;.
          * 
          * @return builder
          * 

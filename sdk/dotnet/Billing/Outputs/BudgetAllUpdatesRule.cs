@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// <summary>
         /// The schema version of the notification. Only "1.0" is
         /// accepted. It represents the JSON schema as defined in
-        /// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+        /// &lt;https://cloud.google.com/billing/docs/how-to/budgets#notification_format&gt;.
         /// </summary>
         public readonly string? SchemaVersion;
 

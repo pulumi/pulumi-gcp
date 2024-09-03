@@ -54,8 +54,6 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
      * 
-     * ***
-     * 
      */
     @Import(name="instanceGroupManager")
     private @Nullable Output<String> instanceGroupManager;
@@ -64,8 +62,6 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
      * @return The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
      * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
      * *compute.instanceGroupManagers.update
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instanceGroupManager() {
@@ -263,8 +259,6 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
          * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
          * *compute.instanceGroupManagers.update
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -277,8 +271,6 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
          * @param instanceGroupManager The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
          * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
          * *compute.instanceGroupManagers.update
-         * 
-         * ***
          * 
          * @return builder
          * 

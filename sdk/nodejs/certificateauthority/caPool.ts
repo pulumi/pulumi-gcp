@@ -11,9 +11,7 @@ import * as utilities from "../utilities";
  * issuance policies for one or more CertificateAuthority resources and to rotate CA certificates in and out of the
  * trust anchor.
  *
- * ## Example Usage
- *
- * ### Privateca Capool Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Privateca Capool All Fields
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -240,9 +238,6 @@ export class CaPool extends pulumi.CustomResource {
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -342,9 +337,6 @@ export interface CaPoolState {
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -394,9 +386,6 @@ export interface CaPoolArgs {
     /**
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

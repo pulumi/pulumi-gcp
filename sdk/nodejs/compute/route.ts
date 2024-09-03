@@ -32,11 +32,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
  * * How-to Guides
- *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+ *   * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  *
- * ## Example Usage
- *
- * ### Route Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +49,7 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
- * ### Route Ilb
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -97,7 +95,7 @@ import * as utilities from "../utilities";
  *     priority: 2000,
  * });
  * ```
- * ### Route Ilb Vip
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -247,9 +245,6 @@ export class Route extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network that this route applies to.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -270,7 +265,7 @@ export class Route extends pulumi.CustomResource {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
      * * regions/region/forwardingRules/forwardingRule
      * When the beta provider, you can also specify the IP address
      * of a forwarding rule from the same VPC or any peered VPC.
@@ -411,9 +406,6 @@ export interface RouteState {
     name?: pulumi.Input<string>;
     /**
      * The network that this route applies to.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -434,7 +426,7 @@ export interface RouteState {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
      * * regions/region/forwardingRules/forwardingRule
      * When the beta provider, you can also specify the IP address
      * of a forwarding rule from the same VPC or any peered VPC.
@@ -519,9 +511,6 @@ export interface RouteArgs {
     name?: pulumi.Input<string>;
     /**
      * The network that this route applies to.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**
@@ -542,7 +531,7 @@ export interface RouteArgs {
      * rule as a partial or full URL. For example, the following
      * are all valid values:
      * * 10.128.0.56
-     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * <https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule>
      * * regions/region/forwardingRules/forwardingRule
      * When the beta provider, you can also specify the IP address
      * of a forwarding rule from the same VPC or any peered VPC.

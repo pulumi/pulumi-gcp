@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.trustConfigs/create)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
+    ///   * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Certificate Manager Trust Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -70,7 +68,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Trust Config Allowlisted Certificates
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -177,9 +175,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// The trust config location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -307,9 +302,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// The trust config location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -409,9 +401,6 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// The trust config location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

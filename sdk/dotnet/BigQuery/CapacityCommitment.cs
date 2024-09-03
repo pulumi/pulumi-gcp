@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.capacityCommitments)
     /// * How-to Guides
-    ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+    ///   * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
     /// ## Example Usage
     /// 
@@ -118,10 +118,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-        /// 
-        /// 
-        /// - - -
+        /// Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -226,10 +223,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-        /// 
-        /// 
-        /// - - -
+        /// Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -308,10 +302,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-        /// 
-        /// 
-        /// - - -
+        /// Capacity commitment plan. Valid values are at &lt;https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan&gt;
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

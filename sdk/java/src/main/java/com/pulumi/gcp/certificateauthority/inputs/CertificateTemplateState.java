@@ -103,16 +103,12 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -382,8 +378,6 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
         /**
          * @param location The location for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -394,8 +388,6 @@ public final class CertificateTemplateState extends com.pulumi.resources.Resourc
 
         /**
          * @param location The location for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -21,9 +21,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 //
-// ## Example Usage
-//
-// ### Os Config Patch Deployment Basic
+// ##
 //
 // ```go
 // package main
@@ -54,7 +52,7 @@ import (
 //	}
 //
 // ```
-// ### Os Config Patch Deployment Daily
+// ##
 //
 // ```go
 // package main
@@ -93,7 +91,7 @@ import (
 //	}
 //
 // ```
-// ### Os Config Patch Deployment Daily Midnight
+// ##
 //
 // ```go
 // package main
@@ -132,7 +130,7 @@ import (
 //	}
 //
 // ```
-// ### Os Config Patch Deployment Instance
+// ##
 //
 // ```go
 // package main
@@ -219,7 +217,7 @@ import (
 //	}
 //
 // ```
-// ### Os Config Patch Deployment Full
+// ##
 //
 // ```go
 // package main

@@ -63,7 +63,7 @@ public final class RepositoryReleaseConfigCodeCompilationConfigArgs extends com.
 
     /**
      * Optional. The default BigQuery location to use. Defaults to &#34;US&#34;.
-     * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+     * See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
      * 
      */
     @Import(name="defaultLocation")
@@ -71,7 +71,7 @@ public final class RepositoryReleaseConfigCodeCompilationConfigArgs extends com.
 
     /**
      * @return Optional. The default BigQuery location to use. Defaults to &#34;US&#34;.
-     * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+     * See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
      * 
      */
     public Optional<Output<String>> defaultLocation() {
@@ -238,7 +238,7 @@ public final class RepositoryReleaseConfigCodeCompilationConfigArgs extends com.
 
         /**
          * @param defaultLocation Optional. The default BigQuery location to use. Defaults to &#34;US&#34;.
-         * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+         * See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class RepositoryReleaseConfigCodeCompilationConfigArgs extends com.
 
         /**
          * @param defaultLocation Optional. The default BigQuery location to use. Defaults to &#34;US&#34;.
-         * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+         * See the BigQuery docs for a full list of locations: &lt;https://cloud.google.com/bigquery/docs/locations&gt;.
          * 
          * @return builder
          * 

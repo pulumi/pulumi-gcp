@@ -19,16 +19,16 @@ import * as utilities from "../utilities";
  * ## gcp.organizations.IAMPolicy
  *
  * !> **Warning:** New organizations have several default policies which will,
- *    without extreme caution, be **overwritten** by use of this resource.
- *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
- *    resources. This resource makes it easy to remove your own access to
- *    an organization, which will require a call to Google Support to have
- *    fixed, and can take multiple days to resolve.
+ * without extreme caution, be **overwritten** by use of this resource.
+ * The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+ * resources. This resource makes it easy to remove your own access to
+ * an organization, which will require a call to Google Support to have
+ * fixed, and can take multiple days to resolve.
  *
- *    In general, this resource should only be used with organizations
- *    fully managed by this provider.I f you do use this resource,
- *    the best way to be sure that you are not making dangerous changes is to start
- *    by **importing** your existing policy, and examining the diff very closely.
+ * In general, this resource should only be used with organizations
+ * fully managed by this provider.I f you do use this resource,
+ * the best way to be sure that you are not making dangerous changes is to start
+ * by **importing** your existing policy, and examining the diff very closely.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

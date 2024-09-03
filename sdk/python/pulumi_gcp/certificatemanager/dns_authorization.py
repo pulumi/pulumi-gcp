@@ -41,9 +41,6 @@ class DnsAuthorizationArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
@@ -127,9 +124,6 @@ class DnsAuthorizationArgs:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -200,9 +194,6 @@ class _DnsAuthorizationState:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -322,9 +313,6 @@ class _DnsAuthorizationState:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -393,9 +381,7 @@ class DnsAuthorization(pulumi.CustomResource):
         """
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
-        ## Example Usage
-
-        ### Certificate Manager Dns Authorization Basic
+        ## 
 
         ```python
         import pulumi
@@ -410,7 +396,7 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
-        ### Certificate Manager Dns Authorization Regional
+        ## 
 
         ```python
         import pulumi
@@ -461,9 +447,6 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
@@ -483,9 +466,7 @@ class DnsAuthorization(pulumi.CustomResource):
         """
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
-        ## Example Usage
-
-        ### Certificate Manager Dns Authorization Basic
+        ## 
 
         ```python
         import pulumi
@@ -500,7 +481,7 @@ class DnsAuthorization(pulumi.CustomResource):
         pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
         pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
-        ### Certificate Manager Dns Authorization Regional
+        ## 
 
         ```python
         import pulumi
@@ -626,9 +607,6 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -719,9 +697,6 @@ class DnsAuthorization(pulumi.CustomResource):
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

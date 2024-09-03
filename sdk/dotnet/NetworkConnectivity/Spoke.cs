@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
+    ///   * [Official Documentation](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/overview)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Network Connectivity Spoke Linked Vpc Network Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -69,7 +67,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
-    /// ### Network Connectivity Spoke Router Appliance Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -249,9 +247,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -401,9 +396,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -507,9 +499,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

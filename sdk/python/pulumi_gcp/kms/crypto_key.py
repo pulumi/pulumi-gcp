@@ -36,9 +36,6 @@ class CryptoKeyArgs:
         The set of arguments for constructing a CryptoKey resource.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[str] crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -49,7 +46,7 @@ class CryptoKeyArgs:
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
                policy is defined by specifying zero or more allowed justification codes.
-               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
                By default, this field is absent, and all justification codes are allowed.
                This field is currently in beta and is subject to change.
                Structure is documented below.
@@ -100,9 +97,6 @@ class CryptoKeyArgs:
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-
-
-        - - -
         """
         return pulumi.get(self, "key_ring")
 
@@ -157,7 +151,7 @@ class CryptoKeyArgs:
         Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
         sign operations, and the operation will fail if rejected by the policy. The
         policy is defined by specifying zero or more allowed justification codes.
-        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
         By default, this field is absent, and all justification codes are allowed.
         This field is currently in beta and is subject to change.
         Structure is documented below.
@@ -283,15 +277,12 @@ class _CryptoKeyState:
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
                policy is defined by specifying zero or more allowed justification codes.
-               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
                By default, this field is absent, and all justification codes are allowed.
                This field is currently in beta and is subject to change.
                Structure is documented below.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -404,7 +395,7 @@ class _CryptoKeyState:
         Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
         sign operations, and the operation will fail if rejected by the policy. The
         policy is defined by specifying zero or more allowed justification codes.
-        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
         By default, this field is absent, and all justification codes are allowed.
         This field is currently in beta and is subject to change.
         Structure is documented below.
@@ -421,9 +412,6 @@ class _CryptoKeyState:
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-
-
-        - - -
         """
         return pulumi.get(self, "key_ring")
 
@@ -574,7 +562,7 @@ class CryptoKey(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
         * How-to Guides
-            * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+          * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
 
@@ -592,6 +580,7 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
+
         ### Kms Crypto Key Asymmetric Sign
 
         ```python
@@ -640,15 +629,12 @@ class CryptoKey(pulumi.CustomResource):
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
                policy is defined by specifying zero or more allowed justification codes.
-               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
                By default, this field is absent, and all justification codes are allowed.
                This field is currently in beta and is subject to change.
                Structure is documented below.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -688,7 +674,7 @@ class CryptoKey(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
         * How-to Guides
-            * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+          * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
 
@@ -706,6 +692,7 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="7776000s")
         ```
+
         ### Kms Crypto Key Asymmetric Sign
 
         ```python
@@ -837,15 +824,12 @@ class CryptoKey(pulumi.CustomResource):
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
                policy is defined by specifying zero or more allowed justification codes.
-               https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+               <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
                By default, this field is absent, and all justification codes are allowed.
                This field is currently in beta and is subject to change.
                Structure is documented below.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -933,7 +917,7 @@ class CryptoKey(pulumi.CustomResource):
         Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
         sign operations, and the operation will fail if rejected by the policy. The
         policy is defined by specifying zero or more allowed justification codes.
-        https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes
+        <https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes>
         By default, this field is absent, and all justification codes are allowed.
         This field is currently in beta and is subject to change.
         Structure is documented below.
@@ -946,9 +930,6 @@ class CryptoKey(pulumi.CustomResource):
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-
-
-        - - -
         """
         return pulumi.get(self, "key_ring")
 

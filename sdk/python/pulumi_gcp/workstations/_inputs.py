@@ -782,7 +782,7 @@ if not MYPY:
         enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
         """
         machine_type: NotRequired[pulumi.Input[str]]
         """
@@ -813,7 +813,7 @@ if not MYPY:
         """
         Resource manager tags to be bound to the VM instances backing the Workstations.
         Tag keys and values have the same definition as
-        https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        <https://cloud.google.com/resource-manager/docs/tags/tags-overview>
         Keys must be in the format `tagKeys/{tag_key_id}`, and
         values are in the format `tagValues/456`.
         """
@@ -848,7 +848,7 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input[bool] disable_public_ip_addresses: Whether instances have no public IP address.
         :param pulumi.Input[bool] disable_ssh: Whether to disable SSH access to the VM.
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-               See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+               See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
         :param pulumi.Input[str] machine_type: The name of a Compute Engine machine type.
         :param pulumi.Input[int] pool_size: Number of instances to pool for faster workstation startup.
         :param pulumi.Input[str] service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -858,7 +858,7 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vm_tags: Resource manager tags to be bound to the VM instances backing the Workstations.
                Tag keys and values have the same definition as
-               https://cloud.google.com/resource-manager/docs/tags/tags-overview
+               <https://cloud.google.com/resource-manager/docs/tags/tags-overview>
                Keys must be in the format `tagKeys/{tag_key_id}`, and
                values are in the format `tagValues/456`.
         """
@@ -971,7 +971,7 @@ class WorkstationConfigHostGceInstanceArgs:
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
         """
         return pulumi.get(self, "enable_nested_virtualization")
 
@@ -1058,7 +1058,7 @@ class WorkstationConfigHostGceInstanceArgs:
         """
         Resource manager tags to be bound to the VM instances backing the Workstations.
         Tag keys and values have the same definition as
-        https://cloud.google.com/resource-manager/docs/tags/tags-overview
+        <https://cloud.google.com/resource-manager/docs/tags/tags-overview>
         Keys must be in the format `tagKeys/{tag_key_id}`, and
         values are in the format `tagValues/456`.
         """
@@ -1137,11 +1137,11 @@ if not MYPY:
         enable_nested_virtualization: NotRequired[pulumi.Input[bool]]
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
         """
         machine_type: NotRequired[pulumi.Input[str]]
         """
-        The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types <https://cloud.google.com/workstations/docs/available-machine-types>. Defaults to e2-standard-4.
         """
         pool_size: NotRequired[pulumi.Input[int]]
         """
@@ -1165,8 +1165,8 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
                Structure is documented below.
         :param pulumi.Input[int] boot_disk_size_gb: Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-               See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
-        :param pulumi.Input[str] machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+               See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
+        :param pulumi.Input[str] machine_type: The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types <https://cloud.google.com/workstations/docs/available-machine-types>. Defaults to e2-standard-4.
         :param pulumi.Input[int] pool_size: Number of instances to pool for faster workstation boosting.
         """
         pulumi.set(__self__, "id", id)
@@ -1223,7 +1223,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        See <https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization>
         """
         return pulumi.get(self, "enable_nested_virtualization")
 
@@ -1235,7 +1235,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
+        The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types <https://cloud.google.com/workstations/docs/available-machine-types>. Defaults to e2-standard-4.
         """
         return pulumi.get(self, "machine_type")
 

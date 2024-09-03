@@ -438,7 +438,7 @@ class OrganizationSink(pulumi.CustomResource):
         Manages a organization-level logging sink. For more information see:
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
         * How-to Guides
-            * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+          * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 
         ## Example Usage
 
@@ -508,7 +508,7 @@ class OrganizationSink(pulumi.CustomResource):
         Manages a organization-level logging sink. For more information see:
         * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
         * How-to Guides
-            * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+          * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 
         ## Example Usage
 

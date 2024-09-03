@@ -1168,8 +1168,6 @@ func (o CxAgentTextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.S
 type CxEntityTypeEntity struct {
 	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
 	// For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-	//
-	// ***
 	Synonyms []string `pulumi:"synonyms"`
 	// The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
 	// For KIND_MAP entity types: A canonical value to be used in place of synonyms.
@@ -1191,8 +1189,6 @@ type CxEntityTypeEntityInput interface {
 type CxEntityTypeEntityArgs struct {
 	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
 	// For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-	//
-	// ***
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
 	// The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
 	// For KIND_MAP entity types: A canonical value to be used in place of synonyms.
@@ -1253,8 +1249,6 @@ func (o CxEntityTypeEntityOutput) ToCxEntityTypeEntityOutputWithContext(ctx cont
 
 // A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
 // For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-//
-// ***
 func (o CxEntityTypeEntityOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CxEntityTypeEntity) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
@@ -1385,8 +1379,6 @@ func (o CxEntityTypeExcludedPhraseArrayOutput) Index(i pulumi.IntInput) CxEntity
 
 type CxEnvironmentVersionConfig struct {
 	// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-	//
-	// ***
 	Version string `pulumi:"version"`
 }
 
@@ -1403,8 +1395,6 @@ type CxEnvironmentVersionConfigInput interface {
 
 type CxEnvironmentVersionConfigArgs struct {
 	// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-	//
-	// ***
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -1460,8 +1450,6 @@ func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutputWith
 }
 
 // Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-//
-// ***
 func (o CxEnvironmentVersionConfigOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v CxEnvironmentVersionConfig) string { return v.Version }).(pulumi.StringOutput)
 }

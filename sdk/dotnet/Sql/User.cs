@@ -184,8 +184,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -300,8 +298,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -381,8 +377,6 @@ namespace Pulumi.Gcp.Sql
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+ *   * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
  *
- * ## Example Usage
- *
- * ### Apigateway Api Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,9 +76,6 @@ export class Api extends pulumi.CustomResource {
 
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     *
-     *
-     * - - -
      */
     public readonly apiId!: pulumi.Output<string>;
     /**
@@ -103,7 +98,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+     * Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
      * If not specified, a new Service will automatically be created in the same project as this API.
      */
     public readonly managedService!: pulumi.Output<string>;
@@ -172,9 +167,6 @@ export class Api extends pulumi.CustomResource {
 export interface ApiState {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     *
-     *
-     * - - -
      */
     apiId?: pulumi.Input<string>;
     /**
@@ -197,7 +189,7 @@ export interface ApiState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+     * Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
      * If not specified, a new Service will automatically be created in the same project as this API.
      */
     managedService?: pulumi.Input<string>;
@@ -223,9 +215,6 @@ export interface ApiState {
 export interface ApiArgs {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
-     *
-     *
-     * - - -
      */
     apiId: pulumi.Input<string>;
     /**
@@ -240,7 +229,7 @@ export interface ApiArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
+     * Immutable. The name of a Google Managed Service ( <https://cloud.google.com/service-infrastructure/docs/glossary#managed)>.
      * If not specified, a new Service will automatically be created in the same project as this API.
      */
     managedService?: pulumi.Input<string>;

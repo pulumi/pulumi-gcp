@@ -54,8 +54,6 @@ public final class ApplicationUrlDispatchRulesDispatchRuleArgs extends com.pulum
      * Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
      * The sum of the lengths of the domain and path may not exceed 100 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
@@ -63,8 +61,6 @@ public final class ApplicationUrlDispatchRulesDispatchRuleArgs extends com.pulum
     /**
      * @return Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
      * The sum of the lengths of the domain and path may not exceed 100 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {
@@ -147,8 +143,6 @@ public final class ApplicationUrlDispatchRulesDispatchRuleArgs extends com.pulum
          * @param service Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
          * The sum of the lengths of the domain and path may not exceed 100 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -160,8 +154,6 @@ public final class ApplicationUrlDispatchRulesDispatchRuleArgs extends com.pulum
         /**
          * @param service Pathname within the host. Must start with a &#34;/&#34;. A single &#34;*&#34; can be included at the end of the path.
          * The sum of the lengths of the domain and path may not exceed 100 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

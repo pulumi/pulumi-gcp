@@ -36,16 +36,12 @@ public final class GetWebAppConfigArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * the id of the firebase web app
      * 
-     * ***
-     * 
      */
     @Import(name="webAppId", required=true)
     private Output<String> webAppId;
 
     /**
      * @return the id of the firebase web app
-     * 
-     * ***
      * 
      */
     public Output<String> webAppId() {
@@ -103,8 +99,6 @@ public final class GetWebAppConfigArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param webAppId the id of the firebase web app
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -115,8 +109,6 @@ public final class GetWebAppConfigArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param webAppId the id of the firebase web app
-         * 
-         * ***
          * 
          * @return builder
          * 

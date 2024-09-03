@@ -12,68 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ### Managedkafka Topic Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/managedkafka"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cluster, err := managedkafka.NewCluster(ctx, "cluster", &managedkafka.ClusterArgs{
-//				ClusterId: pulumi.String("my-cluster"),
-//				Location:  pulumi.String("us-central1"),
-//				CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
-//					VcpuCount:   pulumi.String("3"),
-//					MemoryBytes: pulumi.String("3221225472"),
-//				},
-//				GcpConfig: &managedkafka.ClusterGcpConfigArgs{
-//					AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
-//						NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
-//							&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
-//								Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = managedkafka.NewTopic(ctx, "example", &managedkafka.TopicArgs{
-//				TopicId:           pulumi.String("my-topic"),
-//				Cluster:           cluster.ClusterId,
-//				Location:          pulumi.String("us-central1"),
-//				PartitionCount:    pulumi.Int(2),
-//				ReplicationFactor: pulumi.Int(3),
-//				Configs: pulumi.StringMap{
-//					"cleanup.policy": pulumi.String("compact"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Topic can be imported using any of these accepted formats:
@@ -104,7 +42,7 @@ type Topic struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
 	Configs pulumi.StringMapOutput `pulumi:"configs"`
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -116,8 +54,6 @@ type Topic struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId pulumi.StringOutput `pulumi:"topicId"`
 }
 
@@ -167,7 +103,7 @@ type topicState struct {
 	Cluster *string `pulumi:"cluster"`
 	// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
 	Configs map[string]string `pulumi:"configs"`
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location *string `pulumi:"location"`
 	// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
 	Name *string `pulumi:"name"`
@@ -179,8 +115,6 @@ type topicState struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId *string `pulumi:"topicId"`
 }
 
@@ -189,7 +123,7 @@ type TopicState struct {
 	Cluster pulumi.StringPtrInput
 	// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
 	Configs pulumi.StringMapInput
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location pulumi.StringPtrInput
 	// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
 	Name pulumi.StringPtrInput
@@ -201,8 +135,6 @@ type TopicState struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor pulumi.IntPtrInput
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId pulumi.StringPtrInput
 }
 
@@ -215,7 +147,7 @@ type topicArgs struct {
 	Cluster string `pulumi:"cluster"`
 	// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
 	Configs map[string]string `pulumi:"configs"`
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location string `pulumi:"location"`
 	// The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
 	PartitionCount *int `pulumi:"partitionCount"`
@@ -225,8 +157,6 @@ type topicArgs struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor int `pulumi:"replicationFactor"`
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId string `pulumi:"topicId"`
 }
 
@@ -236,7 +166,7 @@ type TopicArgs struct {
 	Cluster pulumi.StringInput
 	// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
 	Configs pulumi.StringMapInput
-	// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+	// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 	Location pulumi.StringInput
 	// The number of partitions in a topic. You can increase the partition count for a topic, but you cannot decrease it. Increasing partitions for a topic that uses a key might change how messages are distributed.
 	PartitionCount pulumi.IntPtrInput
@@ -246,8 +176,6 @@ type TopicArgs struct {
 	// The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
 	ReplicationFactor pulumi.IntInput
 	// The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-	//
-	// ***
 	TopicId pulumi.StringInput
 }
 
@@ -348,7 +276,7 @@ func (o TopicOutput) Configs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.Configs }).(pulumi.StringMapOutput)
 }
 
-// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
+// ID of the location of the Kafka resource. See <https://cloud.google.com/managed-kafka/docs/locations> for a list of supported locations.
 func (o TopicOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -375,8 +303,6 @@ func (o TopicOutput) ReplicationFactor() pulumi.IntOutput {
 }
 
 // The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-//
-// ***
 func (o TopicOutput) TopicId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.TopicId }).(pulumi.StringOutput)
 }

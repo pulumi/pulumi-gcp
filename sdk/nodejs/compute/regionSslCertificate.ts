@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslCertificates)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
- *
- * ## Example Usage
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  *
  * ## Import
  *
@@ -117,9 +115,6 @@ export class RegionSslCertificate extends pulumi.CustomResource {
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     *
-     *
-     * - - -
      */
     public readonly privateKey!: pulumi.Output<string>;
     /**
@@ -234,9 +229,6 @@ export interface RegionSslCertificateState {
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     *
-     *
-     * - - -
      */
     privateKey?: pulumi.Input<string>;
     /**
@@ -289,9 +281,6 @@ export interface RegionSslCertificateArgs {
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     *
-     *
-     * - - -
      */
     privateKey: pulumi.Input<string>;
     /**

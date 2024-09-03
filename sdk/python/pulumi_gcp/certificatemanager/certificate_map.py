@@ -34,9 +34,6 @@ class CertificateMapArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -82,9 +79,6 @@ class CertificateMapArgs:
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique
         globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -133,9 +127,6 @@ class _CertificateMapState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -235,9 +226,6 @@ class _CertificateMapState:
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique
         globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -300,9 +288,7 @@ class CertificateMap(pulumi.CustomResource):
         CertificateMap defines a collection of certificate configurations,
         which are usable by any associated target proxies
 
-        ## Example Usage
-
-        ### Certificate Manager Certificate Map Basic
+        ## 
 
         ```python
         import pulumi
@@ -350,9 +336,6 @@ class CertificateMap(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -366,9 +349,7 @@ class CertificateMap(pulumi.CustomResource):
         CertificateMap defines a collection of certificate configurations,
         which are usable by any associated target proxies
 
-        ## Example Usage
-
-        ### Certificate Manager Certificate Map Basic
+        ## 
 
         ```python
         import pulumi
@@ -485,9 +466,6 @@ class CertificateMap(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -563,9 +541,6 @@ class CertificateMap(pulumi.CustomResource):
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique
         globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

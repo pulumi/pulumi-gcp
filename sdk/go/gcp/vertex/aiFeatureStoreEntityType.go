@@ -85,6 +85,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Vertex Ai Featurestore Entitytype With Beta Fields
 //
 // ```go
@@ -167,8 +168,6 @@ type AiFeatureStoreEntityType struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-	//
-	// ***
 	Featurestore pulumi.StringOutput `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
 	//
@@ -239,8 +238,6 @@ type aiFeatureStoreEntityTypeState struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-	//
-	// ***
 	Featurestore *string `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
 	//
@@ -274,8 +271,6 @@ type AiFeatureStoreEntityTypeState struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-	//
-	// ***
 	Featurestore pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this EntityType.
 	//
@@ -307,8 +302,6 @@ type aiFeatureStoreEntityTypeArgs struct {
 	// Optional. Description of the EntityType.
 	Description *string `pulumi:"description"`
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-	//
-	// ***
 	Featurestore string `pulumi:"featurestore"`
 	// A set of key/value label pairs to assign to this EntityType.
 	//
@@ -330,8 +323,6 @@ type AiFeatureStoreEntityTypeArgs struct {
 	// Optional. Description of the EntityType.
 	Description pulumi.StringPtrInput
 	// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-	//
-	// ***
 	Featurestore pulumi.StringInput
 	// A set of key/value label pairs to assign to this EntityType.
 	//
@@ -456,8 +447,6 @@ func (o AiFeatureStoreEntityTypeOutput) Etag() pulumi.StringOutput {
 }
 
 // The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-//
-// ***
 func (o AiFeatureStoreEntityTypeOutput) Featurestore() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Featurestore }).(pulumi.StringOutput)
 }

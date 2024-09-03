@@ -121,6 +121,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Privateca Certificate With Template
  *
  * ```typescript
@@ -255,6 +256,7 @@ import * as utilities from "../utilities";
  *     certificateTemplate: defaultCertificateTemplate.id,
  * });
  * ```
+ *
  * ### Privateca Certificate Csr
  *
  * ```typescript
@@ -314,6 +316,7 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ *
  * ### Privateca Certificate No Authority
  *
  * ```typescript
@@ -406,6 +409,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultAuthority],
  * });
  * ```
+ *
  * ### Privateca Certificate Custom Ski
  *
  * ```typescript
@@ -608,9 +612,6 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -780,9 +781,6 @@ export interface CertificateState {
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -868,9 +866,6 @@ export interface CertificateArgs {
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

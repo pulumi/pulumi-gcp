@@ -17,14 +17,14 @@ public final class ConfigSmsRegionConfigAllowByDefaultArgs extends com.pulumi.re
     public static final ConfigSmsRegionConfigAllowByDefaultArgs Empty = new ConfigSmsRegionConfigAllowByDefaultArgs();
 
     /**
-     * Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+     * Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
      * 
      */
     @Import(name="disallowedRegions")
     private @Nullable Output<List<String>> disallowedRegions;
 
     /**
-     * @return Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+     * @return Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
      * 
      */
     public Optional<Output<List<String>>> disallowedRegions() {
@@ -56,7 +56,7 @@ public final class ConfigSmsRegionConfigAllowByDefaultArgs extends com.pulumi.re
         }
 
         /**
-         * @param disallowedRegions Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         * @param disallowedRegions Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ConfigSmsRegionConfigAllowByDefaultArgs extends com.pulumi.re
         }
 
         /**
-         * @param disallowedRegions Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         * @param disallowedRegions Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ConfigSmsRegionConfigAllowByDefaultArgs extends com.pulumi.re
         }
 
         /**
-         * @param disallowedRegions Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+         * @param disallowedRegions Two letter unicode region codes to disallow as defined by &lt;https://cldr.unicode.org/&gt; The full list of these region codes is here: &lt;https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json&gt;
          * 
          * @return builder
          * 

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters {
     /**
      * @return The runtime environment for the job.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment&gt;
      * Structure is documented below.
      * 
      */
@@ -48,7 +48,7 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
     private PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters() {}
     /**
      * @return The runtime environment for the job.
-     * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+     * &lt;https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment&gt;
      * Structure is documented below.
      * 
      */

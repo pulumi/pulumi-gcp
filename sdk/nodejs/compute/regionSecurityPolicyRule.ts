@@ -9,136 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ### Region Security Policy Rule Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.RegionSecurityPolicy("default", {
- *     region: "us-west2",
- *     name: "policyruletest",
- *     description: "basic region security policy",
- *     type: "CLOUD_ARMOR",
- * });
- * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policy_rule", {
- *     region: "us-west2",
- *     securityPolicy: _default.name,
- *     description: "new rule",
- *     priority: 100,
- *     match: {
- *         versionedExpr: "SRC_IPS_V1",
- *         config: {
- *             srcIpRanges: ["10.10.0.0/16"],
- *         },
- *     },
- *     action: "allow",
- *     preview: true,
- * });
- * ```
- * ### Region Security Policy Rule Multiple Rules
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.RegionSecurityPolicy("default", {
- *     region: "us-west2",
- *     name: "policywithmultiplerules",
- *     description: "basic region security policy",
- *     type: "CLOUD_ARMOR",
- * });
- * const policyRuleOne = new gcp.compute.RegionSecurityPolicyRule("policy_rule_one", {
- *     region: "us-west2",
- *     securityPolicy: _default.name,
- *     description: "new rule one",
- *     priority: 100,
- *     match: {
- *         versionedExpr: "SRC_IPS_V1",
- *         config: {
- *             srcIpRanges: ["10.10.0.0/16"],
- *         },
- *     },
- *     action: "allow",
- *     preview: true,
- * });
- * const policyRuleTwo = new gcp.compute.RegionSecurityPolicyRule("policy_rule_two", {
- *     region: "us-west2",
- *     securityPolicy: _default.name,
- *     description: "new rule two",
- *     priority: 101,
- *     match: {
- *         versionedExpr: "SRC_IPS_V1",
- *         config: {
- *             srcIpRanges: [
- *                 "192.168.0.0/16",
- *                 "10.0.0.0/8",
- *             ],
- *         },
- *     },
- *     action: "allow",
- *     preview: true,
- * });
- * ```
- * ### Region Security Policy Rule With Preconfigured Waf Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.compute.RegionSecurityPolicy("default", {
- *     region: "asia-southeast1",
- *     name: "policyruletest",
- *     description: "basic region security policy",
- *     type: "CLOUD_ARMOR",
- * });
- * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policy_rule", {
- *     region: "asia-southeast1",
- *     securityPolicy: _default.name,
- *     description: "new rule",
- *     priority: 100,
- *     match: {
- *         versionedExpr: "SRC_IPS_V1",
- *         config: {
- *             srcIpRanges: ["10.10.0.0/16"],
- *         },
- *     },
- *     preconfiguredWafConfig: {
- *         exclusions: [
- *             {
- *                 requestUris: [{
- *                     operator: "STARTS_WITH",
- *                     value: "/admin",
- *                 }],
- *                 targetRuleSet: "rce-stable",
- *             },
- *             {
- *                 requestQueryParams: [
- *                     {
- *                         operator: "CONTAINS",
- *                         value: "password",
- *                     },
- *                     {
- *                         operator: "STARTS_WITH",
- *                         value: "freeform",
- *                     },
- *                     {
- *                         operator: "EQUALS",
- *                         value: "description",
- *                     },
- *                 ],
- *                 targetRuleSet: "xss-stable",
- *                 targetRuleIds: [
- *                     "owasp-crs-v030001-id941330-xss",
- *                     "owasp-crs-v030001-id941340-xss",
- *                 ],
- *             },
- *         ],
- *     },
- *     action: "allow",
- *     preview: true,
- * });
- * ```
  * ### Region Security Policy Rule With Network Match
  *
  * ```typescript
@@ -315,9 +185,6 @@ export class RegionSecurityPolicyRule extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     public readonly securityPolicy!: pulumi.Output<string>;
 
@@ -443,9 +310,6 @@ export interface RegionSecurityPolicyRuleState {
     region?: pulumi.Input<string>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy?: pulumi.Input<string>;
 }
@@ -517,9 +381,6 @@ export interface RegionSecurityPolicyRuleArgs {
     region: pulumi.Input<string>;
     /**
      * The name of the security policy this rule belongs to.
-     *
-     *
-     * - - -
      */
     securityPolicy: pulumi.Input<string>;
 }

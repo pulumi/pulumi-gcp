@@ -36,7 +36,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.
+     * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
      * Structure is documented below.
      * 
      */
@@ -45,7 +45,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-     * See CEL spec at: https://github.com/google/cel-spec.
+     * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
      * Structure is documented below.
      * 
      */
@@ -73,8 +73,6 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -83,8 +81,6 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
      * @return Resource name for the Access Level. The short_name component must begin
      * with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -177,7 +173,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param custom Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-         * See CEL spec at: https://github.com/google/cel-spec.
+         * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -190,7 +186,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param custom Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-         * See CEL spec at: https://github.com/google/cel-spec.
+         * See CEL spec at: &lt;https://github.com/google/cel-spec&gt;.
          * Structure is documented below.
          * 
          * @return builder
@@ -226,8 +222,6 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
          * with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -240,8 +234,6 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
          * @param name Resource name for the Access Level. The short_name component must begin
          * with a letter and only include alphanumeric and &#39;_&#39;.
          * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-         * 
-         * ***
          * 
          * @return builder
          * 

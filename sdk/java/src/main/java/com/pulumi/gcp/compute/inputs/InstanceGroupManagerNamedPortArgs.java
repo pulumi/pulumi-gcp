@@ -32,7 +32,6 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
 
     /**
      * The port number.
-     * ***
      * 
      */
     @Import(name="port", required=true)
@@ -40,7 +39,6 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
 
     /**
      * @return The port number.
-     * ***
      * 
      */
     public Output<Integer> port() {
@@ -95,7 +93,6 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
 
         /**
          * @param port The port number.
-         * ***
          * 
          * @return builder
          * 
@@ -107,7 +104,6 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
 
         /**
          * @param port The port number.
-         * ***
          * 
          * @return builder
          * 

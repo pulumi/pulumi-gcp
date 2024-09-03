@@ -28,9 +28,6 @@ class EntryGroupArgs:
         The set of arguments for constructing a EntryGroup resource.
         :param pulumi.Input[str] entry_group_id: The id of the entry group to create. The id must begin with a letter or underscore,
                contain only English letters, numbers and underscores, and be at most 64 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -53,9 +50,6 @@ class EntryGroupArgs:
         """
         The id of the entry group to create. The id must begin with a letter or underscore,
         contain only English letters, numbers and underscores, and be at most 64 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_group_id")
 
@@ -128,9 +122,6 @@ class _EntryGroupState:
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011".
         :param pulumi.Input[str] entry_group_id: The id of the entry group to create. The id must begin with a letter or underscore,
                contain only English letters, numbers and underscores, and be at most 64 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -179,9 +170,6 @@ class _EntryGroupState:
         """
         The id of the entry group to create. The id must begin with a letter or underscore,
         contain only English letters, numbers and underscores, and be at most 64 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_group_id")
 
@@ -245,11 +233,9 @@ class EntryGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Entry Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -257,7 +243,7 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
-        ### Data Catalog Entry Group Full
+        ## 
 
         ```python
         import pulumi
@@ -287,9 +273,6 @@ class EntryGroup(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011".
         :param pulumi.Input[str] entry_group_id: The id of the entry group to create. The id must begin with a letter or underscore,
                contain only English letters, numbers and underscores, and be at most 64 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: EntryGroup location region.
@@ -307,11 +290,9 @@ class EntryGroup(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+          * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage
-
-        ### Data Catalog Entry Group Basic
+        ## 
 
         ```python
         import pulumi
@@ -319,7 +300,7 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basic_entry_group", entry_group_id="my_group")
         ```
-        ### Data Catalog Entry Group Full
+        ## 
 
         ```python
         import pulumi
@@ -407,9 +388,6 @@ class EntryGroup(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011".
         :param pulumi.Input[str] entry_group_id: The id of the entry group to create. The id must begin with a letter or underscore,
                contain only English letters, numbers and underscores, and be at most 64 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -449,9 +427,6 @@ class EntryGroup(pulumi.CustomResource):
         """
         The id of the entry group to create. The id must begin with a letter or underscore,
         contain only English letters, numbers and underscores, and be at most 64 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "entry_group_id")
 

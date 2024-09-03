@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     destinationPorts: ["433"],
  * });
  * ```
+ *
  * ### Vmware Engine External Access Rule Full
  *
  * ```typescript
@@ -181,7 +182,7 @@ export class ExternalAccessRule extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      */
     public readonly parent!: pulumi.Output<string>;
@@ -326,7 +327,7 @@ export interface ExternalAccessRuleState {
     name?: pulumi.Input<string>;
     /**
      * The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      */
     parent?: pulumi.Input<string>;
@@ -393,7 +394,7 @@ export interface ExternalAccessRuleArgs {
     name?: pulumi.Input<string>;
     /**
      * The resource name of the network policy.
-     * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+     * Resource names are schemeless URIs that follow the conventions in <https://cloud.google.com/apis/design/resource_names>.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      */
     parent: pulumi.Input<string>;

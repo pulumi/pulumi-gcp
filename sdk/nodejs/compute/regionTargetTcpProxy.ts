@@ -13,11 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetTcpProxies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
+ *   * [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
  *
- * ## Example Usage
- *
- * ### Region Target Tcp Proxy Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -107,9 +105,6 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
 
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
@@ -211,9 +206,6 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
 export interface RegionTargetTcpProxyState {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -272,9 +264,6 @@ export interface RegionTargetTcpProxyState {
 export interface RegionTargetTcpProxyArgs {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService: pulumi.Input<string>;
     /**

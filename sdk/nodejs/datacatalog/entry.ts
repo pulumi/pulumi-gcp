@@ -18,11 +18,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+ *   * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage
- *
- * ### Data Catalog Entry Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +34,7 @@ import * as utilities from "../utilities";
  *     userSpecifiedSystem: "SomethingExternal",
  * });
  * ```
- * ### Data Catalog Entry Fileset
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Data Catalog Entry Full
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -149,7 +147,7 @@ export class Entry extends pulumi.CustomResource {
 
     /**
      * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
      * Structure is documented below.
      */
     public /*out*/ readonly bigqueryDateShardedSpecs!: pulumi.Output<outputs.datacatalog.EntryBigqueryDateShardedSpec[]>;
@@ -173,9 +171,6 @@ export class Entry extends pulumi.CustomResource {
     public readonly entryGroup!: pulumi.Output<string>;
     /**
      * The id of the entry to create.
-     *
-     *
-     * - - -
      */
     public readonly entryId!: pulumi.Output<string>;
     /**
@@ -205,7 +200,7 @@ export class Entry extends pulumi.CustomResource {
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
      * for what fields this schema can contain.
      */
     public readonly schema!: pulumi.Output<string | undefined>;
@@ -291,7 +286,7 @@ export class Entry extends pulumi.CustomResource {
 export interface EntryState {
     /**
      * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Context: <https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding>.
      * Structure is documented below.
      */
     bigqueryDateShardedSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryDateShardedSpec>[]>;
@@ -315,9 +310,6 @@ export interface EntryState {
     entryGroup?: pulumi.Input<string>;
     /**
      * The id of the entry to create.
-     *
-     *
-     * - - -
      */
     entryId?: pulumi.Input<string>;
     /**
@@ -347,7 +339,7 @@ export interface EntryState {
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
      * for what fields this schema can contain.
      */
     schema?: pulumi.Input<string>;
@@ -392,9 +384,6 @@ export interface EntryArgs {
     entryGroup: pulumi.Input<string>;
     /**
      * The id of the entry to create.
-     *
-     *
-     * - - -
      */
     entryId: pulumi.Input<string>;
     /**
@@ -414,7 +403,7 @@ export interface EntryArgs {
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
-     * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
+     * <https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema>
      * for what fields this schema can contain.
      */
     schema?: pulumi.Input<string>;

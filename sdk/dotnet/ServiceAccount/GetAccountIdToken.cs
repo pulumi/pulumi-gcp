@@ -19,10 +19,10 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// ### ServiceAccount JSON Credential File.
-        ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+        /// ### ServiceAccount JSON credential file.
+        /// `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -43,12 +43,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ```
         /// 
         /// ### Service Account Impersonation.
-        ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+        /// `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
-        ///   Note: to use the following, you must grant `target_service_account` the
-        ///   `roles/iam.serviceAccountTokenCreator` role on itself.
+        /// Note: to use the following, you must grant `target_service_account` the
+        /// `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ### Invoking Cloud Run Endpoint
         /// 
-        ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+        /// The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -128,10 +128,10 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ## Example Usage
         /// 
-        /// ### ServiceAccount JSON Credential File.
-        ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+        /// ### ServiceAccount JSON credential file.
+        /// `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -152,12 +152,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// ```
         /// 
         /// ### Service Account Impersonation.
-        ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+        /// `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
         /// 
-        ///   Note: to use the following, you must grant `target_service_account` the
-        ///   `roles/iam.serviceAccountTokenCreator` role on itself.
+        /// Note: to use the following, you must grant `target_service_account` the
+        /// `roles/iam.serviceAccountTokenCreator` role on itself.
         /// 
-        ///   ```csharp
+        /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ### Invoking Cloud Run Endpoint
         /// 
-        ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+        /// The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

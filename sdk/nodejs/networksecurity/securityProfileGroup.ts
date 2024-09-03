@@ -11,8 +11,8 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfileGroups)
  * * How-to Guides
- *     * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
- *     * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
+ *   * [Create and manage security profile groups](https://cloud.google.com/firewall/docs/configure-security-profile-groups)
+ *   * [Security profile groups overview](https://cloud.google.com/firewall/docs/about-security-profile-groups)
  *
  * ## Example Usage
  *
@@ -111,9 +111,6 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The name of the security profile group resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -216,9 +213,6 @@ export interface SecurityProfileGroupState {
     location?: pulumi.Input<string>;
     /**
      * The name of the security profile group resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -263,9 +257,6 @@ export interface SecurityProfileGroupArgs {
     location?: pulumi.Input<string>;
     /**
      * The name of the security profile group resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

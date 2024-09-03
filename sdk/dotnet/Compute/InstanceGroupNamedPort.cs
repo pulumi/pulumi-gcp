@@ -19,11 +19,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
+    ///   * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Instance Group Named Port Gke
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -116,9 +114,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("group")]
         public Output<string> Group { get; private set; } = null!;
@@ -197,9 +192,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("group", required: true)]
         public Input<string> Group { get; set; } = null!;
@@ -240,9 +232,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the instance group.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }

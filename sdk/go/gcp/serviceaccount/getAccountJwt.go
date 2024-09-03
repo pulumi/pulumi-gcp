@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
+// Note: in order to use the following, the caller must have *at least* `roles/iam.serviceAccountTokenCreator` on the `targetServiceAccount`.
 //
 // ```go
 // package main

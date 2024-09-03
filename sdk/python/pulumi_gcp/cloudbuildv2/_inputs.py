@@ -889,7 +889,7 @@ if not MYPY:
         """
         host_uri: NotRequired[pulumi.Input[str]]
         """
-        The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
         """
         server_version: NotRequired[pulumi.Input[str]]
         """
@@ -924,7 +924,7 @@ class ConnectionGitlabConfigArgs:
         :param pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'] read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
                Structure is documented below.
         :param pulumi.Input[str] webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
-        :param pulumi.Input[str] host_uri: The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        :param pulumi.Input[str] host_uri: The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
         :param pulumi.Input[str] server_version: (Output)
                Output only. Version of the GitLab Enterprise server running on the `host_uri`.
         :param pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
@@ -985,7 +985,7 @@ class ConnectionGitlabConfigArgs:
     @pulumi.getter(name="hostUri")
     def host_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is <https://gitlab.com>.
         """
         return pulumi.get(self, "host_uri")
 

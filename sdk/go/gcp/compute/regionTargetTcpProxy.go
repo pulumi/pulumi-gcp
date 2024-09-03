@@ -22,9 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/load-balancing/docs/tcp/internal-proxy)
 //
-// ## Example Usage
-//
-// ### Region Target Tcp Proxy Basic
+// ##
 //
 // ```go
 // package main
@@ -108,8 +106,6 @@ type RegionTargetTcpProxy struct {
 	pulumi.CustomResourceState
 
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -177,8 +173,6 @@ func GetRegionTargetTcpProxy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RegionTargetTcpProxy resources.
 type regionTargetTcpProxyState struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService *string `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -214,8 +208,6 @@ type regionTargetTcpProxyState struct {
 
 type RegionTargetTcpProxyState struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -255,8 +247,6 @@ func (RegionTargetTcpProxyState) ElementType() reflect.Type {
 
 type regionTargetTcpProxyArgs struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService string `pulumi:"backendService"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -287,8 +277,6 @@ type regionTargetTcpProxyArgs struct {
 // The set of arguments for constructing a RegionTargetTcpProxy resource.
 type RegionTargetTcpProxyArgs struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService pulumi.StringInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -404,8 +392,6 @@ func (o RegionTargetTcpProxyOutput) ToRegionTargetTcpProxyOutputWithContext(ctx 
 }
 
 // A reference to the BackendService resource.
-//
-// ***
 func (o RegionTargetTcpProxyOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
 }

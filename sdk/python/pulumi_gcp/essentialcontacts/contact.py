@@ -29,9 +29,6 @@ class ContactArgs:
         :param pulumi.Input[str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "language_tag", language_tag)
@@ -79,9 +76,6 @@ class ContactArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -105,9 +99,6 @@ class _ContactState:
         :param pulumi.Input[str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -173,9 +164,6 @@ class _ContactState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -201,7 +189,7 @@ class Contact(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -209,9 +197,7 @@ class Contact(pulumi.CustomResource):
         Your account must have the `serviceusage.services.use` permission on the
         `billing_project` you defined.
 
-        ## Example Usage
-
-        ### Essential Contact
+        ## 
 
         ```python
         import pulumi
@@ -243,9 +229,6 @@ class Contact(pulumi.CustomResource):
         :param pulumi.Input[str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         ...
     @overload
@@ -260,7 +243,7 @@ class Contact(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1/projects.contacts)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+          * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -268,9 +251,7 @@ class Contact(pulumi.CustomResource):
         Your account must have the `serviceusage.services.use` permission on the
         `billing_project` you defined.
 
-        ## Example Usage
-
-        ### Essential Contact
+        ## 
 
         ```python
         import pulumi
@@ -364,9 +345,6 @@ class Contact(pulumi.CustomResource):
         :param pulumi.Input[str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,9 +394,6 @@ class Contact(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

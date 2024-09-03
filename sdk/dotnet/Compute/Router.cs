@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     /// * How-to Guides
-    ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+    ///   * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Router Basic
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -64,7 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// ### Compute Router Encrypted Interconnect
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -166,9 +164,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the network to which this router belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -271,9 +266,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the network to which this router belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -338,9 +330,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the network to which this router belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

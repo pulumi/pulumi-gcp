@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
  * * How-to Guides
- *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ *   * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  * 
  * ## Example Usage
  * 
@@ -134,16 +134,12 @@ public class BackendServiceSignedUrlKey extends com.pulumi.resources.CustomResou
     /**
      * The backend service this signed URL key belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
     private Output<String> backendService;
 
     /**
      * @return The backend service this signed URL key belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> backendService() {

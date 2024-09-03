@@ -19,12 +19,10 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
  * * How-to Guides
- *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *   * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *   * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *
- * ## Example Usage
- *
- * ### Monitoring Slo Appengine
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +48,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Example Usage
+ *
  * ### Monitoring Slo Request Based
  *
  * ```typescript
@@ -76,7 +77,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Monitoring Slo Windows Based Good Bad Metric Filter
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -104,7 +105,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Monitoring Slo Windows Based Metric Mean
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -137,7 +138,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Monitoring Slo Windows Based Metric Sum
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -170,7 +171,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Monitoring Slo Windows Based Ratio Threshold
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -303,9 +304,6 @@ export class Slo extends pulumi.CustomResource {
     public readonly rollingPeriodDays!: pulumi.Output<number | undefined>;
     /**
      * ID of the service to which this SLO belongs.
-     *
-     *
-     * - - -
      */
     public readonly service!: pulumi.Output<string>;
     /**
@@ -441,9 +439,6 @@ export interface SloState {
     rollingPeriodDays?: pulumi.Input<number>;
     /**
      * ID of the service to which this SLO belongs.
-     *
-     *
-     * - - -
      */
     service?: pulumi.Input<string>;
     /**
@@ -524,9 +519,6 @@ export interface SloArgs {
     rollingPeriodDays?: pulumi.Input<number>;
     /**
      * ID of the service to which this SLO belongs.
-     *
-     *
-     * - - -
      */
     service: pulumi.Input<string>;
     /**

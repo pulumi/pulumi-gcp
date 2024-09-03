@@ -18,11 +18,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpsHealthChecks)
  * * How-to Guides
- *     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+ *   * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
  *
- * ## Example Usage
- *
- * ### Https Health Check Basic
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -121,9 +119,6 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -239,9 +234,6 @@ export interface HttpsHealthCheckState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -309,9 +301,6 @@ export interface HttpsHealthCheckArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// * [API documentation](https://cloud.google.com/distributed-cloud/edge/latest/docs/reference/network/rest/v1/projects.locations.zones.networks)
     /// * How-to Guides
-    ///     * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
+    ///   * [Create and manage networks](https://cloud.google.com/distributed-cloud/edge/latest/docs/networks#api)
     /// 
     /// ## Example Usage
     /// 
@@ -126,9 +126,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this network.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
@@ -232,9 +229,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this network.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkId", required: true)]
         public Input<string> NetworkId { get; set; } = null!;
@@ -307,9 +301,6 @@ namespace Pulumi.Gcp.EdgeNetwork
 
         /// <summary>
         /// A unique ID that identifies this network.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }

@@ -71,13 +71,11 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
-     * The group example{@literal @}googlegroups.com would be
-     * group-example{@literal @}googlegroups.com.
+     * The user &lt;liz{@literal @}example.com&gt; would be &lt;user-liz{@literal @}example.com&gt;.
+     * The group &lt;example{@literal @}googlegroups.com&gt; would be
+     * &lt;group-example{@literal @}googlegroups.com&gt;.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     * 
-     * ***
      * 
      */
     @Import(name="entity")
@@ -94,13 +92,11 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
      * allUsers
      * allAuthenticatedUsers
      * Examples:
-     * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
-     * The group example{@literal @}googlegroups.com would be
-     * group-example{@literal @}googlegroups.com.
+     * The user &lt;liz{@literal @}example.com&gt; would be &lt;user-liz{@literal @}example.com&gt;.
+     * The group &lt;example{@literal @}googlegroups.com&gt; would be
+     * &lt;group-example{@literal @}googlegroups.com&gt;.
      * To refer to all members of the Google Apps for Business domain
      * example.com, the entity would be domain-example.com.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> entity() {
@@ -226,13 +222,11 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
          * allUsers
          * allAuthenticatedUsers
          * Examples:
-         * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
-         * The group example{@literal @}googlegroups.com would be
-         * group-example{@literal @}googlegroups.com.
+         * The user &lt;liz{@literal @}example.com&gt; would be &lt;user-liz{@literal @}example.com&gt;.
+         * The group &lt;example{@literal @}googlegroups.com&gt; would be
+         * &lt;group-example{@literal @}googlegroups.com&gt;.
          * To refer to all members of the Google Apps for Business domain
          * example.com, the entity would be domain-example.com.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -253,13 +247,11 @@ public final class BucketAccessControlState extends com.pulumi.resources.Resourc
          * allUsers
          * allAuthenticatedUsers
          * Examples:
-         * The user liz{@literal @}example.com would be user-liz{@literal @}example.com.
-         * The group example{@literal @}googlegroups.com would be
-         * group-example{@literal @}googlegroups.com.
+         * The user &lt;liz{@literal @}example.com&gt; would be &lt;user-liz{@literal @}example.com&gt;.
+         * The group &lt;example{@literal @}googlegroups.com&gt; would be
+         * &lt;group-example{@literal @}googlegroups.com&gt;.
          * To refer to all members of the Google Apps for Business domain
          * example.com, the entity would be domain-example.com.
-         * 
-         * ***
          * 
          * @return builder
          * 

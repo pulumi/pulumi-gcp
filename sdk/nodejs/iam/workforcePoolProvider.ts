@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers)
  * * How-to Guides
- *     * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
+ *   * [Configure a provider within the workforce pool](https://cloud.google.com/iam/docs/manage-workforce-identity-pools-providers#configure_a_provider_within_the_workforce_pool)
  *
  * > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
  * billing/quota project. The account team notifies you when the project is granted access.
@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workforce Pool Provider Saml Full
  *
  * ```typescript
@@ -70,6 +71,7 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
+ *
  * ### Iam Workforce Pool Provider Oidc Basic
  *
  * ```typescript
@@ -103,6 +105,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workforce Pool Provider Oidc Full
  *
  * ```typescript
@@ -144,6 +147,7 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
+ *
  * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Basic
  *
  * ```typescript
@@ -187,6 +191,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Iam Workforce Pool Provider Extra Attributes Oauth2 Config Client Full
  *
  * ```typescript
@@ -372,9 +377,6 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     public readonly providerId!: pulumi.Output<string>;
     /**
@@ -551,9 +553,6 @@ export interface WorkforcePoolProviderState {
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     providerId?: pulumi.Input<string>;
     /**
@@ -670,9 +669,6 @@ export interface WorkforcePoolProviderArgs {
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     *
-     *
-     * - - -
      */
     providerId: pulumi.Input<string>;
     /**

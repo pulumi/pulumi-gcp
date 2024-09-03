@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
  * * How-to Guides
- *     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ *   * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
  *
  * ## Import
  *
@@ -76,8 +76,6 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     public readonly environment!: pulumi.Output<string>;
     /**
      * PKCS12 file content
-     *
-     * - - -
      */
     public readonly file!: pulumi.Output<string>;
     /**
@@ -177,8 +175,6 @@ export interface KeystoresAliasesPkcs12State {
     environment?: pulumi.Input<string>;
     /**
      * PKCS12 file content
-     *
-     * - - -
      */
     file?: pulumi.Input<string>;
     /**
@@ -217,8 +213,6 @@ export interface KeystoresAliasesPkcs12Args {
     environment: pulumi.Input<string>;
     /**
      * PKCS12 file content
-     *
-     * - - -
      */
     file: pulumi.Input<string>;
     /**

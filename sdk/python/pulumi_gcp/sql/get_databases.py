@@ -82,6 +82,7 @@ def get_databases(instance: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
     """
     Use this data source to get information about a list of databases in a Cloud SQL instance.
+
     ## Example Usage
 
     ```python
@@ -116,6 +117,7 @@ def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
     """
     Use this data source to get information about a list of databases in a Cloud SQL instance.
+
     ## Example Usage
 
     ```python

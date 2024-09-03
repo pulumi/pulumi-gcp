@@ -233,7 +233,7 @@ import javax.annotation.Nullable;
  * 
  * ### Adding a CNAME record
  * 
- *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+ * The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -280,7 +280,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Setting Routing Policy instead of using rrdatas
- * ### Geolocation
+ * 
+ * #### Geolocation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -330,7 +331,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Failover
+ * #### Failover
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -544,16 +545,12 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
     /**
      * The DNS record set type.
      * 
-     * ***
-     * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
      * @return The DNS record set type.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {

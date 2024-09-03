@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/locations.global.metricsScopes.projects)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
+    ///   * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
     /// 
     /// ## Example Usage
     /// 
@@ -75,9 +75,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("metricsScope")]
         public Output<string> MetricsScope { get; private set; } = null!;
@@ -136,9 +133,6 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("metricsScope", required: true)]
         public Input<string> MetricsScope { get; set; } = null!;
@@ -165,9 +159,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("metricsScope")]
         public Input<string>? MetricsScope { get; set; }

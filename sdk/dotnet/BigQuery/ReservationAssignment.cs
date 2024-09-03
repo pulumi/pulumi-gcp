@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1/projects.locations.reservations.assignments)
     /// * How-to Guides
-    ///     * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
+    ///   * [Work with reservation assignments](https://cloud.google.com/bigquery/docs/reservations-assignments)
     /// 
     /// ## Example Usage
     /// 
@@ -109,9 +109,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The reservation for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("reservation")]
         public Output<string> Reservation { get; private set; } = null!;
@@ -196,9 +193,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The reservation for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("reservation", required: true)]
         public Input<string> Reservation { get; set; } = null!;
@@ -244,9 +238,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The reservation for the resource
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("reservation")]
         public Input<string>? Reservation { get; set; }

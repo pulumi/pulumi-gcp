@@ -94,17 +94,17 @@ if not MYPY:
         Only keys in the same location as this database are allowed to be used
         for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
         multi-region us. For Firestore's eur3 multi-region, this corresponds to
-        Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+        Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
         This value should be the KMS key resource ID in the format of
         `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         How to retrive this resource ID is listed at
-        https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+        <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
         """
         active_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         (Output)
-        Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-        During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+        Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+        During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
         multiple in-use key versions.
         The expected format is
         `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -124,14 +124,14 @@ class DatabaseCmekConfigArgs:
                Only keys in the same location as this database are allowed to be used
                for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
                multi-region us. For Firestore's eur3 multi-region, this corresponds to
-               Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+               Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
                This value should be the KMS key resource ID in the format of
                `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
                How to retrive this resource ID is listed at
-               https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+               <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_key_versions: (Output)
-               Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-               During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+               Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+               During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
                multiple in-use key versions.
                The expected format is
                `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -150,11 +150,11 @@ class DatabaseCmekConfigArgs:
         Only keys in the same location as this database are allowed to be used
         for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
         multi-region us. For Firestore's eur3 multi-region, this corresponds to
-        Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
+        Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations>.
         This value should be the KMS key resource ID in the format of
         `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         How to retrive this resource ID is listed at
-        https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
+        <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version>.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -167,8 +167,8 @@ class DatabaseCmekConfigArgs:
     def active_key_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         (Output)
-        Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-        During key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be
+        Currently in-use KMS key versions (<https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)>.
+        During key rotation (<https://cloud.google.com/kms/docs/key-rotation)>, there can be
         multiple in-use key versions.
         The expected format is
         `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
@@ -466,8 +466,6 @@ if not MYPY:
         flat: NotRequired[pulumi.Input['IndexFieldVectorConfigFlatArgsDict']]
         """
         Indicates the vector index is a flat index.
-
-        - - -
         """
 elif False:
     IndexFieldVectorConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -481,8 +479,6 @@ class IndexFieldVectorConfigArgs:
         :param pulumi.Input[int] dimension: The resulting index will only include vectors of this dimension, and can be used for vector search
                with the same dimension.
         :param pulumi.Input['IndexFieldVectorConfigFlatArgs'] flat: Indicates the vector index is a flat index.
-               
-               - - -
         """
         if dimension is not None:
             pulumi.set(__self__, "dimension", dimension)
@@ -507,8 +503,6 @@ class IndexFieldVectorConfigArgs:
     def flat(self) -> Optional[pulumi.Input['IndexFieldVectorConfigFlatArgs']]:
         """
         Indicates the vector index is a flat index.
-
-        - - -
         """
         return pulumi.get(self, "flat")
 

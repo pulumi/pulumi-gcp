@@ -41,8 +41,6 @@ type ServicePerimeterDryRunEgressPolicy struct {
 	// Structure is documented below.
 	EgressTo ServicePerimeterDryRunEgressPolicyEgressToPtrOutput `pulumi:"egressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringOutput `pulumi:"perimeter"`
 }
 
@@ -87,8 +85,6 @@ type servicePerimeterDryRunEgressPolicyState struct {
 	// Structure is documented below.
 	EgressTo *ServicePerimeterDryRunEgressPolicyEgressTo `pulumi:"egressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter *string `pulumi:"perimeter"`
 }
 
@@ -101,8 +97,6 @@ type ServicePerimeterDryRunEgressPolicyState struct {
 	// Structure is documented below.
 	EgressTo ServicePerimeterDryRunEgressPolicyEgressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringPtrInput
 }
 
@@ -119,8 +113,6 @@ type servicePerimeterDryRunEgressPolicyArgs struct {
 	// Structure is documented below.
 	EgressTo *ServicePerimeterDryRunEgressPolicyEgressTo `pulumi:"egressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter string `pulumi:"perimeter"`
 }
 
@@ -134,8 +126,6 @@ type ServicePerimeterDryRunEgressPolicyArgs struct {
 	// Structure is documented below.
 	EgressTo ServicePerimeterDryRunEgressPolicyEgressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringInput
 }
 
@@ -244,8 +234,6 @@ func (o ServicePerimeterDryRunEgressPolicyOutput) EgressTo() ServicePerimeterDry
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o ServicePerimeterDryRunEgressPolicyOutput) Perimeter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicy) pulumi.StringOutput { return v.Perimeter }).(pulumi.StringOutput)
 }

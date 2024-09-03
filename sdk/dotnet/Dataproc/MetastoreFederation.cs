@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// 
     /// ### Dataproc Metastore Federation Bigquery
     /// 
     /// ```csharp

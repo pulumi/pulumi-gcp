@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// Retrieves the current IAM policy data for policytag
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -38,7 +37,6 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Retrieves the current IAM policy data for policytag
-        /// 
         /// 
         /// ## example
         /// 

@@ -21,9 +21,7 @@ import (
 //   - [API reference](https://cloud.google.com/anthos/clusters/docs/multi-cloud/reference/rest/v1/projects.locations.attachedClusters)
 //   - [Multicloud overview](https://cloud.google.com/anthos/clusters/docs/multi-cloud)
 //
-// ## Example Usage
-//
-// ### Container Attached Cluster Basic
+// ##
 //
 // ```go
 // package main
@@ -73,7 +71,7 @@ import (
 //	}
 //
 // ```
-// ### Container Attached Cluster Full
+// ##
 //
 // ```go
 // package main
@@ -166,7 +164,7 @@ import (
 //	}
 //
 // ```
-// ### Container Attached Cluster Ignore Errors
+// ##
 //
 // ```go
 // package main

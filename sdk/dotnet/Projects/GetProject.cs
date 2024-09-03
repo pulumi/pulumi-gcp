@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// ## Example Usage
         /// 
-        /// ### Searching For Projects About To Be Deleted In An Org
+        /// ### searching for projects about to be deleted in an org
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// ## Example Usage
         /// 
-        /// ### Searching For Projects About To Be Deleted In An Org
+        /// ### searching for projects about to be deleted in an org
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

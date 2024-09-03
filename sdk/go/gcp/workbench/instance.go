@@ -14,9 +14,7 @@ import (
 
 // A Workbench instance.
 //
-// ## Example Usage
-//
-// ### Workbench Instance Basic
+// ##
 //
 // ```go
 // package main
@@ -42,7 +40,7 @@ import (
 //	}
 //
 // ```
-// ### Workbench Instance Basic Container
+// ##
 //
 // ```go
 // package main
@@ -74,7 +72,7 @@ import (
 //	}
 //
 // ```
-// ### Workbench Instance Basic Gpu
+// ##
 //
 // ```go
 // package main
@@ -113,6 +111,9 @@ import (
 //	}
 //
 // ```
+//
+// ## Example Usage
+//
 // ### Workbench Instance Labels Stopped
 //
 // ```go
@@ -159,6 +160,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Workbench Instance Full
 //
 // ```go
@@ -339,8 +341,6 @@ type Instance struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -434,8 +434,6 @@ type instanceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name *string `pulumi:"name"`
@@ -492,8 +490,6 @@ type InstanceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Part of `parent`. See documentation of `projectsId`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringPtrInput
@@ -541,8 +537,6 @@ type instanceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name *string `pulumi:"name"`
@@ -573,8 +567,6 @@ type InstanceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Part of `parent`. See documentation of `projectsId`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringPtrInput
@@ -736,8 +728,6 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Part of `parent`. See documentation of `projectsId`.
-//
-// ***
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -20,9 +20,7 @@ import (
 // * How-to Guides
 //   - [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 //
-// ## Example Usage
-//
-// ### Global Address Basic
+// ##
 //
 // ```go
 // package main
@@ -47,7 +45,7 @@ import (
 //	}
 //
 // ```
-// ### Global Address Private Services Connect
+// ##
 //
 // ```go
 // package main
@@ -143,8 +141,6 @@ type GlobalAddress struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network in which to reserve the IP range. The IP range
 	// must be in RFC1918 space. The network cannot be deleted if there are
@@ -238,8 +234,6 @@ type globalAddressState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the IP range. The IP range
 	// must be in RFC1918 space. The network cannot be deleted if there are
@@ -299,8 +293,6 @@ type GlobalAddressState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the IP range. The IP range
 	// must be in RFC1918 space. The network cannot be deleted if there are
@@ -358,8 +350,6 @@ type globalAddressArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the IP range. The IP range
 	// must be in RFC1918 space. The network cannot be deleted if there are
@@ -409,8 +399,6 @@ type GlobalAddressArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the IP range. The IP range
 	// must be in RFC1918 space. The network cannot be deleted if there are
@@ -575,8 +563,6 @@ func (o GlobalAddressOutput) Labels() pulumi.StringMapOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o GlobalAddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

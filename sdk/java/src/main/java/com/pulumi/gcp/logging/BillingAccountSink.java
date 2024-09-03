@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
  * * How-to Guides
- *     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
+ *   * [Exporting Logs](https://cloud.google.com/logging/docs/export)
  * 
  * &gt; **Note** You must have the &#34;Logs Configuration Writer&#34; IAM role (`roles/logging.configWriter`)
  * [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to

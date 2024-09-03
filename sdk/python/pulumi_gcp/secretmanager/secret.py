@@ -584,9 +584,7 @@ class Secret(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
-        ## Example Usage
-
-        ### Secret Config Basic
+        ## 
 
         ```python
         import pulumi
@@ -610,7 +608,7 @@ class Secret(pulumi.CustomResource):
                 },
             })
         ```
-        ### Secret With Annotations
+        ## 
 
         ```python
         import pulumi
@@ -632,7 +630,7 @@ class Secret(pulumi.CustomResource):
                 "auto": {},
             })
         ```
-        ### Secret With Version Destroy Ttl
+        ## 
 
         ```python
         import pulumi
@@ -645,7 +643,7 @@ class Secret(pulumi.CustomResource):
                 "auto": {},
             })
         ```
-        ### Secret With Automatic Cmek
+        ## 
 
         ```python
         import pulumi
@@ -744,9 +742,7 @@ class Secret(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 
-        ## Example Usage
-
-        ### Secret Config Basic
+        ## 
 
         ```python
         import pulumi
@@ -770,7 +766,7 @@ class Secret(pulumi.CustomResource):
                 },
             })
         ```
-        ### Secret With Annotations
+        ## 
 
         ```python
         import pulumi
@@ -792,7 +788,7 @@ class Secret(pulumi.CustomResource):
                 "auto": {},
             })
         ```
-        ### Secret With Version Destroy Ttl
+        ## 
 
         ```python
         import pulumi
@@ -805,7 +801,7 @@ class Secret(pulumi.CustomResource):
                 "auto": {},
             })
         ```
-        ### Secret With Automatic Cmek
+        ## 
 
         ```python
         import pulumi

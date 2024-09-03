@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/container-analysis/)
+ *   * [Official Documentation](https://cloud.google.com/container-analysis/)
  *
  * ## Example Usage
  *
@@ -110,7 +110,7 @@ export class Occurence extends pulumi.CustomResource {
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image@sha256:123abc for a Docker image.
+     * <https://gcr.io/project/image@sha256:123abc> for a Docker image.
      */
     public readonly resourceUri!: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export interface OccurenceState {
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image@sha256:123abc for a Docker image.
+     * <https://gcr.io/project/image@sha256:123abc> for a Docker image.
      */
     resourceUri?: pulumi.Input<string>;
     /**
@@ -249,7 +249,7 @@ export interface OccurenceArgs {
     /**
      * Required. Immutable. A URI that represents the resource for which
      * the occurrence applies. For example,
-     * https://gcr.io/project/image@sha256:123abc for a Docker image.
+     * <https://gcr.io/project/image@sha256:123abc> for a Docker image.
      */
     resourceUri: pulumi.Input<string>;
 }

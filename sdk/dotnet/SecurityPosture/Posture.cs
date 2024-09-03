@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.SecurityPosture
     /// To get more information about Posture, see:
     /// 
     /// * How-to Guides
-    ///     * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
+    ///   * [Create and deploy a posture](https://cloud.google.com/security-command-center/docs/how-to-use-security-posture)
     /// 
     /// ## Example Usage
     /// 
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -385,7 +385,7 @@ namespace Pulumi.Gcp.SecurityPosture
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// For Resource freshness validation (https://google.aip.dev/154)
+        /// For Resource freshness validation (&lt;https://google.aip.dev/154&gt;)
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

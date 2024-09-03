@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreferenceSetVirtualMachinePreferencesRegionPreferences {
     /**
-     * @return A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+     * @return A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
      * 
      */
     private @Nullable List<String> preferredRegions;
 
     private PreferenceSetVirtualMachinePreferencesRegionPreferences() {}
     /**
-     * @return A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
+     * @return A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See &lt;https://cloud.google.com/compute/docs/regions-zones&gt; for available regions.
      * 
      */
     public List<String> preferredRegions() {

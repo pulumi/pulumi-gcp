@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkAttachments)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
+ *   * [Official Documentation](https://cloud.google.com/vpc/docs/about-network-attachments)
  * 
  * ## Example Usage
  * 
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Network Attachment Instance Usage
+ * ## 
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -377,16 +377,12 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {

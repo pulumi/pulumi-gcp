@@ -149,8 +149,6 @@ type AuthorizedView struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-	//
-	// ***
 	SubsetView AuthorizedViewSubsetViewPtrOutput `pulumi:"subsetView"`
 	// The name of the Bigtable table in which the authorized view belongs.
 	TableName pulumi.StringOutput `pulumi:"tableName"`
@@ -201,8 +199,6 @@ type authorizedViewState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-	//
-	// ***
 	SubsetView *AuthorizedViewSubsetView `pulumi:"subsetView"`
 	// The name of the Bigtable table in which the authorized view belongs.
 	TableName *string `pulumi:"tableName"`
@@ -218,8 +214,6 @@ type AuthorizedViewState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-	//
-	// ***
 	SubsetView AuthorizedViewSubsetViewPtrInput
 	// The name of the Bigtable table in which the authorized view belongs.
 	TableName pulumi.StringPtrInput
@@ -239,8 +233,6 @@ type authorizedViewArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-	//
-	// ***
 	SubsetView *AuthorizedViewSubsetView `pulumi:"subsetView"`
 	// The name of the Bigtable table in which the authorized view belongs.
 	TableName string `pulumi:"tableName"`
@@ -257,8 +249,6 @@ type AuthorizedViewArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-	//
-	// ***
 	SubsetView AuthorizedViewSubsetViewPtrInput
 	// The name of the Bigtable table in which the authorized view belongs.
 	TableName pulumi.StringInput
@@ -372,8 +362,6 @@ func (o AuthorizedViewOutput) Project() pulumi.StringOutput {
 }
 
 // An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-//
-// ***
 func (o AuthorizedViewOutput) SubsetView() AuthorizedViewSubsetViewPtrOutput {
 	return o.ApplyT(func(v *AuthorizedView) AuthorizedViewSubsetViewPtrOutput { return v.SubsetView }).(AuthorizedViewSubsetViewPtrOutput)
 }

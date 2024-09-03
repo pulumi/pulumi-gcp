@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// <summary>
         /// Retrieves the current IAM policy data for note
         /// 
-        /// 
         /// ## example
         /// 
         /// ```csharp
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.ContainerAnalysis
 
         /// <summary>
         /// Retrieves the current IAM policy data for note
-        /// 
         /// 
         /// ## example
         /// 

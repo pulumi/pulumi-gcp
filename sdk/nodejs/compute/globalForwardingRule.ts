@@ -12,11 +12,11 @@ import * as utilities from "../utilities";
  * balancing. Global forwarding rules can only be used for HTTP load
  * balancing.
  *
- * For more information, see https://cloud.google.com/compute/docs/load-balancing/http/
+ * For more information, see <https://cloud.google.com/compute/docs/load-balancing/http/>
  *
  * ## Example Usage
  *
- * ### Global Forwarding Rule Http
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- * ### Global Forwarding Rule Internal
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -154,7 +154,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Global Forwarding Rule External Managed
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -196,7 +196,7 @@ import * as utilities from "../utilities";
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  * });
  * ```
- * ### Global Forwarding Rule Hybrid
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -353,6 +353,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
  * ### Private Service Connect Google Apis No Automate Dns
  *
  * ```typescript
@@ -644,14 +645,11 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+     * * For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+     * * `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+     * * `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-     *
-     *
-     * - - -
      */
     public readonly target!: pulumi.Output<string>;
 
@@ -934,14 +932,11 @@ export interface GlobalForwardingRuleState {
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+     * * For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+     * * `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+     * * `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-     *
-     *
-     * - - -
      */
     target?: pulumi.Input<string>;
 }
@@ -1121,14 +1116,11 @@ export interface GlobalForwardingRuleArgs {
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+     * * For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+     * * `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+     * * `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
-     *
-     *
-     * - - -
      */
     target: pulumi.Input<string>;
 }

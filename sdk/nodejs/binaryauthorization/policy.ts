@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *   * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
  * ## Example Usage
  *
@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
  * ### Binary Authorization Policy Global Evaluation
  *
  * ```typescript

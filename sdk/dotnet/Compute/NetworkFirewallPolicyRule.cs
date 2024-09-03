@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
-    /// ### Global
+    /// ### global
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

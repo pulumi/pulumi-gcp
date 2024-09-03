@@ -117,8 +117,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
      * 
-     * ***
-     * 
      */
     @Import(name="supportedEvents")
     private @Nullable Output<List<String>> supportedEvents;
@@ -128,8 +126,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
      * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
      * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
      * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> supportedEvents() {
@@ -323,8 +319,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -339,8 +333,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -353,8 +345,6 @@ public final class LbTrafficExtensionExtensionChainExtensionArgs extends com.pul
          * This field is required for the LbTrafficExtension resource. It&#39;s not relevant for the LbRouteExtension
          * resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
          * `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-         * 
-         * ***
          * 
          * @return builder
          * 

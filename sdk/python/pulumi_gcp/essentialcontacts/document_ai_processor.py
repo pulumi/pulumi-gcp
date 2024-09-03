@@ -28,11 +28,8 @@ class DocumentAiProcessorArgs:
         The set of arguments for constructing a DocumentAiProcessor resource.
         :param pulumi.Input[str] display_name: The display name. Must be unique.
         :param pulumi.Input[str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] type: The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
-        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -61,9 +58,6 @@ class DocumentAiProcessorArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -87,7 +81,7 @@ class DocumentAiProcessorArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -121,11 +115,8 @@ class _DocumentAiProcessorState:
         """
         Input properties used for looking up and filtering DocumentAiProcessor resources.
         :param pulumi.Input[str] display_name: The display name. Must be unique.
-        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         :param pulumi.Input[str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the processor.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -160,7 +151,7 @@ class _DocumentAiProcessorState:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -173,9 +164,6 @@ class _DocumentAiProcessorState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -239,11 +227,9 @@ class DocumentAiProcessor(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations.processors)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
+          * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 
-        ## Example Usage
-
-        ### Documentai Processor
+        ## 
 
         ```python
         import pulumi
@@ -282,11 +268,8 @@ class DocumentAiProcessor(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name. Must be unique.
-        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         :param pulumi.Input[str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
@@ -304,11 +287,9 @@ class DocumentAiProcessor(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations.processors)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
+          * [Official Documentation](https://cloud.google.com/document-ai/docs/overview)
 
-        ## Example Usage
-
-        ### Documentai Processor
+        ## 
 
         ```python
         import pulumi
@@ -409,11 +390,8 @@ class DocumentAiProcessor(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name. Must be unique.
-        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         :param pulumi.Input[str] location: The location of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The resource name of the processor.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -443,7 +421,7 @@ class DocumentAiProcessor(pulumi.CustomResource):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+        The KMS key used for encryption/decryption in CMEK scenarios. See <https://cloud.google.com/security-key-management>.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -452,9 +430,6 @@ class DocumentAiProcessor(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

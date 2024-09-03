@@ -45,9 +45,6 @@ class ResourcePolicyArgs:
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -133,9 +130,6 @@ class ResourcePolicyArgs:
         first character must be a lowercase letter, and all following characters
         must be a dash, lowercase letter, or digit, except the last character,
         which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -210,9 +204,6 @@ class _ResourcePolicyState:
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -301,9 +292,6 @@ class _ResourcePolicyState:
         first character must be a lowercase letter, and all following characters
         must be a dash, lowercase letter, or digit, except the last character,
         which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -383,9 +371,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
-        ## Example Usage
-
-        ### Resource Policy Basic
+        ## 
 
         ```python
         import pulumi
@@ -403,7 +389,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Resource Policy Full
+        ## 
 
         ```python
         import pulumi
@@ -432,7 +418,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Resource Policy Placement Policy
+        ## 
 
         ```python
         import pulumi
@@ -446,7 +432,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "collocation": "COLLOCATED",
             })
         ```
-        ### Resource Policy Placement Policy Max Distance
+        ## 
 
         ```python
         import pulumi
@@ -461,7 +447,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "max_distance": 2,
             })
         ```
-        ### Resource Policy Instance Schedule Policy
+        ## 
 
         ```python
         import pulumi
@@ -481,7 +467,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "time_zone": "US/Central",
             })
         ```
-        ### Resource Policy Snapshot Schedule Chain Name
+        ## 
 
         ```python
         import pulumi
@@ -512,7 +498,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Resource Policy Consistency Group
+        ## 
 
         ```python
         import pulumi
@@ -572,9 +558,6 @@ class ResourcePolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -594,9 +577,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
-        ## Example Usage
-
-        ### Resource Policy Basic
+        ## 
 
         ```python
         import pulumi
@@ -614,7 +595,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Resource Policy Full
+        ## 
 
         ```python
         import pulumi
@@ -643,7 +624,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Resource Policy Placement Policy
+        ## 
 
         ```python
         import pulumi
@@ -657,7 +638,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "collocation": "COLLOCATED",
             })
         ```
-        ### Resource Policy Placement Policy Max Distance
+        ## 
 
         ```python
         import pulumi
@@ -672,7 +653,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "max_distance": 2,
             })
         ```
-        ### Resource Policy Instance Schedule Policy
+        ## 
 
         ```python
         import pulumi
@@ -692,7 +673,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 "time_zone": "US/Central",
             })
         ```
-        ### Resource Policy Snapshot Schedule Chain Name
+        ## 
 
         ```python
         import pulumi
@@ -723,7 +704,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Resource Policy Consistency Group
+        ## 
 
         ```python
         import pulumi
@@ -848,9 +829,6 @@ class ResourcePolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -919,9 +897,6 @@ class ResourcePolicy(pulumi.CustomResource):
         first character must be a lowercase letter, and all following characters
         must be a dash, lowercase letter, or digit, except the last character,
         which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

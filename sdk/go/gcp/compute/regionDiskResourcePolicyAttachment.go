@@ -134,8 +134,6 @@ type RegionDiskResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 
 	// The name of the regional disk in which the resource policies are attached to.
-	//
-	// ***
 	Disk pulumi.StringOutput `pulumi:"disk"`
 	// The resource policy to be attached to the disk for scheduling snapshot
 	// creation. Do not specify the self link.
@@ -181,8 +179,6 @@ func GetRegionDiskResourcePolicyAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RegionDiskResourcePolicyAttachment resources.
 type regionDiskResourcePolicyAttachmentState struct {
 	// The name of the regional disk in which the resource policies are attached to.
-	//
-	// ***
 	Disk *string `pulumi:"disk"`
 	// The resource policy to be attached to the disk for scheduling snapshot
 	// creation. Do not specify the self link.
@@ -196,8 +192,6 @@ type regionDiskResourcePolicyAttachmentState struct {
 
 type RegionDiskResourcePolicyAttachmentState struct {
 	// The name of the regional disk in which the resource policies are attached to.
-	//
-	// ***
 	Disk pulumi.StringPtrInput
 	// The resource policy to be attached to the disk for scheduling snapshot
 	// creation. Do not specify the self link.
@@ -215,8 +209,6 @@ func (RegionDiskResourcePolicyAttachmentState) ElementType() reflect.Type {
 
 type regionDiskResourcePolicyAttachmentArgs struct {
 	// The name of the regional disk in which the resource policies are attached to.
-	//
-	// ***
 	Disk string `pulumi:"disk"`
 	// The resource policy to be attached to the disk for scheduling snapshot
 	// creation. Do not specify the self link.
@@ -231,8 +223,6 @@ type regionDiskResourcePolicyAttachmentArgs struct {
 // The set of arguments for constructing a RegionDiskResourcePolicyAttachment resource.
 type RegionDiskResourcePolicyAttachmentArgs struct {
 	// The name of the regional disk in which the resource policies are attached to.
-	//
-	// ***
 	Disk pulumi.StringInput
 	// The resource policy to be attached to the disk for scheduling snapshot
 	// creation. Do not specify the self link.
@@ -332,8 +322,6 @@ func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAtta
 }
 
 // The name of the regional disk in which the resource policies are attached to.
-//
-// ***
 func (o RegionDiskResourcePolicyAttachmentOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDiskResourcePolicyAttachment) pulumi.StringOutput { return v.Disk }).(pulumi.StringOutput)
 }

@@ -102,8 +102,6 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * ***
-     * 
      */
     @Import(name="privateKey", required=true)
     private Output<String> privateKey;
@@ -111,8 +109,6 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     * 
-     * ***
      * 
      */
     public Output<String> privateKey() {
@@ -293,8 +289,6 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
          * @param privateKey The write-only private key in PEM format.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -306,8 +300,6 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
         /**
          * @param privateKey The write-only private key in PEM format.
          * **Note**: This property is sensitive and will not be displayed in the plan.
-         * 
-         * ***
          * 
          * @return builder
          * 

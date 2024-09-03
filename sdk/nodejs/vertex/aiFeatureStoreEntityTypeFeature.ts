@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
+ *   * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
  *
- * ## Example Usage
- *
- * ### Vertex Ai Featurestore Entitytype Feature
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,7 +45,7 @@ import * as utilities from "../utilities";
  *     valueType: "INT64_ARRAY",
  * });
  * ```
- * ### Vertex Ai Featurestore Entitytype Feature With Beta Fields
+ * ## 
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -146,9 +144,6 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     *
-     *
-     * - - -
      */
     public readonly entitytype!: pulumi.Output<string>;
     /**
@@ -180,7 +175,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
      */
     public readonly valueType!: pulumi.Output<string>;
 
@@ -253,9 +248,6 @@ export interface AiFeatureStoreEntityTypeFeatureState {
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     *
-     *
-     * - - -
      */
     entitytype?: pulumi.Input<string>;
     /**
@@ -287,7 +279,7 @@ export interface AiFeatureStoreEntityTypeFeatureState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
      */
     valueType?: pulumi.Input<string>;
 }
@@ -302,9 +294,6 @@ export interface AiFeatureStoreEntityTypeFeatureArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-     *
-     *
-     * - - -
      */
     entitytype: pulumi.Input<string>;
     /**
@@ -319,7 +308,7 @@ export interface AiFeatureStoreEntityTypeFeatureArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
+     * Type of Feature value. Immutable. <https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType>
      */
     valueType: pulumi.Input<string>;
 }

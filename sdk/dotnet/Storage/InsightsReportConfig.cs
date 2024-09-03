@@ -16,11 +16,9 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/reportConfig)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
+    ///   * [Official Documentation](https://cloud.google.com/storage/docs/insights/using-storage-insights)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Storage Insights Report Config
+    /// ## 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

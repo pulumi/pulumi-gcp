@@ -12,6 +12,19 @@ import * as utilities from "../utilities";
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const baz = gcp.compute.getBackendService({
+ *     name: "foobar",
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: baz.then(baz => baz.healthChecks?.[0]),
+ * });
+ * ```
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
 
@@ -28,8 +41,6 @@ export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.Inv
 export interface GetBackendServiceArgs {
     /**
      * The name of the Backend Service.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -121,6 +132,19 @@ export interface GetBackendServiceResult {
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const baz = gcp.compute.getBackendService({
+ *     name: "foobar",
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: baz.then(baz => baz.healthChecks?.[0]),
+ * });
+ * ```
  */
 export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
     return pulumi.output(args).apply((a: any) => getBackendService(a, opts))
@@ -132,8 +156,6 @@ export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?
 export interface GetBackendServiceOutputArgs {
     /**
      * The name of the Backend Service.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

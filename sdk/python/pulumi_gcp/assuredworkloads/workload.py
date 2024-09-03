@@ -40,10 +40,6 @@ class WorkloadArgs:
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] organization: The organization for the resource
-               
-               
-               
-               - - -
         :param pulumi.Input[str] billing_account: Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input['WorkloadKmsSettingsArgs'] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
@@ -121,10 +117,6 @@ class WorkloadArgs:
     def organization(self) -> pulumi.Input[str]:
         """
         The organization for the resource
-
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -290,10 +282,6 @@ class _WorkloadState:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workload.
         :param pulumi.Input[str] organization: The organization for the resource
-               
-               
-               
-               - - -
         :param pulumi.Input[str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
         :param pulumi.Input['WorkloadPartnerPermissionsArgs'] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
@@ -526,10 +514,6 @@ class _WorkloadState:
     def organization(self) -> Optional[pulumi.Input[str]]:
         """
         The organization for the resource
-
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -658,7 +642,7 @@ class Workload(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_workload
+        ### basic_workload
         A basic test of a assuredworkloads api
         ```python
         import pulumi
@@ -693,7 +677,8 @@ class Workload(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Sovereign_controls_workload
+
+        ### sovereign_controls_workload
         A Sovereign Controls test of the assuredworkloads api
         ```python
         import pulumi
@@ -758,10 +743,6 @@ class Workload(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] organization: The organization for the resource
-               
-               
-               
-               - - -
         :param pulumi.Input[str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
         :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
@@ -779,7 +760,7 @@ class Workload(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic_workload
+        ### basic_workload
         A basic test of a assuredworkloads api
         ```python
         import pulumi
@@ -814,7 +795,8 @@ class Workload(pulumi.CustomResource):
                 "label-one": "value-one",
             })
         ```
-        ### Sovereign_controls_workload
+
+        ### sovereign_controls_workload
         A Sovereign Controls test of the assuredworkloads api
         ```python
         import pulumi
@@ -994,10 +976,6 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workload.
         :param pulumi.Input[str] organization: The organization for the resource
-               
-               
-               
-               - - -
         :param pulumi.Input[str] partner: Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
         :param pulumi.Input[Union['WorkloadPartnerPermissionsArgs', 'WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
@@ -1156,10 +1134,6 @@ class Workload(pulumi.CustomResource):
     def organization(self) -> pulumi.Output[str]:
         """
         The organization for the resource
-
-
-
-        - - -
         """
         return pulumi.get(self, "organization")
 

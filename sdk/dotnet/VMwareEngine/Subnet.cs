@@ -123,16 +123,13 @@ namespace Pulumi.Gcp.VMwareEngine
         /// <summary>
         /// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         /// where n ranges from 1 to 5.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the private cloud to create a new subnet in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         /// </summary>
         [Output("parent")]
@@ -232,16 +229,13 @@ namespace Pulumi.Gcp.VMwareEngine
         /// <summary>
         /// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         /// where n ranges from 1 to 5.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The resource name of the private cloud to create a new subnet in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         /// </summary>
         [Input("parent", required: true)]
@@ -297,16 +291,13 @@ namespace Pulumi.Gcp.VMwareEngine
         /// <summary>
         /// The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
         /// where n ranges from 1 to 5.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The resource name of the private cloud to create a new subnet in.
-        /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        /// Resource names are schemeless URIs that follow the conventions in &lt;https://cloud.google.com/apis/design/resource_names&gt;.
         /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
         /// </summary>
         [Input("parent")]

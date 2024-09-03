@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.scopes)
  * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
  * 
  * ## Example Usage
  * 
@@ -232,16 +232,12 @@ public class Scope extends com.pulumi.resources.CustomResource {
     /**
      * The client-provided identifier of the scope.
      * 
-     * ***
-     * 
      */
     @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     /**
      * @return The client-provided identifier of the scope.
-     * 
-     * ***
      * 
      */
     public Output<String> scopeId() {

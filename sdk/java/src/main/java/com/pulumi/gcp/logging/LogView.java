@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+ *   * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  * 
  * ## Example Usage
  * 
@@ -90,16 +90,12 @@ public class LogView extends com.pulumi.resources.CustomResource {
     /**
      * The bucket of the resource
      * 
-     * ***
-     * 
      */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
      * @return The bucket of the resource
-     * 
-     * ***
      * 
      */
     public Output<String> bucket() {

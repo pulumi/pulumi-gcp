@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// <summary>
         /// The name of the schema that messages published should be
         /// validated against. Format is projects/{project}/schemas/{schema}.
-        /// The value of this field will be _deleted-schema_
+        /// The value of this field will be *deleted-schema*
         /// if the schema has been deleted.
         /// </summary>
         public readonly string Schema;

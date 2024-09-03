@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/security-center-management/rest/v1/organizations.locations.eventThreatDetectionCustomModules)
     /// * How-to Guides
-    ///     * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
+    ///   * [Overview of custom modules for Event Threat Detection](https://cloud.google.com/security-command-center/docs/custom-modules-etd-overview)
     /// 
     /// ## Example Usage
     /// 
@@ -84,9 +84,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -179,9 +176,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -241,9 +235,6 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// Numerical ID of the parent organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

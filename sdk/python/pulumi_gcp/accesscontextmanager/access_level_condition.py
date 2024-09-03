@@ -32,9 +32,6 @@ class AccessLevelConditionArgs:
         """
         The set of arguments for constructing a AccessLevelCondition resource.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
-               
-               
-               - - -
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -91,9 +88,6 @@ class AccessLevelConditionArgs:
     def access_level(self) -> pulumi.Input[str]:
         """
         The name of the Access Level to add this condition to.
-
-
-        - - -
         """
         return pulumi.get(self, "access_level")
 
@@ -227,9 +221,6 @@ class _AccessLevelConditionState:
         """
         Input properties used for looking up and filtering AccessLevelCondition resources.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
-               
-               
-               - - -
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -287,9 +278,6 @@ class _AccessLevelConditionState:
     def access_level(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Access Level to add this condition to.
-
-
-        - - -
         """
         return pulumi.get(self, "access_level")
 
@@ -437,7 +425,7 @@ class AccessLevelCondition(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
         * How-to Guides
-            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+          * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -506,9 +494,6 @@ class AccessLevelCondition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
-               
-               
-               - - -
         :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -564,7 +549,7 @@ class AccessLevelCondition(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
         * How-to Guides
-            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+          * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
@@ -698,9 +683,6 @@ class AccessLevelCondition(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_level: The name of the Access Level to add this condition to.
-               
-               
-               - - -
         :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -755,9 +737,6 @@ class AccessLevelCondition(pulumi.CustomResource):
     def access_level(self) -> pulumi.Output[str]:
         """
         The name of the Access Level to add this condition to.
-
-
-        - - -
         """
         return pulumi.get(self, "access_level")
 

@@ -347,8 +347,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The region the instance will sit in. If a region is not provided in the resource definition,
         /// the provider region will be used instead.
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -531,8 +529,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The region the instance will sit in. If a region is not provided in the resource definition,
         /// the provider region will be used instead.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -732,8 +728,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The region the instance will sit in. If a region is not provided in the resource definition,
         /// the provider region will be used instead.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

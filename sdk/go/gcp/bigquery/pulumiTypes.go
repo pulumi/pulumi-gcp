@@ -1286,7 +1286,7 @@ func (o ConnectionCloudResourcePtrOutput) ServiceAccountId() pulumi.StringPtrOut
 type ConnectionCloudSpanner struct {
 	// Cloud Spanner database in the form `project/instance/database'.
 	Database string `pulumi:"database"`
-	// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+	// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
 	DatabaseRole *string `pulumi:"databaseRole"`
 	// Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
 	MaxParallelism *int `pulumi:"maxParallelism"`
@@ -1317,7 +1317,7 @@ type ConnectionCloudSpannerInput interface {
 type ConnectionCloudSpannerArgs struct {
 	// Cloud Spanner database in the form `project/instance/database'.
 	Database pulumi.StringInput `pulumi:"database"`
-	// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+	// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
 	DatabaseRole pulumi.StringPtrInput `pulumi:"databaseRole"`
 	// Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
 	MaxParallelism pulumi.IntPtrInput `pulumi:"maxParallelism"`
@@ -1416,7 +1416,7 @@ func (o ConnectionCloudSpannerOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSpanner) string { return v.Database }).(pulumi.StringOutput)
 }
 
-// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
 func (o ConnectionCloudSpannerOutput) DatabaseRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionCloudSpanner) *string { return v.DatabaseRole }).(pulumi.StringPtrOutput)
 }
@@ -1480,7 +1480,7 @@ func (o ConnectionCloudSpannerPtrOutput) Database() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see https://cloud.google.com/spanner/docs/fgac-about.
+// Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users should only use roles provided by their Cloud Spanner admins. The database role name must start with a letter, and can only contain letters, numbers, and underscores. For more details, see <https://cloud.google.com/spanner/docs/fgac-about>.
 func (o ConnectionCloudSpannerPtrOutput) DatabaseRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSpanner) *string {
 		if v == nil {
@@ -3236,7 +3236,7 @@ type DatasetAccessType struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup *string `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail *string `pulumi:"userByEmail"`
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -3290,7 +3290,7 @@ type DatasetAccessTypeArgs struct {
 	// * `allAuthenticatedUsers`: All authenticated BigQuery users.
 	SpecialGroup pulumi.StringPtrInput `pulumi:"specialGroup"`
 	// An email address of a user to grant access to. For example:
-	// fred@example.com
+	// <fred@example.com>
 	UserByEmail pulumi.StringPtrInput `pulumi:"userByEmail"`
 	// A view from a different dataset to grant access to. Queries
 	// executed against that view will have read access to tables in
@@ -3404,7 +3404,7 @@ func (o DatasetAccessTypeOutput) SpecialGroup() pulumi.StringPtrOutput {
 }
 
 // An email address of a user to grant access to. For example:
-// fred@example.com
+// <fred@example.com>
 func (o DatasetAccessTypeOutput) UserByEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *string { return v.UserByEmail }).(pulumi.StringPtrOutput)
 }
@@ -6492,8 +6492,6 @@ type JobExtractSourceModel struct {
 	// The ID of the dataset containing this model.
 	DatasetId string `pulumi:"datasetId"`
 	// The ID of the model.
-	//
-	// ***
 	ModelId string `pulumi:"modelId"`
 	// The ID of the project containing this model.
 	ProjectId string `pulumi:"projectId"`
@@ -6514,8 +6512,6 @@ type JobExtractSourceModelArgs struct {
 	// The ID of the dataset containing this model.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// The ID of the model.
-	//
-	// ***
 	ModelId pulumi.StringInput `pulumi:"modelId"`
 	// The ID of the project containing this model.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
@@ -6604,8 +6600,6 @@ func (o JobExtractSourceModelOutput) DatasetId() pulumi.StringOutput {
 }
 
 // The ID of the model.
-//
-// ***
 func (o JobExtractSourceModelOutput) ModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobExtractSourceModel) string { return v.ModelId }).(pulumi.StringOutput)
 }
@@ -6650,8 +6644,6 @@ func (o JobExtractSourceModelPtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // The ID of the model.
-//
-// ***
 func (o JobExtractSourceModelPtrOutput) ModelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobExtractSourceModel) *string {
 		if v == nil {

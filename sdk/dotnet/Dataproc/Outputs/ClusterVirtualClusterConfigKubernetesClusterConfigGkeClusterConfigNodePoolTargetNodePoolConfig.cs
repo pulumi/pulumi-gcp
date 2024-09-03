@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig
     {
         /// <summary>
-        /// The autoscaler configuration for this node pool. 
+        /// The autoscaler configuration for this node pool.
         /// The autoscaler is enabled only when a valid configuration is present.
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling? Autoscaling;
@@ -23,9 +23,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig? Config;
         /// <summary>
-        /// The list of Compute Engine zones where node pool nodes associated 
+        /// The list of Compute Engine zones where node pool nodes associated
         /// with a Dataproc on GKE virtual cluster will be located.
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Locations;
 

@@ -284,10 +284,16 @@ def get_metastore_service(location: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.dataproc.get_metastore_service(service_id="foo-bar",
+        location="global")
+    ```
+
 
     :param str location: The location where the metastore service resides.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str service_id: The ID of the metastore service.
@@ -338,10 +344,16 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.dataproc.get_metastore_service(service_id="foo-bar",
+        location="global")
+    ```
+
 
     :param str location: The location where the metastore service resides.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str service_id: The ID of the metastore service.

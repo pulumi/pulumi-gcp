@@ -99,13 +99,11 @@ type FirewallEndpoint struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+	// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -181,13 +179,11 @@ type firewallEndpointState struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+	// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -220,13 +216,11 @@ type FirewallEndpointState struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+	// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 	Reconciling pulumi.BoolPtrInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
@@ -254,8 +248,6 @@ type firewallEndpointArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 }
 
@@ -274,8 +266,6 @@ type FirewallEndpointArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: organizations/{organization_id}.
-	//
-	// ***
 	Parent pulumi.StringInput
 }
 
@@ -409,8 +399,6 @@ func (o FirewallEndpointOutput) Name() pulumi.StringOutput {
 
 // The name of the parent this firewall endpoint belongs to.
 // Format: organizations/{organization_id}.
-//
-// ***
 func (o FirewallEndpointOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
@@ -421,7 +409,7 @@ func (o FirewallEndpointOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
+// Whether reconciling is in progress, recommended per <https://google.aip.dev/128>.
 func (o FirewallEndpointOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }

@@ -33,9 +33,9 @@ class TunnelDestGroupIamMemberArgs:
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
@@ -79,9 +79,9 @@ class TunnelDestGroupIamMemberArgs:
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
@@ -168,9 +168,9 @@ class _TunnelDestGroupIamMemberState:
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
@@ -242,9 +242,9 @@ class _TunnelDestGroupIamMemberState:
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
@@ -366,6 +366,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
+
         ## iap.TunnelDestGroupIamBinding
 
         ```python
@@ -398,6 +399,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## iap.TunnelDestGroupIamMember
 
         ```python
@@ -432,8 +434,6 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         ```
 
         ## This resource supports User Project Overrides.
-
-        - 
 
         # IAM policy for Identity-Aware Proxy TunnelDestGroup
         Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelDestGroup. Each of these resources serves a different use case:
@@ -490,6 +490,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
+
         ## iap.TunnelDestGroupIamBinding
 
         ```python
@@ -522,6 +523,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## iap.TunnelDestGroupIamMember
 
         ```python
@@ -593,7 +595,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -603,9 +605,9 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
@@ -681,6 +683,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
+
         ## iap.TunnelDestGroupIamBinding
 
         ```python
@@ -713,6 +716,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## iap.TunnelDestGroupIamMember
 
         ```python
@@ -747,8 +751,6 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         ```
 
         ## This resource supports User Project Overrides.
-
-        - 
 
         # IAM policy for Identity-Aware Proxy TunnelDestGroup
         Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelDestGroup. Each of these resources serves a different use case:
@@ -805,6 +807,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
             dest_group=dest_group["groupName"],
             policy_data=admin.policy_data)
         ```
+
         ## iap.TunnelDestGroupIamBinding
 
         ```python
@@ -837,6 +840,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
                 "expression": "request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             })
         ```
+
         ## iap.TunnelDestGroupIamMember
 
         ```python
@@ -908,7 +912,7 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
 
         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
-         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
         :param TunnelDestGroupIamMemberArgs args: The arguments to use to populate this resource's properties.
@@ -984,9 +988,9 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
                Each entry can have one of the following values:
                * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
                * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+               * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
@@ -1044,9 +1048,9 @@ class TunnelDestGroupIamMember(pulumi.CustomResource):
         Each entry can have one of the following values:
         * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
         * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, <alice@gmail.com> or <joe@example.com>.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, <my-other-app@appspot.gserviceaccount.com>.
+        * **group:{emailid}**: An email address that represents a Google group. For example, <admins@example.com>.
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
         * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"

@@ -69,8 +69,6 @@ type LookupSnapshotArgs struct {
 	// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
 	Filter *string `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
-	//
-	// ***
 	MostRecent *bool `pulumi:"mostRecent"`
 	// The name of the compute snapshot. One of `name` or `filter` must be provided.
 	Name *string `pulumi:"name"`
@@ -127,8 +125,6 @@ type LookupSnapshotOutputArgs struct {
 	// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`. More details for golang Snapshots list call filters [here](https://pkg.go.dev/google.golang.org/api/compute/v1#SnapshotsListCall.Filter).
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
-	//
-	// ***
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
 	// The name of the compute snapshot. One of `name` or `filter` must be provided.
 	Name pulumi.StringPtrInput `pulumi:"name"`

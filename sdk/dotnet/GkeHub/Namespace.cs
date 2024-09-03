@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.scopes.namespaces)
     /// * How-to Guides
-    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    ///   * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
     /// 
     /// ## Example Usage
     /// 
@@ -155,9 +155,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Id of the scope
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("scopeId")]
         public Output<string> ScopeId { get; private set; } = null!;
@@ -284,9 +281,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Id of the scope
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("scopeId", required: true)]
         public Input<string> ScopeId { get; set; } = null!;
@@ -402,9 +396,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Id of the scope
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("scopeId")]
         public Input<string>? ScopeId { get; set; }

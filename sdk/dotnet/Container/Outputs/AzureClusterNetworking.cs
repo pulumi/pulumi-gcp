@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<string> ServiceAddressCidrBlocks;
         /// <summary>
         /// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string VirtualNetworkId;
 

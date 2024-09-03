@@ -31,9 +31,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 //
-// ## Example Usage
-//
-// ### Snapshot Basic
+// ##
 //
 // ```go
 // package main
@@ -83,7 +81,7 @@ import (
 //	}
 //
 // ```
-// ### Snapshot Chainname
+// ##
 //
 // ```go
 // package main
@@ -219,8 +217,6 @@ type Snapshot struct {
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntOutput `pulumi:"snapshotId"`
 	// A reference to the disk used to create this snapshot.
-	//
-	// ***
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
@@ -333,8 +329,6 @@ type snapshotState struct {
 	// The unique identifier for the resource.
 	SnapshotId *int `pulumi:"snapshotId"`
 	// A reference to the disk used to create this snapshot.
-	//
-	// ***
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
@@ -410,8 +404,6 @@ type SnapshotState struct {
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntPtrInput
 	// A reference to the disk used to create this snapshot.
-	//
-	// ***
 	SourceDisk pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
@@ -470,8 +462,6 @@ type snapshotArgs struct {
 	// Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// A reference to the disk used to create this snapshot.
-	//
-	// ***
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
@@ -523,8 +513,6 @@ type SnapshotArgs struct {
 	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// A reference to the disk used to create this snapshot.
-	//
-	// ***
 	SourceDisk pulumi.StringInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
@@ -724,8 +712,6 @@ func (o SnapshotOutput) SnapshotId() pulumi.IntOutput {
 }
 
 // A reference to the disk used to create this snapshot.
-//
-// ***
 func (o SnapshotOutput) SourceDisk() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceDisk }).(pulumi.StringOutput)
 }
