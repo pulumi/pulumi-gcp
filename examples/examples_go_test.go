@@ -416,9 +416,8 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 			ExtraRuntimeValidation: validateStateResult(2, st, st2),
 		}},
 		Config: map[string]string{
-			"state1":                        st.serialize(t),
-			"state2":                        st2.serialize(t),
-			"gcp:addPulumiAttributionLabel": "false",
+			"state1": st.serialize(t),
+			"state2": st2.serialize(t),
 		},
 		Quick:            true,
 		SkipRefresh:      true,
