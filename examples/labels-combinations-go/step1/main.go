@@ -40,7 +40,8 @@ func main() {
 		}
 
 		p, err := gcp.NewProvider(ctx, "prov", &gcp.ProviderArgs{
-			DefaultLabels: defaultLabelsMap,
+			DefaultLabels:             defaultLabelsMap,
+			AddPulumiAttributionLabel: pulumi.Bool(false),
 		})
 		if err != nil {
 			return err

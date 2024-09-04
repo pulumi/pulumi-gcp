@@ -4,7 +4,6 @@ package main
 
 import (
 	"encoding/json"
-
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 
@@ -40,7 +39,8 @@ func main() {
 		}
 
 		p, err := gcp.NewProvider(ctx, "prov", &gcp.ProviderArgs{
-			DefaultLabels: defaultLabelsMap,
+			DefaultLabels:             defaultLabelsMap,
+			AddPulumiAttributionLabel: pulumi.Bool(false),
 		})
 		if err != nil {
 			return err
