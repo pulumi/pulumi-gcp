@@ -14,6 +14,30 @@ import (
 // Get tag values from a `parent` key.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.GetTagValues(ctx, &tags.GetTagValuesArgs{
+//				Parent: "tagKeys/56789",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTagValues(ctx *pulumi.Context, args *GetTagValuesArgs, opts ...pulumi.InvokeOption) (*GetTagValuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagValuesResult

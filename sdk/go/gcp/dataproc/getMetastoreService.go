@@ -14,6 +14,31 @@ import (
 // Get a Dataproc Metastore service from Google Cloud by its id and location.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.LookupMetastoreService(ctx, &dataproc.LookupMetastoreServiceArgs{
+//				ServiceId: "foo-bar",
+//				Location:  "global",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMetastoreService(ctx *pulumi.Context, args *LookupMetastoreServiceArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreServiceResult

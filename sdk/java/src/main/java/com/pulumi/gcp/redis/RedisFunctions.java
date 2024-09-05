@@ -19,6 +19,42 @@ public final class RedisFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = RedisFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-redis-instance")
+     *             .build());
+     * 
+     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
+     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args) {
         return getInstance(args, InvokeOptions.Empty);
@@ -27,6 +63,42 @@ public final class RedisFunctions {
      * Get info about a Google Cloud Redis instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = RedisFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-redis-instance")
+     *             .build());
+     * 
+     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
+     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args) {
@@ -37,6 +109,42 @@ public final class RedisFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = RedisFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-redis-instance")
+     *             .build());
+     * 
+     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
+     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:redis/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
@@ -45,6 +153,42 @@ public final class RedisFunctions {
      * Get info about a Google Cloud Redis instance.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.redis.RedisFunctions;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = RedisFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-redis-instance")
+     *             .build());
+     * 
+     *         ctx.export("instanceMemorySizeGb", myInstance.applyValue(getInstanceResult -> getInstanceResult.memorySizeGb()));
+     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.connectMode()));
+     *         ctx.export("instanceAuthorizedNetwork", myInstance.applyValue(getInstanceResult -> getInstanceResult.authorizedNetwork()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {

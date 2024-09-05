@@ -94,6 +94,14 @@ def get_forwarding_rules(project: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rules = gcp.compute.get_forwarding_rules(project="my-cloud-project",
+        region="us-central1")
+    ```
+
 
     :param str project: The name of the project.
     :param str region: The region you want to get the forwarding rules from.
@@ -121,6 +129,14 @@ def get_forwarding_rules_output(project: Optional[pulumi.Input[Optional[str]]] =
     List all networks in a specified Google Cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rules = gcp.compute.get_forwarding_rules(project="my-cloud-project",
+        region="us-central1")
+    ```
 
 
     :param str project: The name of the project.

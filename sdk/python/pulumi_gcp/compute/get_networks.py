@@ -92,6 +92,13 @@ def get_networks(project: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_networks = gcp.compute.get_networks(project="my-cloud-project")
+    ```
+
 
     :param str project: The name of the project.
     """
@@ -114,6 +121,13 @@ def get_networks_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     List all networks in a specified Google Cloud project.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_networks = gcp.compute.get_networks(project="my-cloud-project")
+    ```
 
 
     :param str project: The name of the project.

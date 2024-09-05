@@ -14,6 +14,53 @@ import (
 // Get tag keys by org or project `parent`.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.GetTagKeys(ctx, &tags.GetTagKeysArgs{
+//				Parent: "organizations/12345",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.GetTagKeys(ctx, &tags.GetTagKeysArgs{
+//				Parent: "projects/abc",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTagKeys(ctx *pulumi.Context, args *GetTagKeysArgs, opts ...pulumi.InvokeOption) (*GetTagKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagKeysResult

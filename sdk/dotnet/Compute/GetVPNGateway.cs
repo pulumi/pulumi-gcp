@@ -16,10 +16,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_vpn_gateway" "my-vpn-gateway" {
-        ///   name = "vpn-gateway-us-east1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_vpn_gateway = Gcp.Compute.GetVPNGateway.Invoke(new()
+        ///     {
+        ///         Name = "vpn-gateway-us-east1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetVPNGatewayResult> InvokeAsync(GetVPNGatewayArgs args, InvokeOptions? options = null)
@@ -30,10 +40,20 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_compute_vpn_gateway" "my-vpn-gateway" {
-        ///   name = "vpn-gateway-us-east1"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_vpn_gateway = Gcp.Compute.GetVPNGateway.Invoke(new()
+        ///     {
+        ///         Name = "vpn-gateway-us-east1",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetVPNGatewayResult> Invoke(GetVPNGatewayInvokeArgs args, InvokeOptions? options = null)

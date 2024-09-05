@@ -14,34 +14,21 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_client_config" "current" {
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "project" {
-        ///   value = data.google_client_config.current.project
-        /// }
-        /// ```
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
         /// 
-        /// 
-        /// ### Configure Kubernetes Provider With OAuth2 Access Token
-        /// 
-        /// ```tf
-        /// data "google_client_config" "default" {
-        /// }
-        /// 
-        /// data "google_container_cluster" "my_cluster" {
-        ///   name = "my-cluster"
-        ///   zone = "us-east1-a"
-        /// }
-        /// 
-        /// provider "kubernetes" {
-        ///   host  = "https://${data.google_container_cluster.my_cluster.endpoint}"
-        ///   token = data.google_client_config.default.access_token
-        ///   cluster_ca_certificate = base64decode(
-        ///     data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate,
-        ///   )
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["project"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
@@ -50,34 +37,21 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_client_config" "current" {
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "project" {
-        ///   value = data.google_client_config.current.project
-        /// }
-        /// ```
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
         /// 
-        /// 
-        /// ### Configure Kubernetes Provider With OAuth2 Access Token
-        /// 
-        /// ```tf
-        /// data "google_client_config" "default" {
-        /// }
-        /// 
-        /// data "google_container_cluster" "my_cluster" {
-        ///   name = "my-cluster"
-        ///   zone = "us-east1-a"
-        /// }
-        /// 
-        /// provider "kubernetes" {
-        ///   host  = "https://${data.google_container_cluster.my_cluster.endpoint}"
-        ///   token = data.google_client_config.default.access_token
-        ///   cluster_ca_certificate = base64decode(
-        ///     data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate,
-        ///   )
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["project"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOptions? options = null)
