@@ -865,10 +865,10 @@ func TestImport(t *testing.T) {
 			resourceType: "gcp:storage/bucket:Bucket",
 		},
 		{
-			testName:     "bucket-with-defaults",
-			programPath:  filepath.Join("test-programs", "labeled-bucket-with-defaults"),
-			resourceType: "gcp:storage/bucket:Bucket",
-			//explicitProvider: true,
+			testName:         "bucket-with-defaults",
+			programPath:      filepath.Join("test-programs", "labeled-bucket-with-defaults"),
+			resourceType:     "gcp:storage/bucket:Bucket",
+			explicitProvider: true,
 		},
 		{
 			testName:     "bucket-iam-binding",
