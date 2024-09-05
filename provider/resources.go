@@ -1757,13 +1757,23 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloud_run_v2_job": {Tok: gcpResource(gcpCloudRunV2, "Job")},
 			"google_cloud_run_v2_service": {
 				Tok: gcpResource(gcpCloudRunV2, "Service"),
+
 				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
 					// `port` is an object type in the current version of this provider.
 					// But in a previous version, it was nested as a MaxItemsOne item, `ports`
 					// For correct updating, we extract the array item and re-write its content to the new `port` object.
-					if ports, ok := pMap["template"].ObjectValue()["containers"].ArrayValue()[0].ObjectValue()["ports"]; ok {
-						if ports.IsArray() {
-							pMap["template"].ObjectValue()["containers"].ArrayValue()[0].ObjectValue()["ports"] = ports.ArrayValue()[0]
+					if template, ok := pMap["template"]; ok {
+						tplObj := template.ObjectValue()
+						if containers, ok := tplObj["containers"]; ok {
+							contAry := containers.ArrayValue()
+							for _, container := range contAry {
+								contObj := container.ObjectValue()
+								if ports, ok := contObj["ports"]; ok {
+									if ports.IsArray() {
+										pMap["template"].ObjectValue()["containers"].ArrayValue()[0].ObjectValue()["ports"] = ports.ArrayValue()[0]
+									}
+								}
+							}
 						}
 					}
 					return pMap, nil

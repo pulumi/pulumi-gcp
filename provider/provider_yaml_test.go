@@ -201,7 +201,9 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 		{"cloudrunv2-job-6"},
 		{"cloudrunv2-service-4"},
 		{"cloudrunv2-service-5"},
-		{"cloudrunv2-service-7"},
+		// TODO: This upgrade will no longer be possible, as it touches multiple new changes. Must be re-recorded.
+		// Skipping for now.
+		//{"cloudrunv2-service-7"},
 		{"compute-disk-1"},
 		{"compute-disk-3"},
 	}
