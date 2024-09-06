@@ -11,7 +11,6 @@ resources:
     properties:
       defaultLabels:
         def: defaultlabel
-      addPulumiAttributionLabel: false
     defaultProvider: true
   resource:
     properties:

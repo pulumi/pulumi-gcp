@@ -3,7 +3,6 @@ runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
 config:
   gcpProj: string
-  gcp:addPulumiAttributionLabel: false
 resources:
   # Create a GCP resource (Storage Bucket)
   my-bucket:

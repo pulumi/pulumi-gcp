@@ -7,7 +7,6 @@ resources:
     type: pulumi:providers:gcp
     properties:
       project: an-invalid-project
-      addPulumiAttributionLabel: false
     defaultProvider: true
   b:
     type: gcp:storage:Bucket
