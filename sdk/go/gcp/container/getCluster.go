@@ -14,6 +14,35 @@ import (
 // Get info about a GKE cluster from its name and location.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myCluster, err := container.LookupCluster(ctx, &container.LookupClusterArgs{
+//				Name:     "my-cluster",
+//				Location: pulumi.StringRef("us-east1-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("endpoint", myCluster.Endpoint)
+//			ctx.Export("instanceGroupUrls", myCluster.NodePools[0].InstanceGroupUrls)
+//			ctx.Export("nodeConfig", myCluster.NodeConfigs)
+//			ctx.Export("nodePools", myCluster.NodePools)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

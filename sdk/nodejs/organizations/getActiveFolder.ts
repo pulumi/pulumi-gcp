@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Get an active folder within GCP by `displayName` and `parent`.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = gcp.organizations.getActiveFolder({
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * ```
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
 
@@ -57,6 +67,16 @@ export interface GetActiveFolderResult {
  * Get an active folder within GCP by `displayName` and `parent`.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = gcp.organizations.getActiveFolder({
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * ```
  */
 export function getActiveFolderOutput(args: GetActiveFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActiveFolderResult> {
     return pulumi.output(args).apply((a: any) => getActiveFolder(a, opts))

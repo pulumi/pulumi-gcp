@@ -16,16 +16,26 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_project" "project" {
-        ///   project_id = "foobar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// data "google_iap_client" "project_client" {
-        ///   brand        =  "projects/${data.google_project.project.number}/brands/[BRAND_NUMBER]"
-        ///   client_id    = FOO.apps.googleusercontent.com
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = "foobar",
+        ///     });
         /// 
+        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
+        ///     {
+        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
+        ///         ClientId = apps.Googleusercontent.Com,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetClientResult> InvokeAsync(GetClientArgs args, InvokeOptions? options = null)
@@ -36,16 +46,26 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_project" "project" {
-        ///   project_id = "foobar"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// data "google_iap_client" "project_client" {
-        ///   brand        =  "projects/${data.google_project.project.number}/brands/[BRAND_NUMBER]"
-        ///   client_id    = FOO.apps.googleusercontent.com
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = "foobar",
+        ///     });
         /// 
+        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
+        ///     {
+        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
+        ///         ClientId = apps.Googleusercontent.Com,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs args, InvokeOptions? options = null)

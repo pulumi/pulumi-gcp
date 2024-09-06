@@ -8,6 +8,16 @@ import * as utilities from "../utilities";
  * Get a tag value by `parent` key and `shortName`.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentProdTagValue = gcp.tags.getTagValue({
+ *     parent: "tagKeys/56789",
+ *     shortName: "production",
+ * });
+ * ```
  */
 export function getTagValue(args: GetTagValueArgs, opts?: pulumi.InvokeOptions): Promise<GetTagValueResult> {
 
@@ -66,6 +76,16 @@ export interface GetTagValueResult {
  * Get a tag value by `parent` key and `shortName`.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentProdTagValue = gcp.tags.getTagValue({
+ *     parent: "tagKeys/56789",
+ *     shortName: "production",
+ * });
+ * ```
  */
 export function getTagValueOutput(args: GetTagValueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagValueResult> {
     return pulumi.output(args).apply((a: any) => getTagValue(a, opts))

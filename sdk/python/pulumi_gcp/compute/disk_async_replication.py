@@ -119,6 +119,30 @@ class DiskAsyncReplication(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary_disk = gcp.compute.Disk("primary-disk",
+            name="primary-disk",
+            type="pd-ssd",
+            zone="europe-west4-a",
+            physical_block_size_bytes=4096)
+        secondary_disk = gcp.compute.Disk("secondary-disk",
+            name="secondary-disk",
+            type="pd-ssd",
+            zone="europe-west3-a",
+            async_primary_disk={
+                "disk": primary_disk.id,
+            },
+            physical_block_size_bytes=4096)
+        replication = gcp.compute.DiskAsyncReplication("replication",
+            primary_disk=primary_disk.id,
+            secondary_disk={
+                "disk": secondary_disk.id,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
@@ -138,6 +162,30 @@ class DiskAsyncReplication(pulumi.CustomResource):
         and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary_disk = gcp.compute.Disk("primary-disk",
+            name="primary-disk",
+            type="pd-ssd",
+            zone="europe-west4-a",
+            physical_block_size_bytes=4096)
+        secondary_disk = gcp.compute.Disk("secondary-disk",
+            name="secondary-disk",
+            type="pd-ssd",
+            zone="europe-west3-a",
+            async_primary_disk={
+                "disk": primary_disk.id,
+            },
+            physical_block_size_bytes=4096)
+        replication = gcp.compute.DiskAsyncReplication("replication",
+            primary_disk=primary_disk.id,
+            secondary_disk={
+                "disk": secondary_disk.id,
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param DiskAsyncReplicationArgs args: The arguments to use to populate this resource's properties.

@@ -78,6 +78,19 @@ def get_tag_keys(parent: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_key = gcp.tags.get_tag_keys(parent="organizations/12345")
+    ```
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_key = gcp.tags.get_tag_keys(parent="projects/abc")
+    ```
+
 
     :param str parent: The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
     """
@@ -99,6 +112,19 @@ def get_tag_keys_output(parent: Optional[pulumi.Input[str]] = None,
     Get tag keys by org or project `parent`.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_key = gcp.tags.get_tag_keys(parent="organizations/12345")
+    ```
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_key = gcp.tags.get_tag_keys(parent="projects/abc")
+    ```
 
 
     :param str parent: The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.

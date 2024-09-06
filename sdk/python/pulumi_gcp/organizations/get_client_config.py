@@ -98,7 +98,13 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     """
     ## Example Usage
 
-    ### Configure Kubernetes Provider With OAuth2 Access Token
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    current = gcp.organizations.get_client_config()
+    pulumi.export("project", current.project)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -117,6 +123,12 @@ def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pul
     """
     ## Example Usage
 
-    ### Configure Kubernetes Provider With OAuth2 Access Token
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    current = gcp.organizations.get_client_config()
+    pulumi.export("project", current.project)
+    ```
     """
     ...

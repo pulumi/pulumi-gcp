@@ -10,6 +10,23 @@ import * as utilities from "../utilities";
  * Get tag keys by org or project `parent`.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKeys({
+ *     parent: "organizations/12345",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKeys({
+ *     parent: "projects/abc",
+ * });
+ * ```
  */
 export function getTagKeys(args: GetTagKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeysResult> {
 
@@ -47,6 +64,23 @@ export interface GetTagKeysResult {
  * Get tag keys by org or project `parent`.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKeys({
+ *     parent: "organizations/12345",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKeys({
+ *     parent: "projects/abc",
+ * });
+ * ```
  */
 export function getTagKeysOutput(args: GetTagKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeysResult> {
     return pulumi.output(args).apply((a: any) => getTagKeys(a, opts))

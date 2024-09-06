@@ -16,17 +16,37 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_tags_tag_key" "environment_tag_key"{
-        ///   parent = "organizations/12345"
-        ///   short_name = "environment"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/12345",
+        ///         ShortName = "environment",
+        ///     });
+        /// 
+        /// });
         /// ```
-        /// ```tf
-        /// data "google_tags_tag_key" "environment_tag_key"{
-        ///   parent = "projects/abc"
-        ///   short_name = "environment"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
+        ///         ShortName = "environment",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetTagKeyResult> InvokeAsync(GetTagKeyArgs args, InvokeOptions? options = null)
@@ -37,17 +57,37 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_tags_tag_key" "environment_tag_key"{
-        ///   parent = "organizations/12345"
-        ///   short_name = "environment"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/12345",
+        ///         ShortName = "environment",
+        ///     });
+        /// 
+        /// });
         /// ```
-        /// ```tf
-        /// data "google_tags_tag_key" "environment_tag_key"{
-        ///   parent = "projects/abc"
-        ///   short_name = "environment"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
+        ///         ShortName = "environment",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetTagKeyResult> Invoke(GetTagKeyInvokeArgs args, InvokeOptions? options = null)
