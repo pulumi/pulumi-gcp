@@ -19,9 +19,6 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 		Dependencies: []string{
 			"@pulumi/gcp",
 		},
-		Config: map[string]string{
-			"gcp:addPulumiAttributionLabel": "false",
-		},
 	})
 
 	return baseJS

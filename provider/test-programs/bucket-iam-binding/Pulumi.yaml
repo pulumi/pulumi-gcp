@@ -1,7 +1,5 @@
 name: bucket-iam-binding
 runtime: yaml
-config:
-  gcp:addPulumiAttributionLabel: false
 resources:
   mybucket:
     properties:

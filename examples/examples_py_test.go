@@ -17,9 +17,6 @@ func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
 		Dependencies: []string{
 			filepath.Join("..", "sdk", "python", "bin"),
 		},
-		Config: map[string]string{
-			"gcp:addPulumiAttributionLabel": "false",
-		},
 	})
 
 	return pythonBase
