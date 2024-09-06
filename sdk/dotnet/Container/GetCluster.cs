@@ -16,27 +16,28 @@ namespace Pulumi.Gcp.Container
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_container_cluster" "my_cluster" {
-        ///   name     = "my-cluster"
-        ///   location = "us-east1-a"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "endpoint" {
-        ///   value = data.google_container_cluster.my_cluster.endpoint
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Location = "us-east1-a",
+        ///     });
         /// 
-        /// output "instance_group_urls" {
-        ///   value = data.google_container_cluster.my_cluster.node_pool[0].instance_group_urls
-        /// }
-        /// 
-        /// output "node_config" {
-        ///   value = data.google_container_cluster.my_cluster.node_config
-        /// }
-        /// 
-        /// output "node_pools" {
-        ///   value = data.google_container_cluster.my_cluster.node_pool
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
+        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
+        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
+        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
@@ -47,27 +48,28 @@ namespace Pulumi.Gcp.Container
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_container_cluster" "my_cluster" {
-        ///   name     = "my-cluster"
-        ///   location = "us-east1-a"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "endpoint" {
-        ///   value = data.google_container_cluster.my_cluster.endpoint
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Location = "us-east1-a",
+        ///     });
         /// 
-        /// output "instance_group_urls" {
-        ///   value = data.google_container_cluster.my_cluster.node_pool[0].instance_group_urls
-        /// }
-        /// 
-        /// output "node_config" {
-        ///   value = data.google_container_cluster.my_cluster.node_config
-        /// }
-        /// 
-        /// output "node_pools" {
-        ///   value = data.google_container_cluster.my_cluster.node_pool
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
+        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
+        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
+        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)

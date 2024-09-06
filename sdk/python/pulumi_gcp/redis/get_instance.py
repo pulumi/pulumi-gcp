@@ -383,6 +383,16 @@ def get_instance(name: Optional[str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_instance = gcp.redis.get_instance(name="my-redis-instance")
+    pulumi.export("instanceMemorySizeGb", my_instance.memory_size_gb)
+    pulumi.export("instanceConnectMode", my_instance.connect_mode)
+    pulumi.export("instanceAuthorizedNetwork", my_instance.authorized_network)
+    ```
+
 
     :param str name: The name of a Redis instance.
            
@@ -448,6 +458,16 @@ def get_instance_output(name: Optional[pulumi.Input[str]] = None,
     Get info about a Google Cloud Redis instance.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_instance = gcp.redis.get_instance(name="my-redis-instance")
+    pulumi.export("instanceMemorySizeGb", my_instance.memory_size_gb)
+    pulumi.export("instanceConnectMode", my_instance.connect_mode)
+    pulumi.export("instanceAuthorizedNetwork", my_instance.authorized_network)
+    ```
 
 
     :param str name: The name of a Redis instance.

@@ -16,11 +16,21 @@ namespace Pulumi.Gcp.Iam
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_iam_workload_identity_pool_provider" "foo" {
-        ///   workload_identity_pool_id          = "foo-pool"
-        ///   workload_identity_pool_provider_id = "bar-provider"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPoolProvider.Invoke(new()
+        ///     {
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///         WorkloadIdentityPoolProviderId = "bar-provider",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetWorkloadIdentityPoolProviderResult> InvokeAsync(GetWorkloadIdentityPoolProviderArgs args, InvokeOptions? options = null)
@@ -31,11 +41,21 @@ namespace Pulumi.Gcp.Iam
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_iam_workload_identity_pool_provider" "foo" {
-        ///   workload_identity_pool_id          = "foo-pool"
-        ///   workload_identity_pool_provider_id = "bar-provider"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Iam.GetWorkloadIdentityPoolProvider.Invoke(new()
+        ///     {
+        ///         WorkloadIdentityPoolId = "foo-pool",
+        ///         WorkloadIdentityPoolProviderId = "bar-provider",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetWorkloadIdentityPoolProviderResult> Invoke(GetWorkloadIdentityPoolProviderInvokeArgs args, InvokeOptions? options = null)

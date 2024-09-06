@@ -16,17 +16,26 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_privateca_certificate_authority" "default" {
-        ///   location = "us-west1"
-        ///   pool = "pool-name"
-        ///   certificate_authority_id = "ca-id"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "csr" {
-        ///   value = data.google_privateca_certificate_authority.default.pem_csr
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateAuthority.GetAuthority.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Pool = "pool-name",
+        ///         CertificateAuthorityId = "ca-id",
+        ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["csr"] = @default.Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Task<GetAuthorityResult> InvokeAsync(GetAuthorityArgs? args = null, InvokeOptions? options = null)
@@ -37,17 +46,26 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_privateca_certificate_authority" "default" {
-        ///   location = "us-west1"
-        ///   pool = "pool-name"
-        ///   certificate_authority_id = "ca-id"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
         /// 
-        /// output "csr" {
-        ///   value = data.google_privateca_certificate_authority.default.pem_csr
-        /// }
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateAuthority.GetAuthority.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Pool = "pool-name",
+        ///         CertificateAuthorityId = "ca-id",
+        ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["csr"] = @default.Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///     };
+        /// });
         /// ```
         /// </summary>
         public static Output<GetAuthorityResult> Invoke(GetAuthorityInvokeArgs? args = null, InvokeOptions? options = null)

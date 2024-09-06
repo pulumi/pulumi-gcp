@@ -18,10 +18,20 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_groups" "groups" {
-        ///   parent = "customers/A01b123xz"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
+        ///     {
+        ///         Parent = "customers/A01b123xz",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
@@ -34,10 +44,20 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_groups" "groups" {
-        ///   parent = "customers/A01b123xz"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Gcp.CloudIdentity.GetGroups.Invoke(new()
+        ///     {
+        ///         Parent = "customers/A01b123xz",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)

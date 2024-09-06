@@ -16,15 +16,35 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_tags_tag_keys" "environment_tag_key"{
-        ///   parent = "organizations/12345"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKeys.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/12345",
+        ///     });
+        /// 
+        /// });
         /// ```
-        /// ```tf
-        /// data "google_tags_tag_keys" "environment_tag_key"{
-        ///   parent = "projects/abc"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKeys.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetTagKeysResult> InvokeAsync(GetTagKeysArgs args, InvokeOptions? options = null)
@@ -35,15 +55,35 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_tags_tag_keys" "environment_tag_key"{
-        ///   parent = "organizations/12345"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKeys.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/12345",
+        ///     });
+        /// 
+        /// });
         /// ```
-        /// ```tf
-        /// data "google_tags_tag_keys" "environment_tag_key"{
-        ///   parent = "projects/abc"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKeys.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetTagKeysResult> Invoke(GetTagKeysInvokeArgs args, InvokeOptions? options = null)

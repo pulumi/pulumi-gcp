@@ -16,11 +16,21 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_dataproc_metastore_service" "foo" {
-        ///   service_id = "foo-bar"
-        ///   location   = "global"  
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Dataproc.GetMetastoreService.Invoke(new()
+        ///     {
+        ///         ServiceId = "foo-bar",
+        ///         Location = "global",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetMetastoreServiceResult> InvokeAsync(GetMetastoreServiceArgs args, InvokeOptions? options = null)
@@ -31,11 +41,21 @@ namespace Pulumi.Gcp.Dataproc
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_dataproc_metastore_service" "foo" {
-        ///   service_id = "foo-bar"
-        ///   location   = "global"  
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Dataproc.GetMetastoreService.Invoke(new()
+        ///     {
+        ///         ServiceId = "foo-bar",
+        ///         Location = "global",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetMetastoreServiceResult> Invoke(GetMetastoreServiceInvokeArgs args, InvokeOptions? options = null)
