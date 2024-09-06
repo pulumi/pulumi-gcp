@@ -81,6 +81,15 @@ def get_group_lookup(group_key: Optional[Union['GetGroupLookupGroupKeyArgs', 'Ge
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    group = gcp.cloudidentity.get_group_lookup(group_key={
+        "id": "my-group@example.com",
+    })
+    ```
+
 
     :param Union['GetGroupLookupGroupKeyArgs', 'GetGroupLookupGroupKeyArgsDict'] group_key: The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
            An entity can represent either a group with an optional namespace or a user without a namespace.
@@ -106,6 +115,15 @@ def get_group_lookup_output(group_key: Optional[pulumi.Input[Union['GetGroupLook
     https://cloud.google.com/identity/docs/concepts/overview#groups
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    group = gcp.cloudidentity.get_group_lookup(group_key={
+        "id": "my-group@example.com",
+    })
+    ```
 
 
     :param Union['GetGroupLookupGroupKeyArgs', 'GetGroupLookupGroupKeyArgsDict'] group_key: The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.

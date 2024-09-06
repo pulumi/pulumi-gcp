@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Get info about a Google Certificate Manager Certificate Map resource.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.certificatemanager.getCertificateMap({
+ *     name: "cert-map",
+ * });
+ * ```
  */
 export function getCertificateMap(args: GetCertificateMapArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateMapResult> {
 
@@ -59,6 +68,15 @@ export interface GetCertificateMapResult {
  * Get info about a Google Certificate Manager Certificate Map resource.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.certificatemanager.getCertificateMap({
+ *     name: "cert-map",
+ * });
+ * ```
  */
 export function getCertificateMapOutput(args: GetCertificateMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateMapResult> {
     return pulumi.output(args).apply((a: any) => getCertificateMap(a, opts))

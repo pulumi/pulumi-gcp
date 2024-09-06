@@ -181,9 +181,41 @@ import * as utilities from "../utilities";
  * data source, which will retrieve the latest image on every `pulumi apply`, and will update
  * the template to use that specific image:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
+ *     disks: [{
+ *         sourceImage: myImage.then(myImage => myImage.selfLink),
+ *     }],
+ * });
+ * ```
+ *
  * To have instances update to the latest on every scaling event or instance re-creation,
  * use the family as the image for the disk, and it will use GCP's default behavior, setting
  * the image for the template to the family:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
+ *     namePrefix: "instance-template-",
+ *     machineType: "e2-medium",
+ *     region: "us-central1",
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-11",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

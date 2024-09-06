@@ -18,12 +18,23 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_group_lookup" "group" {
-        ///   group_key {
-        ///     id = "my-group@example.com"
-        ///   }
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = Gcp.CloudIdentity.GetGroupLookup.Invoke(new()
+        ///     {
+        ///         GroupKey = new Gcp.CloudIdentity.Inputs.GetGroupLookupGroupKeyInputArgs
+        ///         {
+        ///             Id = "my-group@example.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetGroupLookupResult> InvokeAsync(GetGroupLookupArgs args, InvokeOptions? options = null)
@@ -36,12 +47,23 @@ namespace Pulumi.Gcp.CloudIdentity
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_cloud_identity_group_lookup" "group" {
-        ///   group_key {
-        ///     id = "my-group@example.com"
-        ///   }
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = Gcp.CloudIdentity.GetGroupLookup.Invoke(new()
+        ///     {
+        ///         GroupKey = new Gcp.CloudIdentity.Inputs.GetGroupLookupGroupKeyInputArgs
+        ///         {
+        ///             Id = "my-group@example.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetGroupLookupResult> Invoke(GetGroupLookupInvokeArgs args, InvokeOptions? options = null)

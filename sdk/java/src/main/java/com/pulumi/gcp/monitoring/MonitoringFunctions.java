@@ -1592,7 +1592,7 @@ public final class MonitoringFunctions {
         return Deployment.getInstance().invokeAsync("gcp:monitoring/getNotificationChannel:getNotificationChannel", TypeShape.of(GetNotificationChannelResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+     * Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -1638,7 +1638,7 @@ public final class MonitoringFunctions {
         return getSecretVersion(args, InvokeOptions.Empty);
     }
     /**
-     * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+     * Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -1684,7 +1684,7 @@ public final class MonitoringFunctions {
         return getSecretVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+     * Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -1730,7 +1730,7 @@ public final class MonitoringFunctions {
         return Deployment.getInstance().invoke("gcp:monitoring/getSecretVersion:getSecretVersion", TypeShape.of(GetSecretVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+     * Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 

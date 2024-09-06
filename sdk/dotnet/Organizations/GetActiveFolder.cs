@@ -16,11 +16,21 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_active_folder" "department1" {
-        ///   display_name = "Department 1"
-        ///   parent       = "organizations/1234567"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var department1 = Gcp.Organizations.GetActiveFolder.Invoke(new()
+        ///     {
+        ///         DisplayName = "Department 1",
+        ///         Parent = "organizations/1234567",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Task<GetActiveFolderResult> InvokeAsync(GetActiveFolderArgs args, InvokeOptions? options = null)
@@ -31,11 +41,21 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ## Example Usage
         /// 
-        /// ```tf
-        /// data "google_active_folder" "department1" {
-        ///   display_name = "Department 1"
-        ///   parent       = "organizations/1234567"
-        /// }
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var department1 = Gcp.Organizations.GetActiveFolder.Invoke(new()
+        ///     {
+        ///         DisplayName = "Department 1",
+        ///         Parent = "organizations/1234567",
+        ///     });
+        /// 
+        /// });
         /// ```
         /// </summary>
         public static Output<GetActiveFolderResult> Invoke(GetActiveFolderInvokeArgs args, InvokeOptions? options = null)

@@ -1337,9 +1337,37 @@ class InstanceTemplate(pulumi.CustomResource):
         data source, which will retrieve the latest image on every `pulumi apply`, and will update
         the template to use that specific image:
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": my_image.self_link,
+            }])
+        ```
+
         To have instances update to the latest on every scaling event or instance re-creation,
         use the family as the image for the disk, and it will use GCP's default behavior, setting
         the image for the template to the family:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+            }])
+        ```
 
         ## Import
 
@@ -1603,9 +1631,37 @@ class InstanceTemplate(pulumi.CustomResource):
         data source, which will retrieve the latest image on every `pulumi apply`, and will update
         the template to use that specific image:
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": my_image.self_link,
+            }])
+        ```
+
         To have instances update to the latest on every scaling event or instance re-creation,
         use the family as the image for the disk, and it will use GCP's default behavior, setting
         the image for the template to the family:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance_template = gcp.compute.InstanceTemplate("instance_template",
+            name_prefix="instance-template-",
+            machine_type="e2-medium",
+            region="us-central1",
+            disks=[{
+                "source_image": "debian-cloud/debian-11",
+            }])
+        ```
 
         ## Import
 
