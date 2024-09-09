@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Fri, 6 Sep 2024 15:35:00 -0700
+Subject: [PATCH] Try all labels
+
+
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index 6000cf889..4e2a84f54 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -47,7 +47,7 @@ func SetLabelsNoDefaults(labels map[string]string, d *schema.ResourceData, linea
+ 			for k := range v.(map[string]interface{}) {
+ 				// This label is set by the provider.
+ 				// It is neither a defaultLabel, nor is it user set. Skip.
+-				if k == "goog-pulumi-provisioned" && lineage == "labels" {
++				if k == "goog-pulumi-provisioned" {
+ 					q.Q("reading after update, found goog label")
+ 					continue
+ 				}
+@@ -60,7 +60,7 @@ func SetLabelsNoDefaults(labels map[string]string, d *schema.ResourceData, linea
+ 		for k, v := range labels {
+ 			if _, ok := defaultLabels[k]; !ok || lineage != "labels" {
+ 				q.Q("we did NOT find k in default labels OR lineage was NOT labels", k, lineage)
+-				if k == "goog-pulumi-provisioned" && lineage == "labels" {
++				if k == "goog-pulumi-provisioned" {
+ 					q.Q("we should actually check for lineage here too I think. But this doesn't explain why default labels made it in???")
+ 					continue
+ 				}
+@@ -68,6 +68,7 @@ func SetLabelsNoDefaults(labels map[string]string, d *schema.ResourceData, linea
+ 			}
+ 		}
+ 	}
++	q.Q(transformed)
+ 
+ 	return d.Set(lineage, transformed)
+ }

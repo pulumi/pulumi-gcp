@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Mon, 9 Sep 2024 11:09:10 -0700
+Subject: [PATCH] Don't read provisioned label to transformed
+
+
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index a974447fc..115419986 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -41,6 +41,12 @@ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string)
+ // if we are setting the labels field.
+ func SetLabelsNoDefaults(labels map[string]string, d *schema.ResourceData, lineage string, defaultLabels map[string]string) error {
+ 	transformed := make(map[string]interface{})
++	q.Q(labels)
++
++	if _, found := labels["goog-pulumi-provisioned"]; found {
++		q.Q("guess what we found it - but we're still unclear WTF the transformed labels are so this is probably not good enough")
++		delete(labels, "goog-pulumi-provisioned")
++	}
+ 
+ 	q.Q(labels)
+ 	q.Q(defaultLabels)

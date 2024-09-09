@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Mon, 9 Sep 2024 10:31:35 -0700
+Subject: [PATCH] same as before, but with debugs
+
+
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index d0f5c3e97..a974447fc 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -71,10 +71,10 @@ func SetLabelsNoDefaults(labels map[string]string, d *schema.ResourceData, linea
+ 				//}
+ 				transformed[k] = v
+ 			}
+-			// TODO: the goog-pulumi-provisioned label is NEVER in defaultLabels! So we're just dropping it on accident.
+-			if k == "goog-pulumi-provisioned" {
+-				transformed[k] = v
+-			}
++			//// TODO: the goog-pulumi-provisioned label is NEVER in defaultLabels! So we're just dropping it on accident.
++			//if k == "goog-pulumi-provisioned" {
++			//	transformed[k] = v
++			//}
+ 		}
+ 		//tODO: I think when we're "importing", whatever this means - this is actually not what is going on unless we're overloading the word import here somehow -
+ 		// we NEVER read the goog-pulumi-provisioned label. And we kinda should. in the basic case, importing is always on labels, never on terraform_labels

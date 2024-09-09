@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Fri, 6 Sep 2024 16:06:20 -0700
+Subject: [PATCH] set up a control group because WTF
+
+
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index 2b637d057..9f7a25d88 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -20,6 +20,11 @@ import (
+ // param "lineage" is the terraform lineage of the field and could be "labels" or "terraform_labels".
+ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string) error {
+ 	transformed := make(map[string]interface{})
++	q.Q("*****************")
++	q.Q("in regular SetLabels")
++	q.Q(labels)
++	q.Q(lineage)
++	q.Q("*****************")
+ 
+ 	if v, ok := d.GetOk(lineage); ok {
+ 		if labels != nil {

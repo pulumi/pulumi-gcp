@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: guineveresaenger <guinevere@pulumi.com>
+Date: Mon, 9 Sep 2024 11:33:03 -0700
+Subject: [PATCH] print out transformed
+
+
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index 115419986..060d3bc55 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -33,6 +33,7 @@ func SetLabels(labels map[string]string, d *schema.ResourceData, lineage string)
+ 			}
+ 		}
+ 	}
++	q.Q(transformed)
+ 
+ 	return d.Set(lineage, transformed)
+ }
