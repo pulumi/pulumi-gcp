@@ -509,6 +509,9 @@ func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 		}
 	}
 
+	// Because we're reading pulumiValues, we need to read in the stupid default label? This test setup is so unclear!
+	r["goog-pulumi-provisioned"] = "true"
+
 	return r
 }
 
