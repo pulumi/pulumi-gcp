@@ -201,8 +201,8 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 		{"cloudrunv2-job-6"},
 		{"cloudrunv2-service-4"},
 		{"cloudrunv2-service-5"},
-		// TODO: This upgrade will no longer be possible, as it touches multiple new changes. Must be re-recorded.
-		// Skipping for now.
+		//TODO: This upgrade represents a breaking change v7->v8.
+		// Must be re-recorded on new baseline: https://github.com/pulumi/pulumi-gcp/issues/2378
 		//{"cloudrunv2-service-7"},
 		{"compute-disk-1"},
 		{"compute-disk-3"},

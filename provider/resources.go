@@ -1759,24 +1759,26 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpCloudRunV2, "Service"),
 
 				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
-					// `port` is an object type in the current version of this provider.
-					// But in a previous version, it was nested as a MaxItemsOne item, `ports`
-					// For correct updating, we extract the array item and re-write its content to the new `port` object.
-					if template, ok := pMap["template"]; ok {
-						tplObj := template.ObjectValue()
-						if containers, ok := tplObj["containers"]; ok {
-							contAry := containers.ArrayValue()
-							for _, container := range contAry {
-								contObj := container.ObjectValue()
-								if ports, ok := contObj["ports"]; ok {
-									if ports.IsArray() {
-										pMap["template"].ObjectValue()["containers"].ArrayValue()[0].ObjectValue()["ports"] = ports.ArrayValue()[0]
-									}
+					//`port` is an object type in the current version of this provider.
+					//But in a previous version, it was nested as a MaxItemsOne item, `ports`
+					//For correct updating, we extract the array item and re-write its content to the new `port` object.
+					pValue := resource.NewProperty(pMap)
+					containersPath := resource.PropertyPath{"template", "containers"}
+
+					if containers, ok := containersPath.Get(pValue); ok {
+						for _, container := range containers.ArrayValue() {
+							portsPath := resource.PropertyPath{"ports"}
+							if val, ok := portsPath.Get(container); ok && val.IsArray() {
+								if len(val.ArrayValue()) > 0 {
+									portsPath.Set(container, val.ArrayValue()[0])
+								} else {
+									// When a Template has more than one container, the default ports value is [] in v7, which we need to translate to null in v8.
+									portsPath.Set(container, resource.NewObjectProperty(nil))
 								}
 							}
 						}
 					}
-					return pMap, nil
+					return pValue.ObjectValue(), nil
 				},
 			},
 
