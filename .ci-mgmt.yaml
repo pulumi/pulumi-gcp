@@ -31,7 +31,6 @@ plugins:
     version: "1.0.17"
     kind: converter
 goBuildParallelism: 2
-skipGoReleaserHooks: true
 actions:
   preTest:
     - name: make upstream
