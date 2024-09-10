@@ -509,6 +509,9 @@ func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 		}
 	}
 
+	// Because we're reading pulumiLabels, we need to expect the default provisioning label.
+	r["goog-pulumi-provisioned"] = "true"
+
 	return r
 }
 
