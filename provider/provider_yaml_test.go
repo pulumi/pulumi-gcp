@@ -28,13 +28,16 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
+	"github.com/pulumi/providertest/pulumitest/optnewstack"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 )
 
 func TestDNSRecordSetUpgrade(t *testing.T) {
@@ -215,6 +218,194 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 			testProviderUpgrade(t, d)
 		})
 	}
+}
+
+func TestCloudRunV2StateMigration(t *testing.T) {
+	t.Parallel()
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
+	}
+	const pulumiYaml = `
+name: test
+resources:
+    tested-resource:
+        properties:%s
+            ingress: INGRESS_TRAFFIC_ALL
+            launchStage: BETA
+            location: us-central1
+            template:
+                containers:
+                    - image: us-docker.pkg.dev/cloudrun/container/hello
+                      name: hello-1
+                      %s
+                      volumeMounts:
+                        - mountPath: /mnt
+                          name: empty-dir-volume
+                    - image: us-docker.pkg.dev/cloudrun/container/hello
+                      name: hello-2
+                volumes:
+                    - emptyDir:
+                        medium: MEMORY
+                        sizeLimit: 256Mi
+                      name: empty-dir-volume
+        type: gcp:cloudrunv2:Service
+runtime:
+    name: yaml
+
+`
+
+	var (
+		providerName    = "gcp"
+		baselineVersion = "7.28.0"
+	)
+	cwd, err := os.Getwd()
+	assert.NoError(t, err)
+
+	// Apply the relevant changes expected to upgrade successfully v7 -> v8:
+	// `ports` is now an Object, not a maxItemsOne list
+	// `deletionProtection` is a new field
+	firstProgram := []byte(fmt.Sprintf(
+		pulumiYaml,
+		"",
+		"ports:\n                        - containerPort: 8080"))
+	secondProgram := []byte(fmt.Sprintf(
+		pulumiYaml,
+		"\n            deletionProtection: false",
+		"ports:\n                        containerPort: 8080"),
+	)
+	// Test that we can upgrade from v7 to v8 with the changes applied to the program.
+	t.Run("upgrade-to-v8-shows-no-diffs-for-ports", func(t *testing.T) {
+		pulumiTest := testProviderCodeChanges(t, &testProviderCodeChangesOptions{
+			firstProgram: firstProgram,
+			firstProgramOptions: []opttest.Option{
+				opttest.DownloadProviderVersion(providerName, baselineVersion),
+			},
+			secondProgram: secondProgram,
+			secondProgramOptions: []opttest.Option{
+				opttest.LocalProviderPath("gcp", filepath.Join(cwd, "..", "bin")),
+			},
+		})
+
+		res := pulumiTest.Preview()
+		t.Logf("stdout: %s \n", res.StdOut)
+		t.Logf("stderr: %s \n", res.StdErr)
+		assertpreview.HasNoChanges(t, res)
+
+		upResult := pulumiTest.Up()
+		t.Logf("stdout: %s \n", upResult.StdOut)
+		t.Logf("stderr: %s \n", upResult.StdErr)
+	})
+}
+
+type testProviderCodeChangesOptions struct {
+	firstProgram         []byte
+	secondProgram        []byte
+	firstProgramOptions  []opttest.Option
+	secondProgramOptions []opttest.Option
+}
+
+// testProviderCodeChanges tests two different runs of a pulumi program. This allows you to run
+// pulumi up with an initial program, change the code of the program and then run another pulumi command
+func testProviderCodeChanges(t *testing.T, opts *testProviderCodeChangesOptions) *pulumitest.PulumiTest {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
+	}
+	t.Parallel()
+	t.Helper()
+
+	workdir := t.TempDir()
+	stackExportFile := filepath.Join(workdir, "stack.json")
+
+	err := os.WriteFile(filepath.Join(workdir, "Pulumi.yaml"), opts.firstProgram, 0o600)
+	require.NoError(t, err)
+
+	options := []opttest.Option{
+		opttest.SkipInstall(),
+		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()),
+	}
+	options = append(options, opts.firstProgramOptions...)
+
+	firstTest := pulumitest.NewPulumiTest(t, workdir, options...)
+	googleProj := getProject()
+	firstTest.SetConfig("gcp:config:project", googleProj)
+
+	var export *apitype.UntypedDeployment
+	export, err = tryReadStackExport(stackExportFile)
+	if err != nil {
+		firstTest.Up()
+		grptLog := firstTest.GrpcLog()
+		grpcLogPath := filepath.Join(workdir, "grpc.json")
+		t.Logf("writing grpc log to %s", grpcLogPath)
+		err = grptLog.WriteTo(grpcLogPath)
+		assert.NoError(t, err)
+		e := firstTest.ExportStack()
+		export = &e
+		err = writeStackExport(stackExportFile, export, true)
+		assert.NoError(t, err)
+	}
+
+	secondOptions := []opttest.Option{
+		opttest.SkipInstall(),
+		opttest.NewStackOptions(optnewstack.EnableAutoDestroy()),
+	}
+	secondOptions = append(secondOptions, opts.secondProgramOptions...)
+
+	err = os.WriteFile(filepath.Join(workdir, "Pulumi.yaml"), opts.secondProgram, 0o600)
+	require.NoError(t, err)
+	secondTest := pulumitest.NewPulumiTest(t, workdir, secondOptions...)
+	secondTest.ImportStack(*export)
+	secondTest.SetConfig("gcp:config:project", googleProj)
+
+	return secondTest
+}
+
+// tryReadStackExport reads a stack export from the given file path.
+// If the file does not exist, returns nil, nil.
+func tryReadStackExport(path string) (*apitype.UntypedDeployment, error) {
+	stackBytes, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read stack export at %s: %v", path, err)
+	}
+	var stackExport apitype.UntypedDeployment
+	err = json.Unmarshal(stackBytes, &stackExport)
+	if err != nil {
+		return nil, fmt.Errorf("failed to unmarshal stack export at %s: %v", path, err)
+	}
+	return &stackExport, nil
+}
+
+// writeStackExport writes the stack export to the given path creating any directories needed.
+func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrite bool) error {
+	if snapshot == nil {
+		return fmt.Errorf("stack export must not be nil")
+	}
+	dir := filepath.Dir(path)
+	err := os.MkdirAll(dir, 0755)
+	if err != nil {
+		return err
+	}
+	stackBytes, err := json.MarshalIndent(snapshot, "", "  ")
+	if err != nil {
+		return err
+	}
+	pathExists, err := exists(path)
+	if err != nil {
+		return err
+	}
+	if pathExists && !overwrite {
+		return fmt.Errorf("stack export already exists at %s", path)
+	}
+	return os.WriteFile(path, stackBytes, 0600)
+}
+func exists(filePath string) (bool, error) {
+	_, err := os.Stat(filePath)
+	switch {
+	case err == nil:
+		return true, nil
+	case !os.IsNotExist(err):
+		return false, err
+	}
+	return false, nil
 }
 
 // This used to panic in the Diff on unexpected bool label (expecting string), see
