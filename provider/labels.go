@@ -8,6 +8,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/property"
 )
 
@@ -61,8 +62,9 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 			composeTransform(prov.Resources[token].TransformOutputs,
 				removeEmptyLabelProxy(labelPaths))
 		prov.Resources[token].TransformFromState =
-			composeTransform(prov.Resources[token].TransformFromState,
-				ensureLabelPathsExist(labelPaths))
+			composeTransform(restoreEmptyLabelProxy(labelPaths),
+				composeTransform(prov.Resources[token].TransformFromState,
+					ensureLabelPathsExist(labelPaths)))
 	}
 }
 
@@ -84,25 +86,46 @@ func composeTransform(f1, f2 tfbridge.PropertyTransform) tfbridge.PropertyTransf
 	}
 }
 
-const EmptyLabelProxy = "pulumi-empty-label-proxy:entropy=87456874167148"
+const emptyLabelProxy = "pulumi-empty-label-proxy:entropy=87456874167148"
 
 func removeEmptyLabelProxy(paths []resource.PropertyPath) tfbridge.PropertyTransform {
-	return func(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
-		obj := resource.NewObjectProperty(prop)
-		for _, path := range expandPathSet(paths, obj) {
-			if labels, found := path.Get(obj); found {
-				v := resource.FromResourcePropertyValue(labels)
-				if v.IsMap() {
-					m := v.AsMap()
-					for k, v := range m {
-						if v.IsString() && v.AsString() == EmptyLabelProxy {
-							m[k] = property.WithGoValue(v, "")
-						}
+	return changeEmptyLabelProxy(emptyLabelProxy, "", paths)
+}
+
+func restoreEmptyLabelProxy(paths []resource.PropertyPath) tfbridge.PropertyTransform {
+	return changeEmptyLabelProxy("", emptyLabelProxy, paths)
+}
+
+func changeEmptyLabelProxy(from, to string, paths []resource.PropertyPath) tfbridge.PropertyTransform {
+
+	fix := func(path resource.PropertyPath, obj resource.PropertyValue) {
+		if labels, found := path.Get(obj); found {
+			v := resource.FromResourcePropertyValue(labels)
+			if v.IsMap() {
+				m := v.AsMap()
+				for k, v := range m {
+					if v.IsString() && v.AsString() == from {
+						m[k] = property.WithGoValue(v, to)
 					}
-					path.Set(obj, resource.ToResourcePropertyValue(v))
 				}
+				path.Set(obj, resource.ToResourcePropertyValue(v))
 			}
 		}
+	}
+
+	return func(_ context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
+		obj := resource.NewObjectProperty(prop)
+		for _, puLabelsPath := range expandPathSet(paths, obj) {
+			fix(puLabelsPath, obj)
+
+			effectiveLabelsPath := make(resource.PropertyPath, len(puLabelsPath))
+			n := copy(effectiveLabelsPath, puLabelsPath)
+			contract.Assertf(n == len(puLabelsPath), "expected full copy")
+			effectiveLabelsPath[len(effectiveLabelsPath)-1] = "effectiveLabels"
+
+			fix(effectiveLabelsPath, obj)
+		}
+
 		return obj.ObjectValue(), nil
 	}
 }
