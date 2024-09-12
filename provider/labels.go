@@ -1,10 +1,9 @@
-// Copyright 2016-2023, Pulumi Corporation.  All rights reserved.
+// Copyright 2016-2024, Pulumi Corporation.  All rights reserved.
 
 package gcp
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
@@ -60,7 +59,7 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 	for token, labelPaths := range toUpdate {
 		prov.Resources[token].TransformOutputs =
 			composeTransform(prov.Resources[token].TransformOutputs,
-				fixEmptyLabelProxy(labelPaths))
+				removeEmptyLabelProxy(labelPaths))
 		prov.Resources[token].TransformFromState =
 			composeTransform(prov.Resources[token].TransformFromState,
 				ensureLabelPathsExist(labelPaths))
@@ -85,70 +84,27 @@ func composeTransform(f1, f2 tfbridge.PropertyTransform) tfbridge.PropertyTransf
 	}
 }
 
-func fixEmptyLabelProxy(paths []resource.PropertyPath) tfbridge.PropertyTransform {
+const EmptyLabelProxy = "pulumi-empty-label-proxy:entropy=87456874167148"
+
+func removeEmptyLabelProxy(paths []resource.PropertyPath) tfbridge.PropertyTransform {
 	return func(ctx context.Context, prop resource.PropertyMap) (resource.PropertyMap, error) {
-		tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("props = %#v", prop))
 		obj := resource.NewObjectProperty(prop)
 		for _, path := range expandPathSet(paths, obj) {
-			tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("path = %#v", path.String()))
 			if labels, found := path.Get(obj); found {
-				tfbridge.GetLogger(ctx).Warn("found")
-				m, reWrap, ok := unwrapObject(labels)
-				if ok {
-					tfbridge.GetLogger(ctx).Warn("unwrapped")
+				v := resource.FromResourcePropertyValue(labels)
+				if v.IsMap() {
+					m := v.AsMap()
 					for k, v := range m {
-						m[k] = fixEmptyString(v)
+						if v.IsString() && v.AsString() == EmptyLabelProxy {
+							m[k] = property.WithGoValue(v, "")
+						}
 					}
-
-					path.Set(obj, reWrap(m))
+					path.Set(obj, resource.ToResourcePropertyValue(v))
 				}
 			}
 		}
-		tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("props = %#v", prop))
 		return obj.ObjectValue(), nil
 	}
-}
-
-func unwrapObject(v resource.PropertyValue) (resource.PropertyMap, func(resource.PropertyMap) resource.PropertyValue, bool) {
-	switch {
-	case v.IsSecret():
-		i, f, ok := unwrapObject(v.SecretValue().Element)
-		if !ok {
-			return nil, nil, false
-		}
-		return i, func(m resource.PropertyMap) resource.PropertyValue {
-			return resource.MakeSecret(f(m))
-		}, true
-	case v.IsOutput():
-		o := v.OutputValue()
-		if o.Known {
-			i, f, ok := unwrapObject(o.Element)
-			if !ok {
-				return nil, nil, false
-			}
-			return i, func(m resource.PropertyMap) resource.PropertyValue {
-				o.Element = f(m)
-				return resource.NewProperty(o)
-			}, true
-
-		}
-		fallthrough
-	case v.IsObject():
-		return v.ObjectValue(), resource.NewObjectProperty, true
-	case v.IsComputed():
-		fallthrough
-	default:
-		return nil, nil, false
-	}
-
-}
-
-func fixEmptyString(v resource.PropertyValue) resource.PropertyValue {
-	p := resource.FromResourcePropertyValue(v)
-	if p.IsString() && p.AsString() == "pulumi-empty-label-proxy:entropy=87456874167148" {
-		p = property.WithGoValue(p, "")
-	}
-	return resource.ToResourcePropertyValue(p)
 }
 
 // pulumiLabels represents a field added upstream via a custom diff, as terraform_labels.
