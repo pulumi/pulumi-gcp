@@ -1,0 +1,49 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <me@iwahbe.com>
+Date: Thu, 12 Sep 2024 15:41:19 +0200
+Subject: [PATCH] Trial empty labels fix
+
+
+diff --git a/google-beta/services/kms/resource_kms_crypto_key.go b/google-beta/services/kms/resource_kms_crypto_key.go
+index df9fb749f..2a64a2c19 100644
+--- a/google-beta/services/kms/resource_kms_crypto_key.go
++++ b/google-beta/services/kms/resource_kms_crypto_key.go
+@@ -788,7 +788,11 @@ func expandKMSCryptoKeyEffectiveLabels(v interface{}, d tpgresource.TerraformRes
+ 	}
+ 	m := make(map[string]string)
+ 	for k, val := range v.(map[string]interface{}) {
+-		m[k] = val.(string)
++		l := val.(string)
++		if l == tpgresource.EmptyLabelProxy {
++			l = ""
++		}
++		m[k] = l
+ 	}
+ 	return m, nil
+ }
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index cf3ba739d..938cc9903 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -81,6 +81,8 @@ func SetDataSourceLabels(d *schema.ResourceData) error {
+ 	return nil
+ }
+ 
++const EmptyLabelProxy = "pulumi-empty-label-proxy:entropy=87456874167148"
++
+ func SetLabelsDiff(_ context.Context, d *schema.ResourceDiff, meta interface{}) error {
+ 	raw := d.Get("labels")
+ 	if raw == nil {
+@@ -141,7 +143,11 @@ func SetLabelsDiff(_ context.Context, d *schema.ResourceDiff, meta interface{})
+ 	effectiveLabels := d.Get("effective_labels").(map[string]interface{})
+ 
+ 	for k, v := range n.(map[string]interface{}) {
+-		effectiveLabels[k] = v.(string)
++		l := v.(string)
++		if l == "" {
++			l = EmptyLabelProxy
++		}
++		effectiveLabels[k] = l
+ 	}
+ 
+ 	for k := range o.(map[string]interface{}) {
