@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <me@iwahbe.com>
+Date: Thu, 12 Sep 2024 16:09:58 +0200
+Subject: [PATCH] Apply fix to terraform_labels also
+
+
+diff --git a/google-beta/services/kms/resource_kms_crypto_key.go b/google-beta/services/kms/resource_kms_crypto_key.go
+index 2a64a2c19..2064cfb2e 100644
+--- a/google-beta/services/kms/resource_kms_crypto_key.go
++++ b/google-beta/services/kms/resource_kms_crypto_key.go
+@@ -694,7 +694,11 @@ func flattenKMSCryptoKeyTerraformLabels(v interface{}, d *schema.ResourceData, c
+ 	transformed := make(map[string]interface{})
+ 	if l, ok := d.GetOkExists("terraform_labels"); ok {
+ 		for k := range l.(map[string]interface{}) {
+-			transformed[k] = v.(map[string]interface{})[k]
++			v := v.(map[string]interface{})[k].(string)
++			if v == "" {
++				v = tpgresource.EmptyLabelProxy
++			}
++			transformed[k] = v
+ 		}
+ 	}
+ 
+diff --git a/google-beta/tpgresource/labels.go b/google-beta/tpgresource/labels.go
+index 938cc9903..bdc376324 100644
+--- a/google-beta/tpgresource/labels.go
++++ b/google-beta/tpgresource/labels.go
+@@ -132,7 +132,11 @@ func SetLabelsDiff(_ context.Context, d *schema.ResourceDiff, meta interface{})
+ 
+ 	labels := raw.(map[string]interface{})
+ 	for k, v := range labels {
+-		terraformLabels[k] = v.(string)
++		l := v.(string)
++		if l == "" {
++			l = EmptyLabelProxy
++		}
++		terraformLabels[k] = l
+ 	}
+ 
+ 	if err := d.SetNew("terraform_labels", terraformLabels); err != nil {
