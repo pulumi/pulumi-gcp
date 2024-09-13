@@ -519,7 +519,9 @@ class Connector(pulumi.CustomResource):
         connector = gcp.vpcaccess.Connector("connector",
             name="vpc-con",
             ip_cidr_range="10.8.0.0/28",
-            network="default")
+            network="default",
+            min_instances=2,
+            max_instances=3)
         ```
         ### Vpc Access Connector Shared Vpc
 
@@ -537,7 +539,9 @@ class Connector(pulumi.CustomResource):
             subnet={
                 "name": custom_test.name,
             },
-            machine_type="e2-standard-4")
+            machine_type="e2-standard-4",
+            min_instances=2,
+            max_instances=3)
         ```
 
         ## Import
@@ -622,7 +626,9 @@ class Connector(pulumi.CustomResource):
         connector = gcp.vpcaccess.Connector("connector",
             name="vpc-con",
             ip_cidr_range="10.8.0.0/28",
-            network="default")
+            network="default",
+            min_instances=2,
+            max_instances=3)
         ```
         ### Vpc Access Connector Shared Vpc
 
@@ -640,7 +646,9 @@ class Connector(pulumi.CustomResource):
             subnet={
                 "name": custom_test.name,
             },
-            machine_type="e2-standard-4")
+            machine_type="e2-standard-4",
+            min_instances=2,
+            max_instances=3)
         ```
 
         ## Import
@@ -835,7 +843,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxThroughput")
-    def max_throughput(self) -> pulumi.Output[Optional[int]]:
+    def max_throughput(self) -> pulumi.Output[int]:
         """
         Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
         when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
@@ -855,7 +863,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minThroughput")
-    def min_throughput(self) -> pulumi.Output[Optional[int]]:
+    def min_throughput(self) -> pulumi.Output[int]:
         """
         Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
         Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both min_throughput and

@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var example = new FolderCustomModule("example", FolderCustomModuleArgs.builder()
@@ -120,6 +121,7 @@ import javax.annotation.Nullable;
  *         var folder = new Folder("folder", FolderArgs.builder()
  *             .parent("organizations/123456789")
  *             .displayName("folder-name")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var example = new FolderCustomModule("example", FolderCustomModuleArgs.builder()

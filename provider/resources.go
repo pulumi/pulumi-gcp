@@ -33,7 +33,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
-	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v8/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -513,6 +513,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"access_token": {
 				Secret: tfbridge.True(),
+			},
+			"add_terraform_attribution_label": {
+				Name: "addPulumiAttributionLabel",
+			},
+			"terraform_attribution_label_addition_strategy": {
+				Name: "pulumiAttributionLabelAdditionStrategy",
 			},
 		},
 		ExtraConfig: map[string]*tfbridge.ConfigInfo{
@@ -1202,9 +1208,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_dataproc_metastore_federation": {Tok: gcpResource(gcpDataProc, "MetastoreFederation")},
 			"google_dataproc_workflow_template":    {Tok: gcpResource(gcpDataProc, "WorkflowTemplate")},
 
-			// DataStore resources
-			"google_datastore_index": {Tok: gcpResource(gcpDatastore, "DataStoreIndex")},
-
 			// DNS resources
 			"google_dns_managed_zone": {
 				Tok: gcpResource(gcpDNS, "ManagedZone"),
@@ -1751,8 +1754,33 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// CloudRun V2 Resources
-			"google_cloud_run_v2_job":     {Tok: gcpResource(gcpCloudRunV2, "Job")},
-			"google_cloud_run_v2_service": {Tok: gcpResource(gcpCloudRunV2, "Service")},
+			"google_cloud_run_v2_job": {Tok: gcpResource(gcpCloudRunV2, "Job")},
+			"google_cloud_run_v2_service": {
+				Tok: gcpResource(gcpCloudRunV2, "Service"),
+
+				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
+					//`port` is an object type in the current version of this provider.
+					//But in a previous version, it was nested as a MaxItemsOne item, `ports`
+					//For correct updating, we extract the array item and re-write its content to the new `port` object.
+					pValue := resource.NewProperty(pMap)
+					containersPath := resource.PropertyPath{"template", "containers"}
+
+					if containers, ok := containersPath.Get(pValue); ok {
+						for _, container := range containers.ArrayValue() {
+							portsPath := resource.PropertyPath{"ports"}
+							if val, ok := portsPath.Get(container); ok && val.IsArray() {
+								if len(val.ArrayValue()) > 0 {
+									portsPath.Set(container, val.ArrayValue()[0])
+								} else {
+									// When a Template has more than one container, the default ports value is [] in v7, which we need to translate to null in v8.
+									portsPath.Set(container, resource.NewObjectProperty(nil))
+								}
+							}
+						}
+					}
+					return pValue.ObjectValue(), nil
+				},
+			},
 
 			// Machine Learning
 			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
@@ -1817,9 +1845,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "DefaultSupportedIdpConfig"),
 			},
-			"google_identity_platform_inbound_saml_config":    {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
-			"google_identity_platform_oauth_idp_config":       {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
-			"google_identity_platform_project_default_config": {Tok: gcpResource(gcpIdentityPlatform, "ProjectDefaultConfig")},
+			"google_identity_platform_inbound_saml_config": {Tok: gcpResource(gcpIdentityPlatform, "InboundSamlConfig")},
+			"google_identity_platform_oauth_idp_config":    {Tok: gcpResource(gcpIdentityPlatform, "OauthIdpConfig")},
 			"google_identity_platform_tenant_default_supported_idp_config": {
 				Tok: gcpResource(gcpIdentityPlatform, "TenantDefaultSupportedIdpConfig"),
 			},

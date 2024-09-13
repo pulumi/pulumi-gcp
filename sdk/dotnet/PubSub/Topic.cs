@@ -285,7 +285,7 @@ namespace Pulumi.Gcp.PubSub
         /// Structure is documented below.
         /// </summary>
         [Output("schemaSettings")]
-        public Output<Outputs.TopicSchemaSettings> SchemaSettings { get; private set; } = null!;
+        public Output<Outputs.TopicSchemaSettings?> SchemaSettings { get; private set; } = null!;
 
 
         /// <summary>

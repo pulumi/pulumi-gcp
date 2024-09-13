@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  *             .name("your_project_id")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var compute = new Service("compute", ServiceArgs.builder()

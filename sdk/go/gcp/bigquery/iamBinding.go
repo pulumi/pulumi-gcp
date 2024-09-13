@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 //
 // > **Note:** `bigquery.IamBinding` resources **can be** used in conjunction with `bigquery.IamMember` resources **only if** they do not grant privilege to the same role.
 //
-// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
-//
 // ## bigquery.IamPolicy
 //
 // ```go
@@ -35,8 +33,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,53 +69,6 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Role: "roles/bigquery.dataOwner",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//						Condition: {
-//							Title:       "expires_after_2019_12_31",
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
-//				Project:    pulumi.Any(test.Project),
-//				DatasetId:  pulumi.Any(test.DatasetId),
-//				TableId:    pulumi.Any(test.TableId),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## bigquery.IamBinding
 //
 // ```go
@@ -125,7 +76,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -150,42 +101,6 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
-//				Project:   pulumi.Any(test.Project),
-//				DatasetId: pulumi.Any(test.DatasetId),
-//				TableId:   pulumi.Any(test.TableId),
-//				Role:      pulumi.String("roles/bigquery.dataOwner"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Condition: &bigquery.IamBindingConditionArgs{
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## bigquery.IamMember
 //
 // ```go
@@ -193,7 +108,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -206,41 +121,6 @@ import (
 //				TableId:   pulumi.Any(test.TableId),
 //				Role:      pulumi.String("roles/bigquery.dataOwner"),
 //				Member:    pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// With IAM Conditions:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
-//				Project:   pulumi.Any(test.Project),
-//				DatasetId: pulumi.Any(test.DatasetId),
-//				TableId:   pulumi.Any(test.TableId),
-//				Role:      pulumi.String("roles/bigquery.dataOwner"),
-//				Member:    pulumi.String("user:jane@example.com"),
-//				Condition: &bigquery.IamMemberConditionArgs{
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -270,8 +150,6 @@ import (
 //
 // > **Note:** `bigquery.IamBinding` resources **can be** used in conjunction with `bigquery.IamMember` resources **only if** they do not grant privilege to the same role.
 //
-// > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
-//
 // ## bigquery.IamPolicy
 //
 // ```go
@@ -279,8 +157,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -315,53 +193,6 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Role: "roles/bigquery.dataOwner",
-//						Members: []string{
-//							"user:jane@example.com",
-//						},
-//						Condition: {
-//							Title:       "expires_after_2019_12_31",
-//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
-//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
-//						},
-//					},
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = bigquery.NewIamPolicy(ctx, "policy", &bigquery.IamPolicyArgs{
-//				Project:    pulumi.Any(test.Project),
-//				DatasetId:  pulumi.Any(test.DatasetId),
-//				TableId:    pulumi.Any(test.TableId),
-//				PolicyData: pulumi.String(admin.PolicyData),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## bigquery.IamBinding
 //
 // ```go
@@ -369,7 +200,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -394,42 +225,6 @@ import (
 //
 // ```
 //
-// With IAM Conditions:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewIamBinding(ctx, "binding", &bigquery.IamBindingArgs{
-//				Project:   pulumi.Any(test.Project),
-//				DatasetId: pulumi.Any(test.DatasetId),
-//				TableId:   pulumi.Any(test.TableId),
-//				Role:      pulumi.String("roles/bigquery.dataOwner"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:jane@example.com"),
-//				},
-//				Condition: &bigquery.IamBindingConditionArgs{
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## bigquery.IamMember
 //
 // ```go
@@ -437,7 +232,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -450,41 +245,6 @@ import (
 //				TableId:   pulumi.Any(test.TableId),
 //				Role:      pulumi.String("roles/bigquery.dataOwner"),
 //				Member:    pulumi.String("user:jane@example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// With IAM Conditions:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewIamMember(ctx, "member", &bigquery.IamMemberArgs{
-//				Project:   pulumi.Any(test.Project),
-//				DatasetId: pulumi.Any(test.DatasetId),
-//				TableId:   pulumi.Any(test.TableId),
-//				Role:      pulumi.String("roles/bigquery.dataOwner"),
-//				Member:    pulumi.String("user:jane@example.com"),
-//				Condition: &bigquery.IamMemberConditionArgs{
-//					Title:       pulumi.String("expires_after_2019_12_31"),
-//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
-//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -535,8 +295,6 @@ import (
 type IamBinding struct {
 	pulumi.CustomResourceState
 
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition IamBindingConditionPtrOutput `pulumi:"condition"`
 	DatasetId pulumi.StringOutput          `pulumi:"datasetId"`
 	// (Computed) The etag of the IAM policy.
@@ -605,8 +363,6 @@ func GetIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IamBinding resources.
 type iamBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition *IamBindingCondition `pulumi:"condition"`
 	DatasetId *string              `pulumi:"datasetId"`
 	// (Computed) The etag of the IAM policy.
@@ -634,8 +390,6 @@ type iamBindingState struct {
 }
 
 type IamBindingState struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition IamBindingConditionPtrInput
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the IAM policy.
@@ -667,8 +421,6 @@ func (IamBindingState) ElementType() reflect.Type {
 }
 
 type iamBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition *IamBindingCondition `pulumi:"condition"`
 	DatasetId string               `pulumi:"datasetId"`
 	// Identities that will be granted the privilege in `role`.
@@ -695,8 +447,6 @@ type iamBindingArgs struct {
 
 // The set of arguments for constructing a IamBinding resource.
 type IamBindingArgs struct {
-	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-	// Structure is documented below.
 	Condition IamBindingConditionPtrInput
 	DatasetId pulumi.StringInput
 	// Identities that will be granted the privilege in `role`.
@@ -808,8 +558,6 @@ func (o IamBindingOutput) ToIamBindingOutputWithContext(ctx context.Context) Iam
 	return o
 }
 
-// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
-// Structure is documented below.
 func (o IamBindingOutput) Condition() IamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *IamBinding) IamBindingConditionPtrOutput { return v.Condition }).(IamBindingConditionPtrOutput)
 }

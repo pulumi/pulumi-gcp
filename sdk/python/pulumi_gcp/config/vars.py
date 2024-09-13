@@ -38,8 +38,8 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('activeDirectoryCustomEndpoint')
 
     @property
-    def add_terraform_attribution_label(self) -> Optional[bool]:
-        return __config__.get_bool('addTerraformAttributionLabel')
+    def add_pulumi_attribution_label(self) -> Optional[bool]:
+        return __config__.get_bool('addPulumiAttributionLabel')
 
     @property
     def alloydb_custom_endpoint(self) -> Optional[str]:
@@ -280,10 +280,6 @@ class _ExportableConfig(types.ModuleType):
     @property
     def dataproc_metastore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataprocMetastoreCustomEndpoint')
-
-    @property
-    def datastore_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('datastoreCustomEndpoint')
 
     @property
     def datastream_custom_endpoint(self) -> Optional[str]:
@@ -546,6 +542,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('pubsubLiteCustomEndpoint')
 
     @property
+    def pulumi_attribution_label_addition_strategy(self) -> Optional[str]:
+        return __config__.get('pulumiAttributionLabelAdditionStrategy')
+
+    @property
     def recaptcha_enterprise_custom_endpoint(self) -> Optional[str]:
         return __config__.get('recaptchaEnterpriseCustomEndpoint')
 
@@ -668,10 +668,6 @@ class _ExportableConfig(types.ModuleType):
     @property
     def tags_location_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tagsLocationCustomEndpoint')
-
-    @property
-    def terraform_attribution_label_addition_strategy(self) -> Optional[str]:
-        return __config__.get('terraformAttributionLabelAdditionStrategy')
 
     @property
     def tpu_custom_endpoint(self) -> Optional[str]:

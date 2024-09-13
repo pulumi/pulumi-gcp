@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CryptoKeyVersion{}
 	case "gcp:kms/ekmConnection:EkmConnection":
 		r = &EkmConnection{}
+	case "gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding":
+		r = &EkmConnectionIamBinding{}
+	case "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember":
+		r = &EkmConnectionIamMember{}
+	case "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy":
+		r = &EkmConnectionIamPolicy{}
 	case "gcp:kms/keyHandle:KeyHandle":
 		r = &KeyHandle{}
 	case "gcp:kms/keyRing:KeyRing":
@@ -95,6 +101,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"kms/ekmConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/ekmConnectionIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/ekmConnectionIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"kms/ekmConnectionIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

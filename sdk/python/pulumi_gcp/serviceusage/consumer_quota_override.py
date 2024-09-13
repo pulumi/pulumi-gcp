@@ -332,7 +332,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
             project_id="quota",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             project=my_project.project_id,
             service="servicemanagement.googleapis.com",
@@ -351,7 +352,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
             project_id="quota",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             dimensions={
                 "region": "us-central1",
@@ -373,7 +375,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
             project_id="quota",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             project=my_project.project_id,
             service="libraryagent.googleapis.com",
@@ -456,7 +459,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
             project_id="quota",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             project=my_project.project_id,
             service="servicemanagement.googleapis.com",
@@ -475,7 +479,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
             project_id="quota",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             dimensions={
                 "region": "us-central1",
@@ -497,7 +502,8 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
             project_id="quota",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             project=my_project.project_id,
             service="libraryagent.googleapis.com",

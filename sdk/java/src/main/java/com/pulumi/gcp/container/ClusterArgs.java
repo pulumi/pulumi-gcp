@@ -1203,12 +1203,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+     * 
      */
     @Import(name="resourceLabels")
     private @Nullable Output<Map<String,String>> resourceLabels;
 
     /**
      * @return The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> resourceLabels() {
@@ -2999,6 +3005,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resourceLabels The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -3009,6 +3018,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceLabels The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 

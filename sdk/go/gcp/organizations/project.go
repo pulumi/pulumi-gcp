@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,7 +36,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,7 +64,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -144,14 +144,6 @@ type Project struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// If true, the resource can be deleted without
-	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
-	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-	//
-	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-	SkipDelete pulumi.BoolOutput `pulumi:"skipDelete"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -227,14 +219,6 @@ type projectState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// If true, the resource can be deleted without
-	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
-	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-	//
-	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
 type ProjectState struct {
@@ -276,14 +260,6 @@ type ProjectState struct {
 	ProjectId pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// If true, the resource can be deleted without
-	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
-	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-	//
-	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-	SkipDelete pulumi.BoolPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -323,14 +299,6 @@ type projectArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId *string `pulumi:"projectId"`
-	// If true, the resource can be deleted without
-	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
-	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-	//
-	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-	SkipDelete *bool `pulumi:"skipDelete"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -367,14 +335,6 @@ type ProjectArgs struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringPtrInput
-	// If true, the resource can be deleted without
-	// deleting the Project via the Google API. `skipDelete` is deprecated and will be
-	// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-	// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-	// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-	//
-	// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-	SkipDelete pulumi.BoolPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -533,17 +493,6 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 // The combination of labels configured directly on the resource and default labels configured on the provider.
 func (o ProjectOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
-}
-
-// If true, the resource can be deleted without
-// deleting the Project via the Google API. `skipDelete` is deprecated and will be
-// removed in 6.0.0. Please use deletionPolicy instead. A `skipDelete` value of `false`
-// can be changed to a `deletionPolicy` value of `DELETE` and a `skipDelete` value of `true`
-// to a `deletionPolicy` value of `ABANDON` for equivalent behavior.
-//
-// Deprecated: skip_delete is deprecated and will be removed in 6.0.0. Please use deletionPolicy instead. A skipDelete value of false can be changed to a deletionPolicy value of DELETE and a skipDelete value of true to a deletionPolicy value of ABANDON for equivalent behavior.
-func (o ProjectOutput) SkipDelete() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.SkipDelete }).(pulumi.BoolOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

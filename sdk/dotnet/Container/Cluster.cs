@@ -293,6 +293,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterDnsConfig?> DnsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `false`.
         /// Note that when this option is enabled, certain features of Standard GKE are not available.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -662,6 +668,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterProtectConfig> ProtectConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters.
         /// When updating this field, GKE imposes specific version requirements. See
@@ -686,6 +698,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("resourceLabels")]
         public Output<ImmutableDictionary<string, string>?> ResourceLabels { get; private set; } = null!;
@@ -800,6 +815,11 @@ namespace Pulumi.Gcp.Container
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -1322,6 +1342,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> ResourceLabels
         {
@@ -1513,6 +1536,22 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("dnsConfig")]
         public Input<Inputs.ClusterDnsConfigGetArgs>? DnsConfig { get; set; }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `false`.
@@ -1895,6 +1934,22 @@ namespace Pulumi.Gcp.Container
         [Input("protectConfig")]
         public Input<Inputs.ClusterProtectConfigGetArgs>? ProtectConfig { get; set; }
 
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         /// feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -1923,6 +1978,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> ResourceLabels
         {

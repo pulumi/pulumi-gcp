@@ -405,6 +405,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     @Import(name="portRange")
@@ -427,6 +428,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      *   For internal forwarding rules within the same VPC network, two or more
      *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      *   cannot have overlapping `portRange`s.
+     *   {@literal @}pattern: \d+(?:-\d+)?
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -1148,6 +1150,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 
@@ -1174,6 +1177,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          *   For internal forwarding rules within the same VPC network, two or more
          *   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
          *   cannot have overlapping `portRange`s.
+         *   {@literal @}pattern: \d+(?:-\d+)?
          * 
          * @return builder
          * 

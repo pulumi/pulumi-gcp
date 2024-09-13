@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +18,33 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
     public static final RegionBackendServiceIapArgs Empty = new RegionBackendServiceIapArgs();
 
     /**
+     * Whether the serving infrastructure will authenticate and authorize all incoming requests.
+     * 
+     */
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
+
+    /**
+     * @return Whether the serving infrastructure will authenticate and authorize all incoming requests.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    /**
      * OAuth2 Client ID for IAP
      * 
      */
-    @Import(name="oauth2ClientId", required=true)
-    private Output<String> oauth2ClientId;
+    @Import(name="oauth2ClientId")
+    private @Nullable Output<String> oauth2ClientId;
 
     /**
      * @return OAuth2 Client ID for IAP
      * 
      */
-    public Output<String> oauth2ClientId() {
-        return this.oauth2ClientId;
+    public Optional<Output<String>> oauth2ClientId() {
+        return Optional.ofNullable(this.oauth2ClientId);
     }
 
     /**
@@ -36,16 +52,16 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="oauth2ClientSecret", required=true)
-    private Output<String> oauth2ClientSecret;
+    @Import(name="oauth2ClientSecret")
+    private @Nullable Output<String> oauth2ClientSecret;
 
     /**
      * @return OAuth2 Client Secret for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> oauth2ClientSecret() {
-        return this.oauth2ClientSecret;
+    public Optional<Output<String>> oauth2ClientSecret() {
+        return Optional.ofNullable(this.oauth2ClientSecret);
     }
 
     /**
@@ -70,6 +86,7 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
     private RegionBackendServiceIapArgs() {}
 
     private RegionBackendServiceIapArgs(RegionBackendServiceIapArgs $) {
+        this.enabled = $.enabled;
         this.oauth2ClientId = $.oauth2ClientId;
         this.oauth2ClientSecret = $.oauth2ClientSecret;
         this.oauth2ClientSecretSha256 = $.oauth2ClientSecretSha256;
@@ -94,12 +111,33 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param enabled Whether the serving infrastructure will authenticate and authorize all incoming requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Whether the serving infrastructure will authenticate and authorize all incoming requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
+        }
+
+        /**
          * @param oauth2ClientId OAuth2 Client ID for IAP
          * 
          * @return builder
          * 
          */
-        public Builder oauth2ClientId(Output<String> oauth2ClientId) {
+        public Builder oauth2ClientId(@Nullable Output<String> oauth2ClientId) {
             $.oauth2ClientId = oauth2ClientId;
             return this;
         }
@@ -121,7 +159,7 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder oauth2ClientSecret(Output<String> oauth2ClientSecret) {
+        public Builder oauth2ClientSecret(@Nullable Output<String> oauth2ClientSecret) {
             $.oauth2ClientSecret = oauth2ClientSecret;
             return this;
         }
@@ -163,11 +201,8 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
         }
 
         public RegionBackendServiceIapArgs build() {
-            if ($.oauth2ClientId == null) {
-                throw new MissingRequiredPropertyException("RegionBackendServiceIapArgs", "oauth2ClientId");
-            }
-            if ($.oauth2ClientSecret == null) {
-                throw new MissingRequiredPropertyException("RegionBackendServiceIapArgs", "oauth2ClientSecret");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("RegionBackendServiceIapArgs", "enabled");
             }
             return $;
         }

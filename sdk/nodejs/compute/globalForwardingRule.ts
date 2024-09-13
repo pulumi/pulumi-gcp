@@ -595,6 +595,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
+     * @pattern: \d+(?:-\d+)?
      */
     public readonly portRange!: pulumi.Output<string | undefined>;
     /**
@@ -885,6 +886,7 @@ export interface GlobalForwardingRuleState {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
+     * @pattern: \d+(?:-\d+)?
      */
     portRange?: pulumi.Input<string>;
     /**
@@ -1089,6 +1091,7 @@ export interface GlobalForwardingRuleArgs {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
+     * @pattern: \d+(?:-\d+)?
      */
     portRange?: pulumi.Input<string>;
     /**

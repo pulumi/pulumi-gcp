@@ -6405,8 +6405,8 @@ class ClusterMonitoringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "advancedDatapathObservabilityConfigs":
-            suggest = "advanced_datapath_observability_configs"
+        if key == "advancedDatapathObservabilityConfig":
+            suggest = "advanced_datapath_observability_config"
         elif key == "enableComponents":
             suggest = "enable_components"
         elif key == "managedPrometheus":
@@ -6424,28 +6424,28 @@ class ClusterMonitoringConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 advanced_datapath_observability_configs: Optional[Sequence['outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig']] = None,
+                 advanced_datapath_observability_config: Optional['outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig'] = None,
                  enable_components: Optional[Sequence[str]] = None,
                  managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
-        :param Sequence['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
+        :param 'ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs' advanced_datapath_observability_config: Configuration for Advanced Datapath Monitoring. Structure is documented below.
         :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
-        if advanced_datapath_observability_configs is not None:
-            pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
+        if advanced_datapath_observability_config is not None:
+            pulumi.set(__self__, "advanced_datapath_observability_config", advanced_datapath_observability_config)
         if enable_components is not None:
             pulumi.set(__self__, "enable_components", enable_components)
         if managed_prometheus is not None:
             pulumi.set(__self__, "managed_prometheus", managed_prometheus)
 
     @property
-    @pulumi.getter(name="advancedDatapathObservabilityConfigs")
-    def advanced_datapath_observability_configs(self) -> Optional[Sequence['outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig']]:
+    @pulumi.getter(name="advancedDatapathObservabilityConfig")
+    def advanced_datapath_observability_config(self) -> Optional['outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig']:
         """
         Configuration for Advanced Datapath Monitoring. Structure is documented below.
         """
-        return pulumi.get(self, "advanced_datapath_observability_configs")
+        return pulumi.get(self, "advanced_datapath_observability_config")
 
     @property
     @pulumi.getter(name="enableComponents")
@@ -6473,8 +6473,6 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
             suggest = "enable_metrics"
         elif key == "enableRelay":
             suggest = "enable_relay"
-        elif key == "relayMode":
-            suggest = "relay_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterMonitoringConfigAdvancedDatapathObservabilityConfig. Access the value via the '{suggest}' property getter instead.")
@@ -6489,18 +6487,13 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
 
     def __init__(__self__, *,
                  enable_metrics: bool,
-                 enable_relay: Optional[bool] = None,
-                 relay_mode: Optional[str] = None):
+                 enable_relay: bool):
         """
         :param bool enable_metrics: Whether or not to enable advanced datapath metrics.
         :param bool enable_relay: Whether or not Relay is enabled.
-        :param str relay_mode: Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
-        if enable_relay is not None:
-            pulumi.set(__self__, "enable_relay", enable_relay)
-        if relay_mode is not None:
-            pulumi.set(__self__, "relay_mode", relay_mode)
+        pulumi.set(__self__, "enable_relay", enable_relay)
 
     @property
     @pulumi.getter(name="enableMetrics")
@@ -6512,20 +6505,11 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
 
     @property
     @pulumi.getter(name="enableRelay")
-    def enable_relay(self) -> Optional[bool]:
+    def enable_relay(self) -> bool:
         """
         Whether or not Relay is enabled.
         """
         return pulumi.get(self, "enable_relay")
-
-    @property
-    @pulumi.getter(name="relayMode")
-    @_utilities.deprecated("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
-    def relay_mode(self) -> Optional[str]:
-        """
-        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
-        """
-        return pulumi.get(self, "relay_mode")
 
 
 @pulumi.output_type
@@ -12036,6 +12020,7 @@ class ClusterReleaseChannel(dict):
                * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
                * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
                * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+               * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
         pulumi.set(__self__, "channel", channel)
 
@@ -12049,6 +12034,7 @@ class ClusterReleaseChannel(dict):
         * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
         * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
         * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
         return pulumi.get(self, "channel")
 
@@ -16435,16 +16421,13 @@ class GetClusterMonitoringConfigResult(dict):
 class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
     def __init__(__self__, *,
                  enable_metrics: bool,
-                 enable_relay: bool,
-                 relay_mode: str):
+                 enable_relay: bool):
         """
         :param bool enable_metrics: Whether or not the advanced datapath metrics are enabled.
         :param bool enable_relay: Whether or not Relay is enabled.
-        :param str relay_mode: Mode used to make Relay available.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
         pulumi.set(__self__, "enable_relay", enable_relay)
-        pulumi.set(__self__, "relay_mode", relay_mode)
 
     @property
     @pulumi.getter(name="enableMetrics")
@@ -16461,14 +16444,6 @@ class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
         Whether or not Relay is enabled.
         """
         return pulumi.get(self, "enable_relay")
-
-    @property
-    @pulumi.getter(name="relayMode")
-    def relay_mode(self) -> str:
-        """
-        Mode used to make Relay available.
-        """
-        return pulumi.get(self, "relay_mode")
 
 
 @pulumi.output_type
@@ -19991,6 +19966,7 @@ class GetClusterReleaseChannelResult(dict):
                * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
                * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
                * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+               * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
         pulumi.set(__self__, "channel", channel)
 
@@ -20003,6 +19979,7 @@ class GetClusterReleaseChannelResult(dict):
         * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
         * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
         * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
         return pulumi.get(self, "channel")
 

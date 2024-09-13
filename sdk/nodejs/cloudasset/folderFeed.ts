@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  * const myFolder = new gcp.organizations.Folder("my_folder", {
  *     displayName: "Networking",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * // Create a feed that sends notifications about network resource updates under a
  * // particular folder.

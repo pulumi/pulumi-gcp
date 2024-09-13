@@ -151,7 +151,8 @@ class MonitoredProject(pulumi.CustomResource):
         basic = gcp.organizations.Project("basic",
             project_id="m-id",
             name="m-id-display",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         primary = gcp.monitoring.MonitoredProject("primary",
             metrics_scope="my-project-name",
             name=basic.project_id)
@@ -209,7 +210,8 @@ class MonitoredProject(pulumi.CustomResource):
         basic = gcp.organizations.Project("basic",
             project_id="m-id",
             name="m-id-display",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         primary = gcp.monitoring.MonitoredProject("primary",
             metrics_scope="my-project-name",
             name=basic.project_id)

@@ -64,7 +64,6 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -153,6 +152,10 @@ class RegionBackendServiceArgs:
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
+        :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               This field is applicable only when the `load_balancing_scheme` is set
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -295,7 +298,6 @@ class RegionBackendServiceArgs:
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
-        From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
 
@@ -526,6 +528,12 @@ class RegionBackendServiceArgs:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']]:
+        """
+        Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        This field is applicable only when the `load_balancing_scheme` is set
+        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        Structure is documented below.
+        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -696,7 +704,6 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -789,6 +796,10 @@ class _RegionBackendServiceState:
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
+        :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               This field is applicable only when the `load_balancing_scheme` is set
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -940,7 +951,6 @@ class _RegionBackendServiceState:
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
-        From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
 
@@ -1208,6 +1218,12 @@ class _RegionBackendServiceState:
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['RegionBackendServiceOutlierDetectionArgs']]:
+        """
+        Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        This field is applicable only when the `load_balancing_scheme` is set
+        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        Structure is documented below.
+        """
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
@@ -1416,6 +1432,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
+                "enabled": True,
                 "oauth2_client_id": "abc",
                 "oauth2_client_secret": "xyz",
             })
@@ -1677,7 +1694,6 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -1766,6 +1782,10 @@ class RegionBackendService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
+        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               This field is applicable only when the `load_balancing_scheme` is set
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -1842,6 +1862,7 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="HTTP",
             load_balancing_scheme="EXTERNAL",
             iap={
+                "enabled": True,
                 "oauth2_client_id": "abc",
                 "oauth2_client_secret": "xyz",
             })
@@ -2228,7 +2249,6 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-               From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
@@ -2321,6 +2341,10 @@ class RegionBackendService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
+        :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+               This field is applicable only when the `load_balancing_scheme` is set
+               to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+               Structure is documented below.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
                communication to the backend VMs in that group. Required when the
                loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -2431,7 +2455,6 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Time for which instance will be drained (not accept new
         connections, but still work to finish started).
-        From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
         """
         return pulumi.get(self, "connection_draining_timeout_sec")
 
@@ -2635,6 +2658,12 @@ class RegionBackendService(pulumi.CustomResource):
     @property
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceOutlierDetection']]:
+        """
+        Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        This field is applicable only when the `load_balancing_scheme` is set
+        to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+        Structure is documented below.
+        """
         return pulumi.get(self, "outlier_detection")
 
     @property

@@ -109,16 +109,6 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-        /// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
-        /// 
-        /// &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-        /// </summary>
-        [Output("multiRegionAuxiliary")]
-        public Output<bool?> MultiRegionAuxiliary { get; private set; } = null!;
-
-        /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
         /// 
         /// 
@@ -222,16 +212,6 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
-        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-        /// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
-        /// 
-        /// &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-        /// </summary>
-        [Input("multiRegionAuxiliary")]
-        public Input<bool>? MultiRegionAuxiliary { get; set; }
-
-        /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
         /// 
         /// 
@@ -295,16 +275,6 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// (Optional, Deprecated)
-        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-        /// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
-        /// 
-        /// &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-        /// </summary>
-        [Input("multiRegionAuxiliary")]
-        public Input<bool>? MultiRegionAuxiliary { get; set; }
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.

@@ -127,6 +127,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -159,7 +160,9 @@ import javax.annotation.Nullable;
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .clusterId("alloydb-primary-cluster")
  *             .location("us-central1")
- *             .network(default_.id())
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(default_.id())
+ *                 .build())
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
@@ -190,7 +193,9 @@ import javax.annotation.Nullable;
  *         var secondary = new Cluster("secondary", ClusterArgs.builder()
  *             .clusterId("alloydb-secondary-cluster")
  *             .location("us-east1")
- *             .network(default_.id())
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(defaultGoogleComputeNetwork.id())
+ *                 .build())
  *             .clusterType("SECONDARY")
  *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()
  *                 .enabled(false)
@@ -525,15 +530,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pscInstanceConfig", refs={InstancePscInstanceConfig.class}, tree="[0]")
-    private Output</* @Nullable */ InstancePscInstanceConfig> pscInstanceConfig;
+    private Output<InstancePscInstanceConfig> pscInstanceConfig;
 
     /**
      * @return Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<InstancePscInstanceConfig>> pscInstanceConfig() {
-        return Codegen.optional(this.pscInstanceConfig);
+    public Output<InstancePscInstanceConfig> pscInstanceConfig() {
+        return this.pscInstanceConfig;
     }
     /**
      * The public IP addresses for the Instance. This is available ONLY when

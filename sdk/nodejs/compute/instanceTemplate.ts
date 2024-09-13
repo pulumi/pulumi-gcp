@@ -354,7 +354,14 @@ export class InstanceTemplate extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * prefix. Conflicts with `name`. Max length is 54 characters.
+     * Prefixes with lengths longer than 37 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     *
+     * Resulting name for a `namePrefix` <= 37 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 38 - 54 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
     public readonly namePrefix!: pulumi.Output<string>;
     /**
@@ -623,7 +630,14 @@ export interface InstanceTemplateState {
     name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * prefix. Conflicts with `name`. Max length is 54 characters.
+     * Prefixes with lengths longer than 37 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     *
+     * Resulting name for a `namePrefix` <= 37 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 38 - 54 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
     namePrefix?: pulumi.Input<string>;
     /**
@@ -790,7 +804,14 @@ export interface InstanceTemplateArgs {
     name?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
+     * prefix. Conflicts with `name`. Max length is 54 characters.
+     * Prefixes with lengths longer than 37 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     *
+     * Resulting name for a `namePrefix` <= 37 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 38 - 54 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      */
     namePrefix?: pulumi.Input<string>;
     /**

@@ -243,7 +243,8 @@ class AccessPolicy(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="my-project-name",
             name="my-project-name",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
             parent="organizations/123456789",
             title="Scoped Access Policy",
@@ -319,7 +320,8 @@ class AccessPolicy(pulumi.CustomResource):
         project = gcp.organizations.Project("project",
             project_id="my-project-name",
             name="my-project-name",
-            org_id="123456789")
+            org_id="123456789",
+            deletion_policy="DELETE")
         access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
             parent="organizations/123456789",
             title="Scoped Access Policy",

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,8 +37,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:     pulumi.String("cloudrun-job"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -64,7 +65,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,8 +73,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:     pulumi.String("cloudrun-job"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -107,10 +109,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -139,8 +141,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:     pulumi.String("cloudrun-job"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Volumes: cloudrunv2.JobTemplateTemplateVolumeArray{
@@ -218,9 +221,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -257,8 +260,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:     pulumi.String("cloudrun-job"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -288,7 +292,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -296,9 +300,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:        pulumi.String("cloudrun-job"),
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("GA"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("GA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -339,9 +344,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -379,8 +384,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:     pulumi.String("cloudrun-job"),
-//				Location: pulumi.String("us-central1"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Volumes: cloudrunv2.JobTemplateTemplateVolumeArray{
@@ -431,7 +437,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -439,9 +445,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Name:        pulumi.String("cloudrun-job"),
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -482,7 +489,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -492,6 +499,7 @@ import (
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
 //				Name:                pulumi.String("cloudrun-job"),
 //				Location:            pulumi.String("us-central1"),
+//				DeletionProtection:  pulumi.Bool(false),
 //				StartExecutionToken: pulumi.String("start-once-created"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
@@ -563,6 +571,7 @@ type Job struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The deletion time.
 	DeleteTime           pulumi.StringOutput    `pulumi:"deleteTime"`
+	DeletionProtection   pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -694,6 +703,7 @@ type jobState struct {
 	Creator *string `pulumi:"creator"`
 	// The deletion time.
 	DeleteTime           *string           `pulumi:"deleteTime"`
+	DeletionProtection   *bool             `pulumi:"deletionProtection"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -785,6 +795,7 @@ type JobState struct {
 	Creator pulumi.StringPtrInput
 	// The deletion time.
 	DeleteTime           pulumi.StringPtrInput
+	DeletionProtection   pulumi.BoolPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -868,7 +879,8 @@ type jobArgs struct {
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
-	ClientVersion *string `pulumi:"clientVersion"`
+	ClientVersion      *string `pulumi:"clientVersion"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
 	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -916,7 +928,8 @@ type JobArgs struct {
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
-	ClientVersion pulumi.StringPtrInput
+	ClientVersion      pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
 	// Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
 	// state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -1083,6 +1096,10 @@ func (o JobOutput) Creator() pulumi.StringOutput {
 // The deletion time.
 func (o JobOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o JobOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 func (o JobOutput) EffectiveAnnotations() pulumi.StringMapOutput {

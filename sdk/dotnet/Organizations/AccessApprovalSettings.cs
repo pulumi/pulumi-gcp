@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.Organizations
     ///         Name = "My Project",
     ///         ProjectId = "your-project-id",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()

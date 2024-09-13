@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1439,6 +1439,348 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 			return nil
 		}
 		return v.ProtectionLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type EkmConnectionIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// EkmConnectionIamBindingConditionInput is an input type that accepts EkmConnectionIamBindingConditionArgs and EkmConnectionIamBindingConditionOutput values.
+// You can construct a concrete instance of `EkmConnectionIamBindingConditionInput` via:
+//
+//	EkmConnectionIamBindingConditionArgs{...}
+type EkmConnectionIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToEkmConnectionIamBindingConditionOutput() EkmConnectionIamBindingConditionOutput
+	ToEkmConnectionIamBindingConditionOutputWithContext(context.Context) EkmConnectionIamBindingConditionOutput
+}
+
+type EkmConnectionIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (EkmConnectionIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionIamBindingCondition)(nil)).Elem()
+}
+
+func (i EkmConnectionIamBindingConditionArgs) ToEkmConnectionIamBindingConditionOutput() EkmConnectionIamBindingConditionOutput {
+	return i.ToEkmConnectionIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionIamBindingConditionArgs) ToEkmConnectionIamBindingConditionOutputWithContext(ctx context.Context) EkmConnectionIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamBindingConditionOutput)
+}
+
+func (i EkmConnectionIamBindingConditionArgs) ToEkmConnectionIamBindingConditionPtrOutput() EkmConnectionIamBindingConditionPtrOutput {
+	return i.ToEkmConnectionIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionIamBindingConditionArgs) ToEkmConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamBindingConditionOutput).ToEkmConnectionIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// EkmConnectionIamBindingConditionPtrInput is an input type that accepts EkmConnectionIamBindingConditionArgs, EkmConnectionIamBindingConditionPtr and EkmConnectionIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `EkmConnectionIamBindingConditionPtrInput` via:
+//
+//	        EkmConnectionIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EkmConnectionIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToEkmConnectionIamBindingConditionPtrOutput() EkmConnectionIamBindingConditionPtrOutput
+	ToEkmConnectionIamBindingConditionPtrOutputWithContext(context.Context) EkmConnectionIamBindingConditionPtrOutput
+}
+
+type ekmConnectionIamBindingConditionPtrType EkmConnectionIamBindingConditionArgs
+
+func EkmConnectionIamBindingConditionPtr(v *EkmConnectionIamBindingConditionArgs) EkmConnectionIamBindingConditionPtrInput {
+	return (*ekmConnectionIamBindingConditionPtrType)(v)
+}
+
+func (*ekmConnectionIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EkmConnectionIamBindingCondition)(nil)).Elem()
+}
+
+func (i *ekmConnectionIamBindingConditionPtrType) ToEkmConnectionIamBindingConditionPtrOutput() EkmConnectionIamBindingConditionPtrOutput {
+	return i.ToEkmConnectionIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *ekmConnectionIamBindingConditionPtrType) ToEkmConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamBindingConditionPtrOutput)
+}
+
+type EkmConnectionIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionIamBindingCondition)(nil)).Elem()
+}
+
+func (o EkmConnectionIamBindingConditionOutput) ToEkmConnectionIamBindingConditionOutput() EkmConnectionIamBindingConditionOutput {
+	return o
+}
+
+func (o EkmConnectionIamBindingConditionOutput) ToEkmConnectionIamBindingConditionOutputWithContext(ctx context.Context) EkmConnectionIamBindingConditionOutput {
+	return o
+}
+
+func (o EkmConnectionIamBindingConditionOutput) ToEkmConnectionIamBindingConditionPtrOutput() EkmConnectionIamBindingConditionPtrOutput {
+	return o.ToEkmConnectionIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o EkmConnectionIamBindingConditionOutput) ToEkmConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EkmConnectionIamBindingCondition) *EkmConnectionIamBindingCondition {
+		return &v
+	}).(EkmConnectionIamBindingConditionPtrOutput)
+}
+
+func (o EkmConnectionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o EkmConnectionIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o EkmConnectionIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type EkmConnectionIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EkmConnectionIamBindingCondition)(nil)).Elem()
+}
+
+func (o EkmConnectionIamBindingConditionPtrOutput) ToEkmConnectionIamBindingConditionPtrOutput() EkmConnectionIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o EkmConnectionIamBindingConditionPtrOutput) ToEkmConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o EkmConnectionIamBindingConditionPtrOutput) Elem() EkmConnectionIamBindingConditionOutput {
+	return o.ApplyT(func(v *EkmConnectionIamBindingCondition) EkmConnectionIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret EkmConnectionIamBindingCondition
+		return ret
+	}).(EkmConnectionIamBindingConditionOutput)
+}
+
+func (o EkmConnectionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EkmConnectionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o EkmConnectionIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EkmConnectionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o EkmConnectionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EkmConnectionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type EkmConnectionIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// EkmConnectionIamMemberConditionInput is an input type that accepts EkmConnectionIamMemberConditionArgs and EkmConnectionIamMemberConditionOutput values.
+// You can construct a concrete instance of `EkmConnectionIamMemberConditionInput` via:
+//
+//	EkmConnectionIamMemberConditionArgs{...}
+type EkmConnectionIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToEkmConnectionIamMemberConditionOutput() EkmConnectionIamMemberConditionOutput
+	ToEkmConnectionIamMemberConditionOutputWithContext(context.Context) EkmConnectionIamMemberConditionOutput
+}
+
+type EkmConnectionIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (EkmConnectionIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionIamMemberCondition)(nil)).Elem()
+}
+
+func (i EkmConnectionIamMemberConditionArgs) ToEkmConnectionIamMemberConditionOutput() EkmConnectionIamMemberConditionOutput {
+	return i.ToEkmConnectionIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionIamMemberConditionArgs) ToEkmConnectionIamMemberConditionOutputWithContext(ctx context.Context) EkmConnectionIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamMemberConditionOutput)
+}
+
+func (i EkmConnectionIamMemberConditionArgs) ToEkmConnectionIamMemberConditionPtrOutput() EkmConnectionIamMemberConditionPtrOutput {
+	return i.ToEkmConnectionIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i EkmConnectionIamMemberConditionArgs) ToEkmConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamMemberConditionOutput).ToEkmConnectionIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// EkmConnectionIamMemberConditionPtrInput is an input type that accepts EkmConnectionIamMemberConditionArgs, EkmConnectionIamMemberConditionPtr and EkmConnectionIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `EkmConnectionIamMemberConditionPtrInput` via:
+//
+//	        EkmConnectionIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EkmConnectionIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToEkmConnectionIamMemberConditionPtrOutput() EkmConnectionIamMemberConditionPtrOutput
+	ToEkmConnectionIamMemberConditionPtrOutputWithContext(context.Context) EkmConnectionIamMemberConditionPtrOutput
+}
+
+type ekmConnectionIamMemberConditionPtrType EkmConnectionIamMemberConditionArgs
+
+func EkmConnectionIamMemberConditionPtr(v *EkmConnectionIamMemberConditionArgs) EkmConnectionIamMemberConditionPtrInput {
+	return (*ekmConnectionIamMemberConditionPtrType)(v)
+}
+
+func (*ekmConnectionIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EkmConnectionIamMemberCondition)(nil)).Elem()
+}
+
+func (i *ekmConnectionIamMemberConditionPtrType) ToEkmConnectionIamMemberConditionPtrOutput() EkmConnectionIamMemberConditionPtrOutput {
+	return i.ToEkmConnectionIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *ekmConnectionIamMemberConditionPtrType) ToEkmConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EkmConnectionIamMemberConditionPtrOutput)
+}
+
+type EkmConnectionIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionIamMemberCondition)(nil)).Elem()
+}
+
+func (o EkmConnectionIamMemberConditionOutput) ToEkmConnectionIamMemberConditionOutput() EkmConnectionIamMemberConditionOutput {
+	return o
+}
+
+func (o EkmConnectionIamMemberConditionOutput) ToEkmConnectionIamMemberConditionOutputWithContext(ctx context.Context) EkmConnectionIamMemberConditionOutput {
+	return o
+}
+
+func (o EkmConnectionIamMemberConditionOutput) ToEkmConnectionIamMemberConditionPtrOutput() EkmConnectionIamMemberConditionPtrOutput {
+	return o.ToEkmConnectionIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o EkmConnectionIamMemberConditionOutput) ToEkmConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EkmConnectionIamMemberCondition) *EkmConnectionIamMemberCondition {
+		return &v
+	}).(EkmConnectionIamMemberConditionPtrOutput)
+}
+
+func (o EkmConnectionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EkmConnectionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o EkmConnectionIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o EkmConnectionIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v EkmConnectionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type EkmConnectionIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EkmConnectionIamMemberCondition)(nil)).Elem()
+}
+
+func (o EkmConnectionIamMemberConditionPtrOutput) ToEkmConnectionIamMemberConditionPtrOutput() EkmConnectionIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o EkmConnectionIamMemberConditionPtrOutput) ToEkmConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) EkmConnectionIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o EkmConnectionIamMemberConditionPtrOutput) Elem() EkmConnectionIamMemberConditionOutput {
+	return o.ApplyT(func(v *EkmConnectionIamMemberCondition) EkmConnectionIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret EkmConnectionIamMemberCondition
+		return ret
+	}).(EkmConnectionIamMemberConditionOutput)
+}
+
+func (o EkmConnectionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EkmConnectionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o EkmConnectionIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EkmConnectionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o EkmConnectionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EkmConnectionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3526,6 +3868,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), CryptoKeyVersionExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionIamBindingConditionInput)(nil)).Elem(), EkmConnectionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionIamBindingConditionPtrInput)(nil)).Elem(), EkmConnectionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionIamMemberConditionInput)(nil)).Elem(), EkmConnectionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionIamMemberConditionPtrInput)(nil)).Elem(), EkmConnectionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverInput)(nil)).Elem(), EkmConnectionServiceResolverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverArrayInput)(nil)).Elem(), EkmConnectionServiceResolverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionServiceResolverServerCertificateInput)(nil)).Elem(), EkmConnectionServiceResolverServerCertificateArgs{})
@@ -3574,6 +3920,10 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
+	pulumi.RegisterOutputType(EkmConnectionIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(EkmConnectionIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(EkmConnectionIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(EkmConnectionIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverOutput{})
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverArrayOutput{})
 	pulumi.RegisterOutputType(EkmConnectionServiceResolverServerCertificateOutput{})

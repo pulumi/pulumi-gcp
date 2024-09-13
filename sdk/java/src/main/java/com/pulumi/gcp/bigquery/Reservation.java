@@ -178,32 +178,6 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
-     * (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
-     * 
-     * &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     * @deprecated
-     * `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     */
-    @Deprecated /* `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API. */
-    @Export(name="multiRegionAuxiliary", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> multiRegionAuxiliary;
-
-    /**
-     * @return (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
-     * 
-     * &gt; **Warning:** `multi_region_auxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     * 
-     */
-    public Output<Optional<Boolean>> multiRegionAuxiliary() {
-        return Codegen.optional(this.multiRegionAuxiliary);
-    }
-    /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      * 
      * ***

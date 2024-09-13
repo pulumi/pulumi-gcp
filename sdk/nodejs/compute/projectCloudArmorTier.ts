@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     name: "your_project_id",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * const compute = new gcp.projects.Service("compute", {
  *     project: project.projectId,

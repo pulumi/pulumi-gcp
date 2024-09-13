@@ -7800,7 +7800,7 @@ class ClusterMeshCertificatesArgs:
 
 if not MYPY:
     class ClusterMonitoringConfigArgsDict(TypedDict):
-        advanced_datapath_observability_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict']]]]
+        advanced_datapath_observability_config: NotRequired[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict']]
         """
         Configuration for Advanced Datapath Monitoring. Structure is documented below.
         """
@@ -7818,32 +7818,32 @@ elif False:
 @pulumi.input_type
 class ClusterMonitoringConfigArgs:
     def __init__(__self__, *,
-                 advanced_datapath_observability_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]] = None,
+                 advanced_datapath_observability_config: Optional[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']] = None,
                  enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  managed_prometheus: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
+        :param pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_config: Configuration for Advanced Datapath Monitoring. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         :param pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
-        if advanced_datapath_observability_configs is not None:
-            pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
+        if advanced_datapath_observability_config is not None:
+            pulumi.set(__self__, "advanced_datapath_observability_config", advanced_datapath_observability_config)
         if enable_components is not None:
             pulumi.set(__self__, "enable_components", enable_components)
         if managed_prometheus is not None:
             pulumi.set(__self__, "managed_prometheus", managed_prometheus)
 
     @property
-    @pulumi.getter(name="advancedDatapathObservabilityConfigs")
-    def advanced_datapath_observability_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]]:
+    @pulumi.getter(name="advancedDatapathObservabilityConfig")
+    def advanced_datapath_observability_config(self) -> Optional[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]:
         """
         Configuration for Advanced Datapath Monitoring. Structure is documented below.
         """
-        return pulumi.get(self, "advanced_datapath_observability_configs")
+        return pulumi.get(self, "advanced_datapath_observability_config")
 
-    @advanced_datapath_observability_configs.setter
-    def advanced_datapath_observability_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]]):
-        pulumi.set(self, "advanced_datapath_observability_configs", value)
+    @advanced_datapath_observability_config.setter
+    def advanced_datapath_observability_config(self, value: Optional[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]):
+        pulumi.set(self, "advanced_datapath_observability_config", value)
 
     @property
     @pulumi.getter(name="enableComponents")
@@ -7876,13 +7876,9 @@ if not MYPY:
         """
         Whether or not to enable advanced datapath metrics.
         """
-        enable_relay: NotRequired[pulumi.Input[bool]]
+        enable_relay: pulumi.Input[bool]
         """
         Whether or not Relay is enabled.
-        """
-        relay_mode: NotRequired[pulumi.Input[str]]
-        """
-        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
 elif False:
     ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -7891,21 +7887,13 @@ elif False:
 class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
     def __init__(__self__, *,
                  enable_metrics: pulumi.Input[bool],
-                 enable_relay: Optional[pulumi.Input[bool]] = None,
-                 relay_mode: Optional[pulumi.Input[str]] = None):
+                 enable_relay: pulumi.Input[bool]):
         """
         :param pulumi.Input[bool] enable_metrics: Whether or not to enable advanced datapath metrics.
         :param pulumi.Input[bool] enable_relay: Whether or not Relay is enabled.
-        :param pulumi.Input[str] relay_mode: Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
-        if enable_relay is not None:
-            pulumi.set(__self__, "enable_relay", enable_relay)
-        if relay_mode is not None:
-            warnings.warn("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""", DeprecationWarning)
-            pulumi.log.warn("""relay_mode is deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
-        if relay_mode is not None:
-            pulumi.set(__self__, "relay_mode", relay_mode)
+        pulumi.set(__self__, "enable_relay", enable_relay)
 
     @property
     @pulumi.getter(name="enableMetrics")
@@ -7921,28 +7909,15 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
 
     @property
     @pulumi.getter(name="enableRelay")
-    def enable_relay(self) -> Optional[pulumi.Input[bool]]:
+    def enable_relay(self) -> pulumi.Input[bool]:
         """
         Whether or not Relay is enabled.
         """
         return pulumi.get(self, "enable_relay")
 
     @enable_relay.setter
-    def enable_relay(self, value: Optional[pulumi.Input[bool]]):
+    def enable_relay(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enable_relay", value)
-
-    @property
-    @pulumi.getter(name="relayMode")
-    @_utilities.deprecated("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
-    def relay_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Mode used to make Relay available. Deprecated in favor of `enable_relay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enable_relay` will become a required field.
-        """
-        return pulumi.get(self, "relay_mode")
-
-    @relay_mode.setter
-    def relay_mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "relay_mode", value)
 
 
 if not MYPY:
@@ -14980,6 +14955,7 @@ if not MYPY:
         * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
         * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
         * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
 elif False:
     ClusterReleaseChannelArgsDict: TypeAlias = Mapping[str, Any]
@@ -14995,6 +14971,7 @@ class ClusterReleaseChannelArgs:
                * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
                * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
                * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+               * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
         pulumi.set(__self__, "channel", channel)
 
@@ -15008,6 +14985,7 @@ class ClusterReleaseChannelArgs:
         * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
         * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
         * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
         """
         return pulumi.get(self, "channel")
 

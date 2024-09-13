@@ -41,10 +41,10 @@ Object.defineProperty(exports, "activeDirectoryCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const addTerraformAttributionLabel: boolean | undefined;
-Object.defineProperty(exports, "addTerraformAttributionLabel", {
+export declare const addPulumiAttributionLabel: boolean | undefined;
+Object.defineProperty(exports, "addPulumiAttributionLabel", {
     get() {
-        return __config.getObject<boolean>("addTerraformAttributionLabel");
+        return __config.getObject<boolean>("addPulumiAttributionLabel");
     },
     enumerable: true,
 });
@@ -525,14 +525,6 @@ export declare const dataprocMetastoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataprocMetastoreCustomEndpoint", {
     get() {
         return __config.get("dataprocMetastoreCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const datastoreCustomEndpoint: string | undefined;
-Object.defineProperty(exports, "datastoreCustomEndpoint", {
-    get() {
-        return __config.get("datastoreCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1057,6 +1049,14 @@ Object.defineProperty(exports, "pubsubLiteCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const pulumiAttributionLabelAdditionStrategy: string | undefined;
+Object.defineProperty(exports, "pulumiAttributionLabelAdditionStrategy", {
+    get() {
+        return __config.get("pulumiAttributionLabelAdditionStrategy");
+    },
+    enumerable: true,
+});
+
 export declare const recaptchaEnterpriseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "recaptchaEnterpriseCustomEndpoint", {
     get() {
@@ -1301,14 +1301,6 @@ export declare const tagsLocationCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tagsLocationCustomEndpoint", {
     get() {
         return __config.get("tagsLocationCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const terraformAttributionLabelAdditionStrategy: string | undefined;
-Object.defineProperty(exports, "terraformAttributionLabelAdditionStrategy", {
-    get() {
-        return __config.get("terraformAttributionLabelAdditionStrategy");
     },
     enumerable: true,
 });

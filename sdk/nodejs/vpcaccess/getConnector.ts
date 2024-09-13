@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
  *     region: "us-central1",
+ *     minInstances: 2,
+ *     maxInstances: 3,
  * });
  * ```
  */
@@ -110,6 +112,8 @@ export interface GetConnectorResult {
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
  *     region: "us-central1",
+ *     minInstances: 2,
+ *     maxInstances: 3,
  * });
  * ```
  */

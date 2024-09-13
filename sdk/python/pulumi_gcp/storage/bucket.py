@@ -938,8 +938,8 @@ class Bucket(pulumi.CustomResource):
             ])
         ```
 
-        ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
-        When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
+        ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
+        When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `send_age_if_zero` flag to `false` to prevent this and avoid any potentially unintended interactions.
 
         ```python
         import pulumi
@@ -955,7 +955,7 @@ class Bucket(pulumi.CustomResource):
                 },
                 "condition": {
                     "days_since_noncurrent_time": 3,
-                    "no_age": True,
+                    "send_age_if_zero": False,
                 },
             }])
         ```
@@ -1113,8 +1113,8 @@ class Bucket(pulumi.CustomResource):
             ])
         ```
 
-        ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
-        When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
+        ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
+        When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `send_age_if_zero` flag to `false` to prevent this and avoid any potentially unintended interactions.
 
         ```python
         import pulumi
@@ -1130,7 +1130,7 @@ class Bucket(pulumi.CustomResource):
                 },
                 "condition": {
                     "days_since_noncurrent_time": 3,
-                    "no_age": True,
+                    "send_age_if_zero": False,
                 },
             }])
         ```

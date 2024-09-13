@@ -7,7 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbe;
-import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerPort;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerPorts;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerResources;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerVolumeMount;
@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateContainer {
     /**
-     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
      * 
      */
     private @Nullable List<String> args;
@@ -62,7 +62,7 @@ public final class ServiceTemplateContainer {
      * Structure is documented below.
      * 
      */
-    private @Nullable List<ServiceTemplateContainerPort> ports;
+    private @Nullable ServiceTemplateContainerPorts ports;
     /**
      * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      * Structure is documented below.
@@ -89,7 +89,7 @@ public final class ServiceTemplateContainer {
 
     private ServiceTemplateContainer() {}
     /**
-     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references are not supported in Cloud Run.
      * 
      */
     public List<String> args() {
@@ -145,8 +145,8 @@ public final class ServiceTemplateContainer {
      * Structure is documented below.
      * 
      */
-    public List<ServiceTemplateContainerPort> ports() {
-        return this.ports == null ? List.of() : this.ports;
+    public Optional<ServiceTemplateContainerPorts> ports() {
+        return Optional.ofNullable(this.ports);
     }
     /**
      * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -196,7 +196,7 @@ public final class ServiceTemplateContainer {
         private String image;
         private @Nullable ServiceTemplateContainerLivenessProbe livenessProbe;
         private @Nullable String name;
-        private @Nullable List<ServiceTemplateContainerPort> ports;
+        private @Nullable ServiceTemplateContainerPorts ports;
         private @Nullable ServiceTemplateContainerResources resources;
         private @Nullable ServiceTemplateContainerStartupProbe startupProbe;
         private @Nullable List<ServiceTemplateContainerVolumeMount> volumeMounts;
@@ -275,13 +275,10 @@ public final class ServiceTemplateContainer {
             return this;
         }
         @CustomType.Setter
-        public Builder ports(@Nullable List<ServiceTemplateContainerPort> ports) {
+        public Builder ports(@Nullable ServiceTemplateContainerPorts ports) {
 
             this.ports = ports;
             return this;
-        }
-        public Builder ports(ServiceTemplateContainerPort... ports) {
-            return ports(List.of(ports));
         }
         @CustomType.Setter
         public Builder resources(@Nullable ServiceTemplateContainerResources resources) {

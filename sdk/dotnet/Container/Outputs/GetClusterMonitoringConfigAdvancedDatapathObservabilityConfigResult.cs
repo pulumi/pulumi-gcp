@@ -21,22 +21,15 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Whether or not Relay is enabled.
         /// </summary>
         public readonly bool EnableRelay;
-        /// <summary>
-        /// Mode used to make Relay available.
-        /// </summary>
-        public readonly string RelayMode;
 
         [OutputConstructor]
         private GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(
             bool enableMetrics,
 
-            bool enableRelay,
-
-            string relayMode)
+            bool enableRelay)
         {
             EnableMetrics = enableMetrics;
             EnableRelay = enableRelay;
-            RelayMode = relayMode;
         }
     }
 }

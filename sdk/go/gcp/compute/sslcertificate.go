@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,7 +73,13 @@ type SSLCertificate struct {
 	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the
-	// specified prefix. Conflicts with `name`.
+	// specified prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -157,7 +163,13 @@ type sslcertificateState struct {
 	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
-	// specified prefix. Conflicts with `name`.
+	// specified prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -195,7 +207,13 @@ type SSLCertificateState struct {
 	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
-	// specified prefix. Conflicts with `name`.
+	// specified prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -231,7 +249,13 @@ type sslcertificateArgs struct {
 	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
-	// specified prefix. Conflicts with `name`.
+	// specified prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -262,7 +286,13 @@ type SSLCertificateArgs struct {
 	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
-	// specified prefix. Conflicts with `name`.
+	// specified prefix. Conflicts with `name`. Max length is 54 characters.
+	// Prefixes with lengths longer than 37 characters will use a shortened
+	// UUID that will be more prone to collisions.
+	// Resulting name for a `namePrefix` <= 37 characters:
+	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+	// Resulting name for a `namePrefix` 38 - 54 characters:
+	// `namePrefix` + YYmmdd + 3 digit incremental counter
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -402,7 +432,13 @@ func (o SSLCertificateOutput) Name() pulumi.StringOutput {
 }
 
 // Creates a unique name beginning with the
-// specified prefix. Conflicts with `name`.
+// specified prefix. Conflicts with `name`. Max length is 54 characters.
+// Prefixes with lengths longer than 37 characters will use a shortened
+// UUID that will be more prone to collisions.
+// Resulting name for a `namePrefix` <= 37 characters:
+// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+// Resulting name for a `namePrefix` 38 - 54 characters:
+// `namePrefix` + YYmmdd + 3 digit incremental counter
 func (o SSLCertificateOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSLCertificate) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

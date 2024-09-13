@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,7 +71,6 @@ type LookupProjectResult struct {
 	OrgId        string            `pulumi:"orgId"`
 	ProjectId    *string           `pulumi:"projectId"`
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	SkipDelete   bool              `pulumi:"skipDelete"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -160,10 +159,6 @@ func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 
 func (o LookupProjectResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
-}
-
-func (o LookupProjectResultOutput) SkipDelete() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupProjectResult) bool { return v.SkipDelete }).(pulumi.BoolOutput)
 }
 
 func init() {

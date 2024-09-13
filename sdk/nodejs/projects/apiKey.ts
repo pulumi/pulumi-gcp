@@ -17,15 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     name: "app",
- *     orgId: "123456789",
- * });
  * const primary = new gcp.projects.ApiKey("primary", {
  *     name: "key",
  *     displayName: "sample-key",
- *     project: basic.name,
  *     restrictions: {
  *         androidKeyRestrictions: {
  *             allowedApplications: [{
@@ -46,15 +40,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     name: "app",
- *     orgId: "123456789",
- * });
  * const primary = new gcp.projects.ApiKey("primary", {
  *     name: "key",
  *     displayName: "sample-key",
- *     project: basic.name,
  *     restrictions: {
  *         apiTargets: [{
  *             service: "translate.googleapis.com",
@@ -72,15 +60,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     name: "app",
- *     orgId: "123456789",
- * });
  * const primary = new gcp.projects.ApiKey("primary", {
  *     name: "key",
  *     displayName: "sample-key",
- *     project: basic.name,
  *     restrictions: {
  *         apiTargets: [{
  *             service: "translate.googleapis.com",
@@ -98,15 +80,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     name: "app",
- *     orgId: "123456789",
- * });
  * const primary = new gcp.projects.ApiKey("primary", {
  *     name: "key",
  *     displayName: "sample-key",
- *     project: basic.name,
  * });
  * ```
  * ### Server_key
@@ -115,15 +91,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     name: "app",
- *     orgId: "123456789",
- * });
  * const primary = new gcp.projects.ApiKey("primary", {
  *     name: "key",
  *     displayName: "sample-key",
- *     project: basic.name,
  *     restrictions: {
  *         apiTargets: [{
  *             service: "translate.googleapis.com",

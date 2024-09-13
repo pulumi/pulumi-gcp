@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,7 +49,9 @@ func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClie
 type GetClientConfigResult struct {
 	// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
 	AccessToken string `pulumi:"accessToken"`
-	Id          string `pulumi:"id"`
+	// The default labels configured on the provider.
+	DefaultLabels map[string]string `pulumi:"defaultLabels"`
+	Id            string            `pulumi:"id"`
 	// The ID of the project to apply any resources to.
 	Project string `pulumi:"project"`
 	// The region to operate under.
@@ -87,6 +89,11 @@ func (o GetClientConfigResultOutput) ToGetClientConfigResultOutputWithContext(ct
 // The OAuth2 access token used by the client to authenticate against the Google Cloud API.
 func (o GetClientConfigResultOutput) AccessToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientConfigResult) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
+// The default labels configured on the provider.
+func (o GetClientConfigResultOutput) DefaultLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClientConfigResult) map[string]string { return v.DefaultLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetClientConfigResultOutput) Id() pulumi.StringOutput {

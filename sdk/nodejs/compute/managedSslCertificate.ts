@@ -143,7 +143,7 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
     /**
      * The unique identifier for the resource.
      */
-    public readonly certificateId!: pulumi.Output<number>;
+    public /*out*/ readonly certificateId!: pulumi.Output<number>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -219,12 +219,12 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ManagedSslCertificateArgs | undefined;
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["managed"] = args ? args.managed : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -300,10 +300,6 @@ export interface ManagedSslCertificateState {
  * The set of arguments for constructing a ManagedSslCertificate resource.
  */
 export interface ManagedSslCertificateArgs {
-    /**
-     * The unique identifier for the resource.
-     */
-    certificateId?: pulumi.Input<number>;
     /**
      * An optional description of this resource.
      */

@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *             .projectId("project_id")
  *             .name("project_id")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var key = new TagKey("key", TagKeyArgs.builder()

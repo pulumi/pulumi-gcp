@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  *             .projectId("project-id")
  *             .name("project-id")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
@@ -148,6 +149,7 @@ import javax.annotation.Nullable;
  *             .projectId("project-id")
  *             .name("project-id")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()

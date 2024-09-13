@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     name: "my-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * });
  * const apigee = new gcp.projects.Service("apigee", {
  *     project: project.projectId,

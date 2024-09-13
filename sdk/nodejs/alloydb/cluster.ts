@@ -73,73 +73,6 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
- * ### Alloydb Cluster Restore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.compute.getNetwork({
- *     name: "alloydb-network",
- * });
- * const source = new gcp.alloydb.Cluster("source", {
- *     clusterId: "alloydb-source-cluster",
- *     location: "us-central1",
- *     network: _default.then(_default => _default.id),
- *     initialUser: {
- *         password: "alloydb-source-cluster",
- *     },
- * });
- * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: "alloydb-source-cluster",
- *     addressType: "INTERNAL",
- *     purpose: "VPC_PEERING",
- *     prefixLength: 16,
- *     network: _default.then(_default => _default.id),
- * });
- * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
- *     network: _default.then(_default => _default.id),
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAlloc.name],
- * });
- * const sourceInstance = new gcp.alloydb.Instance("source", {
- *     cluster: source.name,
- *     instanceId: "alloydb-instance",
- *     instanceType: "PRIMARY",
- *     machineConfig: {
- *         cpuCount: 2,
- *     },
- * }, {
- *     dependsOn: [vpcConnection],
- * });
- * const sourceBackup = new gcp.alloydb.Backup("source", {
- *     backupId: "alloydb-backup",
- *     location: "us-central1",
- *     clusterName: source.name,
- * }, {
- *     dependsOn: [sourceInstance],
- * });
- * const restoredFromBackup = new gcp.alloydb.Cluster("restored_from_backup", {
- *     clusterId: "alloydb-backup-restored",
- *     location: "us-central1",
- *     networkConfig: {
- *         network: _default.then(_default => _default.id),
- *     },
- *     restoreBackupSource: {
- *         backupName: sourceBackup.name,
- *     },
- * });
- * const restoredViaPitr = new gcp.alloydb.Cluster("restored_via_pitr", {
- *     clusterId: "alloydb-pitr-restored",
- *     location: "us-central1",
- *     network: _default.then(_default => _default.id),
- *     restoreContinuousBackupSource: {
- *         cluster: source.name,
- *         pointInTime: "2023-08-03T19:19:00.094Z",
- *     },
- * });
- * const project = gcp.organizations.getProject({});
- * ```
  * ### Alloydb Secondary Cluster Basic
  *
  * ```typescript
@@ -150,7 +83,9 @@ import * as utilities from "../utilities";
  * const primary = new gcp.alloydb.Cluster("primary", {
  *     clusterId: "alloydb-primary-cluster",
  *     location: "us-central1",
- *     network: _default.id,
+ *     networkConfig: {
+ *         network: _default.id,
+ *     },
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "alloydb-secondary-cluster",
@@ -177,7 +112,9 @@ import * as utilities from "../utilities";
  * const secondary = new gcp.alloydb.Cluster("secondary", {
  *     clusterId: "alloydb-secondary-cluster",
  *     location: "us-east1",
- *     network: _default.id,
+ *     networkConfig: {
+ *         network: _default.id,
+ *     },
  *     clusterType: "SECONDARY",
  *     continuousBackupConfig: {
  *         enabled: false,
@@ -355,16 +292,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * (Optional, Deprecated)
-     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-     * "projects/{projectNumber}/global/networks/{network_id}".
-     *
-     * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-     *
-     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-     */
-    public readonly network!: pulumi.Output<string>;
-    /**
      * Metadata related to network configuration.
      * Structure is documented below.
      */
@@ -448,7 +375,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["maintenanceUpdatePolicy"] = state ? state.maintenanceUpdatePolicy : undefined;
             resourceInputs["migrationSources"] = state ? state.migrationSources : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscConfig"] = state ? state.pscConfig : undefined;
@@ -481,7 +407,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenanceUpdatePolicy"] = args ? args.maintenanceUpdatePolicy : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pscConfig"] = args ? args.pscConfig : undefined;
@@ -617,16 +542,6 @@ export interface ClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
-     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-     * "projects/{projectNumber}/global/networks/{network_id}".
-     *
-     * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-     *
-     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-     */
-    network?: pulumi.Input<string>;
-    /**
      * Metadata related to network configuration.
      * Structure is documented below.
      */
@@ -756,16 +671,6 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy>;
-    /**
-     * (Optional, Deprecated)
-     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-     * "projects/{projectNumber}/global/networks/{network_id}".
-     *
-     * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-     *
-     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
-     */
-    network?: pulumi.Input<string>;
     /**
      * Metadata related to network configuration.
      * Structure is documented below.

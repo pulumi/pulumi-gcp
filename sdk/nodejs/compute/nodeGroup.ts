@@ -99,6 +99,7 @@ import * as utilities from "../utilities";
  *     projectId: "project-id",
  *     name: "project-name",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     name: "soletenant-tmpl",

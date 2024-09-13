@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///         ProjectId = "id",
     ///         Name = "id",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
@@ -70,6 +71,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///     {
     ///         Parent = "organizations/123456789",
     ///         DisplayName = "folder",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
@@ -128,6 +130,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///         ProjectId = "id",
     ///         Name = "id",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()

@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  *             .projectId("vmw-proj")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()

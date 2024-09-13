@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         template: {
  *             containers: [{
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         template: {
  *             containers: [{
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         template: {
  *             volumes: [{
@@ -158,6 +161,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         template: {
  *             containers: [{
@@ -180,6 +184,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     launchStage: "GA",
  *     template: {
  *         template: {
@@ -228,6 +233,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         template: {
  *             volumes: [{
@@ -267,6 +273,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     launchStage: "BETA",
  *     template: {
  *         template: {
@@ -297,6 +304,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     name: "cloudrun-job",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     startExecutionToken: "start-once-created",
  *     template: {
  *         template: {
@@ -401,6 +409,7 @@ export class Job extends pulumi.CustomResource {
      * The deletion time.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -526,6 +535,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -560,6 +570,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["launchStage"] = args ? args.launchStage : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -639,6 +650,7 @@ export interface JobState {
      * The deletion time.
      */
     deleteTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -770,6 +782,7 @@ export interface JobArgs {
      * Arbitrary version identifier for the API client.
      */
     clientVersion?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
      * Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,

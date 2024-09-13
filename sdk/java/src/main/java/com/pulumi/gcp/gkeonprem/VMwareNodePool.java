@@ -135,6 +135,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePool;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigVsphereConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolNodePoolAutoscalingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -211,7 +212,21 @@ import javax.annotation.Nullable;
  *                         .effect("NO_SCHEDULE")
  *                         .build())
  *                 .labels()
- *                 .vsphereConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .vsphereConfig(VMwareNodePoolConfigVsphereConfigArgs.builder()
+ *                     .datastore("test-datastore")
+ *                     .tags(                    
+ *                         VMwareNodePoolConfigVsphereConfigTagArgs.builder()
+ *                             .category("test-category-1")
+ *                             .tag("tag-1")
+ *                             .build(),
+ *                         VMwareNodePoolConfigVsphereConfigTagArgs.builder()
+ *                             .category("test-category-2")
+ *                             .tag("tag-2")
+ *                             .build())
+ *                     .hostGroups(                    
+ *                         "host1",
+ *                         "host2")
+ *                     .build())
  *                 .enableLoadBalancer(true)
  *                 .build())
  *             .nodePoolAutoscaling(VMwareNodePoolNodePoolAutoscalingArgs.builder()

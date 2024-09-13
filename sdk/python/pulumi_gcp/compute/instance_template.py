@@ -84,7 +84,14 @@ class InstanceTemplateArgs:
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -359,7 +366,14 @@ class InstanceTemplateArgs:
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Creates a unique name beginning with the specified
-        prefix. Conflicts with `name`.
+        prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -602,7 +616,14 @@ class _InstanceTemplateState:
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -920,7 +941,14 @@ class _InstanceTemplateState:
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         Creates a unique name beginning with the specified
-        prefix. Conflicts with `name`.
+        prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 
@@ -1429,7 +1457,14 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -1863,7 +1898,14 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified
-               prefix. Conflicts with `name`.
+               prefix. Conflicts with `name`. Max length is 54 characters.
+               Prefixes with lengths longer than 37 characters will use a shortened
+               UUID that will be more prone to collisions.
+               
+               Resulting name for a `name_prefix` <= 37 characters:
+               `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+               Resulting name for a `name_prefix` 38 - 54 characters:
+               `name_prefix` + YYmmdd + 3 digit incremental counter
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -2089,7 +2131,14 @@ class InstanceTemplate(pulumi.CustomResource):
     def name_prefix(self) -> pulumi.Output[str]:
         """
         Creates a unique name beginning with the specified
-        prefix. Conflicts with `name`.
+        prefix. Conflicts with `name`. Max length is 54 characters.
+        Prefixes with lengths longer than 37 characters will use a shortened
+        UUID that will be more prone to collisions.
+
+        Resulting name for a `name_prefix` <= 37 characters:
+        `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+        Resulting name for a `name_prefix` 38 - 54 characters:
+        `name_prefix` + YYmmdd + 3 digit incremental counter
         """
         return pulumi.get(self, "name_prefix")
 

@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  *     loadBalancingScheme: "EXTERNAL",
  *     iap: {
+ *         enabled: true,
  *         oauth2ClientId: "abc",
  *         oauth2ClientSecret: "xyz",
  *     },
@@ -373,7 +374,6 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     /**
@@ -513,6 +513,12 @@ export class RegionBackendService extends pulumi.CustomResource {
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
     public readonly network!: pulumi.Output<string | undefined>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `loadBalancingScheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
      * A named port on a backend instance group representing the port for
@@ -681,7 +687,6 @@ export interface RegionBackendServiceState {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
@@ -821,6 +826,12 @@ export interface RegionBackendServiceState {
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `loadBalancingScheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     */
     outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
     /**
      * A named port on a backend instance group representing the port for
@@ -909,7 +920,6 @@ export interface RegionBackendServiceArgs {
     /**
      * Time for which instance will be drained (not accept new
      * connections, but still work to finish started).
-     * From version 6.0.0 ConnectionDrainingTimeoutSec default value will be 300 to match default GCP value.
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
@@ -1036,6 +1046,12 @@ export interface RegionBackendServiceArgs {
      * This field can only be specified when the load balancing scheme is set to INTERNAL.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Settings controlling eviction of unhealthy hosts from the load balancing pool.
+     * This field is applicable only when the `loadBalancingScheme` is set
+     * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+     * Structure is documented below.
+     */
     outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
     /**
      * A named port on a backend instance group representing the port for

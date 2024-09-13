@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +27,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/folder"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -36,8 +36,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myFolder, err := organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("my-folder"),
-//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName:        pulumi.String("my-folder"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -71,10 +72,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/accessapproval"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/folder"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/accessapproval"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/folder"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,16 +83,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myFolder, err := organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("my-folder"),
-//				Parent:      pulumi.String("organizations/123456789"),
+//				DisplayName:        pulumi.String("my-folder"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			myProject, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
-//				Name:      pulumi.String("My Project"),
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  myFolder.Name,
+//				Name:           pulumi.String("My Project"),
+//				ProjectId:      pulumi.String("your-project-id"),
+//				FolderId:       myFolder.Name,
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err

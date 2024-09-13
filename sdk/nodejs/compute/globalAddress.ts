@@ -127,7 +127,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -274,7 +275,8 @@ export interface GlobalAddressState {
      */
     ipVersion?: pulumi.Input<string>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**

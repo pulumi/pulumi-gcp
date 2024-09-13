@@ -30,54 +30,13 @@ import javax.annotation.Nullable;
  *     * [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
  *     * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
  * 
+ * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+ * you must specify a `billing_project_id` and set `user_project_override` to true
+ * in the provider configuration. Otherwise the ACM API will return a 403 error.
+ * Your account must have the `serviceusage.services.use` permission on the
+ * `billing_project_id` you defined.
+ * 
  * ## Example Usage
- * 
- * ### Network Security Firewall Endpoint Association Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.networksecurity.FirewallEndpoint;
- * import com.pulumi.gcp.networksecurity.FirewallEndpointArgs;
- * import com.pulumi.gcp.networksecurity.FirewallEndpointAssociation;
- * import com.pulumi.gcp.networksecurity.FirewallEndpointAssociationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()
- *             .name("my-firewall-endpoint")
- *             .parent("organizations/123456789")
- *             .location("us-central1-a")
- *             .labels(Map.of("foo", "bar"))
- *             .build());
- * 
- *         var defaultAssociation = new FirewallEndpointAssociation("defaultAssociation", FirewallEndpointAssociationArgs.builder()
- *             .name("my-firewall-endpoint-association")
- *             .parent("projects/my-project-name")
- *             .location("us-central1-a")
- *             .labels(Map.of("foo", "bar"))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

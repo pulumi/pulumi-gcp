@@ -110,8 +110,6 @@ if typing.TYPE_CHECKING:
     dataplex = __dataplex
     import pulumi_gcp.dataproc as __dataproc
     dataproc = __dataproc
-    import pulumi_gcp.datastore as __datastore
-    datastore = __datastore
     import pulumi_gcp.datastream as __datastream
     datastream = __datastream
     import pulumi_gcp.deploymentmanager as __deploymentmanager
@@ -303,7 +301,6 @@ else:
     dataloss = _utilities.lazy_import('pulumi_gcp.dataloss')
     dataplex = _utilities.lazy_import('pulumi_gcp.dataplex')
     dataproc = _utilities.lazy_import('pulumi_gcp.dataproc')
-    datastore = _utilities.lazy_import('pulumi_gcp.datastore')
     datastream = _utilities.lazy_import('pulumi_gcp.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
@@ -4100,14 +4097,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "datastore/dataStoreIndex",
-  "fqn": "pulumi_gcp.datastore",
-  "classes": {
-   "gcp:datastore/dataStoreIndex:DataStoreIndex": "DataStoreIndex"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "datastream/connectionProfile",
   "fqn": "pulumi_gcp.datastream",
   "classes": {
@@ -5540,14 +5529,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "identityplatform/projectDefaultConfig",
-  "fqn": "pulumi_gcp.identityplatform",
-  "classes": {
-   "gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig": "ProjectDefaultConfig"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "identityplatform/tenant",
   "fqn": "pulumi_gcp.identityplatform",
   "classes": {
@@ -5656,6 +5637,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/ekmConnection:EkmConnection": "EkmConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/ekmConnectionIamBinding",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding": "EkmConnectionIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/ekmConnectionIamMember",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember": "EkmConnectionIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "kms/ekmConnectionIamPolicy",
+  "fqn": "pulumi_gcp.kms",
+  "classes": {
+   "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy": "EkmConnectionIamPolicy"
   }
  },
  {
@@ -7168,6 +7173,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": "V2OrganizationNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSccBigQueryExports",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports": "V2OrganizationSccBigQueryExports"
   }
  },
  {

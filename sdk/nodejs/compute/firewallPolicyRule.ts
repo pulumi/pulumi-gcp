@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  * const folder = new gcp.organizations.Folder("folder", {
  *     displayName: "policy",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * const _default = new gcp.compute.FirewallPolicy("default", {
  *     parent: folder.id,

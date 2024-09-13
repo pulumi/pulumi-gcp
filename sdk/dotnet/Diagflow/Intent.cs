@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         ProjectId = "my-project",
     ///         Name = "my-project",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var agentProjectService = new Gcp.Projects.Service("agent_project", new()

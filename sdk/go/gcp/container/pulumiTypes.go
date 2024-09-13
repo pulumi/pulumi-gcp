@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19099,7 +19099,7 @@ func (o ClusterMeshCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOut
 
 type ClusterMonitoringConfig struct {
 	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
-	AdvancedDatapathObservabilityConfigs []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfigs"`
+	AdvancedDatapathObservabilityConfig *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfig"`
 	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
 	EnableComponents []string `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
@@ -19119,7 +19119,7 @@ type ClusterMonitoringConfigInput interface {
 
 type ClusterMonitoringConfigArgs struct {
 	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
-	AdvancedDatapathObservabilityConfigs ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput `pulumi:"advancedDatapathObservabilityConfigs"`
+	AdvancedDatapathObservabilityConfig ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput `pulumi:"advancedDatapathObservabilityConfig"`
 	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
@@ -19204,10 +19204,10 @@ func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigPtrOutputWithCon
 }
 
 // Configuration for Advanced Datapath Monitoring. Structure is documented below.
-func (o ClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfigs() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
-	return o.ApplyT(func(v ClusterMonitoringConfig) []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
-		return v.AdvancedDatapathObservabilityConfigs
-	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+func (o ClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfig() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfig) *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		return v.AdvancedDatapathObservabilityConfig
+	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput)
 }
 
 // The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
@@ -19245,13 +19245,13 @@ func (o ClusterMonitoringConfigPtrOutput) Elem() ClusterMonitoringConfigOutput {
 }
 
 // Configuration for Advanced Datapath Monitoring. Structure is documented below.
-func (o ClusterMonitoringConfigPtrOutput) AdvancedDatapathObservabilityConfigs() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
-	return o.ApplyT(func(v *ClusterMonitoringConfig) []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+func (o ClusterMonitoringConfigPtrOutput) AdvancedDatapathObservabilityConfig() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfig) *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
 		if v == nil {
 			return nil
 		}
-		return v.AdvancedDatapathObservabilityConfigs
-	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+		return v.AdvancedDatapathObservabilityConfig
+	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput)
 }
 
 // The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
@@ -19278,11 +19278,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	// Whether or not to enable advanced datapath metrics.
 	EnableMetrics bool `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
-	EnableRelay *bool `pulumi:"enableRelay"`
-	// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
-	//
-	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
-	RelayMode *string `pulumi:"relayMode"`
+	EnableRelay bool `pulumi:"enableRelay"`
 }
 
 // ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput is an input type that accepts ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs and ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput values.
@@ -19300,11 +19296,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	// Whether or not to enable advanced datapath metrics.
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
-	EnableRelay pulumi.BoolPtrInput `pulumi:"enableRelay"`
-	// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
-	//
-	// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
-	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
+	EnableRelay pulumi.BoolInput `pulumi:"enableRelay"`
 }
 
 func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ElementType() reflect.Type {
@@ -19319,29 +19311,45 @@ func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToCluste
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput)
 }
 
-// ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput is an input type that accepts ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray and ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput values.
-// You can construct a concrete instance of `ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput` via:
+func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return i.ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput).ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput is an input type that accepts ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs, ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtr and ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput` via:
 //
-//	ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{ ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{...} }
-type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput interface {
+//	        ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput interface {
 	pulumi.Input
 
-	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
-	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
+	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput
+	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput
 }
 
-type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray []ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput
+type clusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrType ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs
 
-func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+func ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtr(v *ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput {
+	return (*clusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrType)(v)
 }
 
-func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
-	return i.ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(context.Background())
+func (*clusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
 }
 
-func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+func (i *clusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrType) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return i.ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrType) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput)
 }
 
 type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput struct{ *pulumi.OutputState }
@@ -19358,41 +19366,68 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToClus
 	return o
 }
 
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		return &v
+	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput)
+}
+
 // Whether or not to enable advanced datapath metrics.
 func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
 }
 
 // Whether or not Relay is enabled.
-func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableRelay() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *bool { return v.EnableRelay }).(pulumi.BoolPtrOutput)
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableRelay() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableRelay }).(pulumi.BoolOutput)
 }
 
-// Mode used to make Relay available. Deprecated in favor of `enableRelay` field. Remove this attribute's configuration as this field will be removed in the next major release and `enableRelay` will become a required field.
-//
-// Deprecated: Deprecated in favor of enableRelay field. Remove this attribute's configuration as this field will be removed in the next major release and enableRelay will become a required field.
-func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *string { return v.RelayMode }).(pulumi.StringPtrOutput)
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
 }
 
-type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
-}
-
-func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
 	return o
 }
 
-func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput {
 	return o
 }
 
-func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) Index(i pulumi.IntInput) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
-		return vs[0].([]ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)[vs[1].(int)]
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) Elem() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMonitoringConfigAdvancedDatapathObservabilityConfig
+		return ret
 	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput)
+}
+
+// Whether or not to enable advanced datapath metrics.
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) EnableMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not Relay is enabled.
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput) EnableRelay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableRelay
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterMonitoringConfigManagedPrometheus struct {
@@ -34507,6 +34542,7 @@ type ClusterReleaseChannel struct {
 	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+	// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 	Channel string `pulumi:"channel"`
 }
 
@@ -34528,6 +34564,7 @@ type ClusterReleaseChannelArgs struct {
 	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+	// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 	Channel pulumi.StringInput `pulumi:"channel"`
 }
 
@@ -34614,6 +34651,7 @@ func (o ClusterReleaseChannelOutput) ToClusterReleaseChannelPtrOutputWithContext
 // * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 // * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 // * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 func (o ClusterReleaseChannelOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
@@ -34648,6 +34686,7 @@ func (o ClusterReleaseChannelPtrOutput) Elem() ClusterReleaseChannelOutput {
 // * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 // * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 // * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 func (o ClusterReleaseChannelPtrOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterReleaseChannel) *string {
 		if v == nil {
@@ -48510,8 +48549,6 @@ type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	EnableMetrics bool `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
 	EnableRelay bool `pulumi:"enableRelay"`
-	// Mode used to make Relay available.
-	RelayMode string `pulumi:"relayMode"`
 }
 
 // GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput is an input type that accepts GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs and GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput values.
@@ -48530,8 +48567,6 @@ type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
 	// Whether or not Relay is enabled.
 	EnableRelay pulumi.BoolInput `pulumi:"enableRelay"`
-	// Mode used to make Relay available.
-	RelayMode pulumi.StringInput `pulumi:"relayMode"`
 }
 
 func (GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ElementType() reflect.Type {
@@ -48593,11 +48628,6 @@ func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) Ena
 // Whether or not Relay is enabled.
 func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableRelay() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableRelay }).(pulumi.BoolOutput)
-}
-
-// Mode used to make Relay available.
-func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig) string { return v.RelayMode }).(pulumi.StringOutput)
 }
 
 type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput struct{ *pulumi.OutputState }
@@ -58870,6 +58900,7 @@ type GetClusterReleaseChannel struct {
 	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+	// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 	Channel string `pulumi:"channel"`
 }
 
@@ -58890,6 +58921,7 @@ type GetClusterReleaseChannelArgs struct {
 	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+	// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 	Channel pulumi.StringInput `pulumi:"channel"`
 }
 
@@ -58949,6 +58981,7 @@ func (o GetClusterReleaseChannelOutput) ToGetClusterReleaseChannelOutputWithCont
 // * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
 // * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
 // * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+// * EXTENDED: GKE provides extended support for Kubernetes minor versions through the Extended channel. With this channel, you can stay on a minor version for up to 24 months.
 func (o GetClusterReleaseChannelOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterReleaseChannel) string { return v.Channel }).(pulumi.StringOutput)
 }
@@ -60135,7 +60168,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigInput)(nil)).Elem(), ClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput)(nil)).Elem(), ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput)(nil)).Elem(), ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
@@ -60953,7 +60986,7 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput{})
-	pulumi.RegisterOutputType(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyOutput{})

@@ -113,16 +113,6 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
-     *
-     * > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     *
-     * @deprecated `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     */
-    public readonly multiRegionAuxiliary!: pulumi.Output<boolean | undefined>;
-    /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      *
      *
@@ -158,7 +148,6 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["multiRegionAuxiliary"] = state ? state.multiRegionAuxiliary : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["slotCapacity"] = state ? state.slotCapacity : undefined;
@@ -172,7 +161,6 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["slotCapacity"] = args ? args.slotCapacity : undefined;
@@ -210,16 +198,6 @@ export interface ReservationState {
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
     location?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
-     *
-     * > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     *
-     * @deprecated `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     */
-    multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      *
@@ -267,16 +245,6 @@ export interface ReservationArgs {
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
     location?: pulumi.Input<string>;
-    /**
-     * (Optional, Deprecated)
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
-     * If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
-     *
-     * > **Warning:** `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     *
-     * @deprecated `multiRegionAuxiliary` is deprecated and will be removed in a future major release. This field is no longer supported by the BigQuery Reservation API.
-     */
-    multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      *

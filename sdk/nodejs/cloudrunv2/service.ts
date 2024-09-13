@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         containers: [{
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         containers: [{
@@ -85,6 +87,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         scaling: {
@@ -164,6 +167,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -184,6 +188,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     launchStage: "GA",
  *     template: {
  *         containers: [{
@@ -212,6 +217,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     template: {
  *         containers: [{
  *             image: "us-docker.pkg.dev/cloudrun/container/hello",
@@ -252,6 +258,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         volumes: [{
@@ -294,6 +301,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     launchStage: "BETA",
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
@@ -347,6 +355,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     launchStage: "BETA",
  *     template: {
  *         executionEnvironment: "EXECUTION_ENVIRONMENT_GEN2",
@@ -389,6 +398,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.cloudrunv2.Service("default", {
  *     name: "cloudrun-service",
  *     location: "us-central1",
+ *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     launchStage: "BETA",
  *     template: {
@@ -519,6 +529,7 @@ export class Service extends pulumi.CustomResource {
      * The deletion time.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
@@ -664,6 +675,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["customAudiences"] = state ? state.customAudiences : undefined;
             resourceInputs["defaultUriDisabled"] = state ? state.defaultUriDisabled : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -704,6 +716,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
             resourceInputs["customAudiences"] = args ? args.customAudiences : undefined;
             resourceInputs["defaultUriDisabled"] = args ? args.defaultUriDisabled : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ingress"] = args ? args.ingress : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -795,6 +808,7 @@ export interface ServiceState {
      * The deletion time.
      */
     deleteTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
@@ -954,6 +968,7 @@ export interface ServiceArgs {
      * Disables public resolution of the default URI of this service.
      */
     defaultUriDisabled?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */

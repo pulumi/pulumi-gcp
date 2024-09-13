@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,49 +24,13 @@ import (
 //   - [Create and associate firewall endpoints](https://cloud.google.com/firewall/docs/configure-firewall-endpoints)
 //   - [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 //
+// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+// you must specify a `billingProjectId` and set `userProjectOverride` to true
+// in the provider configuration. Otherwise the ACM API will return a 403 error.
+// Your account must have the `serviceusage.services.use` permission on the
+// `billingProjectId` you defined.
+//
 // ## Example Usage
-//
-// ### Network Security Firewall Endpoint Association Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networksecurity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networksecurity.NewFirewallEndpoint(ctx, "default", &networksecurity.FirewallEndpointArgs{
-//				Name:     pulumi.String("my-firewall-endpoint"),
-//				Parent:   pulumi.String("organizations/123456789"),
-//				Location: pulumi.String("us-central1-a"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networksecurity.NewFirewallEndpointAssociation(ctx, "default_association", &networksecurity.FirewallEndpointAssociationArgs{
-//				Name:     pulumi.String("my-firewall-endpoint-association"),
-//				Parent:   pulumi.String("projects/my-project-name"),
-//				Location: pulumi.String("us-central1-a"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

@@ -24,6 +24,7 @@ class DomainArgs:
                  reserved_ip_range: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -54,6 +55,8 @@ class DomainArgs:
             pulumi.set(__self__, "admin", admin)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -128,6 +131,15 @@ class DomainArgs:
         pulumi.set(self, "authorized_networks", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -160,6 +172,7 @@ class _DomainState:
     def __init__(__self__, *,
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  fqdn: Optional[pulumi.Input[str]] = None,
@@ -200,6 +213,8 @@ class _DomainState:
             pulumi.set(__self__, "admin", admin)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
         if effective_labels is not None:
@@ -244,6 +259,15 @@ class _DomainState:
     @authorized_networks.setter
     def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "authorized_networks", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -372,6 +396,7 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -398,7 +423,8 @@ class Domain(pulumi.CustomResource):
         ad_domain = gcp.activedirectory.Domain("ad-domain",
             domain_name="tfgen.org.com",
             locations=["us-central1"],
-            reserved_ip_range="192.168.255.0/24")
+            reserved_ip_range="192.168.255.0/24",
+            deletion_protection=False)
         ```
 
         ## Import
@@ -460,7 +486,8 @@ class Domain(pulumi.CustomResource):
         ad_domain = gcp.activedirectory.Domain("ad-domain",
             domain_name="tfgen.org.com",
             locations=["us-central1"],
-            reserved_ip_range="192.168.255.0/24")
+            reserved_ip_range="192.168.255.0/24",
+            deletion_protection=False)
         ```
 
         ## Import
@@ -492,6 +519,7 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -508,6 +536,7 @@ class Domain(pulumi.CustomResource):
 
             __props__.__dict__["admin"] = admin
             __props__.__dict__["authorized_networks"] = authorized_networks
+            __props__.__dict__["deletion_protection"] = deletion_protection
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
@@ -537,6 +566,7 @@ class Domain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin: Optional[pulumi.Input[str]] = None,
             authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             fqdn: Optional[pulumi.Input[str]] = None,
@@ -584,6 +614,7 @@ class Domain(pulumi.CustomResource):
 
         __props__.__dict__["admin"] = admin
         __props__.__dict__["authorized_networks"] = authorized_networks
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["domain_name"] = domain_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["fqdn"] = fqdn
@@ -612,6 +643,11 @@ class Domain(pulumi.CustomResource):
         If CIDR subnets overlap between networks, domain creation will fail.
         """
         return pulumi.get(self, "authorized_networks")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="domainName")

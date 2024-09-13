@@ -544,6 +544,99 @@ class VMwareNodePool(pulumi.CustomResource):
                 "enable_load_balancer": True,
             })
         ```
+        ### Gkeonprem Vmware Node Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_full = gcp.gkeonprem.VMwareCluster("default-full",
+            name="my-cluster",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            network_config={
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
+                    "enabled": True,
+                },
+            },
+            control_plane_node={
+                "cpus": 4,
+                "memory": 8192,
+                "replicas": 1,
+            },
+            load_balancer={
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
+                },
+                "metal_lb_config": {
+                    "address_pools": [
+                        {
+                            "pool": "ingress-ip",
+                            "manual_assign": True,
+                            "addresses": ["10.251.135.19"],
+                        },
+                        {
+                            "pool": "lb-test-ip",
+                            "manual_assign": True,
+                            "addresses": ["10.251.135.19"],
+                        },
+                    ],
+                },
+            })
+        nodepool_full = gcp.gkeonprem.VMwareNodePool("nodepool-full",
+            name="my-nodepool",
+            location="us-west1",
+            vmware_cluster=default_full.name,
+            annotations={},
+            config={
+                "cpus": 4,
+                "memory_mb": 8196,
+                "replicas": 3,
+                "image_type": "ubuntu_containerd",
+                "image": "image",
+                "boot_disk_size_gb": 10,
+                "taints": [
+                    {
+                        "key": "key",
+                        "value": "value",
+                    },
+                    {
+                        "key": "key",
+                        "value": "value",
+                        "effect": "NO_SCHEDULE",
+                    },
+                ],
+                "labels": {},
+                "vsphere_config": {
+                    "datastore": "test-datastore",
+                    "tags": [
+                        {
+                            "category": "test-category-1",
+                            "tag": "tag-1",
+                        },
+                        {
+                            "category": "test-category-2",
+                            "tag": "tag-2",
+                        },
+                    ],
+                    "host_groups": [
+                        "host1",
+                        "host2",
+                    ],
+                },
+                "enable_load_balancer": True,
+            },
+            node_pool_autoscaling={
+                "min_replicas": 1,
+                "max_replicas": 5,
+            })
+        ```
+
         ## Import
 
         VmwareNodePool can be imported using any of these accepted formats:
@@ -649,6 +742,99 @@ class VMwareNodePool(pulumi.CustomResource):
                 "enable_load_balancer": True,
             })
         ```
+        ### Gkeonprem Vmware Node Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_full = gcp.gkeonprem.VMwareCluster("default-full",
+            name="my-cluster",
+            location="us-west1",
+            admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
+            description="test cluster",
+            on_prem_version="1.13.1-gke.35",
+            network_config={
+                "service_address_cidr_blocks": ["10.96.0.0/12"],
+                "pod_address_cidr_blocks": ["192.168.0.0/16"],
+                "dhcp_ip_config": {
+                    "enabled": True,
+                },
+            },
+            control_plane_node={
+                "cpus": 4,
+                "memory": 8192,
+                "replicas": 1,
+            },
+            load_balancer={
+                "vip_config": {
+                    "control_plane_vip": "10.251.133.5",
+                    "ingress_vip": "10.251.135.19",
+                },
+                "metal_lb_config": {
+                    "address_pools": [
+                        {
+                            "pool": "ingress-ip",
+                            "manual_assign": True,
+                            "addresses": ["10.251.135.19"],
+                        },
+                        {
+                            "pool": "lb-test-ip",
+                            "manual_assign": True,
+                            "addresses": ["10.251.135.19"],
+                        },
+                    ],
+                },
+            })
+        nodepool_full = gcp.gkeonprem.VMwareNodePool("nodepool-full",
+            name="my-nodepool",
+            location="us-west1",
+            vmware_cluster=default_full.name,
+            annotations={},
+            config={
+                "cpus": 4,
+                "memory_mb": 8196,
+                "replicas": 3,
+                "image_type": "ubuntu_containerd",
+                "image": "image",
+                "boot_disk_size_gb": 10,
+                "taints": [
+                    {
+                        "key": "key",
+                        "value": "value",
+                    },
+                    {
+                        "key": "key",
+                        "value": "value",
+                        "effect": "NO_SCHEDULE",
+                    },
+                ],
+                "labels": {},
+                "vsphere_config": {
+                    "datastore": "test-datastore",
+                    "tags": [
+                        {
+                            "category": "test-category-1",
+                            "tag": "tag-1",
+                        },
+                        {
+                            "category": "test-category-2",
+                            "tag": "tag-2",
+                        },
+                    ],
+                    "host_groups": [
+                        "host1",
+                        "host2",
+                    ],
+                },
+                "enable_load_balancer": True,
+            },
+            node_pool_autoscaling={
+                "min_replicas": 1,
+                "max_replicas": 5,
+            })
+        ```
+
         ## Import
 
         VmwareNodePool can be imported using any of these accepted formats:

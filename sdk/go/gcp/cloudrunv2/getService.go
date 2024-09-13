@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,6 +76,7 @@ type LookupServiceResult struct {
 	CustomAudiences      []string                        `pulumi:"customAudiences"`
 	DefaultUriDisabled   bool                            `pulumi:"defaultUriDisabled"`
 	DeleteTime           string                          `pulumi:"deleteTime"`
+	DeletionProtection   bool                            `pulumi:"deletionProtection"`
 	Description          string                          `pulumi:"description"`
 	EffectiveAnnotations map[string]string               `pulumi:"effectiveAnnotations"`
 	EffectiveLabels      map[string]string               `pulumi:"effectiveLabels"`
@@ -189,6 +190,10 @@ func (o LookupServiceResultOutput) DefaultUriDisabled() pulumi.BoolOutput {
 
 func (o LookupServiceResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceResultOutput) Description() pulumi.StringOutput {

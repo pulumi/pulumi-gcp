@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const autokmsFolder = new gcp.organizations.Folder("autokms_folder", {
  *     displayName: "folder-example",
  *     parent: "organizations/123456789",
+ *     deletionProtection: false,
  * });
  * // Create the key project
  * const keyProject = new gcp.organizations.Project("key_project", {
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  *     name: "key-proj",
  *     folderId: autokmsFolder.folderId,
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * }, {
  *     dependsOn: [autokmsFolder],
  * });
@@ -34,6 +36,7 @@ import * as utilities from "../utilities";
  *     name: "resources",
  *     folderId: autokmsFolder.folderId,
  *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
  * }, {
  *     dependsOn: [autokmsFolder],
  * });

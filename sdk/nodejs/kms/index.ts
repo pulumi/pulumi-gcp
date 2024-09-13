@@ -40,6 +40,21 @@ export type EkmConnection = import("./ekmConnection").EkmConnection;
 export const EkmConnection: typeof import("./ekmConnection").EkmConnection = null as any;
 utilities.lazyLoad(exports, ["EkmConnection"], () => require("./ekmConnection"));
 
+export { EkmConnectionIamBindingArgs, EkmConnectionIamBindingState } from "./ekmConnectionIamBinding";
+export type EkmConnectionIamBinding = import("./ekmConnectionIamBinding").EkmConnectionIamBinding;
+export const EkmConnectionIamBinding: typeof import("./ekmConnectionIamBinding").EkmConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["EkmConnectionIamBinding"], () => require("./ekmConnectionIamBinding"));
+
+export { EkmConnectionIamMemberArgs, EkmConnectionIamMemberState } from "./ekmConnectionIamMember";
+export type EkmConnectionIamMember = import("./ekmConnectionIamMember").EkmConnectionIamMember;
+export const EkmConnectionIamMember: typeof import("./ekmConnectionIamMember").EkmConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["EkmConnectionIamMember"], () => require("./ekmConnectionIamMember"));
+
+export { EkmConnectionIamPolicyArgs, EkmConnectionIamPolicyState } from "./ekmConnectionIamPolicy";
+export type EkmConnectionIamPolicy = import("./ekmConnectionIamPolicy").EkmConnectionIamPolicy;
+export const EkmConnectionIamPolicy: typeof import("./ekmConnectionIamPolicy").EkmConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EkmConnectionIamPolicy"], () => require("./ekmConnectionIamPolicy"));
+
 export { GetCryptoKeyIamPolicyArgs, GetCryptoKeyIamPolicyResult, GetCryptoKeyIamPolicyOutputArgs } from "./getCryptoKeyIamPolicy";
 export const getCryptoKeyIamPolicy: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicy = null as any;
 export const getCryptoKeyIamPolicyOutput: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicyOutput = null as any;
@@ -49,6 +64,11 @@ export { GetCryptoKeysArgs, GetCryptoKeysResult, GetCryptoKeysOutputArgs } from 
 export const getCryptoKeys: typeof import("./getCryptoKeys").getCryptoKeys = null as any;
 export const getCryptoKeysOutput: typeof import("./getCryptoKeys").getCryptoKeysOutput = null as any;
 utilities.lazyLoad(exports, ["getCryptoKeys","getCryptoKeysOutput"], () => require("./getCryptoKeys"));
+
+export { GetEkmConnectionIamPolicyArgs, GetEkmConnectionIamPolicyResult, GetEkmConnectionIamPolicyOutputArgs } from "./getEkmConnectionIamPolicy";
+export const getEkmConnectionIamPolicy: typeof import("./getEkmConnectionIamPolicy").getEkmConnectionIamPolicy = null as any;
+export const getEkmConnectionIamPolicyOutput: typeof import("./getEkmConnectionIamPolicy").getEkmConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEkmConnectionIamPolicy","getEkmConnectionIamPolicyOutput"], () => require("./getEkmConnectionIamPolicy"));
 
 export { GetKMSCryptoKeyArgs, GetKMSCryptoKeyResult, GetKMSCryptoKeyOutputArgs } from "./getKMSCryptoKey";
 export const getKMSCryptoKey: typeof import("./getKMSCryptoKey").getKMSCryptoKey = null as any;
@@ -144,6 +164,12 @@ const _module = {
                 return new CryptoKeyVersion(name, <any>undefined, { urn })
             case "gcp:kms/ekmConnection:EkmConnection":
                 return new EkmConnection(name, <any>undefined, { urn })
+            case "gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding":
+                return new EkmConnectionIamBinding(name, <any>undefined, { urn })
+            case "gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember":
+                return new EkmConnectionIamMember(name, <any>undefined, { urn })
+            case "gcp:kms/ekmConnectionIamPolicy:EkmConnectionIamPolicy":
+                return new EkmConnectionIamPolicy(name, <any>undefined, { urn })
             case "gcp:kms/keyHandle:KeyHandle":
                 return new KeyHandle(name, <any>undefined, { urn })
             case "gcp:kms/keyRing:KeyRing":
@@ -170,6 +196,9 @@ pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnection", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnectionIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnectionIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/ekmConnectionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyHandle", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRing", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)

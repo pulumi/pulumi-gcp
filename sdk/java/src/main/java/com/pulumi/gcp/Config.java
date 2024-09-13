@@ -27,8 +27,8 @@ public final class Config {
     public Optional<String> activeDirectoryCustomEndpoint() {
         return Codegen.stringProp("activeDirectoryCustomEndpoint").config(config).get();
     }
-    public Optional<Boolean> addTerraformAttributionLabel() {
-        return Codegen.booleanProp("addTerraformAttributionLabel").config(config).get();
+    public Optional<Boolean> addPulumiAttributionLabel() {
+        return Codegen.booleanProp("addPulumiAttributionLabel").config(config).get();
     }
     public Optional<String> alloydbCustomEndpoint() {
         return Codegen.stringProp("alloydbCustomEndpoint").config(config).get();
@@ -209,9 +209,6 @@ public final class Config {
     }
     public Optional<String> dataprocMetastoreCustomEndpoint() {
         return Codegen.stringProp("dataprocMetastoreCustomEndpoint").config(config).get();
-    }
-    public Optional<String> datastoreCustomEndpoint() {
-        return Codegen.stringProp("datastoreCustomEndpoint").config(config).get();
     }
     public Optional<String> datastreamCustomEndpoint() {
         return Codegen.stringProp("datastreamCustomEndpoint").config(config).get();
@@ -408,6 +405,9 @@ public final class Config {
     public Optional<String> pubsubLiteCustomEndpoint() {
         return Codegen.stringProp("pubsubLiteCustomEndpoint").config(config).get();
     }
+    public Optional<String> pulumiAttributionLabelAdditionStrategy() {
+        return Codegen.stringProp("pulumiAttributionLabelAdditionStrategy").config(config).get();
+    }
     public Optional<String> recaptchaEnterpriseCustomEndpoint() {
         return Codegen.stringProp("recaptchaEnterpriseCustomEndpoint").config(config).get();
     }
@@ -500,9 +500,6 @@ public final class Config {
     }
     public Optional<String> tagsLocationCustomEndpoint() {
         return Codegen.stringProp("tagsLocationCustomEndpoint").config(config).get();
-    }
-    public Optional<String> terraformAttributionLabelAdditionStrategy() {
-        return Codegen.stringProp("terraformAttributionLabelAdditionStrategy").config(config).get();
     }
     public Optional<String> tpuCustomEndpoint() {
         return Codegen.stringProp("tpuCustomEndpoint").config(config).get();

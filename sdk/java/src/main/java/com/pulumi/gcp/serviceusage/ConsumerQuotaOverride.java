@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *             .name("tf-test-project")
  *             .projectId("quota")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()
@@ -111,6 +112,7 @@ import javax.annotation.Nullable;
  *             .name("tf-test-project")
  *             .projectId("quota")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()
@@ -163,6 +165,7 @@ import javax.annotation.Nullable;
  *             .name("tf-test-project")
  *             .projectId("quota")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var override = new ConsumerQuotaOverride("override", ConsumerQuotaOverrideArgs.builder()

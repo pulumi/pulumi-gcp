@@ -61,7 +61,7 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v7",
+			"github.com/pulumi/pulumi-gcp/sdk/v8",
 		},
 	})
 
@@ -312,12 +312,11 @@ func TestLabelsCombinationsGo(t *testing.T) {
 		{
 			"label kept if default is empty",
 			labelsState{
-				Labels: 	  map[string]string{"x": "s"},
+				Labels: map[string]string{"x": "s"},
 			},
 			labelsState{
 				DefaultLabels: map[string]string{"x": ""},
 			},
-
 		},
 	}
 
@@ -398,7 +397,7 @@ func (st labelsState) validateTransitionTo(t *testing.T, st2 labelsState) {
 
 	baseOpts := integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v7=%s", goSdkFolder),
+			fmt.Sprintf("github.com/pulumi/pulumi-gcp/sdk/v8=%s", goSdkFolder),
 		},
 	}
 	if _, envConfigSet := os.LookupEnv("GOOGLE_ZONE"); envConfigSet {
@@ -509,6 +508,9 @@ func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 			r[k] = expectedVal
 		}
 	}
+
+	// Because we're reading pulumiLabels, we need to expect the default provisioning label.
+	r["goog-pulumi-provisioned"] = "true"
 
 	return r
 }

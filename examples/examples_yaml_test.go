@@ -60,7 +60,7 @@ func TestWarningsNotDuplicated(t *testing.T) {
 func TestInvalidExplicitProviderProject(t *testing.T) {
 	gcpProject := os.Getenv("GCP_PROJECT")
 	integration.ProgramTest(t, &integration.ProgramTestOptions{
-		Dir: filepath.Join(getCwd(t), "non-existent-project"),
+		Dir:    filepath.Join(getCwd(t), "non-existent-project"),
 		Config: map[string]string{"gcpProj": gcpProject},
 	})
 }

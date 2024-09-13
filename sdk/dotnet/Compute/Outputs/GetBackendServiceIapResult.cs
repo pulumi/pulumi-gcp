@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetBackendServiceIapResult
     {
         /// <summary>
+        /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// OAuth2 Client ID for IAP
         /// </summary>
         public readonly string Oauth2ClientId;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetBackendServiceIapResult(
+            bool enabled,
+
             string oauth2ClientId,
 
             string oauth2ClientSecret,
 
             string oauth2ClientSecretSha256)
         {
+            Enabled = enabled;
             Oauth2ClientId = oauth2ClientId;
             Oauth2ClientSecret = oauth2ClientSecret;
             Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;

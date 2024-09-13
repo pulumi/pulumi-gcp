@@ -24,7 +24,7 @@ class ProviderArgs:
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 add_terraform_attribution_label: Optional[pulumi.Input[bool]] = None,
+                 add_pulumi_attribution_label: Optional[pulumi.Input[bool]] = None,
                  alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,6 @@ class ProviderArgs:
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -151,6 +150,7 @@ class ProviderArgs:
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 pulumi_attribution_label_addition_strategy: Optional[pulumi.Input[str]] = None,
                  recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -181,7 +181,6 @@ class ProviderArgs:
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 terraform_attribution_label_addition_strategy: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  universe_domain: Optional[pulumi.Input[str]] = None,
@@ -204,8 +203,8 @@ class ProviderArgs:
             pulumi.set(__self__, "access_token", access_token)
         if active_directory_custom_endpoint is not None:
             pulumi.set(__self__, "active_directory_custom_endpoint", active_directory_custom_endpoint)
-        if add_terraform_attribution_label is not None:
-            pulumi.set(__self__, "add_terraform_attribution_label", add_terraform_attribution_label)
+        if add_pulumi_attribution_label is not None:
+            pulumi.set(__self__, "add_pulumi_attribution_label", add_pulumi_attribution_label)
         if alloydb_custom_endpoint is not None:
             pulumi.set(__self__, "alloydb_custom_endpoint", alloydb_custom_endpoint)
         if api_gateway_custom_endpoint is not None:
@@ -326,8 +325,6 @@ class ProviderArgs:
             pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
         if dataproc_metastore_custom_endpoint is not None:
             pulumi.set(__self__, "dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
-        if datastore_custom_endpoint is not None:
-            pulumi.set(__self__, "datastore_custom_endpoint", datastore_custom_endpoint)
         if datastream_custom_endpoint is not None:
             pulumi.set(__self__, "datastream_custom_endpoint", datastream_custom_endpoint)
         if default_labels is not None:
@@ -460,6 +457,8 @@ class ProviderArgs:
             pulumi.set(__self__, "pubsub_custom_endpoint", pubsub_custom_endpoint)
         if pubsub_lite_custom_endpoint is not None:
             pulumi.set(__self__, "pubsub_lite_custom_endpoint", pubsub_lite_custom_endpoint)
+        if pulumi_attribution_label_addition_strategy is not None:
+            pulumi.set(__self__, "pulumi_attribution_label_addition_strategy", pulumi_attribution_label_addition_strategy)
         if recaptcha_enterprise_custom_endpoint is not None:
             pulumi.set(__self__, "recaptcha_enterprise_custom_endpoint", recaptcha_enterprise_custom_endpoint)
         if redis_custom_endpoint is not None:
@@ -522,8 +521,6 @@ class ProviderArgs:
             pulumi.set(__self__, "tags_custom_endpoint", tags_custom_endpoint)
         if tags_location_custom_endpoint is not None:
             pulumi.set(__self__, "tags_location_custom_endpoint", tags_location_custom_endpoint)
-        if terraform_attribution_label_addition_strategy is not None:
-            pulumi.set(__self__, "terraform_attribution_label_addition_strategy", terraform_attribution_label_addition_strategy)
         if tpu_custom_endpoint is not None:
             pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
         if tpu_v2_custom_endpoint is not None:
@@ -586,13 +583,13 @@ class ProviderArgs:
         pulumi.set(self, "active_directory_custom_endpoint", value)
 
     @property
-    @pulumi.getter(name="addTerraformAttributionLabel")
-    def add_terraform_attribution_label(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "add_terraform_attribution_label")
+    @pulumi.getter(name="addPulumiAttributionLabel")
+    def add_pulumi_attribution_label(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "add_pulumi_attribution_label")
 
-    @add_terraform_attribution_label.setter
-    def add_terraform_attribution_label(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "add_terraform_attribution_label", value)
+    @add_pulumi_attribution_label.setter
+    def add_pulumi_attribution_label(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "add_pulumi_attribution_label", value)
 
     @property
     @pulumi.getter(name="alloydbCustomEndpoint")
@@ -1133,15 +1130,6 @@ class ProviderArgs:
     @dataproc_metastore_custom_endpoint.setter
     def dataproc_metastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataproc_metastore_custom_endpoint", value)
-
-    @property
-    @pulumi.getter(name="datastoreCustomEndpoint")
-    def datastore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "datastore_custom_endpoint")
-
-    @datastore_custom_endpoint.setter
-    def datastore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "datastore_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="datastreamCustomEndpoint")
@@ -1729,6 +1717,15 @@ class ProviderArgs:
         pulumi.set(self, "pubsub_lite_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="pulumiAttributionLabelAdditionStrategy")
+    def pulumi_attribution_label_addition_strategy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pulumi_attribution_label_addition_strategy")
+
+    @pulumi_attribution_label_addition_strategy.setter
+    def pulumi_attribution_label_addition_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pulumi_attribution_label_addition_strategy", value)
+
+    @property
     @pulumi.getter(name="recaptchaEnterpriseCustomEndpoint")
     def recaptcha_enterprise_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "recaptcha_enterprise_custom_endpoint")
@@ -1999,15 +1996,6 @@ class ProviderArgs:
         pulumi.set(self, "tags_location_custom_endpoint", value)
 
     @property
-    @pulumi.getter(name="terraformAttributionLabelAdditionStrategy")
-    def terraform_attribution_label_addition_strategy(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "terraform_attribution_label_addition_strategy")
-
-    @terraform_attribution_label_addition_strategy.setter
-    def terraform_attribution_label_addition_strategy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "terraform_attribution_label_addition_strategy", value)
-
-    @property
     @pulumi.getter(name="tpuCustomEndpoint")
     def tpu_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "tpu_custom_endpoint")
@@ -2116,7 +2104,7 @@ class Provider(pulumi.ProviderResource):
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 add_terraform_attribution_label: Optional[pulumi.Input[bool]] = None,
+                 add_pulumi_attribution_label: Optional[pulumi.Input[bool]] = None,
                  alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2177,7 +2165,6 @@ class Provider(pulumi.ProviderResource):
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2243,6 +2230,7 @@ class Provider(pulumi.ProviderResource):
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 pulumi_attribution_label_addition_strategy: Optional[pulumi.Input[str]] = None,
                  recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -2273,7 +2261,6 @@ class Provider(pulumi.ProviderResource):
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 terraform_attribution_label_addition_strategy: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  universe_domain: Optional[pulumi.Input[str]] = None,
@@ -2326,7 +2313,7 @@ class Provider(pulumi.ProviderResource):
                  access_context_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 add_terraform_attribution_label: Optional[pulumi.Input[bool]] = None,
+                 add_pulumi_attribution_label: Optional[pulumi.Input[bool]] = None,
                  alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2387,7 +2374,6 @@ class Provider(pulumi.ProviderResource):
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2453,6 +2439,7 @@ class Provider(pulumi.ProviderResource):
                  public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 pulumi_attribution_label_addition_strategy: Optional[pulumi.Input[str]] = None,
                  recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -2483,7 +2470,6 @@ class Provider(pulumi.ProviderResource):
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 terraform_attribution_label_addition_strategy: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  universe_domain: Optional[pulumi.Input[str]] = None,
@@ -2508,7 +2494,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_context_manager_custom_endpoint"] = access_context_manager_custom_endpoint
             __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
             __props__.__dict__["active_directory_custom_endpoint"] = active_directory_custom_endpoint
-            __props__.__dict__["add_terraform_attribution_label"] = pulumi.Output.from_input(add_terraform_attribution_label).apply(pulumi.runtime.to_json) if add_terraform_attribution_label is not None else None
+            __props__.__dict__["add_pulumi_attribution_label"] = pulumi.Output.from_input(add_pulumi_attribution_label).apply(pulumi.runtime.to_json) if add_pulumi_attribution_label is not None else None
             __props__.__dict__["alloydb_custom_endpoint"] = alloydb_custom_endpoint
             __props__.__dict__["api_gateway_custom_endpoint"] = api_gateway_custom_endpoint
             __props__.__dict__["apigee_custom_endpoint"] = apigee_custom_endpoint
@@ -2569,7 +2555,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataplex_custom_endpoint"] = dataplex_custom_endpoint
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
-            __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
             __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
@@ -2637,6 +2622,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["public_ca_custom_endpoint"] = public_ca_custom_endpoint
             __props__.__dict__["pubsub_custom_endpoint"] = pubsub_custom_endpoint
             __props__.__dict__["pubsub_lite_custom_endpoint"] = pubsub_lite_custom_endpoint
+            __props__.__dict__["pulumi_attribution_label_addition_strategy"] = pulumi_attribution_label_addition_strategy
             __props__.__dict__["recaptcha_enterprise_custom_endpoint"] = recaptcha_enterprise_custom_endpoint
             __props__.__dict__["redis_custom_endpoint"] = redis_custom_endpoint
             if region is None:
@@ -2669,7 +2655,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["storage_transfer_custom_endpoint"] = storage_transfer_custom_endpoint
             __props__.__dict__["tags_custom_endpoint"] = tags_custom_endpoint
             __props__.__dict__["tags_location_custom_endpoint"] = tags_location_custom_endpoint
-            __props__.__dict__["terraform_attribution_label_addition_strategy"] = terraform_attribution_label_addition_strategy
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["tpu_v2_custom_endpoint"] = tpu_v2_custom_endpoint
             __props__.__dict__["universe_domain"] = universe_domain
@@ -3007,11 +2992,6 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "dataproc_metastore_custom_endpoint")
 
     @property
-    @pulumi.getter(name="datastoreCustomEndpoint")
-    def datastore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "datastore_custom_endpoint")
-
-    @property
     @pulumi.getter(name="datastreamCustomEndpoint")
     def datastream_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "datastream_custom_endpoint")
@@ -3322,6 +3302,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "pubsub_lite_custom_endpoint")
 
     @property
+    @pulumi.getter(name="pulumiAttributionLabelAdditionStrategy")
+    def pulumi_attribution_label_addition_strategy(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "pulumi_attribution_label_addition_strategy")
+
+    @property
     @pulumi.getter(name="recaptchaEnterpriseCustomEndpoint")
     def recaptcha_enterprise_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "recaptcha_enterprise_custom_endpoint")
@@ -3465,11 +3450,6 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tagsLocationCustomEndpoint")
     def tags_location_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "tags_location_custom_endpoint")
-
-    @property
-    @pulumi.getter(name="terraformAttributionLabelAdditionStrategy")
-    def terraform_attribution_label_addition_strategy(self) -> pulumi.Output[Optional[str]]:
-        return pulumi.get(self, "terraform_attribution_label_addition_strategy")
 
     @property
     @pulumi.getter(name="tpuCustomEndpoint")

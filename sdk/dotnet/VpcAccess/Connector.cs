@@ -35,6 +35,8 @@ namespace Pulumi.Gcp.VpcAccess
     ///         Name = "vpc-con",
     ///         IpCidrRange = "10.8.0.0/28",
     ///         Network = "default",
+    ///         MinInstances = 2,
+    ///         MaxInstances = 3,
     ///     });
     /// 
     /// });
@@ -65,6 +67,8 @@ namespace Pulumi.Gcp.VpcAccess
     ///             Name = customTest.Name,
     ///         },
     ///         MachineType = "e2-standard-4",
+    ///         MinInstances = 2,
+    ///         MaxInstances = 3,
     ///     });
     /// 
     /// });
@@ -135,7 +139,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// max_throughput is discouraged in favor of max_instances.
         /// </summary>
         [Output("maxThroughput")]
-        public Output<int?> MaxThroughput { get; private set; } = null!;
+        public Output<int> MaxThroughput { get; private set; } = null!;
 
         /// <summary>
         /// Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
@@ -150,7 +154,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// min_instances are provided, min_instances takes precedence over min_throughput. The use of min_throughput is discouraged in favor of min_instances.
         /// </summary>
         [Output("minThroughput")]
-        public Output<int?> MinThroughput { get; private set; } = null!;
+        public Output<int> MinThroughput { get; private set; } = null!;
 
         /// <summary>
         /// The name of the resource (Max 25 characters).

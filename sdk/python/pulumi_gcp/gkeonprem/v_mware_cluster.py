@@ -39,7 +39,7 @@ class VMwareClusterArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
                  upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
-                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
+                 vcenter: Optional[pulumi.Input['VMwareClusterVcenterArgs']] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VMwareCluster resource.
@@ -70,7 +70,7 @@ class VMwareClusterArgs:
         :param pulumi.Input['VMwareClusterNetworkConfigArgs'] network_config: The VMware User Cluster network configuration.
         :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
         :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        :param pulumi.Input['VMwareClusterVcenterArgs'] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
@@ -105,8 +105,8 @@ class VMwareClusterArgs:
             pulumi.set(__self__, "storage", storage)
         if upgrade_policy is not None:
             pulumi.set(__self__, "upgrade_policy", upgrade_policy)
-        if vcenters is not None:
-            pulumi.set(__self__, "vcenters", vcenters)
+        if vcenter is not None:
+            pulumi.set(__self__, "vcenter", vcenter)
         if vm_tracking_enabled is not None:
             pulumi.set(__self__, "vm_tracking_enabled", vm_tracking_enabled)
 
@@ -335,15 +335,15 @@ class VMwareClusterArgs:
 
     @property
     @pulumi.getter
-    def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]:
+    def vcenter(self) -> Optional[pulumi.Input['VMwareClusterVcenterArgs']]:
         """
         VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """
-        return pulumi.get(self, "vcenters")
+        return pulumi.get(self, "vcenter")
 
-    @vcenters.setter
-    def vcenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]):
-        pulumi.set(self, "vcenters", value)
+    @vcenter.setter
+    def vcenter(self, value: Optional[pulumi.Input['VMwareClusterVcenterArgs']]):
+        pulumi.set(self, "vcenter", value)
 
     @property
     @pulumi.getter(name="vmTrackingEnabled")
@@ -392,7 +392,7 @@ class _VMwareClusterState:
                  update_time: Optional[pulumi.Input[str]] = None,
                  upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
                  validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]] = None,
-                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
+                 vcenter: Optional[pulumi.Input['VMwareClusterVcenterArgs']] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering VMwareCluster resources.
@@ -453,7 +453,7 @@ class _VMwareClusterState:
         :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        :param pulumi.Input['VMwareClusterVcenterArgs'] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         if admin_cluster_membership is not None:
@@ -518,8 +518,8 @@ class _VMwareClusterState:
             pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if validation_checks is not None:
             pulumi.set(__self__, "validation_checks", validation_checks)
-        if vcenters is not None:
-            pulumi.set(__self__, "vcenters", vcenters)
+        if vcenter is not None:
+            pulumi.set(__self__, "vcenter", vcenter)
         if vm_tracking_enabled is not None:
             pulumi.set(__self__, "vm_tracking_enabled", vm_tracking_enabled)
 
@@ -919,15 +919,15 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter
-    def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]:
+    def vcenter(self) -> Optional[pulumi.Input['VMwareClusterVcenterArgs']]:
         """
         VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """
-        return pulumi.get(self, "vcenters")
+        return pulumi.get(self, "vcenter")
 
-    @vcenters.setter
-    def vcenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]):
-        pulumi.set(self, "vcenters", value)
+    @vcenter.setter
+    def vcenter(self, value: Optional[pulumi.Input['VMwareClusterVcenterArgs']]):
+        pulumi.set(self, "vcenter", value)
 
     @property
     @pulumi.getter(name="vmTrackingEnabled")
@@ -965,7 +965,7 @@ class VMwareCluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
                  upgrade_policy: Optional[pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
-                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]]]] = None,
+                 vcenter: Optional[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -1160,7 +1160,7 @@ class VMwareCluster(pulumi.CustomResource):
                     "konnectivity_server_node_port": 30008,
                 },
             },
-            vcenters=[{
+            vcenter={
                 "resource_pool": "test-resource-pool",
                 "datastore": "test-datastore",
                 "datacenter": "test-datacenter",
@@ -1168,7 +1168,7 @@ class VMwareCluster(pulumi.CustomResource):
                 "folder": "test-folder",
                 "ca_cert_data": "test-ca-cert-data",
                 "storage_policy_name": "test-storage-policy-name",
-            }],
+            },
             dataplane_v2={
                 "dataplane_v2_enabled": True,
                 "windows_dataplane_v2_enabled": True,
@@ -1245,7 +1245,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']] storage: Storage configuration.
         :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']] upgrade_policy: Specifies upgrade policy for the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        :param pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         ...
@@ -1446,7 +1446,7 @@ class VMwareCluster(pulumi.CustomResource):
                     "konnectivity_server_node_port": 30008,
                 },
             },
-            vcenters=[{
+            vcenter={
                 "resource_pool": "test-resource-pool",
                 "datastore": "test-datastore",
                 "datacenter": "test-datacenter",
@@ -1454,7 +1454,7 @@ class VMwareCluster(pulumi.CustomResource):
                 "folder": "test-folder",
                 "ca_cert_data": "test-ca-cert-data",
                 "storage_policy_name": "test-storage-policy-name",
-            }],
+            },
             dataplane_v2={
                 "dataplane_v2_enabled": True,
                 "windows_dataplane_v2_enabled": True,
@@ -1535,7 +1535,7 @@ class VMwareCluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
                  upgrade_policy: Optional[pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
-                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]]]] = None,
+                 vcenter: Optional[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1572,7 +1572,7 @@ class VMwareCluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["storage"] = storage
             __props__.__dict__["upgrade_policy"] = upgrade_policy
-            __props__.__dict__["vcenters"] = vcenters
+            __props__.__dict__["vcenter"] = vcenter
             __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
@@ -1628,7 +1628,7 @@ class VMwareCluster(pulumi.CustomResource):
             update_time: Optional[pulumi.Input[str]] = None,
             upgrade_policy: Optional[pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
             validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict']]]]] = None,
-            vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]]]] = None,
+            vcenter: Optional[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
             vm_tracking_enabled: Optional[pulumi.Input[bool]] = None) -> 'VMwareCluster':
         """
         Get an existing VMwareCluster resource's state with the given name, id, and optional extra
@@ -1694,7 +1694,7 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']] upgrade_policy: Specifies upgrade policy for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterValidationCheckArgs', 'VMwareClusterValidationCheckArgsDict']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        :param pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1732,7 +1732,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["upgrade_policy"] = upgrade_policy
         __props__.__dict__["validation_checks"] = validation_checks
-        __props__.__dict__["vcenters"] = vcenters
+        __props__.__dict__["vcenter"] = vcenter
         __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
         return VMwareCluster(resource_name, opts=opts, __props__=__props__)
 
@@ -2008,11 +2008,11 @@ class VMwareCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vcenters(self) -> pulumi.Output[Optional[Sequence['outputs.VMwareClusterVcenter']]]:
+    def vcenter(self) -> pulumi.Output[Optional['outputs.VMwareClusterVcenter']]:
         """
         VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """
-        return pulumi.get(self, "vcenters")
+        return pulumi.get(self, "vcenter")
 
     @property
     @pulumi.getter(name="vmTrackingEnabled")

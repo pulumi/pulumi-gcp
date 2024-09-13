@@ -337,7 +337,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModule("example",
             folder=folder.folder_id,
             location="global",
@@ -363,7 +364,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModule("example",
             folder=folder.folder_id,
             location="global",
@@ -460,7 +462,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModule("example",
             folder=folder.folder_id,
             location="global",
@@ -486,7 +489,8 @@ class ManagementFolderSecurityHealthAnalyticsCustomModule(pulumi.CustomResource)
 
         folder = gcp.organizations.Folder("folder",
             parent="organizations/123456789",
-            display_name="folder-name")
+            display_name="folder-name",
+            deletion_protection=False)
         example = gcp.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModule("example",
             folder=folder.folder_id,
             location="global",

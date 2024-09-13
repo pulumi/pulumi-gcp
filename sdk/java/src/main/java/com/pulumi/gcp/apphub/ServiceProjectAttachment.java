@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *             .projectId("project-1")
  *             .name("Service Project")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
@@ -106,6 +107,7 @@ import javax.annotation.Nullable;
  *             .projectId("project-1")
  *             .name("Service Project Full")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var wait120s = new Sleep("wait120s", SleepArgs.builder()

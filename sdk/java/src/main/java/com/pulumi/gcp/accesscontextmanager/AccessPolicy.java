@@ -101,6 +101,7 @@ import javax.annotation.Nullable;
  *             .projectId("my-project-name")
  *             .name("my-project-name")
  *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var access_policy = new AccessPolicy("access-policy", AccessPolicyArgs.builder()

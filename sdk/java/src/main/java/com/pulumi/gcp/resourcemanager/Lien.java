@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *         var project = new Project("project", ProjectArgs.builder()
  *             .projectId("staging-project")
  *             .name("A very important project!")
+ *             .deletionPolicy("DELETE")
  *             .build());
  * 
  *         var lien = new Lien("lien", LienArgs.builder()

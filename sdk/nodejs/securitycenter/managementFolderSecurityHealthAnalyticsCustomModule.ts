@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  * const folder = new gcp.organizations.Folder("folder", {
  *     parent: "organizations/123456789",
  *     displayName: "folder-name",
+ *     deletionProtection: false,
  * });
  * const example = new gcp.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModule("example", {
  *     folder: folder.folderId,
@@ -58,6 +59,7 @@ import * as utilities from "../utilities";
  * const folder = new gcp.organizations.Folder("folder", {
  *     parent: "organizations/123456789",
  *     displayName: "folder-name",
+ *     deletionProtection: false,
  * });
  * const example = new gcp.securitycenter.ManagementFolderSecurityHealthAnalyticsCustomModule("example", {
  *     folder: folder.folderId,

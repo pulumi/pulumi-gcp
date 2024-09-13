@@ -117,8 +117,8 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
-    /// ### Life Cycle Settings For Storage Bucket Objects With `No_age` Enabled
-    /// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `no_age` flag to `true` to prevent this and avoid any potentially unintended interactions.
+    /// ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
+    /// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `send_age_if_zero` flag to `false` to prevent this and avoid any potentially unintended interactions.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.Storage
     ///                 Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
     ///                 {
     ///                     DaysSinceNoncurrentTime = 3,
-    ///                     NoAge = true,
+    ///                     SendAgeIfZero = false,
     ///                 },
     ///             },
     ///         },

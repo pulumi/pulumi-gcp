@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Configuration for Advanced Datapath Monitoring. Structure is documented below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> AdvancedDatapathObservabilityConfigs;
+        public readonly Outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig? AdvancedDatapathObservabilityConfig;
         /// <summary>
         /// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR` and `DCGM`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above.
         /// </summary>
@@ -28,13 +28,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterMonitoringConfig(
-            ImmutableArray<Outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs,
+            Outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig? advancedDatapathObservabilityConfig,
 
             ImmutableArray<string> enableComponents,
 
             Outputs.ClusterMonitoringConfigManagedPrometheus? managedPrometheus)
         {
-            AdvancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+            AdvancedDatapathObservabilityConfig = advancedDatapathObservabilityConfig;
             EnableComponents = enableComponents;
             ManagedPrometheus = managedPrometheus;
         }

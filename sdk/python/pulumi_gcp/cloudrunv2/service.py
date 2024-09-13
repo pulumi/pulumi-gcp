@@ -29,6 +29,7 @@ class ServiceArgs:
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_uri_disabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -93,6 +94,8 @@ class ServiceArgs:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
         if default_uri_disabled is not None:
             pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ingress is not None:
@@ -216,6 +219,15 @@ class ServiceArgs:
         pulumi.set(self, "default_uri_disabled", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -337,6 +349,7 @@ class _ServiceState:
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_uri_disabled: Optional[pulumi.Input[bool]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -452,6 +465,8 @@ class _ServiceState:
             pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_annotations is not None:
@@ -633,6 +648,15 @@ class _ServiceState:
     @delete_time.setter
     def delete_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -975,6 +999,7 @@ class Service(pulumi.CustomResource):
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_uri_disabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1006,6 +1031,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "containers": [{
@@ -1022,6 +1048,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "containers": [{
@@ -1060,6 +1087,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "scaling": {
@@ -1132,6 +1160,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1151,6 +1180,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="GA",
             template={
                 "containers": [{
@@ -1178,6 +1208,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1215,6 +1246,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "volumes": [{
@@ -1253,6 +1285,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
             template={
@@ -1304,6 +1337,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="BETA",
             template={
                 "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
@@ -1344,6 +1378,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             launch_stage="BETA",
             template={
@@ -1464,6 +1499,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "containers": [{
@@ -1480,6 +1516,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "containers": [{
@@ -1518,6 +1555,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "scaling": {
@@ -1590,6 +1628,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1609,6 +1648,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="GA",
             template={
                 "containers": [{
@@ -1636,6 +1676,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
@@ -1673,6 +1714,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "volumes": [{
@@ -1711,6 +1753,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
             template={
@@ -1762,6 +1805,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             launch_stage="BETA",
             template={
                 "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
@@ -1802,6 +1846,7 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrunv2.Service("default",
             name="cloudrun-service",
             location="us-central1",
+            deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
             launch_stage="BETA",
             template={
@@ -1875,6 +1920,7 @@ class Service(pulumi.CustomResource):
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_uri_disabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1900,6 +1946,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["custom_audiences"] = custom_audiences
             __props__.__dict__["default_uri_disabled"] = default_uri_disabled
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["ingress"] = ingress
             __props__.__dict__["labels"] = labels
@@ -1956,6 +2003,7 @@ class Service(pulumi.CustomResource):
             custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             default_uri_disabled: Optional[pulumi.Input[bool]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2070,6 +2118,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["custom_audiences"] = custom_audiences
         __props__.__dict__["default_uri_disabled"] = default_uri_disabled
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2186,6 +2235,11 @@ class Service(pulumi.CustomResource):
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

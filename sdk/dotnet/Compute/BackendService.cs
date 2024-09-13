@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Compute
     ///         LoadBalancingScheme = "EXTERNAL",
     ///         Iap = new Gcp.Compute.Inputs.BackendServiceIapArgs
     ///         {
+    ///             Enabled = true,
     ///             Oauth2ClientId = "abc",
     ///             Oauth2ClientSecret = "xyz",
     ///         },
@@ -334,6 +335,14 @@ namespace Pulumi.Gcp.Compute
     ///         OutlierDetection = new Gcp.Compute.Inputs.BackendServiceOutlierDetectionArgs
     ///         {
     ///             ConsecutiveErrors = 2,
+    ///             ConsecutiveGatewayFailure = 5,
+    ///             EnforcingConsecutiveErrors = 100,
+    ///             EnforcingConsecutiveGatewayFailure = 0,
+    ///             EnforcingSuccessRate = 100,
+    ///             MaxEjectionPercent = 10,
+    ///             SuccessRateMinimumHosts = 5,
+    ///             SuccessRateRequestVolume = 100,
+    ///             SuccessRateStdevFactor = 1900,
     ///         },
     ///     });
     /// 
@@ -669,6 +678,12 @@ namespace Pulumi.Gcp.Compute
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        /// Applicable backend service types can be a global backend service with the
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+        /// Structure is documented below.
+        /// </summary>
         [Output("outlierDetection")]
         public Output<Outputs.BackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
 
@@ -1020,6 +1035,12 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        /// Applicable backend service types can be a global backend service with the
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+        /// Structure is documented below.
+        /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.BackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
 
@@ -1346,6 +1367,12 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        /// Applicable backend service types can be a global backend service with the
+        /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
+        /// Structure is documented below.
+        /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.BackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
 

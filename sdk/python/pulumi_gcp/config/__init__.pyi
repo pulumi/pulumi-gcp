@@ -23,7 +23,7 @@ accessToken: Optional[str]
 
 activeDirectoryCustomEndpoint: Optional[str]
 
-addTerraformAttributionLabel: Optional[bool]
+addPulumiAttributionLabel: Optional[bool]
 
 alloydbCustomEndpoint: Optional[str]
 
@@ -144,8 +144,6 @@ dataplexCustomEndpoint: Optional[str]
 dataprocCustomEndpoint: Optional[str]
 
 dataprocMetastoreCustomEndpoint: Optional[str]
-
-datastoreCustomEndpoint: Optional[str]
 
 datastreamCustomEndpoint: Optional[str]
 
@@ -277,6 +275,8 @@ pubsubCustomEndpoint: Optional[str]
 
 pubsubLiteCustomEndpoint: Optional[str]
 
+pulumiAttributionLabelAdditionStrategy: Optional[str]
+
 recaptchaEnterpriseCustomEndpoint: Optional[str]
 
 redisCustomEndpoint: Optional[str]
@@ -338,8 +338,6 @@ storageTransferCustomEndpoint: Optional[str]
 tagsCustomEndpoint: Optional[str]
 
 tagsLocationCustomEndpoint: Optional[str]
-
-terraformAttributionLabelAdditionStrategy: Optional[str]
 
 tpuCustomEndpoint: Optional[str]
 

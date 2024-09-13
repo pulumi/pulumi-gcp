@@ -90,7 +90,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataplexCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataprocMetastoreCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly datastoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly datastreamCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly deploymentManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -153,6 +152,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly publicCaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubLiteCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly pulumiAttributionLabelAdditionStrategy!: pulumi.Output<string | undefined>;
     public readonly recaptchaEnterpriseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly redisCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly region!: pulumi.Output<string | undefined>;
@@ -182,7 +182,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly terraformAttributionLabelAdditionStrategy!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuV2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly universeDomain!: pulumi.Output<string | undefined>;
@@ -209,7 +208,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
             resourceInputs["accessToken"] = args?.accessToken ? pulumi.secret(args.accessToken) : undefined;
             resourceInputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
-            resourceInputs["addTerraformAttributionLabel"] = pulumi.output(args ? args.addTerraformAttributionLabel : undefined).apply(JSON.stringify);
+            resourceInputs["addPulumiAttributionLabel"] = pulumi.output(args ? args.addPulumiAttributionLabel : undefined).apply(JSON.stringify);
             resourceInputs["alloydbCustomEndpoint"] = args ? args.alloydbCustomEndpoint : undefined;
             resourceInputs["apiGatewayCustomEndpoint"] = args ? args.apiGatewayCustomEndpoint : undefined;
             resourceInputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
@@ -270,7 +269,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataplexCustomEndpoint"] = args ? args.dataplexCustomEndpoint : undefined;
             resourceInputs["dataprocCustomEndpoint"] = args ? args.dataprocCustomEndpoint : undefined;
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
-            resourceInputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
             resourceInputs["datastreamCustomEndpoint"] = args ? args.datastreamCustomEndpoint : undefined;
             resourceInputs["defaultLabels"] = pulumi.output(args ? args.defaultLabels : undefined).apply(JSON.stringify);
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
@@ -336,6 +334,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["publicCaCustomEndpoint"] = args ? args.publicCaCustomEndpoint : undefined;
             resourceInputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             resourceInputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
+            resourceInputs["pulumiAttributionLabelAdditionStrategy"] = args ? args.pulumiAttributionLabelAdditionStrategy : undefined;
             resourceInputs["recaptchaEnterpriseCustomEndpoint"] = args ? args.recaptchaEnterpriseCustomEndpoint : undefined;
             resourceInputs["redisCustomEndpoint"] = args ? args.redisCustomEndpoint : undefined;
             resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
@@ -366,7 +365,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
             resourceInputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
             resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
-            resourceInputs["terraformAttributionLabelAdditionStrategy"] = args ? args.terraformAttributionLabelAdditionStrategy : undefined;
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
             resourceInputs["universeDomain"] = args ? args.universeDomain : undefined;
@@ -394,7 +392,7 @@ export interface ProviderArgs {
     accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     accessToken?: pulumi.Input<string>;
     activeDirectoryCustomEndpoint?: pulumi.Input<string>;
-    addTerraformAttributionLabel?: pulumi.Input<boolean>;
+    addPulumiAttributionLabel?: pulumi.Input<boolean>;
     alloydbCustomEndpoint?: pulumi.Input<string>;
     apiGatewayCustomEndpoint?: pulumi.Input<string>;
     apigeeCustomEndpoint?: pulumi.Input<string>;
@@ -455,7 +453,6 @@ export interface ProviderArgs {
     dataplexCustomEndpoint?: pulumi.Input<string>;
     dataprocCustomEndpoint?: pulumi.Input<string>;
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string>;
-    datastoreCustomEndpoint?: pulumi.Input<string>;
     datastreamCustomEndpoint?: pulumi.Input<string>;
     defaultLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
@@ -521,6 +518,7 @@ export interface ProviderArgs {
     publicCaCustomEndpoint?: pulumi.Input<string>;
     pubsubCustomEndpoint?: pulumi.Input<string>;
     pubsubLiteCustomEndpoint?: pulumi.Input<string>;
+    pulumiAttributionLabelAdditionStrategy?: pulumi.Input<string>;
     recaptchaEnterpriseCustomEndpoint?: pulumi.Input<string>;
     redisCustomEndpoint?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
@@ -551,7 +549,6 @@ export interface ProviderArgs {
     storageTransferCustomEndpoint?: pulumi.Input<string>;
     tagsCustomEndpoint?: pulumi.Input<string>;
     tagsLocationCustomEndpoint?: pulumi.Input<string>;
-    terraformAttributionLabelAdditionStrategy?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
     tpuV2CustomEndpoint?: pulumi.Input<string>;
     universeDomain?: pulumi.Input<string>;

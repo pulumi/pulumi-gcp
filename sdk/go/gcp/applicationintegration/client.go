@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/applicationintegration"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/applicationintegration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,10 +55,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/applicationintegration"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/applicationintegration"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -149,13 +149,6 @@ type Client struct {
 	CloudKmsConfig ClientCloudKmsConfigPtrOutput `pulumi:"cloudKmsConfig"`
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrOutput `pulumi:"createSampleIntegrations"`
-	// (Optional, Deprecated)
-	// Indicates if sample workflow should be created along with provisioning.
-	//
-	// > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	//
-	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	CreateSampleWorkflows pulumi.BoolPtrOutput `pulumi:"createSampleWorkflows"`
 	// Location in which client needs to be provisioned.
 	//
 	// ***
@@ -163,13 +156,6 @@ type Client struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// (Optional, Deprecated)
-	// Indicates provision with GMEK or CMEK.
-	//
-	// > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	//
-	// Deprecated: `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	ProvisionGmek pulumi.BoolPtrOutput `pulumi:"provisionGmek"`
 	// User input run-as service account, if empty, will bring up a new default service account.
 	RunAsServiceAccount pulumi.StringPtrOutput `pulumi:"runAsServiceAccount"`
 }
@@ -212,13 +198,6 @@ type clientState struct {
 	CloudKmsConfig *ClientCloudKmsConfig `pulumi:"cloudKmsConfig"`
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
-	// (Optional, Deprecated)
-	// Indicates if sample workflow should be created along with provisioning.
-	//
-	// > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	//
-	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	CreateSampleWorkflows *bool `pulumi:"createSampleWorkflows"`
 	// Location in which client needs to be provisioned.
 	//
 	// ***
@@ -226,13 +205,6 @@ type clientState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// (Optional, Deprecated)
-	// Indicates provision with GMEK or CMEK.
-	//
-	// > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	//
-	// Deprecated: `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	ProvisionGmek *bool `pulumi:"provisionGmek"`
 	// User input run-as service account, if empty, will bring up a new default service account.
 	RunAsServiceAccount *string `pulumi:"runAsServiceAccount"`
 }
@@ -243,13 +215,6 @@ type ClientState struct {
 	CloudKmsConfig ClientCloudKmsConfigPtrInput
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrInput
-	// (Optional, Deprecated)
-	// Indicates if sample workflow should be created along with provisioning.
-	//
-	// > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	//
-	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	CreateSampleWorkflows pulumi.BoolPtrInput
 	// Location in which client needs to be provisioned.
 	//
 	// ***
@@ -257,13 +222,6 @@ type ClientState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// (Optional, Deprecated)
-	// Indicates provision with GMEK or CMEK.
-	//
-	// > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	//
-	// Deprecated: `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	ProvisionGmek pulumi.BoolPtrInput
 	// User input run-as service account, if empty, will bring up a new default service account.
 	RunAsServiceAccount pulumi.StringPtrInput
 }
@@ -278,13 +236,6 @@ type clientArgs struct {
 	CloudKmsConfig *ClientCloudKmsConfig `pulumi:"cloudKmsConfig"`
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
-	// (Optional, Deprecated)
-	// Indicates if sample workflow should be created along with provisioning.
-	//
-	// > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	//
-	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	CreateSampleWorkflows *bool `pulumi:"createSampleWorkflows"`
 	// Location in which client needs to be provisioned.
 	//
 	// ***
@@ -292,13 +243,6 @@ type clientArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// (Optional, Deprecated)
-	// Indicates provision with GMEK or CMEK.
-	//
-	// > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	//
-	// Deprecated: `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	ProvisionGmek *bool `pulumi:"provisionGmek"`
 	// User input run-as service account, if empty, will bring up a new default service account.
 	RunAsServiceAccount *string `pulumi:"runAsServiceAccount"`
 }
@@ -310,13 +254,6 @@ type ClientArgs struct {
 	CloudKmsConfig ClientCloudKmsConfigPtrInput
 	// Indicates if sample integrations should be created along with provisioning.
 	CreateSampleIntegrations pulumi.BoolPtrInput
-	// (Optional, Deprecated)
-	// Indicates if sample workflow should be created along with provisioning.
-	//
-	// > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	//
-	// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-	CreateSampleWorkflows pulumi.BoolPtrInput
 	// Location in which client needs to be provisioned.
 	//
 	// ***
@@ -324,13 +261,6 @@ type ClientArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// (Optional, Deprecated)
-	// Indicates provision with GMEK or CMEK.
-	//
-	// > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	//
-	// Deprecated: `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-	ProvisionGmek pulumi.BoolPtrInput
 	// User input run-as service account, if empty, will bring up a new default service account.
 	RunAsServiceAccount pulumi.StringPtrInput
 }
@@ -433,16 +363,6 @@ func (o ClientOutput) CreateSampleIntegrations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.CreateSampleIntegrations }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Deprecated)
-// Indicates if sample workflow should be created along with provisioning.
-//
-// > **Warning:** `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-//
-// Deprecated: `createSampleWorkflows` is deprecated and will be removed in a future major release. Use `createSampleIntegrations` instead.
-func (o ClientOutput) CreateSampleWorkflows() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.CreateSampleWorkflows }).(pulumi.BoolPtrOutput)
-}
-
 // Location in which client needs to be provisioned.
 //
 // ***
@@ -454,16 +374,6 @@ func (o ClientOutput) Location() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ClientOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
-}
-
-// (Optional, Deprecated)
-// Indicates provision with GMEK or CMEK.
-//
-// > **Warning:** `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-//
-// Deprecated: `provisionGmek` is deprecated and will be removed in a future major release. Client would be provisioned as gmek if `cloudKmsConfig` is not given.
-func (o ClientOutput) ProvisionGmek() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.ProvisionGmek }).(pulumi.BoolPtrOutput)
 }
 
 // User input run-as service account, if empty, will bring up a new default service account.

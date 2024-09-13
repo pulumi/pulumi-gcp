@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Apphub
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     // Enable Compute API
@@ -193,6 +194,7 @@ namespace Pulumi.Gcp.Apphub
     ///         Name = "Service Project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     // Enable Compute API

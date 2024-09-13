@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,7 +46,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -309,8 +309,6 @@ func (ManagedSslCertificateState) ElementType() reflect.Type {
 }
 
 type managedSslCertificateArgs struct {
-	// The unique identifier for the resource.
-	CertificateId *int `pulumi:"certificateId"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Properties relevant to a managed certificate.  These will be used if the
@@ -338,8 +336,6 @@ type managedSslCertificateArgs struct {
 
 // The set of arguments for constructing a ManagedSslCertificate resource.
 type ManagedSslCertificateArgs struct {
-	// The unique identifier for the resource.
-	CertificateId pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Properties relevant to a managed certificate.  These will be used if the

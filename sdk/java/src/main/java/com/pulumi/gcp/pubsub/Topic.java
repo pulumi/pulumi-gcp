@@ -469,15 +469,15 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="schemaSettings", refs={TopicSchemaSettings.class}, tree="[0]")
-    private Output<TopicSchemaSettings> schemaSettings;
+    private Output</* @Nullable */ TopicSchemaSettings> schemaSettings;
 
     /**
      * @return Settings for validating messages published against a schema.
      * Structure is documented below.
      * 
      */
-    public Output<TopicSchemaSettings> schemaSettings() {
-        return this.schemaSettings;
+    public Output<Optional<TopicSchemaSettings>> schemaSettings() {
+        return Codegen.optional(this.schemaSettings);
     }
 
     /**

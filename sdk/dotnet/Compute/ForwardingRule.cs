@@ -1274,6 +1274,12 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("forwardingRuleId")]
+        public Output<int> ForwardingRuleId { get; private set; } = null!;
+
+        /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
         /// to the referenced `target` or `backendService`.
@@ -1445,6 +1451,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         /// cannot have overlapping `portRange`s.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Output("portRange")]
         public Output<string> PortRange { get; private set; } = null!;
@@ -1467,6 +1474,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
         /// they share at least one port number.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
@@ -1849,6 +1857,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         /// cannot have overlapping `portRange`s.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -1874,6 +1883,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
         /// they share at least one port number.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         public InputList<string> Ports
         {
@@ -2046,6 +2056,12 @@ namespace Pulumi.Gcp.Compute
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("forwardingRuleId")]
+        public Input<int>? ForwardingRuleId { get; set; }
 
         /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
@@ -2225,6 +2241,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         /// cannot have overlapping `portRange`s.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -2250,6 +2267,7 @@ namespace Pulumi.Gcp.Compute
         /// For internal forwarding rules within the same VPC network, two or more
         /// forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
         /// they share at least one port number.
+        /// @pattern: \d+(?:-\d+)?
         /// </summary>
         public InputList<string> Ports
         {

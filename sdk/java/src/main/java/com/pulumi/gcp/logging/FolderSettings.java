@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *         var myFolder = new Folder("myFolder", FolderArgs.builder()
  *             .displayName("folder-name")
  *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()

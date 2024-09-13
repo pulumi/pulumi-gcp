@@ -511,7 +511,8 @@ class FirewallPolicyRule(pulumi.CustomResource):
             capacity=100)
         folder = gcp.organizations.Folder("folder",
             display_name="policy",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         default = gcp.compute.FirewallPolicy("default",
             parent=folder.id,
             short_name="policy",
@@ -611,7 +612,8 @@ class FirewallPolicyRule(pulumi.CustomResource):
             capacity=100)
         folder = gcp.organizations.Folder("folder",
             display_name="policy",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            deletion_protection=False)
         default = gcp.compute.FirewallPolicy("default",
             parent=folder.id,
             short_name="policy",

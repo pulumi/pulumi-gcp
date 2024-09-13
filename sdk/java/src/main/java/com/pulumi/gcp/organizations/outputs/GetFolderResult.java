@@ -18,6 +18,7 @@ public final class GetFolderResult {
      * 
      */
     private String createTime;
+    private Boolean deletionProtection;
     /**
      * @return The folder&#39;s display name.
      * 
@@ -59,6 +60,9 @@ public final class GetFolderResult {
      */
     public String createTime() {
         return this.createTime;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     /**
      * @return The folder&#39;s display name.
@@ -122,6 +126,7 @@ public final class GetFolderResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private Boolean deletionProtection;
         private String displayName;
         private String folder;
         private String folderId;
@@ -135,6 +140,7 @@ public final class GetFolderResult {
         public Builder(GetFolderResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.folder = defaults.folder;
     	      this.folderId = defaults.folderId;
@@ -152,6 +158,14 @@ public final class GetFolderResult {
               throw new MissingRequiredPropertyException("GetFolderResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -227,6 +241,7 @@ public final class GetFolderResult {
         public GetFolderResult build() {
             final var _resultValue = new GetFolderResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.folder = folder;
             _resultValue.folderId = folderId;

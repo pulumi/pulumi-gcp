@@ -120,18 +120,6 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If set to true, it allows table
-        /// deletion when there are still resource tags attached. The default value is
-        /// false.
-        /// 
-        /// ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-        /// removed in a future major release. The default behavior will be allowing
-        /// the presence of resource tags on deletion after the next major release.
-        /// </summary>
-        [Output("allowResourceTagsOnDeletion")]
-        public Output<bool?> AllowResourceTagsOnDeletion { get; private set; } = null!;
-
-        /// <summary>
         /// Specifies column names to use for data clustering.
         /// Up to four top-level columns are allowed, and should be specified in
         /// descending priority order.
@@ -423,18 +411,6 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If set to true, it allows table
-        /// deletion when there are still resource tags attached. The default value is
-        /// false.
-        /// 
-        /// ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-        /// removed in a future major release. The default behavior will be allowing
-        /// the presence of resource tags on deletion after the next major release.
-        /// </summary>
-        [Input("allowResourceTagsOnDeletion")]
-        public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
-
         [Input("clusterings")]
         private InputList<string>? _clusterings;
 
@@ -621,18 +597,6 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If set to true, it allows table
-        /// deletion when there are still resource tags attached. The default value is
-        /// false.
-        /// 
-        /// ~&gt;**Warning:** `allow_resource_tags_on_deletion` is deprecated and will be
-        /// removed in a future major release. The default behavior will be allowing
-        /// the presence of resource tags on deletion after the next major release.
-        /// </summary>
-        [Input("allowResourceTagsOnDeletion")]
-        public Input<bool>? AllowResourceTagsOnDeletion { get; set; }
-
         [Input("clusterings")]
         private InputList<string>? _clusterings;
 

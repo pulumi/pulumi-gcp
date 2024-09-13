@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     projectId: "m-id",
  *     name: "m-id-display",
  *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
  * });
  * const primary = new gcp.monitoring.MonitoredProject("primary", {
  *     metricsScope: "my-project-name",

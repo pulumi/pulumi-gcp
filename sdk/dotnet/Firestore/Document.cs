@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Firestore
     ///         ProjectId = "project-id",
     ///         Name = "project-id",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
@@ -112,6 +113,7 @@ namespace Pulumi.Gcp.Firestore
     ///         ProjectId = "project-id",
     ///         Name = "project-id",
     ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
     ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
