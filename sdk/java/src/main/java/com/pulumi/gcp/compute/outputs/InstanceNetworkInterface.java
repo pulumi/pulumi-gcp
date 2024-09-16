@@ -108,7 +108,7 @@ public final class InstanceNetworkInterface {
     private @Nullable String subnetwork;
     /**
      * @return The project in which the subnetwork belongs.
-     * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+     * If the `subnetwork` is a self_link, this field is set to the project
      * defined in the subnetwork self_link. If the `subnetwork` is a name and this
      * field is not provided, the provider project is used.
      * 
@@ -238,7 +238,7 @@ public final class InstanceNetworkInterface {
     }
     /**
      * @return The project in which the subnetwork belongs.
-     * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+     * If the `subnetwork` is a self_link, this field is set to the project
      * defined in the subnetwork self_link. If the `subnetwork` is a name and this
      * field is not provided, the provider project is used.
      * 

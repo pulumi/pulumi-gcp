@@ -77,6 +77,78 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquerydatatransfer Config Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var permissions = new Gcp.Projects.IAMMember("permissions", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/iam.serviceAccountTokenCreator",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var myDataset = new Gcp.BigQuery.Dataset("my_dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///         FriendlyName = "foo",
+    ///         Description = "bar",
+    ///         Location = "asia-northeast1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             permissions,
+    ///         },
+    ///     });
+    /// 
+    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+    ///     {
+    ///         Name = "example-keyring",
+    ///         Location = "us",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+    ///     {
+    ///         Name = "example-key",
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var queryConfigCmek = new Gcp.BigQuery.DataTransferConfig("query_config_cmek", new()
+    ///     {
+    ///         DisplayName = "",
+    ///         Location = "asia-northeast1",
+    ///         DataSourceId = "scheduled_query",
+    ///         Schedule = "first sunday of quarter 00:00",
+    ///         DestinationDatasetId = myDataset.DatasetId,
+    ///         Params = 
+    ///         {
+    ///             { "destination_table_name_template", "my_table" },
+    ///             { "write_disposition", "WRITE_APPEND" },
+    ///             { "query", "SELECT name FROM tabl WHERE x = 'y'" },
+    ///         },
+    ///         EncryptionConfiguration = new Gcp.BigQuery.Inputs.DataTransferConfigEncryptionConfigurationArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             permissions,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Bigquerydatatransfer Config Salesforce
     /// 
     /// ```csharp
@@ -107,9 +179,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         {
     ///             { "connector.authentication.oauth.clientId", "client-id" },
     ///             { "connector.authentication.oauth.clientSecret", "client-secret" },
-    ///             { "connector.authentication.username", "username" },
-    ///             { "connector.authentication.password", "password" },
-    ///             { "connector.authentication.securityToken", "security-token" },
+    ///             { "connector.authentication.oauth.myDomain", "MyDomainName" },
     ///             { "assets", "[\"asset-a\",\"asset-b\"]" },
     ///         },
     ///     });
@@ -173,6 +243,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("emailPreferences")]
         public Output<Outputs.DataTransferConfigEmailPreferences?> EmailPreferences { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents the encryption configuration for a transfer.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfiguration")]
+        public Output<Outputs.DataTransferConfigEncryptionConfiguration?> EncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The geographic location where the transfer config should reside.
@@ -347,6 +424,13 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DataTransferConfigEmailPreferencesArgs>? EmailPreferences { get; set; }
 
         /// <summary>
+        /// Represents the encryption configuration for a transfer.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfiguration")]
+        public Input<Inputs.DataTransferConfigEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
+
+        /// <summary>
         /// The geographic location where the transfer config should reside.
         /// Examples: US, EU, asia-northeast1. The default value is US.
         /// </summary>
@@ -475,6 +559,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("emailPreferences")]
         public Input<Inputs.DataTransferConfigEmailPreferencesGetArgs>? EmailPreferences { get; set; }
+
+        /// <summary>
+        /// Represents the encryption configuration for a transfer.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfiguration")]
+        public Input<Inputs.DataTransferConfigEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
 
         /// <summary>
         /// The geographic location where the transfer config should reside.

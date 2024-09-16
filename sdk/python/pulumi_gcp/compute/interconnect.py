@@ -83,11 +83,12 @@ class InterconnectArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
                of Google's network that the interconnect is connected to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
                If specified then the connection is created on MACsec capable hardware ports. If not
                specified, the default value is false, which allocates non-MACsec capable ports first if
-               available).
-               Each value may be one of: `MACSEC`.
+               available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+               does not work with the API, and will be removed in an upcoming major version.
+               Each value may be one of: `MACSEC`, `IF_MACSEC`.
         """
         pulumi.set(__self__, "customer_name", customer_name)
         pulumi.set(__self__, "interconnect_type", interconnect_type)
@@ -318,11 +319,12 @@ class InterconnectArgs:
     @pulumi.getter(name="requestedFeatures")
     def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
         If specified then the connection is created on MACsec capable hardware ports. If not
         specified, the default value is false, which allocates non-MACsec capable ports first if
-        available).
-        Each value may be one of: `MACSEC`.
+        available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+        does not work with the API, and will be removed in an upcoming major version.
+        Each value may be one of: `MACSEC`, `IF_MACSEC`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -443,11 +445,12 @@ class _InterconnectState:
                and default labels configured on the provider.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
                of Google's network that the interconnect is connected to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
                If specified then the connection is created on MACsec capable hardware ports. If not
                specified, the default value is false, which allocates non-MACsec capable ports first if
-               available).
-               Each value may be one of: `MACSEC`.
+               available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+               does not work with the API, and will be removed in an upcoming major version.
+               Each value may be one of: `MACSEC`, `IF_MACSEC`.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] state: (Output)
@@ -887,11 +890,12 @@ class _InterconnectState:
     @pulumi.getter(name="requestedFeatures")
     def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
         If specified then the connection is created on MACsec capable hardware ports. If not
         specified, the default value is false, which allocates non-MACsec capable ports first if
-        available).
-        Each value may be one of: `MACSEC`.
+        available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+        does not work with the API, and will be removed in an upcoming major version.
+        Each value may be one of: `MACSEC`, `IF_MACSEC`.
         """
         return pulumi.get(self, "requested_features")
 
@@ -1062,11 +1066,12 @@ class Interconnect(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
                of Google's network that the interconnect is connected to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
                If specified then the connection is created on MACsec capable hardware ports. If not
                specified, the default value is false, which allocates non-MACsec capable ports first if
-               available).
-               Each value may be one of: `MACSEC`.
+               available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+               does not work with the API, and will be removed in an upcoming major version.
+               Each value may be one of: `MACSEC`, `IF_MACSEC`.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         ...
@@ -1332,11 +1337,12 @@ class Interconnect(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
                of Google's network that the interconnect is connected to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] requested_features: interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
                If specified then the connection is created on MACsec capable hardware ports. If not
                specified, the default value is false, which allocates non-MACsec capable ports first if
-               available).
-               Each value may be one of: `MACSEC`.
+               available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+               does not work with the API, and will be removed in an upcoming major version.
+               Each value may be one of: `MACSEC`, `IF_MACSEC`.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] state: (Output)
@@ -1647,11 +1653,12 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="requestedFeatures")
     def requested_features(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
         If specified then the connection is created on MACsec capable hardware ports. If not
         specified, the default value is false, which allocates non-MACsec capable ports first if
-        available).
-        Each value may be one of: `MACSEC`.
+        available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+        does not work with the API, and will be removed in an upcoming major version.
+        Each value may be one of: `MACSEC`, `IF_MACSEC`.
         """
         return pulumi.get(self, "requested_features")
 

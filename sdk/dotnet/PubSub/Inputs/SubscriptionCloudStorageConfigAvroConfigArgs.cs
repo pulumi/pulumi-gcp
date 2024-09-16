@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.PubSub.Inputs
     public sealed class SubscriptionCloudStorageConfigAvroConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+        /// </summary>
+        [Input("useTopicSchema")]
+        public Input<bool>? UseTopicSchema { get; set; }
+
+        /// <summary>
         /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         /// </summary>
         [Input("writeMetadata")]

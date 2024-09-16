@@ -33,14 +33,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The intended database state.
+     * The intended database state. Possible values: ACTIVE, DISABLED.
      * 
      */
     @Import(name="desiredState")
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return The intended database state.
+     * @return The intended database state. Possible values: ACTIVE, DISABLED.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -218,7 +218,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param desiredState The intended database state.
+         * @param desiredState The intended database state. Possible values: ACTIVE, DISABLED.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param desiredState The intended database state.
+         * @param desiredState The intended database state. Possible values: ACTIVE, DISABLED.
          * 
          * @return builder
          * 

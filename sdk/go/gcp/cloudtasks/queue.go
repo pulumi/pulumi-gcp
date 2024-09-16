@@ -87,6 +87,140 @@ import (
 //	}
 //
 // ```
+// ### Cloud Tasks Queue Http Target Oidc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			oidcServiceAccount, err := serviceaccount.NewAccount(ctx, "oidc_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("example-oidc"),
+//				DisplayName: pulumi.String("Tasks Queue OIDC Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudtasks.NewQueue(ctx, "http_target_oidc", &cloudtasks.QueueArgs{
+//				Name:     pulumi.String("cloud-tasks-queue-http-target-oidc"),
+//				Location: pulumi.String("us-central1"),
+//				HttpTarget: &cloudtasks.QueueHttpTargetArgs{
+//					HttpMethod: pulumi.String("POST"),
+//					UriOverride: &cloudtasks.QueueHttpTargetUriOverrideArgs{
+//						Scheme: pulumi.String("HTTPS"),
+//						Host:   pulumi.String("oidc.example.com"),
+//						Port:   pulumi.String("8443"),
+//						PathOverride: &cloudtasks.QueueHttpTargetUriOverridePathOverrideArgs{
+//							Path: pulumi.String("/users/1234"),
+//						},
+//						QueryOverride: &cloudtasks.QueueHttpTargetUriOverrideQueryOverrideArgs{
+//							QueryParams: pulumi.String("qparam1=123&qparam2=456"),
+//						},
+//						UriOverrideEnforceMode: pulumi.String("IF_NOT_EXISTS"),
+//					},
+//					HeaderOverrides: cloudtasks.QueueHttpTargetHeaderOverrideArray{
+//						&cloudtasks.QueueHttpTargetHeaderOverrideArgs{
+//							Header: &cloudtasks.QueueHttpTargetHeaderOverrideHeaderArgs{
+//								Key:   pulumi.String("AddSomethingElse"),
+//								Value: pulumi.String("MyOtherValue"),
+//							},
+//						},
+//						&cloudtasks.QueueHttpTargetHeaderOverrideArgs{
+//							Header: &cloudtasks.QueueHttpTargetHeaderOverrideHeaderArgs{
+//								Key:   pulumi.String("AddMe"),
+//								Value: pulumi.String("MyValue"),
+//							},
+//						},
+//					},
+//					OidcToken: &cloudtasks.QueueHttpTargetOidcTokenArgs{
+//						ServiceAccountEmail: oidcServiceAccount.Email,
+//						Audience:            pulumi.String("https://oidc.example.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloud Tasks Queue Http Target Oauth
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudtasks"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			oauthServiceAccount, err := serviceaccount.NewAccount(ctx, "oauth_service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("example-oauth"),
+//				DisplayName: pulumi.String("Tasks Queue OAuth Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudtasks.NewQueue(ctx, "http_target_oauth", &cloudtasks.QueueArgs{
+//				Name:     pulumi.String("cloud-tasks-queue-http-target-oauth"),
+//				Location: pulumi.String("us-central1"),
+//				HttpTarget: &cloudtasks.QueueHttpTargetArgs{
+//					HttpMethod: pulumi.String("POST"),
+//					UriOverride: &cloudtasks.QueueHttpTargetUriOverrideArgs{
+//						Scheme: pulumi.String("HTTPS"),
+//						Host:   pulumi.String("oauth.example.com"),
+//						Port:   pulumi.String("8443"),
+//						PathOverride: &cloudtasks.QueueHttpTargetUriOverridePathOverrideArgs{
+//							Path: pulumi.String("/users/1234"),
+//						},
+//						QueryOverride: &cloudtasks.QueueHttpTargetUriOverrideQueryOverrideArgs{
+//							QueryParams: pulumi.String("qparam1=123&qparam2=456"),
+//						},
+//						UriOverrideEnforceMode: pulumi.String("IF_NOT_EXISTS"),
+//					},
+//					HeaderOverrides: cloudtasks.QueueHttpTargetHeaderOverrideArray{
+//						&cloudtasks.QueueHttpTargetHeaderOverrideArgs{
+//							Header: &cloudtasks.QueueHttpTargetHeaderOverrideHeaderArgs{
+//								Key:   pulumi.String("AddSomethingElse"),
+//								Value: pulumi.String("MyOtherValue"),
+//							},
+//						},
+//						&cloudtasks.QueueHttpTargetHeaderOverrideArgs{
+//							Header: &cloudtasks.QueueHttpTargetHeaderOverrideHeaderArgs{
+//								Key:   pulumi.String("AddMe"),
+//								Value: pulumi.String("MyValue"),
+//							},
+//						},
+//					},
+//					OauthToken: &cloudtasks.QueueHttpTargetOauthTokenArgs{
+//						ServiceAccountEmail: oauthServiceAccount.Email,
+//						Scope:               pulumi.String("openid https://www.googleapis.com/auth/userinfo.email"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -118,6 +252,9 @@ type Queue struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrOutput `pulumi:"appEngineRoutingOverride"`
+	// Modifies HTTP target for HTTP tasks.
+	// Structure is documented below.
+	HttpTarget QueueHttpTargetPtrOutput `pulumi:"httpTarget"`
 	// The location of the queue
 	//
 	// ***
@@ -181,6 +318,9 @@ type queueState struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
+	// Modifies HTTP target for HTTP tasks.
+	// Structure is documented below.
+	HttpTarget *QueueHttpTarget `pulumi:"httpTarget"`
 	// The location of the queue
 	//
 	// ***
@@ -212,6 +352,9 @@ type QueueState struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
+	// Modifies HTTP target for HTTP tasks.
+	// Structure is documented below.
+	HttpTarget QueueHttpTargetPtrInput
 	// The location of the queue
 	//
 	// ***
@@ -247,6 +390,9 @@ type queueArgs struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
+	// Modifies HTTP target for HTTP tasks.
+	// Structure is documented below.
+	HttpTarget *QueueHttpTarget `pulumi:"httpTarget"`
 	// The location of the queue
 	//
 	// ***
@@ -279,6 +425,9 @@ type QueueArgs struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
+	// Modifies HTTP target for HTTP tasks.
+	// Structure is documented below.
+	HttpTarget QueueHttpTargetPtrInput
 	// The location of the queue
 	//
 	// ***
@@ -397,6 +546,12 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // Structure is documented below.
 func (o QueueOutput) AppEngineRoutingOverride() QueueAppEngineRoutingOverridePtrOutput {
 	return o.ApplyT(func(v *Queue) QueueAppEngineRoutingOverridePtrOutput { return v.AppEngineRoutingOverride }).(QueueAppEngineRoutingOverridePtrOutput)
+}
+
+// Modifies HTTP target for HTTP tasks.
+// Structure is documented below.
+func (o QueueOutput) HttpTarget() QueueHttpTargetPtrOutput {
+	return o.ApplyT(func(v *Queue) QueueHttpTargetPtrOutput { return v.HttpTarget }).(QueueHttpTargetPtrOutput)
 }
 
 // The location of the queue

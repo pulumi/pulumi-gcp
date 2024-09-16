@@ -24,6 +24,11 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig;
     /**
+     * @return Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    private @Nullable String insecureKubeletReadonlyPortEnabled;
+    /**
      * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
@@ -45,6 +50,13 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
         return Optional.ofNullable(this.gcfsConfig);
     }
     /**
+     * @return Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    public Optional<String> insecureKubeletReadonlyPortEnabled() {
+        return Optional.ofNullable(this.insecureKubeletReadonlyPortEnabled);
+    }
+    /**
      * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
@@ -63,12 +75,14 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     public static final class Builder {
         private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig containerdConfig;
         private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig;
+        private @Nullable String insecureKubeletReadonlyPortEnabled;
         private @Nullable String loggingVariant;
         public Builder() {}
         public Builder(ClusterNodePoolDefaultsNodeConfigDefaults defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerdConfig = defaults.containerdConfig;
     	      this.gcfsConfig = defaults.gcfsConfig;
+    	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.loggingVariant = defaults.loggingVariant;
         }
 
@@ -85,6 +99,12 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
             return this;
         }
         @CustomType.Setter
+        public Builder insecureKubeletReadonlyPortEnabled(@Nullable String insecureKubeletReadonlyPortEnabled) {
+
+            this.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loggingVariant(@Nullable String loggingVariant) {
 
             this.loggingVariant = loggingVariant;
@@ -94,6 +114,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
             final var _resultValue = new ClusterNodePoolDefaultsNodeConfigDefaults();
             _resultValue.containerdConfig = containerdConfig;
             _resultValue.gcfsConfig = gcfsConfig;
+            _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.loggingVariant = loggingVariant;
             return _resultValue;
         }

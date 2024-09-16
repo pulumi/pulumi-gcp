@@ -6946,9 +6946,9 @@ func (o WorkerPoolNetworkConfigPtrOutput) PeeredNetworkIpRange() pulumi.StringPt
 }
 
 type WorkerPoolWorkerConfig struct {
-	// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+	// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 	MachineType *string `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
 	NoExternalIp *bool `pulumi:"noExternalIp"`
@@ -6966,9 +6966,9 @@ type WorkerPoolWorkerConfigInput interface {
 }
 
 type WorkerPoolWorkerConfigArgs struct {
-	// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+	// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// If true, workers are created without any public address, which prevents network egress to public IPs.
 	NoExternalIp pulumi.BoolPtrInput `pulumi:"noExternalIp"`
@@ -7051,12 +7051,12 @@ func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigPtrOutputWithConte
 	}).(WorkerPoolWorkerConfigPtrOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerPoolWorkerConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkerPoolWorkerConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 func (o WorkerPoolWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPoolWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -7090,7 +7090,7 @@ func (o WorkerPoolWorkerConfigPtrOutput) Elem() WorkerPoolWorkerConfigOutput {
 	}).(WorkerPoolWorkerConfigOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerPoolWorkerConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *int {
 		if v == nil {
@@ -7100,7 +7100,7 @@ func (o WorkerPoolWorkerConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+// Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
 func (o WorkerPoolWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerPoolWorkerConfig) *string {
 		if v == nil {

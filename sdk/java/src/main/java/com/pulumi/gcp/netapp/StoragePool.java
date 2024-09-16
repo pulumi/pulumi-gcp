@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * storagePool can be imported using any of these accepted formats:
+ * StoragePool can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
  * 
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  * * `{{location}}/{{name}}`
  * 
- * When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}

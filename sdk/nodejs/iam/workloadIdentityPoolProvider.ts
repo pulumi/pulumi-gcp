@@ -188,6 +188,64 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Iam Workload Identity Pool Provider X509 Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.subject.dn.cn",
+ *     },
+ *     x509: {
+ *         trustStore: {
+ *             trustAnchors: [{
+ *                 pemCertificate: std.file({
+ *                     input: "test-fixtures/trust_anchor.pem",
+ *                 }).then(invoke => invoke.result),
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Iam Workload Identity Pool Provider X509 Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     displayName: "Name of provider",
+ *     description: "X.509 identity pool provider for automated test",
+ *     disabled: true,
+ *     attributeMapping: {
+ *         "google.subject": "assertion.subject.dn.cn",
+ *     },
+ *     x509: {
+ *         trustStore: {
+ *             trustAnchors: [{
+ *                 pemCertificate: std.file({
+ *                     input: "test-fixtures/trust_anchor.pem",
+ *                 }).then(invoke => invoke.result),
+ *             }],
+ *             intermediateCas: [{
+ *                 pemCertificate: std.file({
+ *                     input: "test-fixtures/intermediate_ca.pem",
+ *                 }).then(invoke => invoke.result),
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -366,6 +424,12 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * - - -
      */
     public readonly workloadIdentityPoolProviderId!: pulumi.Output<string>;
+    /**
+     * An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     */
+    public readonly x509!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderX509 | undefined>;
 
     /**
      * Create a WorkloadIdentityPoolProvider resource with the given unique name, arguments, and options.
@@ -393,6 +457,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
             resourceInputs["workloadIdentityPoolProviderId"] = state ? state.workloadIdentityPoolProviderId : undefined;
+            resourceInputs["x509"] = state ? state.x509 : undefined;
         } else {
             const args = argsOrState as WorkloadIdentityPoolProviderArgs | undefined;
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
@@ -412,6 +477,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             resourceInputs["saml"] = args ? args.saml : undefined;
             resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
             resourceInputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
+            resourceInputs["x509"] = args ? args.x509 : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
@@ -549,6 +615,12 @@ export interface WorkloadIdentityPoolProviderState {
      * - - -
      */
     workloadIdentityPoolProviderId?: pulumi.Input<string>;
+    /**
+     * An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     */
+    x509?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderX509>;
 }
 
 /**
@@ -665,4 +737,10 @@ export interface WorkloadIdentityPoolProviderArgs {
      * - - -
      */
     workloadIdentityPoolProviderId: pulumi.Input<string>;
+    /**
+     * An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     */
+    x509?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderX509>;
 }

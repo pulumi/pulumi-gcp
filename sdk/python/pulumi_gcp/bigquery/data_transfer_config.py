@@ -28,6 +28,7 @@ class DataTransferConfigArgs:
                  destination_dataset_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  email_preferences: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']] = None,
+                 encryption_configuration: Optional[pulumi.Input['DataTransferConfigEncryptionConfigurationArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -55,6 +56,8 @@ class DataTransferConfigArgs:
         :param pulumi.Input[bool] disabled: When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input['DataTransferConfigEmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the
                email address of the user who owns this transfer config.
+               Structure is documented below.
+        :param pulumi.Input['DataTransferConfigEncryptionConfigurationArgs'] encryption_configuration: Represents the encryption configuration for a transfer.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
@@ -95,6 +98,8 @@ class DataTransferConfigArgs:
             pulumi.set(__self__, "disabled", disabled)
         if email_preferences is not None:
             pulumi.set(__self__, "email_preferences", email_preferences)
+        if encryption_configuration is not None:
+            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if notification_pubsub_topic is not None:
@@ -205,6 +210,19 @@ class DataTransferConfigArgs:
     @email_preferences.setter
     def email_preferences(self, value: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']]):
         pulumi.set(self, "email_preferences", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> Optional[pulumi.Input['DataTransferConfigEncryptionConfigurationArgs']]:
+        """
+        Represents the encryption configuration for a transfer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @encryption_configuration.setter
+    def encryption_configuration(self, value: Optional[pulumi.Input['DataTransferConfigEncryptionConfigurationArgs']]):
+        pulumi.set(self, "encryption_configuration", value)
 
     @property
     @pulumi.getter
@@ -320,6 +338,7 @@ class _DataTransferConfigState:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']] = None,
+                 encryption_configuration: Optional[pulumi.Input['DataTransferConfigEncryptionConfigurationArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
@@ -342,6 +361,8 @@ class _DataTransferConfigState:
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
         :param pulumi.Input['DataTransferConfigEmailPreferencesArgs'] email_preferences: Email notifications will be sent according to these preferences to the
                email address of the user who owns this transfer config.
+               Structure is documented below.
+        :param pulumi.Input['DataTransferConfigEncryptionConfigurationArgs'] encryption_configuration: Represents the encryption configuration for a transfer.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
@@ -395,6 +416,8 @@ class _DataTransferConfigState:
             pulumi.set(__self__, "display_name", display_name)
         if email_preferences is not None:
             pulumi.set(__self__, "email_preferences", email_preferences)
+        if encryption_configuration is not None:
+            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -491,6 +514,19 @@ class _DataTransferConfigState:
     @email_preferences.setter
     def email_preferences(self, value: Optional[pulumi.Input['DataTransferConfigEmailPreferencesArgs']]):
         pulumi.set(self, "email_preferences", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> Optional[pulumi.Input['DataTransferConfigEncryptionConfigurationArgs']]:
+        """
+        Represents the encryption configuration for a transfer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @encryption_configuration.setter
+    def encryption_configuration(self, value: Optional[pulumi.Input['DataTransferConfigEncryptionConfigurationArgs']]):
+        pulumi.set(self, "encryption_configuration", value)
 
     @property
     @pulumi.getter
@@ -642,6 +678,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input[Union['DataTransferConfigEmailPreferencesArgs', 'DataTransferConfigEmailPreferencesArgsDict']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['DataTransferConfigEncryptionConfigurationArgs', 'DataTransferConfigEncryptionConfigurationArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -693,6 +730,45 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+        ### Bigquerydatatransfer Config Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        permissions = gcp.projects.IAMMember("permissions",
+            project=project.project_id,
+            role="roles/iam.serviceAccountTokenCreator",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
+        my_dataset = gcp.bigquery.Dataset("my_dataset",
+            dataset_id="example_dataset",
+            friendly_name="foo",
+            description="bar",
+            location="asia-northeast1",
+            opts = pulumi.ResourceOptions(depends_on=[permissions]))
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
+        query_config_cmek = gcp.bigquery.DataTransferConfig("query_config_cmek",
+            display_name="",
+            location="asia-northeast1",
+            data_source_id="scheduled_query",
+            schedule="first sunday of quarter 00:00",
+            destination_dataset_id=my_dataset.dataset_id,
+            params={
+                "destination_table_name_template": "my_table",
+                "write_disposition": "WRITE_APPEND",
+                "query": "SELECT name FROM tabl WHERE x = 'y'",
+            },
+            encryption_configuration={
+                "kms_key_name": crypto_key.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[permissions]))
+        ```
         ### Bigquerydatatransfer Config Salesforce
 
         ```python
@@ -713,9 +789,7 @@ class DataTransferConfig(pulumi.CustomResource):
             params={
                 "connector.authentication.oauth.clientId": "client-id",
                 "connector.authentication.oauth.clientSecret": "client-secret",
-                "connector.authentication.username": "username",
-                "connector.authentication.password": "password",
-                "connector.authentication.securityToken": "security-token",
+                "connector.authentication.oauth.myDomain": "MyDomainName",
                 "assets": "[\\"asset-a\\",\\"asset-b\\"]",
             })
         ```
@@ -745,6 +819,8 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
         :param pulumi.Input[Union['DataTransferConfigEmailPreferencesArgs', 'DataTransferConfigEmailPreferencesArgsDict']] email_preferences: Email notifications will be sent according to these preferences to the
                email address of the user who owns this transfer config.
+               Structure is documented below.
+        :param pulumi.Input[Union['DataTransferConfigEncryptionConfigurationArgs', 'DataTransferConfigEncryptionConfigurationArgsDict']] encryption_configuration: Represents the encryption configuration for a transfer.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
@@ -829,6 +905,45 @@ class DataTransferConfig(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[permissions]))
         ```
+        ### Bigquerydatatransfer Config Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        permissions = gcp.projects.IAMMember("permissions",
+            project=project.project_id,
+            role="roles/iam.serviceAccountTokenCreator",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
+        my_dataset = gcp.bigquery.Dataset("my_dataset",
+            dataset_id="example_dataset",
+            friendly_name="foo",
+            description="bar",
+            location="asia-northeast1",
+            opts = pulumi.ResourceOptions(depends_on=[permissions]))
+        key_ring = gcp.kms.KeyRing("key_ring",
+            name="example-keyring",
+            location="us")
+        crypto_key = gcp.kms.CryptoKey("crypto_key",
+            name="example-key",
+            key_ring=key_ring.id)
+        query_config_cmek = gcp.bigquery.DataTransferConfig("query_config_cmek",
+            display_name="",
+            location="asia-northeast1",
+            data_source_id="scheduled_query",
+            schedule="first sunday of quarter 00:00",
+            destination_dataset_id=my_dataset.dataset_id,
+            params={
+                "destination_table_name_template": "my_table",
+                "write_disposition": "WRITE_APPEND",
+                "query": "SELECT name FROM tabl WHERE x = 'y'",
+            },
+            encryption_configuration={
+                "kms_key_name": crypto_key.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[permissions]))
+        ```
         ### Bigquerydatatransfer Config Salesforce
 
         ```python
@@ -849,9 +964,7 @@ class DataTransferConfig(pulumi.CustomResource):
             params={
                 "connector.authentication.oauth.clientId": "client-id",
                 "connector.authentication.oauth.clientSecret": "client-secret",
-                "connector.authentication.username": "username",
-                "connector.authentication.password": "password",
-                "connector.authentication.securityToken": "security-token",
+                "connector.authentication.oauth.myDomain": "MyDomainName",
                 "assets": "[\\"asset-a\\",\\"asset-b\\"]",
             })
         ```
@@ -889,6 +1002,7 @@ class DataTransferConfig(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  email_preferences: Optional[pulumi.Input[Union['DataTransferConfigEmailPreferencesArgs', 'DataTransferConfigEmailPreferencesArgsDict']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['DataTransferConfigEncryptionConfigurationArgs', 'DataTransferConfigEncryptionConfigurationArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -916,6 +1030,7 @@ class DataTransferConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["email_preferences"] = email_preferences
+            __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["location"] = location
             __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
             if params is None and not opts.urn:
@@ -943,6 +1058,7 @@ class DataTransferConfig(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             email_preferences: Optional[pulumi.Input[Union['DataTransferConfigEmailPreferencesArgs', 'DataTransferConfigEmailPreferencesArgsDict']]] = None,
+            encryption_configuration: Optional[pulumi.Input[Union['DataTransferConfigEncryptionConfigurationArgs', 'DataTransferConfigEncryptionConfigurationArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
@@ -970,6 +1086,8 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
         :param pulumi.Input[Union['DataTransferConfigEmailPreferencesArgs', 'DataTransferConfigEmailPreferencesArgsDict']] email_preferences: Email notifications will be sent according to these preferences to the
                email address of the user who owns this transfer config.
+               Structure is documented below.
+        :param pulumi.Input[Union['DataTransferConfigEncryptionConfigurationArgs', 'DataTransferConfigEncryptionConfigurationArgsDict']] encryption_configuration: Represents the encryption configuration for a transfer.
                Structure is documented below.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
@@ -1021,6 +1139,7 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["email_preferences"] = email_preferences
+        __props__.__dict__["encryption_configuration"] = encryption_configuration
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_pubsub_topic"] = notification_pubsub_topic
@@ -1085,6 +1204,15 @@ class DataTransferConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "email_preferences")
+
+    @property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> pulumi.Output[Optional['outputs.DataTransferConfigEncryptionConfiguration']]:
+        """
+        Represents the encryption configuration for a transfer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
 
     @property
     @pulumi.getter

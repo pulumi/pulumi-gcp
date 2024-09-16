@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.InstanceFromMachineImageBootDiskInitializeParams? InitializeParams;
         /// <summary>
+        /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        /// </summary>
+        public readonly string? Interface;
+        /// <summary>
         /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         /// </summary>
         public readonly string? KmsKeySelfLink;
@@ -58,6 +62,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.InstanceFromMachineImageBootDiskInitializeParams? initializeParams,
 
+            string? @interface,
+
             string? kmsKeySelfLink,
 
             string? mode,
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             DiskEncryptionKeyRaw = diskEncryptionKeyRaw;
             DiskEncryptionKeySha256 = diskEncryptionKeySha256;
             InitializeParams = initializeParams;
+            Interface = @interface;
             KmsKeySelfLink = kmsKeySelfLink;
             Mode = mode;
             Source = source;

@@ -48,6 +48,21 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
     }
 
     /**
+     * Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    @Import(name="insecureKubeletReadonlyPortEnabled")
+    private @Nullable Output<String> insecureKubeletReadonlyPortEnabled;
+
+    /**
+     * @return Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    public Optional<Output<String>> insecureKubeletReadonlyPortEnabled() {
+        return Optional.ofNullable(this.insecureKubeletReadonlyPortEnabled);
+    }
+
+    /**
      * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
@@ -67,6 +82,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
     private ClusterNodePoolDefaultsNodeConfigDefaultsArgs(ClusterNodePoolDefaultsNodeConfigDefaultsArgs $) {
         this.containerdConfig = $.containerdConfig;
         this.gcfsConfig = $.gcfsConfig;
+        this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
         this.loggingVariant = $.loggingVariant;
     }
 
@@ -128,6 +144,27 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
          */
         public Builder gcfsConfig(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs gcfsConfig) {
             return gcfsConfig(Output.of(gcfsConfig));
+        }
+
+        /**
+         * @param insecureKubeletReadonlyPortEnabled Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insecureKubeletReadonlyPortEnabled(@Nullable Output<String> insecureKubeletReadonlyPortEnabled) {
+            $.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            return this;
+        }
+
+        /**
+         * @param insecureKubeletReadonlyPortEnabled Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
+            return insecureKubeletReadonlyPortEnabled(Output.of(insecureKubeletReadonlyPortEnabled));
         }
 
         /**

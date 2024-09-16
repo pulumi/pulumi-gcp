@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence;
 import java.lang.String;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence {
+    /**
+     * @return Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
     /**
      * @return Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
@@ -26,6 +33,14 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
     private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence schemaModifiedCadence;
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence() {}
+    /**
+     * @return Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence> inspectTemplateModifiedCadence() {
+        return Optional.ofNullable(this.inspectTemplateModifiedCadence);
+    }
     /**
      * @return Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
      * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
@@ -52,15 +67,23 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
         private @Nullable String refreshFrequency;
         private @Nullable PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence schemaModifiedCadence;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.inspectTemplateModifiedCadence = defaults.inspectTemplateModifiedCadence;
     	      this.refreshFrequency = defaults.refreshFrequency;
     	      this.schemaModifiedCadence = defaults.schemaModifiedCadence;
         }
 
+        @CustomType.Setter
+        public Builder inspectTemplateModifiedCadence(@Nullable PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence) {
+
+            this.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            return this;
+        }
         @CustomType.Setter
         public Builder refreshFrequency(@Nullable String refreshFrequency) {
 
@@ -75,6 +98,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
         }
         public PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence();
+            _resultValue.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
             _resultValue.refreshFrequency = refreshFrequency;
             _resultValue.schemaModifiedCadence = schemaModifiedCadence;
             return _resultValue;

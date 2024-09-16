@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -174,6 +175,25 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sharingEnvironmentConfig")
+    private @Nullable Output<DataExchangeSharingEnvironmentConfigArgs> sharingEnvironmentConfig;
+
+    /**
+     * @return Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataExchangeSharingEnvironmentConfigArgs>> sharingEnvironmentConfig() {
+        return Optional.ofNullable(this.sharingEnvironmentConfig);
+    }
+
     private DataExchangeState() {}
 
     private DataExchangeState(DataExchangeState $) {
@@ -187,6 +207,7 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.primaryContact = $.primaryContact;
         this.project = $.project;
+        this.sharingEnvironmentConfig = $.sharingEnvironmentConfig;
     }
 
     public static Builder builder() {
@@ -423,6 +444,31 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param sharingEnvironmentConfig Configurable data sharing environment option for a data exchange.
+         * This field is required for data clean room exchanges.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharingEnvironmentConfig(@Nullable Output<DataExchangeSharingEnvironmentConfigArgs> sharingEnvironmentConfig) {
+            $.sharingEnvironmentConfig = sharingEnvironmentConfig;
+            return this;
+        }
+
+        /**
+         * @param sharingEnvironmentConfig Configurable data sharing environment option for a data exchange.
+         * This field is required for data clean room exchanges.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharingEnvironmentConfig(DataExchangeSharingEnvironmentConfigArgs sharingEnvironmentConfig) {
+            return sharingEnvironmentConfig(Output.of(sharingEnvironmentConfig));
         }
 
         public DataExchangeState build() {

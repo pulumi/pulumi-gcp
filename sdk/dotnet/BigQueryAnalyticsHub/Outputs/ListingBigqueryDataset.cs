@@ -15,15 +15,22 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
     {
         /// <summary>
         /// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Dataset;
+        /// <summary>
+        /// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ListingBigqueryDatasetSelectedResource> SelectedResources;
 
         [OutputConstructor]
-        private ListingBigqueryDataset(string dataset)
+        private ListingBigqueryDataset(
+            string dataset,
+
+            ImmutableArray<Outputs.ListingBigqueryDatasetSelectedResource> selectedResources)
         {
             Dataset = dataset;
+            SelectedResources = selectedResources;
         }
     }
 }

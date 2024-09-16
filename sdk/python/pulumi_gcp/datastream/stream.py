@@ -47,7 +47,8 @@ class StreamArgs:
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
         """
@@ -186,7 +187,8 @@ class StreamArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+        values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         """
         return pulumi.get(self, "desired_state")
 
@@ -243,7 +245,8 @@ class _StreamState:
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
@@ -345,7 +348,8 @@ class _StreamState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+        values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         """
         return pulumi.get(self, "desired_state")
 
@@ -924,6 +928,96 @@ class Stream(pulumi.CustomResource):
                             }],
                         }],
                     },
+                    "transaction_logs": {},
+                },
+            },
+            destination_config={
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
+        ```
+        ### Datastream Stream Sql Server Change Tables
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="sql-server",
+            database_version="SQLSERVER_2019_STANDARD",
+            region="us-central1",
+            root_password="root-password",
+            deletion_protection=True,
+            settings={
+                "tier": "db-custom-2-4096",
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            })
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="password")
+        db = gcp.sql.Database("db",
+            name="db",
+            instance=instance.name,
+            opts = pulumi.ResourceOptions(depends_on=[user]))
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="SQL Server Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            sql_server_profile={
+                "hostname": instance.public_ip_address,
+                "port": 1433,
+                "username": user.name,
+                "password": user.password,
+                "database": db.name,
+            })
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            display_name="SQL Server to BigQuery",
+            location="us-central1",
+            stream_id="stream",
+            source_config={
+                "source_connection_profile": source.id,
+                "sql_server_source_config": {
+                    "include_objects": {
+                        "schemas": [{
+                            "schema": "schema",
+                            "tables": [{
+                                "table": "table",
+                            }],
+                        }],
+                    },
+                    "change_tables": {},
                 },
             },
             destination_config={
@@ -1234,7 +1328,8 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         :param pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
@@ -1670,6 +1765,96 @@ class Stream(pulumi.CustomResource):
                             }],
                         }],
                     },
+                    "transaction_logs": {},
+                },
+            },
+            destination_config={
+                "destination_connection_profile": destination.id,
+                "bigquery_destination_config": {
+                    "data_freshness": "900s",
+                    "source_hierarchy_datasets": {
+                        "dataset_template": {
+                            "location": "us-central1",
+                        },
+                    },
+                },
+            },
+            backfill_none={})
+        ```
+        ### Datastream Stream Sql Server Change Tables
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="sql-server",
+            database_version="SQLSERVER_2019_STANDARD",
+            region="us-central1",
+            root_password="root-password",
+            deletion_protection=True,
+            settings={
+                "tier": "db-custom-2-4096",
+                "ip_configuration": {
+                    "authorized_networks": [
+                        {
+                            "value": "34.71.242.81",
+                        },
+                        {
+                            "value": "34.72.28.29",
+                        },
+                        {
+                            "value": "34.67.6.157",
+                        },
+                        {
+                            "value": "34.67.234.134",
+                        },
+                        {
+                            "value": "34.72.239.218",
+                        },
+                    ],
+                },
+            })
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="password")
+        db = gcp.sql.Database("db",
+            name="db",
+            instance=instance.name,
+            opts = pulumi.ResourceOptions(depends_on=[user]))
+        source = gcp.datastream.ConnectionProfile("source",
+            display_name="SQL Server Source",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            sql_server_profile={
+                "hostname": instance.public_ip_address,
+                "port": 1433,
+                "username": user.name,
+                "password": user.password,
+                "database": db.name,
+            })
+        destination = gcp.datastream.ConnectionProfile("destination",
+            display_name="BigQuery Destination",
+            location="us-central1",
+            connection_profile_id="destination-profile",
+            bigquery_profile={})
+        default = gcp.datastream.Stream("default",
+            display_name="SQL Server to BigQuery",
+            location="us-central1",
+            stream_id="stream",
+            source_config={
+                "source_connection_profile": source.id,
+                "sql_server_source_config": {
+                    "include_objects": {
+                        "schemas": [{
+                            "schema": "schema",
+                            "tables": [{
+                                "table": "table",
+                            }],
+                        }],
+                    },
+                    "change_tables": {},
                 },
             },
             destination_config={
@@ -2075,7 +2260,8 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         :param pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
@@ -2150,7 +2336,8 @@ class Stream(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+        values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         """
         return pulumi.get(self, "desired_state")
 

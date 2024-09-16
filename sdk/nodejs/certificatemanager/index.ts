@@ -35,6 +35,11 @@ export const getCertificateMap: typeof import("./getCertificateMap").getCertific
 export const getCertificateMapOutput: typeof import("./getCertificateMap").getCertificateMapOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificateMap","getCertificateMapOutput"], () => require("./getCertificateMap"));
 
+export { GetCertificatesArgs, GetCertificatesResult, GetCertificatesOutputArgs } from "./getCertificates";
+export const getCertificates: typeof import("./getCertificates").getCertificates = null as any;
+export const getCertificatesOutput: typeof import("./getCertificates").getCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificates","getCertificatesOutput"], () => require("./getCertificates"));
+
 export { TrustConfigArgs, TrustConfigState } from "./trustConfig";
 export type TrustConfig = import("./trustConfig").TrustConfig;
 export const TrustConfig: typeof import("./trustConfig").TrustConfig = null as any;

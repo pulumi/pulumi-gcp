@@ -932,70 +932,40 @@ class ConnectionProfileMysql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 host: str,
-                 password: str,
-                 port: int,
-                 username: str,
                  cloud_sql_id: Optional[str] = None,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
                  password_set: Optional[bool] = None,
-                 ssl: Optional['outputs.ConnectionProfileMysqlSsl'] = None):
+                 port: Optional[int] = None,
+                 ssl: Optional['outputs.ConnectionProfileMysqlSsl'] = None,
+                 username: Optional[str] = None):
         """
-        :param str host: Required. The IP or hostname of the source MySQL database.
-        :param str password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        :param str host: The IP or hostname of the source MySQL database.
+        :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database.
                This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param int port: Required. The network port of the source MySQL database.
-        :param str username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-        :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param bool password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
+        :param int port: The network port of the source MySQL database.
         :param 'ConnectionProfileMysqlSslArgs' ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
+        :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "username", username)
         if cloud_sql_id is not None:
             pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if password_set is not None:
             pulumi.set(__self__, "password_set", password_set)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
-
-    @property
-    @pulumi.getter
-    def host(self) -> str:
-        """
-        Required. The IP or hostname of the source MySQL database.
-        """
-        return pulumi.get(self, "host")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        """
-        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
-        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter
-    def port(self) -> int:
-        """
-        Required. The network port of the source MySQL database.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def username(self) -> str:
-        """
-        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-        """
-        return pulumi.get(self, "username")
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -1004,6 +974,24 @@ class ConnectionProfileMysql(dict):
         If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         """
         return pulumi.get(self, "cloud_sql_id")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        The IP or hostname of the source MySQL database.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="passwordSet")
@@ -1016,12 +1004,28 @@ class ConnectionProfileMysql(dict):
 
     @property
     @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The network port of the source MySQL database.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
     def ssl(self) -> Optional['outputs.ConnectionProfileMysqlSsl']:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -1494,7 +1498,9 @@ class ConnectionProfilePostgresql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudSqlId":
+        if key == "alloydbClusterId":
+            suggest = "alloydb_cluster_id"
+        elif key == "cloudSqlId":
             suggest = "cloud_sql_id"
         elif key == "networkArchitecture":
             suggest = "network_architecture"
@@ -1513,75 +1519,57 @@ class ConnectionProfilePostgresql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 host: str,
-                 password: str,
-                 port: int,
-                 username: str,
+                 alloydb_cluster_id: Optional[str] = None,
                  cloud_sql_id: Optional[str] = None,
+                 host: Optional[str] = None,
                  network_architecture: Optional[str] = None,
+                 password: Optional[str] = None,
                  password_set: Optional[bool] = None,
-                 ssl: Optional['outputs.ConnectionProfilePostgresqlSsl'] = None):
+                 port: Optional[int] = None,
+                 ssl: Optional['outputs.ConnectionProfilePostgresqlSsl'] = None,
+                 username: Optional[str] = None):
         """
-        :param str host: Required. The IP or hostname of the source MySQL database.
-        :param str password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
-               This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-               **Note**: This property is sensitive and will not be displayed in the plan.
-        :param int port: Required. The network port of the source MySQL database.
-        :param str username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        :param str alloydb_cluster_id: If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        :param str host: The IP or hostname of the source MySQL database.
         :param str network_architecture: (Output)
                Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+        :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database.
+               This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param bool password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
+        :param int port: The network port of the source MySQL database.
         :param 'ConnectionProfilePostgresqlSslArgs' ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
+        :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "username", username)
+        if alloydb_cluster_id is not None:
+            pulumi.set(__self__, "alloydb_cluster_id", alloydb_cluster_id)
         if cloud_sql_id is not None:
             pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
         if network_architecture is not None:
             pulumi.set(__self__, "network_architecture", network_architecture)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if password_set is not None:
             pulumi.set(__self__, "password_set", password_set)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
-    @pulumi.getter
-    def host(self) -> str:
+    @pulumi.getter(name="alloydbClusterId")
+    def alloydb_cluster_id(self) -> Optional[str]:
         """
-        Required. The IP or hostname of the source MySQL database.
+        If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         """
-        return pulumi.get(self, "host")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        """
-        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
-        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter
-    def port(self) -> int:
-        """
-        Required. The network port of the source MySQL database.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def username(self) -> str:
-        """
-        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-        """
-        return pulumi.get(self, "username")
+        return pulumi.get(self, "alloydb_cluster_id")
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -1592,6 +1580,14 @@ class ConnectionProfilePostgresql(dict):
         return pulumi.get(self, "cloud_sql_id")
 
     @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        The IP or hostname of the source MySQL database.
+        """
+        return pulumi.get(self, "host")
+
+    @property
     @pulumi.getter(name="networkArchitecture")
     def network_architecture(self) -> Optional[str]:
         """
@@ -1599,6 +1595,16 @@ class ConnectionProfilePostgresql(dict):
         Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
         """
         return pulumi.get(self, "network_architecture")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="passwordSet")
@@ -1611,12 +1617,28 @@ class ConnectionProfilePostgresql(dict):
 
     @property
     @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The network port of the source MySQL database.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
     def ssl(self) -> Optional['outputs.ConnectionProfilePostgresqlSsl']:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

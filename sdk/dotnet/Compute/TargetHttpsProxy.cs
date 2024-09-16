@@ -566,6 +566,10 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
         /// loadBalancingScheme consult ServerTlsPolicy documentation.
         /// If left blank, communications are not encrypted.
+        /// If you remove this field from your configuration at the same time as
+        /// deleting or recreating a referenced ServerTlsPolicy resource, you will
+        /// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+        /// within the ServerTlsPolicy resource to avoid this.
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
@@ -741,6 +745,10 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
         /// loadBalancingScheme consult ServerTlsPolicy documentation.
         /// If left blank, communications are not encrypted.
+        /// If you remove this field from your configuration at the same time as
+        /// deleting or recreating a referenced ServerTlsPolicy resource, you will
+        /// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+        /// within the ServerTlsPolicy resource to avoid this.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
@@ -902,6 +910,10 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
         /// loadBalancingScheme consult ServerTlsPolicy documentation.
         /// If left blank, communications are not encrypted.
+        /// If you remove this field from your configuration at the same time as
+        /// deleting or recreating a referenced ServerTlsPolicy resource, you will
+        /// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+        /// within the ServerTlsPolicy resource to avoid this.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }

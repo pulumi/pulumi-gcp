@@ -19,6 +19,14 @@ __all__ = [
     'ClusterDiscoveryEndpointArgsDict',
     'ClusterDiscoveryEndpointPscConfigArgs',
     'ClusterDiscoveryEndpointPscConfigArgsDict',
+    'ClusterMaintenancePolicyArgs',
+    'ClusterMaintenancePolicyArgsDict',
+    'ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs',
+    'ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict',
+    'ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs',
+    'ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict',
+    'ClusterMaintenanceScheduleArgs',
+    'ClusterMaintenanceScheduleArgsDict',
     'ClusterPscConfigArgs',
     'ClusterPscConfigArgsDict',
     'ClusterPscConnectionArgs',
@@ -155,6 +163,417 @@ class ClusterDiscoveryEndpointPscConfigArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+
+if not MYPY:
+    class ClusterMaintenancePolicyArgsDict(TypedDict):
+        create_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        update_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The time when the policy was last updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
+        """
+        Optional. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number
+        of weekly_window is expected to be one.
+        Structure is documented below.
+        """
+elif False:
+    ClusterMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterMaintenancePolicyArgs:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
+        """
+        :param pulumi.Input[str] create_time: (Output)
+               Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param pulumi.Input[str] update_time: (Output)
+               Output only. The time when the policy was last updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
+               Minimum 1. For the current version, the maximum number
+               of weekly_window is expected to be one.
+               Structure is documented below.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if weekly_maintenance_windows is not None:
+            pulumi.set(__self__, "weekly_maintenance_windows", weekly_maintenance_windows)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The time when the policy was last updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter(name="weeklyMaintenanceWindows")
+    def weekly_maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
+        """
+        Optional. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number
+        of weekly_window is expected to be one.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "weekly_maintenance_windows")
+
+    @weekly_maintenance_windows.setter
+    def weekly_maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
+        pulumi.set(self, "weekly_maintenance_windows", value)
+
+
+if not MYPY:
+    class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
+        day: pulumi.Input[str]
+        """
+        Required. The day of week that maintenance updates occur.
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        start_time: pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
+        """
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Duration of the maintenance window.
+        The current window is fixed at 1 hour.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+elif False:
+    ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[str],
+                 start_time: pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'],
+                 duration: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] day: Required. The day of week that maintenance updates occur.
+               - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+               - MONDAY: Monday
+               - TUESDAY: Tuesday
+               - WEDNESDAY: Wednesday
+               - THURSDAY: Thursday
+               - FRIDAY: Friday
+               - SATURDAY: Saturday
+               - SUNDAY: Sunday
+               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        :param pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
+               Structure is documented below.
+        :param pulumi.Input[str] duration: (Output)
+               Output only. Duration of the maintenance window.
+               The current window is fixed at 1 hour.
+               A duration in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s".
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_time", start_time)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[str]:
+        """
+        Required. The day of week that maintenance updates occur.
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']:
+        """
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Duration of the maintenance window.
+        The current window is fixed at 1 hour.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+
+if not MYPY:
+    class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
+        hours: NotRequired[pulumi.Input[int]]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        minutes: NotRequired[pulumi.Input[int]]
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+elif False:
+    ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[int]] = None,
+                 minutes: Optional[pulumi.Input[int]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param pulumi.Input[int] minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+               An API may allow the value 60 if it allows leap-seconds.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[int]]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hours", value)
+
+    @property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minutes", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class ClusterMaintenanceScheduleArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The end time of any upcoming scheduled maintenance for this cluster.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        schedule_deadline_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The start time of any upcoming scheduled maintenance for this cluster.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+elif False:
+    ClusterMaintenanceScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterMaintenanceScheduleArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 schedule_deadline_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: (Output)
+               Output only. The end time of any upcoming scheduled maintenance for this cluster.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param pulumi.Input[str] schedule_deadline_time: (Output)
+               Output only. The deadline that the maintenance schedule start time
+               can not go beyond, including reschedule.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param pulumi.Input[str] start_time: (Output)
+               Output only. The start time of any upcoming scheduled maintenance for this cluster.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if schedule_deadline_time is not None:
+            pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The end time of any upcoming scheduled maintenance for this cluster.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="scheduleDeadlineTime")
+    def schedule_deadline_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "schedule_deadline_time")
+
+    @schedule_deadline_time.setter
+    def schedule_deadline_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule_deadline_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The start time of any upcoming scheduled maintenance for this cluster.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 if not MYPY:

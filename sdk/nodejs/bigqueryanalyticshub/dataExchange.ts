@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -26,6 +28,22 @@ import * as utilities from "../utilities";
  *     dataExchangeId: "my_data_exchange",
  *     displayName: "my_data_exchange",
  *     description: "example data exchange",
+ * });
+ * ```
+ * ### Bigquery Analyticshub Data Exchange Dcr
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("data_exchange", {
+ *     location: "US",
+ *     dataExchangeId: "dcr_data_exchange",
+ *     displayName: "dcr_data_exchange",
+ *     description: "example dcr data exchange",
+ *     sharingEnvironmentConfig: {
+ *         dcrExchangeConfig: {},
+ *     },
  * });
  * ```
  *
@@ -132,6 +150,12 @@ export class DataExchange extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     */
+    public readonly sharingEnvironmentConfig!: pulumi.Output<outputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
 
     /**
      * Create a DataExchange resource with the given unique name, arguments, and options.
@@ -156,6 +180,7 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["primaryContact"] = state ? state.primaryContact : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["sharingEnvironmentConfig"] = state ? state.sharingEnvironmentConfig : undefined;
         } else {
             const args = argsOrState as DataExchangeArgs | undefined;
             if ((!args || args.dataExchangeId === undefined) && !opts.urn) {
@@ -175,6 +200,7 @@ export class DataExchange extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["primaryContact"] = args ? args.primaryContact : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sharingEnvironmentConfig"] = args ? args.sharingEnvironmentConfig : undefined;
             resourceInputs["listingCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -232,6 +258,12 @@ export interface DataExchangeState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     */
+    sharingEnvironmentConfig?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
 }
 
 /**
@@ -274,4 +306,10 @@ export interface DataExchangeArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     */
+    sharingEnvironmentConfig?: pulumi.Input<inputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfig>;
 }

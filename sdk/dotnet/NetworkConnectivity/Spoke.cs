@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///                 "198.51.100.0/24",
     ///                 "10.10.0.0/16",
     ///             },
+    ///             IncludeExportRanges = new[]
+    ///             {
+    ///                 "198.51.100.0/23",
+    ///                 "10.0.0.0/8",
+    ///             },
     ///             Uri = network.SelfLink,
     ///         },
     ///     });

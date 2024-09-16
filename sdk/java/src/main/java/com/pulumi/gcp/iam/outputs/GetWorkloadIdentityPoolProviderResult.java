@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderAw;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderOidc;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderSaml;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderX509;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -36,6 +37,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     private String state;
     private String workloadIdentityPoolId;
     private String workloadIdentityPoolProviderId;
+    private List<GetWorkloadIdentityPoolProviderX509> x509s;
 
     private GetWorkloadIdentityPoolProviderResult() {}
     public String attributeCondition() {
@@ -84,6 +86,9 @@ public final class GetWorkloadIdentityPoolProviderResult {
     public String workloadIdentityPoolProviderId() {
         return this.workloadIdentityPoolProviderId;
     }
+    public List<GetWorkloadIdentityPoolProviderX509> x509s() {
+        return this.x509s;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -108,6 +113,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
         private String state;
         private String workloadIdentityPoolId;
         private String workloadIdentityPoolProviderId;
+        private List<GetWorkloadIdentityPoolProviderX509> x509s;
         public Builder() {}
         public Builder(GetWorkloadIdentityPoolProviderResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -125,6 +131,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     	      this.state = defaults.state;
     	      this.workloadIdentityPoolId = defaults.workloadIdentityPoolId;
     	      this.workloadIdentityPoolProviderId = defaults.workloadIdentityPoolProviderId;
+    	      this.x509s = defaults.x509s;
         }
 
         @CustomType.Setter
@@ -246,6 +253,17 @@ public final class GetWorkloadIdentityPoolProviderResult {
             this.workloadIdentityPoolProviderId = workloadIdentityPoolProviderId;
             return this;
         }
+        @CustomType.Setter
+        public Builder x509s(List<GetWorkloadIdentityPoolProviderX509> x509s) {
+            if (x509s == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "x509s");
+            }
+            this.x509s = x509s;
+            return this;
+        }
+        public Builder x509s(GetWorkloadIdentityPoolProviderX509... x509s) {
+            return x509s(List.of(x509s));
+        }
         public GetWorkloadIdentityPoolProviderResult build() {
             final var _resultValue = new GetWorkloadIdentityPoolProviderResult();
             _resultValue.attributeCondition = attributeCondition;
@@ -262,6 +280,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
             _resultValue.state = state;
             _resultValue.workloadIdentityPoolId = workloadIdentityPoolId;
             _resultValue.workloadIdentityPoolProviderId = workloadIdentityPoolProviderId;
+            _resultValue.x509s = x509s;
             return _resultValue;
         }
     }

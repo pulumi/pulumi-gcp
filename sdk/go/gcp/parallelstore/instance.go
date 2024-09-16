@@ -116,7 +116,7 @@ type Instance struct {
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// The time when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The version of DAOS software running in the instance
+	// The version of DAOS software running in the instance.
 	DaosVersion pulumi.StringOutput `pulumi:"daosVersion"`
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -131,9 +131,9 @@ type Instance struct {
 	DirectoryStripeLevel pulumi.StringPtrOutput `pulumi:"directoryStripeLevel"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. This field is populated by the service and
+	// Immutable. Contains the id of the allocated IP address
+	// range associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. This field is populated by the service
 	// and contains the value currently used by the service.
 	EffectiveReservedIpRange pulumi.StringOutput `pulumi:"effectiveReservedIpRange"`
 	// Stripe level for files.
@@ -154,12 +154,12 @@ type Instance struct {
 	//
 	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-	// resources into groups that reflect a customer's organizational needs and
-	// deployment strategies. Cloud Labels can be used to filter collections of
-	// resources. They can be used to control how resource metrics are aggregated.
-	// And they can be used as arguments to policy management rules (e.g. route,
-	// firewall, load balancing, etc.).
+	// Cloud Labels are a flexible and lightweight mechanism for
+	// organizing cloud resources into groups that reflect a customer's organizational
+	// needs and deployment strategies. Cloud Labels can be used to filter collections
+	// of resources. They can be used to control how resource metrics are aggregated.
+	// And they can be used as arguments to policy management rules (e.g. route, firewall,
+	// load balancing, etc.).
 	// * Label keys must be between 1 and 63 characters long and must conform to
 	//   the following regular expression: `a-z{0,62}`.
 	// * Label values must be between 0 and 63 characters long and must conform
@@ -170,19 +170,19 @@ type Instance struct {
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
-	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	//   as the string:  `name + "_" + value` would prove problematic if we were to
+	//   allow `"_"` in a future release. "
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The resource name of the instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Immutable. The name of the Google Compute Engine
-	// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-	// instance is connected.
+	// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+	// to which the instance is connected.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -190,10 +190,10 @@ type Instance struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-	// considered.
+	// Immutable. Contains the id of the allocated IP address range
+	// associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+	// be considered.
 	ReservedIpRange pulumi.StringPtrOutput `pulumi:"reservedIpRange"`
 	// The instance state.
 	// Possible values:
@@ -259,7 +259,7 @@ type instanceState struct {
 	CapacityGib *string `pulumi:"capacityGib"`
 	// The time when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The version of DAOS software running in the instance
+	// The version of DAOS software running in the instance.
 	DaosVersion *string `pulumi:"daosVersion"`
 	// The description of the instance. 2048 characters or less.
 	Description *string `pulumi:"description"`
@@ -274,9 +274,9 @@ type instanceState struct {
 	DirectoryStripeLevel *string `pulumi:"directoryStripeLevel"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. This field is populated by the service and
+	// Immutable. Contains the id of the allocated IP address
+	// range associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. This field is populated by the service
 	// and contains the value currently used by the service.
 	EffectiveReservedIpRange *string `pulumi:"effectiveReservedIpRange"`
 	// Stripe level for files.
@@ -297,12 +297,12 @@ type instanceState struct {
 	//
 	// ***
 	InstanceId *string `pulumi:"instanceId"`
-	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-	// resources into groups that reflect a customer's organizational needs and
-	// deployment strategies. Cloud Labels can be used to filter collections of
-	// resources. They can be used to control how resource metrics are aggregated.
-	// And they can be used as arguments to policy management rules (e.g. route,
-	// firewall, load balancing, etc.).
+	// Cloud Labels are a flexible and lightweight mechanism for
+	// organizing cloud resources into groups that reflect a customer's organizational
+	// needs and deployment strategies. Cloud Labels can be used to filter collections
+	// of resources. They can be used to control how resource metrics are aggregated.
+	// And they can be used as arguments to policy management rules (e.g. route, firewall,
+	// load balancing, etc.).
 	// * Label keys must be between 1 and 63 characters long and must conform to
 	//   the following regular expression: `a-z{0,62}`.
 	// * Label values must be between 0 and 63 characters long and must conform
@@ -313,19 +313,19 @@ type instanceState struct {
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
-	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	//   as the string:  `name + "_" + value` would prove problematic if we were to
+	//   allow `"_"` in a future release. "
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location *string `pulumi:"location"`
 	// Identifier. The resource name of the instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance_id}`
 	Name *string `pulumi:"name"`
-	// Immutable. The name of the Google Compute Engine
-	// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-	// instance is connected.
+	// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+	// to which the instance is connected.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -333,10 +333,10 @@ type instanceState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-	// considered.
+	// Immutable. Contains the id of the allocated IP address range
+	// associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+	// be considered.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// The instance state.
 	// Possible values:
@@ -359,7 +359,7 @@ type InstanceState struct {
 	CapacityGib pulumi.StringPtrInput
 	// The time when the instance was created.
 	CreateTime pulumi.StringPtrInput
-	// The version of DAOS software running in the instance
+	// The version of DAOS software running in the instance.
 	DaosVersion pulumi.StringPtrInput
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrInput
@@ -374,9 +374,9 @@ type InstanceState struct {
 	DirectoryStripeLevel pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. This field is populated by the service and
+	// Immutable. Contains the id of the allocated IP address
+	// range associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. This field is populated by the service
 	// and contains the value currently used by the service.
 	EffectiveReservedIpRange pulumi.StringPtrInput
 	// Stripe level for files.
@@ -397,12 +397,12 @@ type InstanceState struct {
 	//
 	// ***
 	InstanceId pulumi.StringPtrInput
-	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-	// resources into groups that reflect a customer's organizational needs and
-	// deployment strategies. Cloud Labels can be used to filter collections of
-	// resources. They can be used to control how resource metrics are aggregated.
-	// And they can be used as arguments to policy management rules (e.g. route,
-	// firewall, load balancing, etc.).
+	// Cloud Labels are a flexible and lightweight mechanism for
+	// organizing cloud resources into groups that reflect a customer's organizational
+	// needs and deployment strategies. Cloud Labels can be used to filter collections
+	// of resources. They can be used to control how resource metrics are aggregated.
+	// And they can be used as arguments to policy management rules (e.g. route, firewall,
+	// load balancing, etc.).
 	// * Label keys must be between 1 and 63 characters long and must conform to
 	//   the following regular expression: `a-z{0,62}`.
 	// * Label values must be between 0 and 63 characters long and must conform
@@ -413,19 +413,19 @@ type InstanceState struct {
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
-	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	//   as the string:  `name + "_" + value` would prove problematic if we were to
+	//   allow `"_"` in a future release. "
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringPtrInput
 	// Identifier. The resource name of the instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance_id}`
 	Name pulumi.StringPtrInput
-	// Immutable. The name of the Google Compute Engine
-	// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-	// instance is connected.
+	// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+	// to which the instance is connected.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -433,10 +433,10 @@ type InstanceState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-	// considered.
+	// Immutable. Contains the id of the allocated IP address range
+	// associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+	// be considered.
 	ReservedIpRange pulumi.StringPtrInput
 	// The instance state.
 	// Possible values:
@@ -487,12 +487,12 @@ type instanceArgs struct {
 	//
 	// ***
 	InstanceId string `pulumi:"instanceId"`
-	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-	// resources into groups that reflect a customer's organizational needs and
-	// deployment strategies. Cloud Labels can be used to filter collections of
-	// resources. They can be used to control how resource metrics are aggregated.
-	// And they can be used as arguments to policy management rules (e.g. route,
-	// firewall, load balancing, etc.).
+	// Cloud Labels are a flexible and lightweight mechanism for
+	// organizing cloud resources into groups that reflect a customer's organizational
+	// needs and deployment strategies. Cloud Labels can be used to filter collections
+	// of resources. They can be used to control how resource metrics are aggregated.
+	// And they can be used as arguments to policy management rules (e.g. route, firewall,
+	// load balancing, etc.).
 	// * Label keys must be between 1 and 63 characters long and must conform to
 	//   the following regular expression: `a-z{0,62}`.
 	// * Label values must be between 0 and 63 characters long and must conform
@@ -503,24 +503,24 @@ type instanceArgs struct {
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
-	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	//   as the string:  `name + "_" + value` would prove problematic if we were to
+	//   allow `"_"` in a future release. "
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Part of `parent`. See documentation of `projectsId`.
 	Location string `pulumi:"location"`
-	// Immutable. The name of the Google Compute Engine
-	// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-	// instance is connected.
+	// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+	// to which the instance is connected.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-	// considered.
+	// Immutable. Contains the id of the allocated IP address range
+	// associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+	// be considered.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 }
 
@@ -557,12 +557,12 @@ type InstanceArgs struct {
 	//
 	// ***
 	InstanceId pulumi.StringInput
-	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-	// resources into groups that reflect a customer's organizational needs and
-	// deployment strategies. Cloud Labels can be used to filter collections of
-	// resources. They can be used to control how resource metrics are aggregated.
-	// And they can be used as arguments to policy management rules (e.g. route,
-	// firewall, load balancing, etc.).
+	// Cloud Labels are a flexible and lightweight mechanism for
+	// organizing cloud resources into groups that reflect a customer's organizational
+	// needs and deployment strategies. Cloud Labels can be used to filter collections
+	// of resources. They can be used to control how resource metrics are aggregated.
+	// And they can be used as arguments to policy management rules (e.g. route, firewall,
+	// load balancing, etc.).
 	// * Label keys must be between 1 and 63 characters long and must conform to
 	//   the following regular expression: `a-z{0,62}`.
 	// * Label values must be between 0 and 63 characters long and must conform
@@ -573,24 +573,24 @@ type InstanceArgs struct {
 	//   characters may be allowed in the future. Therefore, you are advised to use
 	//   an internal label representation, such as JSON, which doesn't rely upon
 	//   specific characters being disallowed.  For example, representing labels
-	//   as the string:  name + "_" + value  would prove problematic if we were to
-	//   allow "_" in a future release.
-	//   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-	//   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	//   as the string:  `name + "_" + value` would prove problematic if we were to
+	//   allow `"_"` in a future release. "
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Part of `parent`. See documentation of `projectsId`.
 	Location pulumi.StringInput
-	// Immutable. The name of the Google Compute Engine
-	// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-	// instance is connected.
+	// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+	// to which the instance is connected.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Immutable. Contains the id of the allocated IP address range associated with the
-	// private service access connection for example, "test-default" associated
-	// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-	// considered.
+	// Immutable. Contains the id of the allocated IP address range
+	// associated with the private service access connection for example, \"test-default\"
+	// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+	// be considered.
 	ReservedIpRange pulumi.StringPtrInput
 }
 
@@ -697,7 +697,7 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The version of DAOS software running in the instance
+// The version of DAOS software running in the instance.
 func (o InstanceOutput) DaosVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DaosVersion }).(pulumi.StringOutput)
 }
@@ -724,9 +724,9 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Immutable. Contains the id of the allocated IP address range associated with the
-// private service access connection for example, "test-default" associated
-// with IP range 10.0.0.0/29. This field is populated by the service and
+// Immutable. Contains the id of the allocated IP address
+// range associated with the private service access connection for example, \"test-default\"
+// associated with IP range 10.0.0.0/29. This field is populated by the service
 // and contains the value currently used by the service.
 func (o InstanceOutput) EffectiveReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EffectiveReservedIpRange }).(pulumi.StringOutput)
@@ -756,12 +756,12 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-// resources into groups that reflect a customer's organizational needs and
-// deployment strategies. Cloud Labels can be used to filter collections of
-// resources. They can be used to control how resource metrics are aggregated.
-// And they can be used as arguments to policy management rules (e.g. route,
-// firewall, load balancing, etc.).
+// Cloud Labels are a flexible and lightweight mechanism for
+// organizing cloud resources into groups that reflect a customer's organizational
+// needs and deployment strategies. Cloud Labels can be used to filter collections
+// of resources. They can be used to control how resource metrics are aggregated.
+// And they can be used as arguments to policy management rules (e.g. route, firewall,
+// load balancing, etc.).
 //   - Label keys must be between 1 and 63 characters long and must conform to
 //     the following regular expression: `a-z{0,62}`.
 //   - Label values must be between 0 and 63 characters long and must conform
@@ -772,10 +772,11 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 //     characters may be allowed in the future. Therefore, you are advised to use
 //     an internal label representation, such as JSON, which doesn't rely upon
 //     specific characters being disallowed.  For example, representing labels
-//     as the string:  name + "_" + value  would prove problematic if we were to
-//     allow "_" in a future release.
-//     **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-//     Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+//     as the string:  `name + "_" + value` would prove problematic if we were to
+//     allow `"_"` in a future release. "
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -791,9 +792,8 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Immutable. The name of the Google Compute Engine
-// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-// instance is connected.
+// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+// to which the instance is connected.
 func (o InstanceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -810,10 +810,10 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Immutable. Contains the id of the allocated IP address range associated with the
-// private service access connection for example, "test-default" associated
-// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-// considered.
+// Immutable. Contains the id of the allocated IP address range
+// associated with the private service access connection for example, \"test-default\"
+// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+// be considered.
 func (o InstanceOutput) ReservedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }

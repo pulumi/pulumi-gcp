@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("inspectTemplateModifiedCadence")]
+        public Input<Inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs>? InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
         /// Governs when to update data profiles when a schema is modified
         /// Structure is documented below.
         /// </summary>

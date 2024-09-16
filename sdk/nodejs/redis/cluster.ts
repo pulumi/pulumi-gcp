@@ -61,6 +61,17 @@ import * as utilities from "../utilities";
  *     zoneDistributionConfig: {
  *         mode: "MULTI_ZONE",
  *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
  * }, {
  *     dependsOn: [_default],
  * });
@@ -101,6 +112,17 @@ import * as utilities from "../utilities";
  *     zoneDistributionConfig: {
  *         mode: "SINGLE_ZONE",
  *         zone: "us-central1-f",
+ *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
  *     },
  *     deletionProtectionEnabled: true,
  * }, {
@@ -191,6 +213,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly discoveryEndpoints!: pulumi.Output<outputs.redis.ClusterDiscoveryEndpoint[]>;
     /**
+     * Maintenance policy for a cluster
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.redis.ClusterMaintenancePolicy | undefined>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.redis.ClusterMaintenanceSchedule[]>;
+    /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      */
@@ -280,6 +311,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
+            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
+            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
             resourceInputs["preciseSizeGb"] = state ? state.preciseSizeGb : undefined;
@@ -306,6 +339,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -318,6 +352,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["zoneDistributionConfig"] = args ? args.zoneDistributionConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["preciseSizeGb"] = undefined /*out*/;
             resourceInputs["pscConnections"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
@@ -358,6 +393,15 @@ export interface ClusterState {
      * Structure is documented below.
      */
     discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterDiscoveryEndpoint>[]>;
+    /**
+     * Maintenance policy for a cluster
+     */
+    maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy>;
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     */
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.redis.ClusterMaintenanceSchedule>[]>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -447,6 +491,10 @@ export interface ClusterArgs {
      * operation will fail. Default value is true.
      */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Maintenance policy for a cluster
+     */
+    maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}

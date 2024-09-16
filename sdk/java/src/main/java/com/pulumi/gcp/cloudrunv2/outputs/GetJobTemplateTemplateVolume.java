@@ -27,7 +27,7 @@ public final class GetJobTemplateTemplateVolume {
      */
     private List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs;
     /**
-     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse.
      * 
      */
     private List<GetJobTemplateTemplateVolumeGc> gcs;
@@ -37,7 +37,7 @@ public final class GetJobTemplateTemplateVolume {
      */
     private String name;
     /**
-     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * @return NFS share mounted as a volume.
      * 
      */
     private List<GetJobTemplateTemplateVolumeNf> nfs;
@@ -63,7 +63,7 @@ public final class GetJobTemplateTemplateVolume {
         return this.emptyDirs;
     }
     /**
-     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse.
      * 
      */
     public List<GetJobTemplateTemplateVolumeGc> gcs() {
@@ -77,7 +77,7 @@ public final class GetJobTemplateTemplateVolume {
         return this.name;
     }
     /**
-     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * @return NFS share mounted as a volume.
      * 
      */
     public List<GetJobTemplateTemplateVolumeNf> nfs() {

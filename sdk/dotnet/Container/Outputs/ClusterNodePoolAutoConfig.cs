@@ -14,9 +14,14 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolAutoConfig
     {
         /// <summary>
-        /// The network tag config for the cluster's automatically provisioned node pools.
+        /// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigNetworkTags? NetworkTags;
+        /// <summary>
+        /// Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolAutoConfigNodeKubeletConfig? NodeKubeletConfig;
         /// <summary>
         /// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         /// </summary>
@@ -26,9 +31,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodePoolAutoConfig(
             Outputs.ClusterNodePoolAutoConfigNetworkTags? networkTags,
 
+            Outputs.ClusterNodePoolAutoConfigNodeKubeletConfig? nodeKubeletConfig,
+
             ImmutableDictionary<string, string>? resourceManagerTags)
         {
             NetworkTags = networkTags;
+            NodeKubeletConfig = nodeKubeletConfig;
             ResourceManagerTags = resourceManagerTags;
         }
     }

@@ -175,6 +175,19 @@ class IamMemberRemove(pulumi.CustomResource):
         and
         [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        target_project = gcp.organizations.get_project()
+        foo = gcp.projects.IamMemberRemove("foo",
+            role="roles/editor",
+            project=target_project_google_project["projectId"],
+            member=f"serviceAccount:{target_project_google_project['number']}-compute@developer.gserviceaccount.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] member: The IAM principal that should not have the target role.
@@ -212,6 +225,19 @@ class IamMemberRemove(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
         and
         [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        target_project = gcp.organizations.get_project()
+        foo = gcp.projects.IamMemberRemove("foo",
+            role="roles/editor",
+            project=target_project_google_project["projectId"],
+            member=f"serviceAccount:{target_project_google_project['number']}-compute@developer.gserviceaccount.com")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IamMemberRemoveArgs args: The arguments to use to populate this resource's properties.

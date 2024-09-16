@@ -532,11 +532,15 @@ class TableAutomatedBackupPolicy(dict):
 @pulumi.output_type
 class TableColumnFamily(dict):
     def __init__(__self__, *,
-                 family: str):
+                 family: str,
+                 type: Optional[str] = None):
         """
         :param str family: The name of the column family.
+        :param str type: The type of the column family.
         """
         pulumi.set(__self__, "family", family)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -545,6 +549,14 @@ class TableColumnFamily(dict):
         The name of the column family.
         """
         return pulumi.get(self, "family")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the column family.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

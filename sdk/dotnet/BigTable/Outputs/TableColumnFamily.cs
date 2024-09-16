@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// The name of the column family.
         /// </summary>
         public readonly string Family;
+        /// <summary>
+        /// The type of the column family.
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
-        private TableColumnFamily(string family)
+        private TableColumnFamily(
+            string family,
+
+            string? type)
         {
             Family = family;
+            Type = type;
         }
     }
 }

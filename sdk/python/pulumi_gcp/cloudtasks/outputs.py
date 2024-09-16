@@ -13,9 +13,18 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'QueueAppEngineRoutingOverride',
+    'QueueHttpTarget',
+    'QueueHttpTargetHeaderOverride',
+    'QueueHttpTargetHeaderOverrideHeader',
+    'QueueHttpTargetOauthToken',
+    'QueueHttpTargetOidcToken',
+    'QueueHttpTargetUriOverride',
+    'QueueHttpTargetUriOverridePathOverride',
+    'QueueHttpTargetUriOverrideQueryOverride',
     'QueueIamBindingCondition',
     'QueueIamMemberCondition',
     'QueueRateLimits',
@@ -84,6 +93,476 @@ class QueueAppEngineRoutingOverride(dict):
         By default, the task is sent to the version which is the default version when the task is attempted.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class QueueHttpTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerOverrides":
+            suggest = "header_overrides"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+        elif key == "uriOverride":
+            suggest = "uri_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueHttpTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueHttpTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueHttpTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_overrides: Optional[Sequence['outputs.QueueHttpTargetHeaderOverride']] = None,
+                 http_method: Optional[str] = None,
+                 oauth_token: Optional['outputs.QueueHttpTargetOauthToken'] = None,
+                 oidc_token: Optional['outputs.QueueHttpTargetOidcToken'] = None,
+                 uri_override: Optional['outputs.QueueHttpTargetUriOverride'] = None):
+        """
+        :param Sequence['QueueHttpTargetHeaderOverrideArgs'] header_overrides: HTTP target headers.
+               This map contains the header field names and values.
+               Headers will be set when running the CreateTask and/or BufferTask.
+               These headers represent a subset of the headers that will be configured for the task's HTTP request.
+               Some HTTP request headers will be ignored or replaced.
+               Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+               The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+               Structure is documented below.
+        :param str http_method: The HTTP method to use for the request.
+               When specified, it overrides HttpRequest for the task.
+               Note that if the value is set to GET the body of the task will be ignored at execution time.
+               Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        :param 'QueueHttpTargetOauthTokenArgs' oauth_token: If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+               This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+               Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+               Structure is documented below.
+        :param 'QueueHttpTargetOidcTokenArgs' oidc_token: If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+               This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+               Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+               Structure is documented below.
+        :param 'QueueHttpTargetUriOverrideArgs' uri_override: URI override.
+               When specified, overrides the execution URI for all the tasks in the queue.
+               Structure is documented below.
+        """
+        if header_overrides is not None:
+            pulumi.set(__self__, "header_overrides", header_overrides)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if oauth_token is not None:
+            pulumi.set(__self__, "oauth_token", oauth_token)
+        if oidc_token is not None:
+            pulumi.set(__self__, "oidc_token", oidc_token)
+        if uri_override is not None:
+            pulumi.set(__self__, "uri_override", uri_override)
+
+    @property
+    @pulumi.getter(name="headerOverrides")
+    def header_overrides(self) -> Optional[Sequence['outputs.QueueHttpTargetHeaderOverride']]:
+        """
+        HTTP target headers.
+        This map contains the header field names and values.
+        Headers will be set when running the CreateTask and/or BufferTask.
+        These headers represent a subset of the headers that will be configured for the task's HTTP request.
+        Some HTTP request headers will be ignored or replaced.
+        Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+        The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_overrides")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[str]:
+        """
+        The HTTP method to use for the request.
+        When specified, it overrides HttpRequest for the task.
+        Note that if the value is set to GET the body of the task will be ignored at execution time.
+        Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> Optional['outputs.QueueHttpTargetOauthToken']:
+        """
+        If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+        This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+        Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> Optional['outputs.QueueHttpTargetOidcToken']:
+        """
+        If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+        This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @property
+    @pulumi.getter(name="uriOverride")
+    def uri_override(self) -> Optional['outputs.QueueHttpTargetUriOverride']:
+        """
+        URI override.
+        When specified, overrides the execution URI for all the tasks in the queue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "uri_override")
+
+
+@pulumi.output_type
+class QueueHttpTargetHeaderOverride(dict):
+    def __init__(__self__, *,
+                 header: 'outputs.QueueHttpTargetHeaderOverrideHeader'):
+        """
+        :param 'QueueHttpTargetHeaderOverrideHeaderArgs' header: Header embodying a key and a value.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "header", header)
+
+    @property
+    @pulumi.getter
+    def header(self) -> 'outputs.QueueHttpTargetHeaderOverrideHeader':
+        """
+        Header embodying a key and a value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header")
+
+
+@pulumi.output_type
+class QueueHttpTargetHeaderOverrideHeader(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The Key of the header.
+        :param str value: The Value of the header.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The Key of the header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The Value of the header.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class QueueHttpTargetOauthToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueHttpTargetOauthToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueHttpTargetOauthToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueHttpTargetOauthToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_email: str,
+                 scope: Optional[str] = None):
+        """
+        :param str service_account_email: Service account email to be used for generating OAuth token.
+               The service account must be within the same project as the queue.
+               The caller must have iam.serviceAccounts.actAs permission for the service account.
+        :param str scope: OAuth scope to be used for generating OAuth access token.
+               If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        """
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        Service account email to be used for generating OAuth token.
+        The service account must be within the same project as the queue.
+        The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        OAuth scope to be used for generating OAuth access token.
+        If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class QueueHttpTargetOidcToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueHttpTargetOidcToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueHttpTargetOidcToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueHttpTargetOidcToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_email: str,
+                 audience: Optional[str] = None):
+        """
+        :param str service_account_email: Service account email to be used for generating OIDC token.
+               The service account must be within the same project as the queue.
+               The caller must have iam.serviceAccounts.actAs permission for the service account.
+        :param str audience: Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        """
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        Service account email to be used for generating OIDC token.
+        The service account must be within the same project as the queue.
+        The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[str]:
+        """
+        Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        """
+        return pulumi.get(self, "audience")
+
+
+@pulumi.output_type
+class QueueHttpTargetUriOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathOverride":
+            suggest = "path_override"
+        elif key == "queryOverride":
+            suggest = "query_override"
+        elif key == "uriOverrideEnforceMode":
+            suggest = "uri_override_enforce_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueHttpTargetUriOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueHttpTargetUriOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueHttpTargetUriOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: Optional[str] = None,
+                 path_override: Optional['outputs.QueueHttpTargetUriOverridePathOverride'] = None,
+                 port: Optional[str] = None,
+                 query_override: Optional['outputs.QueueHttpTargetUriOverrideQueryOverride'] = None,
+                 scheme: Optional[str] = None,
+                 uri_override_enforce_mode: Optional[str] = None):
+        """
+        :param str host: Host override.
+               When specified, replaces the host part of the task URL.
+               For example, if the task URL is "https://www.google.com", and host value
+               is set to "example.net", the overridden URI will be changed to "https://example.net".
+               Host value cannot be an empty string (INVALID_ARGUMENT).
+        :param 'QueueHttpTargetUriOverridePathOverrideArgs' path_override: URI path.
+               When specified, replaces the existing path of the task URL.
+               Setting the path value to an empty string clears the URI path segment.
+               Structure is documented below.
+        :param str port: Port override.
+               When specified, replaces the port part of the task URI.
+               For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+               Note that the port value must be a positive integer.
+               Setting the port to 0 (Zero) clears the URI port.
+        :param 'QueueHttpTargetUriOverrideQueryOverrideArgs' query_override: URI query.
+               When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+               Structure is documented below.
+        :param str scheme: Scheme override.
+               When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+               Possible values are: `HTTP`, `HTTPS`.
+        :param str uri_override_enforce_mode: URI Override Enforce Mode
+               When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+               Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if path_override is not None:
+            pulumi.set(__self__, "path_override", path_override)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if query_override is not None:
+            pulumi.set(__self__, "query_override", query_override)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if uri_override_enforce_mode is not None:
+            pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Host override.
+        When specified, replaces the host part of the task URL.
+        For example, if the task URL is "https://www.google.com", and host value
+        is set to "example.net", the overridden URI will be changed to "https://example.net".
+        Host value cannot be an empty string (INVALID_ARGUMENT).
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="pathOverride")
+    def path_override(self) -> Optional['outputs.QueueHttpTargetUriOverridePathOverride']:
+        """
+        URI path.
+        When specified, replaces the existing path of the task URL.
+        Setting the path value to an empty string clears the URI path segment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "path_override")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[str]:
+        """
+        Port override.
+        When specified, replaces the port part of the task URI.
+        For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+        Note that the port value must be a positive integer.
+        Setting the port to 0 (Zero) clears the URI port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="queryOverride")
+    def query_override(self) -> Optional['outputs.QueueHttpTargetUriOverrideQueryOverride']:
+        """
+        URI query.
+        When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_override")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[str]:
+        """
+        Scheme override.
+        When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        Possible values are: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter(name="uriOverrideEnforceMode")
+    def uri_override_enforce_mode(self) -> Optional[str]:
+        """
+        URI Override Enforce Mode
+        When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+        """
+        return pulumi.get(self, "uri_override_enforce_mode")
+
+
+@pulumi.output_type
+class QueueHttpTargetUriOverridePathOverride(dict):
+    def __init__(__self__, *,
+                 path: Optional[str] = None):
+        """
+        :param str path: The URI path (e.g., /users/1234). Default is an empty string.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The URI path (e.g., /users/1234). Default is an empty string.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class QueueHttpTargetUriOverrideQueryOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueHttpTargetUriOverrideQueryOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueHttpTargetUriOverrideQueryOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueHttpTargetUriOverrideQueryOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_params: Optional[str] = None):
+        """
+        :param str query_params: The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+        if query_params is not None:
+            pulumi.set(__self__, "query_params", query_params)
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> Optional[str]:
+        """
+        The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+        return pulumi.get(self, "query_params")
 
 
 @pulumi.output_type

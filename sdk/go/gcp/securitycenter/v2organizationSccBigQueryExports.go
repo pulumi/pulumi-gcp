@@ -43,7 +43,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
-//				DatasetId:                    pulumi.String("my_dataset_id"),
+//				DatasetId:                    pulumi.String(""),
 //				FriendlyName:                 pulumi.String("test"),
 //				Description:                  pulumi.String("This is a test description"),
 //				Location:                     pulumi.String("US"),
@@ -60,7 +60,7 @@ import (
 //				Name:             pulumi.String("my-export"),
 //				BigQueryExportId: pulumi.String("my-export"),
 //				Organization:     pulumi.String("123456789"),
-//				Dataset:          pulumi.String("my-dataset"),
+//				Dataset:          _default.ID(),
 //				Location:         pulumi.String("global"),
 //				Description:      pulumi.String("Cloud Security Command Center Findings Big Query Export Config"),
 //				Filter:           pulumi.String("state=\"ACTIVE\" AND NOT mute=\"MUTED\""),

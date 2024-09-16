@@ -118,12 +118,22 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewAutokeyConfig(ctx, "example-autokeyconfig", &kms.AutokeyConfigArgs{
-//				Folder: autokmsFolder.FolderId,
+//				Folder: autokmsFolder.ID(),
 //				KeyProject: keyProject.ProjectId.ApplyT(func(projectId string) (string, error) {
 //					return fmt.Sprintf("projects/%v", projectId), nil
 //				}).(pulumi.StringOutput),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				waitSrvAccPermissions,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+//			// because setting the config takes a little to fully propagate.
+//			_, err = time.NewSleep(ctx, "wait_autokey_propagation", &time.SleepArgs{
+//				CreateDuration: "30s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example_autokeyconfig,
 //			}))
 //			if err != nil {
 //				return err

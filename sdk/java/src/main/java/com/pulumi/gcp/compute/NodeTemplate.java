@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.NodeTemplateArgs;
 import com.pulumi.gcp.compute.inputs.NodeTemplateState;
+import com.pulumi.gcp.compute.outputs.NodeTemplateAccelerator;
 import com.pulumi.gcp.compute.outputs.NodeTemplateNodeTypeFlexibility;
 import com.pulumi.gcp.compute.outputs.NodeTemplateServerBinding;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -113,6 +115,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Node Template Accelerators
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeTemplateAcceleratorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var central1a = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var template = new NodeTemplate("template", NodeTemplateArgs.builder()
+ *             .name("soletenant-with-accelerators")
+ *             .region("us-central1")
+ *             .nodeType("n1-node-96-624")
+ *             .accelerators(NodeTemplateAcceleratorArgs.builder()
+ *                 .acceleratorType("nvidia-tesla-t4")
+ *                 .acceleratorCount(4)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -147,6 +196,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/nodeTemplate:NodeTemplate")
 public class NodeTemplate extends com.pulumi.resources.CustomResource {
+    /**
+     * List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="accelerators", refs={List.class,NodeTemplateAccelerator.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NodeTemplateAccelerator>> accelerators;
+
+    /**
+     * @return List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<NodeTemplateAccelerator>>> accelerators() {
+        return Codegen.optional(this.accelerators);
+    }
     /**
      * CPU overcommit.
      * Default value is `NONE`.

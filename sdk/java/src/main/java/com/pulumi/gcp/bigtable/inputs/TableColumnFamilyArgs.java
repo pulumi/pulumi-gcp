@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +31,26 @@ public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceAr
         return this.family;
     }
 
+    /**
+     * The type of the column family.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of the column family.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private TableColumnFamilyArgs() {}
 
     private TableColumnFamilyArgs(TableColumnFamilyArgs $) {
         this.family = $.family;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -72,6 +90,27 @@ public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder family(String family) {
             return family(Output.of(family));
+        }
+
+        /**
+         * @param type The type of the column family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of the column family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public TableColumnFamilyArgs build() {

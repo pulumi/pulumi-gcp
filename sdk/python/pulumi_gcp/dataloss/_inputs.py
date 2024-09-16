@@ -425,6 +425,14 @@ __all__ = [
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgs',
     'PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict',
+    'PreventionDiscoveryConfigActionTagResourcesArgs',
+    'PreventionDiscoveryConfigActionTagResourcesArgsDict',
+    'PreventionDiscoveryConfigActionTagResourcesTagConditionArgs',
+    'PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict',
+    'PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs',
+    'PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict',
+    'PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs',
+    'PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict',
     'PreventionDiscoveryConfigErrorArgs',
     'PreventionDiscoveryConfigErrorArgsDict',
     'PreventionDiscoveryConfigErrorDetailsArgs',
@@ -439,6 +447,8 @@ __all__ = [
     'PreventionDiscoveryConfigTargetBigQueryTargetArgsDict',
     'PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs',
     'PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict',
+    'PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs',
+    'PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict',
     'PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs',
     'PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict',
     'PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs',
@@ -483,6 +493,8 @@ __all__ = [
     'PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs',
+    'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs',
     'PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict',
     'PreventionDiscoveryConfigTargetCloudStorageTargetArgs',
@@ -15366,6 +15378,11 @@ if not MYPY:
         Publish a message into the Pub/Sub topic.
         Structure is documented below.
         """
+        tag_resources: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgsDict']]
+        """
+        Publish a message into the Pub/Sub topic.
+        Structure is documented below.
+        """
 elif False:
     PreventionDiscoveryConfigActionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -15373,17 +15390,22 @@ elif False:
 class PreventionDiscoveryConfigActionArgs:
     def __init__(__self__, *,
                  export_data: Optional[pulumi.Input['PreventionDiscoveryConfigActionExportDataArgs']] = None,
-                 pub_sub_notification: Optional[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgs']] = None):
+                 pub_sub_notification: Optional[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgs']] = None,
+                 tag_resources: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs']] = None):
         """
         :param pulumi.Input['PreventionDiscoveryConfigActionExportDataArgs'] export_data: Export data profiles into a provided location
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgs'] pub_sub_notification: Publish a message into the Pub/Sub topic.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs'] tag_resources: Publish a message into the Pub/Sub topic.
                Structure is documented below.
         """
         if export_data is not None:
             pulumi.set(__self__, "export_data", export_data)
         if pub_sub_notification is not None:
             pulumi.set(__self__, "pub_sub_notification", pub_sub_notification)
+        if tag_resources is not None:
+            pulumi.set(__self__, "tag_resources", tag_resources)
 
     @property
     @pulumi.getter(name="exportData")
@@ -15410,6 +15432,19 @@ class PreventionDiscoveryConfigActionArgs:
     @pub_sub_notification.setter
     def pub_sub_notification(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationArgs']]):
         pulumi.set(self, "pub_sub_notification", value)
+
+    @property
+    @pulumi.getter(name="tagResources")
+    def tag_resources(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs']]:
+        """
+        Publish a message into the Pub/Sub topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tag_resources")
+
+    @tag_resources.setter
+    def tag_resources(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesArgs']]):
+        pulumi.set(self, "tag_resources", value)
 
 
 if not MYPY:
@@ -15769,6 +15804,208 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
     @minimum_sensitivity_score.setter
     def minimum_sensitivity_score(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "minimum_sensitivity_score", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigActionTagResourcesArgsDict(TypedDict):
+        lower_data_risk_to_low: NotRequired[pulumi.Input[bool]]
+        """
+        Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
+        """
+        profile_generations_to_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+        Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
+        """
+        tag_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict']]]]
+        """
+        The tags to associate with different conditions.
+        Structure is documented below.
+        """
+elif False:
+    PreventionDiscoveryConfigActionTagResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigActionTagResourcesArgs:
+    def __init__(__self__, *,
+                 lower_data_risk_to_low: Optional[pulumi.Input[bool]] = None,
+                 profile_generations_to_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tag_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] lower_data_risk_to_low: Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] profile_generations_to_tags: The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+               Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgs']]] tag_conditions: The tags to associate with different conditions.
+               Structure is documented below.
+        """
+        if lower_data_risk_to_low is not None:
+            pulumi.set(__self__, "lower_data_risk_to_low", lower_data_risk_to_low)
+        if profile_generations_to_tags is not None:
+            pulumi.set(__self__, "profile_generations_to_tags", profile_generations_to_tags)
+        if tag_conditions is not None:
+            pulumi.set(__self__, "tag_conditions", tag_conditions)
+
+    @property
+    @pulumi.getter(name="lowerDataRiskToLow")
+    def lower_data_risk_to_low(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
+        """
+        return pulumi.get(self, "lower_data_risk_to_low")
+
+    @lower_data_risk_to_low.setter
+    def lower_data_risk_to_low(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lower_data_risk_to_low", value)
+
+    @property
+    @pulumi.getter(name="profileGenerationsToTags")
+    def profile_generations_to_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+        Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
+        """
+        return pulumi.get(self, "profile_generations_to_tags")
+
+    @profile_generations_to_tags.setter
+    def profile_generations_to_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "profile_generations_to_tags", value)
+
+    @property
+    @pulumi.getter(name="tagConditions")
+    def tag_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgs']]]]:
+        """
+        The tags to associate with different conditions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tag_conditions")
+
+    @tag_conditions.setter
+    def tag_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgs']]]]):
+        pulumi.set(self, "tag_conditions", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict(TypedDict):
+        sensitivity_score: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict']]
+        """
+        Conditions attaching the tag to a resource on its profile having this sensitivity score.
+        Structure is documented below.
+        """
+        tag: NotRequired[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict']]
+        """
+        The tag value to attach to resources.
+        Structure is documented below.
+        """
+elif False:
+    PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigActionTagResourcesTagConditionArgs:
+    def __init__(__self__, *,
+                 sensitivity_score: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs']] = None,
+                 tag: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs']] = None):
+        """
+        :param pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs'] sensitivity_score: Conditions attaching the tag to a resource on its profile having this sensitivity score.
+               Structure is documented below.
+        :param pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs'] tag: The tag value to attach to resources.
+               Structure is documented below.
+        """
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs']]:
+        """
+        Conditions attaching the tag to a resource on its profile having this sensitivity score.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs']]:
+        """
+        The tag value to attach to resources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs']]):
+        pulumi.set(self, "tag", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict(TypedDict):
+        score: pulumi.Input[str]
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+elif False:
+    PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[str]):
+        pulumi.set(self, "score", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict(TypedDict):
+        namespaced_value: NotRequired[pulumi.Input[str]]
+        """
+        The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+        """
+elif False:
+    PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs:
+    def __init__(__self__, *,
+                 namespaced_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] namespaced_value: The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+        """
+        if namespaced_value is not None:
+            pulumi.set(__self__, "namespaced_value", namespaced_value)
+
+    @property
+    @pulumi.getter(name="namespacedValue")
+    def namespaced_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+        """
+        return pulumi.get(self, "namespaced_value")
+
+    @namespaced_value.setter
+    def namespaced_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespaced_value", value)
 
 
 if not MYPY:
@@ -16206,6 +16443,11 @@ class PreventionDiscoveryConfigTargetBigQueryTargetArgs:
 
 if not MYPY:
     class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
+        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict']]
+        """
+        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        Structure is documented below.
+        """
         schema_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict']]
         """
         Governs when to update data profiles when a schema is modified
@@ -16222,18 +16464,36 @@ elif False:
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
     def __init__(__self__, *,
+                 inspect_template_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']] = None,
                  schema_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs']] = None,
                  table_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs']] = None):
         """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs'] inspect_template_modified_cadence: Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+               Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs'] schema_modified_cadence: Governs when to update data profiles when a schema is modified
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs'] table_modified_cadence: Governs when to update profile when a table is modified.
                Structure is documented below.
         """
+        if inspect_template_modified_cadence is not None:
+            pulumi.set(__self__, "inspect_template_modified_cadence", inspect_template_modified_cadence)
         if schema_modified_cadence is not None:
             pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
         if table_modified_cadence is not None:
             pulumi.set(__self__, "table_modified_cadence", table_modified_cadence)
+
+    @property
+    @pulumi.getter(name="inspectTemplateModifiedCadence")
+    def inspect_template_modified_cadence(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']]:
+        """
+        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inspect_template_modified_cadence")
+
+    @inspect_template_modified_cadence.setter
+    def inspect_template_modified_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']]):
+        pulumi.set(self, "inspect_template_modified_cadence", value)
 
     @property
     @pulumi.getter(name="schemaModifiedCadence")
@@ -16260,6 +16520,41 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
     @table_modified_cadence.setter
     def table_modified_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs']]):
         pulumi.set(self, "table_modified_cadence", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+        frequency: NotRequired[pulumi.Input[str]]
+        """
+        How frequently data profiles can be updated when the template is modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs:
+    def __init__(__self__, *,
+                 frequency: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] frequency: How frequently data profiles can be updated when the template is modified. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        How frequently data profiles can be updated when the template is modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
 
 
 if not MYPY:
@@ -17372,6 +17667,11 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs:
 
 if not MYPY:
     class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict(TypedDict):
+        inspect_template_modified_cadence: NotRequired[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]
+        """
+        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        Structure is documented below.
+        """
         refresh_frequency: NotRequired[pulumi.Input[str]]
         """
         Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
@@ -17388,18 +17688,36 @@ elif False:
 @pulumi.input_type
 class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
     def __init__(__self__, *,
+                 inspect_template_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']] = None,
                  refresh_frequency: Optional[pulumi.Input[str]] = None,
                  schema_modified_cadence: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']] = None):
         """
+        :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs'] inspect_template_modified_cadence: Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+               Structure is documented below.
         :param pulumi.Input[str] refresh_frequency: Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
                Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         :param pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs'] schema_modified_cadence: Governs when to update data profiles when a schema is modified
                Structure is documented below.
         """
+        if inspect_template_modified_cadence is not None:
+            pulumi.set(__self__, "inspect_template_modified_cadence", inspect_template_modified_cadence)
         if refresh_frequency is not None:
             pulumi.set(__self__, "refresh_frequency", refresh_frequency)
         if schema_modified_cadence is not None:
             pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
+
+    @property
+    @pulumi.getter(name="inspectTemplateModifiedCadence")
+    def inspect_template_modified_cadence(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]:
+        """
+        Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inspect_template_modified_cadence")
+
+    @inspect_template_modified_cadence.setter
+    def inspect_template_modified_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]):
+        pulumi.set(self, "inspect_template_modified_cadence", value)
 
     @property
     @pulumi.getter(name="refreshFrequency")
@@ -17426,6 +17744,40 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs:
     @schema_modified_cadence.setter
     def schema_modified_cadence(self, value: Optional[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']]):
         pulumi.set(self, "schema_modified_cadence", value)
+
+
+if not MYPY:
+    class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict(TypedDict):
+        frequency: pulumi.Input[str]
+        """
+        How frequently data profiles can be updated when the template is modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+elif False:
+    PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs:
+    def __init__(__self__, *,
+                 frequency: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] frequency: How frequently data profiles can be updated when the template is modified. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        pulumi.set(__self__, "frequency", frequency)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        """
+        How frequently data profiles can be updated when the template is modified. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
 
 
 if not MYPY:

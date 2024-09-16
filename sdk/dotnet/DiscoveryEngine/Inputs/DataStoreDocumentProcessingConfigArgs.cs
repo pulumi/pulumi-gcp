@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
     public sealed class DataStoreDocumentProcessingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether chunking mode is enabled.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("chunkingConfig")]
+        public Input<Inputs.DataStoreDocumentProcessingConfigChunkingConfigArgs>? ChunkingConfig { get; set; }
+
+        /// <summary>
         /// Configurations for default Document parser. If not specified, this resource
         /// will be configured to use a default DigitalParsingConfig, and the default parsing
         /// config will be applied to all file types for Document parsing.

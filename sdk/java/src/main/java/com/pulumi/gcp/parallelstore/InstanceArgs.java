@@ -135,12 +135,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-     * resources into groups that reflect a customer&#39;s organizational needs and
-     * deployment strategies. Cloud Labels can be used to filter collections of
-     * resources. They can be used to control how resource metrics are aggregated.
-     * And they can be used as arguments to policy management rules (e.g. route,
-     * firewall, load balancing, etc.).
+     * Cloud Labels are a flexible and lightweight mechanism for
+     * organizing cloud resources into groups that reflect a customer&#39;s organizational
+     * needs and deployment strategies. Cloud Labels can be used to filter collections
+     * of resources. They can be used to control how resource metrics are aggregated.
+     * And they can be used as arguments to policy management rules (e.g. route, firewall,
+     * load balancing, etc.).
      * * Label keys must be between 1 and 63 characters long and must conform to
      *   the following regular expression: `a-z{0,62}`.
      * * Label values must be between 0 and 63 characters long and must conform
@@ -151,22 +151,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      *   characters may be allowed in the future. Therefore, you are advised to use
      *   an internal label representation, such as JSON, which doesn&#39;t rely upon
      *   specific characters being disallowed.  For example, representing labels
-     *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-     *   allow &#34;_&#34; in a future release.
-     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     *   Please refer to the field `effective_labels` for all of the labels present on the resource.
+     *   as the string:  `name + &#34;_&#34; + value` would prove problematic if we were to
+     *   allow `&#34;_&#34;` in a future release. &#34;
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-     * resources into groups that reflect a customer&#39;s organizational needs and
-     * deployment strategies. Cloud Labels can be used to filter collections of
-     * resources. They can be used to control how resource metrics are aggregated.
-     * And they can be used as arguments to policy management rules (e.g. route,
-     * firewall, load balancing, etc.).
+     * @return Cloud Labels are a flexible and lightweight mechanism for
+     * organizing cloud resources into groups that reflect a customer&#39;s organizational
+     * needs and deployment strategies. Cloud Labels can be used to filter collections
+     * of resources. They can be used to control how resource metrics are aggregated.
+     * And they can be used as arguments to policy management rules (e.g. route, firewall,
+     * load balancing, etc.).
      * * Label keys must be between 1 and 63 characters long and must conform to
      *   the following regular expression: `a-z{0,62}`.
      * * Label values must be between 0 and 63 characters long and must conform
@@ -177,10 +178,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      *   characters may be allowed in the future. Therefore, you are advised to use
      *   an internal label representation, such as JSON, which doesn&#39;t rely upon
      *   specific characters being disallowed.  For example, representing labels
-     *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-     *   allow &#34;_&#34; in a future release.
-     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     *   Please refer to the field `effective_labels` for all of the labels present on the resource.
+     *   as the string:  `name + &#34;_&#34; + value` would prove problematic if we were to
+     *   allow `&#34;_&#34;` in a future release. &#34;
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -203,18 +205,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. The name of the Google Compute Engine
-     * [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-     * instance is connected.
+     * Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+     * to which the instance is connected.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Immutable. The name of the Google Compute Engine
-     * [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-     * instance is connected.
+     * @return Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+     * to which the instance is connected.
      * 
      */
     public Optional<Output<String>> network() {
@@ -239,20 +239,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. Contains the id of the allocated IP address range associated with the
-     * private service access connection for example, &#34;test-default&#34; associated
-     * with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-     * considered.
+     * Immutable. Contains the id of the allocated IP address range
+     * associated with the private service access connection for example, \&#34;test-default\&#34;
+     * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+     * be considered.
      * 
      */
     @Import(name="reservedIpRange")
     private @Nullable Output<String> reservedIpRange;
 
     /**
-     * @return Immutable. Contains the id of the allocated IP address range associated with the
-     * private service access connection for example, &#34;test-default&#34; associated
-     * with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-     * considered.
+     * @return Immutable. Contains the id of the allocated IP address range
+     * associated with the private service access connection for example, \&#34;test-default\&#34;
+     * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+     * be considered.
      * 
      */
     public Optional<Output<String>> reservedIpRange() {
@@ -440,12 +440,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-         * resources into groups that reflect a customer&#39;s organizational needs and
-         * deployment strategies. Cloud Labels can be used to filter collections of
-         * resources. They can be used to control how resource metrics are aggregated.
-         * And they can be used as arguments to policy management rules (e.g. route,
-         * firewall, load balancing, etc.).
+         * @param labels Cloud Labels are a flexible and lightweight mechanism for
+         * organizing cloud resources into groups that reflect a customer&#39;s organizational
+         * needs and deployment strategies. Cloud Labels can be used to filter collections
+         * of resources. They can be used to control how resource metrics are aggregated.
+         * And they can be used as arguments to policy management rules (e.g. route, firewall,
+         * load balancing, etc.).
          * * Label keys must be between 1 and 63 characters long and must conform to
          *   the following regular expression: `a-z{0,62}`.
          * * Label values must be between 0 and 63 characters long and must conform
@@ -456,10 +456,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          *   characters may be allowed in the future. Therefore, you are advised to use
          *   an internal label representation, such as JSON, which doesn&#39;t rely upon
          *   specific characters being disallowed.  For example, representing labels
-         *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-         *   allow &#34;_&#34; in a future release.
-         *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         *   Please refer to the field `effective_labels` for all of the labels present on the resource.
+         *   as the string:  `name + &#34;_&#34; + value` would prove problematic if we were to
+         *   allow `&#34;_&#34;` in a future release. &#34;
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -470,12 +471,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-         * resources into groups that reflect a customer&#39;s organizational needs and
-         * deployment strategies. Cloud Labels can be used to filter collections of
-         * resources. They can be used to control how resource metrics are aggregated.
-         * And they can be used as arguments to policy management rules (e.g. route,
-         * firewall, load balancing, etc.).
+         * @param labels Cloud Labels are a flexible and lightweight mechanism for
+         * organizing cloud resources into groups that reflect a customer&#39;s organizational
+         * needs and deployment strategies. Cloud Labels can be used to filter collections
+         * of resources. They can be used to control how resource metrics are aggregated.
+         * And they can be used as arguments to policy management rules (e.g. route, firewall,
+         * load balancing, etc.).
          * * Label keys must be between 1 and 63 characters long and must conform to
          *   the following regular expression: `a-z{0,62}`.
          * * Label values must be between 0 and 63 characters long and must conform
@@ -486,10 +487,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          *   characters may be allowed in the future. Therefore, you are advised to use
          *   an internal label representation, such as JSON, which doesn&#39;t rely upon
          *   specific characters being disallowed.  For example, representing labels
-         *   as the string:  name + &#34;_&#34; + value  would prove problematic if we were to
-         *   allow &#34;_&#34; in a future release.
-         *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-         *   Please refer to the field `effective_labels` for all of the labels present on the resource.
+         *   as the string:  `name + &#34;_&#34; + value` would prove problematic if we were to
+         *   allow `&#34;_&#34;` in a future release. &#34;
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -520,9 +522,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Immutable. The name of the Google Compute Engine
-         * [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-         * instance is connected.
+         * @param network Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+         * to which the instance is connected.
          * 
          * @return builder
          * 
@@ -533,9 +534,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Immutable. The name of the Google Compute Engine
-         * [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-         * instance is connected.
+         * @param network Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+         * to which the instance is connected.
          * 
          * @return builder
          * 
@@ -568,10 +568,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedIpRange Immutable. Contains the id of the allocated IP address range associated with the
-         * private service access connection for example, &#34;test-default&#34; associated
-         * with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-         * considered.
+         * @param reservedIpRange Immutable. Contains the id of the allocated IP address range
+         * associated with the private service access connection for example, \&#34;test-default\&#34;
+         * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+         * be considered.
          * 
          * @return builder
          * 
@@ -582,10 +582,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedIpRange Immutable. Contains the id of the allocated IP address range associated with the
-         * private service access connection for example, &#34;test-default&#34; associated
-         * with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-         * considered.
+         * @param reservedIpRange Immutable. Contains the id of the allocated IP address range
+         * associated with the private service access connection for example, \&#34;test-default\&#34;
+         * associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+         * be considered.
          * 
          * @return builder
          * 

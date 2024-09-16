@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string> CpuManagerPolicy { get; set; } = null!;
 
         /// <summary>
+        /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        /// </summary>
+        [Input("insecureKubeletReadonlyPortEnabled")]
+        public Input<string>? InsecureKubeletReadonlyPortEnabled { get; set; }
+
+        /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod.
         /// </summary>
         [Input("podPidsLimit")]

@@ -300,7 +300,7 @@ class BackupVault(pulumi.CustomResource):
         A backup vault is the location where backups are stored. You can only create one backup vault per region.
         A vault can hold multiple backups for multiple volumes in that region.
 
-        To get more information about backupVault, see:
+        To get more information about BackupVault, see:
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults)
         * How-to Guides
@@ -325,7 +325,7 @@ class BackupVault(pulumi.CustomResource):
 
         ## Import
 
-        backupVault can be imported using any of these accepted formats:
+        BackupVault can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupVaults/{{name}}`
 
@@ -333,7 +333,7 @@ class BackupVault(pulumi.CustomResource):
 
         * `{{location}}/{{name}}`
 
-        When using the `pulumi import` command, backupVault can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{name}}
@@ -372,7 +372,7 @@ class BackupVault(pulumi.CustomResource):
         A backup vault is the location where backups are stored. You can only create one backup vault per region.
         A vault can hold multiple backups for multiple volumes in that region.
 
-        To get more information about backupVault, see:
+        To get more information about BackupVault, see:
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults)
         * How-to Guides
@@ -397,7 +397,7 @@ class BackupVault(pulumi.CustomResource):
 
         ## Import
 
-        backupVault can be imported using any of these accepted formats:
+        BackupVault can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/backupVaults/{{name}}`
 
@@ -405,7 +405,7 @@ class BackupVault(pulumi.CustomResource):
 
         * `{{location}}/{{name}}`
 
-        When using the `pulumi import` command, backupVault can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{name}}

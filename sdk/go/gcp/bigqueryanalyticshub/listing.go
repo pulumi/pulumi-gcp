@@ -128,6 +128,96 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Dcr
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listing, err := bigqueryanalyticshub.NewDataExchange(ctx, "listing", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("dcr_data_exchange"),
+//				DisplayName:    pulumi.String("dcr_data_exchange"),
+//				Description:    pulumi.String("example dcr data exchange"),
+//				SharingEnvironmentConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigArgs{
+//					DcrExchangeConfig: nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingDataset, err := bigquery.NewDataset(ctx, "listing", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("dcr_listing"),
+//				FriendlyName: pulumi.String("dcr_listing"),
+//				Description:  pulumi.String("example dcr data exchange"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingTable, err := bigquery.NewTable(ctx, "listing", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				TableId:            pulumi.String("dcr_listing"),
+//				DatasetId:          listingDataset.DatasetId,
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "name",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "post_abbr",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "date",
+//	    "type": "DATE",
+//	    "mode": "NULLABLE"
+//	  }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listing", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: listing.DataExchangeId,
+//				ListingId:      pulumi.String("dcr_listing"),
+//				DisplayName:    pulumi.String("dcr_listing"),
+//				Description:    pulumi.String("example dcr data exchange"),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listingDataset.ID(),
+//					SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
+//						&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
+//							Table: listingTable.ID(),
+//						},
+//					},
+//				},
+//				RestrictedExportConfig: &bigqueryanalyticshub.ListingRestrictedExportConfigArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

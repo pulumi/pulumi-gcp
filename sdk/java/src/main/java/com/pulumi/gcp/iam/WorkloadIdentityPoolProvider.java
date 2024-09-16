@@ -13,6 +13,7 @@ import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderState;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderAws;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderOidc;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderSaml;
+import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderX509;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -407,6 +408,120 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Workload Identity Pool Provider X509 Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509Args;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
+ *             .workloadIdentityPoolId("example-pool")
+ *             .build());
+ * 
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .attributeMapping(Map.of("google.subject", "assertion.subject.dn.cn"))
+ *             .x509(WorkloadIdentityPoolProviderX509Args.builder()
+ *                 .trustStore(WorkloadIdentityPoolProviderX509TrustStoreArgs.builder()
+ *                     .trustAnchors(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs.builder()
+ *                         .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                             .input("test-fixtures/trust_anchor.pem")
+ *                             .build()).result())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Workload Identity Pool Provider X509 Full
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509Args;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
+ *             .workloadIdentityPoolId("example-pool")
+ *             .build());
+ * 
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .displayName("Name of provider")
+ *             .description("X.509 identity pool provider for automated test")
+ *             .disabled(true)
+ *             .attributeMapping(Map.of("google.subject", "assertion.subject.dn.cn"))
+ *             .x509(WorkloadIdentityPoolProviderX509Args.builder()
+ *                 .trustStore(WorkloadIdentityPoolProviderX509TrustStoreArgs.builder()
+ *                     .trustAnchors(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs.builder()
+ *                         .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                             .input("test-fixtures/trust_anchor.pem")
+ *                             .build()).result())
+ *                         .build())
+ *                     .intermediateCas(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs.builder()
+ *                         .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                             .input("test-fixtures/intermediate_ca.pem")
+ *                             .build()).result())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -732,6 +847,24 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      */
     public Output<String> workloadIdentityPoolProviderId() {
         return this.workloadIdentityPoolProviderId;
+    }
+    /**
+     * An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="x509", refs={WorkloadIdentityPoolProviderX509.class}, tree="[0]")
+    private Output</* @Nullable */ WorkloadIdentityPoolProviderX509> x509;
+
+    /**
+     * @return An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkloadIdentityPoolProviderX509>> x509() {
+        return Codegen.optional(this.x509);
     }
 
     /**

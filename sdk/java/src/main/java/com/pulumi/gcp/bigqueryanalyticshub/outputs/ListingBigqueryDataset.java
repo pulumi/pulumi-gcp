@@ -5,28 +5,41 @@ package com.pulumi.gcp.bigqueryanalyticshub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDatasetSelectedResource;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ListingBigqueryDataset {
     /**
      * @return Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
      * 
-     * ***
-     * 
      */
     private String dataset;
+    /**
+     * @return Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ListingBigqueryDatasetSelectedResource> selectedResources;
 
     private ListingBigqueryDataset() {}
     /**
      * @return Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
      * 
-     * ***
-     * 
      */
     public String dataset() {
         return this.dataset;
+    }
+    /**
+     * @return Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    public List<ListingBigqueryDatasetSelectedResource> selectedResources() {
+        return this.selectedResources == null ? List.of() : this.selectedResources;
     }
 
     public static Builder builder() {
@@ -39,10 +52,12 @@ public final class ListingBigqueryDataset {
     @CustomType.Builder
     public static final class Builder {
         private String dataset;
+        private @Nullable List<ListingBigqueryDatasetSelectedResource> selectedResources;
         public Builder() {}
         public Builder(ListingBigqueryDataset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataset = defaults.dataset;
+    	      this.selectedResources = defaults.selectedResources;
         }
 
         @CustomType.Setter
@@ -53,9 +68,19 @@ public final class ListingBigqueryDataset {
             this.dataset = dataset;
             return this;
         }
+        @CustomType.Setter
+        public Builder selectedResources(@Nullable List<ListingBigqueryDatasetSelectedResource> selectedResources) {
+
+            this.selectedResources = selectedResources;
+            return this;
+        }
+        public Builder selectedResources(ListingBigqueryDatasetSelectedResource... selectedResources) {
+            return selectedResources(List.of(selectedResources));
+        }
         public ListingBigqueryDataset build() {
             final var _resultValue = new ListingBigqueryDataset();
             _resultValue.dataset = dataset;
+            _resultValue.selectedResources = selectedResources;
             return _resultValue;
         }
     }

@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The industry vertical that the data store registers.
-        /// Possible values are: `GENERIC`, `MEDIA`.
+        /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         /// </summary>
         [Output("industryVertical")]
         public Output<string> IndustryVertical { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The solutions that the data store enrolls.
-        /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+        /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         /// </summary>
         [Output("solutionTypes")]
         public Output<ImmutableArray<string>> SolutionTypes { get; private set; } = null!;
@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The industry vertical that the data store registers.
-        /// Possible values are: `GENERIC`, `MEDIA`.
+        /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         /// </summary>
         [Input("industryVertical", required: true)]
         public Input<string> IndustryVertical { get; set; } = null!;
@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The solutions that the data store enrolls.
-        /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+        /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         /// </summary>
         public InputList<string> SolutionTypes
         {
@@ -410,7 +410,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The industry vertical that the data store registers.
-        /// Possible values are: `GENERIC`, `MEDIA`.
+        /// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         /// </summary>
         [Input("industryVertical")]
         public Input<string>? IndustryVertical { get; set; }
@@ -455,7 +455,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         /// <summary>
         /// The solutions that the data store enrolls.
-        /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+        /// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         /// </summary>
         public InputList<string> SolutionTypes
         {

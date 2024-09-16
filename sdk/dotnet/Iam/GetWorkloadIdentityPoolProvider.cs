@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.Iam
         public readonly string State;
         public readonly string WorkloadIdentityPoolId;
         public readonly string WorkloadIdentityPoolProviderId;
+        public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderX509Result> X509s;
 
         [OutputConstructor]
         private GetWorkloadIdentityPoolProviderResult(
@@ -175,7 +176,9 @@ namespace Pulumi.Gcp.Iam
 
             string workloadIdentityPoolId,
 
-            string workloadIdentityPoolProviderId)
+            string workloadIdentityPoolProviderId,
+
+            ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderX509Result> x509s)
         {
             AttributeCondition = attributeCondition;
             AttributeMapping = attributeMapping;
@@ -191,6 +194,7 @@ namespace Pulumi.Gcp.Iam
             State = state;
             WorkloadIdentityPoolId = workloadIdentityPoolId;
             WorkloadIdentityPoolProviderId = workloadIdentityPoolProviderId;
+            X509s = x509s;
         }
     }
 }

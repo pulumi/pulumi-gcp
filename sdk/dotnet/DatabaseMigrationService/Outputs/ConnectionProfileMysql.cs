@@ -18,49 +18,49 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         /// </summary>
         public readonly string? CloudSqlId;
         /// <summary>
-        /// Required. The IP or hostname of the source MySQL database.
+        /// The IP or hostname of the source MySQL database.
         /// </summary>
-        public readonly string Host;
+        public readonly string? Host;
         /// <summary>
-        /// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        /// Input only. The password for the user that Database Migration Service will be using to connect to the database.
         /// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// (Output)
         /// Output only. Indicates If this connection profile password is stored.
         /// </summary>
         public readonly bool? PasswordSet;
         /// <summary>
-        /// Required. The network port of the source MySQL database.
+        /// The network port of the source MySQL database.
         /// </summary>
-        public readonly int Port;
+        public readonly int? Port;
         /// <summary>
         /// SSL configuration for the destination to connect to the source database.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionProfileMysqlSsl? Ssl;
         /// <summary>
-        /// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         /// </summary>
-        public readonly string Username;
+        public readonly string? Username;
 
         [OutputConstructor]
         private ConnectionProfileMysql(
             string? cloudSqlId,
 
-            string host,
+            string? host,
 
-            string password,
+            string? password,
 
             bool? passwordSet,
 
-            int port,
+            int? port,
 
             Outputs.ConnectionProfileMysqlSsl? ssl,
 
-            string username)
+            string? username)
         {
             CloudSqlId = cloudSqlId;
             Host = host;

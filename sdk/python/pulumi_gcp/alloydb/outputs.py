@@ -42,6 +42,7 @@ __all__ = [
     'ClusterRestoreBackupSource',
     'ClusterRestoreContinuousBackupSource',
     'ClusterSecondaryConfig',
+    'ClusterTrialMetadata',
     'InstanceClientConnectionConfig',
     'InstanceClientConnectionConfigSslConfig',
     'InstanceMachineConfig',
@@ -1352,6 +1353,84 @@ class ClusterSecondaryConfig(dict):
         'projects/{project}/locations/{location}/clusters/{cluster_id}'
         """
         return pulumi.get(self, "primary_cluster_name")
+
+
+@pulumi.output_type
+class ClusterTrialMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "graceEndTime":
+            suggest = "grace_end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "upgradeTime":
+            suggest = "upgrade_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterTrialMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterTrialMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterTrialMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[str] = None,
+                 grace_end_time: Optional[str] = None,
+                 start_time: Optional[str] = None,
+                 upgrade_time: Optional[str] = None):
+        """
+        :param str end_time: End time of the trial cluster.
+        :param str grace_end_time: Grace end time of the trial cluster.
+        :param str start_time: Start time of the trial cluster.
+        :param str upgrade_time: Upgrade time of the trial cluster to standard cluster.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if grace_end_time is not None:
+            pulumi.set(__self__, "grace_end_time", grace_end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if upgrade_time is not None:
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[str]:
+        """
+        End time of the trial cluster.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="graceEndTime")
+    def grace_end_time(self) -> Optional[str]:
+        """
+        Grace end time of the trial cluster.
+        """
+        return pulumi.get(self, "grace_end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        Start time of the trial cluster.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> Optional[str]:
+        """
+        Upgrade time of the trial cluster to standard cluster.
+        """
+        return pulumi.get(self, "upgrade_time")
 
 
 @pulumi.output_type

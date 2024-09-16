@@ -53,6 +53,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.InstanceFromTemplateBootDiskInitializeParamsArgs>? InitializeParams { get; set; }
 
         /// <summary>
+        /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        /// </summary>
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
+
+        /// <summary>
         /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         /// </summary>
         [Input("kmsKeySelfLink")]

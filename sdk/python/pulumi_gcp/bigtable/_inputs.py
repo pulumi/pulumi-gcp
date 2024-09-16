@@ -714,17 +714,25 @@ if not MYPY:
         """
         The name of the column family.
         """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the column family.
+        """
 elif False:
     TableColumnFamilyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TableColumnFamilyArgs:
     def __init__(__self__, *,
-                 family: pulumi.Input[str]):
+                 family: pulumi.Input[str],
+                 type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] family: The name of the column family.
+        :param pulumi.Input[str] type: The type of the column family.
         """
         pulumi.set(__self__, "family", family)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -737,6 +745,18 @@ class TableColumnFamilyArgs:
     @family.setter
     def family(self, value: pulumi.Input[str]):
         pulumi.set(self, "family", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the column family.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

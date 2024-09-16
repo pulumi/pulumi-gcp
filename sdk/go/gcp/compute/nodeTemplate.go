@@ -89,6 +89,45 @@ import (
 //	}
 //
 // ```
+// ### Node Template Accelerators
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
+//				Zone: pulumi.StringRef("us-central1-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-with-accelerators"),
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n1-node-96-624"),
+//				Accelerators: compute.NodeTemplateAcceleratorArray{
+//					&compute.NodeTemplateAcceleratorArgs{
+//						AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+//						AcceleratorCount: pulumi.Int(4),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -122,6 +161,10 @@ import (
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 
+	// List of the type and count of accelerator cards attached to the
+	// node template
+	// Structure is documented below.
+	Accelerators NodeTemplateAcceleratorArrayOutput `pulumi:"accelerators"`
 	// CPU overcommit.
 	// Default value is `NONE`.
 	// Possible values are: `ENABLED`, `NONE`.
@@ -188,6 +231,10 @@ func GetNodeTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeTemplate resources.
 type nodeTemplateState struct {
+	// List of the type and count of accelerator cards attached to the
+	// node template
+	// Structure is documented below.
+	Accelerators []NodeTemplateAccelerator `pulumi:"accelerators"`
 	// CPU overcommit.
 	// Default value is `NONE`.
 	// Possible values are: `ENABLED`, `NONE`.
@@ -225,6 +272,10 @@ type nodeTemplateState struct {
 }
 
 type NodeTemplateState struct {
+	// List of the type and count of accelerator cards attached to the
+	// node template
+	// Structure is documented below.
+	Accelerators NodeTemplateAcceleratorArrayInput
 	// CPU overcommit.
 	// Default value is `NONE`.
 	// Possible values are: `ENABLED`, `NONE`.
@@ -266,6 +317,10 @@ func (NodeTemplateState) ElementType() reflect.Type {
 }
 
 type nodeTemplateArgs struct {
+	// List of the type and count of accelerator cards attached to the
+	// node template
+	// Structure is documented below.
+	Accelerators []NodeTemplateAccelerator `pulumi:"accelerators"`
 	// CPU overcommit.
 	// Default value is `NONE`.
 	// Possible values are: `ENABLED`, `NONE`.
@@ -300,6 +355,10 @@ type nodeTemplateArgs struct {
 
 // The set of arguments for constructing a NodeTemplate resource.
 type NodeTemplateArgs struct {
+	// List of the type and count of accelerator cards attached to the
+	// node template
+	// Structure is documented below.
+	Accelerators NodeTemplateAcceleratorArrayInput
 	// CPU overcommit.
 	// Default value is `NONE`.
 	// Possible values are: `ENABLED`, `NONE`.
@@ -417,6 +476,13 @@ func (o NodeTemplateOutput) ToNodeTemplateOutput() NodeTemplateOutput {
 
 func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context) NodeTemplateOutput {
 	return o
+}
+
+// List of the type and count of accelerator cards attached to the
+// node template
+// Structure is documented below.
+func (o NodeTemplateOutput) Accelerators() NodeTemplateAcceleratorArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateAcceleratorArrayOutput { return v.Accelerators }).(NodeTemplateAcceleratorArrayOutput)
 }
 
 // CPU overcommit.

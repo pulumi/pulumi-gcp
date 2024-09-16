@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TableColumnFamily {
@@ -15,6 +17,11 @@ public final class TableColumnFamily {
      * 
      */
     private String family;
+    /**
+     * @return The type of the column family.
+     * 
+     */
+    private @Nullable String type;
 
     private TableColumnFamily() {}
     /**
@@ -23,6 +30,13 @@ public final class TableColumnFamily {
      */
     public String family() {
         return this.family;
+    }
+    /**
+     * @return The type of the column family.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -35,10 +49,12 @@ public final class TableColumnFamily {
     @CustomType.Builder
     public static final class Builder {
         private String family;
+        private @Nullable String type;
         public Builder() {}
         public Builder(TableColumnFamily defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.family = defaults.family;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -49,9 +65,16 @@ public final class TableColumnFamily {
             this.family = family;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
         public TableColumnFamily build() {
             final var _resultValue = new TableColumnFamily();
             _resultValue.family = family;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

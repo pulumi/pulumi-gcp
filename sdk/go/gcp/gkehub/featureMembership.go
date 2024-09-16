@@ -69,8 +69,9 @@ import (
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
 //				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-//					Version: pulumi.String("1.6.2"),
+//					Version: pulumi.String("1.19.0"),
 //					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Enabled: pulumi.Bool(true),
 //						Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
 //							SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
 //						},
@@ -138,8 +139,9 @@ import (
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
 //				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-//					Version: pulumi.String("1.15.1"),
+//					Version: pulumi.String("1.19.0"),
 //					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Enabled: pulumi.Bool(true),
 //						Oci: &gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs{
 //							SyncRepo:               pulumi.String("us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest"),
 //							PolicyDir:              pulumi.String("config-connector"),
@@ -306,8 +308,9 @@ import (
 //				Membership:         membership.MembershipId,
 //				MembershipLocation: membership.Location,
 //				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-//					Version: pulumi.String("1.6.2"),
+//					Version: pulumi.String("1.19.0"),
 //					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Enabled: pulumi.Bool(true),
 //						Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
 //							SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
 //						},

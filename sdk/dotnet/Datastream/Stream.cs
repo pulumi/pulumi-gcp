@@ -698,6 +698,148 @@ namespace Pulumi.Gcp.Datastream
     ///                         },
     ///                     },
     ///                 },
+    ///                 TransactionLogs = null,
+    ///             },
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = destination.Id,
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 DataFreshness = "900s",
+    ///                 SourceHierarchyDatasets = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs
+    ///                 {
+    ///                     DatasetTemplate = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Datastream Stream Sql Server Change Tables
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "sql-server",
+    ///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+    ///         Region = "us-central1",
+    ///         RootPassword = "root-password",
+    ///         DeletionProtection = true,
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-4096",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Password = "password",
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Name = "db",
+    ///         Instance = instance.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             user,
+    ///         },
+    ///     });
+    /// 
+    ///     var source = new Gcp.Datastream.ConnectionProfile("source", new()
+    ///     {
+    ///         DisplayName = "SQL Server Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         SqlServerProfile = new Gcp.Datastream.Inputs.ConnectionProfileSqlServerProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Port = 1433,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///             Database = db.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var destination = new Gcp.Datastream.ConnectionProfile("destination", new()
+    ///     {
+    ///         DisplayName = "BigQuery Destination",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-profile",
+    ///         BigqueryProfile = null,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.Stream("default", new()
+    ///     {
+    ///         DisplayName = "SQL Server to BigQuery",
+    ///         Location = "us-central1",
+    ///         StreamId = "stream",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = source.Id,
+    ///             SqlServerSourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigSqlServerSourceConfigArgs
+    ///             {
+    ///                 IncludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs
+    ///                 {
+    ///                     Schemas = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs
+    ///                         {
+    ///                             Schema = "schema",
+    ///                             Tables = new[]
+    ///                             {
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs
+    ///                                 {
+    ///                                     Table = "table",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ChangeTables = null,
     ///             },
     ///         },
     ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
@@ -1173,7 +1315,8 @@ namespace Pulumi.Gcp.Datastream
         public Output<string?> CustomerManagedEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+        /// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -1322,7 +1465,8 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+        /// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -1409,7 +1553,8 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.
+        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
+        /// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }

@@ -31,6 +31,41 @@ import (
 // [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
 // and
 // [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIamMemberRemove(ctx, "foo", &projects.IamMemberRemoveArgs{
+//				Role:    pulumi.String("roles/editor"),
+//				Project: pulumi.Any(targetProjectGoogleProject.ProjectId),
+//				Member:  pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", targetProjectGoogleProject.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IamMemberRemove struct {
 	pulumi.CustomResourceState
 

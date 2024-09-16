@@ -10826,6 +10826,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 }
 
 type StreamSourceConfigSqlServerSourceConfig struct {
+	// CDC reader reads from change tables.
+	ChangeTables *StreamSourceConfigSqlServerSourceConfigChangeTables `pulumi:"changeTables"`
 	// SQL Server objects to exclude from the stream.
 	// Structure is documented below.
 	ExcludeObjects *StreamSourceConfigSqlServerSourceConfigExcludeObjects `pulumi:"excludeObjects"`
@@ -10836,6 +10838,8 @@ type StreamSourceConfigSqlServerSourceConfig struct {
 	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
 	// Max concurrent CDC tasks.
 	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+	// CDC reader reads from transaction logs.
+	TransactionLogs *StreamSourceConfigSqlServerSourceConfigTransactionLogs `pulumi:"transactionLogs"`
 }
 
 // StreamSourceConfigSqlServerSourceConfigInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigArgs and StreamSourceConfigSqlServerSourceConfigOutput values.
@@ -10850,6 +10854,8 @@ type StreamSourceConfigSqlServerSourceConfigInput interface {
 }
 
 type StreamSourceConfigSqlServerSourceConfigArgs struct {
+	// CDC reader reads from change tables.
+	ChangeTables StreamSourceConfigSqlServerSourceConfigChangeTablesPtrInput `pulumi:"changeTables"`
 	// SQL Server objects to exclude from the stream.
 	// Structure is documented below.
 	ExcludeObjects StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
@@ -10860,6 +10866,8 @@ type StreamSourceConfigSqlServerSourceConfigArgs struct {
 	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
 	// Max concurrent CDC tasks.
 	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+	// CDC reader reads from transaction logs.
+	TransactionLogs StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrInput `pulumi:"transactionLogs"`
 }
 
 func (StreamSourceConfigSqlServerSourceConfigArgs) ElementType() reflect.Type {
@@ -10939,6 +10947,13 @@ func (o StreamSourceConfigSqlServerSourceConfigOutput) ToStreamSourceConfigSqlSe
 	}).(StreamSourceConfigSqlServerSourceConfigPtrOutput)
 }
 
+// CDC reader reads from change tables.
+func (o StreamSourceConfigSqlServerSourceConfigOutput) ChangeTables() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigChangeTables {
+		return v.ChangeTables
+	}).(StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput)
+}
+
 // SQL Server objects to exclude from the stream.
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigOutput) ExcludeObjects() StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput {
@@ -10965,6 +10980,13 @@ func (o StreamSourceConfigSqlServerSourceConfigOutput) MaxConcurrentCdcTasks() p
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
 }
 
+// CDC reader reads from transaction logs.
+func (o StreamSourceConfigSqlServerSourceConfigOutput) TransactionLogs() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigTransactionLogs {
+		return v.TransactionLogs
+	}).(StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput)
+}
+
 type StreamSourceConfigSqlServerSourceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (StreamSourceConfigSqlServerSourceConfigPtrOutput) ElementType() reflect.Type {
@@ -10987,6 +11009,16 @@ func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) Elem() StreamSourceCon
 		var ret StreamSourceConfigSqlServerSourceConfig
 		return ret
 	}).(StreamSourceConfigSqlServerSourceConfigOutput)
+}
+
+// CDC reader reads from change tables.
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) ChangeTables() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigChangeTables {
+		if v == nil {
+			return nil
+		}
+		return v.ChangeTables
+	}).(StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput)
 }
 
 // SQL Server objects to exclude from the stream.
@@ -11029,6 +11061,134 @@ func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) MaxConcurrentCdcTasks(
 		}
 		return v.MaxConcurrentCdcTasks
 	}).(pulumi.IntPtrOutput)
+}
+
+// CDC reader reads from transaction logs.
+func (o StreamSourceConfigSqlServerSourceConfigPtrOutput) TransactionLogs() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfig) *StreamSourceConfigSqlServerSourceConfigTransactionLogs {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLogs
+	}).(StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigChangeTables struct {
+}
+
+// StreamSourceConfigSqlServerSourceConfigChangeTablesInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigChangeTablesArgs and StreamSourceConfigSqlServerSourceConfigChangeTablesOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigChangeTablesInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{...}
+type StreamSourceConfigSqlServerSourceConfigChangeTablesInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesOutput
+	ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigChangeTablesArgs struct {
+}
+
+func (StreamSourceConfigSqlServerSourceConfigChangeTablesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigChangeTables)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigChangeTablesArgs) ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigChangeTablesArgs) ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigChangeTablesOutput)
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigChangeTablesArgs) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigChangeTablesArgs) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigChangeTablesOutput).ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSqlServerSourceConfigChangeTablesPtrInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigChangeTablesArgs, StreamSourceConfigSqlServerSourceConfigChangeTablesPtr and StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigChangeTablesPtrInput` via:
+//
+//	        StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSqlServerSourceConfigChangeTablesPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput
+	ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput
+}
+
+type streamSourceConfigSqlServerSourceConfigChangeTablesPtrType StreamSourceConfigSqlServerSourceConfigChangeTablesArgs
+
+func StreamSourceConfigSqlServerSourceConfigChangeTablesPtr(v *StreamSourceConfigSqlServerSourceConfigChangeTablesArgs) StreamSourceConfigSqlServerSourceConfigChangeTablesPtrInput {
+	return (*streamSourceConfigSqlServerSourceConfigChangeTablesPtrType)(v)
+}
+
+func (*streamSourceConfigSqlServerSourceConfigChangeTablesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigChangeTables)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigChangeTablesPtrType) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigChangeTablesPtrType) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigChangeTablesOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigChangeTablesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigChangeTables)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesOutput) ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesOutput) ToStreamSourceConfigSqlServerSourceConfigChangeTablesOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesOutput) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return o.ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesOutput) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSqlServerSourceConfigChangeTables) *StreamSourceConfigSqlServerSourceConfigChangeTables {
+		return &v
+	}).(StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigChangeTables)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput() StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput) ToStreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput) Elem() StreamSourceConfigSqlServerSourceConfigChangeTablesOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigChangeTables) StreamSourceConfigSqlServerSourceConfigChangeTables {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSqlServerSourceConfigChangeTables
+		return ret
+	}).(StreamSourceConfigSqlServerSourceConfigChangeTablesOutput)
 }
 
 type StreamSourceConfigSqlServerSourceConfigExcludeObjects struct {
@@ -12147,6 +12307,124 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnAr
 	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput)
 }
 
+type StreamSourceConfigSqlServerSourceConfigTransactionLogs struct {
+}
+
+// StreamSourceConfigSqlServerSourceConfigTransactionLogsInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs and StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigTransactionLogsInput` via:
+//
+//	StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs{...}
+type StreamSourceConfigSqlServerSourceConfigTransactionLogsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput
+	ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput
+}
+
+type StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs struct {
+}
+
+func (StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigTransactionLogs)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput)
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput).ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrInput is an input type that accepts StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs, StreamSourceConfigSqlServerSourceConfigTransactionLogsPtr and StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrInput` via:
+//
+//	        StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput
+	ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput
+}
+
+type streamSourceConfigSqlServerSourceConfigTransactionLogsPtrType StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs
+
+func StreamSourceConfigSqlServerSourceConfigTransactionLogsPtr(v *StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs) StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrInput {
+	return (*streamSourceConfigSqlServerSourceConfigTransactionLogsPtrType)(v)
+}
+
+func (*streamSourceConfigSqlServerSourceConfigTransactionLogsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigTransactionLogs)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigTransactionLogsPtrType) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return i.ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSqlServerSourceConfigTransactionLogsPtrType) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigTransactionLogs)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return o.ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSqlServerSourceConfigTransactionLogs) *StreamSourceConfigSqlServerSourceConfigTransactionLogs {
+		return &v
+	}).(StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput)
+}
+
+type StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSqlServerSourceConfigTransactionLogs)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput() StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput) ToStreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput) Elem() StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigTransactionLogs) StreamSourceConfigSqlServerSourceConfigTransactionLogs {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSqlServerSourceConfigTransactionLogs
+		return ret
+	}).(StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfileInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileBigqueryProfilePtrInput)(nil)).Elem(), ConnectionProfileBigqueryProfileArgs{})
@@ -12288,6 +12566,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigChangeTablesInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigChangeTablesPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs{})
@@ -12304,6 +12584,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigTransactionLogsInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileBigqueryProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileForwardSshConnectivityOutput{})
@@ -12444,6 +12726,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigChangeTablesOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput{})
@@ -12460,4 +12744,6 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigTransactionLogsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigTransactionLogsPtrOutput{})
 }

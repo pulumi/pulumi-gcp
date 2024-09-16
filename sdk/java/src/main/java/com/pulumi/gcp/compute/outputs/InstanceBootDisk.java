@@ -49,6 +49,11 @@ public final class InstanceBootDisk {
      */
     private @Nullable InstanceBootDiskInitializeParams initializeParams;
     /**
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * 
+     */
+    private @Nullable String interface_;
+    /**
      * @return The self_link of the encryption key that is
      * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
      * and `disk_encryption_key_raw` may be set.
@@ -116,6 +121,13 @@ public final class InstanceBootDisk {
         return Optional.ofNullable(this.initializeParams);
     }
     /**
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * 
+     */
+    public Optional<String> interface_() {
+        return Optional.ofNullable(this.interface_);
+    }
+    /**
      * @return The self_link of the encryption key that is
      * stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
      * and `disk_encryption_key_raw` may be set.
@@ -156,6 +168,7 @@ public final class InstanceBootDisk {
         private @Nullable String diskEncryptionKeyRaw;
         private @Nullable String diskEncryptionKeySha256;
         private @Nullable InstanceBootDiskInitializeParams initializeParams;
+        private @Nullable String interface_;
         private @Nullable String kmsKeySelfLink;
         private @Nullable String mode;
         private @Nullable String source;
@@ -167,6 +180,7 @@ public final class InstanceBootDisk {
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
     	      this.initializeParams = defaults.initializeParams;
+    	      this.interface_ = defaults.interface_;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.mode = defaults.mode;
     	      this.source = defaults.source;
@@ -202,6 +216,12 @@ public final class InstanceBootDisk {
             this.initializeParams = initializeParams;
             return this;
         }
+        @CustomType.Setter("interface")
+        public Builder interface_(@Nullable String interface_) {
+
+            this.interface_ = interface_;
+            return this;
+        }
         @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
 
@@ -227,6 +247,7 @@ public final class InstanceBootDisk {
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             _resultValue.initializeParams = initializeParams;
+            _resultValue.interface_ = interface_;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.mode = mode;
             _resultValue.source = source;

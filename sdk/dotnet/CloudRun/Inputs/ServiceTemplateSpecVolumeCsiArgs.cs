@@ -15,8 +15,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Unique name representing the type of file system to be created. Cloud Run supports the following values:
         /// * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-        /// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-        /// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        /// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         /// </summary>
         [Input("driver", required: true)]
         public Input<string> Driver { get; set; } = null!;

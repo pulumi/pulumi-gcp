@@ -85,6 +85,23 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             Mode = "MULTI_ZONE",
     ///         },
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -151,6 +168,23 @@ namespace Pulumi.Gcp.Redis
     ///         {
     ///             Mode = "SINGLE_ZONE",
     ///             Zone = "us-central1-f",
+    ///         },
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///         DeletionProtectionEnabled = true,
     ///     }, new CustomResourceOptions
@@ -228,6 +262,19 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("discoveryEndpoints")]
         public Output<ImmutableArray<Outputs.ClusterDiscoveryEndpoint>> DiscoveryEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// Maintenance policy for a cluster
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.ClusterMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenanceSchedules")]
+        public Output<ImmutableArray<Outputs.ClusterMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
 
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
@@ -395,6 +442,12 @@ namespace Pulumi.Gcp.Redis
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
+        /// Maintenance policy for a cluster
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// Unique name of the resource in this scope including project and location using the form:
         /// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         /// </summary>
@@ -516,6 +569,25 @@ namespace Pulumi.Gcp.Redis
         {
             get => _discoveryEndpoints ?? (_discoveryEndpoints = new InputList<Inputs.ClusterDiscoveryEndpointGetArgs>());
             set => _discoveryEndpoints = value;
+        }
+
+        /// <summary>
+        /// Maintenance policy for a cluster
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.ClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
+        [Input("maintenanceSchedules")]
+        private InputList<Inputs.ClusterMaintenanceScheduleGetArgs>? _maintenanceSchedules;
+
+        /// <summary>
+        /// Upcoming maintenance schedule.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterMaintenanceScheduleGetArgs> MaintenanceSchedules
+        {
+            get => _maintenanceSchedules ?? (_maintenanceSchedules = new InputList<Inputs.ClusterMaintenanceScheduleGetArgs>());
+            set => _maintenanceSchedules = value;
         }
 
         /// <summary>

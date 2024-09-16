@@ -433,7 +433,8 @@ type Authority struct {
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+	// ENABLED, DISABLED, STAGED.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -558,7 +559,8 @@ type authorityState struct {
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime         *string `pulumi:"createTime"`
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
-	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+	// ENABLED, DISABLED, STAGED.
 	DesiredState *string `pulumi:"desiredState"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -634,7 +636,8 @@ type AuthorityState struct {
 	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime         pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
-	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+	// ENABLED, DISABLED, STAGED.
 	DesiredState pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -707,7 +710,8 @@ type authorityArgs struct {
 	// Structure is documented below.
 	Config             AuthorityConfig `pulumi:"config"`
 	DeletionProtection *bool           `pulumi:"deletionProtection"`
-	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+	// ENABLED, DISABLED, STAGED.
 	DesiredState *string `pulumi:"desiredState"`
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
 	// CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
@@ -758,7 +762,8 @@ type AuthorityArgs struct {
 	// Structure is documented below.
 	Config             AuthorityConfigInput
 	DeletionProtection pulumi.BoolPtrInput
-	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+	// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+	// ENABLED, DISABLED, STAGED.
 	DesiredState pulumi.StringPtrInput
 	// The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
 	// CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
@@ -916,7 +921,8 @@ func (o AuthorityOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+// ENABLED, DISABLED, STAGED.
 func (o AuthorityOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }

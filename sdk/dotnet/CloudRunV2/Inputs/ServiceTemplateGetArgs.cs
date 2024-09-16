@@ -95,6 +95,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
+        /// Enables Cloud Service Mesh for this Revision.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceMesh")]
+        public Input<Inputs.ServiceTemplateServiceMeshGetArgs>? ServiceMesh { get; set; }
+
+        /// <summary>
         /// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         /// </summary>
         [Input("sessionAffinity")]

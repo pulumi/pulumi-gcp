@@ -139,6 +139,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      * 
      */
     @Import(name="deletionPolicy")
@@ -148,6 +149,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * @return Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -375,6 +377,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.secondaryConfig);
     }
 
+    /**
+     * The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     * 
+     */
+    @Import(name="subscriptionType")
+    private @Nullable Output<String> subscriptionType;
+
+    /**
+     * @return The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     * 
+     */
+    public Optional<Output<String>> subscriptionType() {
+        return Optional.ofNullable(this.subscriptionType);
+    }
+
     private ClusterArgs() {}
 
     private ClusterArgs(ClusterArgs $) {
@@ -398,6 +417,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.restoreBackupSource = $.restoreBackupSource;
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
         this.secondaryConfig = $.secondaryConfig;
+        this.subscriptionType = $.subscriptionType;
     }
 
     public static Builder builder() {
@@ -566,6 +586,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
          * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * Possible values: DEFAULT, FORCE
          * 
          * @return builder
          * 
@@ -579,6 +600,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
          * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * Possible values: DEFAULT, FORCE
          * 
          * @return builder
          * 
@@ -884,6 +906,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secondaryConfig(ClusterSecondaryConfigArgs secondaryConfig) {
             return secondaryConfig(Output.of(secondaryConfig));
+        }
+
+        /**
+         * @param subscriptionType The subscrition type of cluster.
+         * Possible values are: `TRIAL`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptionType(@Nullable Output<String> subscriptionType) {
+            $.subscriptionType = subscriptionType;
+            return this;
+        }
+
+        /**
+         * @param subscriptionType The subscrition type of cluster.
+         * Possible values are: `TRIAL`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptionType(String subscriptionType) {
+            return subscriptionType(Output.of(subscriptionType));
         }
 
         public ClusterArgs build() {

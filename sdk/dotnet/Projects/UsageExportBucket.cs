@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
     /// 
+    /// &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
+    /// 
+    /// &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+    /// 
     /// To get more information about projects, see:
     /// 
     /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -69,6 +73,30 @@ namespace Pulumi.Gcp.Projects
     ///         Name = "My Project",
     ///         ProjectId = "your-project-id",
     ///         FolderId = department1.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To create a project with a tag
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
+    ///     {
+    ///         Name = "My Project",
+    ///         ProjectId = "your-project-id",
+    ///         OrgId = "1234567",
+    ///         Tags = 
+    ///         {
+    ///             { "1234567/env", "staging" },
+    ///         },
     ///     });
     /// 
     /// });

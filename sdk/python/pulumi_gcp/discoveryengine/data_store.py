@@ -42,7 +42,7 @@ class DataStoreArgs:
         :param pulumi.Input[str] display_name: The display name of the data store. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
-               Possible values are: `GENERIC`, `MEDIA`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[bool] create_advanced_site_search: If true, an advanced data store for site search will be created. If the
@@ -60,7 +60,7 @@ class DataStoreArgs:
                This flag cannot be specified if `data_store.starting_schema` is
                specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
-               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         pulumi.set(__self__, "content_config", content_config)
         pulumi.set(__self__, "data_store_id", data_store_id)
@@ -124,7 +124,7 @@ class DataStoreArgs:
     def industry_vertical(self) -> pulumi.Input[str]:
         """
         The industry vertical that the data store registers.
-        Possible values are: `GENERIC`, `MEDIA`.
+        Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -208,7 +208,7 @@ class DataStoreArgs:
     def solution_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The solutions that the data store enrolls.
-        Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+        Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         return pulumi.get(self, "solution_types")
 
@@ -251,7 +251,7 @@ class _DataStoreState:
         :param pulumi.Input['DataStoreDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
-               Possible values are: `GENERIC`, `MEDIA`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[str] name: The unique full resource name of the data store. Values are of the format
@@ -268,7 +268,7 @@ class _DataStoreState:
                This flag cannot be specified if `data_store.starting_schema` is
                specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
-               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         if content_config is not None:
             pulumi.set(__self__, "content_config", content_config)
@@ -394,7 +394,7 @@ class _DataStoreState:
     def industry_vertical(self) -> Optional[pulumi.Input[str]]:
         """
         The industry vertical that the data store registers.
-        Possible values are: `GENERIC`, `MEDIA`.
+        Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -466,7 +466,7 @@ class _DataStoreState:
     def solution_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The solutions that the data store enrolls.
-        Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+        Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         return pulumi.get(self, "solution_types")
 
@@ -587,7 +587,7 @@ class DataStore(pulumi.CustomResource):
         :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
-               Possible values are: `GENERIC`, `MEDIA`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -600,7 +600,7 @@ class DataStore(pulumi.CustomResource):
                This flag cannot be specified if `data_store.starting_schema` is
                specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
-               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         ...
     @overload
@@ -791,7 +791,7 @@ class DataStore(pulumi.CustomResource):
         :param pulumi.Input[Union['DataStoreDocumentProcessingConfigArgs', 'DataStoreDocumentProcessingConfigArgsDict']] document_processing_config: Configuration for Document understanding and enrichment.
                Structure is documented below.
         :param pulumi.Input[str] industry_vertical: The industry vertical that the data store registers.
-               Possible values are: `GENERIC`, `MEDIA`.
+               Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[str] name: The unique full resource name of the data store. Values are of the format
@@ -808,7 +808,7 @@ class DataStore(pulumi.CustomResource):
                This flag cannot be specified if `data_store.starting_schema` is
                specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] solution_types: The solutions that the data store enrolls.
-               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+               Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -898,7 +898,7 @@ class DataStore(pulumi.CustomResource):
     def industry_vertical(self) -> pulumi.Output[str]:
         """
         The industry vertical that the data store registers.
-        Possible values are: `GENERIC`, `MEDIA`.
+        Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         """
         return pulumi.get(self, "industry_vertical")
 
@@ -950,7 +950,7 @@ class DataStore(pulumi.CustomResource):
     def solution_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The solutions that the data store enrolls.
-        Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+        Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
         return pulumi.get(self, "solution_types")
 

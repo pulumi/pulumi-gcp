@@ -21,6 +21,7 @@ __all__ = ['NodeTemplateArgs', 'NodeTemplate']
 @pulumi.input_type
 class NodeTemplateArgs:
     def __init__(__self__, *,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,9 @@ class NodeTemplateArgs:
                  server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
         """
         The set of arguments for constructing a NodeTemplate resource.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]] accelerators: List of the type and count of accelerator cards attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
                Possible values are: `ENABLED`, `NONE`.
@@ -54,6 +58,8 @@ class NodeTemplateArgs:
                where the nodes should restart following a maintenance event.
                Structure is documented below.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if cpu_overcommit_type is not None:
             pulumi.set(__self__, "cpu_overcommit_type", cpu_overcommit_type)
         if description is not None:
@@ -72,6 +78,20 @@ class NodeTemplateArgs:
             pulumi.set(__self__, "region", region)
         if server_binding is not None:
             pulumi.set(__self__, "server_binding", server_binding)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]:
+        """
+        List of the type and count of accelerator cards attached to the
+        node template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]):
+        pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="cpuOvercommitType")
@@ -197,6 +217,7 @@ class NodeTemplateArgs:
 @pulumi.input_type
 class _NodeTemplateState:
     def __init__(__self__, *,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -210,6 +231,9 @@ class _NodeTemplateState:
                  server_binding: Optional[pulumi.Input['NodeTemplateServerBindingArgs']] = None):
         """
         Input properties used for looking up and filtering NodeTemplate resources.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]] accelerators: List of the type and count of accelerator cards attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
                Possible values are: `ENABLED`, `NONE`.
@@ -234,6 +258,8 @@ class _NodeTemplateState:
                where the nodes should restart following a maintenance event.
                Structure is documented below.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if cpu_overcommit_type is not None:
             pulumi.set(__self__, "cpu_overcommit_type", cpu_overcommit_type)
         if creation_timestamp is not None:
@@ -256,6 +282,20 @@ class _NodeTemplateState:
             pulumi.set(__self__, "self_link", self_link)
         if server_binding is not None:
             pulumi.set(__self__, "server_binding", server_binding)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]:
+        """
+        List of the type and count of accelerator cards attached to the
+        node template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]]):
+        pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="cpuOvercommitType")
@@ -407,6 +447,7 @@ class NodeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -459,6 +500,22 @@ class NodeTemplate(pulumi.CustomResource):
                 "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
             })
         ```
+        ### Node Template Accelerators
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            name="soletenant-with-accelerators",
+            region="us-central1",
+            node_type="n1-node-96-624",
+            accelerators=[{
+                "accelerator_type": "nvidia-tesla-t4",
+                "accelerator_count": 4,
+            }])
+        ```
 
         ## Import
 
@@ -492,6 +549,9 @@ class NodeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]] accelerators: List of the type and count of accelerator cards attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
                Possible values are: `ENABLED`, `NONE`.
@@ -562,6 +622,22 @@ class NodeTemplate(pulumi.CustomResource):
                 "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
             })
         ```
+        ### Node Template Accelerators
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            name="soletenant-with-accelerators",
+            region="us-central1",
+            node_type="n1-node-96-624",
+            accelerators=[{
+                "accelerator_type": "nvidia-tesla-t4",
+                "accelerator_count": 4,
+            }])
+        ```
 
         ## Import
 
@@ -608,6 +684,7 @@ class NodeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -626,6 +703,7 @@ class NodeTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeTemplateArgs.__new__(NodeTemplateArgs)
 
+            __props__.__dict__["accelerators"] = accelerators
             __props__.__dict__["cpu_overcommit_type"] = cpu_overcommit_type
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -647,6 +725,7 @@ class NodeTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
             cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -665,6 +744,9 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]] accelerators: List of the type and count of accelerator cards attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
                Possible values are: `ENABLED`, `NONE`.
@@ -693,6 +775,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         __props__ = _NodeTemplateState.__new__(_NodeTemplateState)
 
+        __props__.__dict__["accelerators"] = accelerators
         __props__.__dict__["cpu_overcommit_type"] = cpu_overcommit_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
@@ -705,6 +788,16 @@ class NodeTemplate(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["server_binding"] = server_binding
         return NodeTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> pulumi.Output[Optional[Sequence['outputs.NodeTemplateAccelerator']]]:
+        """
+        List of the type and count of accelerator cards attached to the
+        node template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
 
     @property
     @pulumi.getter(name="cpuOvercommitType")

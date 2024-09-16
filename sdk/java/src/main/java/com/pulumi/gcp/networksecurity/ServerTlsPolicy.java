@@ -20,6 +20,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+ * 
+ * To get more information about ServerTlsPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.serverTlsPolicies)
+ * 
  * ## Example Usage
  * 
  * ### Network Security Server Tls Policy Basic
@@ -61,22 +67,11 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
- *                 .clientValidationCas(                
- *                     ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
- *                         .grpcEndpoint(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs.builder()
- *                             .targetUri("unix:mypath")
- *                             .build())
- *                         .build(),
- *                     ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
- *                         .grpcEndpoint(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs.builder()
- *                             .targetUri("unix:abc/mypath")
- *                             .build())
- *                         .build(),
- *                     ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
- *                         .certificateProviderInstance(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs.builder()
- *                             .pluginInstance("google_cloud_private_spiffe")
- *                             .build())
+ *                 .clientValidationCas(ServerTlsPolicyMtlsPolicyClientValidationCaArgs.builder()
+ *                     .grpcEndpoint(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs.builder()
+ *                         .targetUri("unix:mypath")
  *                         .build())
+ *                     .build())
  *                 .build())
  *             .build());
  * 

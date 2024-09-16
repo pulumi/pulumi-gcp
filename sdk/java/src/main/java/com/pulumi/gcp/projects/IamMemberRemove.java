@@ -34,6 +34,47 @@ import javax.annotation.Nullable;
  * and
  * [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IamMemberRemove;
+ * import com.pulumi.gcp.projects.IamMemberRemoveArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var targetProject = OrganizationsFunctions.getProject();
+ * 
+ *         var foo = new IamMemberRemove("foo", IamMemberRemoveArgs.builder()
+ *             .role("roles/editor")
+ *             .project(targetProjectGoogleProject.projectId())
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", targetProjectGoogleProject.number()))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="gcp:projects/iamMemberRemove:IamMemberRemove")
 public class IamMemberRemove extends com.pulumi.resources.CustomResource {

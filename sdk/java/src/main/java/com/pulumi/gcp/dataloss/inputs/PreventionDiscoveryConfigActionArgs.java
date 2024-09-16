@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionExportDataArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionPubSubNotificationArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigActionTagResourcesArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,11 +51,29 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
         return Optional.ofNullable(this.pubSubNotification);
     }
 
+    /**
+     * Publish a message into the Pub/Sub topic.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tagResources")
+    private @Nullable Output<PreventionDiscoveryConfigActionTagResourcesArgs> tagResources;
+
+    /**
+     * @return Publish a message into the Pub/Sub topic.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigActionTagResourcesArgs>> tagResources() {
+        return Optional.ofNullable(this.tagResources);
+    }
+
     private PreventionDiscoveryConfigActionArgs() {}
 
     private PreventionDiscoveryConfigActionArgs(PreventionDiscoveryConfigActionArgs $) {
         this.exportData = $.exportData;
         this.pubSubNotification = $.pubSubNotification;
+        this.tagResources = $.tagResources;
     }
 
     public static Builder builder() {
@@ -119,6 +138,29 @@ public final class PreventionDiscoveryConfigActionArgs extends com.pulumi.resour
          */
         public Builder pubSubNotification(PreventionDiscoveryConfigActionPubSubNotificationArgs pubSubNotification) {
             return pubSubNotification(Output.of(pubSubNotification));
+        }
+
+        /**
+         * @param tagResources Publish a message into the Pub/Sub topic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagResources(@Nullable Output<PreventionDiscoveryConfigActionTagResourcesArgs> tagResources) {
+            $.tagResources = tagResources;
+            return this;
+        }
+
+        /**
+         * @param tagResources Publish a message into the Pub/Sub topic.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagResources(PreventionDiscoveryConfigActionTagResourcesArgs tagResources) {
+            return tagResources(Output.of(tagResources));
         }
 
         public PreventionDiscoveryConfigActionArgs build() {

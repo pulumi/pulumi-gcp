@@ -25,6 +25,7 @@ class ClusterArgs:
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class ClusterArgs:
                "AUTH_MODE_DISABLED"]
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
                operation will fail. Default value is true.
+        :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
@@ -65,6 +67,8 @@ class ClusterArgs:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
@@ -135,6 +139,18 @@ class ClusterArgs:
     @deletion_protection_enabled.setter
     def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for a cluster
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter
@@ -243,6 +259,8 @@ class _ClusterState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  precise_size_gb: Optional[pulumi.Input[float]] = None,
@@ -272,6 +290,9 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
+               Structure is documented below.
+        :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -308,6 +329,10 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedules is not None:
+            pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
@@ -396,6 +421,31 @@ class _ClusterState:
     @discovery_endpoints.setter
     def discovery_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]]):
         pulumi.set(self, "discovery_endpoints", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
+        """
+        Maintenance policy for a cluster
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedules")
+
+    @maintenance_schedules.setter
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]]):
+        pulumi.set(self, "maintenance_schedules", value)
 
     @property
     @pulumi.getter
@@ -605,6 +655,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -668,6 +719,17 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Redis Cluster Ha Single Zone
@@ -703,6 +765,17 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-f",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
             },
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
@@ -745,6 +818,7 @@ class Cluster(pulumi.CustomResource):
                "AUTH_MODE_DISABLED"]
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
                operation will fail. Default value is true.
+        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
@@ -822,6 +896,17 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "MULTI_ZONE",
             },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Redis Cluster Ha Single Zone
@@ -857,6 +942,17 @@ class Cluster(pulumi.CustomResource):
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
                 "zone": "us-central1-f",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
             },
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
@@ -909,6 +1005,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -930,6 +1027,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["project"] = project
@@ -946,6 +1044,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["zone_distribution_config"] = zone_distribution_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
+            __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["precise_size_gb"] = None
             __props__.__dict__["psc_connections"] = None
             __props__.__dict__["size_gb"] = None
@@ -966,6 +1065,8 @@ class Cluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
+            maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
             precise_size_gb: Optional[pulumi.Input[float]] = None,
@@ -1000,6 +1101,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
@@ -1036,6 +1140,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type"] = node_type
         __props__.__dict__["precise_size_gb"] = precise_size_gb
@@ -1093,6 +1199,23 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "discovery_endpoints")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.ClusterMaintenancePolicy']]:
+        """
+        Maintenance policy for a cluster
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.ClusterMaintenanceSchedule']]:
+        """
+        Upcoming maintenance schedule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_schedules")
 
     @property
     @pulumi.getter

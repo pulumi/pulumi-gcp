@@ -1348,6 +1348,39 @@ class InstanceTemplate(pulumi.CustomResource):
             })
         ```
 
+        ### Confidential Computing
+
+        Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="my-custom-sa",
+            display_name="Custom SA for VM Instance")
+        confidential_instance_template = gcp.compute.InstanceTemplate("confidential_instance_template",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "network": "default",
+            }],
+            name="my-confidential-instance-template",
+            region="us-central1",
+            machine_type="n2d-standard-2",
+            min_cpu_platform="AMD Milan",
+            confidential_instance_config={
+                "enable_confidential_compute": True,
+                "confidential_instance_type": "SEV",
+            },
+            disks=[{
+                "source_image": "ubuntu-os-cloud/ubuntu-2004-lts",
+            }],
+            service_account={
+                "email": default.email,
+                "scopes": ["cloud-platform"],
+            })
+        ```
+
         ## Deploying the Latest Image
 
         A common way to use instance templates and managed instance groups is to deploy the
@@ -1646,6 +1679,39 @@ class InstanceTemplate(pulumi.CustomResource):
             },
             labels={
                 "gce-service-proxy": "on",
+            })
+        ```
+
+        ### Confidential Computing
+
+        Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="my-custom-sa",
+            display_name="Custom SA for VM Instance")
+        confidential_instance_template = gcp.compute.InstanceTemplate("confidential_instance_template",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "network": "default",
+            }],
+            name="my-confidential-instance-template",
+            region="us-central1",
+            machine_type="n2d-standard-2",
+            min_cpu_platform="AMD Milan",
+            confidential_instance_config={
+                "enable_confidential_compute": True,
+                "confidential_instance_type": "SEV",
+            },
+            disks=[{
+                "source_image": "ubuntu-os-cloud/ubuntu-2004-lts",
+            }],
+            service_account={
+                "email": default.email,
+                "scopes": ["cloud-platform"],
             })
         ```
 

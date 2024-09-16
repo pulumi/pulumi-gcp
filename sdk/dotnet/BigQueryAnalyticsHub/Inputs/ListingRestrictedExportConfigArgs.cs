@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// If true, restrict direct table access(read api/tabledata.list) on linked table.
+        /// </summary>
+        [Input("restrictDirectTableAccess")]
+        public Input<bool>? RestrictDirectTableAccess { get; set; }
+
+        /// <summary>
         /// If true, restrict export of query result derived from restricted linked dataset table.
         /// </summary>
         [Input("restrictQueryResult")]

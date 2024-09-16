@@ -379,6 +379,229 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Database Migration Service Connection Profile Existing Mysql
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileMysqlArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var destinationCsql = new DatabaseInstance("destinationCsql", DatabaseInstanceArgs.builder()
+ *             .name("destination-csql")
+ *             .databaseVersion("MYSQL_5_7")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-n1-standard-1")
+ *                 .deletionProtectionEnabled(false)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var existing_mysql = new ConnectionProfile("existing-mysql", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-cp")
+ *             .displayName("destination-cp_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .mysql(ConnectionProfileMysqlArgs.builder()
+ *                 .cloudSqlId("destination-csql")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(destinationCsql)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Database Migration Service Connection Profile Existing Postgres
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var destinationCsql = new DatabaseInstance("destinationCsql", DatabaseInstanceArgs.builder()
+ *             .name("destination-csql")
+ *             .databaseVersion("POSTGRES_15")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-13312")
+ *                 .deletionProtectionEnabled(false)
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var existing_psql = new ConnectionProfile("existing-psql", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-cp")
+ *             .displayName("destination-cp_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+ *                 .cloudSqlId("destination-csql")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(destinationCsql)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Database Migration Service Connection Profile Existing Alloydb
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+ * import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("destination-alloydb")
+ *             .build());
+ * 
+ *         var destinationAlloydb = new Cluster("destinationAlloydb", ClusterArgs.builder()
+ *             .clusterId("destination-alloydb")
+ *             .location("us-central1")
+ *             .networkConfig(ClusterNetworkConfigArgs.builder()
+ *                 .network(default_.id())
+ *                 .build())
+ *             .databaseVersion("POSTGRES_15")
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .user("destination-alloydb")
+ *                 .password("destination-alloydb")
+ *                 .build())
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+ *             .name("destination-alloydb")
+ *             .addressType("INTERNAL")
+ *             .purpose("VPC_PEERING")
+ *             .prefixLength(16)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection("vpcConnection", ConnectionArgs.builder()
+ *             .network(default_.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var destinationAlloydbPrimary = new Instance("destinationAlloydbPrimary", InstanceArgs.builder()
+ *             .cluster(destinationAlloydb.name())
+ *             .instanceId("destination-alloydb-primary")
+ *             .instanceType("PRIMARY")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var existing_alloydb = new ConnectionProfile("existing-alloydb", ConnectionProfileArgs.builder()
+ *             .location("us-central1")
+ *             .connectionProfileId("destination-cp")
+ *             .displayName("destination-cp_display")
+ *             .labels(Map.of("foo", "bar"))
+ *             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+ *                 .alloydbClusterId("destination-alloydb")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     destinationAlloydb,
+ *                     destinationAlloydbPrimary)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

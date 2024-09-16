@@ -2718,6 +2718,469 @@ func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingIm
 	}).(KeyRingImportJobPublicKeyOutput)
 }
 
+type GetCryptoKeyLatestVersionPublicKey struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm string `pulumi:"algorithm"`
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+	Pem string `pulumi:"pem"`
+}
+
+// GetCryptoKeyLatestVersionPublicKeyInput is an input type that accepts GetCryptoKeyLatestVersionPublicKeyArgs and GetCryptoKeyLatestVersionPublicKeyOutput values.
+// You can construct a concrete instance of `GetCryptoKeyLatestVersionPublicKeyInput` via:
+//
+//	GetCryptoKeyLatestVersionPublicKeyArgs{...}
+type GetCryptoKeyLatestVersionPublicKeyInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyLatestVersionPublicKeyOutput() GetCryptoKeyLatestVersionPublicKeyOutput
+	ToGetCryptoKeyLatestVersionPublicKeyOutputWithContext(context.Context) GetCryptoKeyLatestVersionPublicKeyOutput
+}
+
+type GetCryptoKeyLatestVersionPublicKeyArgs struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (GetCryptoKeyLatestVersionPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyLatestVersionPublicKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeyLatestVersionPublicKeyArgs) ToGetCryptoKeyLatestVersionPublicKeyOutput() GetCryptoKeyLatestVersionPublicKeyOutput {
+	return i.ToGetCryptoKeyLatestVersionPublicKeyOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyLatestVersionPublicKeyArgs) ToGetCryptoKeyLatestVersionPublicKeyOutputWithContext(ctx context.Context) GetCryptoKeyLatestVersionPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyLatestVersionPublicKeyOutput)
+}
+
+// GetCryptoKeyLatestVersionPublicKeyArrayInput is an input type that accepts GetCryptoKeyLatestVersionPublicKeyArray and GetCryptoKeyLatestVersionPublicKeyArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeyLatestVersionPublicKeyArrayInput` via:
+//
+//	GetCryptoKeyLatestVersionPublicKeyArray{ GetCryptoKeyLatestVersionPublicKeyArgs{...} }
+type GetCryptoKeyLatestVersionPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyLatestVersionPublicKeyArrayOutput() GetCryptoKeyLatestVersionPublicKeyArrayOutput
+	ToGetCryptoKeyLatestVersionPublicKeyArrayOutputWithContext(context.Context) GetCryptoKeyLatestVersionPublicKeyArrayOutput
+}
+
+type GetCryptoKeyLatestVersionPublicKeyArray []GetCryptoKeyLatestVersionPublicKeyInput
+
+func (GetCryptoKeyLatestVersionPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyLatestVersionPublicKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeyLatestVersionPublicKeyArray) ToGetCryptoKeyLatestVersionPublicKeyArrayOutput() GetCryptoKeyLatestVersionPublicKeyArrayOutput {
+	return i.ToGetCryptoKeyLatestVersionPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyLatestVersionPublicKeyArray) ToGetCryptoKeyLatestVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeyLatestVersionPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyLatestVersionPublicKeyArrayOutput)
+}
+
+type GetCryptoKeyLatestVersionPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyLatestVersionPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyLatestVersionPublicKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeyLatestVersionPublicKeyOutput) ToGetCryptoKeyLatestVersionPublicKeyOutput() GetCryptoKeyLatestVersionPublicKeyOutput {
+	return o
+}
+
+func (o GetCryptoKeyLatestVersionPublicKeyOutput) ToGetCryptoKeyLatestVersionPublicKeyOutputWithContext(ctx context.Context) GetCryptoKeyLatestVersionPublicKeyOutput {
+	return o
+}
+
+// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+func (o GetCryptoKeyLatestVersionPublicKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyLatestVersionPublicKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+func (o GetCryptoKeyLatestVersionPublicKeyOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyLatestVersionPublicKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetCryptoKeyLatestVersionPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyLatestVersionPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyLatestVersionPublicKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeyLatestVersionPublicKeyArrayOutput) ToGetCryptoKeyLatestVersionPublicKeyArrayOutput() GetCryptoKeyLatestVersionPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyLatestVersionPublicKeyArrayOutput) ToGetCryptoKeyLatestVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeyLatestVersionPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyLatestVersionPublicKeyArrayOutput) Index(i pulumi.IntInput) GetCryptoKeyLatestVersionPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeyLatestVersionPublicKey {
+		return vs[0].([]GetCryptoKeyLatestVersionPublicKey)[vs[1].(int)]
+	}).(GetCryptoKeyLatestVersionPublicKeyOutput)
+}
+
+type GetCryptoKeyVersionsPublicKey struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm string `pulumi:"algorithm"`
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+	Pem string `pulumi:"pem"`
+}
+
+// GetCryptoKeyVersionsPublicKeyInput is an input type that accepts GetCryptoKeyVersionsPublicKeyArgs and GetCryptoKeyVersionsPublicKeyOutput values.
+// You can construct a concrete instance of `GetCryptoKeyVersionsPublicKeyInput` via:
+//
+//	GetCryptoKeyVersionsPublicKeyArgs{...}
+type GetCryptoKeyVersionsPublicKeyInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyVersionsPublicKeyOutput() GetCryptoKeyVersionsPublicKeyOutput
+	ToGetCryptoKeyVersionsPublicKeyOutputWithContext(context.Context) GetCryptoKeyVersionsPublicKeyOutput
+}
+
+type GetCryptoKeyVersionsPublicKeyArgs struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (GetCryptoKeyVersionsPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyVersionsPublicKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeyVersionsPublicKeyArgs) ToGetCryptoKeyVersionsPublicKeyOutput() GetCryptoKeyVersionsPublicKeyOutput {
+	return i.ToGetCryptoKeyVersionsPublicKeyOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyVersionsPublicKeyArgs) ToGetCryptoKeyVersionsPublicKeyOutputWithContext(ctx context.Context) GetCryptoKeyVersionsPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyVersionsPublicKeyOutput)
+}
+
+// GetCryptoKeyVersionsPublicKeyArrayInput is an input type that accepts GetCryptoKeyVersionsPublicKeyArray and GetCryptoKeyVersionsPublicKeyArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeyVersionsPublicKeyArrayInput` via:
+//
+//	GetCryptoKeyVersionsPublicKeyArray{ GetCryptoKeyVersionsPublicKeyArgs{...} }
+type GetCryptoKeyVersionsPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyVersionsPublicKeyArrayOutput() GetCryptoKeyVersionsPublicKeyArrayOutput
+	ToGetCryptoKeyVersionsPublicKeyArrayOutputWithContext(context.Context) GetCryptoKeyVersionsPublicKeyArrayOutput
+}
+
+type GetCryptoKeyVersionsPublicKeyArray []GetCryptoKeyVersionsPublicKeyInput
+
+func (GetCryptoKeyVersionsPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyVersionsPublicKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeyVersionsPublicKeyArray) ToGetCryptoKeyVersionsPublicKeyArrayOutput() GetCryptoKeyVersionsPublicKeyArrayOutput {
+	return i.ToGetCryptoKeyVersionsPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyVersionsPublicKeyArray) ToGetCryptoKeyVersionsPublicKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeyVersionsPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyVersionsPublicKeyArrayOutput)
+}
+
+type GetCryptoKeyVersionsPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyVersionsPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyVersionsPublicKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeyVersionsPublicKeyOutput) ToGetCryptoKeyVersionsPublicKeyOutput() GetCryptoKeyVersionsPublicKeyOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsPublicKeyOutput) ToGetCryptoKeyVersionsPublicKeyOutputWithContext(ctx context.Context) GetCryptoKeyVersionsPublicKeyOutput {
+	return o
+}
+
+// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+func (o GetCryptoKeyVersionsPublicKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsPublicKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+func (o GetCryptoKeyVersionsPublicKeyOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsPublicKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetCryptoKeyVersionsPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyVersionsPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyVersionsPublicKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeyVersionsPublicKeyArrayOutput) ToGetCryptoKeyVersionsPublicKeyArrayOutput() GetCryptoKeyVersionsPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsPublicKeyArrayOutput) ToGetCryptoKeyVersionsPublicKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeyVersionsPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsPublicKeyArrayOutput) Index(i pulumi.IntInput) GetCryptoKeyVersionsPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeyVersionsPublicKey {
+		return vs[0].([]GetCryptoKeyVersionsPublicKey)[vs[1].(int)]
+	}).(GetCryptoKeyVersionsPublicKeyOutput)
+}
+
+type GetCryptoKeyVersionsVersion struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm string `pulumi:"algorithm"`
+	// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+	// `kms.CryptoKey` resource/datasource.
+	CryptoKey       string                                 `pulumi:"cryptoKey"`
+	Id              string                                 `pulumi:"id"`
+	Name            string                                 `pulumi:"name"`
+	ProtectionLevel string                                 `pulumi:"protectionLevel"`
+	PublicKeys      []GetCryptoKeyVersionsVersionPublicKey `pulumi:"publicKeys"`
+	State           string                                 `pulumi:"state"`
+	Version         int                                    `pulumi:"version"`
+}
+
+// GetCryptoKeyVersionsVersionInput is an input type that accepts GetCryptoKeyVersionsVersionArgs and GetCryptoKeyVersionsVersionOutput values.
+// You can construct a concrete instance of `GetCryptoKeyVersionsVersionInput` via:
+//
+//	GetCryptoKeyVersionsVersionArgs{...}
+type GetCryptoKeyVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyVersionsVersionOutput() GetCryptoKeyVersionsVersionOutput
+	ToGetCryptoKeyVersionsVersionOutputWithContext(context.Context) GetCryptoKeyVersionsVersionOutput
+}
+
+type GetCryptoKeyVersionsVersionArgs struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+	// `kms.CryptoKey` resource/datasource.
+	CryptoKey       pulumi.StringInput                             `pulumi:"cryptoKey"`
+	Id              pulumi.StringInput                             `pulumi:"id"`
+	Name            pulumi.StringInput                             `pulumi:"name"`
+	ProtectionLevel pulumi.StringInput                             `pulumi:"protectionLevel"`
+	PublicKeys      GetCryptoKeyVersionsVersionPublicKeyArrayInput `pulumi:"publicKeys"`
+	State           pulumi.StringInput                             `pulumi:"state"`
+	Version         pulumi.IntInput                                `pulumi:"version"`
+}
+
+func (GetCryptoKeyVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyVersionsVersion)(nil)).Elem()
+}
+
+func (i GetCryptoKeyVersionsVersionArgs) ToGetCryptoKeyVersionsVersionOutput() GetCryptoKeyVersionsVersionOutput {
+	return i.ToGetCryptoKeyVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyVersionsVersionArgs) ToGetCryptoKeyVersionsVersionOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyVersionsVersionOutput)
+}
+
+// GetCryptoKeyVersionsVersionArrayInput is an input type that accepts GetCryptoKeyVersionsVersionArray and GetCryptoKeyVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeyVersionsVersionArrayInput` via:
+//
+//	GetCryptoKeyVersionsVersionArray{ GetCryptoKeyVersionsVersionArgs{...} }
+type GetCryptoKeyVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyVersionsVersionArrayOutput() GetCryptoKeyVersionsVersionArrayOutput
+	ToGetCryptoKeyVersionsVersionArrayOutputWithContext(context.Context) GetCryptoKeyVersionsVersionArrayOutput
+}
+
+type GetCryptoKeyVersionsVersionArray []GetCryptoKeyVersionsVersionInput
+
+func (GetCryptoKeyVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyVersionsVersion)(nil)).Elem()
+}
+
+func (i GetCryptoKeyVersionsVersionArray) ToGetCryptoKeyVersionsVersionArrayOutput() GetCryptoKeyVersionsVersionArrayOutput {
+	return i.ToGetCryptoKeyVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyVersionsVersionArray) ToGetCryptoKeyVersionsVersionArrayOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyVersionsVersionArrayOutput)
+}
+
+type GetCryptoKeyVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyVersionsVersion)(nil)).Elem()
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) ToGetCryptoKeyVersionsVersionOutput() GetCryptoKeyVersionsVersionOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) ToGetCryptoKeyVersionsVersionOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionOutput {
+	return o
+}
+
+// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+func (o GetCryptoKeyVersionsVersionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+// `kms.CryptoKey` resource/datasource.
+func (o GetCryptoKeyVersionsVersionOutput) CryptoKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) string { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) ProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) PublicKeys() GetCryptoKeyVersionsVersionPublicKeyArrayOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) []GetCryptoKeyVersionsVersionPublicKey { return v.PublicKeys }).(GetCryptoKeyVersionsVersionPublicKeyArrayOutput)
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetCryptoKeyVersionsVersionOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersion) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetCryptoKeyVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyVersionsVersion)(nil)).Elem()
+}
+
+func (o GetCryptoKeyVersionsVersionArrayOutput) ToGetCryptoKeyVersionsVersionArrayOutput() GetCryptoKeyVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsVersionArrayOutput) ToGetCryptoKeyVersionsVersionArrayOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetCryptoKeyVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeyVersionsVersion {
+		return vs[0].([]GetCryptoKeyVersionsVersion)[vs[1].(int)]
+	}).(GetCryptoKeyVersionsVersionOutput)
+}
+
+type GetCryptoKeyVersionsVersionPublicKey struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm string `pulumi:"algorithm"`
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+	Pem string `pulumi:"pem"`
+}
+
+// GetCryptoKeyVersionsVersionPublicKeyInput is an input type that accepts GetCryptoKeyVersionsVersionPublicKeyArgs and GetCryptoKeyVersionsVersionPublicKeyOutput values.
+// You can construct a concrete instance of `GetCryptoKeyVersionsVersionPublicKeyInput` via:
+//
+//	GetCryptoKeyVersionsVersionPublicKeyArgs{...}
+type GetCryptoKeyVersionsVersionPublicKeyInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyVersionsVersionPublicKeyOutput() GetCryptoKeyVersionsVersionPublicKeyOutput
+	ToGetCryptoKeyVersionsVersionPublicKeyOutputWithContext(context.Context) GetCryptoKeyVersionsVersionPublicKeyOutput
+}
+
+type GetCryptoKeyVersionsVersionPublicKeyArgs struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (GetCryptoKeyVersionsVersionPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyVersionsVersionPublicKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeyVersionsVersionPublicKeyArgs) ToGetCryptoKeyVersionsVersionPublicKeyOutput() GetCryptoKeyVersionsVersionPublicKeyOutput {
+	return i.ToGetCryptoKeyVersionsVersionPublicKeyOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyVersionsVersionPublicKeyArgs) ToGetCryptoKeyVersionsVersionPublicKeyOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyVersionsVersionPublicKeyOutput)
+}
+
+// GetCryptoKeyVersionsVersionPublicKeyArrayInput is an input type that accepts GetCryptoKeyVersionsVersionPublicKeyArray and GetCryptoKeyVersionsVersionPublicKeyArrayOutput values.
+// You can construct a concrete instance of `GetCryptoKeyVersionsVersionPublicKeyArrayInput` via:
+//
+//	GetCryptoKeyVersionsVersionPublicKeyArray{ GetCryptoKeyVersionsVersionPublicKeyArgs{...} }
+type GetCryptoKeyVersionsVersionPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetCryptoKeyVersionsVersionPublicKeyArrayOutput() GetCryptoKeyVersionsVersionPublicKeyArrayOutput
+	ToGetCryptoKeyVersionsVersionPublicKeyArrayOutputWithContext(context.Context) GetCryptoKeyVersionsVersionPublicKeyArrayOutput
+}
+
+type GetCryptoKeyVersionsVersionPublicKeyArray []GetCryptoKeyVersionsVersionPublicKeyInput
+
+func (GetCryptoKeyVersionsVersionPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyVersionsVersionPublicKey)(nil)).Elem()
+}
+
+func (i GetCryptoKeyVersionsVersionPublicKeyArray) ToGetCryptoKeyVersionsVersionPublicKeyArrayOutput() GetCryptoKeyVersionsVersionPublicKeyArrayOutput {
+	return i.ToGetCryptoKeyVersionsVersionPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCryptoKeyVersionsVersionPublicKeyArray) ToGetCryptoKeyVersionsVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCryptoKeyVersionsVersionPublicKeyArrayOutput)
+}
+
+type GetCryptoKeyVersionsVersionPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyVersionsVersionPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCryptoKeyVersionsVersionPublicKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeyVersionsVersionPublicKeyOutput) ToGetCryptoKeyVersionsVersionPublicKeyOutput() GetCryptoKeyVersionsVersionPublicKeyOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsVersionPublicKeyOutput) ToGetCryptoKeyVersionsVersionPublicKeyOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionPublicKeyOutput {
+	return o
+}
+
+// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+func (o GetCryptoKeyVersionsVersionPublicKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersionPublicKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+func (o GetCryptoKeyVersionsVersionPublicKeyOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCryptoKeyVersionsVersionPublicKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetCryptoKeyVersionsVersionPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCryptoKeyVersionsVersionPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCryptoKeyVersionsVersionPublicKey)(nil)).Elem()
+}
+
+func (o GetCryptoKeyVersionsVersionPublicKeyArrayOutput) ToGetCryptoKeyVersionsVersionPublicKeyArrayOutput() GetCryptoKeyVersionsVersionPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsVersionPublicKeyArrayOutput) ToGetCryptoKeyVersionsVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetCryptoKeyVersionsVersionPublicKeyArrayOutput {
+	return o
+}
+
+func (o GetCryptoKeyVersionsVersionPublicKeyArrayOutput) Index(i pulumi.IntInput) GetCryptoKeyVersionsVersionPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCryptoKeyVersionsVersionPublicKey {
+		return vs[0].([]GetCryptoKeyVersionsVersionPublicKey)[vs[1].(int)]
+	}).(GetCryptoKeyVersionsVersionPublicKeyOutput)
+}
+
 type GetCryptoKeysKey struct {
 	// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
 	// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
@@ -3884,6 +4347,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobAttestationArrayInput)(nil)).Elem(), KeyRingImportJobAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyInput)(nil)).Elem(), KeyRingImportJobPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyArrayInput)(nil)).Elem(), KeyRingImportJobPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyLatestVersionPublicKeyInput)(nil)).Elem(), GetCryptoKeyLatestVersionPublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyLatestVersionPublicKeyArrayInput)(nil)).Elem(), GetCryptoKeyLatestVersionPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsPublicKeyInput)(nil)).Elem(), GetCryptoKeyVersionsPublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsPublicKeyArrayInput)(nil)).Elem(), GetCryptoKeyVersionsPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsVersionInput)(nil)).Elem(), GetCryptoKeyVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsVersionArrayInput)(nil)).Elem(), GetCryptoKeyVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsVersionPublicKeyInput)(nil)).Elem(), GetCryptoKeyVersionsVersionPublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeyVersionsVersionPublicKeyArrayInput)(nil)).Elem(), GetCryptoKeyVersionsVersionPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyInput)(nil)).Elem(), GetCryptoKeysKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyArrayInput)(nil)).Elem(), GetCryptoKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCryptoKeysKeyKeyAccessJustificationsPolicyInput)(nil)).Elem(), GetCryptoKeysKeyKeyAccessJustificationsPolicyArgs{})
@@ -3936,6 +4407,14 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyLatestVersionPublicKeyOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyLatestVersionPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyVersionsPublicKeyOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyVersionsPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyVersionsVersionPublicKeyOutput{})
+	pulumi.RegisterOutputType(GetCryptoKeyVersionsVersionPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetCryptoKeysKeyKeyAccessJustificationsPolicyOutput{})

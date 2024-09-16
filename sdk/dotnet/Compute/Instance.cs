@@ -88,6 +88,77 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### Confidential Computing
+    /// 
+    /// Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+    ///     {
+    ///         AccountId = "my-custom-sa",
+    ///         DisplayName = "Custom SA for VM Instance",
+    ///     });
+    /// 
+    ///     var confidentialInstance = new Gcp.Compute.Instance("confidential_instance", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Name = "my-confidential-instance",
+    ///         Zone = "us-central1-a",
+    ///         MachineType = "n2d-standard-2",
+    ///         MinCpuPlatform = "AMD Milan",
+    ///         ConfidentialInstanceConfig = new Gcp.Compute.Inputs.InstanceConfidentialInstanceConfigArgs
+    ///         {
+    ///             EnableConfidentialCompute = true,
+    ///             ConfidentialInstanceType = "SEV",
+    ///         },
+    ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///         {
+    ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///             {
+    ///                 Image = "ubuntu-os-cloud/ubuntu-2004-lts",
+    ///                 Labels = 
+    ///                 {
+    ///                     { "my_label", "value" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ScratchDisks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceScratchDiskArgs
+    ///             {
+    ///                 Interface = "NVME",
+    ///             },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+    ///         {
+    ///             Email = @default.Email,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using any of these accepted formats:
@@ -162,7 +233,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CpuPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         [Output("currentStatus")]
         public Output<string> CurrentStatus { get; private set; } = null!;
@@ -819,7 +890,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CpuPlatform { get; set; }
 
         /// <summary>
-        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         [Input("currentStatus")]
         public Input<string>? CurrentStatus { get; set; }

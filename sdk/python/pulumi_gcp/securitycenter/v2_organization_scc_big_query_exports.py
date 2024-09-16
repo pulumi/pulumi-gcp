@@ -468,7 +468,7 @@ class V2OrganizationSccBigQueryExports(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.bigquery.Dataset("default",
-            dataset_id="my_dataset_id",
+            dataset_id="",
             friendly_name="test",
             description="This is a test description",
             location="US",
@@ -481,7 +481,7 @@ class V2OrganizationSccBigQueryExports(pulumi.CustomResource):
             name="my-export",
             big_query_export_id="my-export",
             organization="123456789",
-            dataset="my-dataset",
+            dataset=default.id,
             location="global",
             description="Cloud Security Command Center Findings Big Query Export Config",
             filter="state=\\"ACTIVE\\" AND NOT mute=\\"MUTED\\"")
@@ -570,7 +570,7 @@ class V2OrganizationSccBigQueryExports(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.bigquery.Dataset("default",
-            dataset_id="my_dataset_id",
+            dataset_id="",
             friendly_name="test",
             description="This is a test description",
             location="US",
@@ -583,7 +583,7 @@ class V2OrganizationSccBigQueryExports(pulumi.CustomResource):
             name="my-export",
             big_query_export_id="my-export",
             organization="123456789",
-            dataset="my-dataset",
+            dataset=default.id,
             location="global",
             description="Cloud Security Command Center Findings Big Query Export Config",
             filter="state=\\"ACTIVE\\" AND NOT mute=\\"MUTED\\"")

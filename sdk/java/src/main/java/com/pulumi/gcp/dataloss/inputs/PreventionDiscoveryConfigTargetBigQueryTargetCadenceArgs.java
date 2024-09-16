@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs Empty = new PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs();
+
+    /**
+     * Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="inspectTemplateModifiedCadence")
+    private @Nullable Output<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs> inspectTemplateModifiedCadence;
+
+    /**
+     * @return Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs>> inspectTemplateModifiedCadence() {
+        return Optional.ofNullable(this.inspectTemplateModifiedCadence);
+    }
 
     /**
      * Governs when to update data profiles when a schema is modified
@@ -53,6 +71,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs exte
     private PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs() {}
 
     private PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs(PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs $) {
+        this.inspectTemplateModifiedCadence = $.inspectTemplateModifiedCadence;
         this.schemaModifiedCadence = $.schemaModifiedCadence;
         this.tableModifiedCadence = $.tableModifiedCadence;
     }
@@ -73,6 +92,29 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs exte
 
         public Builder(PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs defaults) {
             $ = new PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param inspectTemplateModifiedCadence Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspectTemplateModifiedCadence(@Nullable Output<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs> inspectTemplateModifiedCadence) {
+            $.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            return this;
+        }
+
+        /**
+         * @param inspectTemplateModifiedCadence Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspectTemplateModifiedCadence(PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs inspectTemplateModifiedCadence) {
+            return inspectTemplateModifiedCadence(Output.of(inspectTemplateModifiedCadence));
         }
 
         /**

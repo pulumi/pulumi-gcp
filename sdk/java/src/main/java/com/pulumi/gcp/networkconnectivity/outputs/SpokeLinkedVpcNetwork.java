@@ -18,6 +18,11 @@ public final class SpokeLinkedVpcNetwork {
      */
     private @Nullable List<String> excludeExportRanges;
     /**
+     * @return IP ranges allowed to be included from peering.
+     * 
+     */
+    private @Nullable List<String> includeExportRanges;
+    /**
      * @return The URI of the VPC network resource.
      * 
      */
@@ -30,6 +35,13 @@ public final class SpokeLinkedVpcNetwork {
      */
     public List<String> excludeExportRanges() {
         return this.excludeExportRanges == null ? List.of() : this.excludeExportRanges;
+    }
+    /**
+     * @return IP ranges allowed to be included from peering.
+     * 
+     */
+    public List<String> includeExportRanges() {
+        return this.includeExportRanges == null ? List.of() : this.includeExportRanges;
     }
     /**
      * @return The URI of the VPC network resource.
@@ -49,11 +61,13 @@ public final class SpokeLinkedVpcNetwork {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludeExportRanges;
+        private @Nullable List<String> includeExportRanges;
         private String uri;
         public Builder() {}
         public Builder(SpokeLinkedVpcNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludeExportRanges = defaults.excludeExportRanges;
+    	      this.includeExportRanges = defaults.includeExportRanges;
     	      this.uri = defaults.uri;
         }
 
@@ -67,6 +81,15 @@ public final class SpokeLinkedVpcNetwork {
             return excludeExportRanges(List.of(excludeExportRanges));
         }
         @CustomType.Setter
+        public Builder includeExportRanges(@Nullable List<String> includeExportRanges) {
+
+            this.includeExportRanges = includeExportRanges;
+            return this;
+        }
+        public Builder includeExportRanges(String... includeExportRanges) {
+            return includeExportRanges(List.of(includeExportRanges));
+        }
+        @CustomType.Setter
         public Builder uri(String uri) {
             if (uri == null) {
               throw new MissingRequiredPropertyException("SpokeLinkedVpcNetwork", "uri");
@@ -77,6 +100,7 @@ public final class SpokeLinkedVpcNetwork {
         public SpokeLinkedVpcNetwork build() {
             final var _resultValue = new SpokeLinkedVpcNetwork();
             _resultValue.excludeExportRanges = excludeExportRanges;
+            _resultValue.includeExportRanges = includeExportRanges;
             _resultValue.uri = uri;
             return _resultValue;
         }

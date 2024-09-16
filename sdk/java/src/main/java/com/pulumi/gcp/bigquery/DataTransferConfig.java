@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigState;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigEmailPreferences;
+import com.pulumi.gcp.bigquery.outputs.DataTransferConfigEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigScheduleOptions;
 import com.pulumi.gcp.bigquery.outputs.DataTransferConfigSensitiveParams;
 import java.lang.Boolean;
@@ -101,6 +102,93 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquerydatatransfer Config Cmek
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.bigquery.DataTransferConfig;
+ * import com.pulumi.gcp.bigquery.DataTransferConfigArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEncryptionConfigurationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var permissions = new IAMMember("permissions", IAMMemberArgs.builder()
+ *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *             .role("roles/iam.serviceAccountTokenCreator")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         var myDataset = new Dataset("myDataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .friendlyName("foo")
+ *             .description("bar")
+ *             .location("asia-northeast1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(permissions)
+ *                 .build());
+ * 
+ *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
+ *             .name("example-keyring")
+ *             .location("us")
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
+ *             .name("example-key")
+ *             .keyRing(keyRing.id())
+ *             .build());
+ * 
+ *         var queryConfigCmek = new DataTransferConfig("queryConfigCmek", DataTransferConfigArgs.builder()
+ *             .displayName("")
+ *             .location("asia-northeast1")
+ *             .dataSourceId("scheduled_query")
+ *             .schedule("first sunday of quarter 00:00")
+ *             .destinationDatasetId(myDataset.datasetId())
+ *             .params(Map.ofEntries(
+ *                 Map.entry("destination_table_name_template", "my_table"),
+ *                 Map.entry("write_disposition", "WRITE_APPEND"),
+ *                 Map.entry("query", "SELECT name FROM tabl WHERE x = 'y'")
+ *             ))
+ *             .encryptionConfiguration(DataTransferConfigEncryptionConfigurationArgs.builder()
+ *                 .kmsKeyName(cryptoKey.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(permissions)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Bigquerydatatransfer Config Salesforce
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -147,9 +235,7 @@ import javax.annotation.Nullable;
  *             .params(Map.ofEntries(
  *                 Map.entry("connector.authentication.oauth.clientId", "client-id"),
  *                 Map.entry("connector.authentication.oauth.clientSecret", "client-secret"),
- *                 Map.entry("connector.authentication.username", "username"),
- *                 Map.entry("connector.authentication.password", "password"),
- *                 Map.entry("connector.authentication.securityToken", "security-token"),
+ *                 Map.entry("connector.authentication.oauth.myDomain", "MyDomainName"),
  *                 Map.entry("assets", "[\"asset-a\",\"asset-b\"]")
  *             ))
  *             .build());
@@ -270,6 +356,22 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DataTransferConfigEmailPreferences>> emailPreferences() {
         return Codegen.optional(this.emailPreferences);
+    }
+    /**
+     * Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionConfiguration", refs={DataTransferConfigEncryptionConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ DataTransferConfigEncryptionConfiguration> encryptionConfiguration;
+
+    /**
+     * @return Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataTransferConfigEncryptionConfiguration>> encryptionConfiguration() {
+        return Codegen.optional(this.encryptionConfiguration);
     }
     /**
      * The geographic location where the transfer config should reside.

@@ -36,10 +36,18 @@ __all__ = [
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
     'WorkloadIdentityPoolProviderSaml',
+    'WorkloadIdentityPoolProviderX509',
+    'WorkloadIdentityPoolProviderX509TrustStore',
+    'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa',
+    'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor',
     'GetTestablePermissionsPermissionResult',
     'GetWorkloadIdentityPoolProviderAwResult',
     'GetWorkloadIdentityPoolProviderOidcResult',
     'GetWorkloadIdentityPoolProviderSamlResult',
+    'GetWorkloadIdentityPoolProviderX509Result',
+    'GetWorkloadIdentityPoolProviderX509TrustStoreResult',
+    'GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaResult',
+    'GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorResult',
 ]
 
 @pulumi.output_type
@@ -1238,6 +1246,8 @@ class WorkloadIdentityPoolProviderSaml(dict):
                  idp_metadata_xml: str):
         """
         :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc.
+               
+               <a name="nested_x509"></a>The `x509` block supports:
         """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
@@ -1246,8 +1256,190 @@ class WorkloadIdentityPoolProviderSaml(dict):
     def idp_metadata_xml(self) -> str:
         """
         SAML Identity provider configuration metadata xml doc.
+
+        <a name="nested_x509"></a>The `x509` block supports:
         """
         return pulumi.get(self, "idp_metadata_xml")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolProviderX509(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trustStore":
+            suggest = "trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderX509. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderX509.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderX509.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 trust_store: 'outputs.WorkloadIdentityPoolProviderX509TrustStore'):
+        """
+        :param 'WorkloadIdentityPoolProviderX509TrustStoreArgs' trust_store: A Trust store, use this trust store as a wrapper to config the trust
+               anchor and optional intermediate cas to help build the trust chain for
+               the incoming end entity certificate. Follow the x509 guidelines to
+               define those PEM encoded certs. Only 1 trust store is currently
+               supported.
+        """
+        pulumi.set(__self__, "trust_store", trust_store)
+
+    @property
+    @pulumi.getter(name="trustStore")
+    def trust_store(self) -> 'outputs.WorkloadIdentityPoolProviderX509TrustStore':
+        """
+        A Trust store, use this trust store as a wrapper to config the trust
+        anchor and optional intermediate cas to help build the trust chain for
+        the incoming end entity certificate. Follow the x509 guidelines to
+        define those PEM encoded certs. Only 1 trust store is currently
+        supported.
+        """
+        return pulumi.get(self, "trust_store")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolProviderX509TrustStore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trustAnchors":
+            suggest = "trust_anchors"
+        elif key == "intermediateCas":
+            suggest = "intermediate_cas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderX509TrustStore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderX509TrustStore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderX509TrustStore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 trust_anchors: Sequence['outputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor'],
+                 intermediate_cas: Optional[Sequence['outputs.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa']] = None):
+        """
+        :param Sequence['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs'] trust_anchors: List of Trust Anchors to be used while performing validation
+               against a given TrustStore. The incoming end entity's certificate
+               must be chained up to one of the trust anchors here.
+               Structure is documented below.
+        :param Sequence['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs'] intermediate_cas: Set of intermediate CA certificates used for building the trust chain to
+               trust anchor.
+               IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+        if intermediate_cas is not None:
+            pulumi.set(__self__, "intermediate_cas", intermediate_cas)
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Sequence['outputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor']:
+        """
+        List of Trust Anchors to be used while performing validation
+        against a given TrustStore. The incoming end entity's certificate
+        must be chained up to one of the trust anchors here.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+    @property
+    @pulumi.getter(name="intermediateCas")
+    def intermediate_cas(self) -> Optional[Sequence['outputs.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa']]:
+        """
+        Set of intermediate CA certificates used for building the trust chain to
+        trust anchor.
+        IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "intermediate_cas")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: Optional[str] = None):
+        """
+        :param str pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
+               ca certificate(either root or intermediate cert).
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[str]:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: Optional[str] = None):
+        """
+        :param str pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
+               ca certificate(either root or intermediate cert).
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[str]:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
 
 
 @pulumi.output_type
@@ -1452,5 +1644,108 @@ class GetWorkloadIdentityPoolProviderSamlResult(dict):
         SAML Identity provider configuration metadata xml doc.
         """
         return pulumi.get(self, "idp_metadata_xml")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderX509Result(dict):
+    def __init__(__self__, *,
+                 trust_stores: Sequence['outputs.GetWorkloadIdentityPoolProviderX509TrustStoreResult']):
+        """
+        :param Sequence['GetWorkloadIdentityPoolProviderX509TrustStoreArgs'] trust_stores: A Trust store, use this trust store as a wrapper to config the trust
+               anchor and optional intermediate cas to help build the trust chain for
+               the incoming end entity certificate. Follow the x509 guidelines to
+               define those PEM encoded certs. Only 1 trust store is currently
+               supported.
+        """
+        pulumi.set(__self__, "trust_stores", trust_stores)
+
+    @property
+    @pulumi.getter(name="trustStores")
+    def trust_stores(self) -> Sequence['outputs.GetWorkloadIdentityPoolProviderX509TrustStoreResult']:
+        """
+        A Trust store, use this trust store as a wrapper to config the trust
+        anchor and optional intermediate cas to help build the trust chain for
+        the incoming end entity certificate. Follow the x509 guidelines to
+        define those PEM encoded certs. Only 1 trust store is currently
+        supported.
+        """
+        return pulumi.get(self, "trust_stores")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderX509TrustStoreResult(dict):
+    def __init__(__self__, *,
+                 intermediate_cas: Sequence['outputs.GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaResult'],
+                 trust_anchors: Sequence['outputs.GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorResult']):
+        """
+        :param Sequence['GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs'] intermediate_cas: Set of intermediate CA certificates used for building the trust chain to
+               trust anchor.
+               IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+        :param Sequence['GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs'] trust_anchors: List of Trust Anchors to be used while performing validation
+               against a given TrustStore. The incoming end entity's certificate
+               must be chained up to one of the trust anchors here.
+        """
+        pulumi.set(__self__, "intermediate_cas", intermediate_cas)
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+
+    @property
+    @pulumi.getter(name="intermediateCas")
+    def intermediate_cas(self) -> Sequence['outputs.GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaResult']:
+        """
+        Set of intermediate CA certificates used for building the trust chain to
+        trust anchor.
+        IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+        """
+        return pulumi.get(self, "intermediate_cas")
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Sequence['outputs.GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorResult']:
+        """
+        List of Trust Anchors to be used while performing validation
+        against a given TrustStore. The incoming end entity's certificate
+        must be chained up to one of the trust anchors here.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaResult(dict):
+    def __init__(__self__, *,
+                 pem_certificate: str):
+        """
+        :param str pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
+               ca certificate(either root or intermediate cert).
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> str:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorResult(dict):
+    def __init__(__self__, *,
+                 pem_certificate: str):
+        """
+        :param str pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
+               ca certificate(either root or intermediate cert).
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> str:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
 
 

@@ -345,6 +345,207 @@ import (
 //	}
 //
 // ```
+// ### Database Migration Service Connection Profile Existing Mysql
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			destinationCsql, err := sql.NewDatabaseInstance(ctx, "destination_csql", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("destination-csql"),
+//				DatabaseVersion: pulumi.String("MYSQL_5_7"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier:                      pulumi.String("db-n1-standard-1"),
+//					DeletionProtectionEnabled: pulumi.Bool(false),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-mysql", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-cp"),
+//				DisplayName:         pulumi.String("destination-cp_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Mysql: &databasemigrationservice.ConnectionProfileMysqlArgs{
+//					CloudSqlId: pulumi.String("destination-csql"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				destinationCsql,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Database Migration Service Connection Profile Existing Postgres
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			destinationCsql, err := sql.NewDatabaseInstance(ctx, "destination_csql", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("destination-csql"),
+//				DatabaseVersion: pulumi.String("POSTGRES_15"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier:                      pulumi.String("db-custom-2-13312"),
+//					DeletionProtectionEnabled: pulumi.Bool(false),
+//				},
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-psql", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-cp"),
+//				DisplayName:         pulumi.String("destination-cp_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+//					CloudSqlId: pulumi.String("destination-csql"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				destinationCsql,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Database Migration Service Connection Profile Existing Alloydb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name: pulumi.String("destination-alloydb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationAlloydb, err := alloydb.NewCluster(ctx, "destination_alloydb", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("destination-alloydb"),
+//				Location:  pulumi.String("us-central1"),
+//				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+//					Network: _default.ID(),
+//				},
+//				DatabaseVersion: pulumi.String("POSTGRES_15"),
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					User:     pulumi.String("destination-alloydb"),
+//					Password: pulumi.String("destination-alloydb"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("destination-alloydb"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: _default.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destinationAlloydbPrimary, err := alloydb.NewInstance(ctx, "destination_alloydb_primary", &alloydb.InstanceArgs{
+//				Cluster:      destinationAlloydb.Name,
+//				InstanceId:   pulumi.String("destination-alloydb-primary"),
+//				InstanceType: pulumi.String("PRIMARY"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-alloydb", &databasemigrationservice.ConnectionProfileArgs{
+//				Location:            pulumi.String("us-central1"),
+//				ConnectionProfileId: pulumi.String("destination-cp"),
+//				DisplayName:         pulumi.String("destination-cp_display"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+//					AlloydbClusterId: pulumi.String("destination-alloydb"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				destinationAlloydb,
+//				destinationAlloydbPrimary,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

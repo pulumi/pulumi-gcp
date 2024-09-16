@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigNetworkTagsArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigNodeKubeletConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,18 +19,35 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     public static final ClusterNodePoolAutoConfigArgs Empty = new ClusterNodePoolAutoConfigArgs();
 
     /**
-     * The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
      * 
      */
     @Import(name="networkTags")
     private @Nullable Output<ClusterNodePoolAutoConfigNetworkTagsArgs> networkTags;
 
     /**
-     * @return The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * @return The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolAutoConfigNetworkTagsArgs>> networkTags() {
         return Optional.ofNullable(this.networkTags);
+    }
+
+    /**
+     * Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nodeKubeletConfig")
+    private @Nullable Output<ClusterNodePoolAutoConfigNodeKubeletConfigArgs> nodeKubeletConfig;
+
+    /**
+     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolAutoConfigNodeKubeletConfigArgs>> nodeKubeletConfig() {
+        return Optional.ofNullable(this.nodeKubeletConfig);
     }
 
     /**
@@ -51,6 +69,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
 
     private ClusterNodePoolAutoConfigArgs(ClusterNodePoolAutoConfigArgs $) {
         this.networkTags = $.networkTags;
+        this.nodeKubeletConfig = $.nodeKubeletConfig;
         this.resourceManagerTags = $.resourceManagerTags;
     }
 
@@ -73,7 +92,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkTags The network tag config for the cluster&#39;s automatically provisioned node pools.
+         * @param networkTags The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
          * 
          * @return builder
          * 
@@ -84,13 +103,36 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkTags The network tag config for the cluster&#39;s automatically provisioned node pools.
+         * @param networkTags The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
          * 
          * @return builder
          * 
          */
         public Builder networkTags(ClusterNodePoolAutoConfigNetworkTagsArgs networkTags) {
             return networkTags(Output.of(networkTags));
+        }
+
+        /**
+         * @param nodeKubeletConfig Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeKubeletConfig(@Nullable Output<ClusterNodePoolAutoConfigNodeKubeletConfigArgs> nodeKubeletConfig) {
+            $.nodeKubeletConfig = nodeKubeletConfig;
+            return this;
+        }
+
+        /**
+         * @param nodeKubeletConfig Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeKubeletConfig(ClusterNodePoolAutoConfigNodeKubeletConfigArgs nodeKubeletConfig) {
+            return nodeKubeletConfig(Output.of(nodeKubeletConfig));
         }
 
         /**

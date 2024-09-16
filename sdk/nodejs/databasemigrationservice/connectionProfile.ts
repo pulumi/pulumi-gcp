@@ -228,6 +228,122 @@ import * as utilities from "../utilities";
  *     dependsOn: [vpcConnection],
  * });
  * ```
+ * ### Database Migration Service Connection Profile Existing Mysql
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const destinationCsql = new gcp.sql.DatabaseInstance("destination_csql", {
+ *     name: "destination-csql",
+ *     databaseVersion: "MYSQL_5_7",
+ *     settings: {
+ *         tier: "db-n1-standard-1",
+ *         deletionProtectionEnabled: false,
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const existing_mysql = new gcp.databasemigrationservice.ConnectionProfile("existing-mysql", {
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-cp",
+ *     displayName: "destination-cp_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     mysql: {
+ *         cloudSqlId: "destination-csql",
+ *     },
+ * }, {
+ *     dependsOn: [destinationCsql],
+ * });
+ * ```
+ * ### Database Migration Service Connection Profile Existing Postgres
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const destinationCsql = new gcp.sql.DatabaseInstance("destination_csql", {
+ *     name: "destination-csql",
+ *     databaseVersion: "POSTGRES_15",
+ *     settings: {
+ *         tier: "db-custom-2-13312",
+ *         deletionProtectionEnabled: false,
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const existing_psql = new gcp.databasemigrationservice.ConnectionProfile("existing-psql", {
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-cp",
+ *     displayName: "destination-cp_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         cloudSqlId: "destination-csql",
+ *     },
+ * }, {
+ *     dependsOn: [destinationCsql],
+ * });
+ * ```
+ * ### Database Migration Service Connection Profile Existing Alloydb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const _default = new gcp.compute.Network("default", {name: "destination-alloydb"});
+ * const destinationAlloydb = new gcp.alloydb.Cluster("destination_alloydb", {
+ *     clusterId: "destination-alloydb",
+ *     location: "us-central1",
+ *     networkConfig: {
+ *         network: _default.id,
+ *     },
+ *     databaseVersion: "POSTGRES_15",
+ *     initialUser: {
+ *         user: "destination-alloydb",
+ *         password: "destination-alloydb",
+ *     },
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "destination-alloydb",
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.id,
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+ *     network: _default.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const destinationAlloydbPrimary = new gcp.alloydb.Instance("destination_alloydb_primary", {
+ *     cluster: destinationAlloydb.name,
+ *     instanceId: "destination-alloydb-primary",
+ *     instanceType: "PRIMARY",
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const existing_alloydb = new gcp.databasemigrationservice.ConnectionProfile("existing-alloydb", {
+ *     location: "us-central1",
+ *     connectionProfileId: "destination-cp",
+ *     displayName: "destination-cp_display",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     postgresql: {
+ *         alloydbClusterId: "destination-alloydb",
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         destinationAlloydb,
+ *         destinationAlloydbPrimary,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

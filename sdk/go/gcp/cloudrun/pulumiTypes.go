@@ -6676,8 +6676,7 @@ type ServiceTemplateSpecVolume struct {
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// A filesystem backed by a Network File System share. This filesystem requires the
-	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	// Structure is documented below.
 	Nfs *ServiceTemplateSpecVolumeNfs `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
@@ -6708,8 +6707,7 @@ type ServiceTemplateSpecVolumeArgs struct {
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A filesystem backed by a Network File System share. This filesystem requires the
-	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	// Structure is documented below.
 	Nfs ServiceTemplateSpecVolumeNfsPtrInput `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
@@ -6788,8 +6786,7 @@ func (o ServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 }
 
 // A filesystem backed by a Network File System share. This filesystem requires the
-// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 // Structure is documented below.
 func (o ServiceTemplateSpecVolumeOutput) Nfs() ServiceTemplateSpecVolumeNfsPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolume) *ServiceTemplateSpecVolumeNfs { return v.Nfs }).(ServiceTemplateSpecVolumeNfsPtrOutput)
@@ -6826,8 +6823,7 @@ func (o ServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTe
 type ServiceTemplateSpecVolumeCsi struct {
 	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
 	// * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-	//   run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	//   run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	//   run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	Driver string `pulumi:"driver"`
 	// If true, all mounts created from this volume will be read-only.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -6851,8 +6847,7 @@ type ServiceTemplateSpecVolumeCsiInput interface {
 type ServiceTemplateSpecVolumeCsiArgs struct {
 	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
 	// * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-	//   run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	//   run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	//   run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	Driver pulumi.StringInput `pulumi:"driver"`
 	// If true, all mounts created from this volume will be read-only.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -6941,8 +6936,7 @@ func (o ServiceTemplateSpecVolumeCsiOutput) ToServiceTemplateSpecVolumeCsiPtrOut
 
 // Unique name representing the type of file system to be created. Cloud Run supports the following values:
 //   - gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
-//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+//     run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 func (o ServiceTemplateSpecVolumeCsiOutput) Driver() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeCsi) string { return v.Driver }).(pulumi.StringOutput)
 }
@@ -6985,8 +6979,7 @@ func (o ServiceTemplateSpecVolumeCsiPtrOutput) Elem() ServiceTemplateSpecVolumeC
 
 // Unique name representing the type of file system to be created. Cloud Run supports the following values:
 //   - gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
-//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+//     run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 func (o ServiceTemplateSpecVolumeCsiPtrOutput) Driver() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecVolumeCsi) *string {
 		if v == nil {
@@ -11573,8 +11566,7 @@ type GetServiceTemplateSpecVolume struct {
 	// The name of the Cloud Run Service.
 	Name string `pulumi:"name"`
 	// A filesystem backed by a Network File System share. This filesystem requires the
-	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	Nfs []GetServiceTemplateSpecVolumeNf `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
@@ -11601,8 +11593,7 @@ type GetServiceTemplateSpecVolumeArgs struct {
 	// The name of the Cloud Run Service.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A filesystem backed by a Network File System share. This filesystem requires the
-	// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	Nfs GetServiceTemplateSpecVolumeNfArrayInput `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
@@ -11677,8 +11668,7 @@ func (o GetServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 }
 
 // A filesystem backed by a Network File System share. This filesystem requires the
-// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 func (o GetServiceTemplateSpecVolumeOutput) Nfs() GetServiceTemplateSpecVolumeNfArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolume) []GetServiceTemplateSpecVolumeNf { return v.Nfs }).(GetServiceTemplateSpecVolumeNfArrayOutput)
 }
@@ -11713,8 +11703,7 @@ func (o GetServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) GetSer
 type GetServiceTemplateSpecVolumeCsi struct {
 	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
 	//   * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-	//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	//     run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	Driver string `pulumi:"driver"`
 	// If true, all mounts created from this volume will be read-only.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -11738,8 +11727,7 @@ type GetServiceTemplateSpecVolumeCsiInput interface {
 type GetServiceTemplateSpecVolumeCsiArgs struct {
 	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
 	//   * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-	//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
-	//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	//     run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 	Driver pulumi.StringInput `pulumi:"driver"`
 	// If true, all mounts created from this volume will be read-only.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -11802,8 +11790,7 @@ func (o GetServiceTemplateSpecVolumeCsiOutput) ToGetServiceTemplateSpecVolumeCsi
 
 // Unique name representing the type of file system to be created. Cloud Run supports the following values:
 //   - gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
-//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+//     run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
 func (o GetServiceTemplateSpecVolumeCsiOutput) Driver() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolumeCsi) string { return v.Driver }).(pulumi.StringOutput)
 }

@@ -271,6 +271,608 @@ func (o ClusterDiscoveryEndpointPscConfigPtrOutput) Network() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterMaintenancePolicy struct {
+	// (Output)
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	CreateTime *string `pulumi:"createTime"`
+	// (Output)
+	// Output only. The time when the policy was last updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Optional. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number
+	// of weeklyWindow is expected to be one.
+	// Structure is documented below.
+	WeeklyMaintenanceWindows []ClusterMaintenancePolicyWeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindows"`
+}
+
+// ClusterMaintenancePolicyInput is an input type that accepts ClusterMaintenancePolicyArgs and ClusterMaintenancePolicyOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyInput` via:
+//
+//	ClusterMaintenancePolicyArgs{...}
+type ClusterMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyOutput() ClusterMaintenancePolicyOutput
+	ToClusterMaintenancePolicyOutputWithContext(context.Context) ClusterMaintenancePolicyOutput
+}
+
+type ClusterMaintenancePolicyArgs struct {
+	// (Output)
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// (Output)
+	// Output only. The time when the policy was last updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// Optional. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number
+	// of weeklyWindow is expected to be one.
+	// Structure is documented below.
+	WeeklyMaintenanceWindows ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindows"`
+}
+
+func (ClusterMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyArgs) ToClusterMaintenancePolicyOutput() ClusterMaintenancePolicyOutput {
+	return i.ToClusterMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyArgs) ToClusterMaintenancePolicyOutputWithContext(ctx context.Context) ClusterMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyOutput)
+}
+
+func (i ClusterMaintenancePolicyArgs) ToClusterMaintenancePolicyPtrOutput() ClusterMaintenancePolicyPtrOutput {
+	return i.ToClusterMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyArgs) ToClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyOutput).ToClusterMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterMaintenancePolicyPtrInput is an input type that accepts ClusterMaintenancePolicyArgs, ClusterMaintenancePolicyPtr and ClusterMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyPtrInput` via:
+//
+//	        ClusterMaintenancePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyPtrOutput() ClusterMaintenancePolicyPtrOutput
+	ToClusterMaintenancePolicyPtrOutputWithContext(context.Context) ClusterMaintenancePolicyPtrOutput
+}
+
+type clusterMaintenancePolicyPtrType ClusterMaintenancePolicyArgs
+
+func ClusterMaintenancePolicyPtr(v *ClusterMaintenancePolicyArgs) ClusterMaintenancePolicyPtrInput {
+	return (*clusterMaintenancePolicyPtrType)(v)
+}
+
+func (*clusterMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *clusterMaintenancePolicyPtrType) ToClusterMaintenancePolicyPtrOutput() ClusterMaintenancePolicyPtrOutput {
+	return i.ToClusterMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMaintenancePolicyPtrType) ToClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyPtrOutput)
+}
+
+type ClusterMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyOutput() ClusterMaintenancePolicyOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyOutputWithContext(ctx context.Context) ClusterMaintenancePolicyOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutput() ClusterMaintenancePolicyPtrOutput {
+	return o.ToClusterMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterMaintenancePolicy) *ClusterMaintenancePolicy {
+		return &v
+	}).(ClusterMaintenancePolicyPtrOutput)
+}
+
+// (Output)
+// Output only. The time when the policy was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenancePolicyOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicy) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The time when the policy was last updated.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenancePolicyOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicy) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Maintenance window that is applied to resources covered by this policy.
+// Minimum 1. For the current version, the maximum number
+// of weeklyWindow is expected to be one.
+// Structure is documented below.
+func (o ClusterMaintenancePolicyOutput) WeeklyMaintenanceWindows() ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicy) []ClusterMaintenancePolicyWeeklyMaintenanceWindow {
+		return v.WeeklyMaintenanceWindows
+	}).(ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type ClusterMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMaintenancePolicy)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyPtrOutput) ToClusterMaintenancePolicyPtrOutput() ClusterMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyPtrOutput) ToClusterMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyPtrOutput) Elem() ClusterMaintenancePolicyOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) ClusterMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterMaintenancePolicy
+		return ret
+	}).(ClusterMaintenancePolicyOutput)
+}
+
+// (Output)
+// Output only. The time when the policy was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenancePolicyPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The time when the policy was last updated.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenancePolicyPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Maintenance window that is applied to resources covered by this policy.
+// Minimum 1. For the current version, the maximum number
+// of weeklyWindow is expected to be one.
+// Structure is documented below.
+func (o ClusterMaintenancePolicyPtrOutput) WeeklyMaintenanceWindows() ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) []ClusterMaintenancePolicyWeeklyMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyMaintenanceWindows
+	}).(ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindow struct {
+	// Required. The day of week that maintenance updates occur.
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday
+	//   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	Day string `pulumi:"day"`
+	// (Output)
+	// Output only. Duration of the maintenance window.
+	// The current window is fixed at 1 hour.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	Duration *string `pulumi:"duration"`
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
+	StartTime ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime `pulumi:"startTime"`
+}
+
+// ClusterMaintenancePolicyWeeklyMaintenanceWindowInput is an input type that accepts ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs and ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyWeeklyMaintenanceWindowInput` via:
+//
+//	ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{...}
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput
+	ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
+	// Required. The day of week that maintenance updates occur.
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday
+	//   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	Day pulumi.StringInput `pulumi:"day"`
+	// (Output)
+	// Output only. Duration of the maintenance window.
+	// The current window is fixed at 1 hour.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
+	StartTime ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput `pulumi:"startTime"`
+}
+
+func (ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs) ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return i.ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs) ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput)
+}
+
+// ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayInput is an input type that accepts ClusterMaintenancePolicyWeeklyMaintenanceWindowArray and ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayInput` via:
+//
+//	ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{ ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{...} }
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput
+	ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowArray []ClusterMaintenancePolicyWeeklyMaintenanceWindowInput
+
+func (ClusterMaintenancePolicyWeeklyMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyWeeklyMaintenanceWindowArray) ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return i.ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyWeeklyMaintenanceWindowArray) ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput)
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput) ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput) ToClusterMaintenancePolicyWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return o
+}
+
+// Required. The day of week that maintenance updates occur.
+//   - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+//   - MONDAY: Monday
+//   - TUESDAY: Tuesday
+//   - WEDNESDAY: Wednesday
+//   - THURSDAY: Thursday
+//   - FRIDAY: Friday
+//   - SATURDAY: Saturday
+//   - SUNDAY: Sunday
+//     Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output only. Duration of the maintenance window.
+// The current window is fixed at 1 hour.
+// A duration in seconds with up to nine fractional digits,
+// terminated by 's'. Example: "3.5s".
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Required. Start time of the window in UTC time.
+// Structure is documented below.
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput) StartTime() ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindow) ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+		return v.StartTime
+	}).(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenancePolicyWeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) ToClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMaintenancePolicyWeeklyMaintenanceWindow {
+		return vs[0].([]ClusterMaintenancePolicyWeeklyMaintenanceWindow)[vs[1].(int)]
+	}).(ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput)
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput is an input type that accepts ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs and ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput` via:
+//
+//	ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{...}
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput
+	ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return i.ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs) ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput)
+}
+
+type ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput() ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutputWithContext(ctx context.Context) ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+// An API may allow the value 60 if it allows leap-seconds.
+func (o ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type ClusterMaintenanceSchedule struct {
+	// (Output)
+	// Output only. The end time of any upcoming scheduled maintenance for this cluster.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	EndTime *string `pulumi:"endTime"`
+	// (Output)
+	// Output only. The deadline that the maintenance schedule start time
+	// can not go beyond, including reschedule.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
+	// (Output)
+	// Output only. The start time of any upcoming scheduled maintenance for this cluster.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ClusterMaintenanceScheduleInput is an input type that accepts ClusterMaintenanceScheduleArgs and ClusterMaintenanceScheduleOutput values.
+// You can construct a concrete instance of `ClusterMaintenanceScheduleInput` via:
+//
+//	ClusterMaintenanceScheduleArgs{...}
+type ClusterMaintenanceScheduleInput interface {
+	pulumi.Input
+
+	ToClusterMaintenanceScheduleOutput() ClusterMaintenanceScheduleOutput
+	ToClusterMaintenanceScheduleOutputWithContext(context.Context) ClusterMaintenanceScheduleOutput
+}
+
+type ClusterMaintenanceScheduleArgs struct {
+	// (Output)
+	// Output only. The end time of any upcoming scheduled maintenance for this cluster.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
+	// Output only. The deadline that the maintenance schedule start time
+	// can not go beyond, including reschedule.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
+	// (Output)
+	// Output only. The start time of any upcoming scheduled maintenance for this cluster.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ClusterMaintenanceScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i ClusterMaintenanceScheduleArgs) ToClusterMaintenanceScheduleOutput() ClusterMaintenanceScheduleOutput {
+	return i.ToClusterMaintenanceScheduleOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenanceScheduleArgs) ToClusterMaintenanceScheduleOutputWithContext(ctx context.Context) ClusterMaintenanceScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenanceScheduleOutput)
+}
+
+// ClusterMaintenanceScheduleArrayInput is an input type that accepts ClusterMaintenanceScheduleArray and ClusterMaintenanceScheduleArrayOutput values.
+// You can construct a concrete instance of `ClusterMaintenanceScheduleArrayInput` via:
+//
+//	ClusterMaintenanceScheduleArray{ ClusterMaintenanceScheduleArgs{...} }
+type ClusterMaintenanceScheduleArrayInput interface {
+	pulumi.Input
+
+	ToClusterMaintenanceScheduleArrayOutput() ClusterMaintenanceScheduleArrayOutput
+	ToClusterMaintenanceScheduleArrayOutputWithContext(context.Context) ClusterMaintenanceScheduleArrayOutput
+}
+
+type ClusterMaintenanceScheduleArray []ClusterMaintenanceScheduleInput
+
+func (ClusterMaintenanceScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenanceSchedule)(nil)).Elem()
+}
+
+func (i ClusterMaintenanceScheduleArray) ToClusterMaintenanceScheduleArrayOutput() ClusterMaintenanceScheduleArrayOutput {
+	return i.ToClusterMaintenanceScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenanceScheduleArray) ToClusterMaintenanceScheduleArrayOutputWithContext(ctx context.Context) ClusterMaintenanceScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenanceScheduleArrayOutput)
+}
+
+type ClusterMaintenanceScheduleOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenanceScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o ClusterMaintenanceScheduleOutput) ToClusterMaintenanceScheduleOutput() ClusterMaintenanceScheduleOutput {
+	return o
+}
+
+func (o ClusterMaintenanceScheduleOutput) ToClusterMaintenanceScheduleOutputWithContext(ctx context.Context) ClusterMaintenanceScheduleOutput {
+	return o
+}
+
+// (Output)
+// Output only. The end time of any upcoming scheduled maintenance for this cluster.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenanceScheduleOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenanceSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The deadline that the maintenance schedule start time
+// can not go beyond, including reschedule.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenanceSchedule) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The start time of any upcoming scheduled maintenance for this cluster.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+func (o ClusterMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ClusterMaintenanceScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenanceScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenanceSchedule)(nil)).Elem()
+}
+
+func (o ClusterMaintenanceScheduleArrayOutput) ToClusterMaintenanceScheduleArrayOutput() ClusterMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenanceScheduleArrayOutput) ToClusterMaintenanceScheduleArrayOutputWithContext(ctx context.Context) ClusterMaintenanceScheduleArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) ClusterMaintenanceScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMaintenanceSchedule {
+		return vs[0].([]ClusterMaintenanceSchedule)[vs[1].(int)]
+	}).(ClusterMaintenanceScheduleOutput)
+}
+
 type ClusterPscConfig struct {
 	// Required. The consumer network where the network address of
 	// the discovery endpoint will be reserved, in the form of
@@ -3069,6 +3671,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointArrayInput)(nil)).Elem(), ClusterDiscoveryEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigPtrInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyPtrInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayInput)(nil)).Elem(), ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleInput)(nil)).Elem(), ClusterMaintenanceScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleArrayInput)(nil)).Elem(), ClusterMaintenanceScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigInput)(nil)).Elem(), ClusterPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigArrayInput)(nil)).Elem(), ClusterPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConnectionInput)(nil)).Elem(), ClusterPscConnectionArgs{})
@@ -3110,6 +3719,13 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyWeeklyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyWeeklyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenanceScheduleOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenanceScheduleArrayOutput{})
 	pulumi.RegisterOutputType(ClusterPscConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterPscConnectionOutput{})

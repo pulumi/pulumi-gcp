@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * Backup policies allow you to attach a backup schedule to a volume.
  * The policy defines how many backups to retain at daily, weekly, or monthly intervals.
  * 
- * To get more information about backupPolicy, see:
+ * To get more information about BackupPolicy, see:
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupPolicies)
  * * How-to Guides
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * backupPolicy can be imported using any of these accepted formats:
+ * BackupPolicy can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
  * 
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  * * `{{location}}/{{name}}`
  * 
- * When using the `pulumi import` command, backupPolicy can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, BackupPolicy can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}

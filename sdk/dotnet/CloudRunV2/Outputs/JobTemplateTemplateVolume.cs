@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.JobTemplateTemplateVolumeEmptyDir? EmptyDir;
         /// <summary>
-        /// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// Cloud Storage bucket mounted as a volume using GCSFuse.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobTemplateTemplateVolumeGcs? Gcs;
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// NFS share mounted as a volume.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobTemplateTemplateVolumeNfs? Nfs;

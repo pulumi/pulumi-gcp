@@ -33,6 +33,21 @@ public final class SpokeLinkedVpcNetworkArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * IP ranges allowed to be included from peering.
+     * 
+     */
+    @Import(name="includeExportRanges")
+    private @Nullable Output<List<String>> includeExportRanges;
+
+    /**
+     * @return IP ranges allowed to be included from peering.
+     * 
+     */
+    public Optional<Output<List<String>>> includeExportRanges() {
+        return Optional.ofNullable(this.includeExportRanges);
+    }
+
+    /**
      * The URI of the VPC network resource.
      * 
      */
@@ -51,6 +66,7 @@ public final class SpokeLinkedVpcNetworkArgs extends com.pulumi.resources.Resour
 
     private SpokeLinkedVpcNetworkArgs(SpokeLinkedVpcNetworkArgs $) {
         this.excludeExportRanges = $.excludeExportRanges;
+        this.includeExportRanges = $.includeExportRanges;
         this.uri = $.uri;
     }
 
@@ -101,6 +117,37 @@ public final class SpokeLinkedVpcNetworkArgs extends com.pulumi.resources.Resour
          */
         public Builder excludeExportRanges(String... excludeExportRanges) {
             return excludeExportRanges(List.of(excludeExportRanges));
+        }
+
+        /**
+         * @param includeExportRanges IP ranges allowed to be included from peering.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExportRanges(@Nullable Output<List<String>> includeExportRanges) {
+            $.includeExportRanges = includeExportRanges;
+            return this;
+        }
+
+        /**
+         * @param includeExportRanges IP ranges allowed to be included from peering.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExportRanges(List<String> includeExportRanges) {
+            return includeExportRanges(Output.of(includeExportRanges));
+        }
+
+        /**
+         * @param includeExportRanges IP ranges allowed to be included from peering.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeExportRanges(String... includeExportRanges) {
+            return includeExportRanges(List.of(includeExportRanges));
         }
 
         /**

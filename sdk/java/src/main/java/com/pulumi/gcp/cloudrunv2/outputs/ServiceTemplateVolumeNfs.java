@@ -21,8 +21,6 @@ public final class ServiceTemplateVolumeNfs {
     /**
      * @return If true, mount the NFS volume as read only
      * 
-     * ***
-     * 
      */
     private @Nullable Boolean readOnly;
     /**
@@ -41,8 +39,6 @@ public final class ServiceTemplateVolumeNfs {
     }
     /**
      * @return If true, mount the NFS volume as read only
-     * 
-     * ***
      * 
      */
     public Optional<Boolean> readOnly() {

@@ -356,7 +356,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-service",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         executionEnvironment: "EXECUTION_ENVIRONMENT_GEN2",
  *         containers: [{
@@ -400,7 +399,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
- *     launchStage: "BETA",
  *     template: {
  *         executionEnvironment: "EXECUTION_ENVIRONMENT_GEN2",
  *         containers: [{
@@ -425,6 +423,34 @@ import * as utilities from "../utilities";
  *             },
  *         }],
  *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Mesh
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const mesh = new gcp.networkservices.Mesh("mesh", {name: "network-services-mesh"});
+ * const waitForMesh = new time.index.Sleep("wait_for_mesh", {createDuration: "1m"}, {
+ *     dependsOn: [mesh],
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     deletionProtection: false,
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *         serviceMesh: {
+ *             mesh: mesh.id,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [waitForMesh],
  * });
  * ```
  *

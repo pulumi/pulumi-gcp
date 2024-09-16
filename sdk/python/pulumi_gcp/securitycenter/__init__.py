@@ -28,6 +28,7 @@ from .source_iam_member import *
 from .source_iam_policy import *
 from .v2_folder_mute_config import *
 from .v2_folder_notification_config import *
+from .v2_folder_scc_big_query_export import *
 from .v2_organization_mute_config import *
 from .v2_organization_notification_config import *
 from .v2_organization_scc_big_query_exports import *
@@ -37,5 +38,6 @@ from .v2_organization_source_iam_member import *
 from .v2_organization_source_iam_policy import *
 from .v2_project_mute_config import *
 from .v2_project_notification_config import *
+from .v2_project_scc_big_query_export import *
 from ._inputs import *
 from . import outputs

@@ -407,6 +407,14 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  sni: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+
+        To get more information about ClientTlsPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.clientTlsPolicies)
+        * How-to Guides
+            * [Service Security](https://cloud.google.com/traffic-director/docs/security-use-cases)
+
         ## Example Usage
 
         ### Network Security Client Tls Policy Basic
@@ -440,18 +448,11 @@ class ClientTlsPolicy(pulumi.CustomResource):
                     "plugin_instance": "google_cloud_private_spiffe",
                 },
             },
-            server_validation_cas=[
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath",
-                    },
+            server_validation_cas=[{
+                "grpc_endpoint": {
+                    "target_uri": "unix:mypath",
                 },
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath1",
-                    },
-                },
-            ])
+            }])
         ```
 
         ## Import
@@ -505,6 +506,14 @@ class ClientTlsPolicy(pulumi.CustomResource):
                  args: Optional[ClientTlsPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+
+        To get more information about ClientTlsPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.clientTlsPolicies)
+        * How-to Guides
+            * [Service Security](https://cloud.google.com/traffic-director/docs/security-use-cases)
+
         ## Example Usage
 
         ### Network Security Client Tls Policy Basic
@@ -538,18 +547,11 @@ class ClientTlsPolicy(pulumi.CustomResource):
                     "plugin_instance": "google_cloud_private_spiffe",
                 },
             },
-            server_validation_cas=[
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath",
-                    },
+            server_validation_cas=[{
+                "grpc_endpoint": {
+                    "target_uri": "unix:mypath",
                 },
-                {
-                    "grpc_endpoint": {
-                        "target_uri": "unix:mypath1",
-                    },
-                },
-            ])
+            }])
         ```
 
         ## Import

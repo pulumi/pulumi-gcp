@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
         public Input<Inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigGetArgs>? DigitalParsingConfig { get; set; }
 
         /// <summary>
+        /// Configurations applied to layout parser.
+        /// </summary>
+        [Input("layoutParsingConfig")]
+        public Input<Inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigGetArgs>? LayoutParsingConfig { get; set; }
+
+        /// <summary>
         /// Configurations applied to OCR parser. Currently it only applies to PDFs.
         /// Structure is documented below.
         /// </summary>

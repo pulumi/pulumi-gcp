@@ -34,8 +34,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// A filesystem backed by a Network File System share. This filesystem requires the
-        /// run.googleapis.com/execution-environment annotation to be set to "gen2" and
-        /// run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        /// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         /// Structure is documented below.
         /// </summary>
         [Input("nfs")]

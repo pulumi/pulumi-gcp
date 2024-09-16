@@ -50,6 +50,37 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Data Exchange Dcr
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigqueryanalyticshub.NewDataExchange(ctx, "data_exchange", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("dcr_data_exchange"),
+//				DisplayName:    pulumi.String("dcr_data_exchange"),
+//				Description:    pulumi.String("example dcr data exchange"),
+//				SharingEnvironmentConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigArgs{
+//					DcrExchangeConfig: nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -107,6 +138,10 @@ type DataExchange struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configurable data sharing environment option for a data exchange.
+	// This field is required for data clean room exchanges.
+	// Structure is documented below.
+	SharingEnvironmentConfig DataExchangeSharingEnvironmentConfigOutput `pulumi:"sharingEnvironmentConfig"`
 }
 
 // NewDataExchange registers a new resource with the given unique name, arguments, and options.
@@ -172,6 +207,10 @@ type dataExchangeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configurable data sharing environment option for a data exchange.
+	// This field is required for data clean room exchanges.
+	// Structure is documented below.
+	SharingEnvironmentConfig *DataExchangeSharingEnvironmentConfig `pulumi:"sharingEnvironmentConfig"`
 }
 
 type DataExchangeState struct {
@@ -199,6 +238,10 @@ type DataExchangeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configurable data sharing environment option for a data exchange.
+	// This field is required for data clean room exchanges.
+	// Structure is documented below.
+	SharingEnvironmentConfig DataExchangeSharingEnvironmentConfigPtrInput
 }
 
 func (DataExchangeState) ElementType() reflect.Type {
@@ -225,6 +268,10 @@ type dataExchangeArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configurable data sharing environment option for a data exchange.
+	// This field is required for data clean room exchanges.
+	// Structure is documented below.
+	SharingEnvironmentConfig *DataExchangeSharingEnvironmentConfig `pulumi:"sharingEnvironmentConfig"`
 }
 
 // The set of arguments for constructing a DataExchange resource.
@@ -248,6 +295,10 @@ type DataExchangeArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configurable data sharing environment option for a data exchange.
+	// This field is required for data clean room exchanges.
+	// Structure is documented below.
+	SharingEnvironmentConfig DataExchangeSharingEnvironmentConfigPtrInput
 }
 
 func (DataExchangeArgs) ElementType() reflect.Type {
@@ -389,6 +440,13 @@ func (o DataExchangeOutput) PrimaryContact() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o DataExchangeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configurable data sharing environment option for a data exchange.
+// This field is required for data clean room exchanges.
+// Structure is documented below.
+func (o DataExchangeOutput) SharingEnvironmentConfig() DataExchangeSharingEnvironmentConfigOutput {
+	return o.ApplyT(func(v *DataExchange) DataExchangeSharingEnvironmentConfigOutput { return v.SharingEnvironmentConfig }).(DataExchangeSharingEnvironmentConfigOutput)
 }
 
 type DataExchangeArrayOutput struct{ *pulumi.OutputState }

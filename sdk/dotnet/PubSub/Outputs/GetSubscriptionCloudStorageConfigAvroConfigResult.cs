@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.PubSub.Outputs
     public sealed class GetSubscriptionCloudStorageConfigAvroConfigResult
     {
         /// <summary>
+        /// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+        /// </summary>
+        public readonly bool UseTopicSchema;
+        /// <summary>
         /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         /// </summary>
         public readonly bool WriteMetadata;
 
         [OutputConstructor]
-        private GetSubscriptionCloudStorageConfigAvroConfigResult(bool writeMetadata)
+        private GetSubscriptionCloudStorageConfigAvroConfigResult(
+            bool useTopicSchema,
+
+            bool writeMetadata)
         {
+            UseTopicSchema = useTopicSchema;
             WriteMetadata = writeMetadata;
         }
     }

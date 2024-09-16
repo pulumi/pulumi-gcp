@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetBigQueryTargetCadence
     {
         /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence? InspectTemplateModifiedCadence;
+        /// <summary>
         /// Governs when to update data profiles when a schema is modified
         /// Structure is documented below.
         /// </summary>
@@ -26,10 +31,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionDiscoveryConfigTargetBigQueryTargetCadence(
+            Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence? inspectTemplateModifiedCadence,
+
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence? schemaModifiedCadence,
 
             Outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence? tableModifiedCadence)
         {
+            InspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
             SchemaModifiedCadence = schemaModifiedCadence;
             TableModifiedCadence = tableModifiedCadence;
         }

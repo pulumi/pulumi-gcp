@@ -5,6 +5,7 @@ package com.pulumi.gcp.discoveryengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigChunkingConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class DataStoreDocumentProcessingConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DataStoreDocumentProcessingConfigArgs Empty = new DataStoreDocumentProcessingConfigArgs();
+
+    /**
+     * Whether chunking mode is enabled.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="chunkingConfig")
+    private @Nullable Output<DataStoreDocumentProcessingConfigChunkingConfigArgs> chunkingConfig;
+
+    /**
+     * @return Whether chunking mode is enabled.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataStoreDocumentProcessingConfigChunkingConfigArgs>> chunkingConfig() {
+        return Optional.ofNullable(this.chunkingConfig);
+    }
 
     /**
      * Configurations for default Document parser. If not specified, this resource
@@ -76,6 +94,7 @@ public final class DataStoreDocumentProcessingConfigArgs extends com.pulumi.reso
     private DataStoreDocumentProcessingConfigArgs() {}
 
     private DataStoreDocumentProcessingConfigArgs(DataStoreDocumentProcessingConfigArgs $) {
+        this.chunkingConfig = $.chunkingConfig;
         this.defaultParsingConfig = $.defaultParsingConfig;
         this.name = $.name;
         this.parsingConfigOverrides = $.parsingConfigOverrides;
@@ -97,6 +116,29 @@ public final class DataStoreDocumentProcessingConfigArgs extends com.pulumi.reso
 
         public Builder(DataStoreDocumentProcessingConfigArgs defaults) {
             $ = new DataStoreDocumentProcessingConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param chunkingConfig Whether chunking mode is enabled.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chunkingConfig(@Nullable Output<DataStoreDocumentProcessingConfigChunkingConfigArgs> chunkingConfig) {
+            $.chunkingConfig = chunkingConfig;
+            return this;
+        }
+
+        /**
+         * @param chunkingConfig Whether chunking mode is enabled.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chunkingConfig(DataStoreDocumentProcessingConfigChunkingConfigArgs chunkingConfig) {
+            return chunkingConfig(Output.of(chunkingConfig));
         }
 
         /**

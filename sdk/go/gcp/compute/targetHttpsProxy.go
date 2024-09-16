@@ -565,6 +565,10 @@ type TargetHttpsProxy struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -676,6 +680,10 @@ type targetHttpsProxyState struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -755,6 +763,10 @@ type TargetHttpsProxyState struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -832,6 +844,10 @@ type targetHttpsProxyArgs struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -906,6 +922,10 @@ type TargetHttpsProxyArgs struct {
 	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 	// loadBalancingScheme consult ServerTlsPolicy documentation.
 	// If left blank, communications are not encrypted.
+	// If you remove this field from your configuration at the same time as
+	// deleting or recreating a referenced ServerTlsPolicy resource, you will
+	// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+	// within the ServerTlsPolicy resource to avoid this.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
 	// Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -1104,6 +1124,10 @@ func (o TargetHttpsProxyOutput) SelfLink() pulumi.StringOutput {
 // INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
 // loadBalancingScheme consult ServerTlsPolicy documentation.
 // If left blank, communications are not encrypted.
+// If you remove this field from your configuration at the same time as
+// deleting or recreating a referenced ServerTlsPolicy resource, you will
+// receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+// within the ServerTlsPolicy resource to avoid this.
 func (o TargetHttpsProxyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
 }

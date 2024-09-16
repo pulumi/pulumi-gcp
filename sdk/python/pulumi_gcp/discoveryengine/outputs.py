@@ -21,11 +21,15 @@ __all__ = [
     'ChatEngineChatEngineMetadata',
     'ChatEngineCommonConfig',
     'DataStoreDocumentProcessingConfig',
+    'DataStoreDocumentProcessingConfigChunkingConfig',
+    'DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig',
     'DataStoreDocumentProcessingConfigDefaultParsingConfig',
     'DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig',
+    'DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig',
     'DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverride',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig',
+    'DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig',
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig',
     'SearchEngineCommonConfig',
     'SearchEngineSearchEngineConfig',
@@ -223,7 +227,9 @@ class DataStoreDocumentProcessingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultParsingConfig":
+        if key == "chunkingConfig":
+            suggest = "chunking_config"
+        elif key == "defaultParsingConfig":
             suggest = "default_parsing_config"
         elif key == "parsingConfigOverrides":
             suggest = "parsing_config_overrides"
@@ -240,10 +246,13 @@ class DataStoreDocumentProcessingConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 chunking_config: Optional['outputs.DataStoreDocumentProcessingConfigChunkingConfig'] = None,
                  default_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigDefaultParsingConfig'] = None,
                  name: Optional[str] = None,
                  parsing_config_overrides: Optional[Sequence['outputs.DataStoreDocumentProcessingConfigParsingConfigOverride']] = None):
         """
+        :param 'DataStoreDocumentProcessingConfigChunkingConfigArgs' chunking_config: Whether chunking mode is enabled.
+               Structure is documented below.
         :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigArgs' default_parsing_config: Configurations for default Document parser. If not specified, this resource
                will be configured to use a default DigitalParsingConfig, and the default parsing
                config will be applied to all file types for Document parsing.
@@ -253,12 +262,23 @@ class DataStoreDocumentProcessingConfig(dict):
                `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
         :param Sequence['DataStoreDocumentProcessingConfigParsingConfigOverrideArgs'] parsing_config_overrides: Map from file type to override the default parsing configuration based on the file type. Supported keys:
         """
+        if chunking_config is not None:
+            pulumi.set(__self__, "chunking_config", chunking_config)
         if default_parsing_config is not None:
             pulumi.set(__self__, "default_parsing_config", default_parsing_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parsing_config_overrides is not None:
             pulumi.set(__self__, "parsing_config_overrides", parsing_config_overrides)
+
+    @property
+    @pulumi.getter(name="chunkingConfig")
+    def chunking_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigChunkingConfig']:
+        """
+        Whether chunking mode is enabled.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "chunking_config")
 
     @property
     @pulumi.getter(name="defaultParsingConfig")
@@ -291,12 +311,106 @@ class DataStoreDocumentProcessingConfig(dict):
 
 
 @pulumi.output_type
+class DataStoreDocumentProcessingConfigChunkingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layoutBasedChunkingConfig":
+            suggest = "layout_based_chunking_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataStoreDocumentProcessingConfigChunkingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataStoreDocumentProcessingConfigChunkingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataStoreDocumentProcessingConfigChunkingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layout_based_chunking_config: Optional['outputs.DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig'] = None):
+        """
+        :param 'DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs' layout_based_chunking_config: Configuration for the layout based chunking.
+               Structure is documented below.
+        """
+        if layout_based_chunking_config is not None:
+            pulumi.set(__self__, "layout_based_chunking_config", layout_based_chunking_config)
+
+    @property
+    @pulumi.getter(name="layoutBasedChunkingConfig")
+    def layout_based_chunking_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig']:
+        """
+        Configuration for the layout based chunking.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "layout_based_chunking_config")
+
+
+@pulumi.output_type
+class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chunkSize":
+            suggest = "chunk_size"
+        elif key == "includeAncestorHeadings":
+            suggest = "include_ancestor_headings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chunk_size: Optional[int] = None,
+                 include_ancestor_headings: Optional[bool] = None):
+        """
+        :param int chunk_size: The token size limit for each chunk.
+               Supported values: 100-500 (inclusive). Default value: 500.
+        :param bool include_ancestor_headings: Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+               Default value: False.
+        """
+        if chunk_size is not None:
+            pulumi.set(__self__, "chunk_size", chunk_size)
+        if include_ancestor_headings is not None:
+            pulumi.set(__self__, "include_ancestor_headings", include_ancestor_headings)
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> Optional[int]:
+        """
+        The token size limit for each chunk.
+        Supported values: 100-500 (inclusive). Default value: 500.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter(name="includeAncestorHeadings")
+    def include_ancestor_headings(self) -> Optional[bool]:
+        """
+        Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+        Default value: False.
+        """
+        return pulumi.get(self, "include_ancestor_headings")
+
+
+@pulumi.output_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "digitalParsingConfig":
             suggest = "digital_parsing_config"
+        elif key == "layoutParsingConfig":
+            suggest = "layout_parsing_config"
         elif key == "ocrParsingConfig":
             suggest = "ocr_parsing_config"
 
@@ -313,14 +427,18 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig(dict):
 
     def __init__(__self__, *,
                  digital_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig'] = None,
+                 layout_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig'] = None,
                  ocr_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig'] = None):
         """
         :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs' digital_parsing_config: Configurations applied to digital parser.
+        :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs' layout_parsing_config: Configurations applied to layout parser.
         :param 'DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs' ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
                Structure is documented below.
         """
         if digital_parsing_config is not None:
             pulumi.set(__self__, "digital_parsing_config", digital_parsing_config)
+        if layout_parsing_config is not None:
+            pulumi.set(__self__, "layout_parsing_config", layout_parsing_config)
         if ocr_parsing_config is not None:
             pulumi.set(__self__, "ocr_parsing_config", ocr_parsing_config)
 
@@ -331,6 +449,14 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig(dict):
         Configurations applied to digital parser.
         """
         return pulumi.get(self, "digital_parsing_config")
+
+    @property
+    @pulumi.getter(name="layoutParsingConfig")
+    def layout_parsing_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig']:
+        """
+        Configurations applied to layout parser.
+        """
+        return pulumi.get(self, "layout_parsing_config")
 
     @property
     @pulumi.getter(name="ocrParsingConfig")
@@ -344,6 +470,12 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig(dict):
 
 @pulumi.output_type
 class DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(dict):
     def __init__(__self__):
         pass
 
@@ -393,6 +525,8 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride(dict):
             suggest = "file_type"
         elif key == "digitalParsingConfig":
             suggest = "digital_parsing_config"
+        elif key == "layoutParsingConfig":
+            suggest = "layout_parsing_config"
         elif key == "ocrParsingConfig":
             suggest = "ocr_parsing_config"
 
@@ -410,16 +544,20 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride(dict):
     def __init__(__self__, *,
                  file_type: str,
                  digital_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig'] = None,
+                 layout_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig'] = None,
                  ocr_parsing_config: Optional['outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig'] = None):
         """
         :param str file_type: The identifier for this object. Format specified above.
         :param 'DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs' digital_parsing_config: Configurations applied to digital parser.
+        :param 'DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs' layout_parsing_config: Configurations applied to layout parser.
         :param 'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs' ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
                Structure is documented below.
         """
         pulumi.set(__self__, "file_type", file_type)
         if digital_parsing_config is not None:
             pulumi.set(__self__, "digital_parsing_config", digital_parsing_config)
+        if layout_parsing_config is not None:
+            pulumi.set(__self__, "layout_parsing_config", layout_parsing_config)
         if ocr_parsing_config is not None:
             pulumi.set(__self__, "ocr_parsing_config", ocr_parsing_config)
 
@@ -440,6 +578,14 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride(dict):
         return pulumi.get(self, "digital_parsing_config")
 
     @property
+    @pulumi.getter(name="layoutParsingConfig")
+    def layout_parsing_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig']:
+        """
+        Configurations applied to layout parser.
+        """
+        return pulumi.get(self, "layout_parsing_config")
+
+    @property
     @pulumi.getter(name="ocrParsingConfig")
     def ocr_parsing_config(self) -> Optional['outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig']:
         """
@@ -451,6 +597,12 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride(dict):
 
 @pulumi.output_type
 class DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig(dict):
     def __init__(__self__):
         pass
 

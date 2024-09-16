@@ -33,7 +33,7 @@ class DatabaseInstanceArgs:
                - - -
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
                Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
-        :param pulumi.Input[str] desired_state: The intended database state.
+        :param pulumi.Input[str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The database type.
@@ -85,7 +85,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        The intended database state.
+        The intended database state. Possible values: ACTIVE, DISABLED.
         """
         return pulumi.get(self, "desired_state")
 
@@ -139,7 +139,7 @@ class _DatabaseInstanceState:
         Input properties used for looking up and filtering DatabaseInstance resources.
         :param pulumi.Input[str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
                or https://{instance-id}.{region}.firebasedatabase.app in other regions.
-        :param pulumi.Input[str] desired_state: The intended database state.
+        :param pulumi.Input[str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
                
@@ -195,7 +195,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        The intended database state.
+        The intended database state. Possible values: ACTIVE, DISABLED.
         """
         return pulumi.get(self, "desired_state")
 
@@ -386,7 +386,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] desired_state: The intended database state.
+        :param pulumi.Input[str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
                
@@ -560,7 +560,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
                or https://{instance-id}.{region}.firebasedatabase.app in other regions.
-        :param pulumi.Input[str] desired_state: The intended database state.
+        :param pulumi.Input[str] desired_state: The intended database state. Possible values: ACTIVE, DISABLED.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
                
@@ -609,7 +609,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[str]]:
         """
-        The intended database state.
+        The intended database state. Possible values: ACTIVE, DISABLED.
         """
         return pulumi.get(self, "desired_state")
 

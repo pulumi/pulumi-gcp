@@ -24,6 +24,20 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
  * and
  * [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const targetProject = gcp.organizations.getProject({});
+ * const foo = new gcp.projects.IamMemberRemove("foo", {
+ *     role: "roles/editor",
+ *     project: targetProjectGoogleProject.projectId,
+ *     member: `serviceAccount:${targetProjectGoogleProject.number}-compute@developer.gserviceaccount.com`,
+ * });
+ * ```
  */
 export class IamMemberRemove extends pulumi.CustomResource {
     /**

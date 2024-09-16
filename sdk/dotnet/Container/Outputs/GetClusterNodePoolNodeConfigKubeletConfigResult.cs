@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string CpuManagerPolicy;
         /// <summary>
+        /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        /// </summary>
+        public readonly string InsecureKubeletReadonlyPortEnabled;
+        /// <summary>
         /// Controls the maximum number of processes allowed to run in a pod.
         /// </summary>
         public readonly int PodPidsLimit;
@@ -38,11 +42,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string cpuManagerPolicy,
 
+            string insecureKubeletReadonlyPortEnabled,
+
             int podPidsLimit)
         {
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             PodPidsLimit = podPidsLimit;
         }
     }

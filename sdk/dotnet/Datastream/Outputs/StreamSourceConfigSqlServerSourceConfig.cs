@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfigSqlServerSourceConfig
     {
         /// <summary>
+        /// CDC reader reads from change tables.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigSqlServerSourceConfigChangeTables? ChangeTables;
+        /// <summary>
         /// SQL Server objects to exclude from the stream.
         /// Structure is documented below.
         /// </summary>
@@ -31,21 +35,31 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// Max concurrent CDC tasks.
         /// </summary>
         public readonly int? MaxConcurrentCdcTasks;
+        /// <summary>
+        /// CDC reader reads from transaction logs.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigSqlServerSourceConfigTransactionLogs? TransactionLogs;
 
         [OutputConstructor]
         private StreamSourceConfigSqlServerSourceConfig(
+            Outputs.StreamSourceConfigSqlServerSourceConfigChangeTables? changeTables,
+
             Outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjects? excludeObjects,
 
             Outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjects? includeObjects,
 
             int? maxConcurrentBackfillTasks,
 
-            int? maxConcurrentCdcTasks)
+            int? maxConcurrentCdcTasks,
+
+            Outputs.StreamSourceConfigSqlServerSourceConfigTransactionLogs? transactionLogs)
         {
+            ChangeTables = changeTables;
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
             MaxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
+            TransactionLogs = transactionLogs;
         }
     }
 }

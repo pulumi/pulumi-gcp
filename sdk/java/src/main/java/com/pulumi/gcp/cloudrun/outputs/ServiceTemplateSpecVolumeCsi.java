@@ -17,8 +17,7 @@ public final class ServiceTemplateSpecVolumeCsi {
     /**
      * @return Unique name representing the type of file system to be created. Cloud Run supports the following values:
      * * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-     *   run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
-     *   run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     *   run.googleapis.com/execution-environment annotation to be unset or set to &#34;gen2&#34;
      * 
      */
     private String driver;
@@ -39,8 +38,7 @@ public final class ServiceTemplateSpecVolumeCsi {
     /**
      * @return Unique name representing the type of file system to be created. Cloud Run supports the following values:
      * * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-     *   run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
-     *   run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     *   run.googleapis.com/execution-environment annotation to be unset or set to &#34;gen2&#34;
      * 
      */
     public String driver() {

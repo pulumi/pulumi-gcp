@@ -16,6 +16,21 @@ public final class SubscriptionCloudStorageConfigAvroConfigArgs extends com.pulu
     public static final SubscriptionCloudStorageConfigAvroConfigArgs Empty = new SubscriptionCloudStorageConfigAvroConfigArgs();
 
     /**
+     * When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+     * 
+     */
+    @Import(name="useTopicSchema")
+    private @Nullable Output<Boolean> useTopicSchema;
+
+    /**
+     * @return When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+     * 
+     */
+    public Optional<Output<Boolean>> useTopicSchema() {
+        return Optional.ofNullable(this.useTopicSchema);
+    }
+
+    /**
      * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
      * 
      */
@@ -33,6 +48,7 @@ public final class SubscriptionCloudStorageConfigAvroConfigArgs extends com.pulu
     private SubscriptionCloudStorageConfigAvroConfigArgs() {}
 
     private SubscriptionCloudStorageConfigAvroConfigArgs(SubscriptionCloudStorageConfigAvroConfigArgs $) {
+        this.useTopicSchema = $.useTopicSchema;
         this.writeMetadata = $.writeMetadata;
     }
 
@@ -52,6 +68,27 @@ public final class SubscriptionCloudStorageConfigAvroConfigArgs extends com.pulu
 
         public Builder(SubscriptionCloudStorageConfigAvroConfigArgs defaults) {
             $ = new SubscriptionCloudStorageConfigAvroConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param useTopicSchema When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useTopicSchema(@Nullable Output<Boolean> useTopicSchema) {
+            $.useTopicSchema = useTopicSchema;
+            return this;
+        }
+
+        /**
+         * @param useTopicSchema When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useTopicSchema(Boolean useTopicSchema) {
+            return useTopicSchema(Output.of(useTopicSchema));
         }
 
         /**

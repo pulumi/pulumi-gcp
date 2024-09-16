@@ -24,6 +24,11 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
      */
     private List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs;
     /**
+     * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    private String insecureKubeletReadonlyPortEnabled;
+    /**
      * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -45,6 +50,13 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
         return this.gcfsConfigs;
     }
     /**
+     * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    public String insecureKubeletReadonlyPortEnabled() {
+        return this.insecureKubeletReadonlyPortEnabled;
+    }
+    /**
      * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -63,12 +75,14 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
     public static final class Builder {
         private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig> containerdConfigs;
         private List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs;
+        private String insecureKubeletReadonlyPortEnabled;
         private String loggingVariant;
         public Builder() {}
         public Builder(GetClusterNodePoolDefaultNodeConfigDefault defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerdConfigs = defaults.containerdConfigs;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
+    	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.loggingVariant = defaults.loggingVariant;
         }
 
@@ -95,6 +109,14 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
             return gcfsConfigs(List.of(gcfsConfigs));
         }
         @CustomType.Setter
+        public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
+            if (insecureKubeletReadonlyPortEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefault", "insecureKubeletReadonlyPortEnabled");
+            }
+            this.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loggingVariant(String loggingVariant) {
             if (loggingVariant == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefault", "loggingVariant");
@@ -106,6 +128,7 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
             final var _resultValue = new GetClusterNodePoolDefaultNodeConfigDefault();
             _resultValue.containerdConfigs = containerdConfigs;
             _resultValue.gcfsConfigs = gcfsConfigs;
+            _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.loggingVariant = loggingVariant;
             return _resultValue;
         }

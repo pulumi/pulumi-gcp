@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Netapp
         /// Policy to determine if the volume should be deleted forcefully.
         /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
         /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+        /// Possible values: DEFAULT, FORCE.
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -404,6 +405,7 @@ namespace Pulumi.Gcp.Netapp
         /// Policy to determine if the volume should be deleted forcefully.
         /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
         /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+        /// Possible values: DEFAULT, FORCE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -587,6 +589,7 @@ namespace Pulumi.Gcp.Netapp
         /// Policy to determine if the volume should be deleted forcefully.
         /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
         /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+        /// Possible values: DEFAULT, FORCE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

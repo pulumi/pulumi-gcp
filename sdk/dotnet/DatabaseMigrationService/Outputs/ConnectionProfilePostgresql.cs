@@ -14,61 +14,68 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
     public sealed class ConnectionProfilePostgresql
     {
         /// <summary>
+        /// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+        /// </summary>
+        public readonly string? AlloydbClusterId;
+        /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         /// </summary>
         public readonly string? CloudSqlId;
         /// <summary>
-        /// Required. The IP or hostname of the source MySQL database.
+        /// The IP or hostname of the source MySQL database.
         /// </summary>
-        public readonly string Host;
+        public readonly string? Host;
         /// <summary>
         /// (Output)
         /// Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
         /// </summary>
         public readonly string? NetworkArchitecture;
         /// <summary>
-        /// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        /// Input only. The password for the user that Database Migration Service will be using to connect to the database.
         /// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// (Output)
         /// Output only. Indicates If this connection profile password is stored.
         /// </summary>
         public readonly bool? PasswordSet;
         /// <summary>
-        /// Required. The network port of the source MySQL database.
+        /// The network port of the source MySQL database.
         /// </summary>
-        public readonly int Port;
+        public readonly int? Port;
         /// <summary>
         /// SSL configuration for the destination to connect to the source database.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionProfilePostgresqlSsl? Ssl;
         /// <summary>
-        /// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         /// </summary>
-        public readonly string Username;
+        public readonly string? Username;
 
         [OutputConstructor]
         private ConnectionProfilePostgresql(
+            string? alloydbClusterId,
+
             string? cloudSqlId,
 
-            string host,
+            string? host,
 
             string? networkArchitecture,
 
-            string password,
+            string? password,
 
             bool? passwordSet,
 
-            int port,
+            int? port,
 
             Outputs.ConnectionProfilePostgresqlSsl? ssl,
 
-            string username)
+            string? username)
         {
+            AlloydbClusterId = alloydbClusterId;
             CloudSqlId = cloudSqlId;
             Host = host;
             NetworkArchitecture = networkArchitecture;

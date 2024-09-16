@@ -19,6 +19,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterTrialMetadataArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -178,6 +179,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      * 
      */
     @Import(name="deletionPolicy")
@@ -187,6 +189,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * @return Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -539,6 +542,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     * 
+     */
+    @Import(name="subscriptionType")
+    private @Nullable Output<String> subscriptionType;
+
+    /**
+     * @return The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     * 
+     */
+    public Optional<Output<String>> subscriptionType() {
+        return Optional.ofNullable(this.subscriptionType);
+    }
+
+    /**
+     * Contains information and all metadata related to TRIAL clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="trialMetadatas")
+    private @Nullable Output<List<ClusterTrialMetadataArgs>> trialMetadatas;
+
+    /**
+     * @return Contains information and all metadata related to TRIAL clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterTrialMetadataArgs>>> trialMetadatas() {
+        return Optional.ofNullable(this.trialMetadatas);
+    }
+
+    /**
      * The system-generated UID of the resource.
      * 
      */
@@ -586,6 +623,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
         this.secondaryConfig = $.secondaryConfig;
         this.state = $.state;
+        this.subscriptionType = $.subscriptionType;
+        this.trialMetadatas = $.trialMetadatas;
         this.uid = $.uid;
     }
 
@@ -823,6 +862,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
          * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * Possible values: DEFAULT, FORCE
          * 
          * @return builder
          * 
@@ -836,6 +876,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
          * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
          * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+         * Possible values: DEFAULT, FORCE
          * 
          * @return builder
          * 
@@ -1332,6 +1373,63 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param subscriptionType The subscrition type of cluster.
+         * Possible values are: `TRIAL`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptionType(@Nullable Output<String> subscriptionType) {
+            $.subscriptionType = subscriptionType;
+            return this;
+        }
+
+        /**
+         * @param subscriptionType The subscrition type of cluster.
+         * Possible values are: `TRIAL`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptionType(String subscriptionType) {
+            return subscriptionType(Output.of(subscriptionType));
+        }
+
+        /**
+         * @param trialMetadatas Contains information and all metadata related to TRIAL clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trialMetadatas(@Nullable Output<List<ClusterTrialMetadataArgs>> trialMetadatas) {
+            $.trialMetadatas = trialMetadatas;
+            return this;
+        }
+
+        /**
+         * @param trialMetadatas Contains information and all metadata related to TRIAL clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trialMetadatas(List<ClusterTrialMetadataArgs> trialMetadatas) {
+            return trialMetadatas(Output.of(trialMetadatas));
+        }
+
+        /**
+         * @param trialMetadatas Contains information and all metadata related to TRIAL clusters.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trialMetadatas(ClusterTrialMetadataArgs... trialMetadatas) {
+            return trialMetadatas(List.of(trialMetadatas));
         }
 
         /**

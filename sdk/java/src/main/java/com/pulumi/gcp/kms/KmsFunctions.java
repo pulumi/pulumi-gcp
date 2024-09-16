@@ -10,6 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeysArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeysPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
@@ -31,6 +35,8 @@ import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingsArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingsPlainArgs;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeyIamPolicyResult;
+import com.pulumi.gcp.kms.outputs.GetCryptoKeyLatestVersionResult;
+import com.pulumi.gcp.kms.outputs.GetCryptoKeyVersionsResult;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeysResult;
 import com.pulumi.gcp.kms.outputs.GetEkmConnectionIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyResult;
@@ -211,6 +217,462 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyPlain(GetCryptoKeyIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", TypeShape.of(GetCryptoKeyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs args) {
+        return getCryptoKeyLatestVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersionPlain(GetCryptoKeyLatestVersionPlainArgs args) {
+        return getCryptoKeyLatestVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", TypeShape.of(GetCryptoKeyLatestVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersionPlain(GetCryptoKeyLatestVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", TypeShape.of(GetCryptoKeyLatestVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to Google Cloud Platform KMS CryptoKeyVersions. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCryptoKeyVersionsResult> getCryptoKeyVersions(GetCryptoKeyVersionsArgs args) {
+        return getCryptoKeyVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to Google Cloud Platform KMS CryptoKeyVersions. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeyVersionsResult> getCryptoKeyVersionsPlain(GetCryptoKeyVersionsPlainArgs args) {
+        return getCryptoKeyVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to Google Cloud Platform KMS CryptoKeyVersions. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCryptoKeyVersionsResult> getCryptoKeyVersions(GetCryptoKeyVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", TypeShape.of(GetCryptoKeyVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to Google Cloud Platform KMS CryptoKeyVersions. For more information see
+     * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+     * and
+     * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
+     * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyRing = KmsFunctions.getKMSKeyRing(GetKMSKeyRingArgs.builder()
+     *             .name("my-key-ring")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *         final var myCryptoKey = KmsFunctions.getKMSCryptoKey(GetKMSCryptoKeyArgs.builder()
+     *             .name("my-crypto-key")
+     *             .keyRing(myKeyRing.applyValue(getKMSKeyRingResult -> getKMSKeyRingResult.id()))
+     *             .build());
+     * 
+     *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
+     *             .cryptoKey(myKey.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeyVersionsResult> getCryptoKeyVersionsPlain(GetCryptoKeyVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", TypeShape.of(GetCryptoKeyVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see

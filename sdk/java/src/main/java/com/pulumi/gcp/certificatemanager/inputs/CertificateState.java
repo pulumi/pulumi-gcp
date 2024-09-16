@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
 import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -161,6 +162,21 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+     * 
+     */
+    @Import(name="sanDnsnames")
+    private @Nullable Output<List<String>> sanDnsnames;
+
+    /**
+     * @return The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+     * 
+     */
+    public Optional<Output<List<String>>> sanDnsnames() {
+        return Optional.ofNullable(this.sanDnsnames);
+    }
+
+    /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
@@ -219,6 +235,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.sanDnsnames = $.sanDnsnames;
         this.scope = $.scope;
         this.selfManaged = $.selfManaged;
     }
@@ -429,6 +446,37 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param sanDnsnames The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sanDnsnames(@Nullable Output<List<String>> sanDnsnames) {
+            $.sanDnsnames = sanDnsnames;
+            return this;
+        }
+
+        /**
+         * @param sanDnsnames The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sanDnsnames(List<String> sanDnsnames) {
+            return sanDnsnames(Output.of(sanDnsnames));
+        }
+
+        /**
+         * @param sanDnsnames The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sanDnsnames(String... sanDnsnames) {
+            return sanDnsnames(List.of(sanDnsnames));
         }
 
         /**

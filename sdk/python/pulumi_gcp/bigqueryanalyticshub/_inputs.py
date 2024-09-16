@@ -19,8 +19,16 @@ __all__ = [
     'DataExchangeIamBindingConditionArgsDict',
     'DataExchangeIamMemberConditionArgs',
     'DataExchangeIamMemberConditionArgsDict',
+    'DataExchangeSharingEnvironmentConfigArgs',
+    'DataExchangeSharingEnvironmentConfigArgsDict',
+    'DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs',
+    'DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict',
+    'DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs',
+    'DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict',
     'ListingBigqueryDatasetArgs',
     'ListingBigqueryDatasetArgsDict',
+    'ListingBigqueryDatasetSelectedResourceArgs',
+    'ListingBigqueryDatasetSelectedResourceArgsDict',
     'ListingDataProviderArgs',
     'ListingDataProviderArgsDict',
     'ListingIamBindingConditionArgs',
@@ -130,12 +138,91 @@ class DataExchangeIamMemberConditionArgs:
 
 
 if not MYPY:
+    class DataExchangeSharingEnvironmentConfigArgsDict(TypedDict):
+        dcr_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict']]
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        default_exchange_config: NotRequired[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict']]
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+elif False:
+    DataExchangeSharingEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataExchangeSharingEnvironmentConfigArgs:
+    def __init__(__self__, *,
+                 dcr_exchange_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']] = None,
+                 default_exchange_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']] = None):
+        """
+        :param pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs'] dcr_exchange_config: Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        :param pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs'] default_exchange_config: Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        if dcr_exchange_config is not None:
+            pulumi.set(__self__, "dcr_exchange_config", dcr_exchange_config)
+        if default_exchange_config is not None:
+            pulumi.set(__self__, "default_exchange_config", default_exchange_config)
+
+    @property
+    @pulumi.getter(name="dcrExchangeConfig")
+    def dcr_exchange_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]:
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        return pulumi.get(self, "dcr_exchange_config")
+
+    @dcr_exchange_config.setter
+    def dcr_exchange_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]):
+        pulumi.set(self, "dcr_exchange_config", value)
+
+    @property
+    @pulumi.getter(name="defaultExchangeConfig")
+    def default_exchange_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]:
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        return pulumi.get(self, "default_exchange_config")
+
+    @default_exchange_config.setter
+    def default_exchange_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]):
+        pulumi.set(self, "default_exchange_config", value)
+
+
+if not MYPY:
+    class DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict(TypedDict):
+        pass
+elif False:
+    DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict(TypedDict):
+        pass
+elif False:
+    DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
     class ListingBigqueryDatasetArgsDict(TypedDict):
         dataset: pulumi.Input[str]
         """
         Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-
-        - - -
+        """
+        selected_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgsDict']]]]
+        """
+        Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+        Structure is documented below.
         """
 elif False:
     ListingBigqueryDatasetArgsDict: TypeAlias = Mapping[str, Any]
@@ -143,27 +230,79 @@ elif False:
 @pulumi.input_type
 class ListingBigqueryDatasetArgs:
     def __init__(__self__, *,
-                 dataset: pulumi.Input[str]):
+                 dataset: pulumi.Input[str],
+                 selected_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]] = None):
         """
         :param pulumi.Input[str] dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-               
-               - - -
+        :param pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]] selected_resources: Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+               Structure is documented below.
         """
         pulumi.set(__self__, "dataset", dataset)
+        if selected_resources is not None:
+            pulumi.set(__self__, "selected_resources", selected_resources)
 
     @property
     @pulumi.getter
     def dataset(self) -> pulumi.Input[str]:
         """
         Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
     @dataset.setter
     def dataset(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="selectedResources")
+    def selected_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]:
+        """
+        Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selected_resources")
+
+    @selected_resources.setter
+    def selected_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]):
+        pulumi.set(self, "selected_resources", value)
+
+
+if not MYPY:
+    class ListingBigqueryDatasetSelectedResourceArgsDict(TypedDict):
+        table: NotRequired[pulumi.Input[str]]
+        """
+        Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+
+        - - -
+        """
+elif False:
+    ListingBigqueryDatasetSelectedResourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingBigqueryDatasetSelectedResourceArgs:
+    def __init__(__self__, *,
+                 table: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+               
+               - - -
+        """
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+
+        - - -
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table", value)
 
 
 if not MYPY:
@@ -368,6 +507,11 @@ if not MYPY:
         """
         If true, enable restricted export.
         """
+        restrict_direct_table_access: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        """
         restrict_query_result: NotRequired[pulumi.Input[bool]]
         """
         If true, restrict export of query result derived from restricted linked dataset table.
@@ -379,13 +523,18 @@ elif False:
 class ListingRestrictedExportConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 restrict_direct_table_access: Optional[pulumi.Input[bool]] = None,
                  restrict_query_result: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enabled: If true, enable restricted export.
+        :param pulumi.Input[bool] restrict_direct_table_access: (Output)
+               If true, restrict direct table access(read api/tabledata.list) on linked table.
         :param pulumi.Input[bool] restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if restrict_direct_table_access is not None:
+            pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
         if restrict_query_result is not None:
             pulumi.set(__self__, "restrict_query_result", restrict_query_result)
 
@@ -400,6 +549,19 @@ class ListingRestrictedExportConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="restrictDirectTableAccess")
+    def restrict_direct_table_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        """
+        return pulumi.get(self, "restrict_direct_table_access")
+
+    @restrict_direct_table_access.setter
+    def restrict_direct_table_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_direct_table_access", value)
 
     @property
     @pulumi.getter(name="restrictQueryResult")

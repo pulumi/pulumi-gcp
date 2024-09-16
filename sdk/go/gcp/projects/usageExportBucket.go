@@ -24,6 +24,10 @@ import (
 //
 // > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
 //
+// > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
+//
+// > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+//
 // To get more information about projects, see:
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -83,6 +87,37 @@ import (
 //				Name:      pulumi.String("My Project"),
 //				ProjectId: pulumi.String("your-project-id"),
 //				FolderId:  department1.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # To create a project with a tag
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
+//				Name:      pulumi.String("My Project"),
+//				ProjectId: pulumi.String("your-project-id"),
+//				OrgId:     pulumi.String("1234567"),
+//				Tags: pulumi.StringMap{
+//					"1234567/env": pulumi.String("staging"),
+//				},
 //			})
 //			if err != nil {
 //				return err

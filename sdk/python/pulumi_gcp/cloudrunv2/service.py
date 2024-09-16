@@ -1338,7 +1338,6 @@ class Service(pulumi.CustomResource):
             name="cloudrun-service",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             template={
                 "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
@@ -1380,7 +1379,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             template={
                 "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
@@ -1405,6 +1403,31 @@ class Service(pulumi.CustomResource):
                     },
                 }],
             })
+        ```
+        ### Cloudrunv2 Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        mesh = gcp.networkservices.Mesh("mesh", name="network-services-mesh")
+        wait_for_mesh = time.index.Sleep("wait_for_mesh", create_duration=1m,
+        opts = pulumi.ResourceOptions(depends_on=[mesh]))
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            deletion_protection=False,
+            location="us-central1",
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+                "service_mesh": {
+                    "mesh": mesh.id,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_mesh]))
         ```
 
         ## Import
@@ -1806,7 +1829,6 @@ class Service(pulumi.CustomResource):
             name="cloudrun-service",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             template={
                 "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
@@ -1848,7 +1870,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             template={
                 "execution_environment": "EXECUTION_ENVIRONMENT_GEN2",
                 "containers": [{
@@ -1873,6 +1894,31 @@ class Service(pulumi.CustomResource):
                     },
                 }],
             })
+        ```
+        ### Cloudrunv2 Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        mesh = gcp.networkservices.Mesh("mesh", name="network-services-mesh")
+        wait_for_mesh = time.index.Sleep("wait_for_mesh", create_duration=1m,
+        opts = pulumi.ResourceOptions(depends_on=[mesh]))
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            deletion_protection=False,
+            location="us-central1",
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+                "service_mesh": {
+                    "mesh": mesh.id,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_mesh]))
         ```
 
         ## Import

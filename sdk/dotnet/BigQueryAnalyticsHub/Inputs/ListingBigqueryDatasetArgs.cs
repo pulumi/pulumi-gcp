@@ -14,11 +14,22 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     {
         /// <summary>
         /// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
+
+        [Input("selectedResources")]
+        private InputList<Inputs.ListingBigqueryDatasetSelectedResourceArgs>? _selectedResources;
+
+        /// <summary>
+        /// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ListingBigqueryDatasetSelectedResourceArgs> SelectedResources
+        {
+            get => _selectedResources ?? (_selectedResources = new InputList<Inputs.ListingBigqueryDatasetSelectedResourceArgs>());
+            set => _selectedResources = value;
+        }
 
         public ListingBigqueryDatasetArgs()
         {

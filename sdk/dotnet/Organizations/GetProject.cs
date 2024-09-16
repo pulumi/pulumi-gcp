@@ -117,6 +117,7 @@ namespace Pulumi.Gcp.Organizations
         public readonly string OrgId;
         public readonly string? ProjectId;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetProjectResult(
@@ -142,7 +143,9 @@ namespace Pulumi.Gcp.Organizations
 
             string? projectId,
 
-            ImmutableDictionary<string, string> pulumiLabels)
+            ImmutableDictionary<string, string> pulumiLabels,
+
+            ImmutableDictionary<string, string> tags)
         {
             AutoCreateNetwork = autoCreateNetwork;
             BillingAccount = billingAccount;
@@ -156,6 +159,7 @@ namespace Pulumi.Gcp.Organizations
             OrgId = orgId;
             ProjectId = projectId;
             PulumiLabels = pulumiLabels;
+            Tags = tags;
         }
     }
 }

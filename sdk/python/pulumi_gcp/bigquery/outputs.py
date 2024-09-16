@@ -33,6 +33,7 @@ __all__ = [
     'ConnectionSparkMetastoreServiceConfig',
     'ConnectionSparkSparkHistoryServerConfig',
     'DataTransferConfigEmailPreferences',
+    'DataTransferConfigEncryptionConfiguration',
     'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
     'DatasetAccess',
@@ -983,6 +984,41 @@ class DataTransferConfigEmailPreferences(dict):
         If true, email notifications will be sent on transfer run failures.
         """
         return pulumi.get(self, "enable_failure_email")
+
+
+@pulumi.output_type
+class DataTransferConfigEncryptionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataTransferConfigEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataTransferConfigEncryptionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataTransferConfigEncryptionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The name of the KMS key used for encrypting BigQuery data.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The name of the KMS key used for encrypting BigQuery data.
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type

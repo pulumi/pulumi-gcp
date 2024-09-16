@@ -23,7 +23,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable Boolean internalIpOnly;
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     private @Nullable Map<String,String> metadata;
@@ -68,7 +68,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
      */
     private @Nullable String subnetwork;
     /**
-     * @return The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     private @Nullable List<String> tags;
@@ -87,7 +87,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.internalIpOnly);
     }
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     public Map<String,String> metadata() {
@@ -150,7 +150,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         return Optional.ofNullable(this.subnetwork);
     }
     /**
-     * @return The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     public List<String> tags() {

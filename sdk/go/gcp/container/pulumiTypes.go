@@ -22974,6 +22974,8 @@ type ClusterNodeConfigKubeletConfig struct {
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit *int `pulumi:"podPidsLimit"`
 }
@@ -23007,6 +23009,8 @@ type ClusterNodeConfigKubeletConfigArgs struct {
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
 }
@@ -23114,6 +23118,11 @@ func (o ClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOu
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
 }
 
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringPtrOutput)
+}
+
 // Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 func (o ClusterNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
@@ -23181,6 +23190,16 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.Strin
 			return nil
 		}
 		return &v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodeConfigKubeletConfigPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24966,8 +24985,11 @@ func (o ClusterNodePoolArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolOutp
 }
 
 type ClusterNodePoolAutoConfig struct {
-	// The network tag config for the cluster's automatically provisioned node pools.
+	// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 	NetworkTags *ClusterNodePoolAutoConfigNetworkTags `pulumi:"networkTags"`
+	// Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
+	// Structure is documented below.
+	NodeKubeletConfig *ClusterNodePoolAutoConfigNodeKubeletConfig `pulumi:"nodeKubeletConfig"`
 	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 }
@@ -24984,8 +25006,11 @@ type ClusterNodePoolAutoConfigInput interface {
 }
 
 type ClusterNodePoolAutoConfigArgs struct {
-	// The network tag config for the cluster's automatically provisioned node pools.
+	// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 	NetworkTags ClusterNodePoolAutoConfigNetworkTagsPtrInput `pulumi:"networkTags"`
+	// Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
+	// Structure is documented below.
+	NodeKubeletConfig ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput `pulumi:"nodeKubeletConfig"`
 	// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 }
@@ -25067,9 +25092,17 @@ func (o ClusterNodePoolAutoConfigOutput) ToClusterNodePoolAutoConfigPtrOutputWit
 	}).(ClusterNodePoolAutoConfigPtrOutput)
 }
 
-// The network tag config for the cluster's automatically provisioned node pools.
+// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 func (o ClusterNodePoolAutoConfigOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags { return v.NetworkTags }).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+// Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
+// Structure is documented below.
+func (o ClusterNodePoolAutoConfigOutput) NodeKubeletConfig() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNodeKubeletConfig {
+		return v.NodeKubeletConfig
+	}).(ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput)
 }
 
 // A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
@@ -25101,7 +25134,7 @@ func (o ClusterNodePoolAutoConfigPtrOutput) Elem() ClusterNodePoolAutoConfigOutp
 	}).(ClusterNodePoolAutoConfigOutput)
 }
 
-// The network tag config for the cluster's automatically provisioned node pools.
+// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags {
 		if v == nil {
@@ -25109,6 +25142,17 @@ func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoCon
 		}
 		return v.NetworkTags
 	}).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
+}
+
+// Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
+// Structure is documented below.
+func (o ClusterNodePoolAutoConfigPtrOutput) NodeKubeletConfig() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNodeKubeletConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodeKubeletConfig
+	}).(ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput)
 }
 
 // A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
@@ -25256,6 +25300,145 @@ func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Tags() pulumi.StringArray
 		}
 		return v.Tags
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodePoolAutoConfigNodeKubeletConfig struct {
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
+}
+
+// ClusterNodePoolAutoConfigNodeKubeletConfigInput is an input type that accepts ClusterNodePoolAutoConfigNodeKubeletConfigArgs and ClusterNodePoolAutoConfigNodeKubeletConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigNodeKubeletConfigInput` via:
+//
+//	ClusterNodePoolAutoConfigNodeKubeletConfigArgs{...}
+type ClusterNodePoolAutoConfigNodeKubeletConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigNodeKubeletConfigOutput() ClusterNodePoolAutoConfigNodeKubeletConfigOutput
+	ToClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigOutput
+}
+
+type ClusterNodePoolAutoConfigNodeKubeletConfigArgs struct {
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
+}
+
+func (ClusterNodePoolAutoConfigNodeKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToClusterNodePoolAutoConfigNodeKubeletConfigOutput() ClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return i.ToClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigNodeKubeletConfigOutput)
+}
+
+func (i ClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return i.ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigNodeKubeletConfigOutput).ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput is an input type that accepts ClusterNodePoolAutoConfigNodeKubeletConfigArgs, ClusterNodePoolAutoConfigNodeKubeletConfigPtr and ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput` via:
+//
+//	        ClusterNodePoolAutoConfigNodeKubeletConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput
+	ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput
+}
+
+type clusterNodePoolAutoConfigNodeKubeletConfigPtrType ClusterNodePoolAutoConfigNodeKubeletConfigArgs
+
+func ClusterNodePoolAutoConfigNodeKubeletConfigPtr(v *ClusterNodePoolAutoConfigNodeKubeletConfigArgs) ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput {
+	return (*clusterNodePoolAutoConfigNodeKubeletConfigPtrType)(v)
+}
+
+func (*clusterNodePoolAutoConfigNodeKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolAutoConfigNodeKubeletConfigPtrType) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return i.ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolAutoConfigNodeKubeletConfigPtrType) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigNodeKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigNodeKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToClusterNodePoolAutoConfigNodeKubeletConfigOutput() ClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return o.ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolAutoConfigNodeKubeletConfig) *ClusterNodePoolAutoConfigNodeKubeletConfig {
+		return &v
+	}).(ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfigNodeKubeletConfig) *string {
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput() ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput) ToClusterNodePoolAutoConfigNodeKubeletConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput) Elem() ClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfigNodeKubeletConfig) ClusterNodePoolAutoConfigNodeKubeletConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolAutoConfigNodeKubeletConfig
+		return ret
+	}).(ClusterNodePoolAutoConfigNodeKubeletConfigOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfigNodeKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolAutoscaling struct {
@@ -25615,6 +25798,8 @@ type ClusterNodePoolDefaultsNodeConfigDefaults struct {
 	ContainerdConfig *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig `pulumi:"containerdConfig"`
 	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig `pulumi:"gcfsConfig"`
+	// Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant *string `pulumi:"loggingVariant"`
 }
@@ -25635,6 +25820,8 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsArgs struct {
 	ContainerdConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrInput `pulumi:"containerdConfig"`
 	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput `pulumi:"gcfsConfig"`
+	// Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant pulumi.StringPtrInput `pulumi:"loggingVariant"`
 }
@@ -25730,6 +25917,11 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) GcfsConfig() ClusterNod
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput)
 }
 
+// Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringPtrOutput)
+}
+
 // The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) LoggingVariant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *string { return v.LoggingVariant }).(pulumi.StringPtrOutput)
@@ -25777,6 +25969,16 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) GcfsConfig() Cluster
 		}
 		return v.GcfsConfig
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -30623,6 +30825,8 @@ type ClusterNodePoolNodeConfigKubeletConfig struct {
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit *int `pulumi:"podPidsLimit"`
 }
@@ -30656,6 +30860,8 @@ type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
 }
@@ -30763,6 +30969,11 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
 }
 
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringPtrOutput)
+}
+
 // Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
@@ -30830,6 +31041,16 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulu
 			return nil
 		}
 		return &v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40270,6 +40491,8 @@ type NodePoolNodeConfigKubeletConfig struct {
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit *int `pulumi:"podPidsLimit"`
 }
@@ -40292,6 +40515,8 @@ type NodePoolNodeConfigKubeletConfigArgs struct {
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
 }
@@ -40388,6 +40613,11 @@ func (o NodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringO
 	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
 }
 
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o NodePoolNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringPtrOutput)
+}
+
 // Controls the maximum number of processes allowed to run in a pod.
 func (o NodePoolNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
@@ -40444,6 +40674,16 @@ func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.Stri
 			return nil
 		}
 		return &v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o NodePoolNodeConfigKubeletConfigPtrOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureKubeletReadonlyPortEnabled
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -50980,6 +51220,8 @@ type GetClusterNodeConfigKubeletConfig struct {
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit int `pulumi:"podPidsLimit"`
 }
@@ -51002,6 +51244,8 @@ type GetClusterNodeConfigKubeletConfigArgs struct {
 	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntInput `pulumi:"podPidsLimit"`
 }
@@ -51070,6 +51314,11 @@ func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.Stri
 // Control the CPU management policy on the node.
 func (o GetClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringOutput)
 }
 
 // Controls the maximum number of processes allowed to run in a pod.
@@ -52382,6 +52631,8 @@ func (o GetClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetClusterNodePo
 type GetClusterNodePoolAutoConfig struct {
 	// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 	NetworkTags []GetClusterNodePoolAutoConfigNetworkTag `pulumi:"networkTags"`
+	// Node kubelet configs.
+	NodeKubeletConfigs []GetClusterNodePoolAutoConfigNodeKubeletConfig `pulumi:"nodeKubeletConfigs"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 }
@@ -52400,6 +52651,8 @@ type GetClusterNodePoolAutoConfigInput interface {
 type GetClusterNodePoolAutoConfigArgs struct {
 	// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 	NetworkTags GetClusterNodePoolAutoConfigNetworkTagArrayInput `pulumi:"networkTags"`
+	// Node kubelet configs.
+	NodeKubeletConfigs GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput `pulumi:"nodeKubeletConfigs"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 }
@@ -52458,6 +52711,13 @@ func (o GetClusterNodePoolAutoConfigOutput) ToGetClusterNodePoolAutoConfigOutput
 // Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 func (o GetClusterNodePoolAutoConfigOutput) NetworkTags() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) []GetClusterNodePoolAutoConfigNetworkTag { return v.NetworkTags }).(GetClusterNodePoolAutoConfigNetworkTagArrayOutput)
+}
+
+// Node kubelet configs.
+func (o GetClusterNodePoolAutoConfigOutput) NodeKubeletConfigs() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) []GetClusterNodePoolAutoConfigNodeKubeletConfig {
+		return v.NodeKubeletConfigs
+	}).(GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput)
 }
 
 // A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -52580,6 +52840,105 @@ func (o GetClusterNodePoolAutoConfigNetworkTagArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfigNetworkTag {
 		return vs[0].([]GetClusterNodePoolAutoConfigNetworkTag)[vs[1].(int)]
 	}).(GetClusterNodePoolAutoConfigNetworkTagOutput)
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfig struct {
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
+}
+
+// GetClusterNodePoolAutoConfigNodeKubeletConfigInput is an input type that accepts GetClusterNodePoolAutoConfigNodeKubeletConfigArgs and GetClusterNodePoolAutoConfigNodeKubeletConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNodeKubeletConfigInput` via:
+//
+//	GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{...}
+type GetClusterNodePoolAutoConfigNodeKubeletConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigOutput
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArgs struct {
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
+}
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return i.ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArgs) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput)
+}
+
+// GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput is an input type that accepts GetClusterNodePoolAutoConfigNodeKubeletConfigArray and GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput` via:
+//
+//	GetClusterNodePoolAutoConfigNodeKubeletConfigArray{ GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{...} }
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput
+	ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArray []GetClusterNodePoolAutoConfigNodeKubeletConfigInput
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArray) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return i.ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigNodeKubeletConfigArray) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return o
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfigNodeKubeletConfig) string {
+		return v.InsecureKubeletReadonlyPortEnabled
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigNodeKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput() GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) ToGetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoConfigNodeKubeletConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfigNodeKubeletConfig {
+		return vs[0].([]GetClusterNodePoolAutoConfigNodeKubeletConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput)
 }
 
 type GetClusterNodePoolAutoscaling struct {
@@ -52819,6 +53178,8 @@ type GetClusterNodePoolDefaultNodeConfigDefault struct {
 	ContainerdConfigs []GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig `pulumi:"containerdConfigs"`
 	// GCFS configuration for this node.
 	GcfsConfigs []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig `pulumi:"gcfsConfigs"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant string `pulumi:"loggingVariant"`
 }
@@ -52839,6 +53200,8 @@ type GetClusterNodePoolDefaultNodeConfigDefaultArgs struct {
 	ContainerdConfigs GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigArrayInput `pulumi:"containerdConfigs"`
 	// GCFS configuration for this node.
 	GcfsConfigs GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput `pulumi:"gcfsConfigs"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
 }
@@ -52906,6 +53269,11 @@ func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) GcfsConfigs() GetClust
 	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) []GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
 		return v.GcfsConfigs
 	}).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodePoolDefaultNodeConfigDefaultOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolDefaultNodeConfigDefault) string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringOutput)
 }
 
 // Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -56287,6 +56655,8 @@ type GetClusterNodePoolNodeConfigKubeletConfig struct {
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit int `pulumi:"podPidsLimit"`
 }
@@ -56309,6 +56679,8 @@ type GetClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
 	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
 	PodPidsLimit pulumi.IntInput `pulumi:"podPidsLimit"`
 }
@@ -56377,6 +56749,11 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pul
 // Control the CPU management policy on the node.
 func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodePoolNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigKubeletConfig) string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringOutput)
 }
 
 // Controls the maximum number of processes allowed to run in a pod.
@@ -60234,6 +60611,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNodeKubeletConfigInput)(nil)).Elem(), ClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingPtrInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsInput)(nil)).Elem(), ClusterNodePoolDefaultsArgs{})
@@ -60615,6 +60994,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNodeKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoscalingArrayInput)(nil)).Elem(), GetClusterNodePoolAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultInput)(nil)).Elem(), GetClusterNodePoolDefaultArgs{})
@@ -61052,6 +61433,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNodeKubeletConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsOutput{})
@@ -61433,6 +61816,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNodeKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultOutput{})

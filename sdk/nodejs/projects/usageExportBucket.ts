@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  *
  * > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
  *
+ * > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
+ *
+ * > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+ *
  * To get more information about projects, see:
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -50,6 +54,22 @@ import * as utilities from "../utilities";
  *     name: "My Project",
  *     projectId: "your-project-id",
  *     folderId: department1.name,
+ * });
+ * ```
+ *
+ * To create a project with a tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ *     tags: {
+ *         "1234567/env": "staging",
+ *     },
  * });
  * ```
  *

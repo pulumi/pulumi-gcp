@@ -2844,6 +2844,143 @@ func (o DataTransferConfigEmailPreferencesPtrOutput) EnableFailureEmail() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DataTransferConfigEncryptionConfiguration struct {
+	// The name of the KMS key used for encrypting BigQuery data.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// DataTransferConfigEncryptionConfigurationInput is an input type that accepts DataTransferConfigEncryptionConfigurationArgs and DataTransferConfigEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `DataTransferConfigEncryptionConfigurationInput` via:
+//
+//	DataTransferConfigEncryptionConfigurationArgs{...}
+type DataTransferConfigEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigEncryptionConfigurationOutput() DataTransferConfigEncryptionConfigurationOutput
+	ToDataTransferConfigEncryptionConfigurationOutputWithContext(context.Context) DataTransferConfigEncryptionConfigurationOutput
+}
+
+type DataTransferConfigEncryptionConfigurationArgs struct {
+	// The name of the KMS key used for encrypting BigQuery data.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (DataTransferConfigEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i DataTransferConfigEncryptionConfigurationArgs) ToDataTransferConfigEncryptionConfigurationOutput() DataTransferConfigEncryptionConfigurationOutput {
+	return i.ToDataTransferConfigEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigEncryptionConfigurationArgs) ToDataTransferConfigEncryptionConfigurationOutputWithContext(ctx context.Context) DataTransferConfigEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigEncryptionConfigurationOutput)
+}
+
+func (i DataTransferConfigEncryptionConfigurationArgs) ToDataTransferConfigEncryptionConfigurationPtrOutput() DataTransferConfigEncryptionConfigurationPtrOutput {
+	return i.ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigEncryptionConfigurationArgs) ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DataTransferConfigEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigEncryptionConfigurationOutput).ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// DataTransferConfigEncryptionConfigurationPtrInput is an input type that accepts DataTransferConfigEncryptionConfigurationArgs, DataTransferConfigEncryptionConfigurationPtr and DataTransferConfigEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `DataTransferConfigEncryptionConfigurationPtrInput` via:
+//
+//	        DataTransferConfigEncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataTransferConfigEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigEncryptionConfigurationPtrOutput() DataTransferConfigEncryptionConfigurationPtrOutput
+	ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(context.Context) DataTransferConfigEncryptionConfigurationPtrOutput
+}
+
+type dataTransferConfigEncryptionConfigurationPtrType DataTransferConfigEncryptionConfigurationArgs
+
+func DataTransferConfigEncryptionConfigurationPtr(v *DataTransferConfigEncryptionConfigurationArgs) DataTransferConfigEncryptionConfigurationPtrInput {
+	return (*dataTransferConfigEncryptionConfigurationPtrType)(v)
+}
+
+func (*dataTransferConfigEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *dataTransferConfigEncryptionConfigurationPtrType) ToDataTransferConfigEncryptionConfigurationPtrOutput() DataTransferConfigEncryptionConfigurationPtrOutput {
+	return i.ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigEncryptionConfigurationPtrType) ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DataTransferConfigEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigEncryptionConfigurationPtrOutput)
+}
+
+type DataTransferConfigEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfigEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o DataTransferConfigEncryptionConfigurationOutput) ToDataTransferConfigEncryptionConfigurationOutput() DataTransferConfigEncryptionConfigurationOutput {
+	return o
+}
+
+func (o DataTransferConfigEncryptionConfigurationOutput) ToDataTransferConfigEncryptionConfigurationOutputWithContext(ctx context.Context) DataTransferConfigEncryptionConfigurationOutput {
+	return o
+}
+
+func (o DataTransferConfigEncryptionConfigurationOutput) ToDataTransferConfigEncryptionConfigurationPtrOutput() DataTransferConfigEncryptionConfigurationPtrOutput {
+	return o.ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigEncryptionConfigurationOutput) ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DataTransferConfigEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferConfigEncryptionConfiguration) *DataTransferConfigEncryptionConfiguration {
+		return &v
+	}).(DataTransferConfigEncryptionConfigurationPtrOutput)
+}
+
+// The name of the KMS key used for encrypting BigQuery data.
+func (o DataTransferConfigEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataTransferConfigEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type DataTransferConfigEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfigEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o DataTransferConfigEncryptionConfigurationPtrOutput) ToDataTransferConfigEncryptionConfigurationPtrOutput() DataTransferConfigEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigEncryptionConfigurationPtrOutput) ToDataTransferConfigEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DataTransferConfigEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigEncryptionConfigurationPtrOutput) Elem() DataTransferConfigEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *DataTransferConfigEncryptionConfiguration) DataTransferConfigEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferConfigEncryptionConfiguration
+		return ret
+	}).(DataTransferConfigEncryptionConfigurationOutput)
+}
+
+// The name of the KMS key used for encrypting BigQuery data.
+func (o DataTransferConfigEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfigEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type DataTransferConfigScheduleOptions struct {
 	// If true, automatic scheduling of data transfer runs for this
 	// configuration will be disabled. The runs can be started on ad-hoc
@@ -15982,6 +16119,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkSparkHistoryServerConfigPtrInput)(nil)).Elem(), ConnectionSparkSparkHistoryServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEmailPreferencesInput)(nil)).Elem(), DataTransferConfigEmailPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEmailPreferencesPtrInput)(nil)).Elem(), DataTransferConfigEmailPreferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEncryptionConfigurationInput)(nil)).Elem(), DataTransferConfigEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEncryptionConfigurationPtrInput)(nil)).Elem(), DataTransferConfigEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsPtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
@@ -16152,6 +16291,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionSparkSparkHistoryServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})

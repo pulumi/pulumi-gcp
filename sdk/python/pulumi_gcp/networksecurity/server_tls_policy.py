@@ -419,6 +419,12 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  server_certificate: Optional[pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']]] = None,
                  __props__=None):
         """
+        ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+
+        To get more information about ServerTlsPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.serverTlsPolicies)
+
         ## Example Usage
 
         ### Network Security Server Tls Policy Basic
@@ -440,23 +446,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 },
             },
             mtls_policy={
-                "client_validation_cas": [
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:mypath",
-                        },
+                "client_validation_cas": [{
+                    "grpc_endpoint": {
+                        "target_uri": "unix:mypath",
                     },
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:abc/mypath",
-                        },
-                    },
-                    {
-                        "certificate_provider_instance": {
-                            "plugin_instance": "google_cloud_private_spiffe",
-                        },
-                    },
-                ],
+                }],
             })
         ```
         ### Network Security Server Tls Policy Advanced
@@ -588,6 +582,12 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  args: Optional[ServerTlsPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+
+        To get more information about ServerTlsPolicy, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.serverTlsPolicies)
+
         ## Example Usage
 
         ### Network Security Server Tls Policy Basic
@@ -609,23 +609,11 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 },
             },
             mtls_policy={
-                "client_validation_cas": [
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:mypath",
-                        },
+                "client_validation_cas": [{
+                    "grpc_endpoint": {
+                        "target_uri": "unix:mypath",
                     },
-                    {
-                        "grpc_endpoint": {
-                            "target_uri": "unix:abc/mypath",
-                        },
-                    },
-                    {
-                        "certificate_provider_instance": {
-                            "plugin_instance": "google_cloud_private_spiffe",
-                        },
-                    },
-                ],
+                }],
             })
         ```
         ### Network Security Server Tls Policy Advanced

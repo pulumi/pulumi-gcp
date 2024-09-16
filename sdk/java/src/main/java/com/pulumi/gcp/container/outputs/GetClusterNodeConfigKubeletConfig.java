@@ -28,6 +28,11 @@ public final class GetClusterNodeConfigKubeletConfig {
      */
     private String cpuManagerPolicy;
     /**
+     * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    private String insecureKubeletReadonlyPortEnabled;
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -56,6 +61,13 @@ public final class GetClusterNodeConfigKubeletConfig {
         return this.cpuManagerPolicy;
     }
     /**
+     * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    public String insecureKubeletReadonlyPortEnabled() {
+        return this.insecureKubeletReadonlyPortEnabled;
+    }
+    /**
      * @return Controls the maximum number of processes allowed to run in a pod.
      * 
      */
@@ -75,6 +87,7 @@ public final class GetClusterNodeConfigKubeletConfig {
         private Boolean cpuCfsQuota;
         private String cpuCfsQuotaPeriod;
         private String cpuManagerPolicy;
+        private String insecureKubeletReadonlyPortEnabled;
         private Integer podPidsLimit;
         public Builder() {}
         public Builder(GetClusterNodeConfigKubeletConfig defaults) {
@@ -82,6 +95,7 @@ public final class GetClusterNodeConfigKubeletConfig {
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.insecureKubeletReadonlyPortEnabled = defaults.insecureKubeletReadonlyPortEnabled;
     	      this.podPidsLimit = defaults.podPidsLimit;
         }
 
@@ -110,6 +124,14 @@ public final class GetClusterNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
+            if (insecureKubeletReadonlyPortEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "insecureKubeletReadonlyPortEnabled");
+            }
+            this.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podPidsLimit(Integer podPidsLimit) {
             if (podPidsLimit == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "podPidsLimit");
@@ -122,6 +144,7 @@ public final class GetClusterNodeConfigKubeletConfig {
             _resultValue.cpuCfsQuota = cpuCfsQuota;
             _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             _resultValue.podPidsLimit = podPidsLimit;
             return _resultValue;
         }

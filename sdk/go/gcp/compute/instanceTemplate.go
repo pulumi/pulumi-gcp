@@ -232,6 +232,68 @@ import (
 //
 // ```
 //
+// ### Confidential Computing
+//
+// Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("my-custom-sa"),
+//				DisplayName: pulumi.String("Custom SA for VM Instance"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstanceTemplate(ctx, "confidential_instance_template", &compute.InstanceTemplateArgs{
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+//							nil,
+//						},
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//				Name:           pulumi.String("my-confidential-instance-template"),
+//				Region:         pulumi.String("us-central1"),
+//				MachineType:    pulumi.String("n2d-standard-2"),
+//				MinCpuPlatform: pulumi.String("AMD Milan"),
+//				ConfidentialInstanceConfig: &compute.InstanceTemplateConfidentialInstanceConfigArgs{
+//					EnableConfidentialCompute: pulumi.Bool(true),
+//					ConfidentialInstanceType:  pulumi.String("SEV"),
+//				},
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("ubuntu-os-cloud/ubuntu-2004-lts"),
+//					},
+//				},
+//				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+//					Email: _default.Email,
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("cloud-platform"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Deploying the Latest Image
 //
 // A common way to use instance templates and managed instance groups is to deploy the

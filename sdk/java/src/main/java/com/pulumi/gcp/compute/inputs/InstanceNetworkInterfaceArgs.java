@@ -277,7 +277,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
     /**
      * The project in which the subnetwork belongs.
-     * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+     * If the `subnetwork` is a self_link, this field is set to the project
      * defined in the subnetwork self_link. If the `subnetwork` is a name and this
      * field is not provided, the provider project is used.
      * 
@@ -287,7 +287,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
     /**
      * @return The project in which the subnetwork belongs.
-     * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+     * If the `subnetwork` is a self_link, this field is set to the project
      * defined in the subnetwork self_link. If the `subnetwork` is a name and this
      * field is not provided, the provider project is used.
      * 
@@ -716,7 +716,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
         /**
          * @param subnetworkProject The project in which the subnetwork belongs.
-         * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+         * If the `subnetwork` is a self_link, this field is set to the project
          * defined in the subnetwork self_link. If the `subnetwork` is a name and this
          * field is not provided, the provider project is used.
          * 
@@ -730,7 +730,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
         /**
          * @param subnetworkProject The project in which the subnetwork belongs.
-         * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+         * If the `subnetwork` is a self_link, this field is set to the project
          * defined in the subnetwork self_link. If the `subnetwork` is a name and this
          * field is not provided, the provider project is used.
          * 

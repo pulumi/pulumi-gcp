@@ -377,6 +377,93 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Compute Health Check Http Source Regions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var http_health_check_with_source_regions = new Gcp.Compute.HealthCheck("http-health-check-with-source-regions", new()
+    ///     {
+    ///         Name = "http-health-check",
+    ///         CheckIntervalSec = 30,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             PortSpecification = "USE_FIXED_PORT",
+    ///         },
+    ///         SourceRegions = new[]
+    ///         {
+    ///             "us-west1",
+    ///             "us-central1",
+    ///             "us-east5",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Health Check Https Source Regions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var https_health_check_with_source_regions = new Gcp.Compute.HealthCheck("https-health-check-with-source-regions", new()
+    ///     {
+    ///         Name = "https-health-check",
+    ///         CheckIntervalSec = 30,
+    ///         HttpsHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpsHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             PortSpecification = "USE_FIXED_PORT",
+    ///         },
+    ///         SourceRegions = new[]
+    ///         {
+    ///             "us-west1",
+    ///             "us-central1",
+    ///             "us-east5",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Health Check Tcp Source Regions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tcp_health_check_with_source_regions = new Gcp.Compute.HealthCheck("tcp-health-check-with-source-regions", new()
+    ///     {
+    ///         Name = "tcp-health-check",
+    ///         CheckIntervalSec = 30,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             PortSpecification = "USE_FIXED_PORT",
+    ///         },
+    ///         SourceRegions = new[]
+    ///         {
+    ///             "us-west1",
+    ///             "us-central1",
+    ///             "us-east5",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

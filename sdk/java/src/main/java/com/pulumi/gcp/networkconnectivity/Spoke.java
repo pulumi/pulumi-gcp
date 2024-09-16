@@ -82,6 +82,9 @@ import javax.annotation.Nullable;
  *                 .excludeExportRanges(                
  *                     "198.51.100.0/24",
  *                     "10.10.0.0/16")
+ *                 .includeExportRanges(                
+ *                     "198.51.100.0/23",
+ *                     "10.0.0.0/8")
  *                 .uri(network.selfLink())
  *                 .build())
  *             .build());

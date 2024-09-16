@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNetworkTagResult> NetworkTags;
         /// <summary>
+        /// Node kubelet configs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNodeKubeletConfigResult> NodeKubeletConfigs;
+        /// <summary>
         /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceManagerTags;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodePoolAutoConfigResult(
             ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNetworkTagResult> networkTags,
 
+            ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNodeKubeletConfigResult> nodeKubeletConfigs,
+
             ImmutableDictionary<string, string> resourceManagerTags)
         {
             NetworkTags = networkTags;
+            NodeKubeletConfigs = nodeKubeletConfigs;
             ResourceManagerTags = resourceManagerTags;
         }
     }

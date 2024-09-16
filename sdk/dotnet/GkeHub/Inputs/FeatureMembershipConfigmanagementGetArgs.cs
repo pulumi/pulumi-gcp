@@ -13,7 +13,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// Binauthz configuration for the cluster. Structure is documented below.
+        /// This field will be ignored and should not be set.
         /// </summary>
         [Input("binauthz")]
         public Input<Inputs.FeatureMembershipConfigmanagementBinauthzGetArgs>? Binauthz { get; set; }
@@ -26,6 +28,10 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
         /// <summary>
         /// Hierarchy Controller configuration for the cluster. Structure is documented below.
+        /// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+        /// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+        /// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+        /// to migrate from Hierarchy Controller to HNC.
         /// </summary>
         [Input("hierarchyController")]
         public Input<Inputs.FeatureMembershipConfigmanagementHierarchyControllerGetArgs>? HierarchyController { get; set; }
@@ -38,6 +44,8 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
         /// <summary>
         /// Policy Controller configuration for the cluster. Structure is documented below.
+        /// Configuring Policy Controller through the configmanagement feature is no longer recommended.
+        /// Use the policycontroller feature instead.
         /// </summary>
         [Input("policyController")]
         public Input<Inputs.FeatureMembershipConfigmanagementPolicyControllerGetArgs>? PolicyController { get; set; }

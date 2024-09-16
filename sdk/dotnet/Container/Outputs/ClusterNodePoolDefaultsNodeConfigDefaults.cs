@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig? GcfsConfig;
         /// <summary>
+        /// Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        /// </summary>
+        public readonly string? InsecureKubeletReadonlyPortEnabled;
+        /// <summary>
         /// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         /// </summary>
         public readonly string? LoggingVariant;
@@ -32,10 +36,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig? gcfsConfig,
 
+            string? insecureKubeletReadonlyPortEnabled,
+
             string? loggingVariant)
         {
             ContainerdConfig = containerdConfig;
             GcfsConfig = gcfsConfig;
+            InsecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
             LoggingVariant = loggingVariant;
         }
     }

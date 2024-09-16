@@ -49,6 +49,8 @@ __all__ = [
     'ConnectionSparkSparkHistoryServerConfigArgsDict',
     'DataTransferConfigEmailPreferencesArgs',
     'DataTransferConfigEmailPreferencesArgsDict',
+    'DataTransferConfigEncryptionConfigurationArgs',
+    'DataTransferConfigEncryptionConfigurationArgsDict',
     'DataTransferConfigScheduleOptionsArgs',
     'DataTransferConfigScheduleOptionsArgsDict',
     'DataTransferConfigSensitiveParamsArgs',
@@ -1242,6 +1244,37 @@ class DataTransferConfigEmailPreferencesArgs:
     @enable_failure_email.setter
     def enable_failure_email(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enable_failure_email", value)
+
+
+if not MYPY:
+    class DataTransferConfigEncryptionConfigurationArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The name of the KMS key used for encrypting BigQuery data.
+        """
+elif False:
+    DataTransferConfigEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataTransferConfigEncryptionConfigurationArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: The name of the KMS key used for encrypting BigQuery data.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        The name of the KMS key used for encrypting BigQuery data.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 if not MYPY:

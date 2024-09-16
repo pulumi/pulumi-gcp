@@ -116,6 +116,7 @@ type Volume struct {
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	// Possible values: DEFAULT, FORCE.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -262,6 +263,7 @@ type volumeState struct {
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	// Possible values: DEFAULT, FORCE.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -359,6 +361,7 @@ type VolumeState struct {
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	// Possible values: DEFAULT, FORCE.
 	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -456,6 +459,7 @@ type volumeArgs struct {
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	// Possible values: DEFAULT, FORCE.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -518,6 +522,7 @@ type VolumeArgs struct {
 	// Policy to determine if the volume should be deleted forcefully.
 	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
 	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	// Possible values: DEFAULT, FORCE.
 	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -681,6 +686,7 @@ func (o VolumeOutput) CreateTime() pulumi.StringOutput {
 // Policy to determine if the volume should be deleted forcefully.
 // Volumes may have nested snapshot resources. Deleting such a volume will fail.
 // Setting this parameter to FORCE will delete volumes including nested snapshots.
+// Possible values: DEFAULT, FORCE.
 func (o VolumeOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

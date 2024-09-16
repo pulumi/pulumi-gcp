@@ -120,6 +120,11 @@ export type V2FolderNotificationConfig = import("./v2folderNotificationConfig").
 export const V2FolderNotificationConfig: typeof import("./v2folderNotificationConfig").V2FolderNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["V2FolderNotificationConfig"], () => require("./v2folderNotificationConfig"));
 
+export { V2FolderSccBigQueryExportArgs, V2FolderSccBigQueryExportState } from "./v2folderSccBigQueryExport";
+export type V2FolderSccBigQueryExport = import("./v2folderSccBigQueryExport").V2FolderSccBigQueryExport;
+export const V2FolderSccBigQueryExport: typeof import("./v2folderSccBigQueryExport").V2FolderSccBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["V2FolderSccBigQueryExport"], () => require("./v2folderSccBigQueryExport"));
+
 export { V2OrganizationMuteConfigArgs, V2OrganizationMuteConfigState } from "./v2organizationMuteConfig";
 export type V2OrganizationMuteConfig = import("./v2organizationMuteConfig").V2OrganizationMuteConfig;
 export const V2OrganizationMuteConfig: typeof import("./v2organizationMuteConfig").V2OrganizationMuteConfig = null as any;
@@ -164,6 +169,11 @@ export { V2ProjectNotificationConfigArgs, V2ProjectNotificationConfigState } fro
 export type V2ProjectNotificationConfig = import("./v2projectNotificationConfig").V2ProjectNotificationConfig;
 export const V2ProjectNotificationConfig: typeof import("./v2projectNotificationConfig").V2ProjectNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["V2ProjectNotificationConfig"], () => require("./v2projectNotificationConfig"));
+
+export { V2ProjectSccBigQueryExportArgs, V2ProjectSccBigQueryExportState } from "./v2projectSccBigQueryExport";
+export type V2ProjectSccBigQueryExport = import("./v2projectSccBigQueryExport").V2ProjectSccBigQueryExport;
+export const V2ProjectSccBigQueryExport: typeof import("./v2projectSccBigQueryExport").V2ProjectSccBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["V2ProjectSccBigQueryExport"], () => require("./v2projectSccBigQueryExport"));
 
 
 const _module = {
@@ -212,6 +222,8 @@ const _module = {
                 return new V2FolderMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig":
                 return new V2FolderNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport":
+                return new V2FolderSccBigQueryExport(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
                 return new V2OrganizationMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
@@ -230,6 +242,8 @@ const _module = {
                 return new V2ProjectMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig":
                 return new V2ProjectNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport":
+                return new V2ProjectSccBigQueryExport(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -256,6 +270,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationNotificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSccBigQueryExports", _module)
@@ -265,3 +280,4 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourc
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2ProjectMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2ProjectNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2ProjectSccBigQueryExport", _module)

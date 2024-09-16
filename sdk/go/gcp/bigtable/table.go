@@ -58,6 +58,25 @@ import (
 //					},
 //					&bigtable.TableColumnFamilyArgs{
 //						Family: pulumi.String("family-second"),
+//						Type:   pulumi.String("intsum"),
+//					},
+//					&bigtable.TableColumnFamilyArgs{
+//						Family: pulumi.String("family-third"),
+//						Type: pulumi.String(`        {
+//						"aggregateType": {
+//							"max": {},
+//							"inputType": {
+//								"int64Type": {
+//									"encoding": {
+//										"bigEndianBytes": {}
+//									}
+//								}
+//							}
+//						}
+//					}
+//
+// `),
+//
 //					},
 //				},
 //				ChangeStreamRetention: pulumi.String("24h0m0s"),

@@ -32,8 +32,7 @@ public final class GetServiceTemplateSpecVolume {
     private String name;
     /**
      * @return A filesystem backed by a Network File System share. This filesystem requires the
-     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
-     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * run.googleapis.com/execution-environment annotation to be unset or set to &#34;gen2&#34;
      * 
      */
     private List<GetServiceTemplateSpecVolumeNf> nfs;
@@ -69,8 +68,7 @@ public final class GetServiceTemplateSpecVolume {
     }
     /**
      * @return A filesystem backed by a Network File System share. This filesystem requires the
-     * run.googleapis.com/execution-environment annotation to be set to &#34;gen2&#34; and
-     * run.googleapis.com/launch-stage set to &#34;BETA&#34; or &#34;ALPHA&#34;.
+     * run.googleapis.com/execution-environment annotation to be unset or set to &#34;gen2&#34;
      * 
      */
     public List<GetServiceTemplateSpecVolumeNf> nfs() {

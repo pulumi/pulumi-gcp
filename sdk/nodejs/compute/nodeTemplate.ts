@@ -52,6 +52,25 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Node Template Accelerators
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const template = new gcp.compute.NodeTemplate("template", {
+ *     name: "soletenant-with-accelerators",
+ *     region: "us-central1",
+ *     nodeType: "n1-node-96-624",
+ *     accelerators: [{
+ *         acceleratorType: "nvidia-tesla-t4",
+ *         acceleratorCount: 4,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -111,6 +130,12 @@ export class NodeTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeTemplate.__pulumiType;
     }
 
+    /**
+     * List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     */
+    public readonly accelerators!: pulumi.Output<outputs.compute.NodeTemplateAccelerator[] | undefined>;
     /**
      * CPU overcommit.
      * Default value is `NONE`.
@@ -181,6 +206,7 @@ export class NodeTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
+            resourceInputs["accelerators"] = state ? state.accelerators : undefined;
             resourceInputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -194,6 +220,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["serverBinding"] = state ? state.serverBinding : undefined;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
+            resourceInputs["accelerators"] = args ? args.accelerators : undefined;
             resourceInputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -215,6 +242,12 @@ export class NodeTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeTemplate resources.
  */
 export interface NodeTemplateState {
+    /**
+     * List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     */
+    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateAccelerator>[]>;
     /**
      * CPU overcommit.
      * Default value is `NONE`.
@@ -277,6 +310,12 @@ export interface NodeTemplateState {
  * The set of arguments for constructing a NodeTemplate resource.
  */
 export interface NodeTemplateArgs {
+    /**
+     * List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     */
+    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateAccelerator>[]>;
     /**
      * CPU overcommit.
      * Default value is `NONE`.

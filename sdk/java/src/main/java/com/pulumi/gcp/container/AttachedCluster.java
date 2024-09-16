@@ -367,14 +367,14 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Policy to determine what flags to send on delete.
+     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
-     * @return Policy to determine what flags to send on delete.
+     * @return Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

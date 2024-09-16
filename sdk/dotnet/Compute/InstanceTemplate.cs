@@ -226,6 +226,66 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### Confidential Computing
+    /// 
+    /// Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.ServiceAccount.Account("default", new()
+    ///     {
+    ///         AccountId = "my-custom-sa",
+    ///         DisplayName = "Custom SA for VM Instance",
+    ///     });
+    /// 
+    ///     var confidentialInstanceTemplate = new Gcp.Compute.InstanceTemplate("confidential_instance_template", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Network = "default",
+    ///             },
+    ///         },
+    ///         Name = "my-confidential-instance-template",
+    ///         Region = "us-central1",
+    ///         MachineType = "n2d-standard-2",
+    ///         MinCpuPlatform = "AMD Milan",
+    ///         ConfidentialInstanceConfig = new Gcp.Compute.Inputs.InstanceTemplateConfidentialInstanceConfigArgs
+    ///         {
+    ///             EnableConfidentialCompute = true,
+    ///             ConfidentialInstanceType = "SEV",
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "ubuntu-os-cloud/ubuntu-2004-lts",
+    ///             },
+    ///         },
+    ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///         {
+    ///             Email = @default.Email,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "cloud-platform",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Deploying the Latest Image
     /// 
     /// A common way to use instance templates and managed instance groups is to deploy the

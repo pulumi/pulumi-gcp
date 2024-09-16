@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * from a volume or from an existing volume snapshot. Scheduled backups
  * require a backup policy.
  * 
- * To get more information about backup, see:
+ * To get more information about Backup, see:
  * 
  * * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.backupVaults.backups)
  * * How-to Guides
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * backup can be imported using any of these accepted formats:
+ * Backup can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}`
  * 
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  * 
  * * `{{location}}/{{vault_name}}/{{name}}`
  * 
- * When using the `pulumi import` command, backup can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:netapp/backup:Backup default projects/{{project}}/locations/{{location}}/backupVaults/{{vault_name}}/backups/{{name}}

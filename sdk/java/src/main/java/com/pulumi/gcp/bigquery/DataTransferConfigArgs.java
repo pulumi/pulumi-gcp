@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEmailPreferencesArgs;
+import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigScheduleOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigSensitiveParamsArgs;
 import java.lang.Boolean;
@@ -122,6 +123,23 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<DataTransferConfigEmailPreferencesArgs>> emailPreferences() {
         return Optional.ofNullable(this.emailPreferences);
+    }
+
+    /**
+     * Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfiguration")
+    private @Nullable Output<DataTransferConfigEncryptionConfigurationArgs> encryptionConfiguration;
+
+    /**
+     * @return Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataTransferConfigEncryptionConfigurationArgs>> encryptionConfiguration() {
+        return Optional.ofNullable(this.encryptionConfiguration);
     }
 
     /**
@@ -303,6 +321,7 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
         this.disabled = $.disabled;
         this.displayName = $.displayName;
         this.emailPreferences = $.emailPreferences;
+        this.encryptionConfiguration = $.encryptionConfiguration;
         this.location = $.location;
         this.notificationPubsubTopic = $.notificationPubsubTopic;
         this.params = $.params;
@@ -467,6 +486,29 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder emailPreferences(DataTransferConfigEmailPreferencesArgs emailPreferences) {
             return emailPreferences(Output.of(emailPreferences));
+        }
+
+        /**
+         * @param encryptionConfiguration Represents the encryption configuration for a transfer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfiguration(@Nullable Output<DataTransferConfigEncryptionConfigurationArgs> encryptionConfiguration) {
+            $.encryptionConfiguration = encryptionConfiguration;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfiguration Represents the encryption configuration for a transfer.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfiguration(DataTransferConfigEncryptionConfigurationArgs encryptionConfiguration) {
+            return encryptionConfiguration(Output.of(encryptionConfiguration));
         }
 
         /**

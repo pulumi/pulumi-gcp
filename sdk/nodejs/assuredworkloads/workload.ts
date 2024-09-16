@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     provisionedResourcesParent: "folders/519620126891",
  *     resourceSettings: [
  *         {
- *             displayName: "folder-display-name",
+ *             displayName: "{{name}}",
  *             resourceType: "CONSUMER_FOLDER",
  *         },
  *         {
@@ -76,6 +76,43 @@ import * as utilities from "../utilities";
  *             resourceType: "KEYRING",
  *         },
  *     ],
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * ```
+ * ### Split_billing_partner_workload
+ * A Split billing partner test of the assuredworkloads api
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.assuredworkloads.Workload("primary", {
+ *     complianceRegime: "ASSURED_WORKLOADS_FOR_PARTNERS",
+ *     displayName: "display",
+ *     location: "europe-west8",
+ *     organization: "123456789",
+ *     billingAccount: "billingAccounts/000000-0000000-0000000-000000",
+ *     partner: "SOVEREIGN_CONTROLS_BY_PSN",
+ *     partnerPermissions: {
+ *         assuredWorkloadsMonitoring: true,
+ *         dataLogsViewer: true,
+ *         serviceAccessApprover: true,
+ *     },
+ *     partnerServicesBillingAccount: "billingAccounts/01BF3F-2C6DE5-30C607",
+ *     resourceSettings: [
+ *         {
+ *             resourceType: "CONSUMER_FOLDER",
+ *         },
+ *         {
+ *             resourceType: "ENCRYPTION_KEYS_PROJECT",
+ *         },
+ *         {
+ *             resourceId: "ring",
+ *             resourceType: "KEYRING",
+ *         },
+ *     ],
+ *     violationNotificationsEnabled: true,
  *     labels: {
  *         "label-one": "value-one",
  *     },
@@ -133,7 +170,7 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly billingAccount!: pulumi.Output<string | undefined>;
     /**
-     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
+     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS
      */
     public readonly complianceRegime!: pulumi.Output<string>;
     /**
@@ -196,13 +233,17 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly organization!: pulumi.Output<string>;
     /**
-     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
      */
     public readonly partner!: pulumi.Output<string | undefined>;
     /**
      * Optional. Permissions granted to the AW Partner SA account for the customer workload
      */
     public readonly partnerPermissions!: pulumi.Output<outputs.assuredworkloads.WorkloadPartnerPermissions | undefined>;
+    /**
+     * Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
+     */
+    public readonly partnerServicesBillingAccount!: pulumi.Output<string | undefined>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
@@ -258,6 +299,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["organization"] = state ? state.organization : undefined;
             resourceInputs["partner"] = state ? state.partner : undefined;
             resourceInputs["partnerPermissions"] = state ? state.partnerPermissions : undefined;
+            resourceInputs["partnerServicesBillingAccount"] = state ? state.partnerServicesBillingAccount : undefined;
             resourceInputs["provisionedResourcesParent"] = state ? state.provisionedResourcesParent : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["resourceSettings"] = state ? state.resourceSettings : undefined;
@@ -288,6 +330,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["organization"] = args ? args.organization : undefined;
             resourceInputs["partner"] = args ? args.partner : undefined;
             resourceInputs["partnerPermissions"] = args ? args.partnerPermissions : undefined;
+            resourceInputs["partnerServicesBillingAccount"] = args ? args.partnerServicesBillingAccount : undefined;
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             resourceInputs["violationNotificationsEnabled"] = args ? args.violationNotificationsEnabled : undefined;
@@ -318,7 +361,7 @@ export interface WorkloadState {
      */
     billingAccount?: pulumi.Input<string>;
     /**
-     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
+     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS
      */
     complianceRegime?: pulumi.Input<string>;
     /**
@@ -381,13 +424,17 @@ export interface WorkloadState {
      */
     organization?: pulumi.Input<string>;
     /**
-     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
      */
     partner?: pulumi.Input<string>;
     /**
      * Optional. Permissions granted to the AW Partner SA account for the customer workload
      */
     partnerPermissions?: pulumi.Input<inputs.assuredworkloads.WorkloadPartnerPermissions>;
+    /**
+     * Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
+     */
+    partnerServicesBillingAccount?: pulumi.Input<string>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
@@ -423,7 +470,7 @@ export interface WorkloadArgs {
      */
     billingAccount?: pulumi.Input<string>;
     /**
-     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
+     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS
      */
     complianceRegime: pulumi.Input<string>;
     /**
@@ -458,13 +505,17 @@ export interface WorkloadArgs {
      */
     organization: pulumi.Input<string>;
     /**
-     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
      */
     partner?: pulumi.Input<string>;
     /**
      * Optional. Permissions granted to the AW Partner SA account for the customer workload
      */
     partnerPermissions?: pulumi.Input<inputs.assuredworkloads.WorkloadPartnerPermissions>;
+    /**
+     * Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have 'billing.resourceAssociations.create' IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
+     */
+    partnerServicesBillingAccount?: pulumi.Input<string>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */

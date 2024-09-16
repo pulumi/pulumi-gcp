@@ -334,8 +334,9 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             configmanagement={
-                "version": "1.6.2",
+                "version": "1.19.0",
                 "config_sync": {
+                    "enabled": True,
                     "git": {
                         "sync_repo": "https://github.com/hashicorp/terraform",
                     },
@@ -370,8 +371,9 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             configmanagement={
-                "version": "1.15.1",
+                "version": "1.19.0",
                 "config_sync": {
+                    "enabled": True,
                     "oci": {
                         "sync_repo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
                         "policy_dir": "config-connector",
@@ -456,8 +458,9 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             membership_location=membership.location,
             configmanagement={
-                "version": "1.6.2",
+                "version": "1.19.0",
                 "config_sync": {
+                    "enabled": True,
                     "git": {
                         "sync_repo": "https://github.com/hashicorp/terraform",
                     },
@@ -612,8 +615,9 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             configmanagement={
-                "version": "1.6.2",
+                "version": "1.19.0",
                 "config_sync": {
+                    "enabled": True,
                     "git": {
                         "sync_repo": "https://github.com/hashicorp/terraform",
                     },
@@ -648,8 +652,9 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             configmanagement={
-                "version": "1.15.1",
+                "version": "1.19.0",
                 "config_sync": {
+                    "enabled": True,
                     "oci": {
                         "sync_repo": "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
                         "policy_dir": "config-connector",
@@ -734,8 +739,9 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             membership_location=membership.location,
             configmanagement={
-                "version": "1.6.2",
+                "version": "1.19.0",
                 "config_sync": {
+                    "enabled": True,
                     "git": {
                         "sync_repo": "https://github.com/hashicorp/terraform",
                     },

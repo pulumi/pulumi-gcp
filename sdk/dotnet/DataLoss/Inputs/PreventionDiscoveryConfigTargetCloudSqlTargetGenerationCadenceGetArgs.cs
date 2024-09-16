@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("inspectTemplateModifiedCadence")]
+        public Input<Inputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceGetArgs>? InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
         /// Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
         /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         /// </summary>

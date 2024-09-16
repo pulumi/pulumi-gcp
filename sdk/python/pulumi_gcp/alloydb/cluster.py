@@ -40,7 +40,8 @@ class ClusterArgs:
                  psc_config: Optional[pulumi.Input['ClusterPscConfigArgs']] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
-                 secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None):
+                 secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
@@ -65,6 +66,7 @@ class ClusterArgs:
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+               Possible values: DEFAULT, FORCE
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -88,6 +90,8 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
+        :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
+               Possible values are: `TRIAL`, `STANDARD`.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
@@ -127,6 +131,8 @@ class ClusterArgs:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
         if secondary_config is not None:
             pulumi.set(__self__, "secondary_config", secondary_config)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -231,6 +237,7 @@ class ClusterArgs:
         Policy to determine if the cluster should be deleted forcefully.
         Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -393,6 +400,19 @@ class ClusterArgs:
     def secondary_config(self, value: Optional[pulumi.Input['ClusterSecondaryConfigArgs']]):
         pulumi.set(self, "secondary_config", value)
 
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscrition type of cluster.
+        Possible values are: `TRIAL`, `STANDARD`.
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_type", value)
+
 
 @pulumi.input_type
 class _ClusterState:
@@ -427,6 +447,8 @@ class _ClusterState:
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
+                 trial_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTrialMetadataArgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -452,6 +474,7 @@ class _ClusterState:
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+               Possible values: DEFAULT, FORCE
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -492,6 +515,10 @@ class _ClusterState:
         :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
+        :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
+               Possible values are: `TRIAL`, `STANDARD`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterTrialMetadataArgs']]] trial_metadatas: Contains information and all metadata related to TRIAL clusters.
+               Structure is documented below.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
         if annotations is not None:
@@ -554,6 +581,10 @@ class _ClusterState:
             pulumi.set(__self__, "secondary_config", secondary_config)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
+        if trial_metadatas is not None:
+            pulumi.set(__self__, "trial_metadatas", trial_metadatas)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -671,6 +702,7 @@ class _ClusterState:
         Policy to determine if the cluster should be deleted forcefully.
         Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -948,6 +980,32 @@ class _ClusterState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscrition type of cluster.
+        Possible values are: `TRIAL`, `STANDARD`.
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_type", value)
+
+    @property
+    @pulumi.getter(name="trialMetadatas")
+    def trial_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTrialMetadataArgs']]]]:
+        """
+        Contains information and all metadata related to TRIAL clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trial_metadatas")
+
+    @trial_metadatas.setter
+    def trial_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTrialMetadataArgs']]]]):
+        pulumi.set(self, "trial_metadatas", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -985,6 +1043,7 @@ class Cluster(pulumi.CustomResource):
                  restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -1149,6 +1208,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+               Possible values: DEFAULT, FORCE
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -1176,6 +1236,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
+        :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
+               Possible values are: `TRIAL`, `STANDARD`.
         """
         ...
     @overload
@@ -1361,6 +1423,7 @@ class Cluster(pulumi.CustomResource):
                  restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1394,6 +1457,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["restore_backup_source"] = restore_backup_source
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["secondary_config"] = secondary_config
+            __props__.__dict__["subscription_type"] = subscription_type
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
             __props__.__dict__["effective_annotations"] = None
@@ -1404,6 +1468,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["trial_metadatas"] = None
             __props__.__dict__["uid"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1447,6 +1512,8 @@ class Cluster(pulumi.CustomResource):
             restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
             secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            subscription_type: Optional[pulumi.Input[str]] = None,
+            trial_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -1477,6 +1544,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+               Possible values: DEFAULT, FORCE
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ClusterEncryptionConfigArgs', 'ClusterEncryptionConfigArgsDict']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -1517,6 +1585,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
+        :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
+               Possible values are: `TRIAL`, `STANDARD`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict']]]] trial_metadatas: Contains information and all metadata related to TRIAL clusters.
+               Structure is documented below.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1553,6 +1625,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
         __props__.__dict__["secondary_config"] = secondary_config
         __props__.__dict__["state"] = state
+        __props__.__dict__["subscription_type"] = subscription_type
+        __props__.__dict__["trial_metadatas"] = trial_metadatas
         __props__.__dict__["uid"] = uid
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -1638,6 +1712,7 @@ class Cluster(pulumi.CustomResource):
         Policy to determine if the cluster should be deleted forcefully.
         Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        Possible values: DEFAULT, FORCE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1825,6 +1900,24 @@ class Cluster(pulumi.CustomResource):
         Output only. The current serving state of the cluster.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> pulumi.Output[str]:
+        """
+        The subscrition type of cluster.
+        Possible values are: `TRIAL`, `STANDARD`.
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @property
+    @pulumi.getter(name="trialMetadatas")
+    def trial_metadatas(self) -> pulumi.Output[Sequence['outputs.ClusterTrialMetadata']]:
+        """
+        Contains information and all metadata related to TRIAL clusters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trial_metadatas")
 
     @property
     @pulumi.getter

@@ -73,6 +73,38 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Node Template Accelerators
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var central1a = Gcp.Compute.GetNodeTypes.Invoke(new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var template = new Gcp.Compute.NodeTemplate("template", new()
+    ///     {
+    ///         Name = "soletenant-with-accelerators",
+    ///         Region = "us-central1",
+    ///         NodeType = "n1-node-96-624",
+    ///         Accelerators = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.NodeTemplateAcceleratorArgs
+    ///             {
+    ///                 AcceleratorType = "nvidia-tesla-t4",
+    ///                 AcceleratorCount = 4,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -107,6 +139,14 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/nodeTemplate:NodeTemplate")]
     public partial class NodeTemplate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the
+        /// node template
+        /// Structure is documented below.
+        /// </summary>
+        [Output("accelerators")]
+        public Output<ImmutableArray<Outputs.NodeTemplateAccelerator>> Accelerators { get; private set; } = null!;
+
         /// <summary>
         /// CPU overcommit.
         /// Default value is `NONE`.
@@ -231,6 +271,20 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeTemplateArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<Inputs.NodeTemplateAcceleratorArgs>? _accelerators;
+
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the
+        /// node template
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodeTemplateAcceleratorArgs> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<Inputs.NodeTemplateAcceleratorArgs>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// CPU overcommit.
         /// Default value is `NONE`.
@@ -311,6 +365,20 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeTemplateState : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<Inputs.NodeTemplateAcceleratorGetArgs>? _accelerators;
+
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the
+        /// node template
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodeTemplateAcceleratorGetArgs> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<Inputs.NodeTemplateAcceleratorGetArgs>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// CPU overcommit.
         /// Default value is `NONE`.

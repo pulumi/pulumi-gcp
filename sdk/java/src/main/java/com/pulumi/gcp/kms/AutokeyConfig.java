@@ -122,10 +122,18 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var example_autokeyconfig = new AutokeyConfig("example-autokeyconfig", AutokeyConfigArgs.builder()
- *             .folder(autokmsFolder.folderId())
+ *             .folder(autokmsFolder.id())
  *             .keyProject(keyProject.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(waitSrvAccPermissions)
+ *                 .build());
+ * 
+ *         // Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+ *         // because setting the config takes a little to fully propagate.
+ *         var waitAutokeyPropagation = new Sleep("waitAutokeyPropagation", SleepArgs.builder()
+ *             .createDuration("30s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(example_autokeyconfig)
  *                 .build());
  * 
  *     }}{@code

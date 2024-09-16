@@ -503,6 +503,7 @@ import (
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
+//					MaxMessages:            pulumi.Int(1000),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				example,
@@ -570,8 +571,10 @@ import (
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
+//					MaxMessages:            pulumi.Int(1000),
 //					AvroConfig: &pubsub.SubscriptionCloudStorageConfigAvroConfigArgs{
-//						WriteMetadata: pulumi.Bool(true),
+//						WriteMetadata:  pulumi.Bool(true),
+//						UseTopicSchema: pulumi.Bool(true),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

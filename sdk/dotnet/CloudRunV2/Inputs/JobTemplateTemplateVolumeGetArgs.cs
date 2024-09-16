@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.JobTemplateTemplateVolumeEmptyDirGetArgs>? EmptyDir { get; set; }
 
         /// <summary>
-        /// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// Cloud Storage bucket mounted as a volume using GCSFuse.
         /// Structure is documented below.
         /// </summary>
         [Input("gcs")]
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        /// NFS share mounted as a volume.
         /// Structure is documented below.
         /// </summary>
         [Input("nfs")]
