@@ -5,10 +5,90 @@ package gcp
 import (
 	"context"
 
+	"github.com/hashicorp/go-cty/cty"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/property"
 )
+
+// fixEmptyLabels applies a state edit to fix
+// https://github.com/pulumi/pulumi-gcp/issues/2372.
+func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Value, error) {
+	// programLabels holds the labels that we expect to be applied. It is the union of
+	// labels (from the resource) and defaultLabels (from the provider).
+	//
+	// programLabels may not be the full set of labels on the resource, since
+	// effective_labels can include labels read from the cloud provider.
+	programLabels := property.Map{}
+
+	// Apply default labels first.
+	if pConfig := resource.FromResourcePropertyValue(resource.NewProperty(req.ProviderConfig)); pConfig.IsMap() {
+		l := pConfig.AsMap()["defaultLabels"]
+		if l.IsMap() {
+			programLabels = l.AsMap()
+		}
+	}
+
+	// Apply labels next, allowing labels to override defaultLabels.
+	if inputs, ok := (resource.PropertyPath{"labels"}.Get(resource.NewProperty(req.NewInputs))); ok {
+		if labels := resource.FromResourcePropertyValue(inputs); labels.IsMap() {
+			for k, v := range labels.AsMap() {
+				programLabels[k] = v
+			}
+		}
+	}
+
+	fixMap := func(f func(map[string]cty.Value) map[string]cty.Value) func(cty.Value) cty.Value {
+		return func(v cty.Value) cty.Value {
+			if !v.Type().IsMapType() || !v.IsKnown() || v.IsNull() {
+				return v
+			}
+
+			result := f(v.AsValueMap())
+			if len(result) == 0 {
+				return cty.MapValEmpty(v.Type().ElementType())
+			}
+			return cty.MapVal(result)
+		}
+	}
+
+	// fixOutputLabels fixes falsely unknown values label values.
+	fixOutputLabels := fixMap(func(m map[string]cty.Value) map[string]cty.Value {
+		for k, v := range m {
+			if v.IsKnown() {
+				// If v is known, so no correction is needed.
+				continue
+			}
+			label, ok := programLabels[k] // labels is in the Pulumi namespace
+			if !ok || label.IsComputed() || !label.IsString() {
+				// If we didn't inherit label from the program or the
+				// label is actually unknown, then just continue.
+				continue
+			}
+
+			// v is incorrectly unknown, so set it to the known value from the
+			// program.
+			m[k] = cty.StringVal(label.AsString())
+		}
+		return m
+	})
+
+	// Apply f to m[k] if k in m.
+	mapIfExists := func(m map[string]cty.Value, k string, f func(cty.Value) cty.Value) {
+		v, ok := m[k]
+		if ok {
+			m[k] = f(v)
+		}
+	}
+
+	planState := req.PlanState.AsValueMap()
+	mapIfExists(planState, "effective_labels", fixOutputLabels)
+	mapIfExists(planState, "terraform_labels", fixOutputLabels)
+	return cty.ObjectVal(planState), nil
+}
 
 // GCP has many resources with labels called "terraform_labels". We want to change those
 // to "pulumiLabels".

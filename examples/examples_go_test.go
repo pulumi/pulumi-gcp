@@ -479,7 +479,7 @@ func expectedLabelValue(arg expectedLabelValueArg) string {
 func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 	// Note that the upstream provider actually takes a "" value for a label to mean "keep the previous value".
 	// This behaviour is exposed under PlanResourceChange
-	r := map[string]string{}
+	expected := map[string]string{}
 
 	keys := map[string]struct{}{}
 	for k := range st.DefaultLabels {
@@ -495,7 +495,7 @@ func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 		prevLabelsVal, inPrevLabels := prev.Labels[k]
 		prevDefaultsVal, inPrevDefaults := prev.DefaultLabels[k]
 
-		expectedVal := expectedLabelValue(
+		expected[k] = expectedLabelValue(
 			expectedLabelValueArg{
 				labels:       valuePresentTuple{value: labelsVal, present: inLabels},
 				defaults:     valuePresentTuple{value: defaultsVal, present: inDefaults},
@@ -503,16 +503,12 @@ func (st labelsState) expectedLabels(prev labelsState) map[string]string {
 				prevDefaults: valuePresentTuple{value: prevDefaultsVal, present: inPrevDefaults},
 			},
 		)
-
-		if expectedVal != "" {
-			r[k] = expectedVal
-		}
 	}
 
 	// Because we're reading pulumiLabels, we need to expect the default provisioning label.
-	r["goog-pulumi-provisioned"] = "true"
+	expected["goog-pulumi-provisioned"] = "true"
 
-	return r
+	return expected
 }
 
 func validateStateResult(phase int, st1, st2 labelsState) func(

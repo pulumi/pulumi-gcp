@@ -6,9 +6,11 @@ import (
 	"context"
 	"testing"
 
+	"github.com/hashicorp/go-cty/cty"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
@@ -222,6 +224,93 @@ func TestEnsureLabelPathsExist(t *testing.T) {
 			require.NoError(t, err)
 
 			assert.Equal(t, tt.expected, actual)
+		})
+	}
+}
+
+func TestFixEmptyLabels(t *testing.T) {
+	tests := []struct {
+		name     string
+		inputs   shimv2.PlanStateEditRequest
+		expected cty.Value
+	}{
+		{
+			name: "adjust incorrectly unknown labels",
+			inputs: shimv2.PlanStateEditRequest{
+				PlanState: cty.ObjectVal(map[string]cty.Value{
+					"effective_labels": cty.MapVal(map[string]cty.Value{
+						"empty": cty.UnknownVal(cty.String),
+					}),
+					"terraform_labels": cty.MapVal(map[string]cty.Value{
+						"empty": cty.UnknownVal(cty.String),
+					}),
+				}),
+				NewInputs: resource.PropertyMap{
+					"labels": resource.NewProperty(resource.PropertyMap{
+						"empty": resource.NewProperty(""),
+					}),
+				},
+			},
+			expected: cty.ObjectVal(map[string]cty.Value{
+				"effective_labels": cty.MapVal(map[string]cty.Value{
+					"empty": cty.StringVal(""),
+				}),
+				"terraform_labels": cty.MapVal(map[string]cty.Value{
+					"empty": cty.StringVal(""),
+				}),
+			}),
+		},
+		{
+			name: "adjust incorrectly unknown default labels",
+			inputs: shimv2.PlanStateEditRequest{
+				PlanState: cty.ObjectVal(map[string]cty.Value{
+					"effective_labels": cty.MapVal(map[string]cty.Value{
+						"empty": cty.UnknownVal(cty.String),
+					}),
+				}),
+				ProviderConfig: resource.PropertyMap{
+					"defaultLabels": resource.NewProperty(resource.PropertyMap{
+						"empty": resource.NewProperty(""),
+					}),
+				},
+			},
+			expected: cty.ObjectVal(map[string]cty.Value{
+				"effective_labels": cty.MapVal(map[string]cty.Value{
+					"empty": cty.StringVal(""),
+				}),
+			}),
+		},
+		{
+			name: "ignore valid labels",
+			inputs: shimv2.PlanStateEditRequest{
+				PlanState: cty.ObjectVal(map[string]cty.Value{
+					"effective_labels": cty.MapVal(map[string]cty.Value{
+						"non-empty":        cty.StringVal("val"),
+						"actually-unknown": cty.UnknownVal(cty.String),
+					}),
+				}),
+				NewInputs: resource.PropertyMap{
+					"labels": resource.NewProperty(resource.PropertyMap{
+						"non-empty":        resource.NewProperty("val"),
+						"actually-unknown": resource.MakeComputed(resource.NewProperty("")),
+					}),
+				},
+			},
+			expected: cty.ObjectVal(map[string]cty.Value{
+				"effective_labels": cty.MapVal(map[string]cty.Value{
+					"non-empty":        cty.StringVal("val"),
+					"actually-unknown": cty.UnknownVal(cty.String),
+				}),
+			}),
+		},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := fixEmptyLabels(context.Background(), tt.inputs)
+			require.NoError(t, err)
+			assert.Equal(t, tt.expected, result)
 		})
 	}
 }
