@@ -28,6 +28,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/hexops/autogold/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -36,7 +37,10 @@ import (
 	"github.com/pulumi/providertest/pulumitest/optnewstack"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optrefresh"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optup"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 )
 
@@ -1051,6 +1055,7 @@ func TestImport(t *testing.T) {
 		programPath      string
 		resourceType     string
 		explicitProvider bool
+		skip             string // If skip is non-empty, the the test will be skipped with skip's value as the reason
 	}{
 		{
 			testName:     "bucket",
@@ -1062,6 +1067,7 @@ func TestImport(t *testing.T) {
 			programPath:      filepath.Join("test-programs", "labeled-bucket-with-defaults"),
 			resourceType:     "gcp:storage/bucket:Bucket",
 			explicitProvider: true,
+			skip:             "Skipping due to https://github.com/pulumi/pulumi/issues/17290",
 		},
 		{
 			testName:     "bucket-iam-binding",
@@ -1070,6 +1076,9 @@ func TestImport(t *testing.T) {
 		},
 	} {
 		t.Run(tc.testName, func(t *testing.T) {
+			if tc.skip != "" {
+				t.Skip(tc.skip)
+			}
 			test := pulumiTest(t, tc.programPath)
 
 			res := test.Up()
@@ -1119,4 +1128,216 @@ func TestFirestoreDatabaseAutoname(t *testing.T) {
 	proj := getProject()
 	pt.SetConfig("gcpProj", proj)
 	pt.Up()
+}
+
+func TestEmptyLabels(t *testing.T) {
+	tests := []struct {
+		program       string
+		previewStdout autogold.Value
+		upOutputs     autogold.Value
+	}{
+		{"empty-label", autogold.Expect(`Previewing update (test):
+
+ +  pulumi:pulumi:Stack empty-label-test create
+ +  gcp:kms:KeyRing ring create
+ +  gcp:kms:CryptoKey key create
+ +  pulumi:pulumi:Stack empty-label-test create
+Outputs:
+    effectiveLabels: [secret]
+    labels         : {
+        empty : ""
+        static: "value"
+    }
+    pulumiLabels   : [secret]
+
+Resources:
+    + 3 to create
+
+`), autogold.Expect(auto.OutputMap{
+			"effectiveLabels": auto.OutputValue{
+				Value: map[string]interface{}{
+					"empty":                   "",
+					"goog-pulumi-provisioned": "true",
+					"static":                  "value",
+				},
+				Secret: true,
+			},
+			"labels": auto.OutputValue{Value: map[string]interface{}{
+				"empty":  "",
+				"static": "value",
+			}},
+			"pulumiLabels": auto.OutputValue{
+				Value: map[string]interface{}{
+					"empty":                   "",
+					"goog-pulumi-provisioned": "true",
+					"static":                  "value",
+				},
+				Secret: true,
+			},
+		})},
+		{"empty-alone-label", autogold.Expect(`Previewing update (test):
+
+ +  pulumi:pulumi:Stack empty-alone-label-test create
+ +  gcp:kms:KeyRing ring create
+ +  gcp:kms:CryptoKey key create
+ +  pulumi:pulumi:Stack empty-alone-label-test create
+Outputs:
+    effectiveLabels: [secret]
+    labels         : {
+        empty: ""
+    }
+    pulumiLabels   : [secret]
+
+Resources:
+    + 3 to create
+
+`), autogold.Expect(auto.OutputMap{
+			"effectiveLabels": auto.OutputValue{
+				Value: map[string]interface{}{
+					"empty":                   "",
+					"goog-pulumi-provisioned": "true",
+				},
+				Secret: true,
+			},
+			"labels": auto.OutputValue{Value: map[string]interface{}{"empty": ""}},
+			"pulumiLabels": auto.OutputValue{
+				Value: map[string]interface{}{
+					"empty":                   "",
+					"goog-pulumi-provisioned": "true",
+				},
+				Secret: true,
+			},
+		})},
+		{"empty-default-label", autogold.Expect(`Previewing update (test):
+
+ +  pulumi:pulumi:Stack empty-default-label-test create
+ +  gcp:kms:KeyRing ring create
+ +  gcp:kms:CryptoKey key create
+ +  pulumi:pulumi:Stack empty-default-label-test create
+Outputs:
+    effectiveLabels: [secret]
+    labels         : {
+        static: "value"
+    }
+    pulumiLabels   : [secret]
+
+Resources:
+    + 3 to create
+
+`), autogold.Expect(auto.OutputMap{
+			"effectiveLabels": auto.OutputValue{
+				Value: map[string]interface{}{
+					"empty-default":           "",
+					"goog-pulumi-provisioned": "true",
+					"static":                  "value",
+				},
+				Secret: true,
+			},
+			"labels": auto.OutputValue{Value: map[string]interface{}{"static": "value"}},
+			"pulumiLabels": auto.OutputValue{
+				Value: map[string]interface{}{
+					"empty-default":           "",
+					"goog-pulumi-provisioned": "true",
+					"static":                  "value",
+				},
+				Secret: true,
+			},
+		})},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+
+		t.Run(tt.program, func(t *testing.T) {
+			pt := pulumiTest(t, "test-programs/"+tt.program)
+			proj := getProject()
+			pt.SetConfig("gcpProj", proj)
+
+			previewResult := pt.Preview(optpreview.SuppressProgress())
+			tt.previewStdout.Equal(t, previewResult.StdOut)
+
+			upResult := pt.Up(optup.SuppressProgress())
+			tt.upOutputs.Equal(t, upResult.Outputs)
+
+			pt.Preview(optpreview.ExpectNoChanges())
+
+			// Refresh against upstream labels
+			pt.Refresh()
+
+			pt.Refresh(optrefresh.ExpectNoChanges())
+
+			// We should expect that we refresh cleanly
+			pt.Preview(optpreview.ExpectNoChanges())
+		})
+	}
+}
+
+// TestUnmanagedEmptyLabels currently acts as a regression test. It ensures that behavior
+// doesn't get worse.
+//
+// We would prefer the obvious behavior patter:
+//
+// $ pulumi up --yes
+// $ pulumi refresh --yes # Retrieves labels from GCP
+// $ pulumi preview --expect-no-changes
+//
+// Improvement tracked in <https://github.com/pulumi/pulumi-gcp/issues/2390>.
+func TestUnmanagedEmptyLabels(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/empty-unmanaged-label")
+	proj := getProject()
+	pt.SetConfig("gcpProj", proj)
+
+	previewResult := pt.Preview(optpreview.SuppressProgress())
+	autogold.Expect(`Previewing update (test):
+
+ +  pulumi:pulumi:Stack dev-yaml-test create
+ +  gcp:storage:Bucket b create
+ +  command:local:Command set-empty-label create
+ +  pulumi:pulumi:Stack dev-yaml-test create
+Outputs:
+    effectiveLabels: [secret]
+    pulumiLabels   : [secret]
+
+Resources:
+    + 3 to create
+
+`).Equal(t, previewResult.StdOut)
+
+	upResult := pt.Up()
+	autogold.Expect(auto.OutputMap{
+		"effectiveLabels": auto.OutputValue{
+			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
+			Secret: true,
+		},
+		"labels": auto.OutputValue{},
+		"pulumiLabels": auto.OutputValue{
+			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
+			Secret: true,
+		},
+	}).Equal(t, upResult.Outputs)
+
+	pt.Preview(optpreview.ExpectNoChanges())
+
+	// Refresh against upstream labels
+	pt.Refresh() // This doesn't actually include a diff, but it does change state.
+
+	upResult = pt.Up() // This changes state, even though it should refresh cleanly.
+	autogold.Expect(auto.OutputMap{
+		"effectiveLabels": auto.OutputValue{
+			Value: map[string]interface{}{
+				"goog-pulumi-provisioned": "true",
+				"unmanaged":               "value",
+				"unmanaged_empty":         "",
+			},
+			Secret: true,
+		},
+		"labels": auto.OutputValue{Value: map[string]interface{}{}},
+		"pulumiLabels": auto.OutputValue{
+			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
+			Secret: true,
+		},
+	}).Equal(t, upResult.Outputs)
+
+	// We should expect that we refresh cleanly
+	pt.Preview(optpreview.ExpectNoChanges())
 }
