@@ -463,7 +463,7 @@ func Provider() tfbridge.ProviderInfo {
 		shimv2.NewProvider(gcpProvider.Provider(),
 			shimv2.WithPlanResourceChange(func(_ string) bool { return true }),
 		),
-		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
+		gcpPFProvider.New())
 
 	// We should only run the validation once to avoid duplicating the reported errors.
 	var credentialsValidationRun atomic.Bool
